@@ -1,0 +1,58 @@
+.status_even {
+    background: white;
+}
+
+.status_odd {
+
+}
+
+.status_highlighted {
+    border: 1px solid #bbeeee;
+    background: #ddffff;
+}
+
+.status_list {
+    border: 1px solid #cccccc;
+    border-radius: 16px;
+    padding-bottom: 20px;
+}
+
+.status_header_bar {
+    color: #ffffff;
+}
+
+.status_details {
+
+}
+
+.status_small {
+    font-size: 9pt;
+    color: #00aaff;
+}
+
+.status_back_arrow {
+    font-size: 16pt;
+    color: #00aaff;
+}
+
+.status_details_bar {
+    background: #dddddd;
+    border: 1px solid #aaaaaa;
+    border-radius: 4px;
+}
+
+.status_green {
+    color: #00dd00;
+}
+
+.status_red {
+    color: #ff0000;
+}
+
+.status_yellow {
+    color: #ffbb00;
+}
+
+.status_unknown {
+    color: #bbbbbb;
+}
