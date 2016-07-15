@@ -1,0 +1,42 @@
+.group_details {
+    background: #ffffff;
+    border-bottom: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding-bottom: 25px;
+}
+
+.group_label {
+    color: #0044aa;
+    font-weight: bold;
+}
+
+.group_tile {
+    background: #ffffff;
+    border-radius: 10px;
+    border-bottom: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.group_status_history_container {
+    clear: both;
+    overflow: auto;
+    width: auto;
+    height: 100px;
+}
+
+.workload_details {
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    margin-top: 10px;
+    padding: 10px
+}
+
+.workload_list_container {
+    overflow: auto;
+    width: auto;
+    height: 300px;
+}

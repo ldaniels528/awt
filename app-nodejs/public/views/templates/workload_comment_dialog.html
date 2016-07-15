@@ -1,0 +1,55 @@
+<script type="text/ng-template" id="workload_comment_dialog.html">
+    <div class="modal-header sk_modal_header">
+        <h4>Update Workload Status</h4>
+    </div>
+    <div class="modal-body" ng-init="init()">
+        <div class="row">
+            <div class="col-md-12">
+                <div style="padding-left: 10px">
+                    <i ng-class="getStatusIcon(workload)"></i>
+                    <span class="bold">{{ workload.name }}</span>
+                </div>
+
+                <div style="padding: 10px">
+                    <div class="group_label">New Status</div>
+                    <textarea ng-model="form.statusText" style="width: 100%" rows="5"></textarea>
+                </div>
+
+                <div style="padding: 10px">
+                    <span class="group_label">Previous Status</span>
+
+                    <table style="width: 100%; margin-top: 10px">
+                        <thead>
+                        <tr>
+                            <th style="text-align: left; padding-left: 16px">Status</th>
+                            <th style="text-align: left; padding-left: 16px">Author</th>
+                            <th style="text-align: left; padding-left: 16px">Time</th>
+                        </tr>
+                        </thead>
+
+                        <tbody class="group_status_history_container">
+                        <tr ng-repeat="status in workload.statuses | orderBy:'-creationTime' | limitTo:1">
+                            <td class="col-md-8"><span class="sk_null sk_ident">{{ $index + 1 }}.</span> {{ status.statusText }}</td>
+                            <td class="col-md-3">
+                                <avatar class="avatar16" id="{{ status.submitterId }}"></avatar>
+                                <a class="sk_black" ng-href="#/home/profile/{{ status.submitterId }}"><name id="{{ status.submitterId }}"></name></a>
+                            </td>
+                            <td class="col-md-1" style="font-size: 8pt; color: #0080ff">{{ status.creationTime | duration }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer st_modal_footer">
+        <div class="col-md-12">
+            <button class="btn btn-primary pull-left" ng-disabled="processing" ng-click="ok(form)">
+                <img ng-show="processing" src="/assets/images/status/loading16.gif"> Save
+            </button>
+            <button class="btn btn-warning pull-right" ng-disabled="processing" ng-click="cancel()">
+                Cancel
+            </button>
+        </div>
+    </div>
+</script>

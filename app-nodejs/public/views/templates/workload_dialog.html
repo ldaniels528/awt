@@ -1,0 +1,91 @@
+<script type="text/ng-template" id="workload_dialog.html">
+    <div class="modal-header sk_modal_header">
+        <h4>{{ updating ? 'Update' : 'Create' }} Workload</h4>
+    </div>
+    <div class="modal-body" ng-init="init()">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="col-md-12" style="border-spacing: 4px; border-collapse: separate;">
+                    <tr>
+                        <th class="col-md-3">Workload</th>
+                        <td class="col-md-9">
+                            <input type="text" size="60" ng-model="form.name">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="col-md-3">Microsoft Lead</th>
+                        <td class="col-md-9">
+                            <img class="avatar16" ng-src="{{ form.msftLead.avatarURL }}">
+                            <select ng-model="form.msftLead" ng-options="user.firstName + ' ' + user.lastName for user in users">
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="col-md-3">Business Sponsor</th>
+                        <td class="col-md-9">
+                            <input type="text" size="60" ng-model="form.businessSponsor">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="col-md-3">Technical Contact</th>
+                        <td class="col-md-9">
+                            <input type="text" size="60" ng-model="form.technicalContact">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="col-md-3">Service(s)</th>
+                        <td class="col-md-9">
+                            <input type="text" size="60" ng-model="form.azureServices">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="col-md-3">Status/Next Steps</th>
+                        <td class="col-md-9">
+                            <textarea rows="5" cols="60" ng-model="form.statusText"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="col-md-3">Opportunity Status</th>
+                        <td class="col-md-9">
+                            <i ng-class="getStatusIcon(form)"></i>
+                            <select ng-model="form.statusCode" ng-options="code for code in statusCodes">
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="col-md-3">Consumption Estimate <br><span class="status_small">(When live with PSS)</span></th>
+                        <td class="col-md-9">
+                            <input type="text" size="20" ng-model="form.monthlyConsumptionEstimate">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="col-md-3">Go Live Estimate<br><span class="status_small">(By Fiscal Month)</span></th>
+                        <td class="col-md-9">
+                            <input type="text" size="20" ng-model="form.estimateGoLiveDate">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="col-md-3">Deployed Status</th>
+                        <td class="col-md-9">
+                            <select ng-model="form.deployedStatus">
+                                <option>Yes</option>
+                                <option>No</option>
+                                <option>Abandoned</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer st_modal_footer">
+        <div class="col-md-12">
+            <button class="btn btn-primary pull-left" ng-disabled="processing" ng-click="ok(form)">
+                <img ng-show="processing" src="/assets/images/status/loading16.gif"> Save
+            </button>
+            <button class="btn btn-warning pull-right" ng-disabled="processing" ng-click="cancel()">
+                Cancel
+            </button>
+        </div>
+    </div>
+</script>

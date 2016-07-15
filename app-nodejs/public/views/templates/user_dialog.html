@@ -1,0 +1,64 @@
+<script type="text/ng-template" id="user_dialog.html">
+    <div class="modal-header sk_modal_header">
+        <h4>Update User Profile</h4>
+    </div>
+    <div class="modal-body" ng-init="init()">
+        <div class="row">
+            <div class="home_info home_style">
+                <div style="display: inline; float: left; margin-right: 10px">
+                    <img class="avatar64" ng-if="form.avatarURL" ng-src="{{ form.avatarURL }}">
+                </div>
+                <div style="display: inline">
+                    <div>
+                        <span class="name_line">{{ getFullName(form) }}</span>
+                        <span class="name_line">{{ form.username }}</span>
+                    </div>
+
+                    <div>
+                        <span ng-show="form.title">{{ form.title }}</span>
+                    </div>
+
+                    <div>
+                        <span ng-show="form.primaryEmail">{{ form.primaryEmail }}</span>
+                    </div>
+                </div>
+                <br style="clear: both" />
+            </div>
+
+            <div class="col-md-12">
+                <div class="col-md-12" style="padding: 5px">
+                    <span class="name_line">{{ form.username }}</span>
+                </div>
+
+                <div class="col-md-6" style="padding: 5px">
+                    <input class="form-control" ng-model="form.firstName" type="text" placeholder="First name">
+                </div>
+                <div class="col-md-6" style="padding: 5px">
+                    <input class="form-control" ng-model="form.lastName" type="text" placeholder="Last name">
+                </div>
+
+                <div class="col-md-12" style="padding: 5px">
+                    <input class="form-control" ng-model="form.title" type="text" placeholder="Title or Position">
+                </div>
+
+                <div class="col-md-12" style="padding: 5px">
+                    <input class="form-control" ng-model="form.primaryEmail" type="text" placeholder="Email address">
+                </div>
+
+                <div class="col-md-12" style="padding: 5px">
+                    <input class="form-control" ng-model="form.avatarURL" type="text" placeholder="Your Avatar URL">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer st_modal_footer">
+        <div class="col-md-12">
+            <button class="btn btn-primary pull-left" ng-disabled="processing" ng-click="ok(form)">
+                <img ng-show="processing" src="/assets/images/status/loading16.gif"> Save
+            </button>
+            <button class="btn btn-warning pull-right" ng-disabled="processing" ng-click="cancel()">
+                Cancel
+            </button>
+        </div>
+    </div>
+</script>

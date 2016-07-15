@@ -1,0 +1,182 @@
+<div class="row">
+    <div class="col-md-12">
+        <span class="pull-right" style="padding-top: 10px">
+            <span style="font-size: 12pt; vertical-align: middle">Active Only</span>
+            <i ng-click="toggleActiveWorkloads()"
+               ng-class="activeOnly ? 'fa-toggle-on' : 'fa-toggle-off'"
+               class="fa fa-2x sk_clickable sk_toggle"
+               style="vertical-align: middle"></i>
+        </span>
+    </div>
+</div>
+
+<div class="workload_details">
+    <span class="group_label">{{ activeOnly ? 'Active' : 'Active + Inactive' }} Workloads</span>
+    <div ng-show="isMe()" class="pull-right" style="padding-bottom: 10px">
+        <span ng-click="addWorkload(workloads)" class="btn btn-success">
+            <i class="fa fa-plus-circle status_header_bar"></i> Workload
+        </span>
+        <span ng-show="workloads.length" class="sk_ident">
+            <a ng-href="/api/workloads/download/{{ user()._id }}/user/workloads.csv?activeOnly={{ activeOnly }}">
+               <span class="btn btn-info">
+                    <i class="fa fa-cloud-download"></i> Download
+               </span>
+            </a>
+        </span>
+    </div>
+
+    <div style="margin-top: 10px">
+        <table style="width: 100%">
+            <thead>
+            <tr>
+                <th style="padding-left: 16px">Workload</th>
+                <th style="padding-left: 16px">Microsoft Lead</th>
+                <th style="text-align: center">Consumption</th>
+                <th style="text-align: center">Status / Next Steps</th>
+                <th style="text-align: center">Updated</th>
+            </tr>
+            </thead>
+            <tbody class="workload_list_container">
+            <tr ng-repeat="workload in workloads" ng-class="getWorkloadHighlightClass(workload, $index)">
+                <td class="col-md-3">
+                    <span ng-hide="workload.active">
+                        <i class="fa fa-check-circle-o sk_completed"></i>
+                        <span class="sk_clickable"
+                              ng-click="selectWorkLoad(workload)">{{ workload.name }}</span>
+                    </span>
+                    <span ng-show="workload.active">
+                        <i  ng-class="getStatusIcon(workload)"></i>
+                        <span class="sk_clickable" ng-click="selectWorkLoad(workload)">{{ workload.name }}</span>
+                    </span>
+                </td>
+                <td class="col-md-2">
+                    <avatar class="avatar16" id="{{ workload.msftLeadId }}"></avatar>
+                    {{ workload.msftLead }}
+                </td>
+                <td class="col-md-1">
+                    <span ng-show="workload.monthlyConsumptionEstimate" class="sk_currency pull-right">
+                       ${{ workload.monthlyConsumptionEstimate | number:0 }}
+                    </span>
+                    <span ng-hide="workload.monthlyConsumptionEstimate" class="sk_tbd pull-right">TBD</span>
+                </td>
+                <td class="col-md-5">{{ getLatestStatusText(workload) }}</td>
+                <td class="col-md-1" style="font-size: 8pt; color: #0080ff">{{ getLatestStatusTime(workload) | duration }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <ul ng-hide="workloads.length || loading">
+            <li>No Active Workloads</li>
+        </ul>
+    </div>
+</div>
+
+<div class="group_details" ng-show="selectedWorkload">
+    <div style="padding: 10px">
+        <span class="group_label">Workload Details</span>
+        <div ng-show="selectedWorkload.active && isMe()" class="pull-right">
+            <span class="sk_ident">
+                <span ng-click="addComment(selectedWorkload, workloads)" class="btn btn-success status_header_bar">
+                    <i class="fa fa-comment status_header_bar"></i> Comment
+                </span>
+            </span>
+             <span class="sk_ident">
+                <span ng-click="editWorkload(selectedWorkload, workloads)" class="btn btn-warning status_header_bar">
+                    <i class="fa fa-edit status_header_bar"></i> Edit
+                </span>
+            </span>
+             <span class="sk_ident">
+                <span ng-click="deactivateWorkload(selectedWorkload, workloads)" class="btn btn-danger status_header_bar">
+                    <i class="fa fa-check-circle status_header_bar"></i> Close
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <table style="width: 100%; border-spacing: 4px; border-collapse: separate;">
+        <tr>
+            <th class="col-md-2">Title</th>
+            <td class="col-md-10" colspan="3">{{ selectedWorkload.name }}</td>
+        </tr>
+        <tr>
+            <th class="col-md-2">Microsoft Lead</th>
+            <td class="col-md-4">
+                <avatar class="avatar16" id="{{ selectedWorkload.msftLeadId }}"></avatar>
+                <a class="sk_black" ng-href="#/home/profile/{{ selectedWorkload.msftLeadId }}">{{ selectedWorkload.msftLead }}</a>
+            </td>
+            <th class="col-md-2">Business Sponsor</th>
+            <td class="col-md-4">{{ selectedWorkload.businessSponsor }}</td>
+        </tr>
+        <tr>
+            <th class="col-md-2">Service(s)</th>
+            <td class="col-md-4">
+                <span ng-show="selectedWorkload.azureServices.length">{{ getServices(selectedWorkload) }}</span>
+                <span ng-hide="selectedWorkload.azureServices.length" class="sk_null">Not Specified</span>
+            </td>
+            <th class="col-md-2">Technical Contact</th>
+            <td class="col-md-4">{{ selectedWorkload.technicalContact }}</td>
+        </tr>
+        <tr>
+            <th class="col-md-2">Opportunity Status</th>
+            <td class="col-md-4">
+                <span ng-hide="selectedWorkload.active" class="sk_completed">
+                    <i class="fa fa-check-circle-o sk_completed"></i> Completed
+                </span>
+                <span ng-show="selectedWorkload.active">
+                    <i ng-class="getStatusIcon(selectedWorkload)"></i>
+                    <span ng-class="getStatusClass(selectedWorkload)">{{ selectedWorkload.statusCode | capitalize }}</span>
+                </span>
+            </td>
+            <th class="col-md-2">Deployed Status</th>
+            <td class="col-md-4">
+                <span ng-show="selectedWorkload.deployedStatus">{{ selectedWorkload.deployedStatus }}</span>
+                <span ng-hide="selectedWorkload.deployedStatus" class="sk_null">Not Deployed</span>
+            </td>
+        </tr>
+        <tr>
+            <th class="col-md-2">Consumption <br><span class="status_small">(Estimated)</span></th>
+            <td class="col-md-4">
+                <span ng-show="selectedWorkload.monthlyConsumptionEstimate">$ {{ selectedWorkload.monthlyConsumptionEstimate | number }}/month</span>
+                <span ng-hide="selectedWorkload.monthlyConsumptionEstimate" class="sk_tbd">TBD</span>
+            </td>
+            <th class="col-md-2">Go Live Estimate<br><span class="status_small">(By Fiscal Month)</span></th>
+            <td class="col-md-4">
+                <span ng-show="selectedWorkload.estimateGoLive">{{ selectedWorkload.estimateGoLive | date:'MM/dd/yyyy' }}</span>
+                <span ng-hide="selectedWorkload.estimateGoLive" class="sk_tbd">TBD</span>
+            </td>
+        </tr>
+        <tr>
+            <th class="col-md-2">Created On</th>
+            <td class="col-md-4">{{ selectedWorkload.creationTime | date:'MM/dd/yyyy hh:mm:ssa Z' }}</td>
+            <th class="col-md-2">Last Updated</th>
+            <td class="col-md-4">{{ selectedWorkload.lastUpdatedTime | date:'MM/dd/yyyy hh:mm:ssa Z' }}</td>
+        </tr>
+    </table>
+
+    <div style="padding: 10px">
+        <span class="group_label">Status History</span>
+        <table style="width: 100%; margin-top: 10px">
+            <thead>
+            <tr>
+                <th style="text-align: left; padding-left: 16px">Status</th>
+                <th style="text-align: left; padding-left: 16px">Author</th>
+                <th style="text-align: left; padding-left: 16px">Time</th>
+            </tr>
+            </thead>
+
+            <tbody class="group_status_history_container">
+            <tr ng-repeat="status in selectedWorkload.statuses | orderBy:'-creationTime'">
+                <td class="col-md-8"><span class="sk_null sk_ident">{{ $index + 1 }}.</span> {{ status.statusText }}</td>
+                <td class="col-md-3">
+                    <avatar class="avatar16" id="{{ status.submitterId }}"></avatar>
+                    <a class="sk_black" ng-href="#/home/profile/{{ status.submitterId }}">
+                        <name id="{{ status.submitterId }}"></name>
+                    </a>
+                </td>
+                <td class="col-md-1" style="font-size: 8pt; color: #0080ff">{{ status.creationTime | duration }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

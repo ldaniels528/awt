@@ -1,0 +1,87 @@
+<div>
+    <div ng-controller="AuthenticationController">
+        <div class="col-md-12 sk_title_bar">
+            <div class="col-md-7">
+                <img class="sk_title_logo" src="/assets/images/logo.png">
+                <span class="sk_title_text">Microsoft AWT</span>
+            </div>
+            <div class="col-md-5" style="padding: 5px">
+                <span class="pull-right">
+                    <input type="text" ng-model="form.username" placeholder="Username">
+                    <input type="password" ng-model="form.password" placeholder="Password">
+                    <span ng-click="login(form)" class="btn btn-primary btn-sm">
+                        <img ng-show="loginLoading" src="/assets/images/status/loading16.gif">
+                        <i ng-hide="loginLoading" class="fa fa-sign-in"></i>
+                        Log In
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-offset-8 col-md-4">
+            <ul ng-repeat="message in messages">
+                <li class="sk_error">{{ message }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-6" style="border-right: 1px solid #cccccc">
+            <h2>Welcome to the AWT</h2>
+
+        <div>
+            <p>The <span class="bold">Azure Workload Tracker</span> (<span class="bold">AWT</span>)
+                portal is an interface for the Microsoft Solutions professional (CSA, DSA, TSP, PSS) and managers to track
+                Azure workloads and more importantly the consumption generated via those workloads in a single easy-to-use
+                application.</p>
+
+            <div style="float: right">
+                <img src="/assets/images/msazurelogo.png">
+            </div>
+
+            The goals of this project are to provide:
+            <ul>
+                <li>A comprehensive way to track Azure workloads and consumption.</li>
+                <li>A means to associate internal consumption reports (e.g. the Azure Health report) to workloads that
+                    are still "in-flight".</li>
+                <li>A shared portal to share ideas between CSA/DSA/TSP's and others.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div  ng-controller="SignUpController" class="col-md-6" style="padding: 5px">
+        <div class="col-md-12">
+            <h3>Activate Your Account</h3>
+            <span>Get started now!</span>
+        </div>
+
+        <div class="col-md-10" style="padding: 5px">
+            <input class="form-control" ng-model="form.username" type="text" placeholder="Choose a username">
+        </div>
+
+        <div class="col-md-10" style="padding: 5px">
+            <input class="form-control" ng-model="form.primaryEmail" type="text" placeholder="Microsoft email address">
+        </div>
+
+        <div class="col-md-8" style="padding: 5px">
+            <input class="form-control" ng-model="form.password0" type="password" placeholder="Password">
+        </div>
+
+        <div class="col-md-8" style="padding: 5px">
+            <input class="form-control" ng-model="form.password1" type="password" placeholder="Confirm password">
+        </div>
+
+        <div class="col-md-12" style="padding: 5px">
+            <span ng-click="signUp(form)" class="btn btn-success">
+                <img ng-show="signupLoading" src="/assets/images/status/loading16.gif">
+                <i ng-hide="signupLoading" class="fa fa-sign-in"></i>
+                Activate
+            </span>
+        </div>
+
+        <div class="col-md-12" ng-show="messages.length" style="margin-top: 25px">
+            <h4 class="sk_error">Please correct the following:</h4>
+            <ul ng-repeat="message in messages">
+                <li class="sk_error">{{ message }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
