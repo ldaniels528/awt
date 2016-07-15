@@ -10,7 +10,7 @@ The Azure Workload Tracker (AWT) was designed to aide Microsoft Solution Consult
 * [Scala 2.11.8+] (http://scala-lang.org/download/)
 * [Scala.js 0.6.8] (http://www.scala-js.org/)
 * [SBT 0.13.11+] (http://www.scala-sbt.org/download.html)
-* [MEANS.js 0.2.1] (https://github.com/ldaniels528/scalajs-ndejs)
+* [Scalajs-Nodejs 0.2.1] (https://github.com/ldaniels528/scalajs-nodejs)
 
 #### Building the application locally
 
