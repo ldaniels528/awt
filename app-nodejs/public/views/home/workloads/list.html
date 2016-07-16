@@ -54,10 +54,10 @@
                     {{ workload.msftLead }}
                 </td>
                 <td class="col-md-1">
-                    <span ng-show="workload.monthlyConsumptionEstimate" class="sk_currency pull-right">
-                       ${{ workload.monthlyConsumptionEstimate | number:0 }}
+                    <span ng-show="workload.consumption" class="sk_currency pull-right">
+                       ${{ workload.consumption | number:0 }}
                     </span>
-                    <span ng-hide="workload.monthlyConsumptionEstimate" class="sk_tbd pull-right">TBD</span>
+                    <span ng-hide="workload.consumption" class="sk_tbd pull-right">TBD</span>
                 </td>
                 <td class="col-md-5">{{ getLatestStatusText(workload) }}</td>
                 <td class="col-md-1" style="font-size: 8pt; color: #0080ff">{{ getLatestStatusTime(workload) | duration }}</td>
@@ -65,8 +65,9 @@
             </tbody>
         </table>
 
-        <ul ng-hide="workloads.length || loading">
-            <li>No Active Workloads</li>
+        <ul ng-hide="workloads.length">
+            <li ng-show="loading"> <img src="/assets/images/status/loading16.gif"> Searching for workloads...</li>
+            <li ng-hide="loading">No workloads found</li>
         </ul>
     </div>
 </div>
@@ -136,8 +137,8 @@
         <tr>
             <th class="col-md-2">Consumption <br><span class="status_small">(Estimated)</span></th>
             <td class="col-md-4">
-                <span ng-show="selectedWorkload.monthlyConsumptionEstimate">$ {{ selectedWorkload.monthlyConsumptionEstimate | number }}/month</span>
-                <span ng-hide="selectedWorkload.monthlyConsumptionEstimate" class="sk_tbd">TBD</span>
+                <span ng-show="selectedWorkload.consumption">$ {{ selectedWorkload.consumption | number }}/month</span>
+                <span ng-hide="selectedWorkload.consumption" class="sk_tbd">TBD</span>
             </td>
             <th class="col-md-2">Go Live Estimate<br><span class="status_small">(By Fiscal Month)</span></th>
             <td class="col-md-4">

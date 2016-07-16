@@ -25,6 +25,8 @@ class WorkloadController($scope: WorkloadScope,
   extends Controller {
 
   $scope.activeOnly = true
+  $scope.sortField = "name"
+  $scope.sortAsc = true
 
   ///////////////////////////////////////////////////////////////////////////
   //      Initialization
@@ -138,10 +140,30 @@ class WorkloadController($scope: WorkloadScope,
 
   $scope.selectWorkLoad = (aWorkload: js.UndefOr[Workload]) => $scope.selectedWorkload = aWorkload
 
+  $scope.sort = (theWorkloads: js.UndefOr[js.Array[Workload]]) => theWorkloads map { workloads =>
+    val sortedWorkloads = $scope.sortField match {
+      case "name" => workloads.toSeq.sortBy(_.name.getOrElse(""))
+      case "msftLead" => workloads.toSeq.sortBy(_.msftLead.getOrElse(""))
+      case "consumption" => workloads.toSeq.sortBy(_.consumption.getOrElse(0d))
+      case "lastUpdatedTime" => workloads.toSeq.sortBy(_.lastUpdatedTime.map(_.toString()).getOrElse(""))
+      case _ => workloads.toSeq
+    }
+    (if($scope.sortAsc) sortedWorkloads else sortedWorkloads.reverse).toJSArray
+  }
+
   $scope.toggleActiveWorkloads = () => {
     $scope.activeOnly = !$scope.activeOnly.contains(true)
     $scope.$emit("toggleActiveWorkloads", $scope.activeOnly)
     ()
+  }
+
+  $scope.updateSorting = (field: String) => {
+    if ($scope.sortField != field) {
+      $scope.sortField = field
+      $scope.sortAsc = true
+    }
+    else
+      $scope.sortAsc = !$scope.sortAsc
   }
 
   ///////////////////////////////////////////////////////////////////////////
@@ -161,8 +183,8 @@ class WorkloadController($scope: WorkloadScope,
 @js.native
 trait WorkloadScope extends Scope {
   // variables
-  var selectedWorkload: js.UndefOr[Workload] = js.native
   var activeOnly: js.UndefOr[Boolean] = js.native
+  var selectedWorkload: js.UndefOr[Workload] = js.native
 
   // functions
   var init: js.Function1[js.UndefOr[String], Unit] = js.native
@@ -174,5 +196,11 @@ trait WorkloadScope extends Scope {
   var getWorkloadHighlightClass: js.Function2[js.UndefOr[Workload], js.UndefOr[Int], js.UndefOr[String]] = js.native
   var selectWorkLoad: js.Function1[js.UndefOr[Workload], Unit] = js.native
   var toggleActiveWorkloads: js.Function0[Unit] = js.native
+
+  // sorting
+  var sortField: String = js.native
+  var sortAsc: Boolean = js.native
+  var sort: js.Function1[js.UndefOr[js.Array[Workload]], js.UndefOr[js.Array[Workload]]] = js.native
+  var updateSorting: js.Function1[String, Unit] = js.native
 
 }

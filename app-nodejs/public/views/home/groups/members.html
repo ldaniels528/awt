@@ -1,0 +1,10 @@
+<div class="group_member_tile">
+    <span ng-repeat="member in group.memberUsers | orderBy:['firstName','lastName']">
+        <a ng-href="#/home/profile/{{ member._id }}">
+            <img class="avatar56 sk_clickable"
+                 ng-if="member.avatarURL"
+                 ng-src="{{ member.avatarURL }}"
+                 title="{{ getFullName(member) }}">
+        </a>
+    </span>
+</div>

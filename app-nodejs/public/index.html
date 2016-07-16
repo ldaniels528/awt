@@ -48,16 +48,16 @@
 
 <body ng-controller="MainController" ng-init="init()" ng-cloak>
     <div ng-if="!isLoginPage()" class="row">
-        <div class="form-group" ng-include src="'/views/main/header.html'"></div>
+        <div class="form-group" ng-include="'/views/main/header.html'"></div>
     </div>
 
     <toaster-container toaster-options="{'position-class': 'toast-container','time-out': 3000, 'close-button':true}">
     </toaster-container>
 
     <div ng-view ng-cloak></div>
-    <div ng-include src="'/views/templates/reactive_search.html'"></div>
-    <div ng-include src="'/views/templates/user_dialog.html'"></div>
-    <div ng-include src="'/views/templates/workload_dialog.html'"></div>
-    <div ng-include src="'/views/templates/workload_comment_dialog.html'"></div>
+    <div ng-include="'/views/templates/reactive_search.html'"></div>
+    <div ng-include="'/views/templates/user_dialog.html'"></div>
+    <div ng-include="'/views/templates/workload_dialog.html'"></div>
+    <div ng-include="'/views/templates/workload_comment_dialog.html'"></div>
 </body>
 </html>

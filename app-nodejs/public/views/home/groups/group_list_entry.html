@@ -1,0 +1,65 @@
+<div>
+    <avatar class="avatar16" id="{{ group.owner }}"></avatar>
+    <a ng-href="#/home/groups/{{ group._id }}"><span class="bold">{{ group.name }}</span></a>
+    <span class="sk_null">&#8212;</span> {{ group.description }}
+
+    <img ng-show="group.loading" src="/assets/images/status/loading16.gif">
+    <span ng-hide="group.loading" class="small pull-right">{{ group.members.length | number:0 }} members</span>
+</div>
+<div ng-include="'/views/home/groups/members.html'"></div>
+<div style="padding-top: 10px">
+    <table style="width: 100%">
+        <thead>
+        <tr>
+            <th style="padding-left: 16px">
+                <i ng-show="sortField == 'name'" class="sk_sort fa" ng-class="sortAsc ? 'fa-chevron-circle-up' : 'fa-chevron-circle-down'"></i>
+                <a ng-click="updateSorting('name')">Workload</a>
+            </th>
+            <th style="padding-left: 16px">
+                <span class="left">
+                    <i ng-show="sortField == 'msftLead'" class="sk_sort fa" ng-class="sortAsc ? 'fa-chevron-circle-up' : 'fa-chevron-circle-down'"></i>
+                    <a ng-click="updateSorting('msftLead')">Microsoft Lead</a>
+                </span>
+                <span class="pull-right">
+                    <i ng-show="sortField == 'consumption'" class="sk_sort fa" ng-class="sortAsc ? 'fa-chevron-circle-up' : 'fa-chevron-circle-down'"></i>
+                    <a ng-click="updateSorting('consumption')">Consumption</a>
+                </span>
+            </th>
+            <th style="text-align: center">
+                <a href="">Status / Next Steps</a>
+            </th>
+            <th style="text-align: center">
+                <i ng-show="sortField == 'lastUpdatedTime'" class="sk_sort fa" ng-class="sortAsc ? 'fa-chevron-circle-up' : 'fa-chevron-circle-down'"></i>
+                <a ng-click="updateSorting('lastUpdatedTime')">Updated</a>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="workload in sort(group.workloads)">
+            <td class="col-md-3">
+                <i ng-class="getStatusIcon(workload)"></i>
+                <a class="sk_black" ng-href="#/home/profile/{{ workload.msftLeadId }}">{{ workload.name }}</a>
+            </td>
+            <td class="col-md-3">
+                <span class="left">
+                    <a class="sk_black" ng-href="#/home/profile/{{ workload.msftLeadId }}">
+                        <avatar class="avatar16" id="{{ workload.msftLeadId }}" named="true"></avatar>
+                    </a>
+                </span>
+                <span class="right">
+                    <span ng-show="workload.consumption" class="sk_currency pull-right">
+                       ${{ workload.consumption | number:0 }}
+                    </span>
+                    <span ng-hide="workload.consumption" class="sk_tbd pull-right">TBD</span>
+                </span>
+            </td>
+            <td class="col-md-5">{{ getLatestStatusText(workload) }}</td>
+            <td class="col-md-1" style="font-size: 8pt">{{ getLatestStatusTime(workload) | duration }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul ng-hide="group.workloads.length">
+        <li>No Active Workloads</li>
+    </ul>
+</div>

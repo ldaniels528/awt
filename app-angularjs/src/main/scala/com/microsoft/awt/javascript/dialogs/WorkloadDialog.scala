@@ -138,7 +138,7 @@ object WorkloadDialog {
                            var statuses: js.UndefOr[js.Array[Workload.Status]] = js.undefined,
                            var deployedStatus: js.UndefOr[String] = js.undefined,
                            var estimateGoLiveDate: js.UndefOr[String] = js.undefined,
-                           var monthlyConsumptionEstimate: js.UndefOr[String] = js.undefined) extends js.Object {
+                           var consumption: js.UndefOr[String] = js.undefined) extends js.Object {
 
     def toModel = {
       val now = new js.Date()
@@ -155,7 +155,7 @@ object WorkloadDialog {
         statuses = statuses,
         deployedStatus = deployedStatus,
         estimateGoLiveDate = estimateGoLiveDate.map(new js.Date(_)),
-        monthlyConsumptionEstimate = monthlyConsumptionEstimate.flatMap(s => Try(s.trim.toDouble).toOption.orUndefined),
+        consumption = consumption.flatMap(s => Try(s.trim.toDouble).toOption.orUndefined),
         active = true,
         creationTime = now,
         lastUpdatedTime = now
@@ -181,7 +181,7 @@ object WorkloadDialog {
         statuses = workload.statuses.flat,
         deployedStatus = workload.deployedStatus.flat,
         estimateGoLiveDate = workload.estimateGoLiveDate.flat.map(_.toDateString()),
-        monthlyConsumptionEstimate = workload.monthlyConsumptionEstimate.flat.map(_.toString)
+        consumption = workload.consumption.flat.map(_.toString)
       )
     }
 

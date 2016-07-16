@@ -21,7 +21,7 @@ trait WorkloadLike[T] extends js.Object {
   var statuses: js.UndefOr[js.Array[T]]
   var deployedStatus: js.UndefOr[String]
   var estimateGoLiveDate: js.UndefOr[js.Date]
-  var monthlyConsumptionEstimate: js.UndefOr[Double]
+  var consumption: js.UndefOr[Double]
   var active: js.UndefOr[Boolean]
   var creationTime: js.UndefOr[js.Date]
   var lastUpdatedTime: js.UndefOr[js.Date]

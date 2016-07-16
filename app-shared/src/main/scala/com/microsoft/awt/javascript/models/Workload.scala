@@ -1,5 +1,6 @@
 package com.microsoft.awt.javascript.models
 
+import java.lang.{Double => JDouble}
 import com.microsoft.awt.javascript.models.Workload.Status
 
 import scala.scalajs.js
@@ -23,7 +24,7 @@ class Workload(var _id: js.UndefOr[String] = js.undefined,
                var statusCode: js.UndefOr[String] = js.undefined,
                var deployedStatus: js.UndefOr[String] = js.undefined,
                var estimateGoLiveDate: js.UndefOr[js.Date] = js.undefined,
-               var monthlyConsumptionEstimate: js.UndefOr[Double] = js.undefined,
+               var consumption: js.UndefOr[Double] = js.undefined,
                var active: js.UndefOr[Boolean] = js.undefined,
                var creationTime: js.UndefOr[js.Date] = js.undefined,
                var lastUpdatedTime: js.UndefOr[js.Date] = js.undefined) extends WorkloadLike[Status]

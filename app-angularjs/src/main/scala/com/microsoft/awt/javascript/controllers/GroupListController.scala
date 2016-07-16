@@ -33,8 +33,8 @@ case class GroupListController($scope: GroupListScope, $location: Location, $tim
 
     // if the user has navigated to "My Groups" and there are no groups, redirect to "Other Groups"
     /*
-    if ($location.path() == "/home/groups" && $scope.groups.exists(_.nonEmpty)) {
-      $location.path("/home/other_groups")
+    if ($location.path() == "/home/groups/mine" && $scope.groups.exists(_.nonEmpty)) {
+      $location.path("/home/groups/others")
     }*/
     ()
   }

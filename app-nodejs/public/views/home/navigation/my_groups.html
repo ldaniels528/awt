@@ -1,16 +1,19 @@
 <div ng-controller="GroupListController" ng-repeat="group in groups | orderBy:'name'">
     <i ng-show="group.expanded" class="fa fa-minus-square-o sk_clickable" ng-click="toggleGroup(group)"></i>
     <i ng-hide="group.expanded" class="fa fa-plus-square-o sk_clickable" ng-click="toggleGroup(group)"></i>
-    <i class="fa fa-group sk_group"></i>
-    <a class="sk_black" ng-href="#/home/groups/{{ group._id }}">{{ group.name }}</a> <img ng-show="group.loading" src="/assets/images/status/loading16.gif">
+
+    <a class="sk_black" ng-href="#/home/groups/{{ group._id }}">
+        <avatar class="avatar16" id="{{ group.owner }}"></avatar> {{ group.name }}
+    </a>
+
+    <img ng-show="group.loading" src="/assets/images/status/loading16.gif">
 
     <div ng-show="group.expanded">
         <div ng-repeat="member in group.memberUsers | orderBy:'firstName'" class="sk_ident">
-            <a ng-href="#/home/profile/{{ member._id }}">
-            <img class="avatar16" ng-if="member.avatarURL" ng-src="{{ member.avatarURL }}">
-            {{ getFullName(member) }}
+            <a class="sk_black" ng-href="#/home/profile/{{ member._id }}">
+                <avatar class="avatar16" id="{{ member._id }}" named="true"></avatar>
             </a>
         </div>
     </div>
 </div>
-<div ng-hide="groups.length" class="sk_null">No group enrollments</div>
+<div ng-hide="groups.length" class="sk_null">No team enrollments</div>

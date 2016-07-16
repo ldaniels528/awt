@@ -1,17 +1,32 @@
 .avatar16 {
+    border-radius: 4px;
     width: 16px;
     height: 16px;
 }
 
 .avatar32 {
-    border-radius: 4px;
+    border-radius: 8px;
     width: 32px;
     height: 32px;
 }
 
+.avatar48 {
+    border: 1px solid #eeeeee;
+    border-radius: 12px;
+    width: 48px;
+    height: 48px;
+}
+
+.avatar56 {
+    border: 1px solid #eeeeee;
+    border-radius: 14px;
+    width: 56px;
+    height: 56px;
+}
+
 .avatar64 {
     border: 1px solid #eeeeee;
-    border-radius: 16px 16px 16px 16px;
+    border-radius: 16px;
     width: 64px;
     height: 64px;
 }

@@ -28,7 +28,7 @@ class WorkloadData(var _id: js.UndefOr[ObjectID] = js.undefined,
                    var statusCode: js.UndefOr[String] = js.undefined,
                    var deployedStatus: js.UndefOr[String] = js.undefined,
                    var estimateGoLiveDate: js.UndefOr[js.Date] = js.undefined,
-                   var monthlyConsumptionEstimate: js.UndefOr[Double] = js.undefined,
+                   var consumption: js.UndefOr[Double] = js.undefined,
                    var active: js.UndefOr[Boolean] = js.undefined,
                    var creationTime: js.UndefOr[js.Date] = js.undefined,
                    var lastUpdatedTime: js.UndefOr[js.Date] = js.undefined) extends WorkloadLike[StatusData]
@@ -100,7 +100,7 @@ object WorkloadData {
         statusCode = model.statusCode,
         deployedStatus = model.deployedStatus,
         estimateGoLiveDate = model.estimateGoLiveDate,
-        monthlyConsumptionEstimate = model.monthlyConsumptionEstimate,
+        consumption = model.consumption,
         active = model.active,
         creationTime = model.creationTime ?? new js.Date(),
         lastUpdatedTime = model.lastUpdatedTime ?? new js.Date()
@@ -128,7 +128,7 @@ object WorkloadData {
       statusCode = data.statusCode,
       deployedStatus = data.deployedStatus,
       estimateGoLiveDate = data.estimateGoLiveDate,
-      monthlyConsumptionEstimate = data.monthlyConsumptionEstimate,
+      consumption = data.consumption,
       active = data.active,
       creationTime = data.creationTime ?? new js.Date(),
       lastUpdatedTime = data.lastUpdatedTime ?? new js.Date()

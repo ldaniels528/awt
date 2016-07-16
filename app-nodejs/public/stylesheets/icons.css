@@ -22,7 +22,7 @@
 }
 
 .sk_icon_inactive {
-    color: #1090ef;
+    color: #4bb0de;
     font-size: 14pt;
 }
 
@@ -93,4 +93,8 @@
 
 .sk_user {
     color: #20a0ff;
+}
+
+.sk_sort {
+    color: #ff8000;
 }

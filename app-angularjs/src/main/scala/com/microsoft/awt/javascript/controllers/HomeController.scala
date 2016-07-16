@@ -48,10 +48,10 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
       MenuItem(text = "Messages", iconClass = "fa fa-envelope-o sk_message", action = { () => $scope.navigateToMessages() }: js.Function),
       MenuItem(text = "Photos", iconClass = "fa fa-file-image-o sk_photo", action = { () => $scope.navigateToPhotos() }: js.Function)
     )),
-    new Menu("MY TEAMS", link = "#/home/groups", items = js.Array(
+    new Menu("MY TEAMS", link = "#/home/groups/mine", items = js.Array(
       MenuItem.include(src = "/assets/views/home/navigation/my_groups.html")
     )),
-    new Menu("OTHER TEAMS", link = "#/home/other_groups", items = js.Array(
+    new Menu("OTHER TEAMS", link = "#/home/groups/others", items = js.Array(
       MenuItem.include(src = "/assets/views/home/navigation/other_groups.html")
     )),
     new Menu("UPCOMING EVENTS", items = js.Array(
@@ -83,12 +83,12 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
     $location.path() match {
       case "/home/events" =>
         "/assets/views/home/events/index.html"
-      case "/home/groups" =>
+      case "/home/groups/mine" =>
         "/assets/views/home/groups/mine.html"
-      case "/home/other_groups" =>
+      case "/home/groups/others" =>
         "/assets/views/home/groups/others.html"
       case s if s.startsWith("/home/groups/") =>
-        "/assets/views/home/groups/index.html"
+        "/assets/views/home/groups/details.html"
       case "/home/messages" =>
         "/assets/views/home/messages/index.html"
       case "/home/newsfeed" =>
@@ -585,7 +585,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
     }
 
     if (updatedPost.submitter.nonAssigned) {
-      updatedPost.submitterId foreach { submitterId =>
+      updatedPost.submitterId.flat foreach { submitterId =>
         userFactory.getUserByID(submitterId) onComplete {
           case Success(user) => updatedPost.submitter = Submitter(user)
           case Failure(e) => toaster.error("Submitter retrieval", e.displayMessage)

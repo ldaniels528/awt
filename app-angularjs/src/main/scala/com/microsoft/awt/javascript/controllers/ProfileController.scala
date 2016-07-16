@@ -71,6 +71,10 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
     } yield id == myId).contains(true)
   }
 
+  $scope.viewRecentActivity = () => {
+
+  }
+
   ///////////////////////////////////////////////////////////////////////////
   //      Blocking Functions
   ///////////////////////////////////////////////////////////////////////////
@@ -254,6 +258,7 @@ trait ProfileControllerScope extends Scope with GlobalLoadingScope {
   // miscellaneous
   var isMe: js.Function0[Boolean] = js.native
   var activeOnly: js.UndefOr[Boolean] = js.native // inherited from WorkloadController
+  var viewRecentActivity: js.Function0[Unit] = js.native
 
   // blocking
   var block: js.Function1[js.UndefOr[User], Unit] = js.native

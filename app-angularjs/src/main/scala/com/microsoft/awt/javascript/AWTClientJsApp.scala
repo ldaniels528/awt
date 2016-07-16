@@ -5,7 +5,7 @@ import com.microsoft.awt.javascript.dialogs.UserDialog.UserDialogController
 import com.microsoft.awt.javascript.dialogs.WorkloadCommentDialog.WorkloadCommentDialogController
 import com.microsoft.awt.javascript.dialogs.WorkloadDialog.WorkloadDialogController
 import com.microsoft.awt.javascript.dialogs.{UserDialog, WorkloadCommentDialog, WorkloadDialog}
-import com.microsoft.awt.javascript.directives.{AvatarDirective, CareerTalkDirective, CompileDirective, FullNameDirective}
+import com.microsoft.awt.javascript.directives._
 import com.microsoft.awt.javascript.factories.UserFactory
 import com.microsoft.awt.javascript.models.{User, Workload}
 import com.microsoft.awt.javascript.services._
@@ -20,11 +20,11 @@ import scala.scalajs.js.JSConverters._
 import scala.scalajs.js.annotation.JSExport
 
 /**
-  * Azure Workload Tracker (AWT) JavaScript Application
+  * Azure Workload Tracker (AWT) Client Application
   * @author lawrence.daniels@gmail.com
   */
 @JSExport
-object AWTJsApp extends js.JSApp {
+object AWTClientJsApp extends js.JSApp {
 
   @JSExport
   override def main() {
@@ -74,7 +74,7 @@ object AWTJsApp extends js.JSApp {
     module.directiveOf[AvatarDirective]("avatar")
     module.directiveOf[CareerTalkDirective]("careertalk")
     module.directiveOf[CompileDirective]("compileA")
-    module.directiveOf[FullNameDirective]("name")
+    module.directiveOf[NameDirective]("name")
     //module.directiveOf[NgThumbDirective]("ngThumb")
   }
 
@@ -119,8 +119,8 @@ object AWTJsApp extends js.JSApp {
       $routeProvider
         .when("/home", RouteTo(redirectTo = "/home/profile"))
         .when("/home/events", RouteTo(templateUrl = "/assets/views/home/index.html"))
-        .when("/home/groups", RouteTo(templateUrl = "/assets/views/home/index.html"))
-        .when("/home/other_groups", RouteTo(templateUrl = "/assets/views/home/index.html"))
+        .when("/home/groups/mine", RouteTo(templateUrl = "/assets/views/home/index.html"))
+        .when("/home/groups/others", RouteTo(templateUrl = "/assets/views/home/index.html"))
         .when("/home/groups/:groupId", RouteTo(templateUrl = "/assets/views/home/index.html"))
         .when("/home/messages", RouteTo(templateUrl = "/assets/views/home/index.html"))
         .when("/home/newsfeed", RouteTo(templateUrl = "/assets/views/home/index.html"))

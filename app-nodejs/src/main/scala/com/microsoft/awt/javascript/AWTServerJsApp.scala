@@ -15,11 +15,11 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExportAll
 
 /**
-  * AWT Node Server
+  * AWT Server Application
   * @author lawrence.daniels@gmail.com
   */
 @JSExportAll
-object AWTJSServer extends js.JSApp {
+object AWTServerJsApp extends js.JSApp {
 
   override def main() = {}
 
@@ -38,11 +38,11 @@ object AWTJSServer extends js.JSApp {
     implicit val fileUpload = ExpressFileUpload()
 
     console.log("Loading MongoDB module...")
-    implicit val mongodb = require[MongoDB]("mongodb")
+    implicit val mongodb = MongoDB()
 
     // setup the body parsers
     console.log("Setting up body parsers...")
-    val bodyParser = require[BodyParser]("body-parser")
+    val bodyParser = BodyParser()
     app.use(bodyParser.json())
     app.use(bodyParser.urlencoded(new UrlEncodedBodyOptions(extended = true)))
 

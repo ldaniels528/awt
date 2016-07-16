@@ -8,6 +8,7 @@ import com.microsoft.awt.javascript.forms.MaxResultsForm
 import com.microsoft.awt.javascript.models._
 import org.scalajs.nodejs.express.{Application, Request, Response}
 import org.scalajs.nodejs.mongodb._
+import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.concurrent.{ExecutionContext, Future}
 import scala.scalajs.js
@@ -50,6 +51,16 @@ object SearchRoutes {
   }
 
   /**
+    * String Extensions
+    * @param text the given string
+    */
+  implicit class StringExtensions(val text: String) extends AnyVal {
+
+    def limit(maxLength: Int) = if (text.length > maxLength) text.take(maxLength) + "..." else text
+
+  }
+
+  /**
     * Search Form
     * @author lawrence.daniels@gmail.com
     */
@@ -83,7 +94,6 @@ object SearchRoutes {
         case many => doc($or(many: _*))
       }
     }
-
   }
 
   /**
@@ -116,9 +126,9 @@ object SearchRoutes {
       new EntitySearchResult(
         _id = group._id,
         name = group.name,
-        description = "Group",
+        description = group.description.map(_.limit(50)) ?? "Group",
         `type` = "GROUP",
-        avatarURL = js.undefined, // TODO group.avatarURL,
+        avatarURL = group.owner,
         creationTime = group.creationTime
       )
     }
@@ -129,13 +139,13 @@ object SearchRoutes {
     * @author lawrence.daniels@gmail.com
     */
   case class UserSearchAgent(coll: UserDAO) extends SearchAgent[User] {
-    val fields = js.Array("firstName", "lastName", "primaryEmail")
+    val fields = js.Array("firstName", "lastName")
 
     override def toSearchResult(user: User) = {
       new EntitySearchResult(
         _id = user._id,
         name = user.fullName,
-        description = "User",
+        description = user.title.map(_.limit(50)) ?? "User",
         `type` = "USER",
         avatarURL = user.avatarURL,
         creationTime = user.creationTime

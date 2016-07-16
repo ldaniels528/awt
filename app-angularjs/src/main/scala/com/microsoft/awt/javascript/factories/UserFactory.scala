@@ -6,12 +6,12 @@ import com.microsoft.awt.javascript.services.UserService
 import org.scalajs.angularjs.AngularJsHelper._
 import org.scalajs.angularjs._
 import org.scalajs.dom.browser.console
+import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.concurrent.{ExecutionContext, Future}
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
 import scala.scalajs.js.JSConverters._
-import scala.util.{Failure, Success}
 
 /**
   * User Caching Factory
@@ -19,15 +19,6 @@ import scala.util.{Failure, Success}
   */
 class UserFactory(@injected("UserService") userService: UserService) extends Factory {
   private val cache = js.Dictionary[Future[User]]()
-
-  // preload all users
-  userService.getUsers() onComplete {
-    case Success(users) =>
-      console.info(s"Pre-loaded ${users.length} users")
-      users.foreach(u => u._id.foreach(id => cache(id) = Future.successful(u)))
-    case Failure(e) =>
-      console.error(s"Failed to load all users: ${e.displayMessage}")
-  }
 
   ///////////////////////////////////////////////////////////////////////////
   //      Enrichment Functions
@@ -40,12 +31,12 @@ class UserFactory(@injected("UserService") userService: UserService) extends Fac
     * @return a promise of the enriched posts
     */
   def enrich(posts: js.Array[Post])(implicit ec: ExecutionContext) = {
-    val submitterIds = posts.flatMap(_.submitterId.toOption)
+    val userIds = posts.flatMap(_.submitterId.toOption)
     for {
-      submitters <- getUsers(submitterIds)
-      submitterMap = Map(submitters.map(s => s._id.orNull -> Submitter(s)): _*)
+      users <- getUsers(userIds)
+      userMap = Map(users.map(user => user._id.orNull -> Submitter(user)): _*)
     } yield {
-      posts.foreach(post => post.submitter = post.submitterId.flatMap(submitterMap.get(_).orUndefined))
+      posts.foreach(post => post.submitter = post.submitterId.flatMap(userMap.get(_).orUndefined))
       posts
     }
   }
@@ -53,13 +44,6 @@ class UserFactory(@injected("UserService") userService: UserService) extends Fac
   ///////////////////////////////////////////////////////////////////////////
   //      CRUD Functions
   ///////////////////////////////////////////////////////////////////////////
-
-  /**
-    * Synchronously retrieves a user instance for the given user ID
-    * @param userId the given user ID
-    * @return an option of the user instance
-    */
-  def findUserByID(userId: String) = cache.get(userId).flatMap(_.value.flatMap(_.toOption))
 
   /**
     * Asynchronously retrieves a user instance for the given user ID
@@ -85,8 +69,13 @@ class UserFactory(@injected("UserService") userService: UserService) extends Fac
     * @param ec      the given [[ExecutionContext execution context]]
     * @return the array of [[User users]]
     */
-  def getUsers(userIds: js.Array[String])(implicit ec: ExecutionContext) = {
-    Future.sequence(userIds.toSeq map getUserByID) map (seq => js.Array(seq: _*))
+  def getUsers(userIds: js.Array[String])(implicit ec: ExecutionContext): Future[js.Array[User]] = {
+    val missingUserIds = userIds.filterNot(cache.contains)
+    for {
+      missingUsers <- if (missingUserIds.nonEmpty) userService.getUsers(missingUserIds).toFuture else Future.successful(emptyArray[User])
+      _ = missingUsers.foreach(u => cache.put(u._id.orNull, Future.successful(u)))
+      users <- Future.sequence(userIds.toSeq map getUserByID) map (seq => js.Array(seq: _*))
+    } yield users
   }
 
   /**

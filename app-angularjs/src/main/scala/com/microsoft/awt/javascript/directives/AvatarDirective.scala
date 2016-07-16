@@ -3,8 +3,10 @@ package com.microsoft.awt.javascript.directives
 import com.microsoft.awt.javascript.directives.AvatarDirective._
 import com.microsoft.awt.javascript.factories.UserFactory
 import org.scalajs.angularjs._
+import org.scalajs.dom.browser.console
 import org.scalajs.nodejs.util.ScalaJsHelper._
 
+import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
 import scala.scalajs.js.annotation.ScalaJSDefined
 
@@ -15,24 +17,26 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   */
 class AvatarDirective(@injected("UserFactory") userFactory: UserFactory) extends Directive[AvatarDirectiveScope] {
   override val restrict = "E"
-  override val scope = new AvatarScopeTemplate(id = "@id", `class` = "@class", style = "@style")
+  override val scope = new AvatarScopeTemplate(id = "@id", named = "@named", `class` = "@class", style = "@style")
   override val transclude = true
   override val replace = false
-  override val template = """<img ng-src="{{ url }}" class="{{ class }}" style="{{ style }}">"""
+  override val template = """<img ng-src="{{ url }}" class="{{ class }}" style="{{ style }}"> {{ name }}"""
 
   override def link(scope: AvatarDirectiveScope, element: JQLite, attrs: Attributes) = {
     scope.$watch("id", (newValue: Any, oldValue: Any) => populateScope(scope, newValue, oldValue))
   }
 
   private def populateScope(scope: AvatarDirectiveScope, newValue: Any, oldValue: Any) {
-    // determine the image URL
-    val result = for {
-      id <- scope.id.toOption
-      user <- userFactory.findUserByID(id)
-      avatarURL <- user.avatarURL.toOption
-    } yield avatarURL
-
-    scope.url = result getOrElse UNKNOWN_PERSON
+    scope.id.flat foreach { id =>
+      if(id.nonEmpty) {
+        userFactory.getUserByID(id) foreach { user =>
+          scope.$apply { () =>
+            if (scope.named.isAssigned) scope.name = user.fullName
+            scope.url = user.avatarURL getOrElse UNKNOWN_PERSON
+          }
+        }
+      }
+    }
   }
 
 }
@@ -54,11 +58,12 @@ object AvatarDirective {
 trait AvatarDirectiveScope extends Scope {
   // input fields
   var id: js.UndefOr[String] = js.native
-  var link: js.UndefOr[String] = js.native
+  var named: js.UndefOr[String] = js.native
   var `class`: js.UndefOr[String] = js.native
   var style: js.UndefOr[String] = js.native
 
   // output fields
+  var name: String = js.native
   var url: String = js.native
 
 }
@@ -71,6 +76,7 @@ object AvatarDirectiveScope {
 
   def apply(): AvatarDirectiveScope = {
     val scope = New[AvatarDirectiveScope]
+    scope.name = null
     scope.url = null
     scope
   }
@@ -81,4 +87,4 @@ object AvatarDirectiveScope {
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class AvatarScopeTemplate(val id: String, val `class`: String, val style: String) extends js.Object
+class AvatarScopeTemplate(val id: js.UndefOr[String], val named: js.UndefOr[String], val `class`: js.UndefOr[String], val style: js.UndefOr[String]) extends js.Object

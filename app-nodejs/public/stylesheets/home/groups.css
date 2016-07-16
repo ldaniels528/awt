@@ -12,6 +12,14 @@
     font-weight: bold;
 }
 
+.group_member_tile {
+    background: #f7f7f7;
+    border-bottom: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    border-radius: 10px;
+    padding: 4px;
+}
+
 .group_tile {
     background: #ffffff;
     border-radius: 10px;
