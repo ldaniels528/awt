@@ -1,0 +1,23 @@
+<tr>
+    <th style="padding-left: 16px">
+        <i ng-show="sortField == 'name'" class="sk_sort fa" ng-class="sortAsc ? 'fa-chevron-circle-up' : 'fa-chevron-circle-down'"></i>
+        <a ng-click="updateSorting('name')">Workload</a>
+    </th>
+    <th style="padding-left: 16px">
+                <span class="left">
+                    <i ng-show="sortField == 'msftLead'" class="sk_sort fa" ng-class="sortAsc ? 'fa-chevron-circle-up' : 'fa-chevron-circle-down'"></i>
+                    <a ng-click="updateSorting('msftLead')">Microsoft Lead</a>
+                </span>
+        <span class="pull-right">
+                    <i ng-show="sortField == 'consumption'" class="sk_sort fa" ng-class="sortAsc ? 'fa-chevron-circle-up' : 'fa-chevron-circle-down'"></i>
+                    <a ng-click="updateSorting('consumption')">Consumption</a>
+                </span>
+    </th>
+    <th style="text-align: center">
+        <a href="">Status / Next Steps</a>
+    </th>
+    <th style="text-align: center">
+        <i ng-show="sortField == 'lastUpdatedTime'" class="sk_sort fa" ng-class="sortAsc ? 'fa-chevron-circle-up' : 'fa-chevron-circle-down'"></i>
+        <a ng-click="updateSorting('lastUpdatedTime')">Updated</a>
+    </th>
+</tr>

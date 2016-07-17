@@ -1,72 +1,7 @@
 <div ng-controller="GroupDetailsController" ng-init="init()">
     <div ng-controller="WorkloadController" ng-init="init('group.workloads')" class="row" style="margin-top: 10px">
         <div class="group_tile">
-            <div>
-                <avatar class="avatar16" id="{{ group.owner }}"></avatar>
-                <a ng-href="#/home/groups/{{ group._id }}"><span class="bold">{{ group.name }}</span></a>
-                <span class="sk_null">&#8212;</span> {{ group.description }}
-
-                <img ng-show="group.loading" src="/assets/images/status/loading16.gif">
-                <span ng-hide="group.loading" class="small pull-right">{{ group.members.length | number:0 }} members</span>
-            </div>
-            <div ng-include="'/views/home/groups/members.html'"></div>
-            <div style="padding-top: 10px">
-                <span class="group_label">Active Workloads</span>
-                <div class="pull-right" style="padding-bottom: 10px">
-                    <span ng-click="addWorkload(group.workloads)" class="btn btn-success status_header_bar">
-                        <i class="fa fa-plus-circle status_header_bar"></i> Workload
-                    </span>
-                    <span class="sk_ident">
-                        <a ng-show="group.workloads.length" ng-href="/api/workloads/download/{{ group._id }}/group/workloads.csv">
-                           <span class="btn btn-info status_header_bar">
-                                <i class="fa fa-cloud-download"></i> Download
-                           </span>
-                        </a>
-                    </span>
-                </div>
-            </div>
-
-            <div style="margin-top: 10px">
-                <table style="width: 100%">
-                    <thead>
-                        <tr>
-                            <th style="padding-left: 16px">Workload</th>
-                            <th style="padding-left: 16px">
-                                <span class="left">Microsoft Lead</span>
-                                <span class="pull-right">Consumption</span>
-                            </th>
-                            <th style="text-align: center">Status / Next Steps</th>
-                            <th style="text-align: center">Updated</th>
-                        </tr>
-                    </thead>
-                    <tbody class="workload_list_container">
-                        <tr ng-repeat="workload in group.workloads" ng-class="getWorkloadHighlightClass(workload, $index)">
-                            <td class="col-md-3">
-                                <i ng-class="getStatusIcon(workload)"></i>
-                                <a ng-click="selectWorkLoad(workload)">{{ workload.name }}</a>
-                            </td>
-                            <td class="col-md-3">
-                                <span class="left">
-                                    <avatar class="avatar16" id="{{ workload.msftLeadId }}"></avatar>
-                                    <a class="sk_black" ng-href="#/home/profile/{{ workload.msftLeadId }}">{{ workload.msftLead }}</a>
-                                </span>
-                                <span class="right">
-                                    <span ng-show="workload.consumption" class="sk_currency pull-right">
-                                       ${{ workload.consumption | number:0 }}
-                                    </span>
-                                    <span ng-hide="workload.consumption" class="sk_tbd pull-right">TBD</span>
-                                </span>
-                            </td>
-                            <td class="col-md-5">{{ getLatestStatusText(workload) }}</td>
-                            <td class="col-md-1" style="font-size: 8pt; color: #0080ff">{{ getLatestStatusTime(workload) | duration }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <ul ng-hide="group.workloads.length || loading">
-                    <li>No Active Workloads</li>
-                </ul>
-            </div>
+            <div ng-include="'/views/home/groups/summary.html'"></div>
         </div>
 
         <div class="group_details" ng-show="selectedWorkload">

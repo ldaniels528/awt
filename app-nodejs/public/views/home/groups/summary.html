@@ -7,34 +7,10 @@
     <span ng-hide="group.loading" class="small pull-right">{{ group.members.length | number:0 }} members</span>
 </div>
 <div ng-include="'/views/home/groups/members.html'"></div>
-<div style="padding-top: 10px">
+<div style="margin-top: 10px">
     <table style="width: 100%">
-        <thead>
-        <tr>
-            <th style="padding-left: 16px">
-                <i ng-show="sortField == 'name'" class="sk_sort fa" ng-class="sortAsc ? 'fa-chevron-circle-up' : 'fa-chevron-circle-down'"></i>
-                <a ng-click="updateSorting('name')">Workload</a>
-            </th>
-            <th style="padding-left: 16px">
-                <span class="left">
-                    <i ng-show="sortField == 'msftLead'" class="sk_sort fa" ng-class="sortAsc ? 'fa-chevron-circle-up' : 'fa-chevron-circle-down'"></i>
-                    <a ng-click="updateSorting('msftLead')">Microsoft Lead</a>
-                </span>
-                <span class="pull-right">
-                    <i ng-show="sortField == 'consumption'" class="sk_sort fa" ng-class="sortAsc ? 'fa-chevron-circle-up' : 'fa-chevron-circle-down'"></i>
-                    <a ng-click="updateSorting('consumption')">Consumption</a>
-                </span>
-            </th>
-            <th style="text-align: center">
-                <a href="">Status / Next Steps</a>
-            </th>
-            <th style="text-align: center">
-                <i ng-show="sortField == 'lastUpdatedTime'" class="sk_sort fa" ng-class="sortAsc ? 'fa-chevron-circle-up' : 'fa-chevron-circle-down'"></i>
-                <a ng-click="updateSorting('lastUpdatedTime')">Updated</a>
-            </th>
-        </tr>
-        </thead>
-        <tbody>
+        <thead ng-include="'/views/home/workloads/sortable_table_header.html'"></thead>
+        <tbody class="workload_list_container">
         <tr ng-repeat="workload in sort(group.workloads)">
             <td class="col-md-3">
                 <i ng-class="getStatusIcon(workload)"></i>
@@ -60,6 +36,7 @@
     </table>
 
     <ul ng-hide="group.workloads.length">
-        <li>No Active Workloads</li>
+        <li ng-show="loading"> <img src="/assets/images/status/loading16.gif"> Searching for workloads...</li>
+        <li ng-hide="loading">No workloads found</li>
     </ul>
 </div>

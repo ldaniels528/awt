@@ -27,17 +27,9 @@
 
     <div style="margin-top: 10px">
         <table style="width: 100%">
-            <thead>
-            <tr>
-                <th style="padding-left: 16px">Workload</th>
-                <th style="padding-left: 16px">Microsoft Lead</th>
-                <th style="text-align: center">Consumption</th>
-                <th style="text-align: center">Status / Next Steps</th>
-                <th style="text-align: center">Updated</th>
-            </tr>
-            </thead>
+            <thead ng-include="'/views/home/workloads/sortable_table_header.html'"></thead>
             <tbody class="workload_list_container">
-            <tr ng-repeat="workload in workloads" ng-class="getWorkloadHighlightClass(workload, $index)">
+            <tr ng-repeat="workload in sort(workloads)" ng-class="getWorkloadHighlightClass(workload, $index)">
                 <td class="col-md-3">
                     <span ng-hide="workload.active">
                         <i class="fa fa-check-circle-o sk_completed"></i>
@@ -49,15 +41,18 @@
                         <span class="sk_clickable" ng-click="selectWorkLoad(workload)">{{ workload.name }}</span>
                     </span>
                 </td>
-                <td class="col-md-2">
-                    <avatar class="avatar16" id="{{ workload.msftLeadId }}"></avatar>
-                    {{ workload.msftLead }}
-                </td>
-                <td class="col-md-1">
-                    <span ng-show="workload.consumption" class="sk_currency pull-right">
-                       ${{ workload.consumption | number:0 }}
+                <td class="col-md-3">
+                    <span class="left">
+                        <a class="sk_black" ng-href="#/home/profile/{{ workload.msftLeadId }}">
+                            <avatar class="avatar16" id="{{ workload.msftLeadId }}" named="true"></avatar>
+                        </a>
                     </span>
-                    <span ng-hide="workload.consumption" class="sk_tbd pull-right">TBD</span>
+                        <span class="right">
+                        <span ng-show="workload.consumption" class="sk_currency pull-right">
+                           ${{ workload.consumption | number:0 }}
+                        </span>
+                        <span ng-hide="workload.consumption" class="sk_tbd pull-right">TBD</span>
+                    </span>
                 </td>
                 <td class="col-md-5">{{ getLatestStatusText(workload) }}</td>
                 <td class="col-md-1" style="font-size: 8pt; color: #0080ff">{{ getLatestStatusTime(workload) | duration }}</td>
