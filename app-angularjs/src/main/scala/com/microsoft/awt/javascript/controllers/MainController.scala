@@ -22,7 +22,6 @@ import scala.util.{Failure, Success}
 case class MainController($scope: MainScope, $location: Location, $q: Q, $timeout: Timeout, toaster: Toaster,
                           @injected("AuthenticationService") authenticationService: AuthenticationService,
                           @injected("EventService") eventService: EventService,
-                          @injected("GroupService") groupService: GroupService,
                           @injected("MySession") mySession: MySessionService,
                           @injected("NotificationService") notificationSvc: NotificationService,
                           @injected("ReactiveSearchService") reactiveSearchSvc: ReactiveSearchService,
@@ -186,24 +185,20 @@ case class MainController($scope: MainScope, $location: Location, $q: Q, $timeou
       getNotificationTypeIcon("NOTIFICATION")
   }
 
-  private def loadEventsGroupsAndNotifications(session: Session) = session.userID foreach { userID =>
+  private def loadEventsAndNotifications(session: Session) = session.userID foreach { userID =>
+    console.log("Loading events and notifications...")
     val outcome = for {
-      groups <- groupService.getInclusiveGroups(userID, 10)
-      otherGroups <- groupService.getExclusiveGroups(userID, 10)
       events <- eventService.getEvents(userID)
       notifications <- notificationSvc.getNotificationsByUserID(userID, unread = true)
-    } yield (groups, otherGroups, events, notifications)
+    } yield (events, notifications)
 
-    // load the user's profile
     outcome onComplete {
-      case Success((groups, otherGroups, events, notifications)) =>
+      case Success((events, notifications)) =>
         $scope.events = events
-        $scope.groups = groups
-        $scope.otherGroups = otherGroups
         $scope.notifications = notifications
       case Failure(e) =>
-        console.error(s"Failed while retrieving user profile: ${e.displayMessage}")
-        toaster.error("Error loading user profile", e.displayMessage)
+        console.error(s"Failed while retrieving events and notifications: ${e.displayMessage}")
+        toaster.error("Loading Error", "Failed to load events and notifications")
         e.printStackTrace()
     }
   }
@@ -212,7 +207,7 @@ case class MainController($scope: MainScope, $location: Location, $q: Q, $timeou
   //      Event Listener Functions
   ///////////////////////////////////////////////////////////////////////////
 
-  $scope.$on("session_loaded", (evt: dom.Event, session: Session) => loadEventsGroupsAndNotifications(session))
+  $scope.$on("session_loaded", (evt: dom.Event, session: Session) => loadEventsAndNotifications(session))
 
   $scope.$on(WsEventMessage.NOTIFICATION, (evt: dom.Event, notification: Notification) => {
     console.log(s"Received notification: ${angular.toJson(notification, pretty = true)}")
@@ -233,8 +228,6 @@ case class MainController($scope: MainScope, $location: Location, $q: Q, $timeou
 @js.native
 trait MainScope extends Scope with AutoCompletionScope with GlobalLoadingScope with GlobalNavigationScope {
   var events: js.UndefOr[js.Array[Event]] = js.native
-  var groups: js.UndefOr[js.Array[Group]] = js.native
-  var otherGroups: js.UndefOr[js.Array[Group]] = js.native
   var notifications: js.Array[Notification] = js.native
   var searchTerm: js.UndefOr[String] = js.native
   var tabs: js.Array[MainTab] = js.native

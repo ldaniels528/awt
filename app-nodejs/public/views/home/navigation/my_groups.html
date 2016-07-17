@@ -1,4 +1,4 @@
-<div ng-controller="GroupListController" ng-repeat="group in groups | orderBy:'name'">
+<div ng-controller="GroupListController" ng-init="init('MyGroups')" ng-repeat="group in groups | orderBy:'name'">
     <i ng-show="group.expanded" class="fa fa-minus-square-o sk_clickable" ng-click="toggleGroup(group)"></i>
     <i ng-hide="group.expanded" class="fa fa-plus-square-o sk_clickable" ng-click="toggleGroup(group)"></i>
 

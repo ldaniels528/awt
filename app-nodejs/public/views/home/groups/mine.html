@@ -1,4 +1,4 @@
-<div ng-controller="GroupListController" ng-init="init()">
+<div ng-controller="GroupListController" ng-init="init('Mine')">
     <div ng-controller="WorkloadController" ng-init="init('groups.workloads')" class="row" style="margin-top: 10px">
         <div ng-hide="groups.length || loading">
             <span class="bold">No teams found</span>

@@ -2,7 +2,7 @@ package com.microsoft.awt.javascript.controllers
 
 import com.microsoft.awt.javascript.factories.UserFactory
 import com.microsoft.awt.javascript.models.{Group, User}
-import com.microsoft.awt.javascript.services.{UserService, WorkloadService}
+import com.microsoft.awt.javascript.services.{MySessionService, UserService, WorkloadService}
 import org.scalajs.angularjs.AngularJsHelper._
 import org.scalajs.angularjs._
 import org.scalajs.angularjs.toaster._
@@ -19,6 +19,7 @@ import scala.util.{Failure, Success}
   * @author lawrence.daniels@gmail.com
   */
 case class GroupListController($scope: GroupListScope, $location: Location, $timeout: Timeout, toaster: Toaster,
+                               @injected("MySession") mySession: MySessionService,
                                @injected("UserFactory") userFactory: UserFactory,
                                @injected("UserService") userService: UserService,
                                @injected("WorkloadService") workloadService: WorkloadService) extends Controller {
@@ -28,8 +29,8 @@ case class GroupListController($scope: GroupListScope, $location: Location, $tim
   //      Initialization Functions
   ///////////////////////////////////////////////////////////////////////////
 
-  $scope.init = () => {
-    console.log(s"Initializing ${getClass.getSimpleName}...")
+  $scope.init = (label: js.UndefOr[String]) => {
+    console.log(s"Initializing ${getClass.getSimpleName}... [$label]")
 
     // if the user has navigated to "My Groups" and there are no groups, redirect to "Other Groups"
     /*
@@ -96,12 +97,8 @@ case class GroupListController($scope: GroupListScope, $location: Location, $tim
   */
 @js.native
 trait GroupListScope extends Scope {
-  // defined in the Main Controller
-  var groups: js.UndefOr[js.Array[Group]] = js.native
-  var otherGroups: js.UndefOr[js.Array[Group]] = js.native
-
   // functions
-  var init: js.Function0[Unit] = js.native
+  var init: js.Function1[js.UndefOr[String], Unit] = js.native
   var getGroups: js.Function1[js.UndefOr[js.Array[Group]], js.UndefOr[js.Array[Group]]] = js.native
   var toggleGroup: js.Function1[js.UndefOr[Group], Unit] = js.native
 
