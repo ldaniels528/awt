@@ -96,12 +96,12 @@
 
                     <tbody class="group_status_history_container">
                         <tr ng-repeat="status in selectedWorkload.statuses | orderBy:'-creationTime'">
-                            <td class="col-md-8"><span class="sk_null sk_ident">{{ $index + 1 }}.</span> {{ status.statusText }}</td>
+                            <td class="col-md-9"><span class="sk_null sk_ident">{{ $index + 1 }}.</span> {{ status.statusText }}</td>
                             <td class="col-md-2">
                                 <avatar class="avatar16" id="{{ status.submitterId }}"></avatar>
                                 <a class="sk_black" ng-href="#/home/profile/{{ status.submitterId }}"><name id="{{ status.submitterId }}"></name></a>
                             </td>
-                            <td class="col-md-2 workload_small_duration">{{ status.creationTime | duration }}</td>
+                            <td class="col-md-1 workload_small_duration">{{ status.creationTime | duration }}</td>
                         </tr>
                     </tbody>
                 </table>

@@ -1,7 +1,9 @@
 <div class="row">
     <div class="col-md-12" style="padding-top: 10px">
-        <span class="workload_header_label">{{ workloads.length }} {{ activeOnly ? 'Active' : '' }} Workload<span ng-show="workloads.length > 1">s</span></span>
-        <span class="pull-right workload_header_label">Active Only
+        <span class="workload_header_label" style="padding-left: 10px">
+            {{ workloads.length }} {{ activeOnly ? 'Active' : '' }} Workload<span ng-show="workloads.length > 1">s</span>
+        </span>
+        <span class="pull-right workload_header_label" style="padding-right: 10px">Active Only
             <i ng-click="toggleActiveWorkloads()"
                ng-class="activeOnly ? 'fa-toggle-on' : 'fa-toggle-off'"
                class="fa fa-2x sk_clickable sk_toggle"
