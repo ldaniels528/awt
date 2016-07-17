@@ -6,7 +6,6 @@
         <div style="display: inline">
             <div>
                 <span class="name_line">{{ showFullName(profileUser) }}</span>
-                <span class="name_line">{{ profileUser.username }}</span>
                 <span class="home_level pull-right">{{ profileUser.likes || 0 }}</span>
             </div>
 
@@ -18,46 +17,46 @@
             </div>
 
             <div>
-                <a class="hash_tag" ng-click="alert('Not yet implemented');">
-                    {{ isMe() ? "My" : profileUser.firstName + "'s" }} recent activity
-                </a>
-                <span class="pull-right">{{ profileUser.totalFollowers || 0 | number }} followers</span>
+                <div>
+                    {{ isMe() ? "My" : profileUser.firstName + "'s" }} Teams:
+                    <span class="profile_group_list" ng-repeat="group in myGroups | orderBy:name">
+                        <avatar class="avatar16" id="{{ group.owner }}"></avatar>
+                        <a ng-href="#/home/groups/{{ group._id }}">{{ group.name }}</a>
+                    </span>
+                </div>
+                <div class="pull-right">{{ profileUser.totalFollowers || 0 | number }} followers</div>
             </div>
 
-            <!--
             <div style="margin-top: 10px">
-                <span ng-click="endorse(profileUser)" class="btn btn-success" style="margin-right: 20px">
+                <span ng-show="isMe()" ng-click="addWorkload(workloads)" class="btn btn-success">
+                    <i class="fa fa-plus-circle status_header_bar"></i> Workload
+                </span>
+                <span ng-show="isMe()" ng-show="workloads.length" class="sk_ident">
+                    <a ng-href="/api/workloads/download/{{ user()._id }}/user/workloads.csv?activeOnly={{ activeOnly }}">
+                       <span class="btn btn-info">
+                            <i class="fa fa-cloud-download"></i> Download
+                       </span>
+                    </a>
+                </span>
+                <span ng-hide="isMe()" ng-click="endorse(profileUser)" class="btn btn-success" style="margin-right: 20px">
                     <i class="fa fa-thumbs-o-up"></i>
                     <span ng-show="isEndorsed(profileUser)">Liked</span>
                     <span ng-hide="isEndorsed(profileUser)">Like</span>
                     <img ng-show="endorseLoading" src="/assets/images/status/loading16.gif">
                 </span>
-                <span ng-click="follow(profileUser)" class="btn btn-success" style="margin-right: 20px">
+                <span ng-hide="isMe()" ng-click="follow(profileUser)" class="btn btn-success" style="margin-right: 20px">
                     <i class="fa fa-twitter-square"></i>
                     <span ng-show="isFollowed(profileUser)">Followed</span>
                     <span ng-hide="isFollowed(profileUser)">Follow</span>
                     <img ng-show="followLoading" src="/assets/images/status/loading16.gif">
                 </span>
-                <span ng-click="contact(profileUser)" class="btn btn-primary" style="margin-right: 20px">
+                <span ng-hide="isMe()" ng-click="contact(profileUser)" class="btn btn-primary" style="margin-right: 20px">
                     <i class="fa fa-send-o"></i>
                     <span ng-show="isContacted(profileUser)">Contacted</span>
                     <span ng-hide="isContacted(profileUser)">Contact</span>
-                     <img ng-show="contactLoading" src="/assets/images/status/loading16.gif">
-                </span>
-                <span ng-click="report(profileUser)" class="btn btn-warning" style="margin-right: 20px">
-                    <i class="fa fa-user-secret"></i>
-                    <span ng-show="isReported(profileUser)">Reported</span>
-                    <span ng-hide="isReported(profileUser)">Report</span>
-                     <img ng-show="reportLoading" src="/assets/images/status/loading16.gif">
-                </span>
-                <span ng-click="block(profileUser)" class="btn btn-danger">
-                    <i class="fa fa-microphone-slash"></i>
-                    <span ng-show="isBlocked(profileUser)">Blocked</span>
-                    <span ng-hide="isBlocked(profileUser)">Block</span>
-                     <img ng-show="blockLoading" src="/assets/images/status/loading16.gif">
+                    <img ng-show="contactLoading" src="/assets/images/status/loading16.gif">
                 </span>
             </div>
-            -->
         </div>
         <br style="clear: both" />
     </div>

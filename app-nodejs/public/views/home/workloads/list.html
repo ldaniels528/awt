@@ -1,7 +1,7 @@
 <div class="row">
-    <div class="col-md-12">
-        <span class="pull-right" style="padding-top: 10px">
-            <span style="font-size: 12pt; vertical-align: middle">Active Only</span>
+    <div class="col-md-12" style="padding-top: 10px">
+        <span class="workload_header_label">{{ workloads.length }} {{ activeOnly ? 'Active' : '' }} Workload<span ng-show="workloads.length > 1">s</span></span>
+        <span class="pull-right workload_header_label">Active Only
             <i ng-click="toggleActiveWorkloads()"
                ng-class="activeOnly ? 'fa-toggle-on' : 'fa-toggle-off'"
                class="fa fa-2x sk_clickable sk_toggle"
@@ -11,20 +11,6 @@
 </div>
 
 <div class="workload_details">
-    <span class="group_label">{{ activeOnly ? 'Active' : 'Active + Inactive' }} Workloads</span>
-    <div ng-show="isMe()" class="pull-right" style="padding-bottom: 10px">
-        <span ng-click="addWorkload(workloads)" class="btn btn-success">
-            <i class="fa fa-plus-circle status_header_bar"></i> Workload
-        </span>
-        <span ng-show="workloads.length" class="sk_ident">
-            <a ng-href="/api/workloads/download/{{ user()._id }}/user/workloads.csv?activeOnly={{ activeOnly }}">
-               <span class="btn btn-info">
-                    <i class="fa fa-cloud-download"></i> Download
-               </span>
-            </a>
-        </span>
-    </div>
-
     <div style="margin-top: 10px">
         <table style="width: 100%">
             <thead ng-include="'/views/home/workloads/sortable_table_header.html'"></thead>
@@ -34,11 +20,11 @@
                     <span ng-hide="workload.active">
                         <i class="fa fa-check-circle-o sk_completed"></i>
                         <span class="sk_clickable"
-                              ng-click="selectWorkLoad(workload)">{{ workload.name }}</span>
+                              ng-click="selectWorkload(workload)">{{ workload.name }}</span>
                     </span>
                     <span ng-show="workload.active">
                         <i  ng-class="getStatusIcon(workload)"></i>
-                        <span class="sk_clickable" ng-click="selectWorkLoad(workload)">{{ workload.name }}</span>
+                        <span class="sk_clickable" ng-click="selectWorkload(workload)">{{ workload.name }}</span>
                     </span>
                 </td>
                 <td class="col-md-3">
@@ -55,7 +41,7 @@
                     </span>
                 </td>
                 <td class="col-md-5">{{ getLatestStatusText(workload) }}</td>
-                <td class="col-md-1" style="font-size: 8pt; color: #0080ff">{{ getLatestStatusTime(workload) | duration }}</td>
+                <td class="col-md-1 workload_small_duration">{{ getLatestStatusTime(workload) | duration }}</td>
             </tr>
             </tbody>
         </table>
@@ -149,6 +135,11 @@
         </tr>
     </table>
 
+    <div class="col-md-12" style="margin-top: 10px">
+        <span class="group_label">Contributors</span>
+        <div ng-include="'/views/home/workloads/contributors.html'"></div>
+    </div>
+
     <div style="padding: 10px">
         <span class="group_label">Status History</span>
         <table style="width: 100%; margin-top: 10px">
@@ -169,7 +160,7 @@
                         <name id="{{ status.submitterId }}"></name>
                     </a>
                 </td>
-                <td class="col-md-1" style="font-size: 8pt; color: #0080ff">{{ status.creationTime | duration }}</td>
+                <td class="col-md-1 workload_small_duration">{{ status.creationTime | duration }}</td>
             </tr>
             </tbody>
         </table>

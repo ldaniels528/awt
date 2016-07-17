@@ -1,7 +1,8 @@
 package com.microsoft.awt.javascript.controllers
 
 import com.microsoft.awt.javascript.dialogs.{WorkloadCommentDialog, WorkloadDialog}
-import com.microsoft.awt.javascript.models.Workload
+import com.microsoft.awt.javascript.factories.UserFactory
+import com.microsoft.awt.javascript.models.{User, Workload}
 import com.microsoft.awt.javascript.services.WorkloadService
 import org.scalajs.angularjs.AngularJsHelper._
 import org.scalajs.angularjs._
@@ -19,6 +20,7 @@ import scala.util.{Failure, Success}
   * @author lawrence.daniels@gmail.com
   */
 class WorkloadController($scope: WorkloadScope,
+                         @injected("UserFactory") userFactory: UserFactory,
                          @injected("WorkloadDialog") workloadDialog: WorkloadDialog, toaster: Toaster,
                          @injected("WorkloadCommentDialog") workloadCommentDialog: WorkloadCommentDialog,
                          @injected("WorkloadService") workloadService: WorkloadService)
@@ -68,7 +70,7 @@ class WorkloadController($scope: WorkloadScope,
           workloads.indexWhereOpt(_._id ?== updatedWorkload._id) foreach { index =>
             $scope.$apply { () =>
               workloads(index) = updatedWorkload
-              $scope.selectWorkLoad(updatedWorkload)
+              $scope.selectWorkload(updatedWorkload)
             }
           }
         case Failure(e) =>
@@ -127,6 +129,21 @@ class WorkloadController($scope: WorkloadScope,
     services <- workload.azureServices
   } yield services.mkString(", ")
 
+  $scope.getStatusMembers = (aWorkload: js.UndefOr[Workload]) => aWorkload.flatMap(_.statusMembers)
+
+  private def loadStatusMembers(workload: Workload) = {
+    val userIds = workload.statuses.flatMap(_.flatMap(_.submitterId.toOption)).map(_.distinct) getOrElse emptyArray
+    if (userIds.nonEmpty) {
+      console.log(s"Loading status members for users # ${userIds.mkString(", ")}")
+      userFactory.getUsers(userIds) onComplete {
+        case Success(users) => $scope.$apply(() => workload.statusMembers = js.Array(users: _*))
+        case Failure(e) =>
+          console.log(s"Error retrieving statuses: ${e.displayMessage}")
+          toaster.error("Loading Error", "Failed to retrieve workload status users")
+      }
+    }
+  }
+
   $scope.getWorkloadHighlightClass = (aWorkload: js.UndefOr[Workload], anIndex: js.UndefOr[Int]) => {
     for {
       status <- aWorkload.flat
@@ -138,7 +155,14 @@ class WorkloadController($scope: WorkloadScope,
     }
   }
 
-  $scope.selectWorkLoad = (aWorkload: js.UndefOr[Workload]) => $scope.selectedWorkload = aWorkload
+  $scope.selectWorkload = (aWorkload: js.UndefOr[Workload]) => {
+    $scope.selectedWorkload = aWorkload
+
+    // load the status members
+    aWorkload foreach { workload =>
+      if (workload.statusMembers.isEmpty) loadStatusMembers(workload)
+    }
+  }
 
   $scope.sort = (theWorkloads: js.UndefOr[js.Array[Workload]]) => theWorkloads map { workloads =>
     val sortedWorkloads = $scope.sortField match {
@@ -148,7 +172,7 @@ class WorkloadController($scope: WorkloadScope,
       case "lastUpdatedTime" => workloads.toSeq.sortBy(_.lastUpdatedTime.map(_.toString()).getOrElse(""))
       case _ => workloads.toSeq
     }
-    (if($scope.sortAsc) sortedWorkloads else sortedWorkloads.reverse).toJSArray
+    (if ($scope.sortAsc) sortedWorkloads else sortedWorkloads.reverse).toJSArray
   }
 
   $scope.toggleActiveWorkloads = () => {
@@ -172,6 +196,7 @@ class WorkloadController($scope: WorkloadScope,
 
   private def selectDefaultWorkload(theWorkloads: js.UndefOr[js.Array[Workload]]) = {
     $scope.selectedWorkload = theWorkloads.flat.flatMap(_.headOption.orUndefined)
+    $scope.selectWorkload($scope.selectedWorkload)
   }
 
 }
@@ -193,8 +218,9 @@ trait WorkloadScope extends Scope {
   var deactivateWorkload: js.Function2[js.UndefOr[Workload], js.UndefOr[js.Array[Workload]], Unit] = js.native
   var editWorkload: js.Function2[js.UndefOr[Workload], js.UndefOr[js.Array[Workload]], Unit] = js.native
   var getServices: js.Function1[js.UndefOr[Workload], js.UndefOr[String]] = js.native
+  var getStatusMembers: js.Function1[js.UndefOr[Workload], js.UndefOr[js.Array[User]]] = js.native
   var getWorkloadHighlightClass: js.Function2[js.UndefOr[Workload], js.UndefOr[Int], js.UndefOr[String]] = js.native
-  var selectWorkLoad: js.Function1[js.UndefOr[Workload], Unit] = js.native
+  var selectWorkload: js.Function1[js.UndefOr[Workload], Unit] = js.native
   var toggleActiveWorkloads: js.Function0[Unit] = js.native
 
   // sorting

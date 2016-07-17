@@ -1,0 +1,22 @@
+.workload_header_label {
+    font-size: 12pt;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.workload_details {
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    padding: 10px
+}
+
+.workload_list_container {
+    overflow: auto;
+    width: auto;
+    height: 300px;
+}
+
+.workload_small_duration {
+    font-size: 8pt;
+}

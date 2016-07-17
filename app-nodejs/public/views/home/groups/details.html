@@ -78,6 +78,11 @@
                 </tr>
             </table>
 
+            <div class="col-md-12" style="margin-top: 10px">
+                <span class="group_label">Contributors</span>
+                <div ng-include="'/views/home/workloads/contributors.html'"></div>
+            </div>
+
             <div style="padding: 10px">
                 <span class="group_label">Status History</span>
                 <table style="width: 100%; margin-top: 10px">
@@ -96,7 +101,7 @@
                                 <avatar class="avatar16" id="{{ status.submitterId }}"></avatar>
                                 <a class="sk_black" ng-href="#/home/profile/{{ status.submitterId }}"><name id="{{ status.submitterId }}"></name></a>
                             </td>
-                            <td class="col-md-2" style="font-size: 8pt; color: #0080ff">{{ status.creationTime | duration }}</td>
+                            <td class="col-md-2 workload_small_duration">{{ status.creationTime | duration }}</td>
                         </tr>
                     </tbody>
                 </table>

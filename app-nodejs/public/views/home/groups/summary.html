@@ -11,10 +11,10 @@
     <table style="width: 100%">
         <thead ng-include="'/views/home/workloads/sortable_table_header.html'"></thead>
         <tbody class="workload_list_container">
-        <tr ng-repeat="workload in sort(group.workloads)">
+        <tr ng-repeat="workload in sort(group.workloads)"  ng-class="getWorkloadHighlightClass(workload, $index)">
             <td class="col-md-3">
                 <i ng-class="getStatusIcon(workload)"></i>
-                <a class="sk_black" ng-href="#/home/profile/{{ workload.msftLeadId }}">{{ workload.name }}</a>
+                <a class="sk_black" ng-click="selectWorkload(workload)">{{ workload.name }}</a>
             </td>
             <td class="col-md-3">
                 <span class="left">
@@ -30,7 +30,7 @@
                 </span>
             </td>
             <td class="col-md-5">{{ getLatestStatusText(workload) }}</td>
-            <td class="col-md-1" style="font-size: 8pt">{{ getLatestStatusTime(workload) | duration }}</td>
+            <td class="col-md-1 workload_small_duration">{{ getLatestStatusTime(workload) | duration }}</td>
         </tr>
         </tbody>
     </table>

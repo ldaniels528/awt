@@ -1,14 +1,14 @@
 package com.microsoft.awt.javascript.controllers
 
 import com.microsoft.awt.javascript.factories.UserFactory
-import com.microsoft.awt.javascript.models.{Post, User, Workload}
+import com.microsoft.awt.javascript.models.{Group, Post, User, Workload}
 import com.microsoft.awt.javascript.services._
 import com.microsoft.awt.javascript.ui.{Menu, MenuItem}
 import org.scalajs.angularjs.AngularJsHelper._
 import org.scalajs.angularjs._
 import org.scalajs.angularjs.toaster.Toaster
 import org.scalajs.dom
-import org.scalajs.dom.browser.console
+import org.scalajs.dom.browser.{console, window}
 import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.concurrent.duration._
@@ -21,6 +21,7 @@ import scala.util.{Failure, Success}
   * @author lawrence.daniels@gmail.com
   */
 case class ProfileController($scope: ProfileControllerScope, $routeParams: ProfileRouteParams, $timeout: Timeout, toaster: Toaster,
+                             @injected("GroupService") groupService: GroupService,
                              @injected("MySession") mySession: MySessionService,
                              @injected("PostService") postService: PostService,
                              @injected("UserFactory") userFactory: UserFactory,
@@ -40,7 +41,7 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
 
   // retrieve the user and its postings
   $scope.profileID = $routeParams.id ?? mySession.user.flatMap(_._id)
-  $scope.profileID.foreach(loadUserAndPostings)
+  $scope.profileID.foreach(loadUserAndGroupsAndPostings)
 
   ///////////////////////////////////////////////////////////////////////////
   //      Initialization Functions
@@ -76,27 +77,11 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
   }
 
   ///////////////////////////////////////////////////////////////////////////
-  //      Blocking Functions
-  ///////////////////////////////////////////////////////////////////////////
-
-  $scope.block = (aUser: js.UndefOr[User]) => {
-    alert("Not yet implemented")
-  }
-
-  $scope.isBlocked = (aUser: js.UndefOr[User]) => aUser map { user =>
-    false
-  }
-
-  private def alert(message: String) {
-    console.warn(message)
-  }
-
-  ///////////////////////////////////////////////////////////////////////////
   //      Contact Functions
   ///////////////////////////////////////////////////////////////////////////
 
   $scope.contact = (aUser: js.UndefOr[User]) => {
-    alert("Not yet implemented")
+    window.alert("Not yet implemented")
   }
 
   $scope.isContacted = (aUser: js.UndefOr[User]) => aUser map { user =>
@@ -180,7 +165,7 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
   ///////////////////////////////////////////////////////////////////////////
 
   $scope.report = (aUser: js.UndefOr[User]) => {
-    alert("Not yet implemented")
+    window.alert("Not yet implemented")
   }
 
   $scope.isReported = (aUser: js.UndefOr[User]) => aUser map { user =>
@@ -192,29 +177,31 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
   ///////////////////////////////////////////////////////////////////////////
 
   /**
-    * Retrieve the user instance and its postings for the given user ID
+    * Retrieve the user instance and its groups and postings for the given user ID
     * @param userID the given user ID
     */
-  private def loadUserAndPostings(userID: String) {
+  private def loadUserAndGroupsAndPostings(userID: String) {
     console.log(s"Loading foreign user profile for $userID...")
     $scope.loadingStart()
     val outcome = for {
       user <- userFactory.getUserByID(userID)
+      groups <- groupService.getInclusiveGroups(userID)
       posts <- postService.getPostsByUserID(userID)
       enrichedPosts <- userFactory.enrich(posts)
-    } yield (user, enrichedPosts)
+    } yield (user, groups, enrichedPosts)
 
     outcome onComplete {
-      case Success((user, posts)) =>
+      case Success((user, groups, posts)) =>
         $scope.$apply { () =>
           $scope.loadingDelayedStop(1.second)
+          $scope.myGroups = groups
           $scope.profileUser = user
           $scope.posts = posts
         }
       case Failure(e) =>
         $scope.$apply { () => $scope.loadingStop() }
         console.error(e.displayMessage)
-        toaster.error(e.displayMessage)
+        toaster.error("Loading Error", "Failed while loading groups and postings")
     }
   }
 
@@ -247,6 +234,7 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
 @js.native
 trait ProfileControllerScope extends Scope with GlobalLoadingScope {
   var menus: js.Array[Menu] = js.native
+  var myGroups: js.UndefOr[js.Array[Group]] = js.native
   var profileID: js.UndefOr[String] = js.native
   var profileUser: js.UndefOr[User] = js.native
   var posts: js.Array[Post] = js.native
@@ -259,10 +247,6 @@ trait ProfileControllerScope extends Scope with GlobalLoadingScope {
   var isMe: js.Function0[Boolean] = js.native
   var activeOnly: js.UndefOr[Boolean] = js.native // inherited from WorkloadController
   var viewRecentActivity: js.Function0[Unit] = js.native
-
-  // blocking
-  var block: js.Function1[js.UndefOr[User], Unit] = js.native
-  var isBlocked: js.Function1[js.UndefOr[User], js.UndefOr[Boolean]] = js.native
 
   // contact
   var contact: js.Function1[js.UndefOr[User], Unit] = js.native

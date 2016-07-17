@@ -35,16 +35,3 @@
     width: auto;
     height: 100px;
 }
-
-.workload_details {
-    background: #ffffff;
-    border: 1px solid #cccccc;
-    margin-top: 10px;
-    padding: 10px
-}
-
-.workload_list_container {
-    overflow: auto;
-    width: auto;
-    height: 300px;
-}

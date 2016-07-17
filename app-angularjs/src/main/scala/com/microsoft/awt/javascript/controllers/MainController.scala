@@ -22,6 +22,7 @@ import scala.util.{Failure, Success}
 case class MainController($scope: MainScope, $location: Location, $q: Q, $timeout: Timeout, toaster: Toaster,
                           @injected("AuthenticationService") authenticationService: AuthenticationService,
                           @injected("EventService") eventService: EventService,
+                          @injected("GroupService") groupService: GroupService,
                           @injected("MySession") mySession: MySessionService,
                           @injected("NotificationService") notificationSvc: NotificationService,
                           @injected("ReactiveSearchService") reactiveSearchSvc: ReactiveSearchService,
@@ -186,18 +187,22 @@ case class MainController($scope: MainScope, $location: Location, $q: Q, $timeou
   }
 
   private def loadEventsAndNotifications(session: Session) = session.userID foreach { userID =>
-    console.log("Loading events and notifications...")
+    console.log("Loading events, groups and notifications...")
     val outcome = for {
       events <- eventService.getEvents(userID)
+      groups <- groupService.getInclusiveGroups(userID, 10)
+      otherGroups <- groupService.getExclusiveGroups(userID, 10)
       notifications <- notificationSvc.getNotificationsByUserID(userID, unread = true)
-    } yield (events, notifications)
+    } yield (events, groups, otherGroups, notifications)
 
     outcome onComplete {
-      case Success((events, notifications)) =>
+      case Success((events, groups, otherGroups, notifications)) =>
         $scope.events = events
+        $scope.groups = groups
+        $scope.otherGroups = otherGroups
         $scope.notifications = notifications
       case Failure(e) =>
-        console.error(s"Failed while retrieving events and notifications: ${e.displayMessage}")
+        console.error(s"Failed while retrieving events, groups and notifications: ${e.displayMessage}")
         toaster.error("Loading Error", "Failed to load events and notifications")
         e.printStackTrace()
     }
@@ -231,6 +236,10 @@ trait MainScope extends Scope with AutoCompletionScope with GlobalLoadingScope w
   var notifications: js.Array[Notification] = js.native
   var searchTerm: js.UndefOr[String] = js.native
   var tabs: js.Array[MainTab] = js.native
+
+  // groups
+  var groups: js.UndefOr[js.Array[Group]] = js.native
+  var otherGroups: js.UndefOr[js.Array[Group]] = js.native
 
   ///////////////////////////////////////////////////////////////////////////
   //      Public Functions

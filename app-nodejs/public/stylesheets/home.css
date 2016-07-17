@@ -125,6 +125,7 @@
 .home_style {
     background: #ffffff;
     border: 1px solid #cccccc;
+    border-radius: 8px;
 }
 
 .home_post {

@@ -26,7 +26,6 @@ import scala.util.{Failure, Success}
   */
 class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $location: Location, $timeout: Timeout, toaster: Toaster,
                      @injected("FileUploader") fileUploader: FileUploader,
-                     @injected("GroupService") groupService: GroupService,
                      @injected("MySession") mySession: MySessionService,
                      @injected("PostService") postService: PostService,
                      @injected("UserFactory") userFactory: UserFactory,
@@ -52,9 +51,9 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
     new Menu("MY TEAMS", link = "#/home/groups/mine", items = js.Array(
       MenuItem.include(src = "/assets/views/home/navigation/my_groups.html")
     )),
-    new Menu("OTHER TEAMS", link = "#/home/groups/others", items = js.Array(
+    /*new Menu("OTHER TEAMS", link = "#/home/groups/others", items = js.Array(
       MenuItem.include(src = "/assets/views/home/navigation/other_groups.html")
-    )),
+    )),*/
     new Menu("UPCOMING EVENTS", items = js.Array(
       MenuItem.include(src = "/assets/views/home/navigation/my_events.html")
     ))
@@ -72,28 +71,8 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
 
   $scope.init = () => {
     console.log(s"Initializing '${getClass.getSimpleName}'...")
-
-    mySession.session.foreach(loadGroups)
     loadFollowersAndPostings()
     $scope.setupNewPost()
-  }
-
-  private def loadGroups(session: Session) = session.userID foreach { userID =>
-    console.log("Loading groups...")
-    val outcome = for {
-      groups <- groupService.getInclusiveGroups(userID, 10)
-      otherGroups <- groupService.getExclusiveGroups(userID, 10)
-    } yield (groups, otherGroups)
-
-    outcome onComplete {
-      case Success((groups, otherGroups)) =>
-        $scope.groups = groups
-        $scope.otherGroups = otherGroups
-      case Failure(e) =>
-        console.error(s"Failed while retrieving groups: ${e.displayMessage}")
-        toaster.error("Loading Error", "Failed to load groups")
-        e.printStackTrace()
-    }
   }
 
   ///////////////////////////////////////////////////////////////////////////
@@ -708,13 +687,6 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
   // setup the new post
   $scope.setupNewPost()
 
-
-  ///////////////////////////////////////////////////////////////////////////
-  //      Event Listener Functions
-  ///////////////////////////////////////////////////////////////////////////
-
-  $scope.$on("session_loaded", (evt: dom.Event, session: Session) => loadGroups(session))
-
 }
 
 /**
@@ -740,10 +712,6 @@ trait HomeControllerScope extends Scope with GlobalLoadingScope with GlobalNavig
 
   // dialogs
   var profileEditorPopup: js.Function1[js.UndefOr[String], Unit] = js.native
-
-  // groups
-  var groups: js.UndefOr[js.Array[Group]] = js.native
-  var otherGroups: js.UndefOr[js.Array[Group]] = js.native
 
   // posts
   var deletePost: js.Function1[js.UndefOr[Post], Unit] = js.native
