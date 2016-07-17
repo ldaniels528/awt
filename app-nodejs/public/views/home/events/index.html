@@ -1,5 +1,5 @@
 <div ng-include="'/assets/views/home/header.html'"></div>
-<div class="row" style="margin-top: 10px">
+<div ng-controller="EventController" ng-init="init()" class="row" style="margin-top: 10px">
     <div ng-hide="events.length">
         <span class="bold">No events found</span>
      </div>
@@ -8,14 +8,33 @@
         <br style="clear: both">
     </div>
 
-    <div class="home_notification" ng-repeat="event in events">
-        <div>
-            <i class="fa fa-calendar sk_calender"></i> {{ event.title }}
-            <span class="home_mini_label small pull-right">{{ event.eventTime | date:'MMM dd' }}</span>
+    <div class="col-md-12 home_event" ng-repeat="event in events">
+        <div class="col-md-12">
+            <i class="fa fa-calendar sk_calender"></i> <span class="bold">{{ event.title }}</span>
+            <span class="home_mini_label small pull-right">{{ event.participantIds.length | number }} participants</span>
         </div>
-        <div>
-            <img class="avatar16" ng-src="{{ getAvatarURL(event.owner) }}">
-            <span>Starts in {{ event.eventTime | duration }}</span>
+        <div class="col-md-12">
+            <span ng-repeat="participantId in event.participantIds">
+                <avatar class="avatar32" id="{{ participantId }}"></avatar>
+            </span>
+        </div>
+        <div class="col-md-12 evt_info_bar">
+            {{ event.startTime | date: "MMM dd"}} &#8212; {{ event.endTime | date: "MMM dd yyyy"}} |
+            {{ event.address }} |
+            {{ event.city }}, {{ event.state }}, {{ event.country }}
+        </div>
+        <div ng-repeat="agenda in event.agenda">
+            <div class="col-md-2">
+                <span ng-click="selectAgenda(event, agenda)" ng-class="selectedAgenda == agenda ? 'evt_selection' : 'sk_clickable evt_agenda_title'">{{ agenda.title }}</span>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <table class="col-md-12">
+                <tr ng-repeat="activity in event.agenda[1].activities">
+                    <td colspan="3"><i class="fa fa-circle-o"></i> {{ activity.name }}</td>
+                    <td colspan="9">{{ activity.description }}</td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>

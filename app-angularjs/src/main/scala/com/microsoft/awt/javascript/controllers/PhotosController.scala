@@ -1,11 +1,10 @@
 package com.microsoft.awt.javascript.controllers
 
-import com.microsoft.awt.javascript.models.{Attachment, User}
+import com.microsoft.awt.javascript.models.Attachment
 import com.microsoft.awt.javascript.services.{MySessionService, PostService}
 import org.scalajs.angularjs.AngularJsHelper._
 import org.scalajs.angularjs.toaster.Toaster
 import org.scalajs.angularjs.{Timeout, _}
-import org.scalajs.dom
 import org.scalajs.dom.browser.console
 import org.scalajs.nodejs.util.ScalaJsHelper._
 
@@ -39,7 +38,7 @@ class PhotosController($scope: PhotosScope, $timeout: Timeout, toaster: Toaster,
       console.log(s"Loading photos for user ${user.username} (${user._id})...")
       postService.getAttachmentsByUserID(userID) onComplete {
         case Success(photos) =>
-          $scope.photos = photos
+          $scope.$apply(() => $scope.photos = photos)
         case Failure(e) =>
           console.error(s"Failed to retrieve photos: ${e.displayMessage}")
           toaster.error("Loading Error", "General fault while retrieving photos")
@@ -51,7 +50,7 @@ class PhotosController($scope: PhotosScope, $timeout: Timeout, toaster: Toaster,
   //      Event Listener Functions
   ///////////////////////////////////////////////////////////////////////////
 
-  $scope.$on("user_loaded", (event: dom.Event, user: User) => {
+  $scope.onUserLoaded((event, user) => {
     console.log(s"${getClass.getSimpleName}: user loaded - ${user.primaryEmail}")
     $scope.loadPhotos()
   })

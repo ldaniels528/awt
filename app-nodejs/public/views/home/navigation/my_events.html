@@ -1,5 +1,5 @@
 <div ng-repeat="event in getUpcomingEvents()">
     <i class="fa fa-calendar sk_calender"></i> {{ event.title }} <span class="sk_null">&#8212;</span>
-    <span class="home_mini_label small">{{ event.eventTime | date:'MMM dd' }}</span>
+    <span class="home_mini_label small">{{ event.startTime | date:'MMM dd' }}</span>
 </div>
 <div ng-hide="getUpcomingEvents().length" class="sk_null">No upcoming events</div>

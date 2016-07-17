@@ -7,7 +7,6 @@ import com.microsoft.awt.javascript.ui.{Menu, MenuItem}
 import org.scalajs.angularjs.AngularJsHelper._
 import org.scalajs.angularjs._
 import org.scalajs.angularjs.toaster.Toaster
-import org.scalajs.dom
 import org.scalajs.dom.browser.{console, window}
 import org.scalajs.nodejs.util.ScalaJsHelper._
 
@@ -219,11 +218,7 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
   //      Event Handlers
   ///////////////////////////////////////////////////////////////////////////
 
-  $scope.$on("toggleActiveWorkloads", (event: dom.Event, activeOnly: Boolean) => {
-    $scope.profileID.flat foreach { userId =>
-      loadWorkloads(userId, activeOnly)
-    }
-  })
+  $scope.onToggleActiveWorkloads((_, activeOnly) => $scope.profileID.flat foreach (loadWorkloads(_, activeOnly)))
 
 }
 

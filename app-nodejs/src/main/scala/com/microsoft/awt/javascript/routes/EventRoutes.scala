@@ -27,7 +27,7 @@ object EventRoutes {
     */
   def getEventsByOwner(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, eventDAO: Future[EventDAO]) = {
     val ownerID = request.params("ownerID")
-    eventDAO.flatMap(_.find("owner._id" $eq ownerID.$oid).toArrayFuture[Event]) onComplete {
+    eventDAO.flatMap(_.find("ownerId" $eq ownerID).toArrayFuture[Event]) onComplete {
       case Success(events) => response.send(events); next()
       case Failure(e) => response.internalServerError(e); next()
     }
@@ -38,7 +38,7 @@ object EventRoutes {
     */
   def getUpcomingEvents(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, eventDAO: Future[EventDAO]) = {
     val ownerID = request.params("ownerID")
-    eventDAO.flatMap(_.find("owner._id" $eq ownerID.$oid).toArrayFuture[Event]) onComplete {
+    eventDAO.flatMap(_.find("ownerId" $eq ownerID).toArrayFuture[Event]) onComplete {
       case Success(events) => response.send(events); next()
       case Failure(e) => response.internalServerError(e); next()
     }

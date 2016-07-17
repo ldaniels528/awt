@@ -9,7 +9,6 @@ import org.scalajs.angularjs.AngularJsHelper._
 import org.scalajs.angularjs._
 import org.scalajs.angularjs.fileupload.nervgh.{FileItem, FileUploader, FileUploaderConfig}
 import org.scalajs.angularjs.toaster.Toaster
-import org.scalajs.dom
 import org.scalajs.dom.browser.console
 import org.scalajs.nodejs.util.ScalaJsHelper._
 
@@ -623,13 +622,13 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
   //      Event Listener Functions
   ///////////////////////////////////////////////////////////////////////////
 
-  $scope.$on("user_loaded", (event: dom.Event, user: User) => {
+  $scope.onUserLoaded((_, user) => {
     console.log(s"${getClass.getSimpleName}: user loaded - ${user.primaryEmail}")
     $scope.init()
   })
 
-  $scope.$on(WsEventMessage.POST, (event: dom.Event, post: Post) => {
-    console.log(s"HomeController: post received - ${angular.toJson(post)}")
+  $scope.onWsPostMessage((_, post) => {
+    console.log(s"${getClass.getSimpleName}: post received - ${angular.toJson(post)}")
     updatePost(post)
   })
 

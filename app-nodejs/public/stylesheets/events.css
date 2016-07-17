@@ -1,0 +1,19 @@
+.evt_agenda_title {
+    font-weight: bold;
+}
+
+.evt_info_bar {
+    background: #5bc0ee;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+.evt_selection {
+    background: #ff8000;
+    border-radius: 4px;
+    color: white;
+    padding: 4px;
+}

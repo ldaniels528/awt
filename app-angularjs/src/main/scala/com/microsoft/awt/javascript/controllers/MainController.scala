@@ -6,7 +6,6 @@ import com.microsoft.awt.javascript.ui.MainTab
 import org.scalajs.angularjs.AngularJsHelper._
 import org.scalajs.angularjs._
 import org.scalajs.angularjs.toaster.Toaster
-import org.scalajs.dom
 import org.scalajs.dom.browser.console
 import org.scalajs.nodejs.util.ScalaJsHelper._
 
@@ -141,7 +140,6 @@ case class MainController($scope: MainScope, $location: Location, $q: Q, $timeou
               case index => $scope.notifications.remove(index)
             }
           }
-
         case Failure(e) =>
           console.error(s"Failed to delete notification: ${e.displayMessage}")
           toaster.error("Failed to delete notification")
@@ -191,15 +189,13 @@ case class MainController($scope: MainScope, $location: Location, $q: Q, $timeou
     val outcome = for {
       events <- eventService.getEvents(userID)
       groups <- groupService.getInclusiveGroups(userID, 10)
-      otherGroups <- groupService.getExclusiveGroups(userID, 10)
       notifications <- notificationSvc.getNotificationsByUserID(userID, unread = true)
-    } yield (events, groups, otherGroups, notifications)
+    } yield (events, groups, notifications)
 
     outcome onComplete {
-      case Success((events, groups, otherGroups, notifications)) =>
+      case Success((events, groups, notifications)) =>
         $scope.events = events
         $scope.groups = groups
-        $scope.otherGroups = otherGroups
         $scope.notifications = notifications
       case Failure(e) =>
         console.error(s"Failed while retrieving events, groups and notifications: ${e.displayMessage}")
@@ -212,14 +208,14 @@ case class MainController($scope: MainScope, $location: Location, $q: Q, $timeou
   //      Event Listener Functions
   ///////////////////////////////////////////////////////////////////////////
 
-  $scope.$on("session_loaded", (evt: dom.Event, session: Session) => loadEventsAndNotifications(session))
+  $scope.onSessionLoaded((_, session) => loadEventsAndNotifications(session))
 
-  $scope.$on(WsEventMessage.NOTIFICATION, (evt: dom.Event, notification: Notification) => {
+  $scope.onWsNotificationMessage((_, notification) => {
     console.log(s"Received notification: ${angular.toJson(notification, pretty = true)}")
     $scope.notifications.push(notification)
   })
 
-  $scope.$on("WS_STATE_CHANGE", (evt: dom.Event, connected: Boolean) => {
+  $scope.onWsStateChange((_, connected) => {
     console.log(s"Web socket state change: connected = $connected")
     this.connected = connected
   })
@@ -233,13 +229,10 @@ case class MainController($scope: MainScope, $location: Location, $q: Q, $timeou
 @js.native
 trait MainScope extends Scope with AutoCompletionScope with GlobalLoadingScope with GlobalNavigationScope {
   var events: js.UndefOr[js.Array[Event]] = js.native
+  var groups: js.UndefOr[js.Array[Group]] = js.native
   var notifications: js.Array[Notification] = js.native
   var searchTerm: js.UndefOr[String] = js.native
   var tabs: js.Array[MainTab] = js.native
-
-  // groups
-  var groups: js.UndefOr[js.Array[Group]] = js.native
-  var otherGroups: js.UndefOr[js.Array[Group]] = js.native
 
   ///////////////////////////////////////////////////////////////////////////
   //      Public Functions
