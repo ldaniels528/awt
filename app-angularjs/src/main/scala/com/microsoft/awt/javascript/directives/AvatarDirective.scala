@@ -1,7 +1,7 @@
 package com.microsoft.awt.javascript.directives
 
+import com.microsoft.awt.javascript.components.UserFactory
 import com.microsoft.awt.javascript.directives.AvatarDirective._
-import com.microsoft.awt.javascript.factories.UserFactory
 import org.scalajs.angularjs._
 import org.scalajs.dom.browser.console
 import org.scalajs.nodejs.util.ScalaJsHelper._

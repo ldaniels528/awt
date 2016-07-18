@@ -1,14 +1,11 @@
 package com.microsoft.awt.javascript
 
-import com.microsoft.awt.javascript.controllers._
-import com.microsoft.awt.javascript.dialogs.UserDialog.UserDialogController
-import com.microsoft.awt.javascript.dialogs.WorkloadCommentDialog.WorkloadCommentDialogController
-import com.microsoft.awt.javascript.dialogs.WorkloadDialog.WorkloadDialogController
-import com.microsoft.awt.javascript.dialogs.{UserDialog, WorkloadCommentDialog, WorkloadDialog}
+import com.microsoft.awt.javascript.components.UserDialog.UserDialogController
+import com.microsoft.awt.javascript.components.WorkloadCommentDialog.WorkloadCommentDialogController
+import com.microsoft.awt.javascript.components.WorkloadDialog.WorkloadDialogController
+import com.microsoft.awt.javascript.components._
 import com.microsoft.awt.javascript.directives._
-import com.microsoft.awt.javascript.factories.UserFactory
 import com.microsoft.awt.javascript.models.{User, Workload}
-import com.microsoft.awt.javascript.services._
 import org.scalajs.angularjs.Module._
 import org.scalajs.angularjs._
 import org.scalajs.angularjs.http.HttpProvider
@@ -79,6 +76,7 @@ object AWTClientJsApp extends js.JSApp {
   }
 
   private def configureFactories(module: Module): Unit = {
+    module.factoryOf[MySessionFactory]("MySession")
     module.factoryOf[UserFactory]("UserFactory")
   }
 
@@ -93,7 +91,6 @@ object AWTClientJsApp extends js.JSApp {
     module.serviceOf[EventService]("EventService")
     module.serviceOf[GroupService]("GroupService")
     module.serviceOf[InboxMessageService]("InboxMessageService")
-    module.serviceOf[MySessionService]("MySession")
     module.serviceOf[NotificationService]("NotificationService")
     module.serviceOf[PostService]("PostService")
     module.serviceOf[ReactiveSearchService]("ReactiveSearchService")
@@ -164,18 +161,6 @@ object AWTClientJsApp extends js.JSApp {
         case _ => "fa fa-battery-0 status_unknown"
       }
 
-      $rootScope.getLatestStatusText = (aWorkload: js.UndefOr[Workload]) => aWorkload flatMap { workload =>
-        getLatestStatus(workload).flatMap(_.statusText)
-      }
-
-      $rootScope.getLatestStatusTime = (aWorkload: js.UndefOr[Workload]) => aWorkload flatMap { workload =>
-        getLatestStatus(workload).flatMap(_.creationTime)
-      }
-
-      def getLatestStatus(workload: Workload) = {
-        workload.statuses.flatMap(_.sortBy(_.creationTime.map(_.toString).getOrElse("")).lastOption.orUndefined)
-      }
-
     }
   }
 
@@ -192,8 +177,6 @@ object AWTClientJsApp extends js.JSApp {
     var getFullName: js.Function1[js.UndefOr[User], js.UndefOr[String]] = js.native
     var getStatusClass: js.Function1[js.UndefOr[Workload], js.UndefOr[String]] = js.native
     var getStatusIcon: js.Function1[js.UndefOr[Workload], js.UndefOr[String]] = js.native
-    var getLatestStatusText: js.Function1[js.UndefOr[Workload], js.UndefOr[String]] = js.native
-    var getLatestStatusTime: js.Function1[js.UndefOr[Workload], js.UndefOr[js.Date]] = js.native
   }
 
 }

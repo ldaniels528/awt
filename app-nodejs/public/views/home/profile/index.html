@@ -1,70 +1,70 @@
 <div ng-controller="ProfileController" ng-init="init()">
-    <div class="row home_info home_style">
-        <div style="display: inline; float: left; margin-right: 10px">
-            <avatar class="avatar64" id="{{ profileUser._id }}"></avatar>
-        </div>
-        <div style="display: inline">
-            <div>
-                <span class="name_line">{{ showFullName(profileUser) }}</span>
-                <span class="home_level pull-right">{{ profileUser.likes || 0 }}</span>
+    <div ng-controller="WorkloadController" ng-init="init('workloads')">
+        <div class="row home_info home_style">
+            <div style="display: inline; float: left; margin-right: 10px">
+                <avatar class="avatar64" id="{{ profileUser._id }}"></avatar>
             </div>
-
-            <div ng-show="profileUser.title">
-                {{ profileUser.title }}
-            </div>
-            <div ng-hide="profileUser.title">
-                <span class="sk_null">No position information provided</span>
-            </div>
-
-            <div>
+            <div style="display: inline">
                 <div>
-                    {{ isMe() ? "My" : profileUser.firstName + "'s" }} Teams:
-                    <span class="profile_group_list" ng-repeat="group in myGroups | orderBy:name">
-                        <avatar class="avatar16" id="{{ group.owner }}"></avatar>
-                        <a ng-href="#/home/groups/{{ group._id }}">{{ group.name }}</a>
+                    <span class="name_line">{{ showFullName(profileUser) }}</span>
+                    <span class="home_level pull-right">{{ profileUser.likes || 0 }}</span>
+                </div>
+
+                <div ng-show="profileUser.title">
+                    {{ profileUser.title }}
+                </div>
+                <div ng-hide="profileUser.title">
+                    <span class="sk_null">No position information provided</span>
+                </div>
+
+                <div>
+                    <div>
+                        {{ isMe() ? "My" : profileUser.firstName + "'s" }} Teams:
+                        <span class="profile_group_list" ng-repeat="group in myGroups | orderBy:name">
+                            <avatar class="avatar16" id="{{ group.owner }}"></avatar>
+                            <a ng-href="#/home/groups/{{ group._id }}">{{ group.name }}</a>
+                        </span>
+                    </div>
+                    <div class="pull-right">{{ profileUser.totalFollowers || 0 | number }} followers</div>
+                </div>
+
+                <div style="margin-top: 10px">
+                    <span ng-show="isMe()" ng-click="addWorkload(workloads)" class="btn btn-success">
+                        <i class="fa fa-plus-circle status_header_bar"></i> Workload
+                    </span>
+                    <span ng-show="isMe()" ng-show="workloads.length" class="sk_ident">
+                        <a ng-href="/api/workloads/download/{{ user()._id }}/user/workloads.csv?activeOnly={{ activeOnly }}">
+                           <span class="btn btn-info">
+                                <i class="fa fa-cloud-download"></i> Download
+                           </span>
+                        </a>
+                    </span>
+                    <span ng-hide="isMe()" ng-click="endorse(profileUser)" class="btn btn-success" style="margin-right: 20px">
+                        <i class="fa fa-thumbs-o-up"></i>
+                        <span ng-show="isEndorsed(profileUser)">Liked</span>
+                        <span ng-hide="isEndorsed(profileUser)">Like</span>
+                        <img ng-show="endorseLoading" src="/assets/images/status/loading16.gif">
+                    </span>
+                    <span ng-hide="isMe()" ng-click="follow(profileUser)" class="btn btn-success" style="margin-right: 20px">
+                        <i class="fa fa-twitter-square"></i>
+                        <span ng-show="isFollowed(profileUser)">Followed</span>
+                        <span ng-hide="isFollowed(profileUser)">Follow</span>
+                        <img ng-show="followLoading" src="/assets/images/status/loading16.gif">
+                    </span>
+                    <span ng-hide="isMe()" ng-click="contact(profileUser)" class="btn btn-primary" style="margin-right: 20px">
+                        <i class="fa fa-send-o"></i>
+                        <span ng-show="isContacted(profileUser)">Contacted</span>
+                        <span ng-hide="isContacted(profileUser)">Contact</span>
+                        <img ng-show="contactLoading" src="/assets/images/status/loading16.gif">
                     </span>
                 </div>
-                <div class="pull-right">{{ profileUser.totalFollowers || 0 | number }} followers</div>
             </div>
-
-            <div style="margin-top: 10px">
-                <span ng-show="isMe()" ng-click="addWorkload(workloads)" class="btn btn-success">
-                    <i class="fa fa-plus-circle status_header_bar"></i> Workload
-                </span>
-                <span ng-show="isMe()" ng-show="workloads.length" class="sk_ident">
-                    <a ng-href="/api/workloads/download/{{ user()._id }}/user/workloads.csv?activeOnly={{ activeOnly }}">
-                       <span class="btn btn-info">
-                            <i class="fa fa-cloud-download"></i> Download
-                       </span>
-                    </a>
-                </span>
-                <span ng-hide="isMe()" ng-click="endorse(profileUser)" class="btn btn-success" style="margin-right: 20px">
-                    <i class="fa fa-thumbs-o-up"></i>
-                    <span ng-show="isEndorsed(profileUser)">Liked</span>
-                    <span ng-hide="isEndorsed(profileUser)">Like</span>
-                    <img ng-show="endorseLoading" src="/assets/images/status/loading16.gif">
-                </span>
-                <span ng-hide="isMe()" ng-click="follow(profileUser)" class="btn btn-success" style="margin-right: 20px">
-                    <i class="fa fa-twitter-square"></i>
-                    <span ng-show="isFollowed(profileUser)">Followed</span>
-                    <span ng-hide="isFollowed(profileUser)">Follow</span>
-                    <img ng-show="followLoading" src="/assets/images/status/loading16.gif">
-                </span>
-                <span ng-hide="isMe()" ng-click="contact(profileUser)" class="btn btn-primary" style="margin-right: 20px">
-                    <i class="fa fa-send-o"></i>
-                    <span ng-show="isContacted(profileUser)">Contacted</span>
-                    <span ng-hide="isContacted(profileUser)">Contact</span>
-                    <img ng-show="contactLoading" src="/assets/images/status/loading16.gif">
-                </span>
-            </div>
+            <br style="clear: both" />
         </div>
-        <br style="clear: both" />
+        
+        <div ng-include="'/assets/views/home/workloads/list.html'" class="row"></div>
+        <!--
+        <div class="row" ng-include="'/assets/views/home/posts/postings.html'"></div>
+        -->
     </div>
-    <div ng-controller="WorkloadController"
-         ng-init="init('workloads')"
-         ng-include="'/assets/views/home/workloads/list.html'"
-         class="row"></div>
-    <!--
-    <div class="row" ng-include="'/assets/views/home/posts/postings.html'"></div>
-    -->
 </div>

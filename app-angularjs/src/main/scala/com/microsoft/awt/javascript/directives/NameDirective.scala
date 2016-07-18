@@ -1,6 +1,6 @@
 package com.microsoft.awt.javascript.directives
 
-import com.microsoft.awt.javascript.factories.UserFactory
+import com.microsoft.awt.javascript.components.UserFactory
 import org.scalajs.angularjs.{Attributes, Directive, JQLite, Scope, injected}
 import org.scalajs.nodejs.util.ScalaJsHelper._
 
