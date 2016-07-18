@@ -4,7 +4,7 @@
  */
 (function () {
     require("./awt-nodejs-fastopt.js");
-    const facade = com.microsoft.awt.javascript.AWTServerJsApp();
+    const facade = com.microsoft.awt.AWTServerJsApp();
     facade.startServer({
         "__dirname": __dirname,
         "__filename": __filename,
