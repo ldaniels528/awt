@@ -38,8 +38,7 @@ class EventController($scope: EventControllerScope, $timeout: Timeout, toaster: 
   //      Event Handlers
   ///////////////////////////////////////////////////////////////////////////
 
-  $scope.onSessionLoaded((_, session) => {
-    console.log(s"${getClass.getSimpleName}: session loaded")
+  $scope.$watch("events", (oldEvents: js.Array[js.Array[Event]], newEvents: js.UndefOr[js.Array[Event]]) => {
     $scope.selectedEvent = $scope.events.flatMap(_.headOption.orUndefined)
     $scope.selectedAgenda = $scope.selectedEvent.flatMap(_.agenda.flatMap(_.headOption.orUndefined))
   })

@@ -30,7 +30,7 @@
         </div>
         <div class="col-md-12">
             <table class="col-md-12">
-                <tr ng-repeat="activity in event.agenda[1].activities">
+                <tr ng-repeat="activity in selectedAgenda.activities">
                     <td colspan="3"><i class="fa fa-circle-o"></i> {{ activity.name }}</td>
                     <td colspan="9">{{ activity.description }}</td>
                 </tr>
