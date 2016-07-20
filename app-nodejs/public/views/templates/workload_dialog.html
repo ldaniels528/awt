@@ -47,7 +47,7 @@
                     <tr>
                         <th class="col-md-3">Opportunity Status</th>
                         <td class="col-md-9">
-                            <i ng-class="getStatusIcon(form)"></i>
+                            <workload-status code="{{ form.statusCode }}"></workload-status>
                             <select ng-model="form.statusCode" ng-options="code for code in statusCodes">
                             </select>
                         </td>

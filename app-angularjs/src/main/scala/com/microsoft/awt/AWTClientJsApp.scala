@@ -13,7 +13,6 @@ import org.scalajs.angularjs.uirouter._
 import org.scalajs.dom.browser.console
 
 import scala.scalajs.js
-import scala.scalajs.js.JSConverters._
 import scala.scalajs.js.annotation.JSExport
 
 /**
@@ -69,10 +68,11 @@ object AWTClientJsApp extends js.JSApp {
 
   private def configureDirectives(module: Module): Unit = {
     module.directiveOf[AvatarDirective]("avatar")
-    module.directiveOf[CareerTalkDirective]("careertalk")
+    module.directiveOf[AwtPostDirective]("awtPost")
     module.directiveOf[CompileDirective]("compileA")
     module.directiveOf[NameDirective]("name")
     //module.directiveOf[NgThumbDirective]("ngThumb")
+    module.directiveOf[WorkloadStatusDirective]("workloadStatus")
   }
 
   private def configureFactories(module: Module): Unit = {
@@ -117,7 +117,6 @@ object AWTClientJsApp extends js.JSApp {
         .when("/home", RouteTo(redirectTo = "/home/profile"))
         .when("/home/events", RouteTo(templateUrl = "/assets/views/home/index.html"))
         .when("/home/groups/mine", RouteTo(templateUrl = "/assets/views/home/index.html"))
-        .when("/home/groups/others", RouteTo(templateUrl = "/assets/views/home/index.html"))
         .when("/home/groups/:groupId", RouteTo(templateUrl = "/assets/views/home/index.html"))
         .when("/home/messages", RouteTo(templateUrl = "/assets/views/home/index.html"))
         .when("/home/newsfeed", RouteTo(templateUrl = "/assets/views/home/index.html"))
@@ -136,31 +135,10 @@ object AWTClientJsApp extends js.JSApp {
       console.log("Initializing AWT...")
 
       ///////////////////////////////////////////////////////////////////////////
-      //      Global Variables
-      //////////////////////////////////////////////////////////////////////////
-
-      $rootScope.statusCodes = js.Array("GREEN", "YELLOW", "RED")
-
-      ///////////////////////////////////////////////////////////////////////////
       //      Global Functions
       ///////////////////////////////////////////////////////////////////////////
 
       $rootScope.getFullName = (aUser: js.UndefOr[User]) => aUser.map(_.fullName)
-
-      $rootScope.getStatusClass = (aWorkload: js.UndefOr[Workload]) => aWorkload.flatMap(_.statusCode) map {
-        case "GREEN" => "status_green"
-        case "RED" => "status_red"
-        case "YELLOW" => "status_yellow"
-        case _ => "status_unknown"
-      }
-
-      $rootScope.getStatusIcon = (aWorkload: js.UndefOr[Workload]) => aWorkload.flatMap(_.statusCode) map {
-        case "GREEN" => "fa fa-battery-4 status_green"
-        case "RED" => "fa fa-battery-1 status_red"
-        case "YELLOW" => "fa fa-battery-2 status_yellow"
-        case _ => "fa fa-battery-0 status_unknown"
-      }
-
     }
   }
 
@@ -170,9 +148,6 @@ object AWTClientJsApp extends js.JSApp {
     */
   @js.native
   trait RootScope extends Scope {
-    // global variables
-    var statusCodes: js.Array[String] = js.native
-
     // global functions
     var getFullName: js.Function1[js.UndefOr[User], js.UndefOr[String]] = js.native
     var getStatusClass: js.Function1[js.UndefOr[Workload], js.UndefOr[String]] = js.native

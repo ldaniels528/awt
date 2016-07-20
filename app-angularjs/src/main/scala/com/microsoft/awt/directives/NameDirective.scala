@@ -56,19 +56,6 @@ trait NameDirectiveScope extends Scope {
 }
 
 /**
-  * Name Directive Scope Singleton
-  * @author lawrence.daniels@gmail.com
-  */
-object NameDirectiveScope {
-
-  def apply(): NameDirectiveScope = {
-    val scope = New[NameDirectiveScope]
-    scope.name = null
-    scope
-  }
-}
-
-/**
   * Name Directive Scope Template
   * @author lawrence.daniels@gmail.com
   */

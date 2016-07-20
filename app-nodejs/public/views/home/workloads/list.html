@@ -25,7 +25,7 @@
                               ng-click="selectWorkload(workload)">{{ workload.name }}</span>
                     </span>
                     <span ng-show="workload.active">
-                        <i  ng-class="getStatusIcon(workload)"></i>
+                        <workload-status code="{{ workload.statusCode }}"></workload-status>
                         <span class="sk_clickable" ng-click="selectWorkload(workload)">{{ workload.name }}</span>
                     </span>
                 </td>
@@ -107,8 +107,7 @@
                     <i class="fa fa-check-circle-o sk_completed"></i> Completed
                 </span>
                 <span ng-show="selectedWorkload.active">
-                    <i ng-class="getStatusIcon(selectedWorkload)"></i>
-                    <span ng-class="getStatusClass(selectedWorkload)">{{ selectedWorkload.statusCode | capitalize }}</span>
+                    <workload-status code="{{ selectedWorkload.statusCode }}" labeled="true"></workload-status>
                 </span>
             </td>
             <th class="col-md-2">Deployed Status</th>

@@ -4,17 +4,17 @@ import org.scalajs.angularjs.{Attributes, Compile}
 import org.scalajs.angularjs.sanitize.Sce
 import org.scalajs.angularjs.{Directive, JQLite, Scope}
 import org.scalajs.nodejs.util.ScalaJsHelper._
-import com.microsoft.awt.directives.CareerTalkDirective.Emoticons
+import com.microsoft.awt.directives.AwtPostDirective.Emoticons
 import com.microsoft.awt.models.Emoticon
 
 import scala.scalajs.js
 
 /**
-  * CareerTalk Directive
+  * AWT POST Directive
   * @author lawrence.daniels@gmail.com
-  * @example <careertalk text="post.text"></careertalk>
+  * @example <awt-post text="{{ post.text }}"></awt-post>
   */
-class CareerTalkDirective($compile: Compile, $sce: Sce) extends Directive[CareerTalkDirectiveScope] {
+class AwtPostDirective($compile: Compile, $sce: Sce) extends Directive[CareerTalkDirectiveScope] {
   override val restrict = "E"
   override val scope = js.Dynamic.literal(text = "=", callback = "&")
   override val transclude = true
@@ -70,7 +70,7 @@ class CareerTalkDirective($compile: Compile, $sce: Sce) extends Directive[Career
   * Post Directive Companion Object
   * @author lawrence.daniels@gmail.com
   */
-object CareerTalkDirective {
+object AwtPostDirective {
   var Emoticons = js.Array(
     new Emoticon(symbol = ":-@", uri = "icon_mrgreen.gif", tooltip = "Big Grin"),
     new Emoticon(symbol = ":-)", uri = "icon_smile.gif", tooltip = "Smile"),
@@ -106,19 +106,5 @@ trait CareerTalkDirectiveScope extends Scope {
 
   /// output fields
   var html: Any = js.native
-
-}
-
-/**
-  * CareerTalk Directive Scope Companion Object
-  * @author lawrence.daniels@gmail.com
-  */
-object CareerTalkDirectiveScope {
-
-  def apply(text: String) = {
-    val scope = New[CareerTalkDirectiveScope]
-    scope.text = text
-    scope
-  }
 
 }

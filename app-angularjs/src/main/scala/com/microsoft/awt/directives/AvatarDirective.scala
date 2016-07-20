@@ -1,9 +1,7 @@
 package com.microsoft.awt.directives
 
 import com.microsoft.awt.components.UserFactory
-import com.microsoft.awt.directives.AvatarDirective._
 import org.scalajs.angularjs._
-import org.scalajs.dom.browser.console
 import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
@@ -16,6 +14,8 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @example <avatar id="{{submitter._id }}" class="avatar-24"></avatar>
   */
 class AvatarDirective(@injected("UserFactory") userFactory: UserFactory) extends Directive[AvatarDirectiveScope] {
+  private val UNKNOWN_PERSON = "/assets/images/avatars/anonymous.png"
+
   override val restrict = "E"
   override val scope = new AvatarScopeTemplate(id = "@id", named = "@named", `class` = "@class", style = "@style")
   override val transclude = true
@@ -28,7 +28,7 @@ class AvatarDirective(@injected("UserFactory") userFactory: UserFactory) extends
 
   private def populateScope(scope: AvatarDirectiveScope, newValue: Any, oldValue: Any) {
     scope.id.flat foreach { id =>
-      if(id.nonEmpty) {
+      if (id.nonEmpty) {
         userFactory.getUserByID(id) foreach { user =>
           scope.$apply { () =>
             if (scope.named.isAssigned) scope.name = user.fullName
@@ -38,15 +38,6 @@ class AvatarDirective(@injected("UserFactory") userFactory: UserFactory) extends
       }
     }
   }
-
-}
-
-/**
-  * Avatar Directive Singleton
-  * @author lawrence.daniels@gmail.com
-  */
-object AvatarDirective {
-  private val UNKNOWN_PERSON = "/assets/images/avatars/anonymous.png"
 
 }
 
@@ -66,20 +57,6 @@ trait AvatarDirectiveScope extends Scope {
   var name: String = js.native
   var url: String = js.native
 
-}
-
-/**
-  * Avatar Directive Scope Singleton
-  * @author lawrence.daniels@gmail.com
-  */
-object AvatarDirectiveScope {
-
-  def apply(): AvatarDirectiveScope = {
-    val scope = New[AvatarDirectiveScope]
-    scope.name = null
-    scope.url = null
-    scope
-  }
 }
 
 /**

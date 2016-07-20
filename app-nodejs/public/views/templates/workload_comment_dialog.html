@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div style="padding-left: 10px">
-                    <i ng-class="getStatusIcon(workload)"></i>
+                    <workload-status code="{{ workload.statusCode }}"></workload-status>
                     <span class="bold">{{ workload.name }}</span>
                 </div>
 

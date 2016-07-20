@@ -49,8 +49,7 @@
                 <tr>
                     <th class="col-md-2">Opportunity Status</th>
                     <td class="col-md-4">
-                        <i ng-class="getStatusIcon(selectedWorkload)"></i>
-                        <span ng-class="getStatusClass(selectedWorkload)">{{ selectedWorkload.statusCode | capitalize }}</span>
+                        <workload-status code="{{ selectedWorkload.statusCode }}" labeled="true"></workload-status>
                     </td>
                     <th class="col-md-2">Deployed Status</th>
                     <td class="col-md-4">

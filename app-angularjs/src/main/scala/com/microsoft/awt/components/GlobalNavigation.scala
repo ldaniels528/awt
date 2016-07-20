@@ -20,9 +20,7 @@ trait GlobalNavigation {
   //      Home Navigation Functions
   ///////////////////////////////////////////////////////////////////////////
 
-  $scope.navigateToEvents = () => navigateToPath("/home/events")
-
-  $scope.navigateToGroup = (aId: js.UndefOr[String]) => aId.foreach(id =>navigateToPath(s"/home/groups/$id"))
+  $scope.navigateToGroup = (aId: js.UndefOr[String]) => aId.foreach(id => navigateToPath(s"/home/groups/$id"))
 
   $scope.navigateToHome = () => navigateToPath("/home")
 
@@ -52,7 +50,6 @@ trait GlobalNavigation {
 @js.native
 trait GlobalNavigationScope extends Scope {
   // home
-  var navigateToEvents: js.Function0[Unit] = js.native
   var navigateToGroup: js.Function1[js.UndefOr[String], Unit] = js.native
   var navigateToHome: js.Function0[Unit] = js.native
   var navigateToMessages: js.Function0[Unit] = js.native

@@ -53,6 +53,7 @@ object WorkloadDialog {
                                  @injected("UserService") userService: UserService,
                                  @injected("WorkloadService") statusService: WorkloadService) extends Controller {
 
+    $scope.statusCodes = js.Array("GREEN", "YELLOW", "RED")
     $scope.updating = updateWorkload.nonEmpty
     $scope.form = updateWorkload.map(WorkloadDialogForm.apply) getOrElse new WorkloadDialogForm()
     $scope.processing = false
@@ -195,6 +196,7 @@ object WorkloadDialog {
     // variables
     var form: WorkloadDialogForm = js.native
     var processing: Boolean = js.native
+    var statusCodes: js.Array[String] = js.native
     var updating: Boolean = js.native
     var users: js.Array[User] = js.native
 

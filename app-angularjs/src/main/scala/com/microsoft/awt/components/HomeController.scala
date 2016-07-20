@@ -40,18 +40,14 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
     )),
     new Menu("MY ACTIVITY", items = js.Array(
       MenuItem(text = "Newsfeed", iconClass = "fa fa-newspaper-o sk_news_feed", action = { () => $scope.navigateToNewsFeed() }: js.Function),
-      MenuItem(text = "Events", iconClass = "fa fa-calendar sk_calender", action = { () => $scope.navigateToEvents() }: js.Function),
       MenuItem(text = "Messages", iconClass = "fa fa-envelope-o sk_message", action = { () => $scope.navigateToMessages() }: js.Function),
       MenuItem(text = "Photos", iconClass = "fa fa-file-image-o sk_photo", action = { () => $scope.navigateToPhotos() }: js.Function)
     )),
+    new Menu("MY EVENTS", link = "#/home/events", items = js.Array(
+      MenuItem.include(src = "/assets/views/home/navigation/my_events.html")
+    )),
     new Menu("MY TEAMS", link = "#/home/groups/mine", items = js.Array(
       MenuItem.include(src = "/assets/views/home/navigation/my_groups.html")
-    )),
-    /*new Menu("OTHER TEAMS", link = "#/home/groups/others", items = js.Array(
-      MenuItem.include(src = "/assets/views/home/navigation/other_groups.html")
-    )),*/
-    new Menu("UPCOMING EVENTS", items = js.Array(
-      MenuItem.include(src = "/assets/views/home/navigation/my_events.html")
     ))
   )
 

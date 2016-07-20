@@ -26,7 +26,7 @@
                 <img class="home_news_image" ng-src="{{ post.summary.thumbnailUrl }}">
             </div>
             <div class="home_post_body">
-                <careertalk ng-hide="post.summary" text="post.text" callback="appendTag(tag)"></careertalk>
+                <awt-post ng-hide="post.summary" text="post.text" callback="appendTag(tag)"></awt-post>
 
                 <div>
                     <a ng-repeat="attachment in post.attachments"
