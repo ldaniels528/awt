@@ -182,7 +182,7 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
     $scope.loadingStart()
     val outcome = for {
       user <- userFactory.getUserByID(userID)
-      groups <- groupService.getInclusiveGroups(userID)
+      groups <- groupService.getGroupsOwnedByOrIncludeUser(userID)
       posts <- postService.getPostsByUserID(userID)
       enrichedPosts <- userFactory.enrich(posts)
     } yield (user, groups, enrichedPosts)

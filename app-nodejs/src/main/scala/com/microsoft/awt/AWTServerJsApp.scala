@@ -1,14 +1,15 @@
 package com.microsoft.awt
 
+import com.microsoft.awt.StringHelper._
 import com.microsoft.awt.routes._
 import org.scalajs.nodejs._
 import org.scalajs.nodejs.bodyparser._
-import org.scalajs.nodejs.express.csv.ExpressCSV
 import org.scalajs.nodejs.express.fileupload.ExpressFileUpload
 import org.scalajs.nodejs.express.{Express, Request, Response}
 import org.scalajs.nodejs.expressws.{ExpressWS, WsRouterExtensions}
-import org.scalajs.nodejs.global._
+import org.scalajs.nodejs.globals._
 import org.scalajs.nodejs.mongodb.MongoDB
+import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
@@ -27,18 +28,24 @@ object AWTServerJsApp extends js.JSApp {
     implicit val require = bootstrap.require
 
     // determine the port to listen on
-    val port = process.env.get("port").map(_.toInt) getOrElse 1337
-    val mongoServers = process.env.get("mongo_servers") getOrElse "localhost:27017"
+    val startTime = System.currentTimeMillis()
+    val port = (process.env.get("port") ?? process.env.get("PORT")) getOrElse "1337"
+    val connectionString = process.env.get("db_connection") getOrElse "mongodb://localhost:27017/msatool"
+
+    // catch any uncaught exceptions
+    process.onUncaughtException { err =>
+      console.error("An uncaught exception was fired:")
+      console.error(err.stack)
+    }
 
     console.log("Loading Express modules...")
     implicit val express = Express()
-    implicit val csv = ExpressCSV()
     implicit val app = express().withWsRouting
     implicit val wss = ExpressWS(app)
     implicit val fileUpload = ExpressFileUpload()
 
     console.log("Loading MongoDB module...")
-    implicit val mongodb = MongoDB()
+    implicit val mongo = MongoDB()
 
     // setup the body parsers
     console.log("Setting up body parsers...")
@@ -62,14 +69,14 @@ object AWTServerJsApp extends js.JSApp {
       next()
       response.onFinish(() => {
         val elapsedTime = System.currentTimeMillis() - startTime
-        console.log("[node] application - %s %s ~> %d [%d ms]", request.method, request.originalUrl, response.statusCode, elapsedTime)
+        val query = if (request.query.nonEmpty) (request.query map { case (k, v) => s"$k=$v" } mkString ",").limitTo(120) else "..."
+        console.log("[node] application - %s %s (%s) ~> %d [%d ms]", request.method, request.path, query, response.statusCode, elapsedTime)
       })
     })
 
     // setup mongodb connection
-    val mongoUrl = s"mongodb://$mongoServers/msatool"
-    console.log("Connecting to %s", mongoUrl)
-    val dbFuture = mongodb.MongoClient.connectFuture(mongoUrl)
+    console.log("Connecting to '%s'...", connectionString)
+    val dbFuture = mongo.MongoClient.connectFuture(connectionString)
 
     // setup searchable entity routes
     EventRoutes.init(app, dbFuture)
@@ -89,14 +96,8 @@ object AWTServerJsApp extends js.JSApp {
     AuthenticationRoutes.init(app, dbFuture)
     SessionRoutes.init(app, dbFuture)
 
-    // catch any uncaught exceptions
-    process.on("uncaughtException", (err: errors.Error) => {
-      console.error(err.stack)
-      console.log("Node NOT Exiting...")
-    })
-
     // start the listener
-    app.listen(port, () => console.log("Server now listening on port %d", port))
+    app.listen(port, () => console.log("Server now listening on port %s [%d msec]", port, System.currentTimeMillis() - startTime))
     ()
   }
 

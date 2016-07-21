@@ -5,7 +5,7 @@ import sbt.Project.projectToRef
 import sbt._
 
 val appVersion = "0.1.0"
-val meanjsVersion = "0.2.1"
+val meanjsVersion = "0.2.1.1"
 
 val _scalaVersion = "2.11.8"
 val paradisePluginVersion = "3.0.0-M1"

@@ -3,7 +3,9 @@ package com.microsoft.awt.components
 import com.microsoft.awt.models.Group
 import org.scalajs.angularjs.Service
 import org.scalajs.angularjs.http.Http
+import org.scalajs.nodejs.util.ScalaJsHelper._
 
+import scala.concurrent.ExecutionContext
 import scala.scalajs.js
 
 /**
@@ -27,12 +29,24 @@ class GroupService($http: Http) extends Service {
   def getGroups(maxResults: Int = 20) = $http.get[js.Array[Group]](s"/api/groups?maxResults=$maxResults")
 
   /**
+    * Retrieves all groups that are owned by or include a specific user
+    * @param userID     the given member (user) ID
+    * @param maxResults the maximum number of results to return
+    * @return a promise of an array of [[com.microsoft.awt.models.Group groups]]
+    */
+  def getGroupsOwnedByOrIncludeUser(userID: String, maxResults: Int = 100)(implicit ec: ExecutionContext) = {
+    getGroups(maxResults).map(_.filter(group => group.owner.contains(userID) || group.members.exists(_.contains(userID))))
+  }
+
+  /**
     * Retrieves all groups that include a specific user
     * @param userID     the given member (user) ID
     * @param maxResults the maximum number of results to return
     * @return a promise of an array of [[com.microsoft.awt.models.Group groups]]
     */
-  def getInclusiveGroups(userID: String, maxResults: Int = 20) = $http.get[js.Array[Group]](s"/api/groups/include/$userID?maxResults=$maxResults")
+  def getGroupsIncludingUser(userID: String, maxResults: Int = 20) = {
+    $http.get[js.Array[Group]](s"/api/groups/user/$userID/in?maxResults=$maxResults")
+  }
 
   /**
     * Retrieves all groups that do not contain a specific user
@@ -40,6 +54,8 @@ class GroupService($http: Http) extends Service {
     * @param maxResults the maximum number of results to return
     * @return a promise of an array of [[com.microsoft.awt.models.Group groups]]
     */
-  def getExclusiveGroups(userID: String, maxResults: Int = 20) = $http.get[js.Array[Group]](s"/api/groups/exclude/$userID?maxResults=$maxResults")
+  def getGroupsExcludingUser(userID: String, maxResults: Int = 20) = {
+    $http.get[js.Array[Group]](s"/api/groups/user/$userID/nin?maxResults=$maxResults")
+  }
 
 }

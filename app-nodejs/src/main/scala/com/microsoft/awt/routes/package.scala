@@ -1,7 +1,8 @@
 package com.microsoft.awt
 
-import org.scalajs.nodejs.mongodb.{FindAndUpdateOptions, _}
+import com.microsoft.awt.models.{Workload, WorkloadLike}
 import org.scalajs.nodejs.express.Response
+import org.scalajs.nodejs.mongodb.{FindAndUpdateOptions, _}
 
 import scala.concurrent.ExecutionContext
 import scala.scalajs.js
@@ -91,6 +92,29 @@ package object routes {
       val message = s"Bad Request: ${params.mkString(" and ")} ${if (params.length == 1) "is" else "are"} required"
       response.status(400).send(message)
     }
+
+    @inline
+    def sendCSV(workloads: js.Array[Workload]) = {
+      response.setContentType("text/csv")
+      response.writeHead(200)
+      response.end(toCSVData(workloads))
+    }
+
+    private def toCSVData[T](workloads: js.Array[_ <: WorkloadLike[T]]) = {
+      val headings = workloads.headOption.map(_.asKeyValues).map(_.keys.filterNot(_ == "_id")) getOrElse Nil
+      val data = workloads map { workload =>
+        headings.map(k => asString(workload.asKeyValues(k))).mkString(",")
+      }
+      data.prepend(headings.map(asString(_)).mkString(","))
+      data.mkString("\n")
+    }
+
+    private def asString(value: js.Any): String = value match {
+      case v if v == null => ""
+      case v if js.typeOf(v) == "string" => s""""${v.toString}""""
+      case v => v.toString
+    }
+
   }
 
 }

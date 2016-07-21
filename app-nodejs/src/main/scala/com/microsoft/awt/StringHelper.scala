@@ -37,6 +37,8 @@ object StringHelper {
       case index => Some(index)
     }
 
+    def limitTo(length: Int) = if(text.length > length) text.take(length) + "..." else text
+
     def unquote = text match {
       case s if s.startsWith("\"") && s.endsWith("\"") => s.drop(1).dropRight(1)
       case s => s

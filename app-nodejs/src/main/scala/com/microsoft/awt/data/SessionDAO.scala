@@ -25,7 +25,7 @@ object SessionDAO {
   implicit class SessionDAOEnrichment(val sessionDAO: SessionDAO) extends AnyVal {
 
     def findAndUpdateByID(sessionID: String)(implicit mongodb: MongoDB) =  {
-      sessionDAO.findOneAndUpdate(filter = "_id" $eq sessionID.$oid, update = $set("lastUpdated" -> new js.Date()))
+      sessionDAO.findOneAndUpdate(filter = "_id" $eq sessionID.$oid, update = $set("lastUpdated" -> js.Date.now()))
     }
 
   }

@@ -43,7 +43,6 @@ object AuthenticationRoutes {
       val outcome = for {
         userOpt <- userDAO.flatMap(_.findAndUpdateByEmail(form.username.orNull, form.primaryEmail.orNull))
         user = userOpt getOrElse die(s"Account not found")
-       _ = console.log("user = %j", user)
         writeResult <- credentialDAO.flatMap(_.insert(new CredentialData(username = user.username, md5Password = form.password0, creationTime = new js.Date())))
         _ = if (!writeResult.isOk) die(s"Account could not be activated")
         sessionOpt <- sessionDAO.flatMap(_.insert(toSession(user)) map {
@@ -55,10 +54,7 @@ object AuthenticationRoutes {
       outcome onComplete {
         case Success(Some(session)) => response.send(session)
         case Success(_) => response.badRequest("Your account could not be activated")
-        case Failure(e) =>
-          e.printStackTrace()
-          response.internalServerError(e);
-          next()
+        case Failure(e) => e.printStackTrace(); response.internalServerError(e); next()
       }
     }
     else {
@@ -101,7 +97,7 @@ object AuthenticationRoutes {
 
     // get the JSON body as a login form instance
     request.bodyAs[LoginForm] match {
-      case form if form.username.nonAssigned => response.badRequest("The screen name is required"); next()
+      case form if form.username.nonAssigned => response.badRequest("The username is required"); next()
       case form if form.password.nonAssigned => response.badRequest("The password is required"); next()
       case form =>
         val (username, password) = (form.username.orNull, form.password.orNull)
@@ -110,13 +106,26 @@ object AuthenticationRoutes {
         val outcome = for {
           credentialOpt <- credentialDAO.flatMap(_.findByUsername(username))
           userOpt <- userDAO.flatMap(_.findByUsername(username))
-          sessionOpt <- verifyCredentials(sessionID, username, password, credentialOpt, userOpt)
-        } yield sessionOpt
+          verified = verifyCredentials(sessionID, username, password, credentialOpt)
+          sessionOpt <- if (verified) {
+            console.log("Updating session # %s ...", sessionID)
+            sessionDAO.flatMap(_.findAndUpdateByID(sessionID) map {
+              case result if result.isOk => result.valueAs[Session]
+              case result => console.error("The session could not be found"); None
+            })
+          }
+          else Future.successful(None)
+        } yield (verified, sessionOpt)
 
         outcome onComplete {
-          case Success(Some(session)) => response.send(session); next()
-          case Success(None) => response.badRequest("Either the username or password was invalid"); next()
-          case Failure(e) => response.internalServerError(e); next()
+          case Success((verified, Some(session))) => response.send(session); next()
+          case Success((verified, None)) =>
+            val message = if (!verified) "Either the username or password is invalid" else "The session could not be found"
+            response.badRequest(message)
+            next()
+          case Failure(e) =>
+            response.internalServerError(e)
+            next()
         }
     }
   }
@@ -140,27 +149,21 @@ object AuthenticationRoutes {
     * @param password  the given password
     * @return a promise of an option of a Session
     */
-  private def verifyCredentials(sessionID: String, username: String, password: String,
-                                credentialOpt: Option[CredentialData],
-                                userOpt: Option[User])(implicit ec: ExecutionContext, md5: MD5, mongo: MongoDB, sessionDAO: Future[SessionDAO]): Future[Option[Session]] = {
+  private def verifyCredentials(sessionID: String, username: String, password: String, credentialOpt: Option[CredentialData])(implicit ec: ExecutionContext, md5: MD5): Boolean = {
     (for {
       credential <- credentialOpt
-      user <- userOpt
     } yield {
       // verify the password
       val checkPassword = md5(sessionID + credential.md5Password)
       if (password == checkPassword) {
         console.log(s"User '$username' password matched")
-        sessionDAO.flatMap(_.findAndUpdateByID(sessionID) map {
-          case result if result.isOk => result.valueAs[Session]
-          case result => die("The session could not be found")
-        })
+        true
       }
       else {
         console.error(s"User '$username' password didn't match")
-        Future.successful(None)
+        false
       }
-    }) getOrElse Future.successful(None)
+    }) getOrElse false
   }
 
   private def toSession(user: User) = new Session(
@@ -169,6 +172,7 @@ object AuthenticationRoutes {
     primaryEmail = user.primaryEmail,
     avatarURL = user.avatarURL,
     creationTime = new js.Date(),
+    lastUpdated = js.Date.now(),
     isAnonymous = false
   )
 

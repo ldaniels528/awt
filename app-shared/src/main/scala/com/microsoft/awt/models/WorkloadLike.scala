@@ -34,23 +34,13 @@ trait WorkloadLike[T] extends js.Object {
   */
 object WorkloadLike {
 
-  def toCSVArray[T](workloads: js.Array[_ <: WorkloadLike[T]]) = {
-    val headings = workloads.headOption.map(_.asInstanceOf[js.Dictionary[Any]]).map(_.keys.filterNot(_ == "_id").toList) getOrElse Nil
-    val data = workloads.map { workload =>
-      val dict = workload.asInstanceOf[js.Dictionary[js.Any]]
-      js.Array(headings.map(k => asString(dict.get(k).orNull)): _*)
-    }
-    data.prepend(js.Array(headings: _*))
-    data
-  }
-
-  private def asString(value: Any) = if (value == null) "" else value.toString
-
   /**
     * Workload Like Extensions
     * @param workload the given [[WorkloadLike workload-like]] instance
     */
   implicit class WorkloadLikeExtensions[A](val workload: WorkloadLike[A]) extends AnyVal {
+
+    def asKeyValues = workload.asInstanceOf[js.Dictionary[js.Any]]
 
   }
 

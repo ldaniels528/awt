@@ -24,13 +24,13 @@ object GroupRoutes {
     implicit val groupDAO = dbFuture.flatMap(_.getGroupDAO)
 
     // Group CRUD
-    app.get("/api/group", (request: Request, response: Response, next: NextFunction) => getGroupByEntity(request, response, next))
     app.post("/api/group", (request: Request, response: Response, next: NextFunction) => createGroup(request, response, next))
     app.get("/api/group/:groupID", (request: Request, response: Response, next: NextFunction) => getGroupByID(request, response, next))
 
+    // Group Collections
     app.get("/api/groups", (request: Request, response: Response, next: NextFunction) => getGroups(request, response, next))
-    app.get("/api/groups/include/:userID", (request: Request, response: Response, next: NextFunction) => getInclusiveGroups(request, response, next))
-    app.get("/api/groups/exclude/:userID", (request: Request, response: Response, next: NextFunction) => getExclusiveGroups(request, response, next))
+    app.get("/api/groups/user/:userID/in", (request: Request, response: Response, next: NextFunction) => getInclusiveGroups(request, response, next))
+    app.get("/api/groups/user/:userID/nin", (request: Request, response: Response, next: NextFunction) => getExclusiveGroups(request, response, next))
   }
 
   /**
@@ -56,29 +56,6 @@ object GroupRoutes {
     groupDAO.flatMap(_.findOneFuture[Group]("_id" $eq groupID.$oid)) onComplete {
       case Success(Some(group)) => response.send(group); next()
       case Success(None) => response.notFound(); next()
-      case Failure(e) => response.internalServerError(e); next()
-    }
-  }
-
-  /**
-    * Retrieve a group by entity (ID or name)
-    */
-  def getGroupByEntity(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, groupDAO: Future[GroupDAO]) = {
-    val form = request.queryAs[GroupForm]
-    val query = (form.name.map("name" $eq _: js.Any) ?? form.id.map("_id" $eq _.$oid)).toOption
-    groupDAO map { coll =>
-      query.map(coll.findOneFuture[Group](_)) match {
-        case Some(task) =>
-          task onComplete {
-            case Success(Some(group)) => response.send(group)
-            case Success(None) => response.notFound()
-            case Failure(e) => response.internalServerError(e)
-          }
-        case None =>
-          response.badRequest("Expected 'name' or 'id' parameters")
-      }
-    } onComplete {
-      case Success(_) => next()
       case Failure(e) => response.internalServerError(e); next()
     }
   }

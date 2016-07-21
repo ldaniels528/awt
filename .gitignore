@@ -20,3 +20,5 @@ awt-angularjs-launcher.js
 awt-angularjs-fastopt.js
 awt-angularjs-fastopt.js.map
 app-nodejs/scratch
+awt-angularjs-opt.js
+app-nodejs/awt.js

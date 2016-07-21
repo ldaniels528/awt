@@ -4,9 +4,8 @@ import com.microsoft.awt.data.GroupDAO._
 import com.microsoft.awt.data.WorkloadDAO._
 import com.microsoft.awt.data.WorkloadData._
 import com.microsoft.awt.data.{GroupDAO, WorkloadDAO, WorkloadData}
-import com.microsoft.awt.models.{Group, Workload, WorkloadLike}
+import com.microsoft.awt.models.{Group, Workload}
 import org.scalajs.nodejs.NodeRequire
-import org.scalajs.nodejs.express.csv.CSVResponse
 import org.scalajs.nodejs.express.{Application, Request, Response}
 import org.scalajs.nodejs.mongodb._
 import org.scalajs.nodejs.util.ScalaJsHelper._
@@ -32,12 +31,12 @@ object WorkloadRoutes {
 
     // workload state
     app.delete("/api/workload/:workloadID/active", (request: Request, response: Response, next: NextFunction) => deactivateWorkload(request, response, next))
-    app.put("/api/workload/:workloadID/active", (request: Request, response: Response, next: NextFunction) => reopenWorkload(request, response, next))
+    app.put("/api/workload/:workloadID/active", (request: Request, response: Response, next: NextFunction) => activateWorkload(request, response, next))
 
     // workload dataloads
-    app.get("/api/workloads/download/:fileName", (request: Request, response: Response with CSVResponse, next: NextFunction) => downloadWorkloads(request, response, next))
-    app.get("/api/workloads/download/:groupID/group/:fileName", (request: Request, response: Response with CSVResponse, next: NextFunction) => downloadWorkloadsByGroup(request, response, next))
-    app.get("/api/workloads/download/:userID/user/:fileName", (request: Request, response: Response with CSVResponse, next: NextFunction) => downloadWorkloadsByUser(request, response, next))
+    app.get("/api/workloads/download/:fileName", (request: Request, response: Response, next: NextFunction) => downloadWorkloads(request, response, next))
+    app.get("/api/workloads/download/:groupID/group/:fileName", (request: Request, response: Response, next: NextFunction) => downloadWorkloadsByGroup(request, response, next))
+    app.get("/api/workloads/download/:userID/user/:fileName", (request: Request, response: Response, next: NextFunction) => downloadWorkloadsByUser(request, response, next))
 
     // status CRUD
     app.delete("/api/workload/:workloadID/status/:statusID", (request: Request, response: Response, next: NextFunction) => deleteStatus(request, response, next))
@@ -45,8 +44,8 @@ object WorkloadRoutes {
 
     // collection of workloads
     app.get("/api/workloads", (request: Request, response: Response, next: NextFunction) => getWorkloads(request, response, next))
-    app.get("/api/workloads/group/:groupID", (request: Request, response: Response with CSVResponse, next: NextFunction) => getWorkloadsByGroup(request, response, next))
-    app.get("/api/workloads/user/:userID", (request: Request, response: Response with CSVResponse, next: NextFunction) => getWorkloadsByUser(request, response, next))
+    app.get("/api/workloads/group/:groupID", (request: Request, response: Response, next: NextFunction) => getWorkloadsByGroup(request, response, next))
+    app.get("/api/workloads/user/:userID", (request: Request, response: Response, next: NextFunction) => getWorkloadsByUser(request, response, next))
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -106,6 +105,22 @@ object WorkloadRoutes {
     }
   }
 
+  /**
+    * Re-opens a deactivated (closed) workload
+    * @example PUT /api/workload/5633c756d9d5baa77a7143a1/active
+    */
+  def activateWorkload(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, workloadDAO: Future[WorkloadDAO]) = {
+    val workloadID = request.params("workloadID")
+    workloadDAO.flatMap(_.updateOne(filter = doc("_id" -> workloadID.$oid), update = $set(doc("active" -> true, "lastUpdatedTime" -> new js.Date())))) onComplete {
+      case Success(result) => response.send(result); next()
+      case Failure(e) => response.internalServerError(e); next()
+    }
+  }
+
+  /**
+    * Deactivates (closes) a workload
+    * @example DELETE /api/workload/5633c756d9d5baa77a7143a1/active
+    */
   def deactivateWorkload(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, workloadDAO: Future[WorkloadDAO]) = {
     val workloadID = request.params("workloadID")
     workloadDAO.flatMap(_.updateOne(filter = doc("_id" -> workloadID.$oid), update = $set(doc("active" -> false, "lastUpdatedTime" -> new js.Date())))) onComplete {
@@ -118,9 +133,9 @@ object WorkloadRoutes {
     * Downloads all workloads as CSV
     * @example GET /api/workloads/download/workloads.txt
     */
-  def downloadWorkloads(request: Request, response: Response with CSVResponse, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, workloadDAO: Future[WorkloadDAO]) = {
+  def downloadWorkloads(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, workloadDAO: Future[WorkloadDAO]) = {
     workloadDAO.flatMap(_.find().toArrayFuture[Workload]) onComplete {
-      case Success(workloads) => response.csv(WorkloadLike.toCSVArray(workloads)); next()
+      case Success(workloads) => response.sendCSV(workloads); next()
       case Failure(e) => response.internalServerError(e); next()
     }
   }
@@ -129,10 +144,10 @@ object WorkloadRoutes {
     * Downloads all workloads by group as CSV
     * @example GET /api/workloads/download/group/57885301a1750741df1f402f/workloads.txt
     */
-  def downloadWorkloadsByGroup(request: Request, response: Response with CSVResponse, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, groupDAO: Future[GroupDAO], workloadDAO: Future[WorkloadDAO]) = {
+  def downloadWorkloadsByGroup(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, groupDAO: Future[GroupDAO], workloadDAO: Future[WorkloadDAO]) = {
     val groupID = request.params("groupID")
     findWorkloadsByGroup(groupID, isActiveOnly(request)) onComplete {
-      case Success(workloads) => response.csv(WorkloadLike.toCSVArray(workloads)); next()
+      case Success(workloads) => response.sendCSV(workloads); next()
       case Failure(e) => response.internalServerError(e); next()
     }
   }
@@ -141,31 +156,23 @@ object WorkloadRoutes {
     * Downloads all workloads by user as CSV
     * @example GET /api/workloads/download/user/57885301a1750741df1f402f/workloads.txt
     */
-  def downloadWorkloadsByUser(request: Request, response: Response with CSVResponse, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, groupDAO: Future[GroupDAO], workloadDAO: Future[WorkloadDAO]) = {
+  def downloadWorkloadsByUser(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, groupDAO: Future[GroupDAO], workloadDAO: Future[WorkloadDAO]) = {
     val userID = request.params("userID")
     findWorkloadsByUser(userID, isActiveOnly(request)) onComplete {
-      case Success(workloads) => response.csv(WorkloadLike.toCSVArray(workloads)); next()
+      case Success(workloads) => response.sendCSV(workloads); next()
       case Failure(e) => response.internalServerError(e); next()
     }
   }
 
   /**
     * Retrieve a workload by ID
-    * @example GET /api/workload/5633c756d9d5baa77a714803
+    * @example GET /api/workload/5633c756d9d5baa77a7143a1
     */
   def getWorkloadByID(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, workloadDAO: Future[WorkloadDAO]) = {
     val workloadID = request.params("workloadID")
     workloadDAO.flatMap(_.findById[WorkloadData](workloadID)) onComplete {
       case Success(Some(workload)) => response.send(workload); next()
       case Success(None) => response.notFound(); next()
-      case Failure(e) => response.internalServerError(e); next()
-    }
-  }
-
-  def reopenWorkload(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, workloadDAO: Future[WorkloadDAO]) = {
-    val workloadID = request.params("workloadID")
-    workloadDAO.flatMap(_.updateOne(filter = doc("_id" -> workloadID.$oid), update = $set(doc("active" -> true, "lastUpdatedTime" -> new js.Date())))) onComplete {
-      case Success(result) => response.send(result); next()
       case Failure(e) => response.internalServerError(e); next()
     }
   }
