@@ -89,6 +89,12 @@ object AWTServerJsApp extends js.JSApp {
     AuthenticationRoutes.init(app, dbFuture)
     SessionRoutes.init(app, dbFuture)
 
+    // catch any uncaught exceptions
+    process.on("uncaughtException", (err: errors.Error) => {
+      console.error(err.stack)
+      console.log("Node NOT Exiting...")
+    })
+
     // start the listener
     app.listen(port, () => console.log("Server now listening on port %d", port))
     ()
