@@ -17,23 +17,18 @@ scalacOptions ++= Seq("-deprecation", "-encoding", "UTF-8", "-feature", "-target
 
 javacOptions ++= Seq("-Xlint:deprecation", "-Xlint:unchecked", "-source", "1.8", "-target", "1.8", "-g:vars")
 
-val scalaJsOutputDir = Def.settingKey[File]("Directory for Javascript files output by ScalaJS")
+lazy val copyjs = TaskKey[Unit]("copyjs", "Copy javascript files to root directory")
+copyjs := {
+  val inDir = baseDirectory.value / "app-nodejs" / "target" / "scala-2.11"
+  val outDir = baseDirectory.value
+  val files = Seq("awt-nodejs-fastopt.js", "awt-nodejs-fastopt.js.map") map { p => (inDir / p, outDir / p) }
+  IO.copy(files, overwrite = true)
+}
 
-lazy val root = (project in file("."))
-  .aggregate(nodejs)
-  .settings(
-    name := "awt",
-    organization := "com.microsoft",
-    version := appVersion,
-    scalaVersion := _scalaVersion
-  )
-
-val jsCommonSettings = Seq(
+lazy val jsCommonSettings = Seq(
   scalaVersion := _scalaVersion,
   scalacOptions ++= Seq("-feature", "-deprecation"),
-  scalacOptions in(Compile, doc) ++= Seq(
-    "-no-link-warnings" // Suppresses problems with Scaladoc @throws links
-  ),
+  scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
   relativeSourceMaps := true,
   persistLauncher := true,
   persistLauncher in Test := false,
@@ -44,8 +39,22 @@ val jsCommonSettings = Seq(
     "be.doeraene" %%% "scalajs-jquery" % scalaJsJQueryVersion,
     "org.scala-js" %%% "scalajs-dom" % scalaJsDomVersion,
     "org.scala-lang" % "scala-reflect" % _scalaVersion
-  )
-)
+  ))
+
+lazy val root = (project in file("."))
+  .dependsOn(angularjs, nodejs)
+  .enablePlugins(ScalaJSPlugin, ScalaJSPlay)
+  .settings(
+    name := "awt",
+    organization := "com.microsoft",
+    version := appVersion,
+    scalaVersion := _scalaVersion,
+    compile in Compile <<=
+      (compile in Compile) dependsOn (fastOptJS in(angularjs, Compile)),
+    ivyScala := ivyScala.value map (_.copy(overrideScalaVersion = true)),
+    Seq(packageScalaJSLauncher, fastOptJS, fullOptJS) map { packageJSKey =>
+      crossTarget in(angularjs, Compile, packageJSKey) := baseDirectory.value / "public" / "javascripts"
+    })
 
 lazy val angularjs = (project in file("app-angularjs"))
   .aggregate(shared)
@@ -56,6 +65,8 @@ lazy val angularjs = (project in file("app-angularjs"))
     name := "awt-angularjs",
     organization := "com.microsoft",
     version := appVersion,
+    pipelineStages := Seq(gzip, scalaJSProd),
+    relativeSourceMaps := true,
     libraryDependencies ++= Seq(
       "com.github.ldaniels528" %%% "scalajs-angularjs-core" % meanjsVersion,
       "com.github.ldaniels528" %%% "scalajs-angularjs-animate" % meanjsVersion,
@@ -66,12 +77,11 @@ lazy val angularjs = (project in file("app-angularjs"))
       "com.github.ldaniels528" %%% "scalajs-angularjs-toaster" % meanjsVersion,
       "com.github.ldaniels528" %%% "scalajs-angularjs-ui-bootstrap" % meanjsVersion,
       "com.github.ldaniels528" %%% "scalajs-angularjs-ui-router" % meanjsVersion
-    )
-  )
+    ))
 
 lazy val nodejs = (project in file("app-nodejs"))
-  .aggregate(angularjs)
-  .dependsOn(angularjs)
+  .aggregate(shared)
+  .dependsOn(shared)
   .enablePlugins(ScalaJSPlugin, ScalaJSPlay)
   .settings(jsCommonSettings: _*)
   .settings(
@@ -80,12 +90,6 @@ lazy val nodejs = (project in file("app-nodejs"))
     version := appVersion,
     pipelineStages := Seq(gzip, scalaJSProd),
     relativeSourceMaps := true,
-    Seq(packageScalaJSLauncher, fastOptJS, fullOptJS) map { packageJSKey =>
-      crossTarget in(angularjs, Compile, packageJSKey) := baseDirectory.value / "public" / "javascripts"
-    },
-    compile in Compile <<=
-      (compile in Compile) dependsOn (fastOptJS in(angularjs, Compile)),
-    ivyScala := ivyScala.value map (_.copy(overrideScalaVersion = true)),
     libraryDependencies ++= Seq(
       "com.github.ldaniels528" %%% "scalajs-nodejs-mean-bundle-minimal" % meanjsVersion,
       "com.github.ldaniels528" %%% "scalajs-nodejs-bcrypt" % meanjsVersion,
@@ -93,20 +97,21 @@ lazy val nodejs = (project in file("app-nodejs"))
       "com.github.ldaniels528" %%% "scalajs-nodejs-express-csv" % meanjsVersion,
       "com.github.ldaniels528" %%% "scalajs-nodejs-pvorb-md5" % meanjsVersion,
       "com.github.ldaniels528" %%% "scalajs-nodejs-request" % meanjsVersion
-    )
-  )
+    ))
 
 lazy val shared = (project in file("app-shared"))
   .enablePlugins(ScalaJSPlugin, ScalaJSPlay)
   .settings(jsCommonSettings: _*)
   .settings(
-    name := "awt-commonjs",
+    name := "awt-shared",
     organization := "com.microsoft",
     version := appVersion,
     libraryDependencies ++= Seq(
       "com.github.ldaniels528" %%% "scalajs-common" % meanjsVersion
-    )
-  )
+    ))
+
+// add the alias
+addCommandAlias("fastOptJSPlus", ";fastOptJS;copyjs")
 
 // loads the jvm project at sbt startup
 onLoad in Global := (Command.process("project root", _: State)) compose (onLoad in Global).value

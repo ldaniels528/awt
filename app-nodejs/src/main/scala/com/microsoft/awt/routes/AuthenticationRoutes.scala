@@ -6,8 +6,7 @@ import com.microsoft.awt.data.UserDAO._
 import com.microsoft.awt.data._
 import com.microsoft.awt.forms.AccountActivationForm
 import com.microsoft.awt.models.{AuthToken, Session, User}
-import org.scalajs.dom.browser.console
-import org.scalajs.nodejs.NodeRequire
+import org.scalajs.nodejs.{NodeRequire, console}
 import org.scalajs.nodejs.express.{Application, Request, Response}
 import org.scalajs.nodejs.mongodb._
 import org.scalajs.nodejs.pvorb.md5.MD5

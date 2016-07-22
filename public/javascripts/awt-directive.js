@@ -1,5 +1,5 @@
 /**
- * Compile Direcive
+ * AWT Direcives
  * @author lawrence.daniels@gmail.com
  */
 (function() {

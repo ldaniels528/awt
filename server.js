@@ -1,9 +1,9 @@
 /**
- * AWT ScalaJS Development Server Bootstrap
+ * AWT ScalaJS Production Server Bootstrap
  * @author: lawrence.daniels@gmail.com
  */
 (function () {
-    require("./target/scala-2.11/awt-nodejs-opt.js");
+    require("./awt-nodejs-fastopt.js");
     const facade = com.microsoft.awt.AWTServerJsApp();
     facade.startServer({
         "__dirname": __dirname,

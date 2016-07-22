@@ -12,13 +12,11 @@ src_managed/
 project/boot/
 project/plugins/project/
 
+# Project specific
+bower_components
+node_modules
+scratch
+
 # Scala-IDE specific
 .scala_dependencies
 .worksheet
-awt.zip
-awt-angularjs-launcher.js
-awt-angularjs-fastopt.js
-awt-angularjs-fastopt.js.map
-app-nodejs/scratch
-awt-angularjs-opt.js
-app-nodejs/awt.js
