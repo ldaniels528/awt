@@ -23,20 +23,16 @@ class AvatarDirective(@injected("UserFactory") userFactory: UserFactory) extends
   override val template = """<img ng-src="{{ url }}" class="{{ class }}" style="{{ style }}"> {{ name }}"""
 
   override def link(scope: AvatarDirectiveScope, element: JQLite, attrs: Attributes) = {
-    scope.$watch("id", (newValue: Any, oldValue: Any) => populateScope(scope, newValue, oldValue))
-  }
-
-  private def populateScope(scope: AvatarDirectiveScope, newValue: Any, oldValue: Any) {
-    scope.id.flat foreach { id =>
-      if (id.nonEmpty) {
-        userFactory.getUserByID(id) foreach { user =>
+    scope.$watch("id", (newValue: js.UndefOr[String], oldValue: js.UndefOr[String]) => {
+      newValue.flat foreach { case userID if userID.nonEmpty =>
+        userFactory.getUserByID(userID) foreach { user =>
           scope.$apply { () =>
             if (scope.named.isAssigned) scope.name = user.fullName
             scope.url = user.avatarURL getOrElse UNKNOWN_PERSON
           }
         }
       }
-    }
+    })
   }
 
 }
@@ -64,4 +60,7 @@ trait AvatarDirectiveScope extends Scope {
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class AvatarScopeTemplate(val id: js.UndefOr[String], val named: js.UndefOr[String], val `class`: js.UndefOr[String], val style: js.UndefOr[String]) extends js.Object
+class AvatarScopeTemplate(val id: js.UndefOr[String],
+                          val named: js.UndefOr[String],
+                          val `class`: js.UndefOr[String],
+                          val style: js.UndefOr[String]) extends js.Object
