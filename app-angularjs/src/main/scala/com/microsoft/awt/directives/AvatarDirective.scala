@@ -24,13 +24,15 @@ class AvatarDirective(@injected("UserFactory") userFactory: UserFactory) extends
 
   override def link(scope: AvatarDirectiveScope, element: JQLite, attrs: Attributes) = {
     scope.$watch("id", (newValue: js.UndefOr[String], oldValue: js.UndefOr[String]) => {
-      newValue.flat foreach { case userID if userID.nonEmpty =>
-        userFactory.getUserByID(userID) foreach { user =>
-          scope.$apply { () =>
-            if (scope.named.isAssigned) scope.name = user.fullName
-            scope.url = user.avatarURL getOrElse UNKNOWN_PERSON
+      newValue.flat foreach {
+        case userID if userID.nonEmpty =>
+          userFactory.getUserByID(userID) foreach { user =>
+            scope.$apply { () =>
+              if (scope.named.isAssigned) scope.name = user.fullName
+              scope.url = user.avatarURL getOrElse UNKNOWN_PERSON
+            }
           }
-        }
+        case _ =>
       }
     })
   }

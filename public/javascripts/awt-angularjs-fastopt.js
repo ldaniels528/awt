@@ -8211,14 +8211,14 @@ function $h_Lcom_microsoft_awt_components_GroupService() {
   /*<skip>*/
 }
 $h_Lcom_microsoft_awt_components_GroupService.prototype = $c_Lcom_microsoft_awt_components_GroupService.prototype;
-$c_Lcom_microsoft_awt_components_GroupService.prototype.init___Lorg_scalajs_angularjs_http_Http = (function($$http) {
-  this.$$http$1 = $$http;
-  return this
-});
 $c_Lcom_microsoft_awt_components_GroupService.prototype.getGroupsOwnedByOrIncludeUser__T__I__s_concurrent_ExecutionContext__s_concurrent_Future = (function(userID, maxResults, ec) {
   var this$1 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.getGroups__I__Lorg_scalajs_angularjs_http_HttpResponse(maxResults));
   var f = new $c_Lcom_microsoft_awt_components_GroupService$$anonfun$getGroupsOwnedByOrIncludeUser$1().init___Lcom_microsoft_awt_components_GroupService__T(this, userID);
   return $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$1, f, ec)
+});
+$c_Lcom_microsoft_awt_components_GroupService.prototype.init___Lorg_scalajs_angularjs_http_Http = (function($$http) {
+  this.$$http$1 = $$http;
+  return this
 });
 $c_Lcom_microsoft_awt_components_GroupService.prototype.getGroups__I__Lorg_scalajs_angularjs_http_HttpResponse = (function(maxResults) {
   return this.$$http$1.get(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["/api/groups?maxResults=", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([maxResults])))
@@ -30004,8 +30004,6 @@ $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$
     var f = new $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3().init___Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2(this);
     var executor = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
     $s_s_concurrent_Future$class__foreach__s_concurrent_Future__F1__s_concurrent_ExecutionContext__V(this$3, f, executor)
-  } else {
-    throw new $c_s_MatchError().init___O(x0$1)
   }
 });
 $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2.prototype.init___Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1 = (function($$outer) {
