@@ -26,10 +26,13 @@ class AvatarDirective(@injected("UserFactory") userFactory: UserFactory) extends
     scope.$watch("id", (newValue: js.UndefOr[String], oldValue: js.UndefOr[String]) => {
       newValue.flat foreach {
         case userID if userID.nonEmpty =>
+          scope.url = "/assets/images/status/loading16.gif"
+          if (scope.named.isAssigned) scope.name = "Loading..."
+
           userFactory.getUserByID(userID) foreach { user =>
             scope.$apply { () =>
-              if (scope.named.isAssigned) scope.name = user.fullName
               scope.url = user.avatarURL getOrElse UNKNOWN_PERSON
+              if (scope.named.isAssigned) scope.name = user.fullName
             }
           }
         case _ =>

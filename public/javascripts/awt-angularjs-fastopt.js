@@ -30000,10 +30000,21 @@ $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$
 $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2.prototype.apply__T__V = (function(x0$1) {
   var this$2 = new $c_sci_StringOps().init___T(x0$1);
   if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$2)) {
-    var this$3 = this.$$outer$2.$$outer$2.com$microsoft$awt$directives$AvatarDirective$$userFactory$f.getUserByID__T__s_concurrent_ExecutionContext__s_concurrent_Future(x0$1, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1);
+    this.$$outer$2.scope$1$f.url = "/assets/images/status/loading16.gif";
+    var $$this = this.$$outer$2.scope$1$f.named;
+    if (($$this === (void 0))) {
+      var $$this$2 = (void 0)
+    } else {
+      var $$this$1 = $m_s_Option$().apply__O__s_Option($$this);
+      var $$this$2 = ($$this$1.isEmpty__Z() ? (void 0) : $$this$1.get__O())
+    };
+    if (($$this$2 !== (void 0))) {
+      this.$$outer$2.scope$1$f.name = "Loading..."
+    };
+    var this$15 = this.$$outer$2.$$outer$2.com$microsoft$awt$directives$AvatarDirective$$userFactory$f.getUserByID__T__s_concurrent_ExecutionContext__s_concurrent_Future(x0$1, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1);
     var f = new $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3().init___Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2(this);
     var executor = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
-    $s_s_concurrent_Future$class__foreach__s_concurrent_Future__F1__s_concurrent_ExecutionContext__V(this$3, f, executor)
+    $s_s_concurrent_Future$class__foreach__s_concurrent_Future__F1__s_concurrent_ExecutionContext__V(this$15, f, executor)
   }
 });
 $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2.prototype.init___Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1 = (function($$outer) {
@@ -35138,19 +35149,19 @@ function $h_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonf
 }
 $h_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$1.prototype = $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$1.prototype;
 $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$1.prototype.apply$mcV$sp__V = (function() {
-  var $$this = this.$$outer$3.$$outer$2.$$outer$2.scope$1$f.named;
-  if (($$this === (void 0))) {
-    var $$this$2 = (void 0)
-  } else {
-    var $$this$1 = $m_s_Option$().apply__O__s_Option($$this);
-    var $$this$2 = ($$this$1.isEmpty__Z() ? (void 0) : $$this$1.get__O())
-  };
-  if (($$this$2 !== (void 0))) {
-    this.$$outer$3.$$outer$2.$$outer$2.scope$1$f.name = $m_Lcom_microsoft_awt_models_User$UserExtensions$().fullName$extension__Lcom_microsoft_awt_models_User__T(this.user$1$3)
-  };
   var jsx$1 = this.$$outer$3.$$outer$2.$$outer$2.scope$1$f;
-  var $$this$3 = this.user$1$3.avatarURL;
-  jsx$1.url = $as_T((($$this$3 === (void 0)) ? this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$directives$AvatarDirective$$UNKNOWN$undPERSON$1 : $$this$3))
+  var $$this = this.user$1$3.avatarURL;
+  jsx$1.url = $as_T((($$this === (void 0)) ? this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$directives$AvatarDirective$$UNKNOWN$undPERSON$1 : $$this));
+  var $$this$1 = this.$$outer$3.$$outer$2.$$outer$2.scope$1$f.named;
+  if (($$this$1 === (void 0))) {
+    var $$this$3 = (void 0)
+  } else {
+    var $$this$2 = $m_s_Option$().apply__O__s_Option($$this$1);
+    var $$this$3 = ($$this$2.isEmpty__Z() ? (void 0) : $$this$2.get__O())
+  };
+  if (($$this$3 !== (void 0))) {
+    this.$$outer$3.$$outer$2.$$outer$2.scope$1$f.name = $m_Lcom_microsoft_awt_models_User$UserExtensions$().fullName$extension__Lcom_microsoft_awt_models_User__T(this.user$1$3)
+  }
 });
 $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$1.prototype.apply__O = (function() {
   this.apply$mcV$sp__V()
