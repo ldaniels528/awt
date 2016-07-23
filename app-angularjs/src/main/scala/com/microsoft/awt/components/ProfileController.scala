@@ -38,7 +38,7 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
 
   // retrieve the user and its postings
   $scope.profileID = $routeParams.id ?? mySession.user.flatMap(_._id)
-  $scope.profileID.foreach(loadUserAndGroupsAndPostings)
+  $scope.profileID.foreach(loadUserAndGroupsPostingsAndWorkloads)
 
   ///////////////////////////////////////////////////////////////////////////
   //      Initialization Functions
@@ -46,16 +46,6 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
 
   $scope.init = () => {
     console.log(s"Initializing '${getClass.getSimpleName}'...")
-    if (mySession.user.exists(_._id.isAssigned)) {
-      $scope.profileID foreach { userId =>
-        console.log(s"Loading workloads for user # '$userId'...")
-        loadWorkloads(userId, activeOnly = $scope.activeOnly getOrElse true)
-      }
-    }
-    else {
-      $timeout(() => $scope.init(), 250.millis)
-    }
-    ()
   }
 
   ///////////////////////////////////////////////////////////////////////////
@@ -177,23 +167,25 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
     * Retrieve the user instance and its groups and postings for the given user ID
     * @param userID the given user ID
     */
-  private def loadUserAndGroupsAndPostings(userID: String) {
-    console.log(s"Loading foreign user profile for $userID...")
+  private def loadUserAndGroupsPostingsAndWorkloads(userID: String) {
+    console.log(s"Loading user profile for $userID...")
     $scope.loadingStart()
     val outcome = for {
       user <- userFactory.getUserByID(userID)
       groups <- groupService.getGroupsOwnedByOrIncludeUser(userID)
       posts <- postService.getPostsByUserID(userID)
       enrichedPosts <- userFactory.enrich(posts)
-    } yield (user, groups, enrichedPosts)
+      workloads <- workloadService.getWorkloadsByUser(userID, $scope.activeOnly getOrElse true)
+    } yield (user, groups, enrichedPosts, workloads)
 
     outcome onComplete {
-      case Success((user, groups, posts)) =>
+      case Success((user, groups, posts, workloads)) =>
         $scope.$apply { () =>
           $scope.loadingDelayedStop(1.second)
           $scope.myGroups = groups
           $scope.profileUser = user
           $scope.posts = posts
+          $scope.workloads = workloads
         }
       case Failure(e) =>
         $scope.$apply { () => $scope.loadingStop() }
@@ -217,6 +209,13 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
   ///////////////////////////////////////////////////////////////////////////
 
   $scope.onToggleActiveWorkloads((_, activeOnly) => $scope.profileID.flat foreach (loadWorkloads(_, activeOnly)))
+
+  $scope.onSessionLoaded((_, session) => {
+    if($scope.profileID.isEmpty) {
+      $scope.profileID = $routeParams.id ?? mySession.user.flatMap(_._id)
+      $scope.profileID.foreach(loadUserAndGroupsPostingsAndWorkloads)
+    }
+  })
 
 }
 

@@ -8211,14 +8211,14 @@ function $h_Lcom_microsoft_awt_components_GroupService() {
   /*<skip>*/
 }
 $h_Lcom_microsoft_awt_components_GroupService.prototype = $c_Lcom_microsoft_awt_components_GroupService.prototype;
+$c_Lcom_microsoft_awt_components_GroupService.prototype.init___Lorg_scalajs_angularjs_http_Http = (function($$http) {
+  this.$$http$1 = $$http;
+  return this
+});
 $c_Lcom_microsoft_awt_components_GroupService.prototype.getGroupsOwnedByOrIncludeUser__T__I__s_concurrent_ExecutionContext__s_concurrent_Future = (function(userID, maxResults, ec) {
   var this$1 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.getGroups__I__Lorg_scalajs_angularjs_http_HttpResponse(maxResults));
   var f = new $c_Lcom_microsoft_awt_components_GroupService$$anonfun$getGroupsOwnedByOrIncludeUser$1().init___Lcom_microsoft_awt_components_GroupService__T(this, userID);
   return $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$1, f, ec)
-});
-$c_Lcom_microsoft_awt_components_GroupService.prototype.init___Lorg_scalajs_angularjs_http_Http = (function($$http) {
-  this.$$http$1 = $$http;
-  return this
 });
 $c_Lcom_microsoft_awt_components_GroupService.prototype.getGroups__I__Lorg_scalajs_angularjs_http_HttpResponse = (function(maxResults) {
   return this.$$http$1.get(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["/api/groups?maxResults=", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([maxResults])))
@@ -25469,9 +25469,9 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$10$$anonfun$apply$22
   this.followerID$1$f = followerID$1;
   return this
 });
-$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$10$$anonfun$apply$22$$anonfun$apply$23$$anonfun$apply$24$$anonfun$apply$25$$anonfun$apply$26.prototype.apply__s_util_Try__V = (function(x0$3) {
-  if ($is_s_util_Success(x0$3)) {
-    var x2 = $as_s_util_Success(x0$3);
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$10$$anonfun$apply$22$$anonfun$apply$23$$anonfun$apply$24$$anonfun$apply$25$$anonfun$apply$26.prototype.apply__s_util_Try__V = (function(x0$2) {
+  if ($is_s_util_Success(x0$2)) {
+    var x2 = $as_s_util_Success(x0$2);
     var result = x2.value$2;
     var jsx$2 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$timeout$1;
     var jsx$1 = $m_Lorg_scalajs_angularjs_package$();
@@ -25492,8 +25492,8 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$10$$anonfun$apply$22
         if (($$this$1 === (void 0))) {
           var jsx$3 = (void 0)
         } else {
-          var x$6 = $asInt($$this$1);
-          var value$2 = ((1 + $uI(x$6)) | 0);
+          var x$5 = $asInt($$this$1);
+          var value$2 = ((1 + $uI(x$5)) | 0);
           var jsx$3 = value$2
         }
       };
@@ -25503,8 +25503,8 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$10$$anonfun$apply$22
         $uI($$this$2.push(this.followerID$1$f))
       }
     }
-  } else if ($is_s_util_Failure(x0$3)) {
-    var x3 = $as_s_util_Failure(x0$3);
+  } else if ($is_s_util_Failure(x0$2)) {
+    var x3 = $as_s_util_Failure(x0$2);
     var e = x3.exception$2;
     this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$scope$1.followLoading = false;
     var jsx$5 = $g.console;
@@ -25548,7 +25548,7 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$10$$anonfun$apply$22
     var x2$2 = null;
     var x1$1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7$1: {
-      var x$12;
+      var x$13;
       if ($is_s_Some(x1$1)) {
         rc6$1 = true;
         x2$2 = $as_s_Some(x1$1);
@@ -25560,26 +25560,26 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$10$$anonfun$apply$22
           var n$1 = $uI(thiz$1.length);
           var $$this$4 = this$44.repr$1;
           var until$1 = $uI($$this$4.length);
-          var x$12 = this$36.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$44.repr$1, n$1, until$1));
+          var x$13 = this$36.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$44.repr$1, n$1, until$1));
           break matchEnd7$1
         }
       };
       if (rc6$1) {
         var s$2$1 = $as_T(x2$2.x$2);
-        var x$12 = s$2$1;
+        var x$13 = s$2$1;
         break matchEnd7$1
       };
       var x$2 = $m_s_None$();
       if ((x$2 === x1$1)) {
-        var x$12 = "Cause unknown";
+        var x$13 = "Cause unknown";
         break matchEnd7$1
       };
       throw new $c_s_MatchError().init___O(x1$1)
     };
     var s$5 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    qual$2.pop(s$5, x$12, null)
+    qual$2.pop(s$5, x$13, null)
   } else {
-    throw new $c_s_MatchError().init___O(x0$3)
+    throw new $c_s_MatchError().init___O(x0$2)
   }
 });
 var $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$10$$anonfun$apply$22$$anonfun$apply$23$$anonfun$apply$24$$anonfun$apply$25$$anonfun$apply$26 = new $TypeData().initClass({
@@ -25808,13 +25808,9 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34
 });
 $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35.prototype.apply__sjs_js_Array__s_concurrent_Future = (function(posts) {
   var this$1 = this.$$outer$2.$$outer$2.$$outer$2.userFactory$1.enrich__sjs_js_Array__s_concurrent_ExecutionContext__s_concurrent_Future(posts, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1);
-  var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer) {
-    return (function(enrichedPosts$2) {
-      return new $c_T3().init___O__O__O(arg$outer.$$outer$2.user$4$f, arg$outer.groups$2$f, enrichedPosts$2)
-    })
-  })(this));
+  var f = new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35$$anonfun$apply$36().init___Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35(this);
   var executor = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
-  return $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$1, f, executor)
+  return $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$1, f, executor)
 });
 var $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35 = new $TypeData().initClass({
   Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35: 0
@@ -25827,6 +25823,54 @@ var $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$appl
   Ljava_io_Serializable: 1
 });
 $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35.prototype.$classData = $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35;
+/** @constructor */
+function $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35$$anonfun$apply$36() {
+  $c_sr_AbstractFunction1.call(this);
+  this.$$outer$2 = null
+}
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35$$anonfun$apply$36.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35$$anonfun$apply$36.prototype.constructor = $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35$$anonfun$apply$36;
+/** @constructor */
+function $h_Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35$$anonfun$apply$36() {
+  /*<skip>*/
+}
+$h_Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35$$anonfun$apply$36.prototype = $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35$$anonfun$apply$36.prototype;
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35$$anonfun$apply$36.prototype.apply__O__O = (function(v1) {
+  return this.apply__sjs_js_Array__s_concurrent_Future(v1)
+});
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35$$anonfun$apply$36.prototype.apply__sjs_js_Array__s_concurrent_Future = (function(enrichedPosts) {
+  var jsx$3 = $m_Lorg_scalajs_angularjs_http_HttpResponse$();
+  var jsx$2 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.workloadService$1;
+  var jsx$1 = this.$$outer$2.$$outer$2.$$outer$2.userID$1$f;
+  var $$this = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$scope$1.activeOnly;
+  var this$4 = jsx$3.promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(jsx$2.getWorkloadsByUser__T__Z__Lorg_scalajs_angularjs_http_HttpResponse(jsx$1, $uZ((($$this === (void 0)) || $$this))));
+  var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer, enrichedPosts$1) {
+    return (function(workloads$2) {
+      return new $c_T4().init___O__O__O__O(arg$outer.$$outer$2.$$outer$2.user$4$f, arg$outer.$$outer$2.groups$2$f, enrichedPosts$1, workloads$2)
+    })
+  })(this, enrichedPosts));
+  var executor = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
+  return $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$4, f, executor)
+});
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35$$anonfun$apply$36.prototype.init___Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35 = (function($$outer) {
+  if (($$outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    this.$$outer$2 = $$outer
+  };
+  return this
+});
+var $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35$$anonfun$apply$36 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35$$anonfun$apply$36: 0
+}, false, "com.microsoft.awt.components.ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35$$anonfun$apply$36", {
+  Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35$$anonfun$apply$36: 1,
+  sr_AbstractFunction1: 1,
+  O: 1,
+  F1: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35$$anonfun$apply$36.prototype.$classData = $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$14$$anonfun$apply$34$$anonfun$apply$35$$anonfun$apply$36;
 /** @constructor */
 function $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$15() {
   $c_sr_AbstractFunction2.call(this);
@@ -25850,7 +25894,7 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$15.prototype.init___
   };
   return this
 });
-$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$15.prototype.apply__Lorg_scalajs_dom_raw_Event__Z__V = (function(x$8, activeOnly) {
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$15.prototype.apply__Lorg_scalajs_dom_raw_Event__Z__V = (function(x$7, activeOnly) {
   var $$this = this.$$outer$2.$$scope$1.profileID;
   if (($$this === (void 0))) {
     var $$this$2 = (void 0)
@@ -25859,8 +25903,8 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$15.prototype.apply__
     var $$this$2 = ($$this$1.isEmpty__Z() ? (void 0) : $$this$1.get__O())
   };
   if (($$this$2 !== (void 0))) {
-    var x$9 = $as_T($$this$2);
-    this.$$outer$2.com$microsoft$awt$components$ProfileController$$loadWorkloads__T__Z__V(x$9, activeOnly)
+    var x$8 = $as_T($$this$2);
+    this.$$outer$2.com$microsoft$awt$components$ProfileController$$loadWorkloads__T__Z__V(x$8, activeOnly)
   }
 });
 var $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$15 = new $TypeData().initClass({
@@ -25874,6 +25918,62 @@ var $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$15 = new $TypeDa
   Ljava_io_Serializable: 1
 });
 $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$15.prototype.$classData = $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$15;
+/** @constructor */
+function $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$16() {
+  $c_sr_AbstractFunction2.call(this);
+  this.$$outer$2 = null
+}
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$16.prototype = new $h_sr_AbstractFunction2();
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$16.prototype.constructor = $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$16;
+/** @constructor */
+function $h_Lcom_microsoft_awt_components_ProfileController$$anonfun$16() {
+  /*<skip>*/
+}
+$h_Lcom_microsoft_awt_components_ProfileController$$anonfun$16.prototype = $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$16.prototype;
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$16.prototype.apply__O__O__O = (function(v1, v2) {
+  return this.apply__Lorg_scalajs_dom_raw_Event__Lcom_microsoft_awt_models_Session__O(v1, v2)
+});
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$16.prototype.init___Lcom_microsoft_awt_components_ProfileController = (function($$outer) {
+  if (($$outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    this.$$outer$2 = $$outer
+  };
+  return this
+});
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$16.prototype.apply__Lorg_scalajs_dom_raw_Event__Lcom_microsoft_awt_models_Session__O = (function(x$9, session) {
+  var $$this = this.$$outer$2.$$scope$1.profileID;
+  if (($$this === (void 0))) {
+    var jsx$2 = this.$$outer$2.$$scope$1;
+    var $$this$1 = this.$$outer$2.$$routeParams$1.id;
+    if (($$this$1 !== (void 0))) {
+      var jsx$1 = $$this$1
+    } else {
+      var $$this$2 = this.$$outer$2.mySession$1.user__sjs_js_UndefOr();
+      var jsx$1 = (($$this$2 === (void 0)) ? (void 0) : $$this$2._id)
+    };
+    jsx$2.profileID = jsx$1;
+    var $$this$3 = this.$$outer$2.$$scope$1.profileID;
+    if (($$this$3 !== (void 0))) {
+      var userID = $as_T($$this$3);
+      this.$$outer$2.com$microsoft$awt$components$ProfileController$$loadUserAndGroupsPostingsAndWorkloads__T__V(userID)
+    };
+    return (void 0)
+  } else {
+    return (void 0)
+  }
+});
+var $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$16 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_ProfileController$$anonfun$16: 0
+}, false, "com.microsoft.awt.components.ProfileController$$anonfun$16", {
+  Lcom_microsoft_awt_components_ProfileController$$anonfun$16: 1,
+  sr_AbstractFunction2: 1,
+  O: 1,
+  F2: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$16.prototype.$classData = $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$16;
 /** @constructor */
 function $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$7() {
   $c_sr_AbstractFunction1.call(this)
@@ -26135,9 +26235,9 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$11$
   this.endorserID$1$f = endorserID$1;
   return this
 });
-$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$11$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14$$anonfun$apply$15.prototype.apply__s_util_Try__V = (function(x0$2) {
-  if ($is_s_util_Success(x0$2)) {
-    var x2 = $as_s_util_Success(x0$2);
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$11$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14$$anonfun$apply$15.prototype.apply__s_util_Try__V = (function(x0$1) {
+  if ($is_s_util_Success(x0$1)) {
+    var x2 = $as_s_util_Success(x0$1);
     var result = x2.value$2;
     var jsx$2 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$timeout$1;
     var jsx$1 = $m_Lorg_scalajs_angularjs_package$();
@@ -26158,8 +26258,8 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$11$
         if (($$this$1 === (void 0))) {
           var jsx$3 = (void 0)
         } else {
-          var x$4 = $asInt($$this$1);
-          var value$2 = ((1 + $uI(x$4)) | 0);
+          var x$3 = $asInt($$this$1);
+          var value$2 = ((1 + $uI(x$3)) | 0);
           var jsx$3 = value$2
         }
       };
@@ -26169,8 +26269,8 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$11$
         $uI($$this$2.push(this.endorserID$1$f))
       }
     }
-  } else if ($is_s_util_Failure(x0$2)) {
-    var x3 = $as_s_util_Failure(x0$2);
+  } else if ($is_s_util_Failure(x0$1)) {
+    var x3 = $as_s_util_Failure(x0$1);
     var e = x3.exception$2;
     this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$scope$1.endorseLoading = false;
     var jsx$5 = $g.console;
@@ -26214,7 +26314,7 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$11$
     var x2$2 = null;
     var x1$1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7$1: {
-      var x$10;
+      var x$11;
       if ($is_s_Some(x1$1)) {
         rc6$1 = true;
         x2$2 = $as_s_Some(x1$1);
@@ -26226,26 +26326,26 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$11$
           var n$1 = $uI(thiz$1.length);
           var $$this$4 = this$44.repr$1;
           var until$1 = $uI($$this$4.length);
-          var x$10 = this$36.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$44.repr$1, n$1, until$1));
+          var x$11 = this$36.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$44.repr$1, n$1, until$1));
           break matchEnd7$1
         }
       };
       if (rc6$1) {
         var s$2$1 = $as_T(x2$2.x$2);
-        var x$10 = s$2$1;
+        var x$11 = s$2$1;
         break matchEnd7$1
       };
       var x$2 = $m_s_None$();
       if ((x$2 === x1$1)) {
-        var x$10 = "Cause unknown";
+        var x$11 = "Cause unknown";
         break matchEnd7$1
       };
       throw new $c_s_MatchError().init___O(x1$1)
     };
     var s$5 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    qual$1.pop(s$5, x$10, null)
+    qual$1.pop(s$5, x$11, null)
   } else {
-    throw new $c_s_MatchError().init___O(x0$2)
+    throw new $c_s_MatchError().init___O(x0$1)
   }
 });
 var $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$11$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14$$anonfun$apply$15 = new $TypeData().initClass({
@@ -26333,21 +26433,21 @@ var $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$9 = new $TypeDat
 });
 $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$9.prototype.$classData = $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$9;
 /** @constructor */
-function $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsAndPostings$1() {
+function $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsPostingsAndWorkloads$1() {
   $c_sr_AbstractFunction1.call(this);
   this.$$outer$2 = null
 }
-$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsAndPostings$1.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsAndPostings$1.prototype.constructor = $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsAndPostings$1;
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsPostingsAndWorkloads$1.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsPostingsAndWorkloads$1.prototype.constructor = $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsPostingsAndWorkloads$1;
 /** @constructor */
-function $h_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsAndPostings$1() {
+function $h_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsPostingsAndWorkloads$1() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsAndPostings$1.prototype = $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsAndPostings$1.prototype;
-$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsAndPostings$1.prototype.apply__O__O = (function(v1) {
+$h_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsPostingsAndWorkloads$1.prototype = $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsPostingsAndWorkloads$1.prototype;
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsPostingsAndWorkloads$1.prototype.apply__O__O = (function(v1) {
   return this.apply__s_util_Try__O($as_s_util_Try(v1))
 });
-$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsAndPostings$1.prototype.init___Lcom_microsoft_awt_components_ProfileController = (function($$outer) {
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsPostingsAndWorkloads$1.prototype.init___Lcom_microsoft_awt_components_ProfileController = (function($$outer) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -26355,15 +26455,16 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$co
   };
   return this
 });
-$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsAndPostings$1.prototype.apply__s_util_Try__O = (function(x0$4) {
-  if ($is_s_util_Success(x0$4)) {
-    var x2 = $as_s_util_Success(x0$4);
-    var p3 = $as_T3(x2.value$2);
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsPostingsAndWorkloads$1.prototype.apply__s_util_Try__O = (function(x0$3) {
+  if ($is_s_util_Success(x0$3)) {
+    var x2 = $as_s_util_Success(x0$3);
+    var p3 = $as_T4(x2.value$2);
     if ((p3 !== null)) {
       var user = p3.$$und1$1;
       var groups = p3.$$und2$1;
       var posts = p3.$$und3$1;
-      return this.$$outer$2.$$scope$1.$apply((function(arg$outer, user$1, groups$1, posts$1) {
+      var workloads = p3.$$und4$1;
+      return this.$$outer$2.$$scope$1.$apply((function(arg$outer, user$1, groups$1, posts$1, workloads$1) {
         return (function() {
           var jsx$2 = arg$outer.$$outer$2.$$scope$1.loadingDelayedStop;
           var jsx$1 = $m_Lorg_scalajs_angularjs_package$();
@@ -26372,13 +26473,14 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$co
           jsx$2(jsx$1.durationToInt__s_concurrent_duration_FiniteDuration__I($m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$2.scala$concurrent$duration$DurationInt$$n$1, unit)));
           arg$outer.$$outer$2.$$scope$1.myGroups = groups$1;
           arg$outer.$$outer$2.$$scope$1.profileUser = user$1;
-          arg$outer.$$outer$2.$$scope$1.posts = posts$1
+          arg$outer.$$outer$2.$$scope$1.posts = posts$1;
+          arg$outer.$$outer$2.$$scope$1.workloads = workloads$1
         })
-      })(this, user, groups, posts))
+      })(this, user, groups, posts, workloads))
     }
   };
-  if ($is_s_util_Failure(x0$4)) {
-    var x4 = $as_s_util_Failure(x0$4);
+  if ($is_s_util_Failure(x0$3)) {
+    var x4 = $as_s_util_Failure(x0$3);
     var e = x4.exception$2;
     this.$$outer$2.$$scope$1.$apply((function(arg$outer$1) {
       return (function() {
@@ -26386,7 +26488,7 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$co
       })
     })(this));
     var jsx$3 = $g.console;
-    var this$6 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
+    var this$7 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6 = false;
     var x2$1 = null;
     var x1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
@@ -26398,12 +26500,12 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$co
         var s = $as_T(x2$1.x$2);
         var prefix = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
         if ((($uI(s.length) >= 0) && ($as_T(s.substring(0, $uI(prefix.length))) === prefix))) {
-          var this$14 = new $c_sci_StringOps().init___T(s);
+          var this$15 = new $c_sci_StringOps().init___T(s);
           var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n = $uI(thiz.length);
-          var $$this = this$14.repr$1;
+          var $$this = this$15.repr$1;
           var until = $uI($$this.length);
-          var s$1 = this$6.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$14.repr$1, n, until));
+          var s$1 = this$7.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$15.repr$1, n, until));
           break matchEnd7
         }
       };
@@ -26425,19 +26527,19 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$co
     $$this$1.pop(s$3, "Loading Error", "Failed while loading groups and postings");
     return (void 0)
   };
-  throw new $c_s_MatchError().init___O(x0$4)
+  throw new $c_s_MatchError().init___O(x0$3)
 });
-var $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsAndPostings$1 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsAndPostings$1: 0
-}, false, "com.microsoft.awt.components.ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsAndPostings$1", {
-  Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsAndPostings$1: 1,
+var $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsPostingsAndWorkloads$1 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsPostingsAndWorkloads$1: 0
+}, false, "com.microsoft.awt.components.ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsPostingsAndWorkloads$1", {
+  Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsPostingsAndWorkloads$1: 1,
   sr_AbstractFunction1: 1,
   O: 1,
   F1: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsAndPostings$1.prototype.$classData = $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsAndPostings$1;
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsPostingsAndWorkloads$1.prototype.$classData = $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsPostingsAndWorkloads$1;
 /** @constructor */
 function $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadWorkloads$1() {
   $c_sr_AbstractFunction1.call(this);
@@ -26461,17 +26563,17 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$co
   };
   return this
 });
-$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadWorkloads$1.prototype.apply__s_util_Try__O = (function(x0$1) {
-  if ($is_s_util_Success(x0$1)) {
-    var x2 = $as_s_util_Success(x0$1);
+$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadWorkloads$1.prototype.apply__s_util_Try__O = (function(x0$4) {
+  if ($is_s_util_Success(x0$4)) {
+    var x2 = $as_s_util_Success(x0$4);
     var workloads = x2.value$2;
-    return this.$$outer$2.$$scope$1.$apply((function(arg$outer, workloads$1) {
+    return this.$$outer$2.$$scope$1.$apply((function(arg$outer, workloads$2) {
       return (function() {
-        arg$outer.$$outer$2.$$scope$1.workloads = workloads$1
+        arg$outer.$$outer$2.$$scope$1.workloads = workloads$2
       })
     })(this, workloads))
-  } else if ($is_s_util_Failure(x0$1)) {
-    var x3 = $as_s_util_Failure(x0$1);
+  } else if ($is_s_util_Failure(x0$4)) {
+    var x3 = $as_s_util_Failure(x0$4);
     var e = x3.exception$2;
     var $$this$1 = this.$$outer$2.toaster$1;
     var this$5 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
@@ -26511,7 +26613,7 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$co
     $$this$1.pop(s$3, "Loading Error", message);
     return (void 0)
   } else {
-    throw new $c_s_MatchError().init___O(x0$1)
+    throw new $c_s_MatchError().init___O(x0$4)
   }
 });
 var $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadWorkloads$1 = new $TypeData().initClass({
@@ -32716,6 +32818,17 @@ $c_Lcom_microsoft_awt_components_ProfileController.prototype.productElement__I__
 $c_Lcom_microsoft_awt_components_ProfileController.prototype.toString__T = (function() {
   return $m_sr_ScalaRunTime$().$$undtoString__s_Product__T(this)
 });
+$c_Lcom_microsoft_awt_components_ProfileController.prototype.com$microsoft$awt$components$ProfileController$$loadUserAndGroupsPostingsAndWorkloads__T__V = (function(userID) {
+  var jsx$1 = $g.console;
+  var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Loading user profile for ", "..."])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([userID]));
+  jsx$1.log(s);
+  (0, this.$$scope$1.loadingStart)();
+  var this$2 = this.userFactory$1.getUserByID__T__s_concurrent_ExecutionContext__s_concurrent_Future(userID, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1);
+  var f = new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$14().init___Lcom_microsoft_awt_components_ProfileController__T(this, userID);
+  var executor = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
+  var outcome = $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$2, f, executor);
+  outcome.onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsPostingsAndWorkloads$1().init___Lcom_microsoft_awt_components_ProfileController(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+});
 $c_Lcom_microsoft_awt_components_ProfileController.prototype.init___Lcom_microsoft_awt_components_ProfileControllerScope__Lcom_microsoft_awt_components_ProfileRouteParams__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_GroupService__Lcom_microsoft_awt_components_MySessionFactory__Lcom_microsoft_awt_components_PostService__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_UserService__Lcom_microsoft_awt_components_WorkloadService = (function($$scope, $$routeParams, $$timeout, toaster, groupService, mySession, postService, userFactory, userService, workloadService) {
   this.$$scope$1 = $$scope;
   this.$$routeParams$1 = $$routeParams;
@@ -32739,16 +32852,18 @@ $c_Lcom_microsoft_awt_components_ProfileController.prototype.init___Lcom_microso
   var $$this$2 = $$scope.profileID;
   if (($$this$2 !== (void 0))) {
     var userID = $as_T($$this$2);
-    this.com$microsoft$awt$components$ProfileController$$loadUserAndGroupsAndPostings__T__V(userID)
+    this.com$microsoft$awt$components$ProfileController$$loadUserAndGroupsPostingsAndWorkloads__T__V(userID)
   };
-  $$scope.init = (function(f) {
+  $$scope.init = (function(arg$outer) {
+    return (function() {
+      var jsx$2 = $g.console;
+      var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Initializing '", "'..."])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$objectGetClass(arg$outer).getSimpleName__T()]));
+      jsx$2.log(s)
+    })
+  })(this);
+  $$scope.isMe = (function(f) {
     return (function() {
       return f.apply__O()
-    })
-  })(new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$1().init___Lcom_microsoft_awt_components_ProfileController(this));
-  $$scope.isMe = (function(f$1) {
-    return (function() {
-      return f$1.apply__O()
     })
   })(new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$2().init___Lcom_microsoft_awt_components_ProfileController(this));
   $$scope.viewRecentActivity = (function() {
@@ -32757,45 +32872,51 @@ $c_Lcom_microsoft_awt_components_ProfileController.prototype.init___Lcom_microso
   $$scope.contact = (function(aUser$2) {
     $g.window.alert("Not yet implemented")
   });
-  $$scope.isContacted = (function(f$2) {
+  $$scope.isContacted = (function(f$1) {
     return (function(arg1) {
-      return f$2.apply__O__O(arg1)
+      return f$1.apply__O__O(arg1)
     })
   })(new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$7().init___Lcom_microsoft_awt_components_ProfileController(this));
-  $$scope.endorse = (function(f$3) {
+  $$scope.endorse = (function(f$2) {
     return (function(arg1$1) {
-      return f$3.apply__O__O(arg1$1)
+      return f$2.apply__O__O(arg1$1)
     })
   })(new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$8().init___Lcom_microsoft_awt_components_ProfileController(this));
-  $$scope.isEndorsed = (function(f$4) {
+  $$scope.isEndorsed = (function(f$3) {
     return (function(arg1$2) {
-      return f$4.apply__O__O(arg1$2)
+      return f$3.apply__O__O(arg1$2)
     })
   })(new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$9().init___Lcom_microsoft_awt_components_ProfileController(this));
-  $$scope.follow = (function(f$5) {
+  $$scope.follow = (function(f$4) {
     return (function(arg1$3) {
-      return f$5.apply__O__O(arg1$3)
+      return f$4.apply__O__O(arg1$3)
     })
   })(new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$10().init___Lcom_microsoft_awt_components_ProfileController(this));
-  $$scope.isFollowed = (function(f$6) {
+  $$scope.isFollowed = (function(f$5) {
     return (function(arg1$4) {
-      return f$6.apply__O__O(arg1$4)
+      return f$5.apply__O__O(arg1$4)
     })
   })(new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$11().init___Lcom_microsoft_awt_components_ProfileController(this));
   $$scope.report = (function(aUser$2$1) {
     $g.window.alert("Not yet implemented")
   });
-  $$scope.isReported = (function(f$7) {
+  $$scope.isReported = (function(f$6) {
     return (function(arg1$5) {
-      return f$7.apply__O__O(arg1$5)
+      return f$6.apply__O__O(arg1$5)
     })
   })(new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$13().init___Lcom_microsoft_awt_components_ProfileController(this));
   var listener = new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$15().init___Lcom_microsoft_awt_components_ProfileController(this);
-  $$scope.$on("toggleActiveWorkloads", (function(f$8) {
+  $$scope.$on("toggleActiveWorkloads", (function(f$7) {
     return (function(arg1$6, arg2) {
-      return f$8.apply__O__O__O(arg1$6, arg2)
+      return f$7.apply__O__O__O(arg1$6, arg2)
     })
   })(listener));
+  var listener$1 = new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$16().init___Lcom_microsoft_awt_components_ProfileController(this);
+  $$scope.$on("session_loaded", (function(f$8) {
+    return (function(arg1$7, arg2$1) {
+      return f$8.apply__O__O__O(arg1$7, arg2$1)
+    })
+  })(listener$1));
   return this
 });
 $c_Lcom_microsoft_awt_components_ProfileController.prototype.com$microsoft$awt$components$ProfileController$$loadWorkloads__T__Z__V = (function(userId, activeOnly) {
@@ -32803,17 +32924,6 @@ $c_Lcom_microsoft_awt_components_ProfileController.prototype.com$microsoft$awt$c
   var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Loading workloads for user # ", " (activeOnly = ", ")"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([userId, activeOnly]));
   jsx$1.log(s);
   $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.workloadService$1.getWorkloadsByUser__T__Z__Lorg_scalajs_angularjs_http_HttpResponse(userId, activeOnly)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadWorkloads$1().init___Lcom_microsoft_awt_components_ProfileController(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
-});
-$c_Lcom_microsoft_awt_components_ProfileController.prototype.com$microsoft$awt$components$ProfileController$$loadUserAndGroupsAndPostings__T__V = (function(userID) {
-  var jsx$1 = $g.console;
-  var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Loading foreign user profile for ", "..."])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([userID]));
-  jsx$1.log(s);
-  (0, this.$$scope$1.loadingStart)();
-  var this$2 = this.userFactory$1.getUserByID__T__s_concurrent_ExecutionContext__s_concurrent_Future(userID, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1);
-  var f = new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$14().init___Lcom_microsoft_awt_components_ProfileController__T(this, userID);
-  var executor = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
-  var outcome = $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$2, f, executor);
-  outcome.onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$components$ProfileController$$loadUserAndGroupsAndPostings$1().init___Lcom_microsoft_awt_components_ProfileController(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
 });
 $c_Lcom_microsoft_awt_components_ProfileController.prototype.hashCode__I = (function() {
   var this$2 = $m_s_util_hashing_MurmurHash3$();
@@ -34758,84 +34868,6 @@ var $d_Lcom_microsoft_awt_components_PhotosController$$anonfun$2 = new $TypeData
   Ljava_io_Serializable: 1
 });
 $c_Lcom_microsoft_awt_components_PhotosController$$anonfun$2.prototype.$classData = $d_Lcom_microsoft_awt_components_PhotosController$$anonfun$2;
-/** @constructor */
-function $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$1() {
-  $c_sr_AbstractFunction0$mcV$sp.call(this);
-  this.$$outer$3 = null
-}
-$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$1.prototype = new $h_sr_AbstractFunction0$mcV$sp();
-$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$1.prototype.constructor = $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$1;
-/** @constructor */
-function $h_Lcom_microsoft_awt_components_ProfileController$$anonfun$1() {
-  /*<skip>*/
-}
-$h_Lcom_microsoft_awt_components_ProfileController$$anonfun$1.prototype = $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$1.prototype;
-$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$1.prototype.apply$mcV$sp__V = (function() {
-  var jsx$2 = $g.console;
-  var jsx$1 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Initializing '", "'..."]));
-  var this$1 = this.$$outer$3;
-  var s = jsx$1.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$objectGetClass(this$1).getSimpleName__T()]));
-  jsx$2.log(s);
-  var $$this = this.$$outer$3.mySession$1.user__sjs_js_UndefOr();
-  if (($$this !== (void 0))) {
-    var $$this$1 = $$this._id;
-    if (($$this$1 === (void 0))) {
-      var $$this$3 = (void 0)
-    } else {
-      var $$this$2 = $m_s_Option$().apply__O__s_Option($$this$1);
-      var $$this$3 = ($$this$2.isEmpty__Z() ? (void 0) : $$this$2.get__O())
-    };
-    var jsx$3 = ($$this$3 !== (void 0))
-  } else {
-    var jsx$3 = false
-  };
-  if (jsx$3) {
-    var $$this$4 = this.$$outer$3.$$scope$1.profileID;
-    if (($$this$4 !== (void 0))) {
-      var userId = $as_T($$this$4);
-      var jsx$4 = $g.console;
-      var s$1 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Loading workloads for user # '", "'..."])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([userId]));
-      jsx$4.log(s$1);
-      var jsx$5 = this.$$outer$3;
-      var $$this$5 = this.$$outer$3.$$scope$1.activeOnly;
-      jsx$5.com$microsoft$awt$components$ProfileController$$loadWorkloads__T__Z__V(userId, $uZ((($$this$5 === (void 0)) || $$this$5)))
-    }
-  } else {
-    var jsx$7 = this.$$outer$3.$$timeout$1;
-    var jsx$6 = $m_Lorg_scalajs_angularjs_package$();
-    var this$26 = new $c_s_concurrent_duration_package$DurationInt().init___I(250);
-    var unit = $m_ju_concurrent_TimeUnit$().MILLISECONDS$1;
-    jsx$7((function(arg$outer) {
-      return (function() {
-        (0, arg$outer.$$outer$3.$$scope$1.init)()
-      })
-    })(this), jsx$6.durationToInt__s_concurrent_duration_FiniteDuration__I($m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$26.scala$concurrent$duration$DurationInt$$n$1, unit)))
-  }
-});
-$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$1.prototype.apply__O = (function() {
-  this.apply$mcV$sp__V()
-});
-$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$1.prototype.init___Lcom_microsoft_awt_components_ProfileController = (function($$outer) {
-  if (($$outer === null)) {
-    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
-  } else {
-    this.$$outer$3 = $$outer
-  };
-  return this
-});
-var $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$1 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_ProfileController$$anonfun$1: 0
-}, false, "com.microsoft.awt.components.ProfileController$$anonfun$1", {
-  Lcom_microsoft_awt_components_ProfileController$$anonfun$1: 1,
-  sr_AbstractFunction0$mcV$sp: 1,
-  sr_AbstractFunction0: 1,
-  O: 1,
-  F0: 1,
-  s_Function0$mcV$sp: 1,
-  s_Serializable: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lcom_microsoft_awt_components_ProfileController$$anonfun$1.prototype.$classData = $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$1;
 /** @constructor */
 function $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$2() {
   $c_sr_AbstractFunction0$mcZ$sp.call(this);
