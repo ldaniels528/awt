@@ -36,16 +36,16 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
     ))
   )
 
-  // retrieve the user and its postings
-  $scope.profileID = $routeParams.id ?? mySession.user.flatMap(_._id)
-  $scope.profileID.foreach(loadUserAndGroupsPostingsAndWorkloads)
-
   ///////////////////////////////////////////////////////////////////////////
   //      Initialization Functions
   ///////////////////////////////////////////////////////////////////////////
 
   $scope.init = () => {
     console.log(s"Initializing '${getClass.getSimpleName}'...")
+
+    // retrieve the user and its postings
+    $scope.profileID = $routeParams.id ?? mySession.user.flatMap(_._id)
+    $scope.profileID.foreach(loadUserAndGroupsPostingsAndWorkloads)
   }
 
   ///////////////////////////////////////////////////////////////////////////
@@ -189,18 +189,19 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
         }
       case Failure(e) =>
         $scope.$apply { () => $scope.loadingStop() }
-        console.error(e.displayMessage)
-        toaster.error("Loading Error", "Failed while loading groups and postings")
+        console.error(s"Loading Error: ${e.displayMessage}")
+        toaster.error("Loading Error", "Failed while loading user information")
     }
   }
 
-  private def loadWorkloads(userId: String, activeOnly: Boolean) = {
+  private def refreshWorkloads(userId: String, activeOnly: Boolean) = {
     console.log(s"Loading workloads for user # $userId (activeOnly = $activeOnly)")
     workloadService.getWorkloadsByUser(userId, activeOnly) onComplete {
       case Success(workloads) =>
         $scope.$apply(() => $scope.workloads = workloads)
       case Failure(e) =>
-        toaster.error("Loading Error", e.displayMessage)
+        console.log(s"Loading Error: ${e.displayMessage}")
+        toaster.error("Loading Error", "Failed while refreshing user workloads")
     }
   }
 
@@ -208,7 +209,7 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
   //      Event Handlers
   ///////////////////////////////////////////////////////////////////////////
 
-  $scope.onToggleActiveWorkloads((_, activeOnly) => $scope.profileID.flat foreach (loadWorkloads(_, activeOnly)))
+  $scope.onToggleActiveWorkloads((_, activeOnly) => $scope.profileID.flat foreach (refreshWorkloads(_, activeOnly)))
 
   $scope.onSessionLoaded((_, session) => {
     if($scope.profileID.isEmpty) {
