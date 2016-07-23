@@ -4,12 +4,12 @@ import com.microsoft.awt.models.{User, WsEventMessage}
 import org.scalajs.angularjs._
 import org.scalajs.angularjs.toaster.Toaster
 import org.scalajs.dom
+import org.scalajs.dom.browser.window
 import org.scalajs.dom.console
 import org.scalajs.dom.raw.{CloseEvent, ErrorEvent, MessageEvent, WebSocket}
+import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.concurrent.duration._
-import scala.scalajs.js
-import scala.scalajs.js.Dynamic.{global => g}
 import scala.scalajs.js.JSON
 
 /**
@@ -26,12 +26,12 @@ class WebSocketService($rootScope: Scope, $location: Location, $timeout: Timeout
   def init(user: User) {
     connectedUser = Option(user)
     console.log("Initializing Websocket service...")
-    if (js.isUndefined(g.window.WebSocket)) {
+    if (!isDefined(window.dynamic.WebSocket)) {
       console.log("Using a Mozilla Web Socket")
-      g.window.WebSocket = g.window.MozWebSocket
+      window.dynamic.WebSocket = window.dynamic.MozWebSocket
     }
 
-    if (!js.isUndefined(g.window.WebSocket)) connect()
+    if (isDefined(window.dynamic.WebSocket)) connect()
     else
       toaster.info("Your browser does not support Web Sockets.")
   }

@@ -216,7 +216,7 @@ case class MainController($scope: MainScope, $location: Location, $q: Q, $timeou
 
   $scope.onWsStateChange((_, connected) => {
     console.log(s"Web socket state change: connected = $connected")
-    this.connected = connected
+    $scope.$apply(() => this.connected = connected)
   })
 
 }
