@@ -3,6 +3,7 @@ package com.microsoft.awt
 import com.microsoft.awt.models._
 import org.scalajs.angularjs.Scope
 import org.scalajs.dom
+import org.scalajs.dom.browser.console
 
 import scala.scalajs.js
 
@@ -33,10 +34,16 @@ package object components {
     ///////////////////////////////////////////////////////////////////////////
 
     @inline
-    def emitUserLoaded(user: User) = $scope.$broadcast("user_loaded", user)
+    def emitUserLoaded(user: User) = {
+      console.log("emitting user loaded event...")
+      $scope.$broadcast("user_loaded", user)
+    }
 
     @inline
-    def onUserLoaded(listener: (dom.Event, User) => Any) = $scope.$on("user_loaded", listener)
+    def onUserLoaded(listener: (dom.Event, User) => Any) = {
+      console.log("received user loaded event.")
+      $scope.$on("user_loaded", listener)
+    }
 
     ///////////////////////////////////////////////////////////////////////////
     //      Workload Listeners

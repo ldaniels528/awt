@@ -44,8 +44,7 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
     console.log(s"Initializing '${getClass.getSimpleName}'...")
 
     // retrieve the user and its postings
-    $scope.profileID = $routeParams.id ?? mySession.user.flatMap(_._id)
-    $scope.profileID.foreach(loadUserAndGroupsPostingsAndWorkloads)
+    ensureProfileIsLoaded()
   }
 
   ///////////////////////////////////////////////////////////////////////////
@@ -163,12 +162,19 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
   //      Private Functions
   ///////////////////////////////////////////////////////////////////////////
 
+  private def ensureProfileIsLoaded() = {
+    if($scope.profileID.isEmpty) {
+      $scope.profileID = $routeParams.id ?? mySession.user.flatMap(_._id)
+      $scope.profileID.foreach(loadGroupsPostingsAndWorkloads)
+    }
+  }
+
   /**
     * Retrieve the user instance and its groups and postings for the given user ID
     * @param userID the given user ID
     */
-  private def loadUserAndGroupsPostingsAndWorkloads(userID: String) {
-    console.log(s"Loading user profile for $userID...")
+  private def loadGroupsPostingsAndWorkloads(userID: String) {
+    console.log(s"Loading groups, postings and workloads for user # $userID...")
     $scope.loadingStart()
     val outcome = for {
       user <- userFactory.getUserByID(userID)
@@ -211,11 +217,9 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
 
   $scope.onToggleActiveWorkloads((_, activeOnly) => $scope.profileID.flat foreach (refreshWorkloads(_, activeOnly)))
 
-  $scope.onSessionLoaded((_, session) => {
-    if($scope.profileID.isEmpty) {
-      $scope.profileID = $routeParams.id ?? mySession.user.flatMap(_._id)
-      $scope.profileID.foreach(loadUserAndGroupsPostingsAndWorkloads)
-    }
+  $scope.onUserLoaded((_, user) => {
+    console.log("User profile loaded...")
+    ensureProfileIsLoaded()
   })
 
 }
