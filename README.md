@@ -7,9 +7,7 @@ The Azure Workload Tracker (AWT) was designed to aide Microsoft Solution Consult
 <a name="Build_Requirements"></a>
 #### Build Requirements
 
-* [Scala 2.11.8+] (http://scala-lang.org/download/)
-* [Scala.js 0.6.8] (http://www.scala-js.org/)
-* [SBT 0.13.11+] (http://www.scala-sbt.org/download.html)
+* [SBT 0.13.x] (http://www.scala-sbt.org/download.html)
 
 #### Building the application locally
 
@@ -24,7 +22,7 @@ $ bower install
 Now, you can compile the Scala.js sources to JavaScript by executing the following command:
 
 ```bash
-$ sbt fastOptJS
+$  sbt fastOptJSPlus
 ```
 
 #### Running the application locally
