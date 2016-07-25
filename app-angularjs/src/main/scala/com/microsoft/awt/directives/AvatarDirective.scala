@@ -7,6 +7,7 @@ import org.scalajs.nodejs.util.ScalaJsHelper._
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
 import scala.scalajs.js.annotation.ScalaJSDefined
+import scala.util.{Failure, Success}
 
 /**
   * Avatar Directive
@@ -14,30 +15,41 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @example <avatar id="{{submitter._id }}" class="avatar-24"></avatar>
   */
 class AvatarDirective(@injected("UserFactory") userFactory: UserFactory) extends Directive[AvatarDirectiveScope] {
+  private val LOADING_SPINNER = "/assets/images/status/loading16.gif"
   private val UNKNOWN_PERSON = "/assets/images/avatars/anonymous.png"
 
+  override val replace = false
   override val restrict = "E"
   override val scope = new AvatarScopeTemplate(id = "@id", named = "@named", `class` = "@class", style = "@style")
+  override val template = s"""<img ng-src="{{ url }}" class="{{ class }}" style="{{ style }}"> {{ name }}"""
   override val transclude = true
-  override val replace = false
-  override val template = """<img ng-src="{{ url }}" class="{{ class }}" style="{{ style }}"> {{ name }}"""
 
   override def link(scope: AvatarDirectiveScope, element: JQLite, attrs: Attributes) = {
     scope.$watch("id", (newValue: js.UndefOr[String], oldValue: js.UndefOr[String]) => {
       newValue.flat foreach {
         case userID if userID.nonEmpty =>
-          scope.url = "/assets/images/status/loading16.gif"
+          scope.url = LOADING_SPINNER
           if (scope.named.isAssigned) scope.name = "Loading..."
-
-          userFactory.getUserByID(userID) foreach { user =>
-            scope.$apply { () =>
-              scope.url = user.avatarURL getOrElse UNKNOWN_PERSON
-              if (scope.named.isAssigned) scope.name = user.fullName
-            }
-          }
+          loadUserByID(userID)(scope)
         case _ =>
+          scope.url = UNKNOWN_PERSON
       }
     })
+  }
+
+  private def loadUserByID(userID: String)(implicit scope: AvatarDirectiveScope) = {
+    userFactory.getUserByID(userID) onComplete {
+      case Success(user) =>
+        scope.$apply { () =>
+          if (scope.named.isAssigned) scope.name = user.fullName
+          scope.url = user.avatarURL getOrElse UNKNOWN_PERSON
+        }
+      case Failure(e) =>
+        scope.$apply { () =>
+          scope.name = "Error"
+          scope.url = UNKNOWN_PERSON
+        }
+    }
   }
 
 }

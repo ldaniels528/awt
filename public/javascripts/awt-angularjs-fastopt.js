@@ -10957,13 +10957,14 @@ $c_Lcom_microsoft_awt_components_WorkloadService.prototype.$classData = $d_Lcom_
 /** @constructor */
 function $c_Lcom_microsoft_awt_directives_AvatarDirective() {
   $c_O.call(this);
-  this.com$microsoft$awt$directives$AvatarDirective$$userFactory$f = null;
+  this.userFactory$1 = null;
+  this.com$microsoft$awt$directives$AvatarDirective$$LOADING$undSPINNER$1 = null;
   this.com$microsoft$awt$directives$AvatarDirective$$UNKNOWN$undPERSON$1 = null;
+  this.replace$1 = false;
   this.restrict$1 = null;
   this.scope$1 = null;
-  this.transclude$1 = false;
-  this.replace$1 = false;
-  this.template$1 = null
+  this.template$1 = null;
+  this.transclude$1 = false
 }
 $c_Lcom_microsoft_awt_directives_AvatarDirective.prototype = new $h_O();
 $c_Lcom_microsoft_awt_directives_AvatarDirective.prototype.constructor = $c_Lcom_microsoft_awt_directives_AvatarDirective;
@@ -10973,14 +10974,18 @@ function $h_Lcom_microsoft_awt_directives_AvatarDirective() {
 }
 $h_Lcom_microsoft_awt_directives_AvatarDirective.prototype = $c_Lcom_microsoft_awt_directives_AvatarDirective.prototype;
 $c_Lcom_microsoft_awt_directives_AvatarDirective.prototype.init___Lcom_microsoft_awt_components_UserFactory = (function(userFactory) {
-  this.com$microsoft$awt$directives$AvatarDirective$$userFactory$f = userFactory;
+  this.userFactory$1 = userFactory;
+  this.com$microsoft$awt$directives$AvatarDirective$$LOADING$undSPINNER$1 = "/assets/images/status/loading16.gif";
   this.com$microsoft$awt$directives$AvatarDirective$$UNKNOWN$undPERSON$1 = "/assets/images/avatars/anonymous.png";
+  this.replace$1 = false;
   this.restrict$1 = "E";
   this.scope$1 = new $c_Lcom_microsoft_awt_directives_AvatarScopeTemplate("@id", "@named", "@class", "@style");
+  this.template$1 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["<img ng-src=\"{{ url }}\" class=\"{{ class }}\" style=\"{{ style }}\"> {{ name }}"])).s__sc_Seq__T($m_sci_Nil$());
   this.transclude$1 = true;
-  this.replace$1 = false;
-  this.template$1 = "<img ng-src=\"{{ url }}\" class=\"{{ class }}\" style=\"{{ style }}\"> {{ name }}";
   return this
+});
+$c_Lcom_microsoft_awt_directives_AvatarDirective.prototype.com$microsoft$awt$directives$AvatarDirective$$loadUserByID__T__Lcom_microsoft_awt_directives_AvatarDirectiveScope__V = (function(userID, scope) {
+  this.userFactory$1.getUserByID__T__s_concurrent_ExecutionContext__s_concurrent_Future(userID, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1().init___Lcom_microsoft_awt_directives_AvatarDirective__Lcom_microsoft_awt_directives_AvatarDirectiveScope(this, scope), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
 });
 $c_Lcom_microsoft_awt_directives_AvatarDirective.prototype.link__Lcom_microsoft_awt_directives_AvatarDirectiveScope__Lorg_scalajs_angularjs_JQLite__Lorg_scalajs_angularjs_Attributes__V = (function(scope, element, attrs) {
   scope.$watch("id", (function(f) {
@@ -30039,6 +30044,62 @@ var $d_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController$$an
 });
 $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController$$anonfun$6$$anonfun$apply$7$$anonfun$apply$8.prototype.$classData = $d_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController$$anonfun$6$$anonfun$apply$7$$anonfun$apply$8;
 /** @constructor */
+function $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1() {
+  $c_sr_AbstractFunction1.call(this);
+  this.$$outer$2 = null;
+  this.scope$2$f = null
+}
+$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1.prototype.constructor = $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1;
+/** @constructor */
+function $h_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1() {
+  /*<skip>*/
+}
+$h_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1.prototype = $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1.prototype;
+$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1.prototype.apply__O__O = (function(v1) {
+  return this.apply__s_util_Try__sjs_js_Any($as_s_util_Try(v1))
+});
+$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1.prototype.apply__s_util_Try__sjs_js_Any = (function(x0$2) {
+  if ($is_s_util_Success(x0$2)) {
+    var x2 = $as_s_util_Success(x0$2);
+    var user = x2.value$2;
+    return this.scope$2$f.$apply((function(f) {
+      return (function() {
+        return f.apply__O()
+      })
+    })(new $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1$$anonfun$apply$1().init___Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1__Lcom_microsoft_awt_models_User(this, user)))
+  } else if ($is_s_util_Failure(x0$2)) {
+    return this.scope$2$f.$apply((function(arg$outer) {
+      return (function() {
+        arg$outer.scope$2$f.name = "Error";
+        arg$outer.scope$2$f.url = arg$outer.$$outer$2.com$microsoft$awt$directives$AvatarDirective$$UNKNOWN$undPERSON$1
+      })
+    })(this))
+  } else {
+    throw new $c_s_MatchError().init___O(x0$2)
+  }
+});
+$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1.prototype.init___Lcom_microsoft_awt_directives_AvatarDirective__Lcom_microsoft_awt_directives_AvatarDirectiveScope = (function($$outer, scope$2) {
+  if (($$outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    this.$$outer$2 = $$outer
+  };
+  this.scope$2$f = scope$2;
+  return this
+});
+var $d_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1 = new $TypeData().initClass({
+  Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1: 0
+}, false, "com.microsoft.awt.directives.AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1", {
+  Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1: 1,
+  sr_AbstractFunction1: 1,
+  O: 1,
+  F1: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1.prototype.$classData = $d_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1;
+/** @constructor */
 function $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1() {
   $c_sr_AbstractFunction2.call(this);
   this.$$outer$2 = null;
@@ -30058,9 +30119,25 @@ $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1.prototype.apply
     var $$this = $m_s_Option$().apply__O__s_Option(newValue);
     var $$this$1 = ($$this.isEmpty__Z() ? (void 0) : $$this.get__O())
   };
-  var f = new $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2().init___Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1(this);
   if (($$this$1 !== (void 0))) {
-    f.apply__T__V($as_T($$this$1))
+    var x0$1 = $as_T($$this$1);
+    var this$13 = new $c_sci_StringOps().init___T(x0$1);
+    if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$13)) {
+      this.scope$1$f.url = this.$$outer$2.com$microsoft$awt$directives$AvatarDirective$$LOADING$undSPINNER$1;
+      var $$this$2 = this.scope$1$f.named;
+      if (($$this$2 === (void 0))) {
+        var $$this$4 = (void 0)
+      } else {
+        var $$this$3 = $m_s_Option$().apply__O__s_Option($$this$2);
+        var $$this$4 = ($$this$3.isEmpty__Z() ? (void 0) : $$this$3.get__O())
+      };
+      if (($$this$4 !== (void 0))) {
+        this.scope$1$f.name = "Loading..."
+      };
+      this.$$outer$2.com$microsoft$awt$directives$AvatarDirective$$loadUserByID__T__Lcom_microsoft_awt_directives_AvatarDirectiveScope__V(x0$1, this.scope$1$f)
+    } else {
+      this.scope$1$f.url = this.$$outer$2.com$microsoft$awt$directives$AvatarDirective$$UNKNOWN$undPERSON$1
+    }
   }
 });
 $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1.prototype.apply__O__O__O = (function(v1, v2) {
@@ -30086,101 +30163,6 @@ var $d_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1 = new $Type
   Ljava_io_Serializable: 1
 });
 $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1.prototype.$classData = $d_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1;
-/** @constructor */
-function $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2() {
-  $c_sr_AbstractFunction1.call(this);
-  this.$$outer$2 = null
-}
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2.prototype.constructor = $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2;
-/** @constructor */
-function $h_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2() {
-  /*<skip>*/
-}
-$h_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2.prototype = $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2.prototype;
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2.prototype.apply__O__O = (function(v1) {
-  this.apply__T__V($as_T(v1))
-});
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2.prototype.apply__T__V = (function(x0$1) {
-  var this$2 = new $c_sci_StringOps().init___T(x0$1);
-  if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$2)) {
-    this.$$outer$2.scope$1$f.url = "/assets/images/status/loading16.gif";
-    var $$this = this.$$outer$2.scope$1$f.named;
-    if (($$this === (void 0))) {
-      var $$this$2 = (void 0)
-    } else {
-      var $$this$1 = $m_s_Option$().apply__O__s_Option($$this);
-      var $$this$2 = ($$this$1.isEmpty__Z() ? (void 0) : $$this$1.get__O())
-    };
-    if (($$this$2 !== (void 0))) {
-      this.$$outer$2.scope$1$f.name = "Loading..."
-    };
-    var this$15 = this.$$outer$2.$$outer$2.com$microsoft$awt$directives$AvatarDirective$$userFactory$f.getUserByID__T__s_concurrent_ExecutionContext__s_concurrent_Future(x0$1, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1);
-    var f = new $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3().init___Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2(this);
-    var executor = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
-    $s_s_concurrent_Future$class__foreach__s_concurrent_Future__F1__s_concurrent_ExecutionContext__V(this$15, f, executor)
-  }
-});
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2.prototype.init___Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1 = (function($$outer) {
-  if (($$outer === null)) {
-    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
-  } else {
-    this.$$outer$2 = $$outer
-  };
-  return this
-});
-var $d_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2 = new $TypeData().initClass({
-  Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2: 0
-}, false, "com.microsoft.awt.directives.AvatarDirective$$anonfun$link$1$$anonfun$apply$2", {
-  Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2: 1,
-  sr_AbstractFunction1: 1,
-  O: 1,
-  F1: 1,
-  s_Serializable: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2.prototype.$classData = $d_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2;
-/** @constructor */
-function $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3() {
-  $c_sr_AbstractFunction1.call(this);
-  this.$$outer$2 = null
-}
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3.prototype.constructor = $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3;
-/** @constructor */
-function $h_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3() {
-  /*<skip>*/
-}
-$h_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3.prototype = $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3.prototype;
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3.prototype.apply__O__O = (function(v1) {
-  return this.apply__Lcom_microsoft_awt_models_User__sjs_js_Any(v1)
-});
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3.prototype.apply__Lcom_microsoft_awt_models_User__sjs_js_Any = (function(user) {
-  return this.$$outer$2.$$outer$2.scope$1$f.$apply((function(f) {
-    return (function() {
-      return f.apply__O()
-    })
-  })(new $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$1().init___Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3__Lcom_microsoft_awt_models_User(this, user)))
-});
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3.prototype.init___Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2 = (function($$outer) {
-  if (($$outer === null)) {
-    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
-  } else {
-    this.$$outer$2 = $$outer
-  };
-  return this
-});
-var $d_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3 = new $TypeData().initClass({
-  Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3: 0
-}, false, "com.microsoft.awt.directives.AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3", {
-  Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3: 1,
-  sr_AbstractFunction1: 1,
-  O: 1,
-  F1: 1,
-  s_Serializable: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3.prototype.$classData = $d_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3;
 /** @constructor */
 function $c_Lcom_microsoft_awt_directives_NameDirective$$anonfun$com$microsoft$awt$directives$NameDirective$$populateScope$1() {
   $c_sr_AbstractFunction1.call(this);
@@ -35183,37 +35165,37 @@ var $d_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController$$an
 });
 $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$1.prototype.$classData = $d_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$1;
 /** @constructor */
-function $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$1() {
+function $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1$$anonfun$apply$1() {
   $c_sr_AbstractFunction0$mcV$sp.call(this);
   this.$$outer$3 = null;
   this.user$1$3 = null
 }
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$1.prototype = new $h_sr_AbstractFunction0$mcV$sp();
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$1.prototype.constructor = $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$1;
+$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1$$anonfun$apply$1.prototype = new $h_sr_AbstractFunction0$mcV$sp();
+$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1$$anonfun$apply$1.prototype.constructor = $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1$$anonfun$apply$1;
 /** @constructor */
-function $h_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$1() {
+function $h_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1$$anonfun$apply$1() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$1.prototype = $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$1.prototype;
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$1.prototype.apply$mcV$sp__V = (function() {
-  var jsx$1 = this.$$outer$3.$$outer$2.$$outer$2.scope$1$f;
-  var $$this = this.user$1$3.avatarURL;
-  jsx$1.url = $as_T((($$this === (void 0)) ? this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$directives$AvatarDirective$$UNKNOWN$undPERSON$1 : $$this));
-  var $$this$1 = this.$$outer$3.$$outer$2.$$outer$2.scope$1$f.named;
-  if (($$this$1 === (void 0))) {
-    var $$this$3 = (void 0)
+$h_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1$$anonfun$apply$1.prototype = $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1$$anonfun$apply$1.prototype;
+$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1$$anonfun$apply$1.prototype.apply$mcV$sp__V = (function() {
+  var $$this = this.$$outer$3.scope$2$f.named;
+  if (($$this === (void 0))) {
+    var $$this$2 = (void 0)
   } else {
-    var $$this$2 = $m_s_Option$().apply__O__s_Option($$this$1);
-    var $$this$3 = ($$this$2.isEmpty__Z() ? (void 0) : $$this$2.get__O())
+    var $$this$1 = $m_s_Option$().apply__O__s_Option($$this);
+    var $$this$2 = ($$this$1.isEmpty__Z() ? (void 0) : $$this$1.get__O())
   };
-  if (($$this$3 !== (void 0))) {
-    this.$$outer$3.$$outer$2.$$outer$2.scope$1$f.name = $m_Lcom_microsoft_awt_models_User$UserExtensions$().fullName$extension__Lcom_microsoft_awt_models_User__T(this.user$1$3)
-  }
+  if (($$this$2 !== (void 0))) {
+    this.$$outer$3.scope$2$f.name = $m_Lcom_microsoft_awt_models_User$UserExtensions$().fullName$extension__Lcom_microsoft_awt_models_User__T(this.user$1$3)
+  };
+  var jsx$1 = this.$$outer$3.scope$2$f;
+  var $$this$3 = this.user$1$3.avatarURL;
+  jsx$1.url = $as_T((($$this$3 === (void 0)) ? this.$$outer$3.$$outer$2.com$microsoft$awt$directives$AvatarDirective$$UNKNOWN$undPERSON$1 : $$this$3))
 });
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$1.prototype.apply__O = (function() {
+$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1$$anonfun$apply$1.prototype.apply__O = (function() {
   this.apply$mcV$sp__V()
 });
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$1.prototype.init___Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3__Lcom_microsoft_awt_models_User = (function($$outer, user$1) {
+$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1$$anonfun$apply$1.prototype.init___Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1__Lcom_microsoft_awt_models_User = (function($$outer, user$1) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -35222,10 +35204,10 @@ $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$
   this.user$1$3 = user$1;
   return this
 });
-var $d_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$1 = new $TypeData().initClass({
-  Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$1: 0
-}, false, "com.microsoft.awt.directives.AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$1", {
-  Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$1: 1,
+var $d_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1$$anonfun$apply$1 = new $TypeData().initClass({
+  Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1$$anonfun$apply$1: 0
+}, false, "com.microsoft.awt.directives.AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1$$anonfun$apply$1", {
+  Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1$$anonfun$apply$1: 1,
   sr_AbstractFunction0$mcV$sp: 1,
   sr_AbstractFunction0: 1,
   O: 1,
@@ -35234,7 +35216,7 @@ var $d_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$ap
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$1.prototype.$classData = $d_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$1;
+$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1$$anonfun$apply$1.prototype.$classData = $d_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1$$anonfun$apply$1;
 /** @constructor */
 function $c_jl_JSConsoleBasedPrintStream() {
   $c_Ljava_io_PrintStream.call(this);
