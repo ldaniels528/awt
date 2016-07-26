@@ -18274,17 +18274,17 @@ $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$1.prototype.ap
 });
 $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$1.prototype.apply__Lcom_microsoft_awt_components_UserFactory__sjs_js_Object = (function(x$macro$109) {
   var d1r3ctive = new $c_Lcom_microsoft_awt_directives_AvatarDirective().init___Lcom_microsoft_awt_components_UserFactory(x$macro$109);
+  var value = d1r3ctive.replace$1;
   var s = d1r3ctive.restrict$1;
   var jsx$1 = d1r3ctive.scope$1;
-  var value = d1r3ctive.transclude$1;
-  var value$1 = d1r3ctive.replace$1;
   var s$1 = d1r3ctive.template$1;
+  var value$1 = d1r3ctive.transclude$1;
   return {
+    "replace": value,
     "restrict": s,
     "scope": jsx$1,
-    "transclude": value,
-    "replace": value$1,
     "template": s$1,
+    "transclude": value$1,
     "link": (function(d1r3ctive$1) {
       return (function(scope$2, element$2, attrs$2) {
         d1r3ctive$1.link__Lcom_microsoft_awt_directives_AvatarDirectiveScope__Lorg_scalajs_angularjs_JQLite__Lorg_scalajs_angularjs_Attributes__V(scope$2, element$2, attrs$2)

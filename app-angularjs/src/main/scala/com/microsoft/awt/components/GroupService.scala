@@ -15,6 +15,13 @@ import scala.scalajs.js
 class GroupService($http: Http) extends Service {
 
   /**
+    * Creates a new group
+    * @param group the given [[Group group]]
+    * @return the newly created group
+    */
+  def createGroup(group: Group) = $http.post[Group]("/api/group")
+
+  /**
     * Retrieves a group by ID
     * @param groupID the given group ID
     * @return a promise of a [[com.microsoft.awt.models.Group group]]
@@ -57,5 +64,12 @@ class GroupService($http: Http) extends Service {
   def getGroupsExcludingUser(userID: String, maxResults: Int = 20) = {
     $http.get[js.Array[Group]](s"/api/groups/user/$userID/nin?maxResults=$maxResults")
   }
+
+  /**
+    * Updates an existing group
+    * @param group the given [[Group group]]
+    * @return the updated group
+    */
+  def updateGroup(group: Group) = $http.put[Group](s"/api/group/${group._id}")
 
 }
