@@ -17,7 +17,7 @@ import scala.util.{Failure, Success}
   * @author lawrence.daniels@gmail.com
   */
 class SignUpController($scope: SignUpControllerScope, $location: Location, md5: MD5, $timeout: Timeout, toaster: Toaster,
-                       @injected("MySession") mySession: MySessionFactory,
+                       @injected("SessionFactory") sessionFactory: SessionFactory,
                        @injected("SignUpService") signUpSvc: SignUpService)
   extends Controller {
 
@@ -43,7 +43,7 @@ class SignUpController($scope: SignUpControllerScope, $location: Location, md5: 
           console.log("Account activation successful... ")
           console.log(s"response = ${angular.toJson(session)}")
           $scope.$apply { () =>
-            mySession.loadUserForSession(session)
+            sessionFactory.loadUserForSession(session)
             $scope.signupLoading = false
             $location.path("/home")
           }

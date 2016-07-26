@@ -18,10 +18,9 @@ import scala.util.{Failure, Success}
   * @author lawrence.daniels@gmail.com
   */
 case class MainController($scope: MainScope, $location: Location, $q: Q, $timeout: Timeout, toaster: Toaster,
-                          @injected("AuthenticationService") authenticationService: AuthenticationService,
                           @injected("EventService") eventService: EventService,
                           @injected("GroupService") groupService: GroupService,
-                          @injected("MySession") mySession: MySessionFactory,
+                          @injected("SessionFactory") sessionFactory: SessionFactory,
                           @injected("NotificationService") notificationSvc: NotificationService,
                           @injected("ReactiveSearchService") reactiveSearchSvc: ReactiveSearchService,
                           @injected("WebSocketService") webSocketSvc: WebSocketService)
@@ -61,7 +60,7 @@ case class MainController($scope: MainScope, $location: Location, $q: Q, $timeou
   $scope.getOnlineStatus = (aUser: js.UndefOr[UserLike]) => {
     for {
       user <- aUser
-      lastUpdated <- mySession.getSessionLastUpdatedTime(user)
+      lastUpdated <- sessionFactory.getSessionLastUpdatedTime(user)
     } yield {
       if (System.currentTimeMillis().toDouble - lastUpdated < 15) "GREEN" else "YELLOW"
     }
@@ -74,18 +73,6 @@ case class MainController($scope: MainScope, $location: Location, $q: Q, $timeou
   $scope.isLoginPage = () => $location.path() == "/login"
 
   $scope.isSelectedTab = (aTab: js.UndefOr[MainTab]) => aTab map (tab => $location.path().startsWith(tab.url))
-
-  $scope.logout = () => mySession.session.flatMap(_._id) foreach { sessionID =>
-    $scope.loadingStart()
-    authenticationService.logout(sessionID) onComplete {
-      case Success(result) =>
-        if (result.isOk) mySession.logout() else toaster.error("Logout Failure", "")
-        $scope.$apply { () => $scope.loadingStop() }
-      case Failure(e) =>
-        toaster.error("Logout Failure", e.displayMessage)
-        $scope.$apply { () => $scope.loadingStop() }
-    }
-  }
 
   $scope.onSelectedItem = (item: js.UndefOr[js.Any], aModel: js.UndefOr[EntitySearchResult], label: js.UndefOr[String]) => {
     for {
@@ -107,7 +94,7 @@ case class MainController($scope: MainScope, $location: Location, $q: Q, $timeou
 
   $scope.setActiveTab = (tab: MainTab) => $location.path(tab.url)
 
-  $scope.session = () => mySession.session
+  $scope.session = () => sessionFactory.session
 
   $scope.showFullName = (aUser: js.UndefOr[User]) => aUser.flatMap(_.fullName)
 
@@ -115,7 +102,7 @@ case class MainController($scope: MainScope, $location: Location, $q: Q, $timeou
     console.log(s"toggled open ? $isOpen")
   }
 
-  $scope.user = () => mySession.user
+  $scope.user = () => sessionFactory.user
 
   ///////////////////////////////////////////////////////////////////////////
   //      Notification Functions
@@ -252,7 +239,6 @@ trait MainScope extends Scope with AutoCompletionScope with GlobalLoadingScope w
   var isLoginPage: js.Function0[Boolean] = js.native
   var getOnlineStatus: js.Function1[js.UndefOr[UserLike], js.UndefOr[String]] = js.native
   var isSelectedTab: js.Function1[js.UndefOr[MainTab], js.UndefOr[Boolean]] = js.native
-  var logout: js.Function0[Unit] = js.native
   var onSelectedItem: js.Function3[js.UndefOr[js.Any], js.UndefOr[EntitySearchResult], js.UndefOr[String], Unit] = js.native
   var session: js.Function0[js.UndefOr[Session]] = js.native
   var setActiveTab: js.Function1[MainTab, Any] = js.native

@@ -17,8 +17,7 @@ import scala.util.{Failure, Success}
   * @author lawrence.daniels@gmail.com
   */
 class AuthenticationController($scope: AuthenticationControllerScope, $location: Location, md5: MD5, toaster: Toaster,
-                               @injected("AuthenticationService") authenticationService: AuthenticationService,
-                               @injected("MySession") mySession: MySessionFactory)
+                               @injected("SessionFactory") sessionFactory: SessionFactory)
   extends Controller {
 
   $scope.form = LoginForm()
@@ -44,16 +43,16 @@ class AuthenticationController($scope: AuthenticationControllerScope, $location:
 
       // requests an authentication token, then uses it to authorize the user
       val outcome = for {
-        authData <- authenticationService.getAuthToken(form.username.orNull).toFuture
+        authData <- sessionFactory.getAuthToken(form.username.orNull).toFuture
         hashPassword = md5.createHash(authData.code + md5.createHash(form.password))
-        session <- authenticationService.login(authData.code, new LoginForm(form.username, hashPassword)).toFuture
+        session <- sessionFactory.login(authData.code, new LoginForm(form.username, hashPassword)).toFuture
       } yield (authData, session)
 
       outcome onComplete {
         case Success((authData, session)) =>
           console.log("Login successful... ")
           $scope.$apply(() => {
-            mySession.loadUserForSession(session)
+            sessionFactory.loadUserForSession(session)
             $scope.loginLoading = false
             $location.path("/home")
           })

@@ -1,6 +1,7 @@
 package com.microsoft.awt.components
 
-import com.microsoft.awt.models.{Session, User, UserLike}
+import com.microsoft.awt.forms.LoginForm
+import com.microsoft.awt.models.{AuthToken, Session, User, UserLike}
 import org.scalajs.angularjs.AngularJsHelper._
 import org.scalajs.angularjs._
 import org.scalajs.angularjs.cookies.Cookies
@@ -15,21 +16,48 @@ import scala.scalajs.js.JSConverters._
 import scala.util.{Failure, Success}
 
 /**
-  * My Session Factory
+  * Session Factory
   * @author lawrence.daniels@gmail.com
   */
-class MySessionFactory($rootScope: Scope, $cookies: Cookies, $location: Location, $timeout: Timeout, toaster: Toaster,
-                       @injected("UserService") userSvc: UserService,
-                       @injected("UserSessionService") sessionSvc: UserSessionService,
-                       @injected("WebSocketService") webSocketSvc: WebSocketService) extends Factory {
+class SessionFactory($rootScope: Scope, $cookies: Cookies, $location: Location, $timeout: Timeout, toaster: Toaster,
+                     @injected("AuthenticationService") authenticationService: AuthenticationService,
+                     @injected("SessionService") sessionSvc: SessionService,
+                     @injected("UserService") userSvc: UserService,
+                     @injected("WebSocketService") webSocketSvc: WebSocketService) extends Factory {
 
   private val SESSION_COOKIE_NAME = "AWT_session_id"
   private val INITIAL_GRACE_PERIOD = 30000L
 
   var onlineStatuses = js.Dictionary[Session]()
-  var mySession: js.UndefOr[Session] = js.undefined
+  var sessionFactory: js.UndefOr[Session] = js.undefined
   var myUser: js.UndefOr[User] = js.undefined
   val initTime = System.currentTimeMillis()
+
+  ///////////////////////////////////////////////////////////////////////////
+  //      Authorization Functions
+  ///////////////////////////////////////////////////////////////////////////
+
+  /**
+    * Attempts to retrieve an authentication token from the server
+    * @param username the username for whom the token is being requested
+    * @return a new time-sensitive [[AuthToken authentication token]]
+    */
+  def getAuthToken(username: String) = authenticationService.getAuthToken(username)
+
+  /**
+    * Attempts to authenticate a user
+    * @param tokenId   the given token ID
+    * @param loginForm the given [[LoginForm login credentials]]
+    * @return a promise of an authenticated [[Session session]]
+    */
+  def login(tokenId: String, loginForm: LoginForm) = authenticationService.login(tokenId, loginForm)
+
+  /**
+    * Signs the user belong to the token ID out of the system
+    * @param tokenId the given token ID
+    * @return the promise of a successful outcome
+    */
+  def logout(tokenId: String) = authenticationService.logout(tokenId)
 
   ///////////////////////////////////////////////////////////////////////////
   //      Public Functions
@@ -53,7 +81,7 @@ class MySessionFactory($rootScope: Scope, $cookies: Cookies, $location: Location
     * @return the current session
     */
   def session: js.UndefOr[Session] = {
-    if (mySession.isDefined) mySession
+    if (sessionFactory.isDefined) sessionFactory
     else {
       if (elapsedTime > INITIAL_GRACE_PERIOD) returnToLoginPage()
       js.undefined
@@ -65,7 +93,7 @@ class MySessionFactory($rootScope: Scope, $cookies: Cookies, $location: Location
     * @return the currently authentication user
     */
   def user: js.UndefOr[User] = {
-    if (mySession.isDefined) myUser
+    if (sessionFactory.isDefined) myUser
     else {
       if (elapsedTime > INITIAL_GRACE_PERIOD) returnToLoginPage()
       js.undefined
@@ -98,7 +126,7 @@ class MySessionFactory($rootScope: Scope, $cookies: Cookies, $location: Location
     */
   def logout() {
     $cookies.remove(SESSION_COOKIE_NAME)
-    mySession = js.undefined
+    sessionFactory = js.undefined
     myUser = js.undefined
     returnToLoginPage()
   }
@@ -109,7 +137,7 @@ class MySessionFactory($rootScope: Scope, $cookies: Cookies, $location: Location
 
   private def announceSession(loadedSession: Session) = {
     console.log(s"Session ${loadedSession._id} (${loadedSession.primaryEmail}) loaded in $elapsedTime msec")
-    mySession = loadedSession
+    sessionFactory = loadedSession
     setSessionCookie(loadedSession)
     $rootScope.emitSessionLoaded(loadedSession)
   }
@@ -159,7 +187,7 @@ class MySessionFactory($rootScope: Scope, $cookies: Cookies, $location: Location
 
   private def updateOnlineStatusesForFollowers(userID: String): Unit = {
     for {
-      thisSession <- mySession
+      thisSession <- sessionFactory
       userID <- thisSession.userID
     } {
       console.log("Updating the online status for all followers...")
@@ -179,7 +207,7 @@ class MySessionFactory($rootScope: Scope, $cookies: Cookies, $location: Location
   }
 
   private def returnToLoginPage() {
-    mySession = js.undefined
+    sessionFactory = js.undefined
     myUser = js.undefined
     $cookies.remove(SESSION_COOKIE_NAME)
 

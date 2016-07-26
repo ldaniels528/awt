@@ -44,7 +44,7 @@ object UserDialog {
   case class UserDialogController($scope: UserDialogScope, $modalInstance: ModalInstance[UserDialogResult],
                                   $timeout: Timeout, toaster: Toaster,
                                   @injected("userID") userID: String,
-                                  @injected("MySession") mySession: MySessionFactory,
+                                  @injected("SessionFactory") sessionFactory: SessionFactory,
                                   @injected("UserFactory") userFactory: UserFactory) extends Controller {
 
     $scope.form = new ProfileEditForm()

@@ -19,7 +19,7 @@ import scala.util.{Failure, Success}
   */
 case class GroupDetailsController($scope: GroupDetailsScope, $routeParams: GroupDetailsRouteParams, $timeout: Timeout, toaster: Toaster,
                                   @injected("GroupService") groupService: GroupService,
-                                  @injected("MySession") mySession: MySessionFactory,
+                                  @injected("SessionFactory") sessionFactory: SessionFactory,
                                   @injected("UserFactory") userFactory: UserFactory,
                                   @injected("WorkloadDialog") workloadDialog: WorkloadDialog,
                                   @injected("WorkloadCommentDialog") workloadCommentDialog: WorkloadCommentDialog,
@@ -30,7 +30,7 @@ case class GroupDetailsController($scope: GroupDetailsScope, $routeParams: Group
   ///////////////////////////////////////////////////////////////////////////
 
   $routeParams.groupId foreach { groupId =>
-    $scope.currentUserId = mySession.user.flatMap(_._id)
+    $scope.currentUserId = sessionFactory.user.flatMap(_._id)
     loadGroupWithMembersAndWorkloads(groupId)
   }
 

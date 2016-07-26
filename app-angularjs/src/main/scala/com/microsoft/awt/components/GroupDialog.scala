@@ -48,7 +48,7 @@ object GroupDialog {
   class GroupDialogController($scope: GroupDialogScope, $modalInstance: ModalInstance[GroupDialogResult],
                               $timeout: Timeout, toaster: Toaster,
                               @injected("updateGroup") updateGroup: js.UndefOr[Group],
-                              @injected("MySession") mySession: MySessionFactory,
+                              @injected("SessionFactory") sessionFactory: SessionFactory,
                               @injected("UserService") userService: UserService,
                               @injected("GroupService") groupService: GroupService) extends Controller {
 
@@ -57,7 +57,7 @@ object GroupDialog {
       userService.getUsers() onComplete {
         case Success(users) => $scope.$apply { () =>
           $scope.users = users
-          $scope.form.owner = mySession.user.flatMap(_._id)
+          $scope.form.owner = sessionFactory.user.flatMap(_._id)
         }
         case Failure(e) =>
           toaster.error("Loading Error", e.displayMessage)

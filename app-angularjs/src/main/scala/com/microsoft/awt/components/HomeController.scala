@@ -20,14 +20,15 @@ import scala.util.{Failure, Success}
   * Home Controller (AngularJS)
   * @author lawrence.daniels@gmail.com
   */
-class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $location: Location, $timeout: Timeout, toaster: Toaster,
-                     @injected("FileUploader") fileUploader: FileUploader,
-                     @injected("MySession") mySession: MySessionFactory,
-                     @injected("PostService") postService: PostService,
-                     @injected("UserFactory") userFactory: UserFactory,
-                     @injected("UserDialog") userDialog: UserDialog,
-                     @injected("UserService") userService: UserService)
-  extends Controller {
+case class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $location: Location, $timeout: Timeout, toaster: Toaster,
+                          @injected("EventService") eventService: EventService,
+                          @injected("FileUploader") fileUploader: FileUploader,
+                          @injected("SessionFactory") sessionFactory: SessionFactory,
+                          @injected("PostService") postService: PostService,
+                          @injected("UserFactory") userFactory: UserFactory,
+                          @injected("UserDialog") userDialog: UserDialog,
+                          @injected("UserService") userService: UserService)
+  extends Controller with GlobalAuthorization {
 
   // define the last post containing a file upload
   private var lastUploadedPost: Option[Post] = None
@@ -36,12 +37,13 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
   $scope.menus = js.Array(
     new Menu("MY PROFILE", items = js.Array(
       MenuItem(text = "Home", iconClass = "fa fa-home sk_home", action = { () => $scope.navigateToHome() }),
-      MenuItem(text = "Edit Profile", iconClass = "fa fa-edit sk_profile_edit", action = { () => $scope.profileEditorPopup(mySession.user.flatMap(_._id)) }: js.Function)
+      MenuItem(text = "Edit Profile", iconClass = "fa fa-edit sk_profile_edit", action = { () => $scope.profileEditorPopup(sessionFactory.user.flatMap(_._id)) }),
+      MenuItem(text = "Sign Out", iconClass = "fa fa-sign-out sk_profile_edit", action = { () => $scope.logout() })
     )),
     new Menu("MY ACTIVITY", items = js.Array(
-      MenuItem(text = "Newsfeed", iconClass = "fa fa-newspaper-o sk_news_feed", action = { () => $scope.navigateToNewsFeed() }: js.Function),
-      MenuItem(text = "Messages", iconClass = "fa fa-envelope-o sk_message", action = { () => $scope.navigateToMessages() }: js.Function),
-      MenuItem(text = "Photos", iconClass = "fa fa-file-image-o sk_photo", action = { () => $scope.navigateToPhotos() }: js.Function)
+      MenuItem(text = "Newsfeed", iconClass = "fa fa-newspaper-o sk_news_feed", action = { () => $scope.navigateToNewsFeed() }),
+      MenuItem(text = "Messages", iconClass = "fa fa-envelope-o sk_message", action = { () => $scope.navigateToMessages() }),
+      MenuItem(text = "Photos", iconClass = "fa fa-file-image-o sk_photo", action = { () => $scope.navigateToPhotos() })
     )),
     new Menu("MY EVENTS", link = "#/home/events", items = js.Array(
       MenuItem.include(src = "/assets/views/home/navigation/my_events.html")
@@ -106,7 +108,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
       case Success(userForm) =>
         $scope.loadingStop()
         $scope.$apply(() => {
-          mySession.user foreach { myUser =>
+          sessionFactory.user foreach { myUser =>
             myUser.firstName = userForm.firstName
             myUser.lastName = userForm.lastName
             myUser.primaryEmail = userForm.primaryEmail
@@ -144,7 +146,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
 
   $scope.isRefreshable = (aPost: js.UndefOr[Post]) => {
     for {
-      user <- mySession.user
+      user <- sessionFactory.user
       post <- aPost
       text <- post.text
       submitterId <- post.submitterId
@@ -201,7 +203,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
 
   $scope.deletePost = (aPost: js.UndefOr[Post]) => {
     for {
-      user <- mySession.user
+      user <- sessionFactory.user
       userID <- user._id
       post <- aPost
       postID <- post._id
@@ -235,14 +237,14 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
   $scope.isDeletable = (aPost: js.UndefOr[Post]) => {
     for {
       post <- aPost
-      user <- mySession.user
+      user <- sessionFactory.user
     } yield user._id ?== post.submitterId
   }
 
   $scope.isLikedPost = (aPost: js.UndefOr[Post]) => {
     for {
       post <- aPost
-      userID <- mySession.user.flatMap(_._id)
+      userID <- sessionFactory.user.flatMap(_._id)
     } yield post.likedBy.exists(_.contains(userID))
   }
 
@@ -252,11 +254,11 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
 
   private def likeOrUnlikePost(aPost: js.UndefOr[Post], like: Boolean) {
     val aPostID = aPost.flatMap(_._id)
-    val aUserID = mySession.user.map(_._id)
+    val aUserID = sessionFactory.user.map(_._id)
     val result = for {
       post <- aPost.toOption
       postID <- post._id.toOption
-      userID <- mySession.user.flatMap(_._id).toOption
+      userID <- sessionFactory.user.flatMap(_._id).toOption
     } yield (post, postID, userID)
 
     result match {
@@ -280,7 +282,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
 
   $scope.publishPost = (aPost: js.UndefOr[Post]) => {
     for {
-      user <- mySession.user
+      user <- sessionFactory.user
       post <- aPost
     } {
       post.loading = true
@@ -312,7 +314,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
   }
 
   $scope.setupNewPost = () => {
-    mySession.user.foreach { u =>
+    sessionFactory.user.foreach { u =>
       console.log(s"Setting up a new post...")
       $scope.newPost = Post(u)
     }
@@ -325,7 +327,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
   $scope.isLikedComment = (aComment: js.UndefOr[Comment]) => {
     for {
       comment <- aComment
-      userID <- mySession.user.flatMap(_._id)
+      userID <- sessionFactory.user.flatMap(_._id)
     } yield comment.likedBy.exists(_.contains(userID))
   }
 
@@ -338,7 +340,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
   }
 
   private def likeOrUnlikeComment(aPostID: js.UndefOr[String], aComment: js.UndefOr[Comment], like: Boolean) {
-    val aUserID = mySession.user.flatMap(_._id)
+    val aUserID = sessionFactory.user.flatMap(_._id)
     val result = for {
       comment <- aComment.toOption
       commentID <- comment._id.toOption
@@ -372,7 +374,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
     for {
       post <- aPost
       postID <- post._id
-      user <- mySession.user
+      user <- sessionFactory.user
       text <- aComment
     } {
       val submitter = Submitter(user)
@@ -398,7 +400,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
       post <- aPost
       reply <- aReply
       replyLikes <- post.replyLikes
-      userID <- mySession.user.flatMap(_._id)
+      userID <- sessionFactory.user.flatMap(_._id)
     } yield replyLikes.exists(_.likedBy.exists(_.contains(userID)))
   }
 
@@ -411,7 +413,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
   }
 
   private def likeOrUnlikeReply(aPostID: js.UndefOr[String], aCommentID: js.UndefOr[String], aReply: js.UndefOr[Reply], like: Boolean) {
-    val aUserID = mySession.user.flatMap(_._id)
+    val aUserID = sessionFactory.user.flatMap(_._id)
     val result = for {
       postID <- aPostID.toOption
       commentID <- aCommentID.toOption
@@ -448,7 +450,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
       postID <- post._id
       comment <- aComment
       commentID <- comment._id
-      user <- mySession.user
+      user <- sessionFactory.user
       text <- aText
     } {
       val submitter = Submitter(user)
@@ -548,7 +550,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
     * Loads the user's followers and posts
     */
   private def loadFollowersAndPostings() = {
-    for (userID <- mySession.user.flatMap(_._id.flat)) {
+    for (userID <- sessionFactory.user.flatMap(_._id.flat)) {
       $scope.loadingStart()
       val outcome = for {
         posts <- postService.getNewsFeed(userID)
@@ -638,7 +640,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
 
     for {
       newPost <- $scope.newPost
-      user <- mySession.user
+      user <- sessionFactory.user
       userId <- user._id.flat
     } {
       // if the post itself has not already been created ...
@@ -689,7 +691,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait HomeControllerScope extends Scope with GlobalLoadingScope with GlobalNavigationScope {
+trait HomeControllerScope extends Scope with GlobalAuthorizationScope with GlobalLoadingScope with GlobalNavigationScope {
   var menus: js.Array[Menu] = js.native
   var newPost: js.UndefOr[Post] = js.native
   var posts: js.Array[Post] = js.native
@@ -703,6 +705,7 @@ trait HomeControllerScope extends Scope with GlobalLoadingScope with GlobalNavig
   //      Public Functions
   ///////////////////////////////////////////////////////////////////////////
 
+  // initialization
   var init: js.Function0[Unit] = js.native
 
   // dialogs

@@ -16,7 +16,7 @@ import scala.util.{Failure, Success}
   * @author lawrence.daniels@gmail.com
   */
 class PhotosController($scope: PhotosScope, $timeout: Timeout, toaster: Toaster,
-                       @injected("MySession") mySession: MySessionFactory,
+                       @injected("SessionFactory") sessionFactory: SessionFactory,
                        @injected("PostService") postService: PostService) extends Controller {
 
   $scope.photos = emptyArray
@@ -31,7 +31,7 @@ class PhotosController($scope: PhotosScope, $timeout: Timeout, toaster: Toaster,
 
   $scope.loadPhotos = () => {
     for {
-      user <- mySession.user
+      user <- sessionFactory.user
       userID <- user._id
     } {
       console.log(s"Loading photos for user ${user.username} (${user._id})...")

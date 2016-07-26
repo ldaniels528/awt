@@ -19,7 +19,7 @@ import scala.util.{Failure, Success}
   */
 case class ProfileController($scope: ProfileControllerScope, $routeParams: ProfileRouteParams, $timeout: Timeout, toaster: Toaster,
                              @injected("GroupService") groupService: GroupService,
-                             @injected("MySession") mySession: MySessionFactory,
+                             @injected("SessionFactory") sessionFactory: SessionFactory,
                              @injected("PostService") postService: PostService,
                              @injected("UserFactory") userFactory: UserFactory,
                              @injected("UserService") userService: UserService,
@@ -54,7 +54,7 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
   $scope.isMe = () => {
     (for {
       id <- $scope.profileID.flat
-      myId <- mySession.user.flatMap(_._id).flat
+      myId <- sessionFactory.user.flatMap(_._id).flat
     } yield id == myId).contains(true)
   }
 
@@ -82,7 +82,7 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
     for {
       endorsee <- aUser
       endorseeID <- endorsee._id
-      endorser <- mySession.user
+      endorser <- sessionFactory.user
       endorserID <- endorser._id
     } {
       $scope.endorseLoading = true
@@ -106,7 +106,7 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
   $scope.isEndorsed = (aUser: js.UndefOr[User]) => {
     for {
       user <- aUser
-      endorser <- mySession.user
+      endorser <- sessionFactory.user
       endorsers <- user.endorsers
       endorserId <- endorser._id
     } yield endorsers.contains(endorserId)
@@ -120,7 +120,7 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
     for {
       followee <- aUser
       followeeID <- followee._id
-      follower <- mySession.user
+      follower <- sessionFactory.user
       followerID <- follower._id
     } {
       $scope.followLoading = true
@@ -144,7 +144,7 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
   $scope.isFollowed = (aUser: js.UndefOr[User]) => {
     for {
       user <- aUser
-      follower <- mySession.user
+      follower <- sessionFactory.user
       followers <- user.followers
       followerId <- follower._id
     } yield followers.contains(followerId)
@@ -168,7 +168,7 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
 
   private def ensureProfileIsLoaded() = {
     if($scope.profileID.isEmpty) {
-      $scope.profileID = $routeParams.id ?? mySession.user.flatMap(_._id)
+      $scope.profileID = $routeParams.id ?? sessionFactory.user.flatMap(_._id)
       $scope.profileID.foreach(loadGroupsPostingsAndWorkloads)
     }
   }

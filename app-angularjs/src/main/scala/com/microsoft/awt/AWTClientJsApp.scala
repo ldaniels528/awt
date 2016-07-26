@@ -86,7 +86,7 @@ object AWTClientJsApp extends js.JSApp {
   }
 
   private def configureFactories(module: Module): Unit = {
-    module.factoryOf[MySessionFactory]("MySession")
+    module.factoryOf[SessionFactory]("SessionFactory")
     module.factoryOf[UserFactory]("UserFactory")
   }
 
@@ -104,10 +104,10 @@ object AWTClientJsApp extends js.JSApp {
     module.serviceOf[NotificationService]("NotificationService")
     module.serviceOf[PostService]("PostService")
     module.serviceOf[ReactiveSearchService]("ReactiveSearchService")
+    module.serviceOf[SessionService]("SessionService")
     module.serviceOf[SignUpService]("SignUpService")
     module.serviceOf[WorkloadService]("WorkloadService")
     module.serviceOf[UserService]("UserService")
-    module.serviceOf[UserSessionService]("UserSessionService")
     module.serviceOf[WebSocketService]("WebSocketService")
   }
 

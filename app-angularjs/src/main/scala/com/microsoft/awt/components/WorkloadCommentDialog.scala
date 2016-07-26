@@ -45,13 +45,13 @@ object WorkloadCommentDialog {
   case class WorkloadCommentDialogController($scope: WorkloadCommentDialogScope, $modalInstance: ModalInstance[WorkloadCommentDialogResult],
                                              $timeout: Timeout, toaster: Toaster,
                                              @injected("workloadID") workloadID: String,
-                                             @injected("MySession") mySession: MySessionFactory,
+                                             @injected("SessionFactory") sessionFactory: SessionFactory,
                                              @injected("UserFactory") userFactory: UserFactory,
                                              @injected("WorkloadService") workloadService: WorkloadService) extends Controller {
 
     $scope.form = {
       val form = new WorkloadCommentForm(workloadID)
-      form.submitter = mySession.user
+      form.submitter = sessionFactory.user
       form
     }
     $scope.processing = false

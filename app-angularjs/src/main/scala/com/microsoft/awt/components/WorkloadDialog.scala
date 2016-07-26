@@ -49,7 +49,7 @@ object WorkloadDialog {
   class WorkloadDialogController($scope: WorkloadDialogScope, $modalInstance: ModalInstance[WorkloadDialogResult],
                                  $timeout: Timeout, toaster: Toaster,
                                  @injected("updateWorkload") updateWorkload: js.UndefOr[Workload],
-                                 @injected("MySession") mySession: MySessionFactory,
+                                 @injected("SessionFactory") sessionFactory: SessionFactory,
                                  @injected("UserService") userService: UserService,
                                  @injected("WorkloadService") statusService: WorkloadService) extends Controller {
 
@@ -67,7 +67,7 @@ object WorkloadDialog {
           $scope.form.msftLead = if ($scope.updating)
             users.find(_._id ?== updateWorkload.flatMap(_.msftLeadId)).orUndefined
           else
-            users.find(_._id ?== mySession.user.flatMap(_._id)).orUndefined
+            users.find(_._id ?== sessionFactory.user.flatMap(_._id)).orUndefined
         }
         case Failure(e) =>
           toaster.error("Loading Error", e.displayMessage)
@@ -97,7 +97,7 @@ object WorkloadDialog {
       workload.statuses = if ($scope.updating) updateWorkload.flatMap(_.statuses) ?? js.Array[Workload.Status]() else js.Array[Workload.Status]()
       if (form.statusText.flat.exists(_.trim.nonEmpty)) {
         workload.statuses.foreach(_.push(new Workload.Status(
-          submitterId = mySession.user.flatMap(_._id),
+          submitterId = sessionFactory.user.flatMap(_._id),
           statusText = form.statusText,
           creationTime = new js.Date()
         )))

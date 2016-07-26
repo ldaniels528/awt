@@ -19,31 +19,24 @@
                 popover-trigger="focus">
     </div>
     <div class="col-md-3">
-        <span class="pull-left">
-            <img class="avatar32" ng-hide="loading" ng-src="{{ user().avatarURL }}">
-            <img class="avatar32" ng-show="loading" src="/assets/images/status/loading32.gif">
-            <i class="fa media-bottom" ng-class="isConnected() ? 'fa-link sk_connected' : 'fa-unlink sk_icon_inactive'" title="{{ isConnected() ? 'Connected' : 'Not connected'  }} to AWT"></i> &nbsp;
+        <img class="avatar32" ng-hide="loading" ng-src="{{ user().avatarURL }}">
+        <img class="avatar32" ng-show="loading" src="/assets/images/status/loading32.gif">
+        <i class="fa media-bottom" ng-class="isConnected() ? 'fa-link sk_connected' : 'fa-unlink sk_icon_inactive'" title="{{ isConnected() ? 'Connected' : 'Not connected'  }} to AWT"></i> &nbsp;
 
-            <!-- notifications -->
-            <span uib-dropdown on-toggle="toggled(open)">
-                <a id="simple-dropdown" class="sk_drop_down" uib-dropdown-toggle>
-                    <i ng-class="notifications.length ? 'sk_icon' : 'sk_icon_inactive'" class="fa fa-bell media-bottom"></i>
-                    <span ng-show="notifications.length" class="sk_notification_count">{{ notifications.length }}</span>
-                    <span ng-hide="notifications.length">&nbsp;</span>
-                </a>
-                <ul class="uib-dropdown-menu sk_notification_dropdown dropdown-menu-right" aria-labelledby="simple-dropdown">
-                    <li ng-repeat="notification in notifications | orderBy:'-creationTime'">
-                        <div ng-include="'/assets/views/home/notification.html'"></div>
-                    </li>
-                </ul>
-            </span>
-
-            <i class="fa fa-comments media-bottom sk_icon_inactive"></i>
-        </span>
-        <span style="padding-right: 8px" class="pull-right">
-            <a class="sk_logout" ng-click="logout()">
-                <i class="fa fa-sign-out"></i> <span>Logout</span>
+        <!-- notifications -->
+        <span uib-dropdown on-toggle="toggled(open)">
+            <a id="simple-dropdown" class="sk_drop_down" uib-dropdown-toggle>
+                <i ng-class="notifications.length ? 'sk_icon' : 'sk_icon_inactive'" class="fa fa-bell media-bottom"></i>
+                <span ng-show="notifications.length" class="sk_notification_count">{{ notifications.length }}</span>
+                <span ng-hide="notifications.length">&nbsp;</span>
             </a>
+            <ul class="uib-dropdown-menu sk_notification_dropdown dropdown-menu-right" aria-labelledby="simple-dropdown">
+                <li ng-repeat="notification in notifications | orderBy:'-creationTime'">
+                    <div ng-include="'/assets/views/home/notification.html'"></div>
+                </li>
+            </ul>
         </span>
+
+        <i class="fa fa-comments media-bottom sk_icon_inactive"></i>
     </div>
 </div>

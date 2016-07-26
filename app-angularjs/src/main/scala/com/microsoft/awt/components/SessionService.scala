@@ -8,10 +8,10 @@ import scala.concurrent.ExecutionContext
 import scala.scalajs.js
 
 /**
-  * User Session Service
+  * Session Service
   * @author lawrence.daniels@gmail.com
   */
-class UserSessionService($http: Http) extends Service {
+class SessionService($http: Http) extends Service {
 
   /**
     * Retrieves a user session by ID or creates a new anonymous session
