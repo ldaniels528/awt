@@ -182,7 +182,7 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
     $scope.loadingStart()
     val outcome = for {
       user <- userFactory.getUserByID(userID)
-      groups <- groupService.getGroupsOwnedByOrIncludeUser(userID)
+      groups <- groupService.getGroupsIncludingOrOwnedByUser(userID)
       posts <- postService.getPostsByUserID(userID)
       enrichedPosts <- userFactory.enrich(posts)
       workloads <- workloadService.getWorkloadsByUser(userID, $scope.activeOnly getOrElse true)

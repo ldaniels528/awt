@@ -1,5 +1,6 @@
 package com.microsoft.awt
 
+import com.microsoft.awt.components.GroupDialog.GroupDialogController
 import com.microsoft.awt.components.UserDialog.UserDialogController
 import com.microsoft.awt.components.WorkloadCommentDialog.WorkloadCommentDialogController
 import com.microsoft.awt.components.WorkloadDialog.WorkloadDialogController
@@ -58,10 +59,19 @@ object AWTClientJsApp extends js.JSApp {
   }
 
   private def configureDialogs(module: Module): Unit = {
+    // group dialog
+    module.serviceOf[GroupDialog]("GroupDialog")
+    module.controllerOf[GroupDialogController]("GroupDialogController")
+
+    // user dialog
     module.serviceOf[UserDialog]("UserDialog")
     module.controllerOf[UserDialogController]("UserDialogController")
+
+    // workload dialog
     module.serviceOf[WorkloadDialog]("WorkloadDialog")
     module.controllerOf[WorkloadDialogController]("WorkloadDialogController")
+
+    // workload comment dialog
     module.serviceOf[WorkloadCommentDialog]("WorkloadCommentDialog")
     module.controllerOf[WorkloadCommentDialogController]("WorkloadCommentDialogController")
   }

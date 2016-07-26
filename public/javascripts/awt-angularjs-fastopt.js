@@ -2875,6 +2875,43 @@ function $m_Lcom_microsoft_awt_components_AuthenticationService$LogoutResponse$L
   return $n_Lcom_microsoft_awt_components_AuthenticationService$LogoutResponse$LogoutResultEnrichment$
 }
 /** @constructor */
+function $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm$GroupFormExtensions$() {
+  $c_O.call(this)
+}
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm$GroupFormExtensions$.prototype = new $h_O();
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm$GroupFormExtensions$.prototype.constructor = $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm$GroupFormExtensions$;
+/** @constructor */
+function $h_Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm$GroupFormExtensions$() {
+  /*<skip>*/
+}
+$h_Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm$GroupFormExtensions$.prototype = $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm$GroupFormExtensions$.prototype;
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm$GroupFormExtensions$.prototype.init___ = (function() {
+  return this
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm$GroupFormExtensions$.prototype.toGroup$extension__Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm__Lcom_microsoft_awt_models_Group = (function($$this) {
+  var jsx$5 = $$this._id;
+  var jsx$4 = $$this.name;
+  var jsx$3 = $$this.description;
+  var jsx$2 = $$this.owner;
+  var jsx$1 = $$this.members;
+  var value = new $g.Date();
+  return new $c_Lcom_microsoft_awt_models_Group(jsx$5, jsx$4, jsx$3, jsx$2, jsx$1, value)
+});
+var $d_Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm$GroupFormExtensions$ = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm$GroupFormExtensions$: 0
+}, false, "com.microsoft.awt.components.GroupDialog$GroupDialogForm$GroupFormExtensions$", {
+  Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm$GroupFormExtensions$: 1,
+  O: 1
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm$GroupFormExtensions$.prototype.$classData = $d_Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm$GroupFormExtensions$;
+var $n_Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm$GroupFormExtensions$ = (void 0);
+function $m_Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm$GroupFormExtensions$() {
+  if ((!$n_Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm$GroupFormExtensions$)) {
+    $n_Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm$GroupFormExtensions$ = new $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm$GroupFormExtensions$().init___()
+  };
+  return $n_Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm$GroupFormExtensions$
+}
+/** @constructor */
 function $c_Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentForm$WorkloadCommentFormEnrichment$() {
   $c_O.call(this)
 }
@@ -3346,6 +3383,52 @@ function $m_Lcom_microsoft_awt_models_Comment$() {
     $n_Lcom_microsoft_awt_models_Comment$ = new $c_Lcom_microsoft_awt_models_Comment$().init___()
   };
   return $n_Lcom_microsoft_awt_models_Comment$
+}
+/** @constructor */
+function $c_Lcom_microsoft_awt_models_Group$() {
+  $c_O.call(this)
+}
+$c_Lcom_microsoft_awt_models_Group$.prototype = new $h_O();
+$c_Lcom_microsoft_awt_models_Group$.prototype.constructor = $c_Lcom_microsoft_awt_models_Group$;
+/** @constructor */
+function $h_Lcom_microsoft_awt_models_Group$() {
+  /*<skip>*/
+}
+$h_Lcom_microsoft_awt_models_Group$.prototype = $c_Lcom_microsoft_awt_models_Group$.prototype;
+$c_Lcom_microsoft_awt_models_Group$.prototype.init___ = (function() {
+  return this
+});
+$c_Lcom_microsoft_awt_models_Group$.prototype.$$lessinit$greater$default$4__sjs_js_UndefOr = (function() {
+  return (void 0)
+});
+$c_Lcom_microsoft_awt_models_Group$.prototype.$$lessinit$greater$default$1__sjs_js_UndefOr = (function() {
+  return (void 0)
+});
+$c_Lcom_microsoft_awt_models_Group$.prototype.$$lessinit$greater$default$5__sjs_js_UndefOr = (function() {
+  return (void 0)
+});
+$c_Lcom_microsoft_awt_models_Group$.prototype.$$lessinit$greater$default$2__sjs_js_UndefOr = (function() {
+  return (void 0)
+});
+$c_Lcom_microsoft_awt_models_Group$.prototype.$$lessinit$greater$default$6__sjs_js_UndefOr = (function() {
+  return (void 0)
+});
+$c_Lcom_microsoft_awt_models_Group$.prototype.$$lessinit$greater$default$3__sjs_js_UndefOr = (function() {
+  return (void 0)
+});
+var $d_Lcom_microsoft_awt_models_Group$ = new $TypeData().initClass({
+  Lcom_microsoft_awt_models_Group$: 0
+}, false, "com.microsoft.awt.models.Group$", {
+  Lcom_microsoft_awt_models_Group$: 1,
+  O: 1
+});
+$c_Lcom_microsoft_awt_models_Group$.prototype.$classData = $d_Lcom_microsoft_awt_models_Group$;
+var $n_Lcom_microsoft_awt_models_Group$ = (void 0);
+function $m_Lcom_microsoft_awt_models_Group$() {
+  if ((!$n_Lcom_microsoft_awt_models_Group$)) {
+    $n_Lcom_microsoft_awt_models_Group$ = new $c_Lcom_microsoft_awt_models_Group$().init___()
+  };
+  return $n_Lcom_microsoft_awt_models_Group$
 }
 /** @constructor */
 function $c_Lcom_microsoft_awt_models_Post$() {
@@ -7737,42 +7820,42 @@ $c_Lcom_microsoft_awt_AWTClientJsApp$.prototype.runApplication__p1__Lorg_scalajs
   module.run(initializationFn)
 });
 $c_Lcom_microsoft_awt_AWTClientJsApp$.prototype.configureServices__p1__Lorg_scalajs_angularjs_Module__V = (function(module) {
-  module.service("AuthenticationService", ["$http", (function(x$macro$123$2) {
-    return new $c_Lcom_microsoft_awt_components_AuthenticationService().init___Lorg_scalajs_angularjs_http_Http(x$macro$123$2)
+  module.service("AuthenticationService", ["$http", (function(x$macro$132$2) {
+    return new $c_Lcom_microsoft_awt_components_AuthenticationService().init___Lorg_scalajs_angularjs_http_Http(x$macro$132$2)
   })]);
-  module.service("EventService", ["$http", (function(x$macro$124$2) {
-    return new $c_Lcom_microsoft_awt_components_EventService().init___Lorg_scalajs_angularjs_http_Http(x$macro$124$2)
+  module.service("EventService", ["$http", (function(x$macro$133$2) {
+    return new $c_Lcom_microsoft_awt_components_EventService().init___Lorg_scalajs_angularjs_http_Http(x$macro$133$2)
   })]);
-  module.service("GroupService", ["$http", (function(x$macro$125$2) {
-    return new $c_Lcom_microsoft_awt_components_GroupService().init___Lorg_scalajs_angularjs_http_Http(x$macro$125$2)
+  module.service("GroupService", ["$http", (function(x$macro$134$2) {
+    return new $c_Lcom_microsoft_awt_components_GroupService().init___Lorg_scalajs_angularjs_http_Http(x$macro$134$2)
   })]);
-  module.service("InboxMessageService", ["$http", (function(x$macro$126$2) {
-    return new $c_Lcom_microsoft_awt_components_InboxMessageService().init___Lorg_scalajs_angularjs_http_Http(x$macro$126$2)
+  module.service("InboxMessageService", ["$http", (function(x$macro$135$2) {
+    return new $c_Lcom_microsoft_awt_components_InboxMessageService().init___Lorg_scalajs_angularjs_http_Http(x$macro$135$2)
   })]);
-  module.service("NotificationService", ["$http", "WebSocketService", (function(x$macro$127$2, x$macro$128$2) {
-    var x$macro$128 = $as_Lcom_microsoft_awt_components_WebSocketService(x$macro$128$2);
-    return new $c_Lcom_microsoft_awt_components_NotificationService().init___Lorg_scalajs_angularjs_http_Http__Lcom_microsoft_awt_components_WebSocketService(x$macro$127$2, x$macro$128)
+  module.service("NotificationService", ["$http", "WebSocketService", (function(x$macro$136$2, x$macro$137$2) {
+    var x$macro$137 = $as_Lcom_microsoft_awt_components_WebSocketService(x$macro$137$2);
+    return new $c_Lcom_microsoft_awt_components_NotificationService().init___Lorg_scalajs_angularjs_http_Http__Lcom_microsoft_awt_components_WebSocketService(x$macro$136$2, x$macro$137)
   })]);
-  module.service("PostService", ["$http", (function(x$macro$129$2) {
-    return new $c_Lcom_microsoft_awt_components_PostService().init___Lorg_scalajs_angularjs_http_Http(x$macro$129$2)
+  module.service("PostService", ["$http", (function(x$macro$138$2) {
+    return new $c_Lcom_microsoft_awt_components_PostService().init___Lorg_scalajs_angularjs_http_Http(x$macro$138$2)
   })]);
-  module.service("ReactiveSearchService", ["$http", (function(x$macro$130$2) {
-    return new $c_Lcom_microsoft_awt_components_ReactiveSearchService().init___Lorg_scalajs_angularjs_http_Http(x$macro$130$2)
+  module.service("ReactiveSearchService", ["$http", (function(x$macro$139$2) {
+    return new $c_Lcom_microsoft_awt_components_ReactiveSearchService().init___Lorg_scalajs_angularjs_http_Http(x$macro$139$2)
   })]);
-  module.service("SignUpService", ["$http", (function(x$macro$131$2) {
-    return new $c_Lcom_microsoft_awt_components_SignUpService().init___Lorg_scalajs_angularjs_http_Http(x$macro$131$2)
+  module.service("SignUpService", ["$http", (function(x$macro$140$2) {
+    return new $c_Lcom_microsoft_awt_components_SignUpService().init___Lorg_scalajs_angularjs_http_Http(x$macro$140$2)
   })]);
-  module.service("WorkloadService", ["$http", (function(x$macro$132$2) {
-    return new $c_Lcom_microsoft_awt_components_WorkloadService().init___Lorg_scalajs_angularjs_http_Http(x$macro$132$2)
+  module.service("WorkloadService", ["$http", (function(x$macro$141$2) {
+    return new $c_Lcom_microsoft_awt_components_WorkloadService().init___Lorg_scalajs_angularjs_http_Http(x$macro$141$2)
   })]);
-  module.service("UserService", ["$http", (function(x$macro$133$2) {
-    return new $c_Lcom_microsoft_awt_components_UserService().init___Lorg_scalajs_angularjs_http_Http(x$macro$133$2)
+  module.service("UserService", ["$http", (function(x$macro$142$2) {
+    return new $c_Lcom_microsoft_awt_components_UserService().init___Lorg_scalajs_angularjs_http_Http(x$macro$142$2)
   })]);
-  module.service("UserSessionService", ["$http", (function(x$macro$134$2) {
-    return new $c_Lcom_microsoft_awt_components_UserSessionService().init___Lorg_scalajs_angularjs_http_Http(x$macro$134$2)
+  module.service("UserSessionService", ["$http", (function(x$macro$143$2) {
+    return new $c_Lcom_microsoft_awt_components_UserSessionService().init___Lorg_scalajs_angularjs_http_Http(x$macro$143$2)
   })]);
-  module.service("WebSocketService", ["$rootScope", "$location", "$timeout", "toaster", (function(x$macro$135$2, x$macro$136$2, x$macro$137$2, x$macro$138$2) {
-    return new $c_Lcom_microsoft_awt_components_WebSocketService().init___Lorg_scalajs_angularjs_Scope__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster(x$macro$135$2, x$macro$136$2, x$macro$137$2, x$macro$138$2)
+  module.service("WebSocketService", ["$rootScope", "$location", "$timeout", "toaster", (function(x$macro$144$2, x$macro$145$2, x$macro$146$2, x$macro$147$2) {
+    return new $c_Lcom_microsoft_awt_components_WebSocketService().init___Lorg_scalajs_angularjs_Scope__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster(x$macro$144$2, x$macro$145$2, x$macro$146$2, x$macro$147$2)
   })])
 });
 $c_Lcom_microsoft_awt_AWTClientJsApp$.prototype.main__V = (function() {
@@ -7789,45 +7872,54 @@ $c_Lcom_microsoft_awt_AWTClientJsApp$.prototype.main__V = (function() {
   this.runApplication__p1__Lorg_scalajs_angularjs_Module__V(module)
 });
 $c_Lcom_microsoft_awt_AWTClientJsApp$.prototype.configureDialogs__p1__Lorg_scalajs_angularjs_Module__V = (function(module) {
-  module.service("UserDialog", ["$modal", (function(x$macro$83$2) {
-    return new $c_Lcom_microsoft_awt_components_UserDialog().init___Lorg_scalajs_angularjs_uibootstrap_Modal(x$macro$83$2)
+  module.service("GroupDialog", ["$modal", (function(x$macro$83$2) {
+    return new $c_Lcom_microsoft_awt_components_GroupDialog().init___Lorg_scalajs_angularjs_uibootstrap_Modal(x$macro$83$2)
   })]);
-  module.controller("UserDialogController", ["$scope", "$modalInstance", "$timeout", "toaster", "userID", "MySession", "UserFactory", (function(x$macro$84$2, x$macro$85$2, x$macro$86$2, x$macro$87$2, x$macro$88$2, x$macro$89$2, x$macro$90$2) {
-    var x$macro$88 = $as_T(x$macro$88$2);
+  module.controller("GroupDialogController", ["$scope", "$modalInstance", "$timeout", "toaster", "updateGroup", "MySession", "UserService", "GroupService", (function(x$macro$84$2, x$macro$85$2, x$macro$86$2, x$macro$87$2, x$macro$88$2, x$macro$89$2, x$macro$90$2, x$macro$91$2) {
     var x$macro$89 = $as_Lcom_microsoft_awt_components_MySessionFactory(x$macro$89$2);
-    var x$macro$90 = $as_Lcom_microsoft_awt_components_UserFactory(x$macro$90$2);
-    return new $c_Lcom_microsoft_awt_components_UserDialog$UserDialogController().init___Lcom_microsoft_awt_components_UserDialog$UserDialogScope__Lorg_scalajs_angularjs_uibootstrap_ModalInstance__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__T__Lcom_microsoft_awt_components_MySessionFactory__Lcom_microsoft_awt_components_UserFactory(x$macro$84$2, x$macro$85$2, x$macro$86$2, x$macro$87$2, x$macro$88, x$macro$89, x$macro$90)
+    var x$macro$90 = $as_Lcom_microsoft_awt_components_UserService(x$macro$90$2);
+    var x$macro$91 = $as_Lcom_microsoft_awt_components_GroupService(x$macro$91$2);
+    return new $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController().init___Lcom_microsoft_awt_components_GroupDialog$GroupDialogScope__Lorg_scalajs_angularjs_uibootstrap_ModalInstance__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__sjs_js_UndefOr__Lcom_microsoft_awt_components_MySessionFactory__Lcom_microsoft_awt_components_UserService__Lcom_microsoft_awt_components_GroupService(x$macro$84$2, x$macro$85$2, x$macro$86$2, x$macro$87$2, x$macro$88$2, x$macro$89, x$macro$90, x$macro$91)
   })]);
-  module.service("WorkloadDialog", ["$modal", (function(x$macro$91$2) {
-    return new $c_Lcom_microsoft_awt_components_WorkloadDialog().init___Lorg_scalajs_angularjs_uibootstrap_Modal(x$macro$91$2)
+  module.service("UserDialog", ["$modal", (function(x$macro$92$2) {
+    return new $c_Lcom_microsoft_awt_components_UserDialog().init___Lorg_scalajs_angularjs_uibootstrap_Modal(x$macro$92$2)
   })]);
-  module.controller("WorkloadDialogController", ["$scope", "$modalInstance", "$timeout", "toaster", "updateWorkload", "MySession", "UserService", "WorkloadService", (function(x$macro$92$2, x$macro$93$2, x$macro$94$2, x$macro$95$2, x$macro$96$2, x$macro$97$2, x$macro$98$2, x$macro$99$2) {
-    var x$macro$97 = $as_Lcom_microsoft_awt_components_MySessionFactory(x$macro$97$2);
-    var x$macro$98 = $as_Lcom_microsoft_awt_components_UserService(x$macro$98$2);
-    var x$macro$99 = $as_Lcom_microsoft_awt_components_WorkloadService(x$macro$99$2);
-    return new $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController().init___Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogScope__Lorg_scalajs_angularjs_uibootstrap_ModalInstance__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__sjs_js_UndefOr__Lcom_microsoft_awt_components_MySessionFactory__Lcom_microsoft_awt_components_UserService__Lcom_microsoft_awt_components_WorkloadService(x$macro$92$2, x$macro$93$2, x$macro$94$2, x$macro$95$2, x$macro$96$2, x$macro$97, x$macro$98, x$macro$99)
+  module.controller("UserDialogController", ["$scope", "$modalInstance", "$timeout", "toaster", "userID", "MySession", "UserFactory", (function(x$macro$93$2, x$macro$94$2, x$macro$95$2, x$macro$96$2, x$macro$97$2, x$macro$98$2, x$macro$99$2) {
+    var x$macro$97 = $as_T(x$macro$97$2);
+    var x$macro$98 = $as_Lcom_microsoft_awt_components_MySessionFactory(x$macro$98$2);
+    var x$macro$99 = $as_Lcom_microsoft_awt_components_UserFactory(x$macro$99$2);
+    return new $c_Lcom_microsoft_awt_components_UserDialog$UserDialogController().init___Lcom_microsoft_awt_components_UserDialog$UserDialogScope__Lorg_scalajs_angularjs_uibootstrap_ModalInstance__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__T__Lcom_microsoft_awt_components_MySessionFactory__Lcom_microsoft_awt_components_UserFactory(x$macro$93$2, x$macro$94$2, x$macro$95$2, x$macro$96$2, x$macro$97, x$macro$98, x$macro$99)
   })]);
-  module.service("WorkloadCommentDialog", ["$modal", (function(x$macro$100$2) {
-    return new $c_Lcom_microsoft_awt_components_WorkloadCommentDialog().init___Lorg_scalajs_angularjs_uibootstrap_Modal(x$macro$100$2)
+  module.service("WorkloadDialog", ["$modal", (function(x$macro$100$2) {
+    return new $c_Lcom_microsoft_awt_components_WorkloadDialog().init___Lorg_scalajs_angularjs_uibootstrap_Modal(x$macro$100$2)
   })]);
-  module.controller("WorkloadCommentDialogController", ["$scope", "$modalInstance", "$timeout", "toaster", "workloadID", "MySession", "UserFactory", "WorkloadService", (function(x$macro$101$2, x$macro$102$2, x$macro$103$2, x$macro$104$2, x$macro$105$2, x$macro$106$2, x$macro$107$2, x$macro$108$2) {
-    var x$macro$105 = $as_T(x$macro$105$2);
+  module.controller("WorkloadDialogController", ["$scope", "$modalInstance", "$timeout", "toaster", "updateWorkload", "MySession", "UserService", "WorkloadService", (function(x$macro$101$2, x$macro$102$2, x$macro$103$2, x$macro$104$2, x$macro$105$2, x$macro$106$2, x$macro$107$2, x$macro$108$2) {
     var x$macro$106 = $as_Lcom_microsoft_awt_components_MySessionFactory(x$macro$106$2);
-    var x$macro$107 = $as_Lcom_microsoft_awt_components_UserFactory(x$macro$107$2);
+    var x$macro$107 = $as_Lcom_microsoft_awt_components_UserService(x$macro$107$2);
     var x$macro$108 = $as_Lcom_microsoft_awt_components_WorkloadService(x$macro$108$2);
-    return new $c_Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentDialogController().init___Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentDialogScope__Lorg_scalajs_angularjs_uibootstrap_ModalInstance__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__T__Lcom_microsoft_awt_components_MySessionFactory__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_WorkloadService(x$macro$101$2, x$macro$102$2, x$macro$103$2, x$macro$104$2, x$macro$105, x$macro$106, x$macro$107, x$macro$108)
+    return new $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController().init___Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogScope__Lorg_scalajs_angularjs_uibootstrap_ModalInstance__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__sjs_js_UndefOr__Lcom_microsoft_awt_components_MySessionFactory__Lcom_microsoft_awt_components_UserService__Lcom_microsoft_awt_components_WorkloadService(x$macro$101$2, x$macro$102$2, x$macro$103$2, x$macro$104$2, x$macro$105$2, x$macro$106, x$macro$107, x$macro$108)
+  })]);
+  module.service("WorkloadCommentDialog", ["$modal", (function(x$macro$109$2) {
+    return new $c_Lcom_microsoft_awt_components_WorkloadCommentDialog().init___Lorg_scalajs_angularjs_uibootstrap_Modal(x$macro$109$2)
+  })]);
+  module.controller("WorkloadCommentDialogController", ["$scope", "$modalInstance", "$timeout", "toaster", "workloadID", "MySession", "UserFactory", "WorkloadService", (function(x$macro$110$2, x$macro$111$2, x$macro$112$2, x$macro$113$2, x$macro$114$2, x$macro$115$2, x$macro$116$2, x$macro$117$2) {
+    var x$macro$114 = $as_T(x$macro$114$2);
+    var x$macro$115 = $as_Lcom_microsoft_awt_components_MySessionFactory(x$macro$115$2);
+    var x$macro$116 = $as_Lcom_microsoft_awt_components_UserFactory(x$macro$116$2);
+    var x$macro$117 = $as_Lcom_microsoft_awt_components_WorkloadService(x$macro$117$2);
+    return new $c_Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentDialogController().init___Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentDialogScope__Lorg_scalajs_angularjs_uibootstrap_ModalInstance__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__T__Lcom_microsoft_awt_components_MySessionFactory__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_WorkloadService(x$macro$110$2, x$macro$111$2, x$macro$112$2, x$macro$113$2, x$macro$114, x$macro$115, x$macro$116, x$macro$117)
   })])
 });
 $c_Lcom_microsoft_awt_AWTClientJsApp$.prototype.configureFactories__p1__Lorg_scalajs_angularjs_Module__V = (function(module) {
-  module.factory("MySession", ["$rootScope", "$cookies", "$location", "$timeout", "toaster", "UserService", "UserSessionService", "WebSocketService", (function(x$macro$114$2, x$macro$115$2, x$macro$116$2, x$macro$117$2, x$macro$118$2, x$macro$119$2, x$macro$120$2, x$macro$121$2) {
-    var x$macro$119 = $as_Lcom_microsoft_awt_components_UserService(x$macro$119$2);
-    var x$macro$120 = $as_Lcom_microsoft_awt_components_UserSessionService(x$macro$120$2);
-    var x$macro$121 = $as_Lcom_microsoft_awt_components_WebSocketService(x$macro$121$2);
-    return new $c_Lcom_microsoft_awt_components_MySessionFactory().init___Lorg_scalajs_angularjs_Scope__Lorg_scalajs_angularjs_cookies_Cookies__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_UserService__Lcom_microsoft_awt_components_UserSessionService__Lcom_microsoft_awt_components_WebSocketService(x$macro$114$2, x$macro$115$2, x$macro$116$2, x$macro$117$2, x$macro$118$2, x$macro$119, x$macro$120, x$macro$121)
+  module.factory("MySession", ["$rootScope", "$cookies", "$location", "$timeout", "toaster", "UserService", "UserSessionService", "WebSocketService", (function(x$macro$123$2, x$macro$124$2, x$macro$125$2, x$macro$126$2, x$macro$127$2, x$macro$128$2, x$macro$129$2, x$macro$130$2) {
+    var x$macro$128 = $as_Lcom_microsoft_awt_components_UserService(x$macro$128$2);
+    var x$macro$129 = $as_Lcom_microsoft_awt_components_UserSessionService(x$macro$129$2);
+    var x$macro$130 = $as_Lcom_microsoft_awt_components_WebSocketService(x$macro$130$2);
+    return new $c_Lcom_microsoft_awt_components_MySessionFactory().init___Lorg_scalajs_angularjs_Scope__Lorg_scalajs_angularjs_cookies_Cookies__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_UserService__Lcom_microsoft_awt_components_UserSessionService__Lcom_microsoft_awt_components_WebSocketService(x$macro$123$2, x$macro$124$2, x$macro$125$2, x$macro$126$2, x$macro$127$2, x$macro$128, x$macro$129, x$macro$130)
   })]);
-  module.factory("UserFactory", ["UserService", (function(x$macro$122$2) {
-    var x$macro$122 = $as_Lcom_microsoft_awt_components_UserService(x$macro$122$2);
-    return new $c_Lcom_microsoft_awt_components_UserFactory().init___Lcom_microsoft_awt_components_UserService(x$macro$122)
+  module.factory("UserFactory", ["UserService", (function(x$macro$131$2) {
+    var x$macro$131 = $as_Lcom_microsoft_awt_components_UserService(x$macro$131$2);
+    return new $c_Lcom_microsoft_awt_components_UserFactory().init___Lcom_microsoft_awt_components_UserService(x$macro$131)
   })])
 });
 $c_Lcom_microsoft_awt_AWTClientJsApp$.prototype.$$js$exported$meth$main__O = (function() {
@@ -8200,6 +8292,84 @@ var $d_Lcom_microsoft_awt_components_EventService = new $TypeData().initClass({
 });
 $c_Lcom_microsoft_awt_components_EventService.prototype.$classData = $d_Lcom_microsoft_awt_components_EventService;
 /** @constructor */
+function $c_Lcom_microsoft_awt_components_GroupDialog() {
+  $c_O.call(this);
+  this.$$modal$1 = null
+}
+$c_Lcom_microsoft_awt_components_GroupDialog.prototype = new $h_O();
+$c_Lcom_microsoft_awt_components_GroupDialog.prototype.constructor = $c_Lcom_microsoft_awt_components_GroupDialog;
+/** @constructor */
+function $h_Lcom_microsoft_awt_components_GroupDialog() {
+  /*<skip>*/
+}
+$h_Lcom_microsoft_awt_components_GroupDialog.prototype = $c_Lcom_microsoft_awt_components_GroupDialog.prototype;
+$c_Lcom_microsoft_awt_components_GroupDialog.prototype.init___Lorg_scalajs_angularjs_uibootstrap_Modal = (function($$modal) {
+  this.$$modal$1 = $$modal;
+  return this
+});
+var $d_Lcom_microsoft_awt_components_GroupDialog = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_GroupDialog: 0
+}, false, "com.microsoft.awt.components.GroupDialog", {
+  Lcom_microsoft_awt_components_GroupDialog: 1,
+  O: 1,
+  Lorg_scalajs_angularjs_Service: 1
+});
+$c_Lcom_microsoft_awt_components_GroupDialog.prototype.$classData = $d_Lcom_microsoft_awt_components_GroupDialog;
+/** @constructor */
+function $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController() {
+  $c_O.call(this);
+  this.com$microsoft$awt$components$GroupDialog$GroupDialogController$$$scope$f = null;
+  this.com$microsoft$awt$components$GroupDialog$GroupDialogController$$$modalInstance$f = null;
+  this.com$microsoft$awt$components$GroupDialog$GroupDialogController$$$timeout$f = null;
+  this.com$microsoft$awt$components$GroupDialog$GroupDialogController$$toaster$f = null;
+  this.com$microsoft$awt$components$GroupDialog$GroupDialogController$$mySession$f = null;
+  this.com$microsoft$awt$components$GroupDialog$GroupDialogController$$userService$f = null;
+  this.groupService$1 = null
+}
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController.prototype = new $h_O();
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController.prototype.constructor = $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController;
+/** @constructor */
+function $h_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController() {
+  /*<skip>*/
+}
+$h_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController.prototype = $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController.prototype;
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController.prototype.init___Lcom_microsoft_awt_components_GroupDialog$GroupDialogScope__Lorg_scalajs_angularjs_uibootstrap_ModalInstance__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__sjs_js_UndefOr__Lcom_microsoft_awt_components_MySessionFactory__Lcom_microsoft_awt_components_UserService__Lcom_microsoft_awt_components_GroupService = (function($$scope, $$modalInstance, $$timeout, toaster, updateGroup, mySession, userService, groupService) {
+  this.com$microsoft$awt$components$GroupDialog$GroupDialogController$$$scope$f = $$scope;
+  this.com$microsoft$awt$components$GroupDialog$GroupDialogController$$$modalInstance$f = $$modalInstance;
+  this.com$microsoft$awt$components$GroupDialog$GroupDialogController$$$timeout$f = $$timeout;
+  this.com$microsoft$awt$components$GroupDialog$GroupDialogController$$toaster$f = toaster;
+  this.com$microsoft$awt$components$GroupDialog$GroupDialogController$$mySession$f = mySession;
+  this.com$microsoft$awt$components$GroupDialog$GroupDialogController$$userService$f = userService;
+  this.groupService$1 = groupService;
+  $$scope.init = (function(f) {
+    return (function() {
+      return f.apply__O()
+    })
+  })(new $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1().init___Lcom_microsoft_awt_components_GroupDialog$GroupDialogController(this));
+  $$scope.ok = (function(f$1) {
+    return (function(arg1) {
+      return f$1.apply__O__O(arg1)
+    })
+  })(new $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4().init___Lcom_microsoft_awt_components_GroupDialog$GroupDialogController(this));
+  $$scope.cancel = (function(arg$outer) {
+    return (function() {
+      arg$outer.com$microsoft$awt$components$GroupDialog$GroupDialogController$$$modalInstance$f.dismiss("cancel")
+    })
+  })(this);
+  return this
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController.prototype.com$microsoft$awt$components$GroupDialog$GroupDialogController$$save__Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm__s_concurrent_Future = (function(form) {
+  return $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.groupService$1.createGroup__Lcom_microsoft_awt_models_Group__Lorg_scalajs_angularjs_http_HttpResponse($m_Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm$GroupFormExtensions$().toGroup$extension__Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm__Lcom_microsoft_awt_models_Group(form)))
+});
+var $d_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_GroupDialog$GroupDialogController: 0
+}, false, "com.microsoft.awt.components.GroupDialog$GroupDialogController", {
+  Lcom_microsoft_awt_components_GroupDialog$GroupDialogController: 1,
+  O: 1,
+  Lorg_scalajs_angularjs_Controller: 1
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController.prototype.$classData = $d_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController;
+/** @constructor */
 function $c_Lcom_microsoft_awt_components_GroupService() {
   $c_O.call(this);
   this.$$http$1 = null
@@ -8215,16 +8385,14 @@ $c_Lcom_microsoft_awt_components_GroupService.prototype.init___Lorg_scalajs_angu
   this.$$http$1 = $$http;
   return this
 });
-$c_Lcom_microsoft_awt_components_GroupService.prototype.getGroupsOwnedByOrIncludeUser__T__I__s_concurrent_ExecutionContext__s_concurrent_Future = (function(userID, maxResults, ec) {
-  var this$1 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.getGroups__I__Lorg_scalajs_angularjs_http_HttpResponse(maxResults));
-  var f = new $c_Lcom_microsoft_awt_components_GroupService$$anonfun$getGroupsOwnedByOrIncludeUser$1().init___Lcom_microsoft_awt_components_GroupService__T(this, userID);
-  return $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$1, f, ec)
-});
-$c_Lcom_microsoft_awt_components_GroupService.prototype.getGroups__I__Lorg_scalajs_angularjs_http_HttpResponse = (function(maxResults) {
-  return this.$$http$1.get(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["/api/groups?maxResults=", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([maxResults])))
+$c_Lcom_microsoft_awt_components_GroupService.prototype.getGroupsIncludingOrOwnedByUser__T__I__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse = (function(userID, maxResults, ec) {
+  return this.$$http$1.get(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["/api/groups/user/", "/all?maxResults=", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([userID, maxResults])))
 });
 $c_Lcom_microsoft_awt_components_GroupService.prototype.getGroupByID__T__Lorg_scalajs_angularjs_http_HttpResponse = (function(groupID) {
   return this.$$http$1.get(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["/api/group/", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([groupID])))
+});
+$c_Lcom_microsoft_awt_components_GroupService.prototype.createGroup__Lcom_microsoft_awt_models_Group__Lorg_scalajs_angularjs_http_HttpResponse = (function(group) {
+  return this.$$http$1.post("/api/group")
 });
 function $is_Lcom_microsoft_awt_components_GroupService(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lcom_microsoft_awt_components_GroupService)))
@@ -13107,6 +13275,120 @@ function $h_Lcom_microsoft_awt_models_Emoticon() {
 $h_Lcom_microsoft_awt_models_Emoticon.prototype = $g.Object.prototype;
 $c_Lcom_microsoft_awt_models_Emoticon.prototype = new $h_Lcom_microsoft_awt_models_Emoticon();
 $c_Lcom_microsoft_awt_models_Emoticon.prototype.constructor = $c_Lcom_microsoft_awt_models_Emoticon;
+/** @constructor */
+function $c_Lcom_microsoft_awt_models_Group() {
+  var jsx$1 = (arguments.length | 0);
+  var jsx$2 = 0;
+  var arg$rest = [];
+  while ((jsx$2 < jsx$1)) {
+    arg$rest.push(arguments[jsx$2]);
+    jsx$2 = ((jsx$2 + 1) | 0)
+  };
+  var _id = ((arg$rest[0] === (void 0)) ? $m_Lcom_microsoft_awt_models_Group$().$$lessinit$greater$default$1__sjs_js_UndefOr() : arg$rest[0]);
+  var name = ((arg$rest[1] === (void 0)) ? $m_Lcom_microsoft_awt_models_Group$().$$lessinit$greater$default$2__sjs_js_UndefOr() : arg$rest[1]);
+  var description = ((arg$rest[2] === (void 0)) ? $m_Lcom_microsoft_awt_models_Group$().$$lessinit$greater$default$3__sjs_js_UndefOr() : arg$rest[2]);
+  var owner = ((arg$rest[3] === (void 0)) ? $m_Lcom_microsoft_awt_models_Group$().$$lessinit$greater$default$4__sjs_js_UndefOr() : arg$rest[3]);
+  var members = ((arg$rest[4] === (void 0)) ? $m_Lcom_microsoft_awt_models_Group$().$$lessinit$greater$default$5__sjs_js_UndefOr() : arg$rest[4]);
+  var creationTime = ((arg$rest[5] === (void 0)) ? $m_Lcom_microsoft_awt_models_Group$().$$lessinit$greater$default$6__sjs_js_UndefOr() : arg$rest[5]);
+  $g.Object.call(this);
+  $g.Object.defineProperties(this, {
+    "_id": {
+      "configurable": true,
+      "enumerable": true,
+      "writable": true,
+      "value": null
+    }
+  });
+  $g.Object.defineProperties(this, {
+    "name": {
+      "configurable": true,
+      "enumerable": true,
+      "writable": true,
+      "value": null
+    }
+  });
+  $g.Object.defineProperties(this, {
+    "description": {
+      "configurable": true,
+      "enumerable": true,
+      "writable": true,
+      "value": null
+    }
+  });
+  $g.Object.defineProperties(this, {
+    "owner": {
+      "configurable": true,
+      "enumerable": true,
+      "writable": true,
+      "value": null
+    }
+  });
+  $g.Object.defineProperties(this, {
+    "members": {
+      "configurable": true,
+      "enumerable": true,
+      "writable": true,
+      "value": null
+    }
+  });
+  $g.Object.defineProperties(this, {
+    "creationTime": {
+      "configurable": true,
+      "enumerable": true,
+      "writable": true,
+      "value": null
+    }
+  });
+  $g.Object.defineProperties(this, {
+    "memberUsers": {
+      "configurable": true,
+      "enumerable": true,
+      "writable": true,
+      "value": null
+    }
+  });
+  $g.Object.defineProperties(this, {
+    "workloads": {
+      "configurable": true,
+      "enumerable": true,
+      "writable": true,
+      "value": null
+    }
+  });
+  $g.Object.defineProperties(this, {
+    "expanded": {
+      "configurable": true,
+      "enumerable": true,
+      "writable": true,
+      "value": null
+    }
+  });
+  $g.Object.defineProperties(this, {
+    "loading": {
+      "configurable": true,
+      "enumerable": true,
+      "writable": true,
+      "value": null
+    }
+  });
+  this._id = _id;
+  this.name = name;
+  this.description = description;
+  this.owner = owner;
+  this.members = members;
+  this.creationTime = creationTime;
+  this.memberUsers = $m_sjs_js_package$().$undefined__sjs_js_UndefOr();
+  this.workloads = $m_sjs_js_package$().$undefined__sjs_js_UndefOr();
+  this.expanded = $m_sjs_js_package$().$undefined__sjs_js_UndefOr();
+  this.loading = $m_sjs_js_package$().$undefined__sjs_js_UndefOr()
+}
+/** @constructor */
+function $h_Lcom_microsoft_awt_models_Group() {
+  /*<skip>*/
+}
+$h_Lcom_microsoft_awt_models_Group.prototype = $g.Object.prototype;
+$c_Lcom_microsoft_awt_models_Group.prototype = new $h_Lcom_microsoft_awt_models_Group();
+$c_Lcom_microsoft_awt_models_Group.prototype.constructor = $c_Lcom_microsoft_awt_models_Group;
 function $s_Lcom_microsoft_awt_models_Post__copy$default$3__Lcom_microsoft_awt_models_Post__sjs_js_UndefOr($this) {
   return (void 0)
 }
@@ -18272,8 +18554,8 @@ $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$1.prototype.in
 $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$1.prototype.apply__O__O = (function(v1) {
   return this.apply__Lcom_microsoft_awt_components_UserFactory__sjs_js_Object($as_Lcom_microsoft_awt_components_UserFactory(v1))
 });
-$c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$1.prototype.apply__Lcom_microsoft_awt_components_UserFactory__sjs_js_Object = (function(x$macro$109) {
-  var d1r3ctive = new $c_Lcom_microsoft_awt_directives_AvatarDirective().init___Lcom_microsoft_awt_components_UserFactory(x$macro$109);
+$c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$1.prototype.apply__Lcom_microsoft_awt_components_UserFactory__sjs_js_Object = (function(x$macro$118) {
+  var d1r3ctive = new $c_Lcom_microsoft_awt_directives_AvatarDirective().init___Lcom_microsoft_awt_components_UserFactory(x$macro$118);
   var value = d1r3ctive.replace$1;
   var s = d1r3ctive.restrict$1;
   var jsx$1 = d1r3ctive.scope$1;
@@ -18320,8 +18602,8 @@ $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$2.prototype.in
 $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$2.prototype.apply__O__O__O = (function(v1, v2) {
   return this.apply__Lorg_scalajs_angularjs_Compile__Lorg_scalajs_angularjs_sanitize_Sce__sjs_js_Object(v1, v2)
 });
-$c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$2.prototype.apply__Lorg_scalajs_angularjs_Compile__Lorg_scalajs_angularjs_sanitize_Sce__sjs_js_Object = (function(x$macro$110, x$macro$111) {
-  var d1r3ctive = new $c_Lcom_microsoft_awt_directives_AwtPostDirective().init___Lorg_scalajs_angularjs_Compile__Lorg_scalajs_angularjs_sanitize_Sce(x$macro$110, x$macro$111);
+$c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$2.prototype.apply__Lorg_scalajs_angularjs_Compile__Lorg_scalajs_angularjs_sanitize_Sce__sjs_js_Object = (function(x$macro$119, x$macro$120) {
+  var d1r3ctive = new $c_Lcom_microsoft_awt_directives_AwtPostDirective().init___Lorg_scalajs_angularjs_Compile__Lorg_scalajs_angularjs_sanitize_Sce(x$macro$119, x$macro$120);
   var s = d1r3ctive.restrict$1;
   var jsx$1 = d1r3ctive.scope$1;
   var value = d1r3ctive.transclude$1;
@@ -18368,8 +18650,8 @@ $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$3.prototype.in
 $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$3.prototype.apply__O__O = (function(v1) {
   return this.apply__Lorg_scalajs_angularjs_Compile__sjs_js_Object(v1)
 });
-$c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$3.prototype.apply__Lorg_scalajs_angularjs_Compile__sjs_js_Object = (function(x$macro$112) {
-  var d1r3ctive = new $c_Lcom_microsoft_awt_directives_CompileDirective().init___Lorg_scalajs_angularjs_Compile(x$macro$112);
+$c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$3.prototype.apply__Lorg_scalajs_angularjs_Compile__sjs_js_Object = (function(x$macro$121) {
+  var d1r3ctive = new $c_Lcom_microsoft_awt_directives_CompileDirective().init___Lorg_scalajs_angularjs_Compile(x$macro$121);
   var s = d1r3ctive.template$1;
   return {
     "template": s,
@@ -18408,8 +18690,8 @@ $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$4.prototype.in
 $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$4.prototype.apply__O__O = (function(v1) {
   return this.apply__Lcom_microsoft_awt_components_UserFactory__sjs_js_Object($as_Lcom_microsoft_awt_components_UserFactory(v1))
 });
-$c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$4.prototype.apply__Lcom_microsoft_awt_components_UserFactory__sjs_js_Object = (function(x$macro$113) {
-  var d1r3ctive = new $c_Lcom_microsoft_awt_directives_NameDirective().init___Lcom_microsoft_awt_components_UserFactory(x$macro$113);
+$c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$4.prototype.apply__Lcom_microsoft_awt_components_UserFactory__sjs_js_Object = (function(x$macro$122) {
+  var d1r3ctive = new $c_Lcom_microsoft_awt_directives_NameDirective().init___Lcom_microsoft_awt_components_UserFactory(x$macro$122);
   var s = d1r3ctive.restrict$1;
   var jsx$1 = d1r3ctive.scope$1;
   var value = d1r3ctive.transclude$1;
@@ -19558,6 +19840,271 @@ var $d_Lcom_microsoft_awt_components_GroupDetailsController$$anonfun$com$microso
 });
 $c_Lcom_microsoft_awt_components_GroupDetailsController$$anonfun$com$microsoft$awt$components$GroupDetailsController$$loadGroupWithMembersAndWorkloads$1.prototype.$classData = $d_Lcom_microsoft_awt_components_GroupDetailsController$$anonfun$com$microsoft$awt$components$GroupDetailsController$$loadGroupWithMembersAndWorkloads$1;
 /** @constructor */
+function $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1() {
+  $c_sr_AbstractFunction1.call(this);
+  this.$$outer$2 = null
+}
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1.prototype.constructor = $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1;
+/** @constructor */
+function $h_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1() {
+  /*<skip>*/
+}
+$h_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1.prototype = $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1.prototype;
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1.prototype.apply__O__O = (function(v1) {
+  return this.apply__s_util_Try__O($as_s_util_Try(v1))
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1.prototype.init___Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1 = (function($$outer) {
+  if (($$outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    this.$$outer$2 = $$outer
+  };
+  return this
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1.prototype.apply__s_util_Try__O = (function(x0$1) {
+  if ($is_s_util_Success(x0$1)) {
+    var x2 = $as_s_util_Success(x0$1);
+    var users = x2.value$2;
+    return this.$$outer$2.$$outer$3.com$microsoft$awt$components$GroupDialog$GroupDialogController$$$scope$f.$apply((function(f) {
+      return (function() {
+        return f.apply__O()
+      })
+    })(new $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$1().init___Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1__sjs_js_Array(this, users)))
+  } else if ($is_s_util_Failure(x0$1)) {
+    var x3 = $as_s_util_Failure(x0$1);
+    var e = x3.exception$2;
+    var $$this$1 = this.$$outer$2.$$outer$3.com$microsoft$awt$components$GroupDialog$GroupDialogController$$toaster$f;
+    var this$4 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
+    var rc6 = false;
+    var x2$1 = null;
+    var x1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
+    matchEnd7: {
+      var message;
+      if ($is_s_Some(x1)) {
+        rc6 = true;
+        x2$1 = $as_s_Some(x1);
+        var s = $as_T(x2$1.x$2);
+        var prefix = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
+        if ((($uI(s.length) >= 0) && ($as_T(s.substring(0, $uI(prefix.length))) === prefix))) {
+          var this$12 = new $c_sci_StringOps().init___T(s);
+          var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
+          var n = $uI(thiz.length);
+          var $$this = this$12.repr$1;
+          var until = $uI($$this.length);
+          var message = this$4.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$12.repr$1, n, until));
+          break matchEnd7
+        }
+      };
+      if (rc6) {
+        var s$2 = $as_T(x2$1.x$2);
+        var message = s$2;
+        break matchEnd7
+      };
+      var x = $m_s_None$();
+      if ((x === x1)) {
+        var message = "Cause unknown";
+        break matchEnd7
+      };
+      throw new $c_s_MatchError().init___O(x1)
+    };
+    var s$3 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
+    $$this$1.pop(s$3, "Loading Error", message);
+    return (void 0)
+  } else {
+    throw new $c_s_MatchError().init___O(x0$1)
+  }
+});
+var $d_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1: 0
+}, false, "com.microsoft.awt.components.GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1", {
+  Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1: 1,
+  sr_AbstractFunction1: 1,
+  O: 1,
+  F1: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1.prototype.$classData = $d_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1;
+/** @constructor */
+function $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4() {
+  $c_sr_AbstractFunction1.call(this);
+  this.$$outer$2 = null
+}
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4.prototype.constructor = $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4;
+/** @constructor */
+function $h_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4() {
+  /*<skip>*/
+}
+$h_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4.prototype = $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4.prototype;
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4.prototype.apply__O__O = (function(v1) {
+  this.apply__sjs_js_UndefOr__V(v1)
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4.prototype.init___Lcom_microsoft_awt_components_GroupDialog$GroupDialogController = (function($$outer) {
+  if (($$outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    this.$$outer$2 = $$outer
+  };
+  return this
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4.prototype.apply__sjs_js_UndefOr__V = (function(aForm) {
+  var f = new $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4().init___Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4(this);
+  if ((aForm !== (void 0))) {
+    f.apply__Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm__V(aForm)
+  }
+});
+var $d_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4: 0
+}, false, "com.microsoft.awt.components.GroupDialog$GroupDialogController$$anonfun$4", {
+  Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4: 1,
+  sr_AbstractFunction1: 1,
+  O: 1,
+  F1: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4.prototype.$classData = $d_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4;
+/** @constructor */
+function $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4() {
+  $c_sr_AbstractFunction1.call(this);
+  this.$$outer$2 = null
+}
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4.prototype.constructor = $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4;
+/** @constructor */
+function $h_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4() {
+  /*<skip>*/
+}
+$h_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4.prototype = $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4.prototype;
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4.prototype.apply__O__O = (function(v1) {
+  this.apply__Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm__V(v1)
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4.prototype.init___Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4 = (function($$outer) {
+  if (($$outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    this.$$outer$2 = $$outer
+  };
+  return this
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4.prototype.apply__Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm__V = (function(form) {
+  this.$$outer$2.$$outer$2.com$microsoft$awt$components$GroupDialog$GroupDialogController$$$scope$f.processing = true;
+  this.$$outer$2.$$outer$2.com$microsoft$awt$components$GroupDialog$GroupDialogController$$save__Lcom_microsoft_awt_components_GroupDialog$GroupDialogForm__s_concurrent_Future(form).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4$$anonfun$apply$5().init___Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+});
+var $d_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4: 0
+}, false, "com.microsoft.awt.components.GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4", {
+  Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4: 1,
+  sr_AbstractFunction1: 1,
+  O: 1,
+  F1: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4.prototype.$classData = $d_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4;
+/** @constructor */
+function $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4$$anonfun$apply$5() {
+  $c_sr_AbstractFunction1.call(this);
+  this.$$outer$2 = null
+}
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4$$anonfun$apply$5.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4$$anonfun$apply$5.prototype.constructor = $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4$$anonfun$apply$5;
+/** @constructor */
+function $h_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4$$anonfun$apply$5() {
+  /*<skip>*/
+}
+$h_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4$$anonfun$apply$5.prototype = $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4$$anonfun$apply$5.prototype;
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4$$anonfun$apply$5.prototype.apply__O__O = (function(v1) {
+  this.apply__s_util_Try__V($as_s_util_Try(v1))
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4$$anonfun$apply$5.prototype.init___Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4 = (function($$outer) {
+  if (($$outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    this.$$outer$2 = $$outer
+  };
+  return this
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4$$anonfun$apply$5.prototype.apply__s_util_Try__V = (function(x0$2) {
+  if ($is_s_util_Success(x0$2)) {
+    var x2 = $as_s_util_Success(x0$2);
+    var status = x2.value$2;
+    var jsx$2 = this.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$GroupDialog$GroupDialogController$$$timeout$f;
+    var jsx$1 = $m_Lorg_scalajs_angularjs_package$();
+    var this$2 = new $c_s_concurrent_duration_package$DurationInt().init___I(500);
+    var unit = $m_ju_concurrent_TimeUnit$().MILLISECONDS$1;
+    jsx$2((function(arg$outer) {
+      return (function() {
+        arg$outer.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$GroupDialog$GroupDialogController$$$scope$f.processing = false
+      })
+    })(this), jsx$1.durationToInt__s_concurrent_duration_FiniteDuration__I($m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$2.scala$concurrent$duration$DurationInt$$n$1, unit)));
+    this.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$GroupDialog$GroupDialogController$$$modalInstance$f.close(status)
+  } else if ($is_s_util_Failure(x0$2)) {
+    var x3 = $as_s_util_Failure(x0$2);
+    var e = x3.exception$2;
+    var jsx$4 = this.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$GroupDialog$GroupDialogController$$$timeout$f;
+    var jsx$3 = $m_Lorg_scalajs_angularjs_package$();
+    var this$4 = new $c_s_concurrent_duration_package$DurationInt().init___I(500);
+    var unit$1 = $m_ju_concurrent_TimeUnit$().MILLISECONDS$1;
+    jsx$4((function(arg$outer$1) {
+      return (function() {
+        arg$outer$1.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$GroupDialog$GroupDialogController$$$scope$f.processing = false
+      })
+    })(this), jsx$3.durationToInt__s_concurrent_duration_FiniteDuration__I($m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$4.scala$concurrent$duration$DurationInt$$n$1, unit$1)));
+    var $$this$1 = this.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$GroupDialog$GroupDialogController$$toaster$f;
+    var this$8 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
+    var rc6 = false;
+    var x2$1 = null;
+    var x1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
+    matchEnd7: {
+      var message;
+      if ($is_s_Some(x1)) {
+        rc6 = true;
+        x2$1 = $as_s_Some(x1);
+        var s = $as_T(x2$1.x$2);
+        var prefix = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
+        if ((($uI(s.length) >= 0) && ($as_T(s.substring(0, $uI(prefix.length))) === prefix))) {
+          var this$16 = new $c_sci_StringOps().init___T(s);
+          var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
+          var n = $uI(thiz.length);
+          var $$this = this$16.repr$1;
+          var until = $uI($$this.length);
+          var message = this$8.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$16.repr$1, n, until));
+          break matchEnd7
+        }
+      };
+      if (rc6) {
+        var s$2 = $as_T(x2$1.x$2);
+        var message = s$2;
+        break matchEnd7
+      };
+      var x = $m_s_None$();
+      if ((x === x1)) {
+        var message = "Cause unknown";
+        break matchEnd7
+      };
+      throw new $c_s_MatchError().init___O(x1)
+    };
+    var s$3 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
+    $$this$1.pop(s$3, "Workload Creation Error", message)
+  } else {
+    throw new $c_s_MatchError().init___O(x0$2)
+  }
+});
+var $d_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4$$anonfun$apply$5 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4$$anonfun$apply$5: 0
+}, false, "com.microsoft.awt.components.GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4$$anonfun$apply$5", {
+  Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4$$anonfun$apply$5: 1,
+  sr_AbstractFunction1: 1,
+  O: 1,
+  F1: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4$$anonfun$apply$5.prototype.$classData = $d_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$anonfun$apply$4$$anonfun$apply$5;
+/** @constructor */
 function $c_Lcom_microsoft_awt_components_GroupListController$$anonfun$2() {
   $c_sr_AbstractFunction1.call(this);
   this.$$outer$2 = null
@@ -19897,78 +20444,6 @@ var $d_Lcom_microsoft_awt_components_GroupListController$$anonfun$com$microsoft$
   Ljava_io_Serializable: 1
 });
 $c_Lcom_microsoft_awt_components_GroupListController$$anonfun$com$microsoft$awt$components$GroupListController$$enrichGroupWithMembersAndWorkloads$1$$anonfun$apply$6$$anonfun$apply$8.prototype.$classData = $d_Lcom_microsoft_awt_components_GroupListController$$anonfun$com$microsoft$awt$components$GroupListController$$enrichGroupWithMembersAndWorkloads$1$$anonfun$apply$6$$anonfun$apply$8;
-/** @constructor */
-function $c_Lcom_microsoft_awt_components_GroupService$$anonfun$getGroupsOwnedByOrIncludeUser$1() {
-  $c_sr_AbstractFunction1.call(this);
-  this.userID$1$f = null
-}
-$c_Lcom_microsoft_awt_components_GroupService$$anonfun$getGroupsOwnedByOrIncludeUser$1.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_components_GroupService$$anonfun$getGroupsOwnedByOrIncludeUser$1.prototype.constructor = $c_Lcom_microsoft_awt_components_GroupService$$anonfun$getGroupsOwnedByOrIncludeUser$1;
-/** @constructor */
-function $h_Lcom_microsoft_awt_components_GroupService$$anonfun$getGroupsOwnedByOrIncludeUser$1() {
-  /*<skip>*/
-}
-$h_Lcom_microsoft_awt_components_GroupService$$anonfun$getGroupsOwnedByOrIncludeUser$1.prototype = $c_Lcom_microsoft_awt_components_GroupService$$anonfun$getGroupsOwnedByOrIncludeUser$1.prototype;
-$c_Lcom_microsoft_awt_components_GroupService$$anonfun$getGroupsOwnedByOrIncludeUser$1.prototype.apply__O__O = (function(v1) {
-  return this.apply__sjs_js_Array__sjs_js_Array(v1)
-});
-$c_Lcom_microsoft_awt_components_GroupService$$anonfun$getGroupsOwnedByOrIncludeUser$1.prototype.apply__sjs_js_Array__sjs_js_Array = (function(x$1) {
-  var array = [];
-  var i = 0;
-  var len = $uI(x$1.length);
-  while ((i < len)) {
-    var index = i;
-    var arg1 = x$1[index];
-    var $$this = arg1.owner;
-    var value = this.userID$1$f;
-    if ((($$this !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z($$this, value))) {
-      var jsx$1 = true
-    } else {
-      var $$this$1 = arg1.members;
-      if (($$this$1 !== (void 0))) {
-        var elem = this.userID$1$f;
-        var i$1 = 0;
-        while (true) {
-          if ((i$1 < $uI($$this$1.length))) {
-            var index$1 = i$1;
-            var arg1$1 = $$this$1[index$1];
-            var jsx$2 = (!$m_sr_BoxesRunTime$().equals__O__O__Z(arg1$1, elem))
-          } else {
-            var jsx$2 = false
-          };
-          if (jsx$2) {
-            i$1 = ((1 + i$1) | 0)
-          } else {
-            break
-          }
-        };
-        var jsx$1 = (i$1 !== $uI($$this$1.length))
-      } else {
-        var jsx$1 = false
-      }
-    };
-    if (jsx$1) {
-      array.push(arg1)
-    };
-    i = ((1 + i) | 0)
-  };
-  return array
-});
-$c_Lcom_microsoft_awt_components_GroupService$$anonfun$getGroupsOwnedByOrIncludeUser$1.prototype.init___Lcom_microsoft_awt_components_GroupService__T = (function($$outer, userID$1) {
-  this.userID$1$f = userID$1;
-  return this
-});
-var $d_Lcom_microsoft_awt_components_GroupService$$anonfun$getGroupsOwnedByOrIncludeUser$1 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_GroupService$$anonfun$getGroupsOwnedByOrIncludeUser$1: 0
-}, false, "com.microsoft.awt.components.GroupService$$anonfun$getGroupsOwnedByOrIncludeUser$1", {
-  Lcom_microsoft_awt_components_GroupService$$anonfun$getGroupsOwnedByOrIncludeUser$1: 1,
-  sr_AbstractFunction1: 1,
-  O: 1,
-  F1: 1,
-  s_Serializable: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lcom_microsoft_awt_components_GroupService$$anonfun$getGroupsOwnedByOrIncludeUser$1.prototype.$classData = $d_Lcom_microsoft_awt_components_GroupService$$anonfun$getGroupsOwnedByOrIncludeUser$1;
 /** @constructor */
 function $c_Lcom_microsoft_awt_components_HomeController$$anonfun$13() {
   $c_sr_AbstractFunction1.call(this);
@@ -24840,7 +25315,7 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$compo
   return this
 });
 $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$21.prototype.apply__sjs_js_Array__s_concurrent_Future = (function(events) {
-  var this$1 = this.$$outer$2.$$outer$2.groupService$2.getGroupsOwnedByOrIncludeUser__T__I__s_concurrent_ExecutionContext__s_concurrent_Future(this.userID$1$f, 10, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1);
+  var this$1 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.groupService$2.getGroupsIncludingOrOwnedByUser__T__I__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(this.userID$1$f, 10, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1));
   var f = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$21$$anonfun$apply$27().init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$21__sjs_js_Array(this, events);
   var executor = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
   return $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$1, f, executor)
@@ -25580,7 +26055,7 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$12.prototype.apply__
   return this.apply__Lcom_microsoft_awt_models_User__s_concurrent_Future(v1)
 });
 $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$12.prototype.apply__Lcom_microsoft_awt_models_User__s_concurrent_Future = (function(user) {
-  var this$1 = this.$$outer$2.groupService$1.getGroupsOwnedByOrIncludeUser__T__I__s_concurrent_ExecutionContext__s_concurrent_Future(this.userID$1$f, 100, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1);
+  var this$1 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.groupService$1.getGroupsIncludingOrOwnedByUser__T__I__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(this.userID$1$f, 20, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1));
   var f = new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$12$$anonfun$apply$32().init___Lcom_microsoft_awt_components_ProfileController$$anonfun$12__Lcom_microsoft_awt_models_User(this, user);
   var executor = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
   return $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$1, f, executor)
@@ -34718,6 +35193,94 @@ var $d_sjsr_UndefinedBehaviorError = new $TypeData().initClass({
   s_util_control_NoStackTrace: 1
 });
 $c_sjsr_UndefinedBehaviorError.prototype.$classData = $d_sjsr_UndefinedBehaviorError;
+/** @constructor */
+function $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1() {
+  $c_sr_AbstractFunction0$mcV$sp.call(this);
+  this.$$outer$3 = null
+}
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1.prototype = new $h_sr_AbstractFunction0$mcV$sp();
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1.prototype.constructor = $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1;
+/** @constructor */
+function $h_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1() {
+  /*<skip>*/
+}
+$h_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1.prototype = $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1.prototype;
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1.prototype.init___Lcom_microsoft_awt_components_GroupDialog$GroupDialogController = (function($$outer) {
+  if (($$outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    this.$$outer$3 = $$outer
+  };
+  return this
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1.prototype.apply$mcV$sp__V = (function() {
+  var jsx$2 = $g.console;
+  var jsx$1 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Initializing '", "'..."]));
+  var this$1 = this.$$outer$3;
+  var s = jsx$1.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$objectGetClass(this$1).getSimpleName__T()]));
+  jsx$2.log(s);
+  $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$3.com$microsoft$awt$components$GroupDialog$GroupDialogController$$userService$f.getUsers__Lorg_scalajs_angularjs_http_HttpResponse()).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1().init___Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1.prototype.apply__O = (function() {
+  this.apply$mcV$sp__V()
+});
+var $d_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1: 0
+}, false, "com.microsoft.awt.components.GroupDialog$GroupDialogController$$anonfun$1", {
+  Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1: 1,
+  sr_AbstractFunction0$mcV$sp: 1,
+  sr_AbstractFunction0: 1,
+  O: 1,
+  F0: 1,
+  s_Function0$mcV$sp: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1.prototype.$classData = $d_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1;
+/** @constructor */
+function $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$1() {
+  $c_sr_AbstractFunction0$mcV$sp.call(this);
+  this.$$outer$3 = null;
+  this.users$1$3 = null
+}
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$1.prototype = new $h_sr_AbstractFunction0$mcV$sp();
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$1.prototype.constructor = $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$1;
+/** @constructor */
+function $h_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$1() {
+  /*<skip>*/
+}
+$h_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$1.prototype = $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$1.prototype;
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$1.prototype.init___Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1__sjs_js_Array = (function($$outer, users$1) {
+  if (($$outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    this.$$outer$3 = $$outer
+  };
+  this.users$1$3 = users$1;
+  return this
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$1.prototype.apply$mcV$sp__V = (function() {
+  this.$$outer$3.$$outer$2.$$outer$3.com$microsoft$awt$components$GroupDialog$GroupDialogController$$$scope$f.users = this.users$1$3;
+  var jsx$1 = this.$$outer$3.$$outer$2.$$outer$3.com$microsoft$awt$components$GroupDialog$GroupDialogController$$$scope$f.form;
+  var $$this = this.$$outer$3.$$outer$2.$$outer$3.com$microsoft$awt$components$GroupDialog$GroupDialogController$$mySession$f.user__sjs_js_UndefOr();
+  jsx$1.owner = (($$this === (void 0)) ? (void 0) : $$this._id)
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$1.prototype.apply__O = (function() {
+  this.apply$mcV$sp__V()
+});
+var $d_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$1 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$1: 0
+}, false, "com.microsoft.awt.components.GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$1", {
+  Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$1: 1,
+  sr_AbstractFunction0$mcV$sp: 1,
+  sr_AbstractFunction0: 1,
+  O: 1,
+  F0: 1,
+  s_Function0$mcV$sp: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$1.prototype.$classData = $d_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$1;
 /** @constructor */
 function $c_Lcom_microsoft_awt_components_HomeController$$anonfun$11() {
   $c_sr_AbstractFunction0$mcV$sp.call(this);

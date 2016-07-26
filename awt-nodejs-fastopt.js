@@ -4806,7 +4806,102 @@ $h_Lcom_microsoft_awt_routes_GroupRoutes$.prototype = $c_Lcom_microsoft_awt_rout
 $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.init___ = (function() {
   return this
 });
-$c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getInclusiveGroups__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, groupDAO) {
+$c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.updateGroup__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, groupDAO) {
+  var dict = request.params;
+  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "groupID"))) {
+    var jsx$1 = dict.groupID
+  } else {
+    var jsx$1;
+    throw new $c_ju_NoSuchElementException().init___T("key not found: groupID")
+  };
+  var groupID = $as_T(jsx$1);
+  var x1 = $m_Lcom_microsoft_awt_data_GroupData$GroupExtensions$().toData$extension__Lcom_microsoft_awt_models_Group__Lorg_scalajs_nodejs_mongodb_MongoDB__s_util_Try($m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().bodyAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Any(request), mongo);
+  if ($is_s_util_Success(x1)) {
+    var x2 = $as_s_util_Success(x1);
+    var group = x2.value$2;
+    var f = new $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$updateGroup$1().init___Lorg_scalajs_nodejs_mongodb_MongoDB__T__Lcom_microsoft_awt_data_GroupData(mongo, groupID, group);
+    $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(groupDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$3, next$3, group$2) {
+      return (function(x0$3$2) {
+        var x0$3 = $as_s_util_Try(x0$3$2);
+        var rc6 = false;
+        var x2$1 = null;
+        matchEnd7: {
+          if ($is_s_util_Success(x0$3)) {
+            rc6 = true;
+            x2$1 = $as_s_util_Success(x0$3);
+            var result = x2$1.value$2;
+            if (($uI(result.ok) === 1)) {
+              response$3.send(group$2);
+              $asUnit(next$3());
+              break matchEnd7
+            }
+          };
+          if (rc6) {
+            response$3.sendStatus(400);
+            $asUnit(next$3());
+            break matchEnd7
+          };
+          if ($is_s_util_Failure(x0$3)) {
+            var x4 = $as_s_util_Failure(x0$3);
+            var e = x4.exception$2;
+            e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
+            var jsx$2 = response$3.status(500);
+            var s = e.getMessage__T();
+            jsx$2.send(s);
+            $asUnit(next$3());
+            break matchEnd7
+          };
+          throw new $c_s_MatchError().init___O(x0$3)
+        }
+      })
+    })(response, next, group)), ec)
+  } else if ($is_s_util_Failure(x1)) {
+    var x3 = $as_s_util_Failure(x1);
+    var e$1 = x3.exception$2;
+    e$1.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
+    var jsx$3 = response.status(500);
+    var s$1 = e$1.getMessage__T();
+    jsx$3.send(s$1);
+    $asUnit(next())
+  } else {
+    throw new $c_s_MatchError().init___O(x1)
+  }
+});
+$c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroupsIncludingUser__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, groupDAO) {
+  var dict = request.params;
+  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID"))) {
+    var jsx$1 = dict.userID
+  } else {
+    var jsx$1;
+    throw new $c_ju_NoSuchElementException().init___T("key not found: userID")
+  };
+  var userID = $as_T(jsx$1);
+  var qual$3 = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
+  var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(qual$3, 20);
+  var f = new $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1().init___T__I(userID, maxResults);
+  $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(groupDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$6, next$6) {
+    return (function(x0$6$2) {
+      var x0$6 = $as_s_util_Try(x0$6$2);
+      if ($is_s_util_Success(x0$6)) {
+        var x2 = $as_s_util_Success(x0$6);
+        var groups = x2.value$2;
+        response$6.send(groups);
+        $asUnit(next$6())
+      } else if ($is_s_util_Failure(x0$6)) {
+        var x3 = $as_s_util_Failure(x0$6);
+        var e = x3.exception$2;
+        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
+        var jsx$2 = response$6.status(500);
+        var s = e.getMessage__T();
+        jsx$2.send(s);
+        $asUnit(next$6())
+      } else {
+        throw new $c_s_MatchError().init___O(x0$6)
+      }
+    })
+  })(response, next)), ec)
+});
+$c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroupsIncludingOrOwnedByUser__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, groupDAO) {
   var dict = request.params;
   if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID"))) {
     var jsx$1 = dict.userID
@@ -4817,25 +4912,25 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getInclusiveGroups__Lorg_sca
   var userID = $as_T(jsx$1);
   var qual$2 = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
   var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(qual$2, 20);
-  var f = new $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getInclusiveGroups$1().init___T__I(userID, maxResults);
-  $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(groupDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$4, next$4) {
-    return (function(x0$4$2) {
-      var x0$4 = $as_s_util_Try(x0$4$2);
-      if ($is_s_util_Success(x0$4)) {
-        var x2 = $as_s_util_Success(x0$4);
+  var f = new $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUser$1().init___T__I(userID, maxResults);
+  $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(groupDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$5, next$5) {
+    return (function(x0$5$2) {
+      var x0$5 = $as_s_util_Try(x0$5$2);
+      if ($is_s_util_Success(x0$5)) {
+        var x2 = $as_s_util_Success(x0$5);
         var groups = x2.value$2;
-        response$4.send(groups);
-        $asUnit(next$4())
-      } else if ($is_s_util_Failure(x0$4)) {
-        var x3 = $as_s_util_Failure(x0$4);
+        response$5.send(groups);
+        $asUnit(next$5())
+      } else if ($is_s_util_Failure(x0$5)) {
+        var x3 = $as_s_util_Failure(x0$5);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$2 = response$4.status(500);
+        var jsx$2 = response$5.status(500);
         var s = e.getMessage__T();
         jsx$2.send(s);
-        $asUnit(next$4())
+        $asUnit(next$5())
       } else {
-        throw new $c_s_MatchError().init___O(x0$4)
+        throw new $c_s_MatchError().init___O(x0$5)
       }
     })
   })(response, next)), ec)
@@ -4850,21 +4945,21 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroupByID__Lorg_scalajs_n
   };
   var groupID = $as_T(jsx$1);
   var f = new $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupByID$1().init___s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__T(ec, mongo, groupID);
-  $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(groupDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$2, next$2) {
-    return (function(x0$2$2) {
-      var x0$2 = $as_s_util_Try(x0$2$2);
+  $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(groupDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$1, next$1) {
+    return (function(x0$1$2) {
+      var x0$1 = $as_s_util_Try(x0$1$2);
       var rc10 = false;
       var x2 = null;
       matchEnd11: {
-        if ($is_s_util_Success(x0$2)) {
+        if ($is_s_util_Success(x0$1)) {
           rc10 = true;
-          x2 = $as_s_util_Success(x0$2);
+          x2 = $as_s_util_Success(x0$1);
           var p3 = $as_s_Option(x2.value$2);
           if ($is_s_Some(p3)) {
             var x4 = $as_s_Some(p3);
             var group = x4.x$2;
-            response$2.send(group);
-            $asUnit(next$2());
+            response$1.send(group);
+            $asUnit(next$1());
             break matchEnd11
           }
         };
@@ -4872,22 +4967,22 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroupByID__Lorg_scalajs_n
           var p6 = $as_s_Option(x2.value$2);
           var x = $m_s_None$();
           if ((x === p6)) {
-            response$2.sendStatus(404);
-            $asUnit(next$2());
+            response$1.sendStatus(404);
+            $asUnit(next$1());
             break matchEnd11
           }
         };
-        if ($is_s_util_Failure(x0$2)) {
-          var x7 = $as_s_util_Failure(x0$2);
+        if ($is_s_util_Failure(x0$1)) {
+          var x7 = $as_s_util_Failure(x0$1);
           var e = x7.exception$2;
           e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-          var jsx$2 = response$2.status(500);
+          var jsx$2 = response$1.status(500);
           var s = e.getMessage__T();
           jsx$2.send(s);
-          $asUnit(next$2());
+          $asUnit(next$1());
           break matchEnd11
         };
-        throw new $c_s_MatchError().init___O(x0$2)
+        throw new $c_s_MatchError().init___O(x0$1)
       }
     })
   })(response, next)), ec)
@@ -4923,29 +5018,39 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.init__Lorg_scalajs_nodejs_ex
     })
   })(ec));
   var groupDAO = $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(dbFuture, f$1, ec);
-  app.post("/api/group", (function(ec$1$1, mongo$1, groupDAO$1) {
+  app.get("/api/group/:groupID", (function(ec$1$1, mongo$1, groupDAO$1) {
     return (function(request$2, response$2, next$2) {
-      $m_Lcom_microsoft_awt_routes_GroupRoutes$().createGroup__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V(request$2, response$2, next$2, ec$1$1, mongo$1, groupDAO$1)
+      $m_Lcom_microsoft_awt_routes_GroupRoutes$().getGroupByID__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V(request$2, response$2, next$2, ec$1$1, mongo$1, groupDAO$1)
     })
   })(ec, mongo, groupDAO));
-  app.get("/api/group/:groupID", (function(ec$1$2, mongo$1$1, groupDAO$1$1) {
+  app.post("/api/group", (function(ec$1$2, mongo$1$1, groupDAO$1$1) {
     return (function(request$2$1, response$2$1, next$2$1) {
-      $m_Lcom_microsoft_awt_routes_GroupRoutes$().getGroupByID__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V(request$2$1, response$2$1, next$2$1, ec$1$2, mongo$1$1, groupDAO$1$1)
+      $m_Lcom_microsoft_awt_routes_GroupRoutes$().createGroup__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V(request$2$1, response$2$1, next$2$1, ec$1$2, mongo$1$1, groupDAO$1$1)
     })
   })(ec, mongo, groupDAO));
-  app.get("/api/groups", (function(ec$1$3, mongo$1$2, groupDAO$1$2) {
+  app.put("/api/group/:groupID", (function(ec$1$3, mongo$1$2, groupDAO$1$2) {
     return (function(request$2$2, response$2$2, next$2$2) {
-      $m_Lcom_microsoft_awt_routes_GroupRoutes$().getGroups__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V(request$2$2, response$2$2, next$2$2, ec$1$3, mongo$1$2, groupDAO$1$2)
+      $m_Lcom_microsoft_awt_routes_GroupRoutes$().updateGroup__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V(request$2$2, response$2$2, next$2$2, ec$1$3, mongo$1$2, groupDAO$1$2)
     })
   })(ec, mongo, groupDAO));
-  app.get("/api/groups/user/:userID/in", (function(ec$1$4, mongo$1$3, groupDAO$1$3) {
+  app.get("/api/groups", (function(ec$1$4, mongo$1$3, groupDAO$1$3) {
     return (function(request$2$3, response$2$3, next$2$3) {
-      $m_Lcom_microsoft_awt_routes_GroupRoutes$().getInclusiveGroups__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V(request$2$3, response$2$3, next$2$3, ec$1$4, mongo$1$3, groupDAO$1$3)
+      $m_Lcom_microsoft_awt_routes_GroupRoutes$().getGroups__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V(request$2$3, response$2$3, next$2$3, ec$1$4, mongo$1$3, groupDAO$1$3)
     })
   })(ec, mongo, groupDAO));
-  app.get("/api/groups/user/:userID/nin", (function(ec$1$5, mongo$1$4, groupDAO$1$4) {
+  app.get("/api/groups/user/:userID/all", (function(ec$1$5, mongo$1$4, groupDAO$1$4) {
     return (function(request$2$4, response$2$4, next$2$4) {
-      $m_Lcom_microsoft_awt_routes_GroupRoutes$().getExclusiveGroups__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V(request$2$4, response$2$4, next$2$4, ec$1$5, mongo$1$4, groupDAO$1$4)
+      $m_Lcom_microsoft_awt_routes_GroupRoutes$().getGroupsIncludingOrOwnedByUser__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V(request$2$4, response$2$4, next$2$4, ec$1$5, mongo$1$4, groupDAO$1$4)
+    })
+  })(ec, mongo, groupDAO));
+  app.get("/api/groups/user/:userID/in", (function(ec$1$6, mongo$1$5, groupDAO$1$5) {
+    return (function(request$2$5, response$2$5, next$2$5) {
+      $m_Lcom_microsoft_awt_routes_GroupRoutes$().getGroupsIncludingUser__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V(request$2$5, response$2$5, next$2$5, ec$1$6, mongo$1$5, groupDAO$1$5)
+    })
+  })(ec, mongo, groupDAO));
+  app.get("/api/groups/user/:userID/nin", (function(ec$1$7, mongo$1$6, groupDAO$1$6) {
+    return (function(request$2$6, response$2$6, next$2$6) {
+      $m_Lcom_microsoft_awt_routes_GroupRoutes$().getGroupsExcludingUser__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V(request$2$6, response$2$6, next$2$6, ec$1$7, mongo$1$6, groupDAO$1$6)
     })
   })(ec, mongo, groupDAO))
 });
@@ -4956,41 +5061,41 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.createGroup__Lorg_scalajs_no
     var group = x2.value$2;
     var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(group$1) {
       return (function(x$2$2) {
-        return $m_Lorg_scalajs_nodejs_util_ScalaJsHelper$().promise2Future__sjs_js_Promise__s_concurrent_Future(x$2$2.insert(group$1))
+        return $m_sjs_js_Thenable$ThenableOps$().toFuture$extension__sjs_js_Thenable__s_concurrent_Future(x$2$2.insert(group$1))
       })
     })(group));
-    $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(groupDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$1, next$1, group$1$1) {
-      return (function(x0$1$2) {
-        var x0$1 = $as_s_util_Try(x0$1$2);
+    $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(groupDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$2, next$2, group$1$1) {
+      return (function(x0$2$2) {
+        var x0$2 = $as_s_util_Try(x0$2$2);
         var rc6 = false;
         var x2$1 = null;
         matchEnd7: {
-          if ($is_s_util_Success(x0$1)) {
+          if ($is_s_util_Success(x0$2)) {
             rc6 = true;
-            x2$1 = $as_s_util_Success(x0$1);
+            x2$1 = $as_s_util_Success(x0$2);
             var result = x2$1.value$2;
             if (($uI(result.insertedCount) >= 1)) {
-              response$1.send(group$1$1);
-              $asUnit(next$1());
+              response$2.send(group$1$1);
+              $asUnit(next$2());
               break matchEnd7
             }
           };
           if (rc6) {
-            response$1.sendStatus(400);
-            $asUnit(next$1());
+            response$2.sendStatus(400);
+            $asUnit(next$2());
             break matchEnd7
           };
-          if ($is_s_util_Failure(x0$1)) {
-            var x4 = $as_s_util_Failure(x0$1);
+          if ($is_s_util_Failure(x0$2)) {
+            var x4 = $as_s_util_Failure(x0$2);
             var e = x4.exception$2;
             e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-            var jsx$1 = response$1.status(500);
+            var jsx$1 = response$2.status(500);
             var s = e.getMessage__T();
             jsx$1.send(s);
-            $asUnit(next$1());
+            $asUnit(next$2());
             break matchEnd7
           };
-          throw new $c_s_MatchError().init___O(x0$1)
+          throw new $c_s_MatchError().init___O(x0$2)
         }
       })
     })(response, next, group)), ec)
@@ -5006,7 +5111,7 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.createGroup__Lorg_scalajs_no
     throw new $c_s_MatchError().init___O(x1)
   }
 });
-$c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getExclusiveGroups__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, groupDAO) {
+$c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroupsExcludingUser__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, groupDAO) {
   var dict = request.params;
   if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID"))) {
     var jsx$1 = dict.userID
@@ -5015,27 +5120,27 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getExclusiveGroups__Lorg_sca
     throw new $c_ju_NoSuchElementException().init___T("key not found: userID")
   };
   var userID = $as_T(jsx$1);
-  var qual$3 = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
-  var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(qual$3, 20);
-  var f = new $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getExclusiveGroups$1().init___T__I(userID, maxResults);
-  $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(groupDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$5, next$5) {
-    return (function(x0$5$2) {
-      var x0$5 = $as_s_util_Try(x0$5$2);
-      if ($is_s_util_Success(x0$5)) {
-        var x2 = $as_s_util_Success(x0$5);
+  var qual$4 = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
+  var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(qual$4, 20);
+  var f = new $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1().init___T__I(userID, maxResults);
+  $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(groupDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$7, next$7) {
+    return (function(x0$7$2) {
+      var x0$7 = $as_s_util_Try(x0$7$2);
+      if ($is_s_util_Success(x0$7)) {
+        var x2 = $as_s_util_Success(x0$7);
         var groups = x2.value$2;
-        response$5.send(groups);
-        $asUnit(next$5())
-      } else if ($is_s_util_Failure(x0$5)) {
-        var x3 = $as_s_util_Failure(x0$5);
+        response$7.send(groups);
+        $asUnit(next$7())
+      } else if ($is_s_util_Failure(x0$7)) {
+        var x3 = $as_s_util_Failure(x0$7);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$2 = response$5.status(500);
+        var jsx$2 = response$7.status(500);
         var s = e.getMessage__T();
         jsx$2.send(s);
-        $asUnit(next$5())
+        $asUnit(next$7())
       } else {
-        throw new $c_s_MatchError().init___O(x0$5)
+        throw new $c_s_MatchError().init___O(x0$7)
       }
     })
   })(response, next)), ec)
@@ -5061,24 +5166,24 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroups__Lorg_scalajs_node
       return promise
     })
   })(maxResults));
-  $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(groupDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$3, next$3) {
-    return (function(x0$3$2) {
-      var x0$3 = $as_s_util_Try(x0$3$2);
-      if ($is_s_util_Success(x0$3)) {
-        var x2 = $as_s_util_Success(x0$3);
+  $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(groupDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$4, next$4) {
+    return (function(x0$4$2) {
+      var x0$4 = $as_s_util_Try(x0$4$2);
+      if ($is_s_util_Success(x0$4)) {
+        var x2 = $as_s_util_Success(x0$4);
         var groups = x2.value$2;
-        response$3.send(groups);
-        $asUnit(next$3())
-      } else if ($is_s_util_Failure(x0$3)) {
-        var x3 = $as_s_util_Failure(x0$3);
+        response$4.send(groups);
+        $asUnit(next$4())
+      } else if ($is_s_util_Failure(x0$4)) {
+        var x3 = $as_s_util_Failure(x0$4);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$1 = response$3.status(500);
+        var jsx$1 = response$4.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
-        $asUnit(next$3())
+        $asUnit(next$4())
       } else {
-        throw new $c_s_MatchError().init___O(x0$3)
+        throw new $c_s_MatchError().init___O(x0$4)
       }
     })
   })(response, next)), ec)
@@ -21236,60 +21341,6 @@ var $d_Lcom_microsoft_awt_routes_EventRoutes$$anonfun$getUpcomingEvents$1 = new 
 });
 $c_Lcom_microsoft_awt_routes_EventRoutes$$anonfun$getUpcomingEvents$1.prototype.$classData = $d_Lcom_microsoft_awt_routes_EventRoutes$$anonfun$getUpcomingEvents$1;
 /** @constructor */
-function $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getExclusiveGroups$1() {
-  $c_sr_AbstractFunction1.call(this);
-  this.userID$2$f = null;
-  this.maxResults$3$2 = 0
-}
-$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getExclusiveGroups$1.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getExclusiveGroups$1.prototype.constructor = $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getExclusiveGroups$1;
-/** @constructor */
-function $h_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getExclusiveGroups$1() {
-  /*<skip>*/
-}
-$h_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getExclusiveGroups$1.prototype = $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getExclusiveGroups$1.prototype;
-$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getExclusiveGroups$1.prototype.apply__O__O = (function(v1) {
-  return this.apply__Lcom_microsoft_awt_data_GroupDAO__s_concurrent_Future(v1)
-});
-$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getExclusiveGroups$1.prototype.apply__Lcom_microsoft_awt_data_GroupDAO__s_concurrent_Future = (function(x$6) {
-  var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var s = this.userID$2$f;
-  var y = [s];
-  var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$nin", y)]);
-  var y$1 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
-  var jsx$1 = x$6.find(jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("members", y$1)));
-  var $$this = jsx$1.limit(this.maxResults$3$2);
-  var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
-  var arg1 = (function(promise$1) {
-    return (function(err$2, result$2) {
-      if ((!((err$2 !== null) && (err$2 !== (void 0))))) {
-        return $s_s_concurrent_Promise$class__success__s_concurrent_Promise__O__s_concurrent_Promise(promise$1, result$2)
-      } else {
-        var cause = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(err$2);
-        return $s_s_concurrent_Promise$class__failure__s_concurrent_Promise__jl_Throwable__s_concurrent_Promise(promise$1, cause)
-      }
-    })
-  })(promise);
-  $$this.toArray(arg1);
-  return promise
-});
-$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getExclusiveGroups$1.prototype.init___T__I = (function(userID$2, maxResults$3) {
-  this.userID$2$f = userID$2;
-  this.maxResults$3$2 = maxResults$3;
-  return this
-});
-var $d_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getExclusiveGroups$1 = new $TypeData().initClass({
-  Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getExclusiveGroups$1: 0
-}, false, "com.microsoft.awt.routes.GroupRoutes$$anonfun$getExclusiveGroups$1", {
-  Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getExclusiveGroups$1: 1,
-  sr_AbstractFunction1: 1,
-  O: 1,
-  F1: 1,
-  s_Serializable: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getExclusiveGroups$1.prototype.$classData = $d_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getExclusiveGroups$1;
-/** @constructor */
 function $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupByID$1() {
   $c_sr_AbstractFunction1.call(this);
   this.ec$2$2 = null;
@@ -21368,28 +21419,29 @@ var $d_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupByID$1 = new $Type
 });
 $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupByID$1.prototype.$classData = $d_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupByID$1;
 /** @constructor */
-function $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getInclusiveGroups$1() {
+function $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1() {
   $c_sr_AbstractFunction1.call(this);
-  this.userID$1$f = null;
-  this.maxResults$2$2 = 0
+  this.userID$3$f = null;
+  this.maxResults$4$2 = 0
 }
-$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getInclusiveGroups$1.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getInclusiveGroups$1.prototype.constructor = $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getInclusiveGroups$1;
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1.prototype.constructor = $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1;
 /** @constructor */
-function $h_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getInclusiveGroups$1() {
+function $h_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getInclusiveGroups$1.prototype = $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getInclusiveGroups$1.prototype;
-$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getInclusiveGroups$1.prototype.apply__O__O = (function(v1) {
+$h_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1.prototype = $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1.prototype;
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1.prototype.apply__O__O = (function(v1) {
   return this.apply__Lcom_microsoft_awt_data_GroupDAO__s_concurrent_Future(v1)
 });
-$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getInclusiveGroups$1.prototype.apply__Lcom_microsoft_awt_data_GroupDAO__s_concurrent_Future = (function(x$5) {
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1.prototype.apply__Lcom_microsoft_awt_data_GroupDAO__s_concurrent_Future = (function(x$5) {
   var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var y = [this.userID$1$f];
-  var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$in", y)]);
+  var s = this.userID$3$f;
+  var y = [s];
+  var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$nin", y)]);
   var y$1 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
   var jsx$1 = x$5.find(jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("members", y$1)));
-  var $$this = jsx$1.limit(this.maxResults$2$2);
+  var $$this = jsx$1.limit(this.maxResults$4$2);
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1 = (function(promise$1) {
     return (function(err$2, result$2) {
@@ -21404,22 +21456,209 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getInclusiveGroups$1.prototype
   $$this.toArray(arg1);
   return promise
 });
-$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getInclusiveGroups$1.prototype.init___T__I = (function(userID$1, maxResults$2) {
-  this.userID$1$f = userID$1;
-  this.maxResults$2$2 = maxResults$2;
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1.prototype.init___T__I = (function(userID$3, maxResults$4) {
+  this.userID$3$f = userID$3;
+  this.maxResults$4$2 = maxResults$4;
   return this
 });
-var $d_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getInclusiveGroups$1 = new $TypeData().initClass({
-  Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getInclusiveGroups$1: 0
-}, false, "com.microsoft.awt.routes.GroupRoutes$$anonfun$getInclusiveGroups$1", {
-  Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getInclusiveGroups$1: 1,
+var $d_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1 = new $TypeData().initClass({
+  Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1: 0
+}, false, "com.microsoft.awt.routes.GroupRoutes$$anonfun$getGroupsExcludingUser$1", {
+  Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1: 1,
   sr_AbstractFunction1: 1,
   O: 1,
   F1: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getInclusiveGroups$1.prototype.$classData = $d_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getInclusiveGroups$1;
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1.prototype.$classData = $d_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1;
+/** @constructor */
+function $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUser$1() {
+  $c_sr_AbstractFunction1.call(this);
+  this.userID$1$f = null;
+  this.maxResults$2$2 = 0
+}
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUser$1.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUser$1.prototype.constructor = $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUser$1;
+/** @constructor */
+function $h_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUser$1() {
+  /*<skip>*/
+}
+$h_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUser$1.prototype = $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUser$1.prototype;
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUser$1.prototype.apply__O__O = (function(v1) {
+  return this.apply__Lcom_microsoft_awt_data_GroupDAO__s_concurrent_Future(v1)
+});
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUser$1.prototype.apply__Lcom_microsoft_awt_data_GroupDAO__s_concurrent_Future = (function(x$7) {
+  var jsx$3 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+  var y = this.userID$1$f;
+  var jsx$2 = new $c_T2().init___O__O("owner", y);
+  var y$1 = [this.userID$1$f];
+  var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$in", y$1)]);
+  var y$2 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
+  var array = [jsx$2, new $c_T2().init___O__O("members", y$2)];
+  var this$15 = $m_sc_Seq$();
+  $m_sjs_js_WrappedArray$();
+  var array$1 = [];
+  $uI(array.length);
+  var i = 0;
+  var len = $uI(array.length);
+  while ((i < len)) {
+    var index = i;
+    var arg1 = array[index];
+    var x$3 = $as_T2(arg1);
+    var kvps$1 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([x$3]);
+    var elem = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps$1);
+    array$1.push(elem);
+    i = ((1 + i) | 0)
+  };
+  var y$3 = array$1;
+  var jsx$1 = x$7.find(jsx$3.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("$or", y$3)));
+  var $$this = jsx$1.limit(this.maxResults$2$2);
+  var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
+  var arg1$1 = (function(promise$1) {
+    return (function(err$2, result$2) {
+      if ((!((err$2 !== null) && (err$2 !== (void 0))))) {
+        return $s_s_concurrent_Promise$class__success__s_concurrent_Promise__O__s_concurrent_Promise(promise$1, result$2)
+      } else {
+        var cause = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(err$2);
+        return $s_s_concurrent_Promise$class__failure__s_concurrent_Promise__jl_Throwable__s_concurrent_Promise(promise$1, cause)
+      }
+    })
+  })(promise);
+  $$this.toArray(arg1$1);
+  return promise
+});
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUser$1.prototype.init___T__I = (function(userID$1, maxResults$2) {
+  this.userID$1$f = userID$1;
+  this.maxResults$2$2 = maxResults$2;
+  return this
+});
+var $d_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUser$1 = new $TypeData().initClass({
+  Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUser$1: 0
+}, false, "com.microsoft.awt.routes.GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUser$1", {
+  Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUser$1: 1,
+  sr_AbstractFunction1: 1,
+  O: 1,
+  F1: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUser$1.prototype.$classData = $d_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUser$1;
+/** @constructor */
+function $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1() {
+  $c_sr_AbstractFunction1.call(this);
+  this.userID$2$f = null;
+  this.maxResults$3$2 = 0
+}
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1.prototype.constructor = $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1;
+/** @constructor */
+function $h_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1() {
+  /*<skip>*/
+}
+$h_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1.prototype = $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1.prototype;
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1.prototype.apply__O__O = (function(v1) {
+  return this.apply__Lcom_microsoft_awt_data_GroupDAO__s_concurrent_Future(v1)
+});
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1.prototype.apply__Lcom_microsoft_awt_data_GroupDAO__s_concurrent_Future = (function(x$6) {
+  var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+  var y = [this.userID$2$f];
+  var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$in", y)]);
+  var y$1 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
+  var jsx$1 = x$6.find(jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("members", y$1)));
+  var $$this = jsx$1.limit(this.maxResults$3$2);
+  var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
+  var arg1 = (function(promise$1) {
+    return (function(err$2, result$2) {
+      if ((!((err$2 !== null) && (err$2 !== (void 0))))) {
+        return $s_s_concurrent_Promise$class__success__s_concurrent_Promise__O__s_concurrent_Promise(promise$1, result$2)
+      } else {
+        var cause = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(err$2);
+        return $s_s_concurrent_Promise$class__failure__s_concurrent_Promise__jl_Throwable__s_concurrent_Promise(promise$1, cause)
+      }
+    })
+  })(promise);
+  $$this.toArray(arg1);
+  return promise
+});
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1.prototype.init___T__I = (function(userID$2, maxResults$3) {
+  this.userID$2$f = userID$2;
+  this.maxResults$3$2 = maxResults$3;
+  return this
+});
+var $d_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1 = new $TypeData().initClass({
+  Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1: 0
+}, false, "com.microsoft.awt.routes.GroupRoutes$$anonfun$getGroupsIncludingUser$1", {
+  Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1: 1,
+  sr_AbstractFunction1: 1,
+  O: 1,
+  F1: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1.prototype.$classData = $d_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1;
+/** @constructor */
+function $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$updateGroup$1() {
+  $c_sr_AbstractFunction1.call(this);
+  this.mongo$3$f = null;
+  this.groupID$2$f = null;
+  this.group$2$2 = null
+}
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$updateGroup$1.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$updateGroup$1.prototype.constructor = $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$updateGroup$1;
+/** @constructor */
+function $h_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$updateGroup$1() {
+  /*<skip>*/
+}
+$h_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$updateGroup$1.prototype = $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$updateGroup$1.prototype;
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$updateGroup$1.prototype.apply__O__O = (function(v1) {
+  return this.apply__Lcom_microsoft_awt_data_GroupDAO__s_concurrent_Future(v1)
+});
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$updateGroup$1.prototype.apply__Lcom_microsoft_awt_data_GroupDAO__s_concurrent_Future = (function(x$8) {
+  var jsx$4 = $m_sjs_js_Thenable$ThenableOps$();
+  var jsx$3 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+  var $$this = this.groupID$2$f;
+  var mongo = this.mongo$3$f;
+  var $$this$1 = mongo.ObjectID;
+  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [$$this]));
+  if ($is_sjs_js_ArrayOps(args)) {
+    var x2 = $as_sjs_js_ArrayOps(args);
+    var jsx$2 = x2.scala$scalajs$js$ArrayOps$$array$f
+  } else if ($is_sjs_js_WrappedArray(args)) {
+    var x3 = $as_sjs_js_WrappedArray(args);
+    var jsx$2 = x3.array$6
+  } else {
+    var result = [];
+    var i = 0;
+    var len = args.length__I();
+    while ((i < len)) {
+      var arg1 = args.apply__I__O(i);
+      $uI(result.push(arg1));
+      i = ((1 + i) | 0)
+    };
+    var jsx$2 = result
+  };
+  var y = $newJSObjectWithVarargs($$this$1, jsx$2);
+  var jsx$1 = x$8.findOneAndUpdate(jsx$3.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y)), this.group$2$2);
+  return jsx$4.toFuture$extension__sjs_js_Thenable__s_concurrent_Future(jsx$1)
+});
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$updateGroup$1.prototype.init___Lorg_scalajs_nodejs_mongodb_MongoDB__T__Lcom_microsoft_awt_data_GroupData = (function(mongo$3, groupID$2, group$2) {
+  this.mongo$3$f = mongo$3;
+  this.groupID$2$f = groupID$2;
+  this.group$2$2 = group$2;
+  return this
+});
+var $d_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$updateGroup$1 = new $TypeData().initClass({
+  Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$updateGroup$1: 0
+}, false, "com.microsoft.awt.routes.GroupRoutes$$anonfun$updateGroup$1", {
+  Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$updateGroup$1: 1,
+  sr_AbstractFunction1: 1,
+  O: 1,
+  F1: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$updateGroup$1.prototype.$classData = $d_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$updateGroup$1;
 /** @constructor */
 function $c_Lcom_microsoft_awt_routes_NotificationRoutes$$anonfun$getNotificationsByOwner$1() {
   $c_sr_AbstractFunction1.call(this);

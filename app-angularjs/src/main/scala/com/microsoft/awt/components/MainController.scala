@@ -189,7 +189,7 @@ case class MainController($scope: MainScope, $location: Location, $q: Q, $timeou
     console.log("Loading events, groups and notifications...")
     val outcome = for {
       events <- eventService.getEvents(userID)
-      groups <- groupService.getGroupsOwnedByOrIncludeUser(userID, 10)
+      groups <- groupService.getGroupsIncludingOrOwnedByUser(userID, 10)
       notifications <- notificationSvc.getNotificationsByUserID(userID, unread = true)
     } yield (events, groups, notifications)
 

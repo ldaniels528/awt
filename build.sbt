@@ -41,6 +41,7 @@ lazy val jsCommonSettings = Seq(
   ))
 
 lazy val root = (project in file("."))
+  .aggregate(angularjs, nodejs)
   .dependsOn(angularjs, nodejs)
   .enablePlugins(ScalaJSPlugin)
   .settings(
