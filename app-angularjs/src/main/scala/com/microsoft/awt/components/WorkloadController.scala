@@ -47,7 +47,7 @@ class WorkloadController($scope: WorkloadScope,
   ///////////////////////////////////////////////////////////////////////////
 
   $scope.addWorkload = (theWorkloads: js.UndefOr[js.Array[Workload]]) => theWorkloads foreach { workloads =>
-    workloadDialog.popup().toFuture onComplete {
+    workloadDialog.popup() onComplete {
       case Success(newWorkload) =>
         $scope.$apply(() => workloads.push(newWorkload))
       case Failure(e) =>
@@ -62,7 +62,7 @@ class WorkloadController($scope: WorkloadScope,
       workload <- aWorkload
       workloadID <- workload._id
     } {
-      workloadCommentDialog.popup(workloadID).toFuture onComplete {
+      workloadCommentDialog.popup(workloadID) onComplete {
         case Success(updatedWorkload) =>
           workloads.indexWhereOpt(_._id ?== updatedWorkload._id) foreach { index =>
             $scope.$apply { () =>

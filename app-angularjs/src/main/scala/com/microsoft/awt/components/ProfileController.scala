@@ -89,9 +89,11 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
       userService.like(endorseeID, endorserID) onComplete {
         case Success(result) =>
           $timeout(() => $scope.endorseLoading = false, 500.millis)
-          if (result.success) {
-            endorsee.endorsements = if (endorsee.endorsements.isEmpty) 1: Integer else endorsee.endorsements.map(_ + 1)
-            endorsee.endorsers.foreach(_.push(endorserID))
+          $scope.$apply { () =>
+            if (result.success) {
+              endorsee.endorsements = if (endorsee.endorsements.isEmpty) 1: Integer else endorsee.endorsements.map(_ + 1)
+              endorsee.endorsers.foreach(_.push(endorserID))
+            }
           }
         case Failure(e) =>
           $scope.endorseLoading = false
@@ -125,9 +127,11 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
       userService.follow(followeeID, followerID) onComplete {
         case Success(result) =>
           $timeout(() => $scope.followLoading = false, 500.millis)
-          if (result.success) {
-            followee.totalFollowers = if (followee.totalFollowers.isEmpty) 1: Integer else followee.totalFollowers.map(_ + 1)
-            followee.followers.foreach(_.push(followerID))
+          $scope.$apply { () =>
+            if (result.success) {
+              followee.totalFollowers = if (followee.totalFollowers.isEmpty) 1: Integer else followee.totalFollowers.map(_ + 1)
+              followee.followers.foreach(_.push(followerID))
+            }
           }
         case Failure(e) =>
           $scope.followLoading = false

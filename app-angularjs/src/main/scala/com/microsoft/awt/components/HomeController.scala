@@ -210,12 +210,12 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
         post.deleteLoading = true
         postService.deletePost(postID) onComplete {
           case Success(result) =>
-            post.deleteLoading = false
+            $scope.$apply(() => post.deleteLoading = false)
             if (result.success && removePostFromList(post)) {
               toaster.success("Post deleted")
             }
           case Failure(e) =>
-            post.deleteLoading = false
+            $scope.$apply(() => post.deleteLoading = false)
             console.error(s"Failed while delete the post ($postID) for userID ($userID): ${e.displayMessage}")
             toaster.error("Error deleting post", e.displayMessage)
         }
@@ -269,7 +269,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
             $timeout(() => post.likeLoading = false, 1.second)
             updatePost(updatedPost)
           case Failure(e) =>
-            post.likeLoading = false
+            $scope.$apply(() => post.likeLoading = false)
             console.error(s"Failed while liking the post ($aPostID) for userID ($aUserID): ${e.displayMessage}")
             toaster.error("Error liking a post", e.displayMessage)
         }
@@ -356,7 +356,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
             val index = $scope.posts.indexWhere(_._id ?== updatedPost._id)
             if (index != -1) {
               console.log(s"Updating post index $index")
-              $scope.posts(index) = updatedPost
+              $scope.$apply(() => $scope.posts(index) = updatedPost)
             }
           case Failure(e) =>
             comment.likeLoading = false
@@ -379,8 +379,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
       val comment = Comment(text, submitter)
 
       postService.createComment(postID, comment) onComplete {
-        case Success(updatedPost) =>
-          updatePost(updatedPost)
+        case Success(updatedPost) => $scope.$apply(() => updatePost(updatedPost))
         case Failure(e) =>
           console.error(s"Failed while adding a new comment the post ($aPost) or userID (${user._id}): ${e.displayMessage}")
           toaster.error("Error adding comment", e.displayMessage)
@@ -431,7 +430,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
             val index = $scope.posts.indexWhere(_._id ?== updatedPost._id)
             if (index != -1) {
               console.log(s"Updating post index $index")
-              $scope.posts(index) = updatedPost
+              $scope.$apply(() => $scope.posts(index) = updatedPost)
             }
           case Failure(e) =>
             reply.likeLoading = false
@@ -457,8 +456,10 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
 
       postService.createReply(postID, commentID, reply) onComplete {
         case Success(updatedPost) =>
-          comment.replies.foreach(_.push(reply))
-          comment.newReply = false
+          $scope.$apply { () =>
+            comment.replies.foreach(_.push(reply))
+            comment.newReply = false
+          }
         case Failure(e) =>
           console.error(s"Failed while adding a new reply the post ($aPost) or userID (${user._id}): ${e.displayMessage}")
           toaster.error("Error adding reply", e.displayMessage)
@@ -535,7 +536,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
     outcome onComplete {
       case Success(posts) =>
         $timeout(() => $scope.postsLoading = false, 1.second)
-        $scope.posts = posts
+        $scope.$apply(() => $scope.posts = posts)
       case Failure(e) =>
         $scope.postsLoading = false
         console.error(s"Error loading posts for tags '${tags.mkString(", ")}'")
@@ -579,7 +580,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
     if (updatedPost.submitter.nonAssigned) {
       updatedPost.submitterId.flat foreach { submitterId =>
         userFactory.getUserByID(submitterId) onComplete {
-          case Success(user) => updatedPost.submitter = Submitter(user)
+          case Success(user) => $scope.$apply(() => updatedPost.submitter = Submitter(user))
           case Failure(e) => toaster.error("Submitter retrieval", e.displayMessage)
         }
       }
@@ -605,7 +606,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
     }
 
     postService.getPostByID(postID) onComplete {
-      case Success(updatedPost) => updatePost(updatedPost)
+      case Success(updatedPost) => $scope.$apply(() => updatePost(updatedPost))
       case Failure(e) =>
         console.error(s"Failed to reload post $postID")
     }
@@ -645,12 +646,14 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
         newPost.submitter = Submitter(user)
         postService.createPost(newPost) onComplete {
           case Success(post) =>
-            newPost._id = post._id
-            for {
-              fileItem <- addedFileItems
-              postId <- newPost._id.flat
-            } {
-              fileItem.url = postService.getUploadURL(postId, userId)
+            $scope.$apply { () =>
+              newPost._id = post._id
+              for {
+                fileItem <- addedFileItems
+                postId <- newPost._id.flat
+              } {
+                fileItem.url = postService.getUploadURL(postId, userId)
+              }
             }
           case Failure(e) =>
             console.error(s"Failed while creating post for upload: ${e.displayMessage}")

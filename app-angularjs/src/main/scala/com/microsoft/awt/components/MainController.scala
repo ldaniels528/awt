@@ -132,11 +132,13 @@ case class MainController($scope: MainScope, $location: Location, $q: Q, $timeou
       console.log(s"Deleting notification $id...")
       notificationSvc.deleteNotification(id) onComplete {
         case Success(result) =>
-          console.log(s"result => ${angular.toJson(result)}")
-          if (result.success) {
-            $scope.notifications.indexWhere(_._id ?== notification._id) match {
-              case -1 => toaster.error("Failed to delete notification")
-              case index => $scope.notifications.remove(index)
+          $scope.$apply { () =>
+            console.log(s"result => ${angular.toJson(result)}")
+            if (result.success) {
+              $scope.notifications.indexWhere(_._id ?== notification._id) match {
+                case -1 => toaster.error("Failed to delete notification")
+                case index => $scope.notifications.remove(index)
+              }
             }
           }
         case Failure(e) =>
@@ -193,13 +195,14 @@ case class MainController($scope: MainScope, $location: Location, $q: Q, $timeou
 
     outcome onComplete {
       case Success((events, groups, notifications)) =>
-        $scope.events = events
-        $scope.groups = groups
-        $scope.notifications = notifications
+        $scope.$apply { () =>
+          $scope.events = events
+          $scope.groups = groups
+          $scope.notifications = notifications
+        }
       case Failure(e) =>
         console.error(s"Failed while retrieving events, groups and notifications: ${e.displayMessage}")
         toaster.error("Loading Error", "Failed to load events and notifications")
-        e.printStackTrace()
     }
   }
 

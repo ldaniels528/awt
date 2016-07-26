@@ -43,7 +43,7 @@ object WorkloadDialog {
   type WorkloadDialogResult = Workload
 
   /**
-    * Save Workload Dialog Controller
+    * Workload Dialog Controller
     * @author lawrence.daniels@gmail.com
     */
   class WorkloadDialogController($scope: WorkloadDialogScope, $modalInstance: ModalInstance[WorkloadDialogResult],
@@ -61,7 +61,6 @@ object WorkloadDialog {
 
     $scope.init = () => {
       console.log(s"Initializing '${getClass.getSimpleName}'...")
-
       userService.getUsers() onComplete {
         case Success(users) => $scope.$apply { () =>
           $scope.users = users
