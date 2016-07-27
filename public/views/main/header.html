@@ -19,9 +19,13 @@
                 popover-trigger="focus">
     </div>
     <div class="col-md-3">
+        <!-- user avatar -->
         <img class="avatar32" ng-hide="loading" ng-src="{{ user().avatarURL }}">
         <img class="avatar32" ng-show="loading" src="/assets/images/status/loading32.gif">
-        <i class="fa media-bottom" ng-class="isConnected() ? 'fa-link sk_connected' : 'fa-unlink sk_icon_inactive'" title="{{ isConnected() ? 'Connected' : 'Not connected'  }} to AWT"></i> &nbsp;
+
+        <!-- web socket connection status -->
+        <i class="fa media-bottom" ng-class="isConnected() ? 'fa-link sk_connected' : 'fa-unlink sk_icon_inactive'"
+           title="{{ isConnected() ? 'Connected' : 'Not connected'  }} to AWT"></i> &nbsp;
 
         <!-- notifications -->
         <span uib-dropdown on-toggle="toggled(open)">
@@ -37,6 +41,7 @@
             </ul>
         </span>
 
+        <!-- messages -->
         <i class="fa fa-comments media-bottom sk_icon_inactive"></i>
     </div>
 </div>

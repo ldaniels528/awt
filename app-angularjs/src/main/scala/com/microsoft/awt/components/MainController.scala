@@ -164,9 +164,7 @@ case class MainController($scope: MainScope, $location: Location, $q: Q, $timeou
     case "ACHIEVEMENT" => "fa-diamond sk_diamond"
     case "COMMENT" => "fa-comment-o sk_comment"
     case "EVENT" => "fa-calendar sk_calender"
-    case "LEVELUP" => "fa-tachometer sk_levelup"
     case "NOTIFICATION" => "fa-info-circle sk_notifications"
-    case "TEST" => "fa-book sk_test"
     case _ =>
       console.warn(s"Unrecognized event type '$eventType'")
       getNotificationTypeIcon("NOTIFICATION")
