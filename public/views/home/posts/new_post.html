@@ -2,7 +2,7 @@
     <div class="home_post_header">
         <span class="pull-left" style="color: #0088aa">
             <img class="avatar16" ng-src="{{ user().avatarURL }}">
-            <span class="home_poster">{{ showFullName(user()) }}</span>
+            <span class="home_poster">{{ getFullName(user()) }}</span>
             <img ng-show="newPost.loading" src="/assets/images/status/loading16.gif">
         </span>
         <span class="pull-right">

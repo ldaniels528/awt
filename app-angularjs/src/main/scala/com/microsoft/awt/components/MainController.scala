@@ -96,8 +96,6 @@ case class MainController($scope: MainScope, $location: Location, $q: Q, $timeou
 
   $scope.session = () => sessionFactory.session
 
-  $scope.showFullName = (aUser: js.UndefOr[User]) => aUser.flatMap(_.fullName)
-
   $scope.toggled = (open: js.UndefOr[Boolean]) => open foreach { isOpen =>
     console.log(s"toggled open ? $isOpen")
   }
@@ -240,7 +238,6 @@ trait MainScope extends Scope with AutoCompletionScope with GlobalLoadingScope w
   var onSelectedItem: js.Function3[js.UndefOr[js.Any], js.UndefOr[EntitySearchResult], js.UndefOr[String], Unit] = js.native
   var session: js.Function0[js.UndefOr[Session]] = js.native
   var setActiveTab: js.Function1[MainTab, Any] = js.native
-  var showFullName: js.Function1[js.UndefOr[User], js.UndefOr[String]] = js.native
   var toggled: js.Function1[js.UndefOr[Boolean], Unit] = js.native
   var user: js.Function0[js.UndefOr[User]] = js.native
 

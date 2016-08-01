@@ -70,7 +70,7 @@ var $linkingInfo = {
 
   "assumingES6": false,
 
-  "linkerVersion": "0.6.9"
+  "linkerVersion": "0.6.11"
 };
 $g["Object"]["freeze"]($linkingInfo);
 $g["Object"]["freeze"]($linkingInfo["semantics"]);
@@ -1030,7 +1030,7 @@ function $asArrayOf_Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent(obj, dept
   return (($isArrayOf_Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.microsoft.awt.routes.SearchRoutes$SearchAgent;", depth))
 }
 function $s_Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent$class__search__Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent__T__I__s_concurrent_ExecutionContext__s_concurrent_Future($$this, searchTerm, maxResults, ec) {
-  var $$this$1 = $$this.coll__Lorg_scalajs_nodejs_mongodb_Collection().find($s_Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent$class__getSelection__p0__Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent__T__sjs_js_Dictionary($$this, searchTerm)).limit(maxResults);
+  var cursor = $$this.coll__Lorg_scalajs_nodejs_mongodb_Collection().find($s_Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent$class__getSelection__p0__Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent__T__sjs_js_Dictionary($$this, searchTerm)).limit(maxResults);
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1 = (function(promise$1) {
     return (function(err$2, result$2) {
@@ -1042,7 +1042,7 @@ function $s_Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent$class__search__Lc
       }
     })
   })(promise);
-  $$this$1.toArray(arg1);
+  cursor.toArray(arg1);
   var f = new $c_Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent$$anonfun$search$1().init___Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent($$this);
   return $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(promise, f, ec)
 }
@@ -1052,29 +1052,26 @@ function $s_Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent$class__getSelecti
   var start = 0;
   var end = $uI(array.length);
   var z$1 = z;
-  x: {
-    var jsx$1;
-    _foldl: while (true) {
-      if ((start === end)) {
-        var jsx$1 = z$1;
-        break x
-      } else {
-        var temp$start = ((1 + start) | 0);
-        var v1 = z$1;
-        var index = start;
-        var v2 = array[index];
-        var list = $as_sci_List(v1);
-        var field = $as_T(v2);
-        var y = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["^", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([searchTerm]));
-        var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$regex", y), new $c_T2().init___O__O("$options", "i")]);
-        var y$1 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
-        var x$12 = new $c_T2().init___O__O(field, y$1);
-        var temp$z = new $c_sci_$colon$colon().init___O__sci_List(x$12, list);
-        start = temp$start;
-        z$1 = temp$z;
-        continue _foldl
-      }
-    }
+  var jsx$1;
+  _foldl: while (true) {
+    if ((start !== end)) {
+      var temp$start = ((1 + start) | 0);
+      var v1 = z$1;
+      var index = start;
+      var v2 = array[index];
+      var list = $as_sci_List(v1);
+      var field = $as_T(v2);
+      var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["^", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([searchTerm]));
+      var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$regex", s), new $c_T2().init___O__O("$options", "i")]);
+      var y = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
+      var x$12 = new $c_T2().init___O__O(field, y);
+      var temp$z = new $c_sci_$colon$colon().init___O__sci_List(x$12, list);
+      start = temp$start;
+      z$1 = temp$z;
+      continue _foldl
+    };
+    var jsx$1 = z$1;
+    break
   };
   var x1 = $as_sci_List(jsx$1);
   var x = $m_sci_Nil$();
@@ -1132,10 +1129,10 @@ function $s_Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent$class__getSelecti
   var col = $as_sc_Seq(jsx$2);
   if ($is_sjs_js_ArrayOps(col)) {
     var x2$1 = $as_sjs_js_ArrayOps(col);
-    var y$2 = x2$1.scala$scalajs$js$ArrayOps$$array$f
+    var y$1 = x2$1.scala$scalajs$js$ArrayOps$$array$f
   } else if ($is_sjs_js_WrappedArray(col)) {
     var x3 = $as_sjs_js_WrappedArray(col);
-    var y$2 = x3.array$6
+    var y$1 = x3.array$6
   } else {
     var result = [];
     col.foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, result$1) {
@@ -1143,9 +1140,9 @@ function $s_Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent$class__getSelecti
         return $uI(result$1.push(x$2))
       })
     })(this$21, result)));
-    var y$2 = result
+    var y$1 = result
   };
-  var kvps$4 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$or", y$2)]);
+  var kvps$4 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$or", y$1)]);
   return $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps$4)
 }
 function $is_Ljava_io_Closeable(obj) {
@@ -1525,6 +1522,12 @@ function $s_s_concurrent_Promise$class__complete__s_concurrent_Promise__s_util_T
     throw new $c_jl_IllegalStateException().init___T("Promise already completed.")
   }
 }
+function $s_s_math_Ordering$DoubleOrdering$class__lteq__s_math_Ordering$DoubleOrdering__D__D__Z($$this, x, y) {
+  return (x <= y)
+}
+function $s_s_math_Ordering$class__lteq__s_math_Ordering__O__O__Z($$this, x, y) {
+  return ($$this.compare__O__O__I(x, y) <= 0)
+}
 function $s_s_reflect_ClassTag$class__newArray__s_reflect_ClassTag__I__O($$this, len) {
   var x1 = $$this.runtimeClass__jl_Class();
   return ((x1 === $d_B.getClassOf()) ? $newArrayObject($d_B.getArrayOf(), [len]) : ((x1 === $d_S.getClassOf()) ? $newArrayObject($d_S.getArrayOf(), [len]) : ((x1 === $d_C.getClassOf()) ? $newArrayObject($d_C.getArrayOf(), [len]) : ((x1 === $d_I.getClassOf()) ? $newArrayObject($d_I.getArrayOf(), [len]) : ((x1 === $d_J.getClassOf()) ? $newArrayObject($d_J.getArrayOf(), [len]) : ((x1 === $d_F.getClassOf()) ? $newArrayObject($d_F.getArrayOf(), [len]) : ((x1 === $d_D.getClassOf()) ? $newArrayObject($d_D.getArrayOf(), [len]) : ((x1 === $d_Z.getClassOf()) ? $newArrayObject($d_Z.getArrayOf(), [len]) : ((x1 === $d_V.getClassOf()) ? $newArrayObject($d_sr_BoxedUnit.getArrayOf(), [len]) : $m_jl_reflect_Array$().newInstance__jl_Class__I__O($$this.runtimeClass__jl_Class(), len))))))))))
@@ -1543,12 +1546,12 @@ function $s_s_reflect_ClassTag$class__prettyprint$1__p0__s_reflect_ClassTag__jl_
     var jsx$2 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Array[", "]"]));
     if ((clazz !== null)) {
       var jsx$1 = clazz.getComponentType__jl_Class()
-    } else if ($is_s_reflect_ClassTag(clazz)) {
+    } else {
+      if ((!$is_s_reflect_ClassTag(clazz))) {
+        throw new $c_jl_UnsupportedOperationException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["unsupported schematic ", " (", ")"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([clazz, $objectGetClass(clazz)])))
+      };
       var x3 = $as_s_reflect_ClassTag(clazz);
       var jsx$1 = x3.runtimeClass__jl_Class()
-    } else {
-      var jsx$1;
-      throw new $c_jl_UnsupportedOperationException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["unsupported schematic ", " (", ")"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([clazz, $objectGetClass(clazz)])))
     };
     return jsx$2.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$s_s_reflect_ClassTag$class__prettyprint$1__p0__s_reflect_ClassTag__jl_Class__T($$this, jsx$1)]))
   } else {
@@ -1570,24 +1573,22 @@ function $s_sc_GenMapLike$class__liftedTree1$1__p0__sc_GenMapLike__sc_GenMap__Z(
     while ((res && this$1.hasNext__Z())) {
       var arg1 = this$1.next__O();
       var x0$1 = $as_T2(arg1);
-      if ((x0$1 !== null)) {
-        var k = x0$1.$$und1__O();
-        var v = x0$1.$$und2__O();
-        var x1$2 = x2$1.get__O__s_Option(k);
-        matchEnd6: {
-          if ($is_s_Some(x1$2)) {
-            var x2 = $as_s_Some(x1$2);
-            var p3 = x2.x$2;
-            if ($m_sr_BoxesRunTime$().equals__O__O__Z(v, p3)) {
-              res = true;
-              break matchEnd6
-            }
-          };
-          res = false;
-          break matchEnd6
-        }
-      } else {
+      if ((x0$1 === null)) {
         throw new $c_s_MatchError().init___O(x0$1)
+      };
+      var k = x0$1.$$und1__O();
+      var v = x0$1.$$und2__O();
+      var x1$2 = x2$1.get__O__s_Option(k);
+      matchEnd6: {
+        if ($is_s_Some(x1$2)) {
+          var x2 = $as_s_Some(x1$2);
+          var p3 = x2.x$2;
+          if ($m_sr_BoxesRunTime$().equals__O__O__Z(v, p3)) {
+            res = true;
+            break matchEnd6
+          }
+        };
+        res = false
       }
     };
     return res
@@ -1692,10 +1693,10 @@ function $s_sc_IndexedSeqOptimized$class__dropRight__sc_IndexedSeqOptimized__I__
 function $s_sc_IndexedSeqOptimized$class__copyToArray__sc_IndexedSeqOptimized__O__I__I__V($$this, xs, start, len) {
   var i = 0;
   var j = start;
-  var $$this$1 = $$this.length__I();
-  var $$this$2 = (($$this$1 < len) ? $$this$1 : len);
+  var x = $$this.length__I();
+  var x$1 = ((x < len) ? x : len);
   var that = (($m_sr_ScalaRunTime$().array$undlength__O__I(xs) - start) | 0);
-  var end = (($$this$2 < that) ? $$this$2 : that);
+  var end = ((x$1 < that) ? x$1 : that);
   while ((i < end)) {
     $m_sr_ScalaRunTime$().array$undupdate__O__I__O__V(xs, j, $$this.apply__I__O(i));
     i = ((1 + i) | 0);
@@ -1745,9 +1746,9 @@ function $s_sc_IndexedSeqOptimized$class__head__sc_IndexedSeqOptimized__O($$this
 }
 function $s_sc_IterableLike$class__copyToArray__sc_IterableLike__O__I__I__V($$this, xs, start, len) {
   var i = start;
-  var $$this$1 = ((start + len) | 0);
+  var x = ((start + len) | 0);
   var that = $m_sr_ScalaRunTime$().array$undlength__O__I(xs);
-  var end = (($$this$1 < that) ? $$this$1 : that);
+  var end = ((x < that) ? x : that);
   var it = $$this.iterator__sc_Iterator();
   while (((i < end) && it.hasNext__Z())) {
     $m_sr_ScalaRunTime$().array$undupdate__O__I__O__V(xs, i, it.next__O());
@@ -2150,16 +2151,14 @@ function $s_scg_GenericTraversableTemplate$class__flatten__scg_GenericTraversabl
   return $as_sc_GenTraversable(b.result__O())
 }
 function $s_scg_Growable$class__loop$1__p0__scg_Growable__sc_LinearSeq__V($$this, xs) {
-  x: {
-    _loop: while (true) {
-      var this$1 = xs;
-      if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$1)) {
-        $$this.$$plus$eq__O__scg_Growable(xs.head__O());
-        xs = $as_sc_LinearSeq(xs.tail__O());
-        continue _loop
-      };
-      break x
-    }
+  _loop: while (true) {
+    var this$1 = xs;
+    if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$1)) {
+      $$this.$$plus$eq__O__scg_Growable(xs.head__O());
+      xs = $as_sc_LinearSeq(xs.tail__O());
+      continue _loop
+    };
+    break
   }
 }
 function $s_scg_Growable$class__$$plus$plus$eq__scg_Growable__sc_TraversableOnce__scg_Growable($$this, xs) {
@@ -2213,7 +2212,8 @@ function $s_sci_StringLike$class__slice__sci_StringLike__I__I__O($$this, from, u
   } else {
     var jsx$1 = $$this.newBuilder__scm_Builder();
     var thiz = $$this.toString__T();
-    return $as_scm_Builder(jsx$1.$$plus$plus$eq__sc_TraversableOnce__scg_Growable(new $c_sci_StringOps().init___T($as_T(thiz.substring(start, end))))).result__O()
+    var x = $as_T(thiz.substring(start, end));
+    return $as_scm_Builder(jsx$1.$$plus$plus$eq__sc_TraversableOnce__scg_Growable(new $c_sci_StringOps().init___T(x))).result__O()
   }
 }
 function $s_sci_VectorPointer$class__getElem__sci_VectorPointer__I__I__O($$this, index, xor) {
@@ -2508,7 +2508,7 @@ function $s_scm_FlatHashTable$HashUtils$class__elemToEntry__scm_FlatHashTable$Ha
 }
 function $s_scm_FlatHashTable$class__growTable__p0__scm_FlatHashTable__V($$this) {
   var oldtable = $$this.table$5;
-  $$this.table$5 = $newArrayObject($d_O.getArrayOf(), [$imul(2, $$this.table$5.u.length)]);
+  $$this.table$5 = $newArrayObject($d_O.getArrayOf(), [($$this.table$5.u.length << 1)]);
   $$this.tableSize$5 = 0;
   var tableLength = $$this.table$5.u.length;
   $s_scm_FlatHashTable$class__nnSizeMapReset__scm_FlatHashTable__I__V($$this, tableLength);
@@ -2613,23 +2613,50 @@ function $s_scm_FlatHashTable$class__containsElem__scm_FlatHashTable__O__Z($$thi
 }
 function $s_scm_ResizableArray$class__copyToArray__scm_ResizableArray__O__I__I__V($$this, xs, start, len) {
   var that = (($m_sr_ScalaRunTime$().array$undlength__O__I(xs) - start) | 0);
-  var $$this$1 = ((len < that) ? len : that);
+  var x = ((len < that) ? len : that);
   var that$1 = $$this.size0$6;
-  var len1 = (($$this$1 < that$1) ? $$this$1 : that$1);
+  var len1 = ((x < that$1) ? x : that$1);
   $m_s_Array$().copy__O__I__O__I__I__V($$this.array$6, 0, xs, start, len1)
 }
 function $s_scm_ResizableArray$class__ensureSize__scm_ResizableArray__I__V($$this, n) {
-  var x = $$this.array$6.u.length;
-  var arrayLength = new $c_sjsr_RuntimeLong().init___I(x);
-  if (new $c_sjsr_RuntimeLong().init___I(n).$$greater__sjsr_RuntimeLong__Z(arrayLength)) {
-    var newSize = new $c_sjsr_RuntimeLong().init___I__I(2, 0).$$times__sjsr_RuntimeLong__sjsr_RuntimeLong(arrayLength);
-    while (new $c_sjsr_RuntimeLong().init___I(n).$$greater__sjsr_RuntimeLong__Z(newSize)) {
-      newSize = new $c_sjsr_RuntimeLong().init___I__I(2, 0).$$times__sjsr_RuntimeLong__sjsr_RuntimeLong(newSize)
+  var value = $$this.array$6.u.length;
+  var hi = (value >> 31);
+  var hi$1 = (n >> 31);
+  if (((hi$1 === hi) ? (((-2147483648) ^ n) > ((-2147483648) ^ value)) : (hi$1 > hi))) {
+    var lo = (value << 1);
+    var hi$2 = (((value >>> 31) | 0) | (hi << 1));
+    var newSize_$_lo$2 = lo;
+    var newSize_$_hi$2 = hi$2;
+    while (true) {
+      var hi$3 = (n >> 31);
+      var b_$_lo$2 = newSize_$_lo$2;
+      var b_$_hi$2 = newSize_$_hi$2;
+      var bhi = b_$_hi$2;
+      if (((hi$3 === bhi) ? (((-2147483648) ^ n) > ((-2147483648) ^ b_$_lo$2)) : (hi$3 > bhi))) {
+        var this$1_$_lo$2 = newSize_$_lo$2;
+        var this$1_$_hi$2 = newSize_$_hi$2;
+        var lo$1 = (this$1_$_lo$2 << 1);
+        var hi$4 = (((this$1_$_lo$2 >>> 31) | 0) | (this$1_$_hi$2 << 1));
+        var jsx$1_$_lo$2 = lo$1;
+        var jsx$1_$_hi$2 = hi$4;
+        newSize_$_lo$2 = jsx$1_$_lo$2;
+        newSize_$_hi$2 = jsx$1_$_hi$2
+      } else {
+        break
+      }
     };
-    if (newSize.$$greater__sjsr_RuntimeLong__Z(new $c_sjsr_RuntimeLong().init___I__I(2147483647, 0))) {
-      newSize = new $c_sjsr_RuntimeLong().init___I__I(2147483647, 0)
+    var this$2_$_lo$2 = newSize_$_lo$2;
+    var this$2_$_hi$2 = newSize_$_hi$2;
+    var ahi = this$2_$_hi$2;
+    if (((ahi === 0) ? (((-2147483648) ^ this$2_$_lo$2) > (-1)) : (ahi > 0))) {
+      var jsx$2_$_lo$2 = 2147483647;
+      var jsx$2_$_hi$2 = 0;
+      newSize_$_lo$2 = jsx$2_$_lo$2;
+      newSize_$_hi$2 = jsx$2_$_hi$2
     };
-    var newArray = $newArrayObject($d_O.getArrayOf(), [newSize.lo$2]);
+    var this$3_$_lo$2 = newSize_$_lo$2;
+    var this$3_$_hi$2 = newSize_$_hi$2;
+    var newArray = $newArrayObject($d_O.getArrayOf(), [this$3_$_lo$2]);
     var src = $$this.array$6;
     var length = $$this.size0$6;
     $systemArraycopy(src, 0, newArray, 0, length);
@@ -2691,7 +2718,8 @@ $c_Lcom_microsoft_awt_StringHelper$StringExtensions$.prototype.unquote$extension
     var this$7 = new $c_sci_StringOps().init___T($$this);
     var $$this$1 = this$7.repr$1;
     var until = $uI($$this$1.length);
-    var this$11 = new $c_sci_StringOps().init___T($m_sci_StringOps$().slice$extension__T__I__I__T(this$7.repr$1, 1, until));
+    var x = $m_sci_StringOps$().slice$extension__T__I__I__T(this$7.repr$1, 1, until);
+    var this$11 = new $c_sci_StringOps().init___T(x);
     return $as_T($s_sc_IndexedSeqOptimized$class__dropRight__sc_IndexedSeqOptimized__I__O(this$11, 1))
   } else {
     return $$this
@@ -3027,8 +3055,13 @@ $c_Lcom_microsoft_awt_data_PostData$PostDataExtensions$.prototype.init___ = (fun
   return this
 });
 $c_Lcom_microsoft_awt_data_PostData$PostDataExtensions$.prototype.toModel$extension__Lcom_microsoft_awt_data_PostData__Lcom_microsoft_awt_models_Post = (function($$this) {
-  var $$this$1 = $$this._id;
-  var x$3 = (($$this$1 === (void 0)) ? (void 0) : $as_T($$this$1.toHexString()));
+  var value = $$this._id;
+  if ((value === (void 0))) {
+    var x$3 = (void 0)
+  } else {
+    var value$1 = $as_T(value.toHexString());
+    var x$3 = value$1
+  };
   var x$4 = $$this.text;
   var x$5 = $$this.submitterId;
   var x$6 = $$this.summary;
@@ -3071,12 +3104,12 @@ $c_Lcom_microsoft_awt_data_PostData$PostExtensions$.prototype.init___ = (functio
   return this
 });
 $c_Lcom_microsoft_awt_data_PostData$PostExtensions$.prototype.toData$extension__Lcom_microsoft_awt_models_Post__Lorg_scalajs_nodejs_mongodb_MongoDB__Lcom_microsoft_awt_data_PostData = (function($$this, mongo) {
-  var $$this$1 = $$this._id;
-  if (($$this$1 === (void 0))) {
-    var $$this$3 = (void 0)
+  var value = $$this._id;
+  if ((value === (void 0))) {
+    var valueA = (void 0)
   } else {
-    var x$2 = $as_T($$this$1);
-    var $$this$2 = mongo.ObjectID;
+    var x$2 = $as_T(value);
+    var $class = mongo.ObjectID;
     var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [x$2]));
     if ($is_sjs_js_ArrayOps(args)) {
       var x2 = $as_sjs_js_ArrayOps(args);
@@ -3095,12 +3128,13 @@ $c_Lcom_microsoft_awt_data_PostData$PostExtensions$.prototype.toData$extension__
       };
       var jsx$1 = result
     };
-    var $$this$3 = $newJSObjectWithVarargs($$this$2, jsx$1)
+    var value$1 = $newJSObjectWithVarargs($class, jsx$1);
+    var valueA = value$1
   };
-  if (($$this$3 !== (void 0))) {
-    var jsx$2 = $$this$3
+  if ((valueA !== (void 0))) {
+    var jsx$2 = valueA
   } else {
-    var $$this$4 = mongo.ObjectID;
+    var $class$1 = mongo.ObjectID;
     var args$1 = $m_sci_Nil$();
     var result$1 = [];
     var these = args$1;
@@ -3110,7 +3144,7 @@ $c_Lcom_microsoft_awt_data_PostData$PostExtensions$.prototype.toData$extension__
       var this$21 = these;
       these = this$21.tail__sci_List()
     };
-    var value$2 = $newJSObjectWithVarargs($$this$4, result$1);
+    var value$2 = $newJSObjectWithVarargs($class$1, result$1);
     var jsx$2 = value$2
   };
   return new $c_Lcom_microsoft_awt_data_PostData(jsx$2, $$this.text, $$this.submitterId, $$this.summary, $$this.likes, $$this.likedBy, $$this.creationTime, $$this.lastUpdateTime, $$this.attachments, $$this.comments, $$this.replyLikes, $$this.tags)
@@ -3151,7 +3185,7 @@ $c_Lcom_microsoft_awt_data_SessionDAO$SessionDAOEnrichment$.prototype.init___ = 
 });
 $c_Lcom_microsoft_awt_data_SessionDAO$SessionDAOEnrichment$.prototype.findAndUpdateByID$extension__Lcom_microsoft_awt_data_SessionDAO__T__Lorg_scalajs_nodejs_mongodb_MongoDB__sjs_js_Promise = (function($$this, sessionID, mongodb) {
   var jsx$5 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var $$this$1 = mongodb.ObjectID;
+  var $class = mongodb.ObjectID;
   var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [sessionID]));
   if ($is_sjs_js_ArrayOps(args)) {
     var x2 = $as_sjs_js_ArrayOps(args);
@@ -3170,7 +3204,7 @@ $c_Lcom_microsoft_awt_data_SessionDAO$SessionDAOEnrichment$.prototype.findAndUpd
     };
     var jsx$4 = result
   };
-  var y = $newJSObjectWithVarargs($$this$1, jsx$4);
+  var y = $newJSObjectWithVarargs($class, jsx$4);
   var jsx$3 = jsx$5.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
   var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
   var jsx$1 = $m_Lorg_scalajs_nodejs_mongodb_package$();
@@ -3284,20 +3318,20 @@ $c_Lcom_microsoft_awt_data_UserData$UserDataExtensions$.prototype.init___ = (fun
 });
 $c_Lcom_microsoft_awt_data_UserData$UserDataExtensions$.prototype.fullName$extension__Lcom_microsoft_awt_data_UserData__T = (function($$this) {
   var jsx$2 = $m_sc_Seq$();
-  var $$this$1 = $$this.firstName;
-  var jsx$1 = (($$this$1 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this$1));
-  var $$this$2 = $$this.lastName;
-  return $as_sc_TraversableOnce(jsx$2.apply__sc_Seq__sc_GenTraversable(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$1, (($$this$2 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this$2))])).flatten__F1__sc_GenTraversable(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(xo$2) {
+  var value = $$this.firstName;
+  var jsx$1 = ((value === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value));
+  var value$1 = $$this.lastName;
+  return $as_sc_TraversableOnce(jsx$2.apply__sc_Seq__sc_GenTraversable(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$1, ((value$1 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value$1))])).flatten__F1__sc_GenTraversable(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(xo$2) {
     var xo = $as_s_Option(xo$2);
     return xo.toList__sci_List()
   })))).mkString__T__T(" ")
 });
 $c_Lcom_microsoft_awt_data_UserData$UserDataExtensions$.prototype.toSubmitter$extension__Lcom_microsoft_awt_data_UserData__Lcom_microsoft_awt_models_Submitter = (function($$this) {
-  var $$this$1 = $$this._id;
-  if (($$this$1 === (void 0))) {
+  var value = $$this._id;
+  if ((value === (void 0))) {
     var jsx$1 = (void 0)
   } else {
-    var value$1 = $as_T($$this$1.toHexString());
+    var value$1 = $as_T(value.toHexString());
     var jsx$1 = value$1
   };
   var value$2 = this.fullName$extension__Lcom_microsoft_awt_data_UserData__T($$this);
@@ -3333,12 +3367,12 @@ $c_Lcom_microsoft_awt_data_UserData$UserExtensions$.prototype.init___ = (functio
 });
 $c_Lcom_microsoft_awt_data_UserData$UserExtensions$.prototype.toData$extension__Lcom_microsoft_awt_models_User__Lorg_scalajs_nodejs_mongodb_MongoDB__s_util_Try = (function($$this, mongo) {
   try {
-    var $$this$1 = $$this._id;
-    if (($$this$1 === (void 0))) {
-      var $$this$3 = (void 0)
+    var value = $$this._id;
+    if ((value === (void 0))) {
+      var valueA = (void 0)
     } else {
-      var x$1 = $as_T($$this$1);
-      var $$this$2 = mongo.ObjectID;
+      var x$1 = $as_T(value);
+      var $class = mongo.ObjectID;
       var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [x$1]));
       if ($is_sjs_js_ArrayOps(args)) {
         var x2 = $as_sjs_js_ArrayOps(args);
@@ -3357,12 +3391,13 @@ $c_Lcom_microsoft_awt_data_UserData$UserExtensions$.prototype.toData$extension__
         };
         var jsx$14 = result
       };
-      var $$this$3 = $newJSObjectWithVarargs($$this$2, jsx$14)
+      var value$1 = $newJSObjectWithVarargs($class, jsx$14);
+      var valueA = value$1
     };
-    if (($$this$3 !== (void 0))) {
-      var jsx$15 = $$this$3
+    if ((valueA !== (void 0))) {
+      var jsx$15 = valueA
     } else {
-      var $$this$4 = mongo.ObjectID;
+      var $class$1 = mongo.ObjectID;
       var args$1 = $m_sci_Nil$();
       var result$1 = [];
       var these = args$1;
@@ -3372,7 +3407,7 @@ $c_Lcom_microsoft_awt_data_UserData$UserExtensions$.prototype.toData$extension__
         var this$22 = these;
         these = this$22.tail__sci_List()
       };
-      var value$2 = $newJSObjectWithVarargs($$this$4, result$1);
+      var value$2 = $newJSObjectWithVarargs($class$1, result$1);
       var jsx$15 = value$2
     };
     var jsx$13 = $$this.username;
@@ -3386,15 +3421,15 @@ $c_Lcom_microsoft_awt_data_UserData$UserExtensions$.prototype.toData$extension__
     var jsx$5 = $$this.endorsers;
     var jsx$4 = $$this.totalFollowers;
     var jsx$3 = $$this.followers;
-    var $$this$5 = $$this.isAdmin;
-    var $$this$6 = $$this.creationTime;
-    if (($$this$6 !== (void 0))) {
-      var jsx$2 = $$this$6
+    var valueA$1 = $$this.isAdmin;
+    var valueA$2 = $$this.creationTime;
+    if ((valueA$2 !== (void 0))) {
+      var jsx$2 = valueA$2
     } else {
       var value$3 = new $g.Date();
       var jsx$2 = value$3
     };
-    var jsx$1 = new $c_Lcom_microsoft_awt_data_UserData(jsx$15, jsx$13, jsx$12, jsx$11, jsx$10, jsx$9, jsx$8, jsx$7, jsx$6, jsx$5, jsx$4, jsx$3, (($$this$5 !== (void 0)) && $$this$5), jsx$2);
+    var jsx$1 = new $c_Lcom_microsoft_awt_data_UserData(jsx$15, jsx$13, jsx$12, jsx$11, jsx$10, jsx$9, jsx$8, jsx$7, jsx$6, jsx$5, jsx$4, jsx$3, ((valueA$1 !== (void 0)) && valueA$1), jsx$2);
     return new $c_s_util_Success().init___O(jsx$1)
   } catch (e) {
     var e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
@@ -3565,12 +3600,12 @@ $c_Lcom_microsoft_awt_data_WorkloadData$StatusExtensions$.prototype.init___ = (f
 });
 $c_Lcom_microsoft_awt_data_WorkloadData$StatusExtensions$.prototype.toData$extension__Lcom_microsoft_awt_models_Workload$Status__Lorg_scalajs_nodejs_mongodb_MongoDB__s_util_Try = (function($$this, mongo) {
   try {
-    var $$this$1 = $$this._id;
-    if (($$this$1 === (void 0))) {
-      var $$this$3 = (void 0)
+    var value = $$this._id;
+    if ((value === (void 0))) {
+      var valueA = (void 0)
     } else {
-      var x$1 = $as_T($$this$1);
-      var $$this$2 = mongo.ObjectID;
+      var x$1 = $as_T(value);
+      var $class = mongo.ObjectID;
       var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [x$1]));
       if ($is_sjs_js_ArrayOps(args)) {
         var x2 = $as_sjs_js_ArrayOps(args);
@@ -3589,12 +3624,13 @@ $c_Lcom_microsoft_awt_data_WorkloadData$StatusExtensions$.prototype.toData$exten
         };
         var jsx$5 = result
       };
-      var $$this$3 = $newJSObjectWithVarargs($$this$2, jsx$5)
+      var value$1 = $newJSObjectWithVarargs($class, jsx$5);
+      var valueA = value$1
     };
-    if (($$this$3 !== (void 0))) {
-      var jsx$6 = $$this$3
+    if ((valueA !== (void 0))) {
+      var jsx$6 = valueA
     } else {
-      var $$this$4 = mongo.ObjectID;
+      var $class$1 = mongo.ObjectID;
       var args$1 = $m_sci_Nil$();
       var result$1 = [];
       var these = args$1;
@@ -3604,14 +3640,14 @@ $c_Lcom_microsoft_awt_data_WorkloadData$StatusExtensions$.prototype.toData$exten
         var this$22 = these;
         these = this$22.tail__sci_List()
       };
-      var value$2 = $newJSObjectWithVarargs($$this$4, result$1);
+      var value$2 = $newJSObjectWithVarargs($class$1, result$1);
       var jsx$6 = value$2
     };
     var jsx$4 = $$this.submitterId;
     var jsx$3 = $$this.statusText;
-    var $$this$5 = $$this.creationTime;
-    if (($$this$5 !== (void 0))) {
-      var jsx$2 = $$this$5
+    var valueA$1 = $$this.creationTime;
+    if ((valueA$1 !== (void 0))) {
+      var jsx$2 = valueA$1
     } else {
       var value$3 = new $g.Date();
       var jsx$2 = value$3
@@ -3662,12 +3698,12 @@ $c_Lcom_microsoft_awt_data_WorkloadData$WorkloadExtensions$.prototype.init___ = 
 });
 $c_Lcom_microsoft_awt_data_WorkloadData$WorkloadExtensions$.prototype.toData$extension__Lcom_microsoft_awt_models_Workload__Lorg_scalajs_nodejs_mongodb_MongoDB__s_util_Try = (function($$this, mongo) {
   try {
-    var $$this$1 = $$this._id;
-    if (($$this$1 === (void 0))) {
-      var $$this$3 = (void 0)
+    var value = $$this._id;
+    if ((value === (void 0))) {
+      var valueA = (void 0)
     } else {
-      var x$3 = $as_T($$this$1);
-      var $$this$2 = mongo.ObjectID;
+      var x$3 = $as_T(value);
+      var $class = mongo.ObjectID;
       var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [x$3]));
       if ($is_sjs_js_ArrayOps(args)) {
         var x2 = $as_sjs_js_ArrayOps(args);
@@ -3686,12 +3722,13 @@ $c_Lcom_microsoft_awt_data_WorkloadData$WorkloadExtensions$.prototype.toData$ext
         };
         var jsx$18 = result
       };
-      var $$this$3 = $newJSObjectWithVarargs($$this$2, jsx$18)
+      var value$1 = $newJSObjectWithVarargs($class, jsx$18);
+      var valueA = value$1
     };
-    if (($$this$3 !== (void 0))) {
-      var jsx$19 = $$this$3
+    if ((valueA !== (void 0))) {
+      var jsx$19 = valueA
     } else {
-      var $$this$4 = mongo.ObjectID;
+      var $class$1 = mongo.ObjectID;
       var args$1 = $m_sci_Nil$();
       var result$1 = [];
       var these = args$1;
@@ -3701,7 +3738,7 @@ $c_Lcom_microsoft_awt_data_WorkloadData$WorkloadExtensions$.prototype.toData$ext
         var this$22 = these;
         these = this$22.tail__sci_List()
       };
-      var value$2 = $newJSObjectWithVarargs($$this$4, result$1);
+      var value$2 = $newJSObjectWithVarargs($class$1, result$1);
       var jsx$19 = value$2
     };
     var jsx$17 = $$this.name;
@@ -3712,34 +3749,32 @@ $c_Lcom_microsoft_awt_data_WorkloadData$WorkloadExtensions$.prototype.toData$ext
     var jsx$12 = $$this.technicalContact;
     var jsx$11 = $$this.msftLeadId;
     var jsx$10 = $$this.msftLead;
-    var $$this$5 = $$this.statuses;
-    if (($$this$5 === (void 0))) {
+    var value$3 = $$this.statuses;
+    if ((value$3 === (void 0))) {
       var jsx$9 = (void 0)
     } else {
       var array = [];
       var i$1 = 0;
-      var len$1 = $uI($$this$5.length);
+      var len$1 = $uI(value$3.length);
       while ((i$1 < len$1)) {
         var index = i$1;
-        var arg1$2 = $$this$5[index];
+        var arg1$2 = value$3[index];
         var xo = $m_Lcom_microsoft_awt_data_WorkloadData$StatusExtensions$().toData$extension__Lcom_microsoft_awt_models_Workload$Status__Lorg_scalajs_nodejs_mongodb_MongoDB__s_util_Try(arg1$2, mongo).toOption__s_Option();
-        var xs = xo.toList__sci_List();
-        if ((xs !== null)) {
-          var xs$1 = xs;
-          x: {
-            _loop: while (true) {
-              var this$32 = xs$1;
-              if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$32)) {
-                var elem = xs$1.head__O();
-                array.push(elem);
-                xs$1 = $as_sc_LinearSeq(xs$1.tail__O());
-                continue _loop
-              };
-              break x
-            }
+        var this$31 = xo.toList__sci_List();
+        if ((this$31 !== null)) {
+          var xs = this$31;
+          _loop: while (true) {
+            var this$32 = xs;
+            if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$32)) {
+              var elem = xs.head__O();
+              array.push(elem);
+              xs = $as_sc_LinearSeq(xs.tail__O());
+              continue _loop
+            };
+            break
           }
         } else {
-          var these$1 = xs;
+          var these$1 = this$31;
           while ((!these$1.isEmpty__Z())) {
             var arg1$3 = these$1.head__O();
             array.push(arg1$3);
@@ -3756,16 +3791,16 @@ $c_Lcom_microsoft_awt_data_WorkloadData$WorkloadExtensions$.prototype.toData$ext
     var jsx$6 = $$this.estimateGoLiveDate;
     var jsx$5 = $$this.consumption;
     var jsx$4 = $$this.active;
-    var $$this$6 = $$this.creationTime;
-    if (($$this$6 !== (void 0))) {
-      var jsx$3 = $$this$6
+    var valueA$1 = $$this.creationTime;
+    if ((valueA$1 !== (void 0))) {
+      var jsx$3 = valueA$1
     } else {
       var value$4 = new $g.Date();
       var jsx$3 = value$4
     };
-    var $$this$7 = $$this.lastUpdatedTime;
-    if (($$this$7 !== (void 0))) {
-      var jsx$2 = $$this$7
+    var valueA$2 = $$this.lastUpdatedTime;
+    if ((valueA$2 !== (void 0))) {
+      var jsx$2 = valueA$2
     } else {
       var value$5 = new $g.Date();
       var jsx$2 = value$5
@@ -3815,15 +3850,16 @@ $c_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$.prototype.i
   return this
 });
 $c_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$.prototype.getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I = (function($$this, $default) {
-  var $$this$1 = $$this.maxResults;
-  if (($$this$1 === (void 0))) {
-    var $$this$2 = (void 0)
+  var value = $$this.maxResults;
+  if ((value === (void 0))) {
+    var value$2 = (void 0)
   } else {
-    var x$1 = $as_T($$this$1);
+    var x$1 = $as_T(value);
     var this$4 = $m_jl_Integer$();
-    var $$this$2 = this$4.parseInt__T__I__I(x$1, 10)
+    var value$1 = this$4.parseInt__T__I__I(x$1, 10);
+    var value$2 = value$1
   };
-  return $uI((($$this$2 === (void 0)) ? $default : $$this$2))
+  return $uI(((value$2 === (void 0)) ? $default : value$2))
 });
 var $d_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$ = new $TypeData().initClass({
   Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$: 0
@@ -4112,10 +4148,10 @@ $c_Lcom_microsoft_awt_models_User$UserExtensions$.prototype.init___ = (function(
 });
 $c_Lcom_microsoft_awt_models_User$UserExtensions$.prototype.fullName$extension__Lcom_microsoft_awt_models_User__T = (function($$this) {
   var jsx$2 = $m_sc_Seq$();
-  var $$this$1 = $$this.firstName;
-  var jsx$1 = (($$this$1 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this$1));
-  var $$this$2 = $$this.lastName;
-  return $as_sc_TraversableOnce(jsx$2.apply__sc_Seq__sc_GenTraversable(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$1, (($$this$2 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this$2))])).flatten__F1__sc_GenTraversable(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(xo$2) {
+  var value = $$this.firstName;
+  var jsx$1 = ((value === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value));
+  var value$1 = $$this.lastName;
+  return $as_sc_TraversableOnce(jsx$2.apply__sc_Seq__sc_GenTraversable(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$1, ((value$1 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value$1))])).flatten__F1__sc_GenTraversable(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(xo$2) {
     var xo = $as_s_Option(xo$2);
     return xo.toList__sci_List()
   })))).mkString__T__T(" ")
@@ -4151,16 +4187,22 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.init___ = (function
 $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.activateAccount__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__s_concurrent_Future__s_concurrent_Future__V = (function(request, response, next, ec, mongo, credentialDAO, sessionDAO, userDAO) {
   var form = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().bodyAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Any(request);
   var messages = [];
-  var $$this = form.username;
-  if (($$this === (void 0))) {
-    var $$this$2 = (void 0)
+  var valueA = form.username;
+  if ((valueA === (void 0))) {
+    var value = (void 0)
   } else {
-    var $$this$1 = $m_s_Option$().apply__O__s_Option($$this);
-    var $$this$2 = ($$this$1.isEmpty__Z() ? (void 0) : $$this$1.get__O())
+    var opt = $m_s_Option$().apply__O__s_Option(valueA);
+    if (opt.isEmpty__Z()) {
+      var value = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var value = arg1
+    }
   };
-  if (($$this$2 !== (void 0))) {
-    var x$1 = $as_T($$this$2);
-    var this$17 = new $c_sci_StringOps().init___T($as_T(x$1.trim()));
+  if ((value !== (void 0))) {
+    var x$1 = $as_T(value);
+    var x = $as_T(x$1.trim());
+    var this$17 = new $c_sci_StringOps().init___T(x);
     var jsx$1 = $s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$17)
   } else {
     var jsx$1 = false
@@ -4168,16 +4210,22 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.activateAccount__Lo
   if ((!jsx$1)) {
     $uI(messages.push("Username is required"))
   };
-  var $$this$3 = form.password0;
-  if (($$this$3 === (void 0))) {
-    var $$this$5 = (void 0)
+  var valueA$1 = form.password0;
+  if ((valueA$1 === (void 0))) {
+    var value$1 = (void 0)
   } else {
-    var $$this$4 = $m_s_Option$().apply__O__s_Option($$this$3);
-    var $$this$5 = ($$this$4.isEmpty__Z() ? (void 0) : $$this$4.get__O())
+    var opt$1 = $m_s_Option$().apply__O__s_Option(valueA$1);
+    if (opt$1.isEmpty__Z()) {
+      var value$1 = (void 0)
+    } else {
+      var arg1$1 = opt$1.get__O();
+      var value$1 = arg1$1
+    }
   };
-  if (($$this$5 !== (void 0))) {
-    var x$2 = $as_T($$this$5);
-    var this$31 = new $c_sci_StringOps().init___T($as_T(x$2.trim()));
+  if ((value$1 !== (void 0))) {
+    var x$2 = $as_T(value$1);
+    var x$3 = $as_T(x$2.trim());
+    var this$31 = new $c_sci_StringOps().init___T(x$3);
     var jsx$2 = $s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$31)
   } else {
     var jsx$2 = false
@@ -4185,16 +4233,22 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.activateAccount__Lo
   if ((!jsx$2)) {
     $uI(messages.push("Password is required"))
   };
-  var $$this$6 = form.password1;
-  if (($$this$6 === (void 0))) {
-    var $$this$8 = (void 0)
+  var valueA$2 = form.password1;
+  if ((valueA$2 === (void 0))) {
+    var value$2 = (void 0)
   } else {
-    var $$this$7 = $m_s_Option$().apply__O__s_Option($$this$6);
-    var $$this$8 = ($$this$7.isEmpty__Z() ? (void 0) : $$this$7.get__O())
+    var opt$2 = $m_s_Option$().apply__O__s_Option(valueA$2);
+    if (opt$2.isEmpty__Z()) {
+      var value$2 = (void 0)
+    } else {
+      var arg1$2 = opt$2.get__O();
+      var value$2 = arg1$2
+    }
   };
-  if (($$this$8 !== (void 0))) {
-    var x$3$1 = $as_T($$this$8);
-    var this$45 = new $c_sci_StringOps().init___T($as_T(x$3$1.trim()));
+  if ((value$2 !== (void 0))) {
+    var x$3$1 = $as_T(value$2);
+    var x$4 = $as_T(x$3$1.trim());
+    var this$45 = new $c_sci_StringOps().init___T(x$4);
     var jsx$3 = $s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$45)
   } else {
     var jsx$3 = false
@@ -4202,15 +4256,16 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.activateAccount__Lo
   if ((!jsx$3)) {
     $uI(messages.push("Confirmation password is required"))
   };
-  var $$this$9 = form.password0;
+  var valueA$3 = form.password0;
   var valueB = form.password1;
-  if ((!(($$this$9 !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, $$this$9))))) {
+  if ((!((valueA$3 !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, valueA$3))))) {
     $uI(messages.push("The passwords do not match"))
   };
-  var $$this$10 = form.primaryEmail;
-  if (($$this$10 !== (void 0))) {
-    var x$4$1 = $as_T($$this$10);
-    var this$61 = new $c_sci_StringOps().init___T($as_T(x$4$1.trim()));
+  var value$3 = form.primaryEmail;
+  if ((value$3 !== (void 0))) {
+    var x$4$1 = $as_T(value$3);
+    var x$5 = $as_T(x$4$1.trim());
+    var this$61 = new $c_sci_StringOps().init___T(x$5);
     var jsx$4 = $s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$61)
   } else {
     var jsx$4 = false
@@ -4218,10 +4273,11 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.activateAccount__Lo
   if ((!jsx$4)) {
     $uI(messages.push("Email address is required"))
   };
-  var $$this$11 = form.primaryEmail;
-  if (($$this$11 !== (void 0))) {
-    var s = $as_T($$this$11);
-    var this$67 = new $c_sci_StringOps().init___T($as_T(s.trim()));
+  var value$4 = form.primaryEmail;
+  if ((value$4 !== (void 0))) {
+    var s = $as_T(value$4);
+    var x$6 = $as_T(s.trim());
+    var this$67 = new $c_sci_StringOps().init___T(x$6);
     if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$67)) {
       if ((s === null)) {
         throw new $c_jl_NullPointerException().init___()
@@ -4239,19 +4295,19 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.activateAccount__Lo
   if (($uI(messages.length) === 0)) {
     var f$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(ec$2, form$1) {
       return (function(x$4$2) {
-        var $$this$12 = form$1.username;
-        var username = $as_T((($$this$12 === (void 0)) ? null : $$this$12));
-        var $$this$13 = form$1.primaryEmail;
-        var primaryEmail = $as_T((($$this$13 === (void 0)) ? null : $$this$13));
-        var jsx$10 = $m_sjs_js_Thenable$ThenableOps$();
-        var jsx$9 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+        var value$5 = form$1.username;
+        var username = $as_T(((value$5 === (void 0)) ? null : value$5));
+        var value$6 = form$1.primaryEmail;
+        var primaryEmail = $as_T(((value$6 === (void 0)) ? null : value$6));
+        var jsx$9 = $m_sjs_js_Thenable$ThenableOps$();
+        var jsx$8 = $m_Lorg_scalajs_nodejs_mongodb_package$();
         var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$regex", primaryEmail), new $c_T2().init___O__O("$options", "i")]);
         var y = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
-        var jsx$8 = jsx$9.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("primaryEmail", y));
-        var jsx$7 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+        var jsx$7 = jsx$8.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("primaryEmail", y));
+        var jsx$6 = $m_Lorg_scalajs_nodejs_mongodb_package$();
         var y$1 = $m_Lorg_scalajs_nodejs_mongodb_package$().tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("username", username));
-        var jsx$6 = x$4$2.findOneAndUpdate(jsx$8, jsx$7.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("$set", y$1)), new $c_Lorg_scalajs_nodejs_mongodb_FindAndUpdateOptions((void 0), (void 0), (void 0), (void 0), false));
-        var this$103 = jsx$10.toFuture$extension__sjs_js_Thenable__s_concurrent_Future(jsx$6);
+        var p = x$4$2.findOneAndUpdate(jsx$7, jsx$6.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("$set", y$1)), new $c_Lorg_scalajs_nodejs_mongodb_FindAndUpdateOptions((void 0), (void 0), (void 0), (void 0), false));
+        var this$103 = jsx$9.toFuture$extension__sjs_js_Thenable__s_concurrent_Future(p);
         var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(x0$1$2) {
           if (($uI(x0$1$2.ok) === 1)) {
             var this$101 = $m_s_Option$().apply__O__s_Option(x0$1$2.value);
@@ -4299,9 +4355,9 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.activateAccount__Lo
             var e = x7.exception$2;
             e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
             e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-            var jsx$11 = response$1.status(500);
+            var jsx$10 = response$1.status(500);
             var s$1 = e.getMessage__T();
-            jsx$11.send(s$1);
+            jsx$10.send(s$1);
             $asUnit(next$1());
             break matchEnd10
           };
@@ -4318,13 +4374,10 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.activateAccount__Lo
 });
 $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.logout__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, sessionDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "tokenID"))) {
-    var jsx$1 = dict.tokenID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "tokenID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: tokenID")
   };
-  var sessionID = $as_T(jsx$1);
+  var sessionID = $as_T(dict.tokenID);
   var f = new $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$logout$1().init___Lorg_scalajs_nodejs_mongodb_MongoDB__T(mongo, sessionID);
   $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(sessionDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$2, next$2) {
     return (function(x0$3$2) {
@@ -4337,9 +4390,9 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.logout__Lorg_scalaj
         var x3 = $as_s_util_Failure(x0$3);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$2 = response$2.status(500);
+        var jsx$1 = response$2.status(500);
         var s = e.getMessage__T();
-        jsx$2.send(s);
+        jsx$1.send(s);
         $asUnit(next$2())
       } else {
         throw new $c_s_MatchError().init___O(x0$3)
@@ -4459,40 +4512,47 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.init__Lorg_scalajs_
 });
 $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.login__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_pvorb_md5_MD5__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__s_concurrent_Future__s_concurrent_Future__V = (function(request, response, next, ec, md5, mongo, credentialDAO, sessionDAO, userDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "tokenID"))) {
-    var jsx$1 = dict.tokenID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "tokenID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: tokenID")
   };
-  var sessionID = $as_T(jsx$1);
+  var sessionID = $as_T(dict.tokenID);
   var x1 = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().bodyAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Any(request);
-  var $$this = x1.username;
-  if (($$this === (void 0))) {
-    var $$this$2 = (void 0)
+  var valueA = x1.username;
+  if ((valueA === (void 0))) {
+    var value = (void 0)
   } else {
-    var $$this$1 = $m_s_Option$().apply__O__s_Option($$this);
-    var $$this$2 = ($$this$1.isEmpty__Z() ? (void 0) : $$this$1.get__O())
+    var opt = $m_s_Option$().apply__O__s_Option(valueA);
+    if (opt.isEmpty__Z()) {
+      var value = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var value = arg1
+    }
   };
-  if (($$this$2 === (void 0))) {
+  if ((value === (void 0))) {
     response.status(400).send("The username is required");
     $asUnit(next())
   } else {
-    var $$this$3 = x1.password;
-    if (($$this$3 === (void 0))) {
-      var $$this$5 = (void 0)
+    var valueA$1 = x1.password;
+    if ((valueA$1 === (void 0))) {
+      var value$1 = (void 0)
     } else {
-      var $$this$4 = $m_s_Option$().apply__O__s_Option($$this$3);
-      var $$this$5 = ($$this$4.isEmpty__Z() ? (void 0) : $$this$4.get__O())
+      var opt$1 = $m_s_Option$().apply__O__s_Option(valueA$1);
+      if (opt$1.isEmpty__Z()) {
+        var value$1 = (void 0)
+      } else {
+        var arg1$1 = opt$1.get__O();
+        var value$1 = arg1$1
+      }
     };
-    if (($$this$5 === (void 0))) {
+    if ((value$1 === (void 0))) {
       response.status(400).send("The password is required");
       $asUnit(next())
     } else {
-      var $$this$6 = x1.username;
-      var _1 = (($$this$6 === (void 0)) ? null : $$this$6);
-      var $$this$7 = x1.password;
-      var _2 = (($$this$7 === (void 0)) ? null : $$this$7);
+      var value$2 = x1.username;
+      var _1 = ((value$2 === (void 0)) ? null : value$2);
+      var value$3 = x1.password;
+      var _2 = ((value$3 === (void 0)) ? null : value$3);
       var username = $as_T(_1);
       var password = $as_T(_2);
       var f$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(ec$4, username$2) {
@@ -4559,9 +4619,9 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.login__Lorg_scalajs
               var x9 = $as_s_util_Failure(x0$6);
               var e = x9.exception$2;
               e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-              var jsx$2 = response$4.status(500);
+              var jsx$1 = response$4.status(500);
               var s = e.getMessage__T();
-              jsx$2.send(s);
+              jsx$1.send(s);
               $asUnit(next$4());
               break matchEnd13
             };
@@ -4597,19 +4657,16 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.com$microsoft$awt$r
 });
 $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.authToken__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__s_concurrent_Future__s_concurrent_Future__V = (function(request, response, next, ec, mongo, credentialDAO, sessionDAO, userDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "username"))) {
-    var jsx$1 = dict.username
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "username")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: username")
   };
-  var username = $as_T(jsx$1);
+  var username = $as_T(dict.username);
   var f$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(ec$3, username$1) {
     return (function(x$11$2) {
-      var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+      var jsx$1 = $m_Lorg_scalajs_nodejs_mongodb_package$();
       var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$regex", username$1), new $c_T2().init___O__O("$options", "i")]);
       var y = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
-      var selector = jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("username", y));
+      var selector = jsx$1.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("username", y));
       var eta$0$1 = x$11$2.find(selector).limit(1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1 = (function(promise$1) {
@@ -4641,9 +4698,9 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.com$microsoft$awt$r
   var x$26 = user.username;
   var x$27 = user.primaryEmail;
   var x$28 = user.avatarURL;
-  var x$29 = new $g.Date();
-  var x$30 = $uD($g.Date.now());
-  return new $c_Lcom_microsoft_awt_models_Session((void 0), x$25, x$26, x$27, x$28, false, x$29, x$30)
+  var value = new $g.Date();
+  var value$1 = $uD($g.Date.now());
+  return new $c_Lcom_microsoft_awt_models_Session((void 0), x$25, x$26, x$27, x$28, false, value, value$1)
 });
 var $d_Lcom_microsoft_awt_routes_AuthenticationRoutes$ = new $TypeData().initClass({
   Lcom_microsoft_awt_routes_AuthenticationRoutes$: 0
@@ -4675,13 +4732,10 @@ $c_Lcom_microsoft_awt_routes_EventRoutes$.prototype.init___ = (function() {
 });
 $c_Lcom_microsoft_awt_routes_EventRoutes$.prototype.getEventsByOwner__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, eventDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "ownerID"))) {
-    var jsx$1 = dict.ownerID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "ownerID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: ownerID")
   };
-  var ownerID = $as_T(jsx$1);
+  var ownerID = $as_T(dict.ownerID);
   var f = new $c_Lcom_microsoft_awt_routes_EventRoutes$$anonfun$getEventsByOwner$1().init___T(ownerID);
   $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(eventDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$1, next$1) {
     return (function(x0$1$2) {
@@ -4695,9 +4749,9 @@ $c_Lcom_microsoft_awt_routes_EventRoutes$.prototype.getEventsByOwner__Lorg_scala
         var x3 = $as_s_util_Failure(x0$1);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$2 = response$1.status(500);
+        var jsx$1 = response$1.status(500);
         var s = e.getMessage__T();
-        jsx$2.send(s);
+        jsx$1.send(s);
         $asUnit(next$1())
       } else {
         throw new $c_s_MatchError().init___O(x0$1)
@@ -4748,13 +4802,10 @@ $c_Lcom_microsoft_awt_routes_EventRoutes$.prototype.init__Lorg_scalajs_nodejs_ex
 });
 $c_Lcom_microsoft_awt_routes_EventRoutes$.prototype.getUpcomingEvents__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, eventDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "ownerID"))) {
-    var jsx$1 = dict.ownerID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "ownerID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: ownerID")
   };
-  var ownerID = $as_T(jsx$1);
+  var ownerID = $as_T(dict.ownerID);
   var f = new $c_Lcom_microsoft_awt_routes_EventRoutes$$anonfun$getUpcomingEvents$1().init___T(ownerID);
   $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(eventDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$2, next$2) {
     return (function(x0$2$2) {
@@ -4768,9 +4819,9 @@ $c_Lcom_microsoft_awt_routes_EventRoutes$.prototype.getUpcomingEvents__Lorg_scal
         var x3 = $as_s_util_Failure(x0$2);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$2 = response$2.status(500);
+        var jsx$1 = response$2.status(500);
         var s = e.getMessage__T();
-        jsx$2.send(s);
+        jsx$1.send(s);
         $asUnit(next$2())
       } else {
         throw new $c_s_MatchError().init___O(x0$2)
@@ -4808,14 +4859,13 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.init___ = (function() {
 });
 $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.updateGroup__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, groupDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "groupID"))) {
-    var jsx$1 = dict.groupID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "groupID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: groupID")
   };
-  var groupID = $as_T(jsx$1);
-  var x1 = $m_Lcom_microsoft_awt_data_GroupData$GroupExtensions$().toData$extension__Lcom_microsoft_awt_models_Group__Lorg_scalajs_nodejs_mongodb_MongoDB__s_util_Try($m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().bodyAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Any(request), mongo);
+  var groupID = $as_T(dict.groupID);
+  var jsx$1 = $m_Lcom_microsoft_awt_data_GroupData$GroupExtensions$();
+  var model = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().bodyAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Any(request);
+  var x1 = jsx$1.toData$extension__Lcom_microsoft_awt_models_Group__Lorg_scalajs_nodejs_mongodb_MongoDB__s_util_Try(model, mongo);
   if ($is_s_util_Success(x1)) {
     var x2 = $as_s_util_Success(x1);
     var group = x2.value$2;
@@ -4869,15 +4919,12 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.updateGroup__Lorg_scalajs_no
 });
 $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroupsIncludingUser__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, groupDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID"))) {
-    var jsx$1 = dict.userID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: userID")
   };
-  var userID = $as_T(jsx$1);
-  var qual$3 = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
-  var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(qual$3, 20);
+  var userID = $as_T(dict.userID);
+  var form = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
+  var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(form, 20);
   var f = new $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1().init___T__I(userID, maxResults);
   $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(groupDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$6, next$6) {
     return (function(x0$6$2) {
@@ -4891,9 +4938,9 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroupsIncludingUser__Lorg
         var x3 = $as_s_util_Failure(x0$6);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$2 = response$6.status(500);
+        var jsx$1 = response$6.status(500);
         var s = e.getMessage__T();
-        jsx$2.send(s);
+        jsx$1.send(s);
         $asUnit(next$6())
       } else {
         throw new $c_s_MatchError().init___O(x0$6)
@@ -4903,15 +4950,12 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroupsIncludingUser__Lorg
 });
 $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroupsIncludingOrOwnedByUser__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, groupDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID"))) {
-    var jsx$1 = dict.userID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: userID")
   };
-  var userID = $as_T(jsx$1);
-  var qual$2 = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
-  var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(qual$2, 20);
+  var userID = $as_T(dict.userID);
+  var form = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
+  var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(form, 20);
   var f = new $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUser$1().init___T__I(userID, maxResults);
   $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(groupDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$5, next$5) {
     return (function(x0$5$2) {
@@ -4925,9 +4969,9 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroupsIncludingOrOwnedByU
         var x3 = $as_s_util_Failure(x0$5);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$2 = response$5.status(500);
+        var jsx$1 = response$5.status(500);
         var s = e.getMessage__T();
-        jsx$2.send(s);
+        jsx$1.send(s);
         $asUnit(next$5())
       } else {
         throw new $c_s_MatchError().init___O(x0$5)
@@ -4937,13 +4981,10 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroupsIncludingOrOwnedByU
 });
 $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroupByID__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, groupDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "groupID"))) {
-    var jsx$1 = dict.groupID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "groupID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: groupID")
   };
-  var groupID = $as_T(jsx$1);
+  var groupID = $as_T(dict.groupID);
   var f = new $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupByID$1().init___s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__T(ec, mongo, groupID);
   $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(groupDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$1, next$1) {
     return (function(x0$1$2) {
@@ -4976,9 +5017,9 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroupByID__Lorg_scalajs_n
           var x7 = $as_s_util_Failure(x0$1);
           var e = x7.exception$2;
           e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-          var jsx$2 = response$1.status(500);
+          var jsx$1 = response$1.status(500);
           var s = e.getMessage__T();
-          jsx$2.send(s);
+          jsx$1.send(s);
           $asUnit(next$1());
           break matchEnd11
         };
@@ -4990,7 +5031,7 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroupByID__Lorg_scalajs_n
 $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.init__Lorg_scalajs_nodejs_express_Application__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__V = (function(app, dbFuture, ec, mongo) {
   var f$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(ec$1) {
     return (function(x$1$2) {
-      var options = new $c_Lorg_scalajs_nodejs_mongodb_CollectionOptions();
+      var a = new $c_Lorg_scalajs_nodejs_mongodb_CollectionOptions();
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -5002,7 +5043,7 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.init__Lorg_scalajs_nodejs_ex
           }
         })
       })(promise);
-      x$1$2.collection("groups", options, arg1);
+      x$1$2.collection("groups", a, arg1);
       var ec$2 = $m_s_concurrent_Future$InternalCallbackExecutor$();
       var boxedClass = ($d_Lcom_microsoft_awt_data_GroupDAO.getClassOf().isPrimitive__Z() ? $as_jl_Class($m_s_concurrent_Future$().toBoxed$1.apply__O__O($d_Lcom_microsoft_awt_data_GroupDAO.getClassOf())) : $d_Lcom_microsoft_awt_data_GroupDAO.getClassOf());
       $m_s_Predef$().require__Z__V((boxedClass !== null));
@@ -5055,13 +5096,17 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.init__Lorg_scalajs_nodejs_ex
   })(ec, mongo, groupDAO))
 });
 $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.createGroup__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, groupDAO) {
-  var x1 = $m_Lcom_microsoft_awt_data_GroupData$GroupExtensions$().toData$extension__Lcom_microsoft_awt_models_Group__Lorg_scalajs_nodejs_mongodb_MongoDB__s_util_Try($m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().bodyAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Any(request), mongo);
+  var jsx$1 = $m_Lcom_microsoft_awt_data_GroupData$GroupExtensions$();
+  var model = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().bodyAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Any(request);
+  var x1 = jsx$1.toData$extension__Lcom_microsoft_awt_models_Group__Lorg_scalajs_nodejs_mongodb_MongoDB__s_util_Try(model, mongo);
   if ($is_s_util_Success(x1)) {
     var x2 = $as_s_util_Success(x1);
     var group = x2.value$2;
     var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(group$1) {
       return (function(x$2$2) {
-        return $m_sjs_js_Thenable$ThenableOps$().toFuture$extension__sjs_js_Thenable__s_concurrent_Future(x$2$2.insert(group$1))
+        var jsx$2 = $m_sjs_js_Thenable$ThenableOps$();
+        var p = x$2$2.insert(group$1);
+        return jsx$2.toFuture$extension__sjs_js_Thenable__s_concurrent_Future(p)
       })
     })(group));
     $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(groupDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$2, next$2, group$1$1) {
@@ -5089,9 +5134,9 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.createGroup__Lorg_scalajs_no
             var x4 = $as_s_util_Failure(x0$2);
             var e = x4.exception$2;
             e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-            var jsx$1 = response$2.status(500);
+            var jsx$3 = response$2.status(500);
             var s = e.getMessage__T();
-            jsx$1.send(s);
+            jsx$3.send(s);
             $asUnit(next$2());
             break matchEnd7
           };
@@ -5103,9 +5148,9 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.createGroup__Lorg_scalajs_no
     var x3 = $as_s_util_Failure(x1);
     var e$1 = x3.exception$2;
     e$1.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-    var jsx$2 = response.status(500);
+    var jsx$4 = response.status(500);
     var s$1 = e$1.getMessage__T();
-    jsx$2.send(s$1);
+    jsx$4.send(s$1);
     $asUnit(next())
   } else {
     throw new $c_s_MatchError().init___O(x1)
@@ -5113,15 +5158,12 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.createGroup__Lorg_scalajs_no
 });
 $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroupsExcludingUser__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, groupDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID"))) {
-    var jsx$1 = dict.userID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: userID")
   };
-  var userID = $as_T(jsx$1);
-  var qual$4 = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
-  var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(qual$4, 20);
+  var userID = $as_T(dict.userID);
+  var form = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
+  var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(form, 20);
   var f = new $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1().init___T__I(userID, maxResults);
   $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(groupDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$7, next$7) {
     return (function(x0$7$2) {
@@ -5135,9 +5177,9 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroupsExcludingUser__Lorg
         var x3 = $as_s_util_Failure(x0$7);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$2 = response$7.status(500);
+        var jsx$1 = response$7.status(500);
         var s = e.getMessage__T();
-        jsx$2.send(s);
+        jsx$1.send(s);
         $asUnit(next$7())
       } else {
         throw new $c_s_MatchError().init___O(x0$7)
@@ -5146,11 +5188,11 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroupsExcludingUser__Lorg
   })(response, next)), ec)
 });
 $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroups__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, groupDAO) {
-  var qual$1 = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
-  var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(qual$1, 20);
+  var form = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
+  var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(form, 20);
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(maxResults$1) {
     return (function(x$4$2) {
-      var $$this = x$4$2.find().limit(maxResults$1);
+      var cursor = x$4$2.find().limit(maxResults$1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -5162,7 +5204,7 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroups__Lorg_scalajs_node
           }
         })
       })(promise);
-      $$this.toArray(arg1);
+      cursor.toArray(arg1);
       return promise
     })
   })(maxResults));
@@ -5258,11 +5300,11 @@ $c_Lcom_microsoft_awt_routes_NotificationRoutes$.prototype.init__Lorg_scalajs_no
   })(ec, mongo, notificationDAO))
 });
 $c_Lcom_microsoft_awt_routes_NotificationRoutes$.prototype.getNotifications__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, notificationDAO) {
-  var qual$1 = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
-  var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(qual$1, 20);
+  var form = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
+  var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(form, 20);
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(maxResults$1) {
     return (function(x$2$2) {
-      var $$this = x$2$2.find().limit(maxResults$1);
+      var cursor = x$2$2.find().limit(maxResults$1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -5274,7 +5316,7 @@ $c_Lcom_microsoft_awt_routes_NotificationRoutes$.prototype.getNotifications__Lor
           }
         })
       })(promise);
-      $$this.toArray(arg1);
+      cursor.toArray(arg1);
       return promise
     })
   })(maxResults));
@@ -5302,22 +5344,19 @@ $c_Lcom_microsoft_awt_routes_NotificationRoutes$.prototype.getNotifications__Lor
 });
 $c_Lcom_microsoft_awt_routes_NotificationRoutes$.prototype.getNotificationsByOwner__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, notificationDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "ownerID"))) {
-    var jsx$1 = dict.ownerID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "ownerID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: ownerID")
   };
-  var ownerID = $as_T(jsx$1);
+  var ownerID = $as_T(dict.ownerID);
   var dict$1 = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, "unread"))) {
-    var jsx$2 = dict$1.unread
-  } else {
-    var jsx$2;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, "unread")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: unread")
   };
-  var s = $as_T(jsx$2);
-  var this$9 = ((s !== null) && ($as_T(s.toLowerCase()) === $as_T("true".toLowerCase())));
+  var s = $as_T(dict$1.unread);
+  if ((s !== null)) {
+    $as_T(s.toLowerCase());
+    $as_T("true".toLowerCase())
+  };
   var f = new $c_Lcom_microsoft_awt_routes_NotificationRoutes$$anonfun$getNotificationsByOwner$1().init___Lorg_scalajs_nodejs_mongodb_MongoDB__T(mongo, ownerID);
   $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(notificationDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$2, next$2) {
     return (function(x0$2$2) {
@@ -5331,9 +5370,9 @@ $c_Lcom_microsoft_awt_routes_NotificationRoutes$.prototype.getNotificationsByOwn
         var x3 = $as_s_util_Failure(x0$2);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$3 = response$2.status(500);
+        var jsx$1 = response$2.status(500);
         var s$1 = e.getMessage__T();
-        jsx$3.send(s$1);
+        jsx$1.send(s$1);
         $asUnit(next$2())
       } else {
         throw new $c_s_MatchError().init___O(x0$2)
@@ -5368,24 +5407,21 @@ function $h_Lcom_microsoft_awt_routes_PostRoutes$() {
 $h_Lcom_microsoft_awt_routes_PostRoutes$.prototype = $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype;
 $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getPost__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, postDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "postID"))) {
-    var jsx$1 = dict.postID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "postID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: postID")
   };
-  var postID = $as_T(jsx$1);
+  var postID = $as_T(dict.postID);
   var f$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(ec$2, mongo$3, postID$1) {
     return (function(x$11$2) {
-      var jsx$3 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-      var $$this = mongo$3.ObjectID;
+      var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+      var $class = mongo$3.ObjectID;
       var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [postID$1]));
       if ($is_sjs_js_ArrayOps(args)) {
         var x2 = $as_sjs_js_ArrayOps(args);
-        var jsx$2 = x2.scala$scalajs$js$ArrayOps$$array$f
+        var jsx$1 = x2.scala$scalajs$js$ArrayOps$$array$f
       } else if ($is_sjs_js_WrappedArray(args)) {
         var x3 = $as_sjs_js_WrappedArray(args);
-        var jsx$2 = x3.array$6
+        var jsx$1 = x3.array$6
       } else {
         var result = [];
         var i = 0;
@@ -5395,10 +5431,10 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getPost__Lorg_scalajs_nodejs_
           $uI(result.push(arg1));
           i = ((1 + i) | 0)
         };
-        var jsx$2 = result
+        var jsx$1 = result
       };
-      var y = $newJSObjectWithVarargs($$this, jsx$2);
-      var selector = jsx$3.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
+      var y = $newJSObjectWithVarargs($class, jsx$1);
+      var selector = jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
       var eta$0$1 = x$11$2.find(selector).limit(1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1$1 = (function(promise$1) {
@@ -5449,9 +5485,9 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getPost__Lorg_scalajs_nodejs_
           var x7 = $as_s_util_Failure(x0$3);
           var e = x7.exception$2;
           e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-          var jsx$4 = response$3.status(500);
+          var jsx$3 = response$3.status(500);
           var s = e.getMessage__T();
-          jsx$4.send(s);
+          jsx$3.send(s);
           $asUnit(next$3());
           break matchEnd11
         };
@@ -5465,23 +5501,20 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.init___ = (function() {
 });
 $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.downloadAttachment__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, gridFS) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "attachmentID"))) {
-    var jsx$1 = dict.attachmentID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "attachmentID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: attachmentID")
   };
-  var attachmentID = $as_T(jsx$1);
+  var attachmentID = $as_T(dict.attachmentID);
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$8, mongo$6, attachmentID$1) {
     return (function(x$6$2) {
-      var $$this = mongo$6.ObjectID;
+      var $class = mongo$6.ObjectID;
       var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [attachmentID$1]));
       if ($is_sjs_js_ArrayOps(args)) {
         var x2 = $as_sjs_js_ArrayOps(args);
-        var jsx$4 = x2.scala$scalajs$js$ArrayOps$$array$f
+        var jsx$3 = x2.scala$scalajs$js$ArrayOps$$array$f
       } else if ($is_sjs_js_WrappedArray(args)) {
         var x3 = $as_sjs_js_WrappedArray(args);
-        var jsx$4 = x3.array$6
+        var jsx$3 = x3.array$6
       } else {
         var result = [];
         var i = 0;
@@ -5491,24 +5524,21 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.downloadAttachment__Lorg_scal
           $uI(result.push(arg1));
           i = ((1 + i) | 0)
         };
-        var jsx$4 = result
+        var jsx$3 = result
       };
-      var jsx$3 = $newJSObjectWithVarargs($$this, jsx$4);
-      var jsx$2 = x$6$2.openDownloadStream(jsx$3);
-      return jsx$2.pipe(response$8)
+      var jsx$2 = $newJSObjectWithVarargs($class, jsx$3);
+      var jsx$1 = x$6$2.openDownloadStream(jsx$2);
+      return jsx$1.pipe(response$8)
     })
   })(response, mongo, attachmentID));
   $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(gridFS, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$downloadAttachment$2().init___Lorg_scalajs_nodejs_express_Response__sjs_js_Function0(response, next), ec)
 });
 $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.deletePost__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, postDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "postID"))) {
-    var jsx$1 = dict.postID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "postID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: postID")
   };
-  var postID = $as_T(jsx$1);
+  var postID = $as_T(dict.postID);
   var f = new $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$deletePost$1().init___Lorg_scalajs_nodejs_mongodb_MongoDB__T(mongo, postID);
   $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(postDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$4, next$4) {
     return (function(x0$4$2) {
@@ -5516,15 +5546,18 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.deletePost__Lorg_scalajs_node
       if ($is_s_util_Success(x0$4)) {
         var x2 = $as_s_util_Success(x0$4);
         var outcome = x2.value$2;
-        response$4.send(new $c_Lcom_microsoft_awt_models_OperationResult($m_Lorg_scalajs_nodejs_mongodb_DeleteWriteOpResult$OutcomeExtensions$().isOk$extension__Lorg_scalajs_nodejs_mongodb_DeleteWriteOpResult$Outcome__Z(outcome.result)));
+        var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_DeleteWriteOpResult$OutcomeExtensions$();
+        var outcome$1 = outcome.result;
+        var jsx$1 = new $c_Lcom_microsoft_awt_models_OperationResult(jsx$2.isOk$extension__Lorg_scalajs_nodejs_mongodb_DeleteWriteOpResult$Outcome__Z(outcome$1));
+        response$4.send(jsx$1);
         $asUnit(next$4())
       } else if ($is_s_util_Failure(x0$4)) {
         var x3 = $as_s_util_Failure(x0$4);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$2 = response$4.status(500);
+        var jsx$3 = response$4.status(500);
         var s = e.getMessage__T();
-        jsx$2.send(s);
+        jsx$3.send(s);
         $asUnit(next$4())
       } else {
         throw new $c_s_MatchError().init___O(x0$4)
@@ -5534,19 +5567,15 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.deletePost__Lorg_scalajs_node
 });
 $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.uploadAttachment__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__s_concurrent_Future__V = (function(request, response, next, ec, mongo, gridFS, postDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "postID"))) {
-    var _1 = dict.postID
-  } else {
-    var _1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "postID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: postID")
   };
+  var _1 = dict.postID;
   var dict$1 = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, "userID"))) {
-    var _2 = dict$1.userID
-  } else {
-    var _2;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, "userID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: userID")
   };
+  var _2 = dict$1.userID;
   var postID = $as_T(_1);
   var userID = $as_T(_2);
   var dict$2 = request.files;
@@ -5555,27 +5584,24 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.uploadAttachment__Lorg_scalaj
 });
 $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getNewsFeed__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__s_concurrent_Future__V = (function(request, response, next, ec, mongo, postDAO, userDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "ownerID"))) {
-    var jsx$1 = dict.ownerID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "ownerID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: ownerID")
   };
-  var ownerID = $as_T(jsx$1);
-  var qual$3 = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
-  var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(qual$3, 20);
+  var ownerID = $as_T(dict.ownerID);
+  var form = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
+  var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(form, 20);
   var f$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(ec$3, mongo$5, ownerID$2) {
     return (function(x$14$2) {
       var fields = ["followers"];
-      var jsx$3 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-      var $$this = mongo$5.ObjectID;
+      var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+      var $class = mongo$5.ObjectID;
       var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [ownerID$2]));
       if ($is_sjs_js_ArrayOps(args)) {
         var x2 = $as_sjs_js_ArrayOps(args);
-        var jsx$2 = x2.scala$scalajs$js$ArrayOps$$array$f
+        var jsx$1 = x2.scala$scalajs$js$ArrayOps$$array$f
       } else if ($is_sjs_js_WrappedArray(args)) {
         var x3 = $as_sjs_js_WrappedArray(args);
-        var jsx$2 = x3.array$6
+        var jsx$1 = x3.array$6
       } else {
         var result = [];
         var i = 0;
@@ -5585,11 +5611,11 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getNewsFeed__Lorg_scalajs_nod
           $uI(result.push(arg1));
           i = ((1 + i) | 0)
         };
-        var jsx$2 = result
+        var jsx$1 = result
       };
-      var y = $newJSObjectWithVarargs($$this, jsx$2);
-      var selector = jsx$3.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
-      var jsx$5 = $m_sjs_js_Dictionary$();
+      var y = $newJSObjectWithVarargs($class, jsx$1);
+      var selector = jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
+      var jsx$4 = $m_sjs_js_Dictionary$();
       var array = [];
       $uI(fields.length);
       var i$1 = 0;
@@ -5602,8 +5628,8 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getNewsFeed__Lorg_scalajs_nod
         array.push(elem);
         i$1 = ((1 + i$1) | 0)
       };
-      var jsx$4 = x$14$2.find(selector, jsx$5.apply__sc_Seq__sjs_js_Dictionary(new $c_sjs_js_WrappedArray().init___sjs_js_Array(array)));
-      var eta$0$2 = jsx$4.limit(1);
+      var jsx$3 = x$14$2.find(selector, jsx$4.apply__sc_Seq__sjs_js_Dictionary(new $c_sjs_js_WrappedArray().init___sjs_js_Array(array)));
+      var eta$0$2 = jsx$3.limit(1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1$2 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -5646,9 +5672,9 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getNewsFeed__Lorg_scalajs_nod
         var x3$1 = $as_s_util_Failure(x0$7);
         var e = x3$1.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$6 = response$7.status(500);
+        var jsx$5 = response$7.status(500);
         var s = e.getMessage__T();
-        jsx$6.send(s);
+        jsx$5.send(s);
         $asUnit(next$7())
       } else {
         throw new $c_s_MatchError().init___O(x0$7)
@@ -5717,7 +5743,7 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.init__Lorg_scalajs_nodejs_exp
   var userDAO = $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(dbFuture, f$3, ec);
   var f$4 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(ec$1$2, mongo$1) {
     return (function(x$3$2) {
-      var $$this$2 = mongo$1.GridFSBucket;
+      var $class = mongo$1.GridFSBucket;
       var options = new $c_Lorg_scalajs_nodejs_mongodb_gridfs_GridFSOptions("post_attachments");
       var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [x$3$2, options]));
       if ($is_sjs_js_ArrayOps(args)) {
@@ -5737,7 +5763,7 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.init__Lorg_scalajs_nodejs_exp
         };
         var jsx$1 = result
       };
-      return $newJSObjectWithVarargs($$this$2, jsx$1)
+      return $newJSObjectWithVarargs($class, jsx$1)
     })
   })(ec, mongo));
   var attachmentDAO = $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(dbFuture, f$4, ec);
@@ -5810,7 +5836,9 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.init__Lorg_scalajs_nodejs_exp
   })(ec, mongo, seoMetaParser))
 });
 $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.createPost__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, postDAO) {
-  var post$1 = $m_Lcom_microsoft_awt_data_PostData$PostExtensions$().toData$extension__Lcom_microsoft_awt_models_Post__Lorg_scalajs_nodejs_mongodb_MongoDB__Lcom_microsoft_awt_data_PostData($m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().bodyAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Any(request), mongo);
+  var jsx$1 = $m_Lcom_microsoft_awt_data_PostData$PostExtensions$();
+  var post = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().bodyAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Any(request);
+  var post$1 = jsx$1.toData$extension__Lcom_microsoft_awt_models_Post__Lorg_scalajs_nodejs_mongodb_MongoDB__Lcom_microsoft_awt_data_PostData(post, mongo);
   post$1.creationTime = new $g.Date();
   post$1.lastUpdateTime = new $g.Date();
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(post$1$1) {
@@ -5846,9 +5874,9 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.createPost__Lorg_scalajs_node
           var x4 = $as_s_util_Failure(x0$1);
           var e = x4.exception$2;
           e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-          var jsx$1 = response$1.status(500);
+          var jsx$2 = response$1.status(500);
           var s = e.getMessage__T();
-          jsx$1.send(s);
+          jsx$2.send(s);
           $asUnit(next$1());
           break matchEnd7
         };
@@ -5859,15 +5887,12 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.createPost__Lorg_scalajs_node
 });
 $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getPostsByOwner__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__s_concurrent_Future__V = (function(request, response, next, ec, mongo, postDAO, userDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "ownerID"))) {
-    var jsx$1 = dict.ownerID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "ownerID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: ownerID")
   };
-  var ownerID = $as_T(jsx$1);
-  var qual$2 = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
-  var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(qual$2, 20);
+  var ownerID = $as_T(dict.ownerID);
+  var form = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
+  var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(form, 20);
   var f = new $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$getPostsByOwner$1().init___T__I(ownerID, maxResults);
   $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(postDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$6, next$6) {
     return (function(x0$6$2) {
@@ -5881,9 +5906,9 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getPostsByOwner__Lorg_scalajs
         var x3 = $as_s_util_Failure(x0$6);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$2 = response$6.status(500);
+        var jsx$1 = response$6.status(500);
         var s = e.getMessage__T();
-        jsx$2.send(s);
+        jsx$1.send(s);
         $asUnit(next$6())
       } else {
         throw new $c_s_MatchError().init___O(x0$6)
@@ -5893,8 +5918,8 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getPostsByOwner__Lorg_scalajs
 });
 $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getSEOContent__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__Lcom_microsoft_awt_routes_SharedContentParser__V = (function(request, response, next, ec, mongo, seoMetaParser) {
   var form = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
-  var $$this = form.url;
-  var x1 = (($$this === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this));
+  var value = form.url;
+  var x1 = ((value === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value));
   if ($is_s_Some(x1)) {
     var x2 = $as_s_Some(x1);
     var url = $as_T(x2.x$2);
@@ -5946,19 +5971,15 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getSEOContent__Lorg_scalajs_n
 });
 $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.likePost__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, postDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "postID"))) {
-    var _1 = dict.postID
-  } else {
-    var _1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "postID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: postID")
   };
+  var _1 = dict.postID;
   var dict$1 = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, "userID"))) {
-    var _2 = dict$1.userID
-  } else {
-    var _2;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, "userID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: userID")
   };
+  var _2 = dict$1.userID;
   var postID = $as_T(_1);
   var userID = $as_T(_2);
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(mongo$9, postID$4, userID$3) {
@@ -6001,13 +6022,10 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.likePost__Lorg_scalajs_nodejs
 });
 $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getAttachementIDs__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, gridFS) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID"))) {
-    var jsx$1 = dict.userID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: userID")
   };
-  var userID = $as_T(jsx$1);
+  var userID = $as_T(dict.userID);
   var f = new $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$getAttachementIDs$1().init___Lorg_scalajs_nodejs_mongodb_MongoDB__T(mongo, userID);
   $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(gridFS, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$9, next$9) {
     return (function(x0$9$2) {
@@ -6021,9 +6039,9 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getAttachementIDs__Lorg_scala
         var x3 = $as_s_util_Failure(x0$9);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$2 = response$9.status(500);
+        var jsx$1 = response$9.status(500);
         var s = e.getMessage__T();
-        jsx$2.send(s);
+        jsx$1.send(s);
         $asUnit(next$9())
       } else {
         throw new $c_s_MatchError().init___O(x0$9)
@@ -6033,19 +6051,15 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getAttachementIDs__Lorg_scala
 });
 $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.unlike__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, postDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "postID"))) {
-    var _1 = dict.postID
-  } else {
-    var _1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "postID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: postID")
   };
+  var _1 = dict.postID;
   var dict$1 = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, "userID"))) {
-    var _2 = dict$1.userID
-  } else {
-    var _2;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, "userID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: userID")
   };
+  var _2 = dict$1.userID;
   var postID = $as_T(_1);
   var userID = $as_T(_2);
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(mongo$10, postID$5, userID$4) {
@@ -6088,14 +6102,19 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.unlike__Lorg_scalajs_nodejs_e
 });
 $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.updatePost__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, postDAO) {
   var form = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().bodyAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Any(request);
-  var $$this = form._id;
-  if (($$this === (void 0))) {
-    var $$this$2 = (void 0)
+  var valueA = form._id;
+  if ((valueA === (void 0))) {
+    var value = (void 0)
   } else {
-    var $$this$1 = $m_s_Option$().apply__O__s_Option($$this);
-    var $$this$2 = ($$this$1.isEmpty__Z() ? (void 0) : $$this$1.get__O())
+    var opt = $m_s_Option$().apply__O__s_Option(valueA);
+    if (opt.isEmpty__Z()) {
+      var value = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var value = arg1
+    }
   };
-  var x1 = (($$this$2 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this$2));
+  var x1 = ((value === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value));
   if ($is_s_Some(x1)) {
     var x2 = $as_s_Some(x1);
     var _id = $as_T(x2.x$2);
@@ -6147,11 +6166,11 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.updatePost__Lorg_scalajs_node
   }
 });
 $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getPosts__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__s_concurrent_Future__V = (function(request, response, next, ec, mongo, postDAO, userDAO) {
-  var qual$1 = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
-  var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(qual$1, 20);
+  var form = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
+  var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(form, 20);
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(maxResults$1) {
     return (function(x$12$2) {
-      var $$this = x$12$2.find().limit(maxResults$1);
+      var cursor = x$12$2.find().limit(maxResults$1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -6163,7 +6182,7 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getPosts__Lorg_scalajs_nodejs
           }
         })
       })(promise);
-      $$this.toArray(arg1);
+      cursor.toArray(arg1);
       return promise
     })
   })(maxResults));
@@ -6220,8 +6239,8 @@ $c_Lcom_microsoft_awt_routes_SearchRoutes$.prototype.init___ = (function() {
 $c_Lcom_microsoft_awt_routes_SearchRoutes$.prototype.getSearchResults__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__s_concurrent_Future__s_concurrent_Future__V = (function(request, response, next, ec, mongo, events, groups, users) {
   var searchAgents = $as_sc_Seq($m_sc_Seq$().apply__sc_Seq__sc_GenTraversable(new $c_sjs_js_WrappedArray().init___sjs_js_Array([events, groups, users])));
   var form = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
-  var $$this = form.searchTerm;
-  var this$5 = (($$this === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this));
+  var value = form.searchTerm;
+  var this$5 = ((value === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value));
   if (this$5.isEmpty__Z()) {
     var x1 = $m_s_None$()
   } else {
@@ -6321,7 +6340,7 @@ $c_Lcom_microsoft_awt_routes_SearchRoutes$.prototype.init__Lorg_scalajs_nodejs_e
   var events = $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$12, f$2, ec);
   var f$4 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(ec$1$1) {
     return (function(x$3$2) {
-      var options = new $c_Lorg_scalajs_nodejs_mongodb_CollectionOptions();
+      var a = new $c_Lorg_scalajs_nodejs_mongodb_CollectionOptions();
       var promise$2 = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1$1 = (function(promise$1$1) {
         return (function(err$2$1, result$2$1) {
@@ -6333,7 +6352,7 @@ $c_Lcom_microsoft_awt_routes_SearchRoutes$.prototype.init__Lorg_scalajs_nodejs_e
           }
         })
       })(promise$2);
-      x$3$2.collection("groups", options, arg1$1);
+      x$3$2.collection("groups", a, arg1$1);
       var ec$3 = $m_s_concurrent_Future$InternalCallbackExecutor$();
       var boxedClass$2 = ($d_Lcom_microsoft_awt_data_GroupDAO.getClassOf().isPrimitive__Z() ? $as_jl_Class($m_s_concurrent_Future$().toBoxed$1.apply__O__O($d_Lcom_microsoft_awt_data_GroupDAO.getClassOf())) : $d_Lcom_microsoft_awt_data_GroupDAO.getClassOf());
       $m_s_Predef$().require__Z__V((boxedClass$2 !== null));
@@ -6468,24 +6487,21 @@ $c_Lcom_microsoft_awt_routes_SessionRoutes$.prototype.init___ = (function() {
 });
 $c_Lcom_microsoft_awt_routes_SessionRoutes$.prototype.getSessionByID__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, sessionDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "sessionID"))) {
-    var jsx$1 = dict.sessionID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "sessionID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: sessionID")
   };
-  var sessionID = $as_T(jsx$1);
+  var sessionID = $as_T(dict.sessionID);
   var f$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(ec$2, mongo$2, sessionID$1) {
     return (function(x$2$2) {
-      var jsx$3 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-      var $$this = mongo$2.ObjectID;
+      var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+      var $class = mongo$2.ObjectID;
       var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [sessionID$1]));
       if ($is_sjs_js_ArrayOps(args)) {
         var x2 = $as_sjs_js_ArrayOps(args);
-        var jsx$2 = x2.scala$scalajs$js$ArrayOps$$array$f
+        var jsx$1 = x2.scala$scalajs$js$ArrayOps$$array$f
       } else if ($is_sjs_js_WrappedArray(args)) {
         var x3 = $as_sjs_js_WrappedArray(args);
-        var jsx$2 = x3.array$6
+        var jsx$1 = x3.array$6
       } else {
         var result = [];
         var i = 0;
@@ -6495,10 +6511,10 @@ $c_Lcom_microsoft_awt_routes_SessionRoutes$.prototype.getSessionByID__Lorg_scala
           $uI(result.push(arg1));
           i = ((1 + i) | 0)
         };
-        var jsx$2 = result
+        var jsx$1 = result
       };
-      var y = $newJSObjectWithVarargs($$this, jsx$2);
-      var selector = jsx$3.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
+      var y = $newJSObjectWithVarargs($class, jsx$1);
+      var selector = jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
       var eta$0$1 = x$2$2.find(selector).limit(1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1$1 = (function(promise$1) {
@@ -6549,9 +6565,9 @@ $c_Lcom_microsoft_awt_routes_SessionRoutes$.prototype.getSessionByID__Lorg_scala
           var x7 = $as_s_util_Failure(x0$1);
           var e = x7.exception$2;
           e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-          var jsx$4 = response$1.status(500);
+          var jsx$3 = response$1.status(500);
           var s = e.getMessage__T();
-          jsx$4.send(s);
+          jsx$3.send(s);
           $asUnit(next$1());
           break matchEnd11
         };
@@ -6603,8 +6619,8 @@ $c_Lcom_microsoft_awt_routes_SessionRoutes$.prototype.init__Lorg_scalajs_nodejs_
 });
 $c_Lcom_microsoft_awt_routes_SessionRoutes$.prototype.getSessions__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, sessionDAO) {
   var form = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request);
-  var $$this = form.userIDs;
-  var x1 = (($$this === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this));
+  var value = form.userIDs;
+  var x1 = ((value === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value));
   if ($is_s_Some(x1)) {
     var x2 = $as_s_Some(x1);
     var userIDs = x2.x$2;
@@ -6616,7 +6632,7 @@ $c_Lcom_microsoft_awt_routes_SessionRoutes$.prototype.getSessions__Lorg_scalajs_
       var index = i;
       var arg1 = userIDs[index];
       var x$3 = $as_T(arg1);
-      var $$this$1 = mongo.ObjectID;
+      var $class = mongo.ObjectID;
       var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [x$3]));
       if ($is_sjs_js_ArrayOps(args)) {
         var x2$1 = $as_sjs_js_ArrayOps(args);
@@ -6635,7 +6651,7 @@ $c_Lcom_microsoft_awt_routes_SessionRoutes$.prototype.getSessions__Lorg_scalajs_
         };
         var jsx$1 = result
       };
-      var elem = $newJSObjectWithVarargs($$this$1, jsx$1);
+      var elem = $newJSObjectWithVarargs($class, jsx$1);
       array.push(elem);
       i = ((1 + i) | 0)
     };
@@ -6700,7 +6716,7 @@ function $h_Lcom_microsoft_awt_routes_SharedContentParser() {
 $h_Lcom_microsoft_awt_routes_SharedContentParser.prototype = $c_Lcom_microsoft_awt_routes_SharedContentParser.prototype;
 $c_Lcom_microsoft_awt_routes_SharedContentParser.prototype.com$microsoft$awt$routes$SharedContentParser$$mapify__T__sci_Map = (function(line) {
   var array = (0, this.splitArgs$1)(line);
-  var this$2 = $m_sc_Seq$();
+  $m_sc_Seq$();
   $m_sjs_js_WrappedArray$();
   var array$1 = [];
   var i = 0;
@@ -6712,7 +6728,7 @@ $c_Lcom_microsoft_awt_routes_SharedContentParser.prototype.com$microsoft$awt$rou
     var xs = $m_sjsr_RuntimeString$().split__T__T__I__AT(x$4, "[=]", 2);
     var x1 = new $c_scm_WrappedArray$ofRef().init___AO(xs);
     matchEnd4: {
-      var xs$1;
+      var this$13;
       $m_sc_Seq$();
       var o7 = new $c_s_Some().init___O(x1);
       if (((o7.x$2 !== null) && ($as_sc_SeqLike(o7.x$2).lengthCompare__I__I(2) === 0))) {
@@ -6720,30 +6736,27 @@ $c_Lcom_microsoft_awt_routes_SharedContentParser.prototype.com$microsoft$awt$rou
         var value = $as_T($as_sc_SeqLike(o7.x$2).apply__I__O(1));
         var y = $m_Lcom_microsoft_awt_StringHelper$StringExtensions$().unquote$extension__T__T(value);
         var xo = new $c_s_Some().init___O(new $c_T2().init___O__O(key, y));
-        var xs$1 = xo.toList__sci_List();
+        var this$13 = xo.toList__sci_List();
         break matchEnd4
       };
       $g.console.error("missed: %s", $s_sc_TraversableOnce$class__mkString__sc_TraversableOnce__T__T__T__T(x1, "", ", ", ""));
       var xo$1 = $m_s_None$();
-      var xs$1 = xo$1.toList__sci_List();
-      break matchEnd4
+      var this$13 = xo$1.toList__sci_List()
     };
-    if ((xs$1 !== null)) {
-      var xs$2 = xs$1;
-      x: {
-        _loop: while (true) {
-          var this$14 = xs$2;
-          if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$14)) {
-            var elem = xs$2.head__O();
-            array$1.push(elem);
-            xs$2 = $as_sc_LinearSeq(xs$2.tail__O());
-            continue _loop
-          };
-          break x
-        }
+    if ((this$13 !== null)) {
+      var xs$1 = this$13;
+      _loop: while (true) {
+        var this$14 = xs$1;
+        if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$14)) {
+          var elem = xs$1.head__O();
+          array$1.push(elem);
+          xs$1 = $as_sc_LinearSeq(xs$1.tail__O());
+          continue _loop
+        };
+        break
       }
     } else {
-      var these = xs$1;
+      var these = this$13;
       while ((!these.isEmpty__Z())) {
         var arg1$1 = these.head__O();
         array$1.push(arg1$1);
@@ -6763,8 +6776,8 @@ $c_Lcom_microsoft_awt_routes_SharedContentParser.prototype.com$microsoft$awt$rou
     i$1 = ((1 + i$1) | 0)
   };
   var mapping = $as_sci_Map(this$17.elems$1);
-  var $$this = mapping.get__O__s_Option("name");
-  var this$20 = ($$this.isDefined__Z() ? $$this : mapping.get__O__s_Option("property"));
+  var valueA = mapping.get__O__s_Option("name");
+  var this$20 = (valueA.isDefined__Z() ? valueA : mapping.get__O__s_Option("property"));
   if (this$20.isEmpty__Z()) {
     var x1$1 = $m_s_None$()
   } else {
@@ -6810,7 +6823,9 @@ $c_Lcom_microsoft_awt_routes_SharedContentParser.prototype.init___Lorg_scalajs_n
   return this
 });
 $c_Lcom_microsoft_awt_routes_SharedContentParser.prototype.parse__T__s_concurrent_ExecutionContext__s_concurrent_Future = (function(url, ec) {
-  var this$2 = $m_Lorg_scalajs_nodejs_request_Request$RequestExtensions$().getFuture$extension__Lorg_scalajs_nodejs_request_Request__T__s_concurrent_Future(this.request$1, url);
+  var jsx$1 = $m_Lorg_scalajs_nodejs_request_Request$RequestExtensions$();
+  var request = this.request$1;
+  var this$2 = jsx$1.getFuture$extension__Lorg_scalajs_nodejs_request_Request__T__s_concurrent_Future(request, url);
   var p = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(check$ifrefutable$1$2) {
     var check$ifrefutable$1 = $as_T2(check$ifrefutable$1$2);
     return (check$ifrefutable$1 !== null)
@@ -6851,21 +6866,22 @@ $c_Lcom_microsoft_awt_routes_SharedContentProcessor$.prototype.init___ = (functi
   $m_sc_IndexedSeq$();
   $m_sci_IndexedSeq$();
   $m_sci_Vector$();
-  var b$1 = new $c_sci_VectorBuilder().init___();
+  var b = new $c_sci_VectorBuilder().init___();
   var i = 27;
-  var count = 0;
-  while ((i !== 384)) {
+  while (true) {
     var arg1 = i;
-    var $$this = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["&#", ";"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([arg1]));
+    var self = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["&#", ";"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([arg1]));
     var this$14 = new $c_sci_StringOps().init___T("%c");
     var args = new $c_sjs_js_WrappedArray().init___sjs_js_Array([arg1]);
     var y = $s_sci_StringLike$class__format__sci_StringLike__sc_Seq__T(this$14, args);
-    var elem = new $c_T2().init___O__O($$this, y);
-    b$1.$$plus$eq__O__sci_VectorBuilder(elem);
-    count = ((1 + count) | 0);
+    var elem = new $c_T2().init___O__O(self, y);
+    b.$$plus$eq__O__sci_VectorBuilder(elem);
+    if ((i === 383)) {
+      break
+    };
     i = ((1 + i) | 0)
   };
-  var this$16 = b$1.result__sci_Vector();
+  var this$16 = b.result__sci_Vector();
   var this$17 = $m_sci_List$();
   var cbf$1 = this$17.ReusableCBFInstance$2;
   this.com$microsoft$awt$routes$SharedContentProcessor$$expandables$f = $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(this$16, cbf$1)).$$colon$colon$colon__sci_List__sci_List(x$1);
@@ -7087,8 +7103,8 @@ $c_Lcom_microsoft_awt_routes_SharedContentProcessor$.prototype.parseMetaData__sc
   while ((!these.isEmpty__Z())) {
     var arg1 = these.head__O();
     var xo = $as_s_Option(arg1);
-    var xs = xo.toList__sci_List();
-    b.$$plus$plus$eq__sc_TraversableOnce__scm_ListBuffer(xs);
+    var this$13 = xo.toList__sci_List();
+    b.$$plus$plus$eq__sc_TraversableOnce__scm_ListBuffer(this$13);
     var this$14 = these;
     these = this$14.tail__sci_List()
   };
@@ -7111,18 +7127,18 @@ $c_Lcom_microsoft_awt_routes_SharedContentProcessor$.prototype.parseMetaData__sc
       var v2 = these$1.head__O();
       var compositeSummary = $as_Lcom_microsoft_awt_routes_SharedContentProcessor$SharedContent(v1$1);
       var summary = $as_Lcom_microsoft_awt_routes_SharedContentProcessor$SharedContent(v2);
-      var $$this = compositeSummary.author$1;
-      var author = ($$this.isDefined__Z() ? $$this : summary.author$1);
-      var $$this$1 = compositeSummary.description$1;
-      var description = ($$this$1.isDefined__Z() ? $$this$1 : summary.description$1);
-      var $$this$2 = compositeSummary.locale$1;
-      var locale = ($$this$2.isDefined__Z() ? $$this$2 : summary.locale$1);
-      var $$this$3 = compositeSummary.publishedTime$1;
-      var publishedTime = ($$this$3.isDefined__Z() ? $$this$3 : summary.publishedTime$1);
-      var $$this$4 = compositeSummary.source$1;
-      var section = ($$this$4.isDefined__Z() ? $$this$4 : summary.section$1);
-      var $$this$5 = compositeSummary.source$1;
-      var source = ($$this$5.isDefined__Z() ? $$this$5 : summary.source$1);
+      var valueA = compositeSummary.author$1;
+      var author = (valueA.isDefined__Z() ? valueA : summary.author$1);
+      var valueA$1 = compositeSummary.description$1;
+      var description = (valueA$1.isDefined__Z() ? valueA$1 : summary.description$1);
+      var valueA$2 = compositeSummary.locale$1;
+      var locale = (valueA$2.isDefined__Z() ? valueA$2 : summary.locale$1);
+      var valueA$3 = compositeSummary.publishedTime$1;
+      var publishedTime = (valueA$3.isDefined__Z() ? valueA$3 : summary.publishedTime$1);
+      var valueA$4 = compositeSummary.source$1;
+      var section = (valueA$4.isDefined__Z() ? valueA$4 : summary.section$1);
+      var valueA$5 = compositeSummary.source$1;
+      var source = (valueA$5.isDefined__Z() ? valueA$5 : summary.source$1);
       $m_Lcom_microsoft_awt_routes_SharedContentProcessor$();
       var this$28 = compositeSummary.tags$1;
       var x$11 = $as_sci_List((this$28.isEmpty__Z() ? $m_sci_Nil$() : this$28.get__O()));
@@ -7166,14 +7182,14 @@ $c_Lcom_microsoft_awt_routes_SharedContentProcessor$.prototype.parseMetaData__sc
       };
       var value = $as_sc_SeqLike(jsx$2).distinct__O();
       var tags = $m_s_Option$().apply__O__s_Option(value);
-      var $$this$6 = compositeSummary.thumbnailUrl$1;
-      var thumbnailUrl = ($$this$6.isDefined__Z() ? $$this$6 : summary.thumbnailUrl$1);
-      var $$this$7 = compositeSummary.title$1;
-      var title = ($$this$7.isDefined__Z() ? $$this$7 : summary.title$1);
-      var $$this$8 = compositeSummary.updatedTime$1;
-      var updatedTime = ($$this$8.isDefined__Z() ? $$this$8 : summary.updatedTime$1);
-      var $$this$9 = compositeSummary.url$1;
-      var url = ($$this$9.isDefined__Z() ? $$this$9 : summary.url$1);
+      var valueA$6 = compositeSummary.thumbnailUrl$1;
+      var thumbnailUrl = (valueA$6.isDefined__Z() ? valueA$6 : summary.thumbnailUrl$1);
+      var valueA$7 = compositeSummary.title$1;
+      var title = (valueA$7.isDefined__Z() ? valueA$7 : summary.title$1);
+      var valueA$8 = compositeSummary.updatedTime$1;
+      var updatedTime = (valueA$8.isDefined__Z() ? valueA$8 : summary.updatedTime$1);
+      var valueA$9 = compositeSummary.url$1;
+      var url = (valueA$9.isDefined__Z() ? valueA$9 : summary.url$1);
       acc = new $c_Lcom_microsoft_awt_routes_SharedContentProcessor$SharedContent().init___s_Option__s_Option__s_Option__s_Option__s_Option__s_Option__s_Option__s_Option__s_Option__s_Option__s_Option(author, description, locale, publishedTime, section, source, tags, thumbnailUrl, title, updatedTime, url);
       these$1 = $as_sc_LinearSeqOptimized(these$1.tail__O())
     };
@@ -7456,7 +7472,9 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.init___ = (function() {
   return this
 });
 $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.createUser__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, userDAO) {
-  var x1 = $m_Lcom_microsoft_awt_data_UserData$UserExtensions$().toData$extension__Lcom_microsoft_awt_models_User__Lorg_scalajs_nodejs_mongodb_MongoDB__s_util_Try($m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().bodyAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Any(request), mongo);
+  var jsx$1 = $m_Lcom_microsoft_awt_data_UserData$UserExtensions$();
+  var model = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().bodyAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Any(request);
+  var x1 = jsx$1.toData$extension__Lcom_microsoft_awt_models_User__Lorg_scalajs_nodejs_mongodb_MongoDB__s_util_Try(model, mongo);
   if ($is_s_util_Success(x1)) {
     var x2 = $as_s_util_Success(x1);
     var user = x2.value$2;
@@ -7493,9 +7511,9 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.createUser__Lorg_scalajs_node
             var x4 = $as_s_util_Failure(x0$1);
             var e = x4.exception$2;
             e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-            var jsx$1 = response$1.status(500);
+            var jsx$2 = response$1.status(500);
             var s = e.getMessage__T();
-            jsx$1.send(s);
+            jsx$2.send(s);
             $asUnit(next$1());
             break matchEnd7
           };
@@ -7506,9 +7524,9 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.createUser__Lorg_scalajs_node
   } else if ($is_s_util_Failure(x1)) {
     var x3 = $as_s_util_Failure(x1);
     var e$1 = x3.exception$2;
-    var jsx$2 = response.status(400);
+    var jsx$3 = response.status(400);
     var s$1 = e$1.getMessage__T();
-    jsx$2.send(s$1);
+    jsx$3.send(s$1);
     $asUnit(next())
   } else {
     throw new $c_s_MatchError().init___O(x1)
@@ -7516,25 +7534,22 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.createUser__Lorg_scalajs_node
 });
 $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getSubmitter__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, userDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID"))) {
-    var jsx$1 = dict.userID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: userID")
   };
-  var userID = $as_T(jsx$1);
+  var userID = $as_T(dict.userID);
   var f$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(ec$6, mongo$6, userID$4) {
     return (function(x$12$2) {
       var fields = ["avatarURL", "firstName", "lastName"];
-      var jsx$3 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-      var $$this = mongo$6.ObjectID;
+      var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+      var $class = mongo$6.ObjectID;
       var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [userID$4]));
       if ($is_sjs_js_ArrayOps(args)) {
         var x2 = $as_sjs_js_ArrayOps(args);
-        var jsx$2 = x2.scala$scalajs$js$ArrayOps$$array$f
+        var jsx$1 = x2.scala$scalajs$js$ArrayOps$$array$f
       } else if ($is_sjs_js_WrappedArray(args)) {
         var x3 = $as_sjs_js_WrappedArray(args);
-        var jsx$2 = x3.array$6
+        var jsx$1 = x3.array$6
       } else {
         var result = [];
         var i = 0;
@@ -7544,11 +7559,11 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getSubmitter__Lorg_scalajs_no
           $uI(result.push(arg1));
           i = ((1 + i) | 0)
         };
-        var jsx$2 = result
+        var jsx$1 = result
       };
-      var y = $newJSObjectWithVarargs($$this, jsx$2);
-      var selector = jsx$3.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
-      var jsx$5 = $m_sjs_js_Dictionary$();
+      var y = $newJSObjectWithVarargs($class, jsx$1);
+      var selector = jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
+      var jsx$4 = $m_sjs_js_Dictionary$();
       var array = [];
       $uI(fields.length);
       var i$1 = 0;
@@ -7561,8 +7576,8 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getSubmitter__Lorg_scalajs_no
         array.push(elem);
         i$1 = ((1 + i$1) | 0)
       };
-      var jsx$4 = x$12$2.find(selector, jsx$5.apply__sc_Seq__sjs_js_Dictionary(new $c_sjs_js_WrappedArray().init___sjs_js_Array(array)));
-      var eta$0$2 = jsx$4.limit(1);
+      var jsx$3 = x$12$2.find(selector, jsx$4.apply__sc_Seq__sjs_js_Dictionary(new $c_sjs_js_WrappedArray().init___sjs_js_Array(array)));
+      var eta$0$2 = jsx$3.limit(1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1$2 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -7612,9 +7627,9 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getSubmitter__Lorg_scalajs_no
           var x7 = $as_s_util_Failure(x0$8);
           var e = x7.exception$2;
           e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-          var jsx$6 = response$8.status(500);
+          var jsx$5 = response$8.status(500);
           var s = e.getMessage__T();
-          jsx$6.send(s);
+          jsx$5.send(s);
           $asUnit(next$8());
           break matchEnd11
         };
@@ -7625,13 +7640,10 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getSubmitter__Lorg_scalajs_no
 });
 $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getEndorsers__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, userDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "endorseeID"))) {
-    var jsx$1 = dict.endorseeID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "endorseeID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: endorseeID")
   };
-  var endorseeID = $as_T(jsx$1);
+  var endorseeID = $as_T(dict.endorseeID);
   var f = new $c_Lcom_microsoft_awt_routes_UserRoutes$$anonfun$getEndorsers$1().init___T(endorseeID);
   $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(userDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$9, next$9) {
     return (function(x0$9$2) {
@@ -7645,9 +7657,9 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getEndorsers__Lorg_scalajs_no
         var x3 = $as_s_util_Failure(x0$9);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$2 = response$9.status(500);
+        var jsx$1 = response$9.status(500);
         var s = e.getMessage__T();
-        jsx$2.send(s);
+        jsx$1.send(s);
         $asUnit(next$9())
       } else {
         throw new $c_s_MatchError().init___O(x0$9)
@@ -7657,19 +7669,15 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getEndorsers__Lorg_scalajs_no
 });
 $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.unlikeUser__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, userDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "endorseeID"))) {
-    var _1 = dict.endorseeID
-  } else {
-    var _1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "endorseeID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: endorseeID")
   };
+  var _1 = dict.endorseeID;
   var dict$1 = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, "endorserID"))) {
-    var _2 = dict$1.endorserID
-  } else {
-    var _2;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, "endorserID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: endorserID")
   };
+  var _2 = dict$1.endorserID;
   var endorseeID = $as_T(_1);
   var endorserID = $as_T(_2);
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(mongo$8, endorseeID$3, endorserID$2) {
@@ -7716,19 +7724,15 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.unlikeUser__Lorg_scalajs_node
 });
 $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.likeUser__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, userDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "endorseeID"))) {
-    var _1 = dict.endorseeID
-  } else {
-    var _1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "endorseeID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: endorseeID")
   };
+  var _1 = dict.endorseeID;
   var dict$1 = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, "endorserID"))) {
-    var _2 = dict$1.endorserID
-  } else {
-    var _2;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, "endorserID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: endorserID")
   };
+  var _2 = dict$1.endorserID;
   var endorseeID = $as_T(_1);
   var endorserID = $as_T(_2);
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(mongo$7, endorseeID$2, endorserID$1) {
@@ -7775,13 +7779,10 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.likeUser__Lorg_scalajs_nodejs
 });
 $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.updateUser__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, userDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID"))) {
-    var jsx$1 = dict.userID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: userID")
   };
-  var userID = $as_T(jsx$1);
+  var userID = $as_T(dict.userID);
   var form = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().bodyAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Any(request);
   var f = new $c_Lcom_microsoft_awt_routes_UserRoutes$$anonfun$updateUser$1().init___Lorg_scalajs_nodejs_mongodb_MongoDB__T__Lcom_microsoft_awt_forms_ProfileEditForm(mongo, userID, form);
   $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(userDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$3, next$3) {
@@ -7796,9 +7797,9 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.updateUser__Lorg_scalajs_node
         var x3 = $as_s_util_Failure(x0$3);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$2 = response$3.status(500);
+        var jsx$1 = response$3.status(500);
         var s = e.getMessage__T();
-        jsx$2.send(s);
+        jsx$1.send(s);
         $asUnit(next$3())
       } else {
         throw new $c_s_MatchError().init___O(x0$3)
@@ -7910,19 +7911,15 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.init__Lorg_scalajs_nodejs_exp
 });
 $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.followUser__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, userDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "followeeID"))) {
-    var _1 = dict.followeeID
-  } else {
-    var _1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "followeeID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: followeeID")
   };
+  var _1 = dict.followeeID;
   var dict$1 = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, "followerID"))) {
-    var _2 = dict$1.followerID
-  } else {
-    var _2;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, "followerID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: followerID")
   };
+  var _2 = dict$1.followerID;
   var followeeID = $as_T(_1);
   var followerID = $as_T(_2);
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(mongo$9, followeeID$2, followerID$1) {
@@ -7969,20 +7966,17 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.followUser__Lorg_scalajs_node
 });
 $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getFollowers__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, userDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "followeeID"))) {
-    var jsx$1 = dict.followeeID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "followeeID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: followeeID")
   };
-  var followeeID = $as_T(jsx$1);
+  var followeeID = $as_T(dict.followeeID);
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(followeeID$1) {
     return (function(x$20$2) {
-      var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+      var jsx$1 = $m_Lorg_scalajs_nodejs_mongodb_package$();
       var y = [followeeID$1];
       var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$in", y)]);
       var y$1 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
-      var $$this = x$20$2.find(jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("followers", y$1)));
+      var cursor = x$20$2.find(jsx$1.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("followers", y$1)));
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -7994,7 +7988,7 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getFollowers__Lorg_scalajs_no
           }
         })
       })(promise);
-      $$this.toArray(arg1);
+      cursor.toArray(arg1);
       return promise
     })
   })(followeeID));
@@ -8010,9 +8004,9 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getFollowers__Lorg_scalajs_no
         var x3 = $as_s_util_Failure(x0$12);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$3 = response$12.status(500);
+        var jsx$2 = response$12.status(500);
         var s = e.getMessage__T();
-        jsx$3.send(s);
+        jsx$2.send(s);
         $asUnit(next$12())
       } else {
         throw new $c_s_MatchError().init___O(x0$12)
@@ -8022,19 +8016,15 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getFollowers__Lorg_scalajs_no
 });
 $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.unfollowUser__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, userDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "followeeID"))) {
-    var _1 = dict.followeeID
-  } else {
-    var _1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "followeeID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: followeeID")
   };
+  var _1 = dict.followeeID;
   var dict$1 = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, "followerID"))) {
-    var _2 = dict$1.followerID
-  } else {
-    var _2;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, "followerID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: followerID")
   };
+  var _2 = dict$1.followerID;
   var followeeID = $as_T(_1);
   var followerID = $as_T(_2);
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(mongo$10, followeeID$3, followerID$2) {
@@ -8131,7 +8121,7 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getUsers__Lorg_scalajs_nodejs
       var index$1 = i$2;
       var arg1$2 = ids[index$1];
       var x$7 = $as_T(arg1$2);
-      var $$this = mongo.ObjectID;
+      var $class = mongo.ObjectID;
       var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [x$7]));
       if ($is_sjs_js_ArrayOps(args)) {
         var x2$1 = $as_sjs_js_ArrayOps(args);
@@ -8150,7 +8140,7 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getUsers__Lorg_scalajs_nodejs
         };
         var jsx$3 = result$1
       };
-      var elem$1 = $newJSObjectWithVarargs($$this, jsx$3);
+      var elem$1 = $newJSObjectWithVarargs($class, jsx$3);
       array.push(elem$1);
       i$2 = ((1 + i$2) | 0)
     };
@@ -8164,7 +8154,7 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getUsers__Lorg_scalajs_nodejs
   };
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(query$1) {
     return (function(x$8$2) {
-      var $$this$1 = x$8$2.find(query$1);
+      var cursor = x$8$2.find(query$1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1$4 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -8176,7 +8166,7 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getUsers__Lorg_scalajs_nodejs
           }
         })
       })(promise);
-      $$this$1.toArray(arg1$4);
+      cursor.toArray(arg1$4);
       return promise
     })
   })(query));
@@ -8287,25 +8277,21 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getUserByUsername__Lorg_scala
 });
 $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getAvatarByID__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__Lorg_scalajs_nodejs_request_Request__V = (function(request, response, next, ec, mongo, userDAO, client) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID"))) {
-    var _1 = dict.userID
-  } else {
-    var _1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: userID")
   };
+  var _1 = dict.userID;
   var dict$1 = request.headers;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, "host"))) {
-    var _2 = dict$1.host
-  } else {
-    var _2;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, "host")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: host")
   };
+  var _2 = dict$1.host;
   var userID = $as_T(_1);
   var host = $as_T(_2);
   var f$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(ec$5, mongo$5, userID$3) {
     return (function(x$11$2) {
       var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-      var $$this = mongo$5.ObjectID;
+      var $class = mongo$5.ObjectID;
       var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [userID$3]));
       if ($is_sjs_js_ArrayOps(args)) {
         var x2 = $as_sjs_js_ArrayOps(args);
@@ -8324,7 +8310,7 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getAvatarByID__Lorg_scalajs_n
         };
         var jsx$1 = result
       };
-      var y = $newJSObjectWithVarargs($$this, jsx$1);
+      var y = $newJSObjectWithVarargs($class, jsx$1);
       var selector = jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
       var eta$0$1 = x$11$2.find(selector).limit(1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
@@ -8349,24 +8335,21 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getAvatarByID__Lorg_scalajs_n
 });
 $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getUserByID__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, userDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID"))) {
-    var jsx$1 = dict.userID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: userID")
   };
-  var userID = $as_T(jsx$1);
+  var userID = $as_T(dict.userID);
   var f$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(ec$2, mongo$2, userID$1) {
     return (function(x$3$2) {
-      var jsx$3 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-      var $$this = mongo$2.ObjectID;
+      var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+      var $class = mongo$2.ObjectID;
       var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [userID$1]));
       if ($is_sjs_js_ArrayOps(args)) {
         var x2 = $as_sjs_js_ArrayOps(args);
-        var jsx$2 = x2.scala$scalajs$js$ArrayOps$$array$f
+        var jsx$1 = x2.scala$scalajs$js$ArrayOps$$array$f
       } else if ($is_sjs_js_WrappedArray(args)) {
         var x3 = $as_sjs_js_WrappedArray(args);
-        var jsx$2 = x3.array$6
+        var jsx$1 = x3.array$6
       } else {
         var result = [];
         var i = 0;
@@ -8376,10 +8359,10 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getUserByID__Lorg_scalajs_nod
           $uI(result.push(arg1));
           i = ((1 + i) | 0)
         };
-        var jsx$2 = result
+        var jsx$1 = result
       };
-      var y = $newJSObjectWithVarargs($$this, jsx$2);
-      var selector = jsx$3.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
+      var y = $newJSObjectWithVarargs($class, jsx$1);
+      var selector = jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
       var eta$0$1 = x$3$2.find(selector).limit(1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1$1 = (function(promise$1) {
@@ -8430,9 +8413,9 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getUserByID__Lorg_scalajs_nod
           var x7 = $as_s_util_Failure(x0$2);
           var e = x7.exception$2;
           e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-          var jsx$4 = response$2.status(500);
+          var jsx$3 = response$2.status(500);
           var s = e.getMessage__T();
-          jsx$4.send(s);
+          jsx$3.send(s);
           $asUnit(next$2());
           break matchEnd11
         };
@@ -8514,7 +8497,7 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.findWorkloadsByUser__p1__
   };
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(query$2) {
     return (function(x$16$2) {
-      var $$this = x$16$2.find(query$2);
+      var cursor = x$16$2.find(query$2);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -8526,31 +8509,37 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.findWorkloadsByUser__p1__
           }
         })
       })(promise);
-      $$this.toArray(arg1);
+      cursor.toArray(arg1);
       return promise
     })
   })(query));
   return $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(workloadDAO, f, ec)
 });
 $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.isActiveOnly__p1__Lorg_scalajs_nodejs_express_Request__Z = (function(request) {
-  var $$this = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request).activeOnly;
-  if (($$this === (void 0))) {
-    var $$this$2 = (void 0)
+  var valueA = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().queryAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Object(request).activeOnly;
+  if ((valueA === (void 0))) {
+    var value = (void 0)
   } else {
-    var $$this$1 = $m_s_Option$().apply__O__s_Option($$this);
-    var $$this$2 = ($$this$1.isEmpty__Z() ? (void 0) : $$this$1.get__O())
+    var opt = $m_s_Option$().apply__O__s_Option(valueA);
+    if (opt.isEmpty__Z()) {
+      var value = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var value = arg1
+    }
   };
-  if (($$this$2 === (void 0))) {
-    var $$this$3 = (void 0)
+  if ((value === (void 0))) {
+    var valueA$1 = (void 0)
   } else {
-    var x$12 = $as_T($$this$2);
-    var $$this$3 = $as_T(x$12.toLowerCase())
+    var x$12 = $as_T(value);
+    var value$1 = $as_T(x$12.toLowerCase());
+    var valueA$1 = value$1
   };
-  return (($$this$3 !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z($$this$3, "true"))
+  return ((valueA$1 !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueA$1, "true"))
 });
 $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.downloadWorkloads__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, workloadDAO) {
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(x$8$2) {
-    var $$this = x$8$2.find();
+    var cursor = x$8$2.find();
     var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
     var arg1 = (function(promise$1) {
       return (function(err$2, result$2) {
@@ -8562,7 +8551,7 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.downloadWorkloads__Lorg_s
         }
       })
     })(promise);
-    $$this.toArray(arg1);
+    cursor.toArray(arg1);
     return promise
   }));
   $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(workloadDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$6, next$6) {
@@ -8593,13 +8582,10 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.downloadWorkloads__Lorg_s
 });
 $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.downloadWorkloadsByUser__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__s_concurrent_Future__V = (function(request, response, next, ec, mongo, groupDAO, workloadDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID"))) {
-    var jsx$1 = dict.userID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: userID")
   };
-  var userID = $as_T(jsx$1);
+  var userID = $as_T(dict.userID);
   this.findWorkloadsByUser__p1__T__Z__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__s_concurrent_Future__s_concurrent_Future(userID, this.isActiveOnly__p1__Lorg_scalajs_nodejs_express_Request__Z(request), ec, mongo, groupDAO, workloadDAO).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$8, next$8) {
     return (function(x0$8$2) {
       var x0$8 = $as_s_util_Try(x0$8$2);
@@ -8616,9 +8602,9 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.downloadWorkloadsByUser__
         var x3 = $as_s_util_Failure(x0$8);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$2 = response$8.status(500);
+        var jsx$1 = response$8.status(500);
         var s = e.getMessage__T();
-        jsx$2.send(s);
+        jsx$1.send(s);
         $asUnit(next$8())
       } else {
         throw new $c_s_MatchError().init___O(x0$8)
@@ -8628,13 +8614,10 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.downloadWorkloadsByUser__
 });
 $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.activateWorkload__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, workloadDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "workloadID"))) {
-    var jsx$1 = dict.workloadID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "workloadID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: workloadID")
   };
-  var workloadID = $as_T(jsx$1);
+  var workloadID = $as_T(dict.workloadID);
   var f = new $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$activateWorkload$1().init___Lorg_scalajs_nodejs_mongodb_MongoDB__T(mongo, workloadID);
   $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(workloadDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$5, next$5) {
     return (function(x0$5$2) {
@@ -8648,9 +8631,9 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.activateWorkload__Lorg_sc
         var x3 = $as_s_util_Failure(x0$5);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$2 = response$5.status(500);
+        var jsx$1 = response$5.status(500);
         var s = e.getMessage__T();
-        jsx$2.send(s);
+        jsx$1.send(s);
         $asUnit(next$5())
       } else {
         throw new $c_s_MatchError().init___O(x0$5)
@@ -8660,24 +8643,21 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.activateWorkload__Lorg_sc
 });
 $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.getWorkloadByID__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, workloadDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "workloadID"))) {
-    var jsx$1 = dict.workloadID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "workloadID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: workloadID")
   };
-  var workloadID = $as_T(jsx$1);
+  var workloadID = $as_T(dict.workloadID);
   var f$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(ec$2, mongo$2, workloadID$1) {
     return (function(x$9$2) {
-      var jsx$3 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-      var $$this = mongo$2.ObjectID;
+      var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+      var $class = mongo$2.ObjectID;
       var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [workloadID$1]));
       if ($is_sjs_js_ArrayOps(args)) {
         var x2 = $as_sjs_js_ArrayOps(args);
-        var jsx$2 = x2.scala$scalajs$js$ArrayOps$$array$f
+        var jsx$1 = x2.scala$scalajs$js$ArrayOps$$array$f
       } else if ($is_sjs_js_WrappedArray(args)) {
         var x3 = $as_sjs_js_WrappedArray(args);
-        var jsx$2 = x3.array$6
+        var jsx$1 = x3.array$6
       } else {
         var result = [];
         var i = 0;
@@ -8687,10 +8667,10 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.getWorkloadByID__Lorg_sca
           $uI(result.push(arg1));
           i = ((1 + i) | 0)
         };
-        var jsx$2 = result
+        var jsx$1 = result
       };
-      var y = $newJSObjectWithVarargs($$this, jsx$2);
-      var selector = jsx$3.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
+      var y = $newJSObjectWithVarargs($class, jsx$1);
+      var selector = jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
       var eta$0$1 = x$9$2.find(selector).limit(1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1$1 = (function(promise$1) {
@@ -8741,9 +8721,9 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.getWorkloadByID__Lorg_sca
           var x7 = $as_s_util_Failure(x0$1);
           var e = x7.exception$2;
           e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-          var jsx$4 = response$1.status(500);
+          var jsx$3 = response$1.status(500);
           var s = e.getMessage__T();
-          jsx$4.send(s);
+          jsx$3.send(s);
           $asUnit(next$1());
           break matchEnd11
         };
@@ -8754,13 +8734,10 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.getWorkloadByID__Lorg_sca
 });
 $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.deactivateWorkload__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, workloadDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "workloadID"))) {
-    var jsx$1 = dict.workloadID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "workloadID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: workloadID")
   };
-  var workloadID = $as_T(jsx$1);
+  var workloadID = $as_T(dict.workloadID);
   var f = new $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$deactivateWorkload$1().init___Lorg_scalajs_nodejs_mongodb_MongoDB__T(mongo, workloadID);
   $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(workloadDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$4, next$4) {
     return (function(x0$4$2) {
@@ -8774,9 +8751,9 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.deactivateWorkload__Lorg_
         var x3 = $as_s_util_Failure(x0$4);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$2 = response$4.status(500);
+        var jsx$1 = response$4.status(500);
         var s = e.getMessage__T();
-        jsx$2.send(s);
+        jsx$1.send(s);
         $asUnit(next$4())
       } else {
         throw new $c_s_MatchError().init___O(x0$4)
@@ -8788,7 +8765,7 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.findWorkloadsByGroup__p1_
   var f$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(groupID$1, ec$3, mongo$6) {
     return (function(x$13$2) {
       var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-      var $$this = mongo$6.ObjectID;
+      var $class = mongo$6.ObjectID;
       var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [groupID$1]));
       if ($is_sjs_js_ArrayOps(args)) {
         var x2 = $as_sjs_js_ArrayOps(args);
@@ -8807,7 +8784,7 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.findWorkloadsByGroup__p1_
         };
         var jsx$1 = result
       };
-      var y = $newJSObjectWithVarargs($$this, jsx$1);
+      var y = $newJSObjectWithVarargs($class, jsx$1);
       var selector = jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
       var eta$0$1 = x$13$2.find(selector).limit(1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
@@ -8837,7 +8814,7 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.findWorkloadsByGroup__p1_
 $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.init__Lorg_scalajs_nodejs_express_Application__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__Lorg_scalajs_nodejs_NodeRequire__V = (function(app, dbFuture, ec, mongo, require) {
   var f$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(ec$1) {
     return (function(x$1$2) {
-      var options = new $c_Lorg_scalajs_nodejs_mongodb_CollectionOptions();
+      var a = new $c_Lorg_scalajs_nodejs_mongodb_CollectionOptions();
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -8849,7 +8826,7 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.init__Lorg_scalajs_nodejs
           }
         })
       })(promise);
-      x$1$2.collection("workloads", options, arg1);
+      x$1$2.collection("workloads", a, arg1);
       var ec$2 = $m_s_concurrent_Future$InternalCallbackExecutor$();
       var boxedClass = ($d_Lcom_microsoft_awt_data_WorkloadDAO.getClassOf().isPrimitive__Z() ? $as_jl_Class($m_s_concurrent_Future$().toBoxed$1.apply__O__O($d_Lcom_microsoft_awt_data_WorkloadDAO.getClassOf())) : $d_Lcom_microsoft_awt_data_WorkloadDAO.getClassOf());
       $m_s_Predef$().require__Z__V((boxedClass !== null));
@@ -8867,7 +8844,7 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.init__Lorg_scalajs_nodejs
   var workloadDAO = $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(dbFuture, f$1, ec);
   var f$3 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(ec$1$1) {
     return (function(x$2$2) {
-      var options$1 = new $c_Lorg_scalajs_nodejs_mongodb_CollectionOptions();
+      var a$1 = new $c_Lorg_scalajs_nodejs_mongodb_CollectionOptions();
       var promise$2 = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1$1 = (function(promise$1$1) {
         return (function(err$2$1, result$2$1) {
@@ -8879,7 +8856,7 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.init__Lorg_scalajs_nodejs
           }
         })
       })(promise$2);
-      x$2$2.collection("groups", options$1, arg1$1);
+      x$2$2.collection("groups", a$1, arg1$1);
       var ec$3 = $m_s_concurrent_Future$InternalCallbackExecutor$();
       var boxedClass$2 = ($d_Lcom_microsoft_awt_data_GroupDAO.getClassOf().isPrimitive__Z() ? $as_jl_Class($m_s_concurrent_Future$().toBoxed$1.apply__O__O($d_Lcom_microsoft_awt_data_GroupDAO.getClassOf())) : $d_Lcom_microsoft_awt_data_GroupDAO.getClassOf());
       $m_s_Predef$().require__Z__V((boxedClass$2 !== null));
@@ -8963,14 +8940,13 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.init__Lorg_scalajs_nodejs
 });
 $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.updateWorkload__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, workloadDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "workloadID"))) {
-    var jsx$1 = dict.workloadID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "workloadID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: workloadID")
   };
-  var workloadID = $as_T(jsx$1);
-  var x1 = $m_Lcom_microsoft_awt_data_WorkloadData$WorkloadExtensions$().toData$extension__Lcom_microsoft_awt_models_Workload__Lorg_scalajs_nodejs_mongodb_MongoDB__s_util_Try($m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().bodyAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Any(request), mongo);
+  var workloadID = $as_T(dict.workloadID);
+  var jsx$1 = $m_Lcom_microsoft_awt_data_WorkloadData$WorkloadExtensions$();
+  var model = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().bodyAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Any(request);
+  var x1 = jsx$1.toData$extension__Lcom_microsoft_awt_models_Workload__Lorg_scalajs_nodejs_mongodb_MongoDB__s_util_Try(model, mongo);
   if ($is_s_util_Success(x1)) {
     var x2 = $as_s_util_Success(x1);
     var workload = x2.value$2;
@@ -9009,13 +8985,10 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.updateWorkload__Lorg_scal
 });
 $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.getWorkloadsByGroup__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__s_concurrent_Future__V = (function(request, response, next, ec, mongo, groupDAO, workloadDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "groupID"))) {
-    var jsx$1 = dict.groupID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "groupID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: groupID")
   };
-  var groupID = $as_T(jsx$1);
+  var groupID = $as_T(dict.groupID);
   this.findWorkloadsByGroup__p1__T__Z__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__s_concurrent_Future__s_concurrent_Future(groupID, this.isActiveOnly__p1__Lorg_scalajs_nodejs_express_Request__Z(request), ec, mongo, groupDAO, workloadDAO).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$12, next$12) {
     return (function(x0$12$2) {
       var x0$12 = $as_s_util_Try(x0$12$2);
@@ -9028,9 +9001,9 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.getWorkloadsByGroup__Lorg
         var x3 = $as_s_util_Failure(x0$12);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$2 = response$12.status(500);
+        var jsx$1 = response$12.status(500);
         var s = e.getMessage__T();
-        jsx$2.send(s);
+        jsx$1.send(s);
         $asUnit(next$12())
       } else {
         throw new $c_s_MatchError().init___O(x0$12)
@@ -9048,7 +9021,7 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.getWorkloads__Lorg_scalaj
   };
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(query$3) {
     return (function(x$10$2) {
-      var $$this = x$10$2.find(query$3);
+      var cursor = x$10$2.find(query$3);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -9060,7 +9033,7 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.getWorkloads__Lorg_scalaj
           }
         })
       })(promise);
-      $$this.toArray(arg1);
+      cursor.toArray(arg1);
       return promise
     })
   })(query));
@@ -9088,14 +9061,13 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.getWorkloads__Lorg_scalaj
 });
 $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.createStatus__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, workloadDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "workloadID"))) {
-    var jsx$1 = dict.workloadID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "workloadID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: workloadID")
   };
-  var workloadID = $as_T(jsx$1);
-  var x1 = $m_Lcom_microsoft_awt_data_WorkloadData$StatusExtensions$().toData$extension__Lcom_microsoft_awt_models_Workload$Status__Lorg_scalajs_nodejs_mongodb_MongoDB__s_util_Try($m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().bodyAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Any(request), mongo);
+  var workloadID = $as_T(dict.workloadID);
+  var jsx$1 = $m_Lcom_microsoft_awt_data_WorkloadData$StatusExtensions$();
+  var model = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().bodyAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Any(request);
+  var x1 = jsx$1.toData$extension__Lcom_microsoft_awt_models_Workload$Status__Lorg_scalajs_nodejs_mongodb_MongoDB__s_util_Try(model, mongo);
   if ($is_s_util_Success(x1)) {
     var x2 = $as_s_util_Success(x1);
     var status = x2.value$2;
@@ -9148,13 +9120,10 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.createStatus__Lorg_scalaj
 });
 $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.downloadWorkloadsByGroup__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__s_concurrent_Future__V = (function(request, response, next, ec, mongo, groupDAO, workloadDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "groupID"))) {
-    var jsx$1 = dict.groupID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "groupID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: groupID")
   };
-  var groupID = $as_T(jsx$1);
+  var groupID = $as_T(dict.groupID);
   this.findWorkloadsByGroup__p1__T__Z__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__s_concurrent_Future__s_concurrent_Future(groupID, this.isActiveOnly__p1__Lorg_scalajs_nodejs_express_Request__Z(request), ec, mongo, groupDAO, workloadDAO).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$7, next$7) {
     return (function(x0$7$2) {
       var x0$7 = $as_s_util_Try(x0$7$2);
@@ -9171,9 +9140,9 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.downloadWorkloadsByGroup_
         var x3 = $as_s_util_Failure(x0$7);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$2 = response$7.status(500);
+        var jsx$1 = response$7.status(500);
         var s = e.getMessage__T();
-        jsx$2.send(s);
+        jsx$1.send(s);
         $asUnit(next$7())
       } else {
         throw new $c_s_MatchError().init___O(x0$7)
@@ -9182,13 +9151,17 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.downloadWorkloadsByGroup_
   })(response, next)), ec)
 });
 $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.createWorkload__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, workloadDAO) {
-  var x1 = $m_Lcom_microsoft_awt_data_WorkloadData$WorkloadExtensions$().toData$extension__Lcom_microsoft_awt_models_Workload__Lorg_scalajs_nodejs_mongodb_MongoDB__s_util_Try($m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().bodyAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Any(request), mongo);
+  var jsx$1 = $m_Lcom_microsoft_awt_data_WorkloadData$WorkloadExtensions$();
+  var model = $m_Lorg_scalajs_nodejs_express_Request$HttpRequestExtensions$().bodyAs$extension__Lorg_scalajs_nodejs_express_Request__sjs_js_Any(request);
+  var x1 = jsx$1.toData$extension__Lcom_microsoft_awt_models_Workload__Lorg_scalajs_nodejs_mongodb_MongoDB__s_util_Try(model, mongo);
   if ($is_s_util_Success(x1)) {
     var x2 = $as_s_util_Success(x1);
     var workload = x2.value$2;
     var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(workload$1) {
       return (function(x$5$2) {
-        return $m_sjs_js_Thenable$ThenableOps$().toFuture$extension__sjs_js_Thenable__s_concurrent_Future(x$5$2.insert(workload$1))
+        var jsx$2 = $m_sjs_js_Thenable$ThenableOps$();
+        var p = x$5$2.insert(workload$1);
+        return jsx$2.toFuture$extension__sjs_js_Thenable__s_concurrent_Future(p)
       })
     })(workload));
     $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(workloadDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$2, next$2) {
@@ -9219,9 +9192,9 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.createWorkload__Lorg_scal
             var x4 = $as_s_util_Failure(x0$2);
             var e = x4.exception$2;
             e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-            var jsx$1 = response$2.status(500);
+            var jsx$3 = response$2.status(500);
             var s = e.getMessage__T();
-            jsx$1.send(s);
+            jsx$3.send(s);
             $asUnit(next$2());
             break matchEnd7
           };
@@ -9232,9 +9205,9 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.createWorkload__Lorg_scal
   } else if ($is_s_util_Failure(x1)) {
     var x3 = $as_s_util_Failure(x1);
     var e$1 = x3.exception$2;
-    var jsx$2 = response.status(400);
+    var jsx$4 = response.status(400);
     var s$1 = e$1.getMessage__T();
-    jsx$2.send(s$1);
+    jsx$4.send(s$1);
     $asUnit(next())
   } else {
     throw new $c_s_MatchError().init___O(x1)
@@ -9242,21 +9215,15 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.createWorkload__Lorg_scal
 });
 $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.deleteStatus__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__V = (function(request, response, next, ec, mongo, workloadDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "workloadID"))) {
-    var jsx$1 = dict.workloadID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "workloadID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: workloadID")
   };
-  var workloadID = $as_T(jsx$1);
+  var workloadID = $as_T(dict.workloadID);
   var dict$1 = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, "statusID"))) {
-    var jsx$2 = dict$1.statusID
-  } else {
-    var jsx$2;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, "statusID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: statusID")
   };
-  var statusID = $as_T(jsx$2);
+  var statusID = $as_T(dict$1.statusID);
   var f = new $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$deleteStatus$1().init___Lorg_scalajs_nodejs_mongodb_MongoDB__T__T(mongo, workloadID, statusID);
   $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(workloadDAO, f, ec).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$9, next$9, statusID$1) {
     return (function(x0$9$2) {
@@ -9284,9 +9251,9 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.deleteStatus__Lorg_scalaj
           var x4 = $as_s_util_Failure(x0$9);
           var e = x4.exception$2;
           e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-          var jsx$3 = response$9.status(500);
+          var jsx$1 = response$9.status(500);
           var s = e.getMessage__T();
-          jsx$3.send(s);
+          jsx$1.send(s);
           $asUnit(next$9());
           break matchEnd7
         };
@@ -9297,13 +9264,10 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.deleteStatus__Lorg_scalaj
 });
 $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.getWorkloadsByUser__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__s_concurrent_Future__V = (function(request, response, next, ec, mongo, groupDAO, workloadDAO) {
   var dict = request.params;
-  if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID"))) {
-    var jsx$1 = dict.userID
-  } else {
-    var jsx$1;
+  if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "userID")))) {
     throw new $c_ju_NoSuchElementException().init___T("key not found: userID")
   };
-  var userID = $as_T(jsx$1);
+  var userID = $as_T(dict.userID);
   this.findWorkloadsByUser__p1__T__Z__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__s_concurrent_Future__s_concurrent_Future(userID, this.isActiveOnly__p1__Lorg_scalajs_nodejs_express_Request__Z(request), ec, mongo, groupDAO, workloadDAO).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$13, next$13) {
     return (function(x0$13$2) {
       var x0$13 = $as_s_util_Try(x0$13$2);
@@ -9316,9 +9280,9 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.getWorkloadsByUser__Lorg_
         var x3 = $as_s_util_Failure(x0$13);
         var e = x3.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$2 = response$13.status(500);
+        var jsx$1 = response$13.status(500);
         var s = e.getMessage__T();
-        jsx$2.send(s);
+        jsx$1.send(s);
         $asUnit(next$13())
       } else {
         throw new $c_s_MatchError().init___O(x0$13)
@@ -9355,65 +9319,8 @@ $c_Lcom_microsoft_awt_routes_package$DAOExtensions$.prototype.init___ = (functio
   return this
 });
 $c_Lcom_microsoft_awt_routes_package$DAOExtensions$.prototype.com$microsoft$awt$routes$DAOExtensions$$link$extension__Lorg_scalajs_nodejs_mongodb_Collection__T__T__T__T__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future = (function($$this, entityID, userID, entitySetName, entityQtyName, mongo) {
-  var jsx$7 = $m_sjs_js_Thenable$ThenableOps$();
-  var $$this$1 = mongo.ObjectID;
-  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [entityID]));
-  if ($is_sjs_js_ArrayOps(args)) {
-    var x2 = $as_sjs_js_ArrayOps(args);
-    var jsx$4 = x2.scala$scalajs$js$ArrayOps$$array$f
-  } else if ($is_sjs_js_WrappedArray(args)) {
-    var x3 = $as_sjs_js_WrappedArray(args);
-    var jsx$4 = x3.array$6
-  } else {
-    var result = [];
-    var i = 0;
-    var len = args.length__I();
-    while ((i < len)) {
-      var arg1 = args.apply__I__O(i);
-      $uI(result.push(arg1));
-      i = ((1 + i) | 0)
-    };
-    var jsx$4 = result
-  };
-  var y = $newJSObjectWithVarargs($$this$1, jsx$4);
-  var jsx$5 = new $c_T2().init___O__O("_id", y);
-  var y$1 = [userID];
-  var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$nin", y$1)]);
-  var y$2 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
-  var jsx$3 = new $c_T2().init___O__O(entitySetName, y$2);
-  var kvps$1 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$exists", false)]);
-  var y$3 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps$1);
-  var array = [jsx$3, new $c_T2().init___O__O(entitySetName, y$3)];
-  var this$29 = $m_sc_Seq$();
-  $m_sjs_js_WrappedArray$();
-  var array$1 = [];
-  $uI(array.length);
-  var i$1 = 0;
-  var len$1 = $uI(array.length);
-  while ((i$1 < len$1)) {
-    var index = i$1;
-    var arg1$1 = array[index];
-    var x$3 = $as_T2(arg1$1);
-    var kvps$2 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([x$3]);
-    var elem = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps$2);
-    array$1.push(elem);
-    i$1 = ((1 + i$1) | 0)
-  };
-  var y$4 = array$1;
-  var kvps$3 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$5, new $c_T2().init___O__O("$or", y$4)]);
-  var jsx$6 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps$3);
-  var kvps$4 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O(entitySetName, userID)]);
-  var y$5 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps$4);
-  var jsx$2 = new $c_T2().init___O__O("$addToSet", y$5);
-  var kvps$5 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O(entityQtyName, 1.0)]);
-  var y$6 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps$5);
-  var kvps$6 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$2, new $c_T2().init___O__O("$inc", y$6)]);
-  var jsx$1 = $$this.findOneAndUpdate(jsx$6, $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps$6), new $c_Lorg_scalajs_nodejs_mongodb_FindAndUpdateOptions((void 0), (void 0), (void 0), false, false));
-  return jsx$7.toFuture$extension__sjs_js_Thenable__s_concurrent_Future(jsx$1)
-});
-$c_Lcom_microsoft_awt_routes_package$DAOExtensions$.prototype.com$microsoft$awt$routes$DAOExtensions$$unlink$extension__Lorg_scalajs_nodejs_mongodb_Collection__T__T__T__T__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future = (function($$this, entityID, userID, entitySetName, entityQtyName, mongo) {
   var jsx$6 = $m_sjs_js_Thenable$ThenableOps$();
-  var $$this$1 = mongo.ObjectID;
+  var $class = mongo.ObjectID;
   var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [entityID]));
   if ($is_sjs_js_ArrayOps(args)) {
     var x2 = $as_sjs_js_ArrayOps(args);
@@ -9432,21 +9339,78 @@ $c_Lcom_microsoft_awt_routes_package$DAOExtensions$.prototype.com$microsoft$awt$
     };
     var jsx$3 = result
   };
-  var y = $newJSObjectWithVarargs($$this$1, jsx$3);
+  var y = $newJSObjectWithVarargs($class, jsx$3);
   var jsx$4 = new $c_T2().init___O__O("_id", y);
+  var y$1 = [userID];
+  var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$nin", y$1)]);
+  var y$2 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
+  var jsx$2 = new $c_T2().init___O__O(entitySetName, y$2);
+  var kvps$1 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$exists", false)]);
+  var y$3 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps$1);
+  var array = [jsx$2, new $c_T2().init___O__O(entitySetName, y$3)];
+  $m_sc_Seq$();
+  $m_sjs_js_WrappedArray$();
+  var array$1 = [];
+  $uI(array.length);
+  var i$1 = 0;
+  var len$1 = $uI(array.length);
+  while ((i$1 < len$1)) {
+    var index = i$1;
+    var arg1$1 = array[index];
+    var x$3 = $as_T2(arg1$1);
+    var kvps$2 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([x$3]);
+    var elem = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps$2);
+    array$1.push(elem);
+    i$1 = ((1 + i$1) | 0)
+  };
+  var y$4 = array$1;
+  var kvps$3 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$4, new $c_T2().init___O__O("$or", y$4)]);
+  var jsx$5 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps$3);
+  var kvps$4 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O(entitySetName, userID)]);
+  var y$5 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps$4);
+  var jsx$1 = new $c_T2().init___O__O("$addToSet", y$5);
+  var kvps$5 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O(entityQtyName, 1.0)]);
+  var y$6 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps$5);
+  var kvps$6 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$1, new $c_T2().init___O__O("$inc", y$6)]);
+  var p = $$this.findOneAndUpdate(jsx$5, $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps$6), new $c_Lorg_scalajs_nodejs_mongodb_FindAndUpdateOptions((void 0), (void 0), (void 0), false, false));
+  return jsx$6.toFuture$extension__sjs_js_Thenable__s_concurrent_Future(p)
+});
+$c_Lcom_microsoft_awt_routes_package$DAOExtensions$.prototype.com$microsoft$awt$routes$DAOExtensions$$unlink$extension__Lorg_scalajs_nodejs_mongodb_Collection__T__T__T__T__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future = (function($$this, entityID, userID, entitySetName, entityQtyName, mongo) {
+  var jsx$5 = $m_sjs_js_Thenable$ThenableOps$();
+  var $class = mongo.ObjectID;
+  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [entityID]));
+  if ($is_sjs_js_ArrayOps(args)) {
+    var x2 = $as_sjs_js_ArrayOps(args);
+    var jsx$2 = x2.scala$scalajs$js$ArrayOps$$array$f
+  } else if ($is_sjs_js_WrappedArray(args)) {
+    var x3 = $as_sjs_js_WrappedArray(args);
+    var jsx$2 = x3.array$6
+  } else {
+    var result = [];
+    var i = 0;
+    var len = args.length__I();
+    while ((i < len)) {
+      var arg1 = args.apply__I__O(i);
+      $uI(result.push(arg1));
+      i = ((1 + i) | 0)
+    };
+    var jsx$2 = result
+  };
+  var y = $newJSObjectWithVarargs($class, jsx$2);
+  var jsx$3 = new $c_T2().init___O__O("_id", y);
   var y$1 = [userID];
   var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$in", y$1)]);
   var y$2 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
-  var kvps$1 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$4, new $c_T2().init___O__O(entitySetName, y$2)]);
-  var jsx$5 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps$1);
+  var kvps$1 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$3, new $c_T2().init___O__O(entitySetName, y$2)]);
+  var jsx$4 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps$1);
   var kvps$2 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O(entitySetName, userID)]);
   var y$3 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps$2);
-  var jsx$2 = new $c_T2().init___O__O("$pull", y$3);
+  var jsx$1 = new $c_T2().init___O__O("$pull", y$3);
   var kvps$3 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O(entityQtyName, (-1.0))]);
   var y$4 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps$3);
-  var kvps$4 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$2, new $c_T2().init___O__O("$inc", y$4)]);
-  var jsx$1 = $$this.findOneAndUpdate(jsx$5, $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps$4), new $c_Lorg_scalajs_nodejs_mongodb_FindAndUpdateOptions((void 0), (void 0), (void 0), false, false));
-  return jsx$6.toFuture$extension__sjs_js_Thenable__s_concurrent_Future(jsx$1)
+  var kvps$4 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$1, new $c_T2().init___O__O("$inc", y$4)]);
+  var p = $$this.findOneAndUpdate(jsx$4, $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps$4), new $c_Lorg_scalajs_nodejs_mongodb_FindAndUpdateOptions((void 0), (void 0), (void 0), false, false));
+  return jsx$5.toFuture$extension__sjs_js_Thenable__s_concurrent_Future(p)
 });
 var $d_Lcom_microsoft_awt_routes_package$DAOExtensions$ = new $TypeData().initClass({
   Lcom_microsoft_awt_routes_package$DAOExtensions$: 0
@@ -9482,7 +9446,12 @@ $c_Lcom_microsoft_awt_routes_package$ResponseExtensions$.prototype.com$microsoft
 $c_Lcom_microsoft_awt_routes_package$ResponseExtensions$.prototype.com$microsoft$awt$routes$ResponseExtensions$$toCSVData$extension__Lorg_scalajs_nodejs_express_Response__sjs_js_Array__T = (function($$this, workloads) {
   var this$2 = new $c_sjs_js_ArrayOps().init___sjs_js_Array(workloads);
   var this$3 = $s_sc_TraversableLike$class__headOption__sc_TraversableLike__s_Option(this$2);
-  var this$6 = (this$3.isEmpty__Z() ? $m_s_None$() : new $c_s_Some().init___O(this$3.get__O()));
+  if (this$3.isEmpty__Z()) {
+    var this$6 = $m_s_None$()
+  } else {
+    var arg1 = this$3.get__O();
+    var this$6 = new $c_s_Some().init___O(arg1)
+  };
   if (this$6.isEmpty__Z()) {
     var this$10 = $m_s_None$()
   } else {
@@ -9496,7 +9465,7 @@ $c_Lcom_microsoft_awt_routes_package$ResponseExtensions$.prototype.com$microsoft
       var index = i;
       var arg1$1 = array[index];
       var x$4 = $as_T(arg1$1);
-      if ((!(x$4 === "_id"))) {
+      if (((x$4 === "_id") !== true)) {
         b.array$6.push(arg1$1)
       };
       i = ((1 + i) | 0)
@@ -10405,7 +10374,11 @@ $c_jl_System$.prototype.init___ = (function() {
   return this
 });
 $c_jl_System$.prototype.currentTimeMillis__J = (function() {
-  return $m_sjsr_RuntimeLong$().fromDouble__D__sjsr_RuntimeLong($uD(new $g.Date().getTime()))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var value = $uD(new $g.Date().getTime());
+  var lo = this$1.scala$scalajs$runtime$RuntimeLong$$fromDoubleImpl__D__I(value);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 var $d_jl_System$ = new $TypeData().initClass({
   jl_System$: 0
@@ -10525,7 +10498,7 @@ function $m_jl_reflect_Array$() {
 /** @constructor */
 function $c_ju_Arrays$() {
   $c_O.call(this);
-  this.qSortThreshold$1 = 0
+  this.inPlaceSortThreshold$1 = 0
 }
 $c_ju_Arrays$.prototype = new $h_O();
 $c_ju_Arrays$.prototype.constructor = $c_ju_Arrays$;
@@ -10545,20 +10518,20 @@ $c_ju_Arrays$.prototype.fill__AI__I__V = (function(a, value) {
     i = ((1 + i) | 0)
   }
 });
-$c_ju_Arrays$.prototype.insertionSortAnyRef__p1__AO__I__I__s_math_Ordering__V = (function(a, i0, iN, ord) {
-  var n = ((iN - i0) | 0);
+$c_ju_Arrays$.prototype.java$util$Arrays$$insertionSortAnyRef__AO__I__I__s_math_Ordering__V = (function(a, start, end, ord) {
+  var n = ((end - start) | 0);
   if ((n >= 2)) {
-    if ((ord.compare__O__O__I(a.u[i0], a.u[((1 + i0) | 0)]) > 0)) {
-      var temp = a.u[i0];
-      a.u[i0] = a.u[((1 + i0) | 0)];
-      a.u[((1 + i0) | 0)] = temp
+    if ((ord.compare__O__O__I(a.u[start], a.u[((1 + start) | 0)]) > 0)) {
+      var temp = a.u[start];
+      a.u[start] = a.u[((1 + start) | 0)];
+      a.u[((1 + start) | 0)] = temp
     };
     var m = 2;
     while ((m < n)) {
-      var next = a.u[((i0 + m) | 0)];
-      if ((ord.compare__O__O__I(next, a.u[(((-1) + ((i0 + m) | 0)) | 0)]) < 0)) {
-        var iA = i0;
-        var iB = (((-1) + ((i0 + m) | 0)) | 0);
+      var next = a.u[((start + m) | 0)];
+      if ((ord.compare__O__O__I(next, a.u[(((-1) + ((start + m) | 0)) | 0)]) < 0)) {
+        var iA = start;
+        var iB = (((-1) + ((start + m) | 0)) | 0);
         while ((((iB - iA) | 0) > 1)) {
           var ix = ((((iA + iB) | 0) >>> 1) | 0);
           if ((ord.compare__O__O__I(next, a.u[ix]) < 0)) {
@@ -10568,7 +10541,7 @@ $c_ju_Arrays$.prototype.insertionSortAnyRef__p1__AO__I__I__s_math_Ordering__V = 
           }
         };
         var ix$2 = ((iA + ((ord.compare__O__O__I(next, a.u[iA]) < 0) ? 0 : 1)) | 0);
-        var i = ((i0 + m) | 0);
+        var i = ((start + m) | 0);
         while ((i > ix$2)) {
           a.u[i] = a.u[(((-1) + i) | 0)];
           i = (((-1) + i) | 0)
@@ -10579,92 +10552,38 @@ $c_ju_Arrays$.prototype.insertionSortAnyRef__p1__AO__I__I__s_math_Ordering__V = 
     }
   }
 });
-$c_ju_Arrays$.prototype.java$util$Arrays$$quickSortAnyRef__AO__I__I__s_math_Ordering__V = (function(a, i0, iN, ord) {
-  x: {
-    _java$util$Arrays$$quickSortAnyRef: while (true) {
-      if ((((iN - i0) | 0) < 16)) {
-        this.insertionSortAnyRef__p1__AO__I__I__s_math_Ordering__V(a, i0, iN, ord)
+$c_ju_Arrays$.prototype.java$util$Arrays$$stableSplitMergeAnyRef__AO__AO__I__I__s_math_Ordering__V = (function(a, temp, start, end, ord) {
+  var length = ((end - start) | 0);
+  if ((length > 16)) {
+    var middle = ((start + ((length / 2) | 0)) | 0);
+    this.java$util$Arrays$$stableSplitMergeAnyRef__AO__AO__I__I__s_math_Ordering__V(a, temp, start, middle, ord);
+    this.java$util$Arrays$$stableSplitMergeAnyRef__AO__AO__I__I__s_math_Ordering__V(a, temp, middle, end, ord);
+    var outIndex = start;
+    var leftInIndex = start;
+    var rightInIndex = middle;
+    while ((outIndex < end)) {
+      if (((leftInIndex < middle) && ((rightInIndex >= end) || ord.lteq__O__O__Z(a.u[leftInIndex], a.u[rightInIndex])))) {
+        temp.u[outIndex] = a.u[leftInIndex];
+        leftInIndex = ((1 + leftInIndex) | 0)
       } else {
-        var iK = ((((i0 + iN) | 0) >>> 1) | 0);
-        var pL = ((ord.compare__O__O__I(a.u[i0], a.u[(((-1) + iN) | 0)]) <= 0) ? ((ord.compare__O__O__I(a.u[i0], a.u[iK]) >= 0) ? i0 : ((ord.compare__O__O__I(a.u[(((-1) + iN) | 0)], a.u[iK]) < 0) ? (((-1) + iN) | 0) : iK)) : ((ord.compare__O__O__I(a.u[i0], a.u[iK]) < 0) ? i0 : ((ord.compare__O__O__I(a.u[(((-1) + iN) | 0)], a.u[iK]) <= 0) ? (((-1) + iN) | 0) : iK)));
-        var pivot = a.u[pL];
-        if ((pL !== iK)) {
-          a.u[pL] = a.u[iK];
-          a.u[iK] = pivot;
-          pL = iK
-        };
-        var pR = ((1 + pL) | 0);
-        var iA = i0;
-        var iB = iN;
-        while ((((pL - iA) | 0) > 0)) {
-          var current = a.u[iA];
-          var x1 = ord.compare__O__O__I(current, pivot);
-          switch (x1) {
-            case 0: {
-              a.u[iA] = a.u[(((-1) + pL) | 0)];
-              a.u[(((-1) + pL) | 0)] = current;
-              pL = (((-1) + pL) | 0);
-              break
-            }
-            default: {
-              if ((x1 < 0)) {
-                iA = ((1 + iA) | 0)
-              } else if ((iB > pR)) {
-                a.u[iA] = a.u[(((-1) + iB) | 0)];
-                a.u[(((-1) + iB) | 0)] = current;
-                iB = (((-1) + iB) | 0)
-              } else {
-                a.u[iA] = a.u[(((-1) + pL) | 0)];
-                a.u[(((-1) + pL) | 0)] = a.u[(((-1) + pR) | 0)];
-                a.u[(((-1) + pR) | 0)] = current;
-                pL = (((-1) + pL) | 0);
-                pR = (((-1) + pR) | 0);
-                iB = (((-1) + iB) | 0)
-              }
-            }
-          }
-        };
-        while ((((iB - pR) | 0) > 0)) {
-          var current$2 = a.u[(((-1) + iB) | 0)];
-          var x1$2 = ord.compare__O__O__I(current$2, pivot);
-          switch (x1$2) {
-            case 0: {
-              a.u[(((-1) + iB) | 0)] = a.u[pR];
-              a.u[pR] = current$2;
-              pR = ((1 + pR) | 0);
-              break
-            }
-            default: {
-              if ((x1$2 > 0)) {
-                iB = (((-1) + iB) | 0)
-              } else {
-                a.u[(((-1) + iB) | 0)] = a.u[pR];
-                a.u[pR] = a.u[pL];
-                a.u[pL] = current$2;
-                iA = ((1 + iA) | 0);
-                pL = ((1 + pL) | 0);
-                pR = ((1 + pR) | 0)
-              }
-            }
-          }
-        };
-        if ((((iA - i0) | 0) < ((iN - iB) | 0))) {
-          this.java$util$Arrays$$quickSortAnyRef__AO__I__I__s_math_Ordering__V(a, i0, iA, ord);
-          i0 = iB;
-          continue _java$util$Arrays$$quickSortAnyRef
-        } else {
-          this.java$util$Arrays$$quickSortAnyRef__AO__I__I__s_math_Ordering__V(a, iB, iN, ord);
-          iN = iA;
-          continue _java$util$Arrays$$quickSortAnyRef
-        }
+        temp.u[outIndex] = a.u[rightInIndex];
+        rightInIndex = ((1 + rightInIndex) | 0)
       };
-      break x
-    }
+      outIndex = ((1 + outIndex) | 0)
+    };
+    $systemArraycopy(temp, start, a, start, length)
+  } else {
+    this.java$util$Arrays$$insertionSortAnyRef__AO__I__I__s_math_Ordering__V(a, start, end, ord)
   }
 });
 $c_ju_Arrays$.prototype.sort__AO__ju_Comparator__V = (function(array, comparator) {
   var ord = new $c_ju_Arrays$$anon$3().init___ju_Comparator(comparator);
-  this.java$util$Arrays$$quickSortAnyRef__AO__I__I__s_math_Ordering__V(array, 0, array.u.length, ord)
+  var end = array.u.length;
+  if ((end > 16)) {
+    this.java$util$Arrays$$stableSplitMergeAnyRef__AO__AO__I__I__s_math_Ordering__V(array, $newArrayObject($d_O.getArrayOf(), [array.u.length]), 0, end, ord)
+  } else {
+    this.java$util$Arrays$$insertionSortAnyRef__AO__I__I__s_math_Ordering__V(array, 0, end, ord)
+  }
 });
 var $d_ju_Arrays$ = new $TypeData().initClass({
   ju_Arrays$: 0
@@ -11429,14 +11348,14 @@ $c_s_util_hashing_MurmurHash3.prototype.mixLast__I__I__I = (function(hash, data)
   var k = data;
   k = $imul((-862048943), k);
   var i = k;
-  k = ((i << 15) | ((i >>> (-15)) | 0));
+  k = ((i << 15) | ((i >>> 17) | 0));
   k = $imul(461845907, k);
   return (hash ^ k)
 });
 $c_s_util_hashing_MurmurHash3.prototype.mix__I__I__I = (function(hash, data) {
   var h = this.mixLast__I__I__I(hash, data);
   var i = h;
-  h = ((i << 13) | ((i >>> (-13)) | 0));
+  h = ((i << 13) | ((i >>> 19) | 0));
   return (((-430675100) + $imul(5, h)) | 0)
 });
 $c_s_util_hashing_MurmurHash3.prototype.avalanche__p1__I__I = (function(hash) {
@@ -11907,7 +11826,13 @@ $c_scm_FlatHashTable$.prototype.newThreshold__I__I__I = (function(_loadFactor, s
   if ((!assertion)) {
     throw new $c_jl_AssertionError().init___O("assertion failed: loadFactor too large; must be < 0.5")
   };
-  return new $c_sjsr_RuntimeLong().init___I(size).$$times__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I(_loadFactor)).$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(1000, 0)).lo$2
+  var hi = (size >> 31);
+  var hi$1 = (_loadFactor >> 31);
+  var lo = $imul(size, _loadFactor);
+  var hi$2 = $m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$timesHi__I__I__I__I__I(size, hi, _loadFactor, hi$1);
+  var this$2 = $m_sjsr_RuntimeLong$();
+  var lo$1 = this$2.divideImpl__I__I__I__I__I(lo, hi$2, 1000, 0);
+  return lo$1
 });
 var $d_scm_FlatHashTable$ = new $TypeData().initClass({
   scm_FlatHashTable$: 0
@@ -12197,7 +12122,12 @@ $c_sjs_js_Thenable$ThenableOps$.prototype.toFuture$extension__sjs_js_Thenable__s
   var p2 = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var x = (function(this$2$1, p2$2) {
     return (function(e$2) {
-      var cause = ($is_jl_Throwable(e$2) ? $as_jl_Throwable(e$2) : new $c_sjs_js_JavaScriptException().init___O(e$2));
+      if ($is_jl_Throwable(e$2)) {
+        var x2 = $as_jl_Throwable(e$2);
+        var cause = x2
+      } else {
+        var cause = new $c_sjs_js_JavaScriptException().init___O(e$2)
+      };
       $s_s_concurrent_Promise$class__failure__s_concurrent_Promise__jl_Throwable__s_concurrent_Promise(p2$2, cause)
     })
   })(this, p2);
@@ -12296,8 +12226,10 @@ $c_sjsr_Bits$.prototype.numberHashCode__D__I = (function(value) {
   if (((iv === value) && ((1.0 / value) !== (-Infinity)))) {
     return iv
   } else {
-    var this$1 = this.doubleToLongBits__D__J(value);
-    return (this$1.lo$2 ^ this$1.hi$2)
+    var t = this.doubleToLongBits__D__J(value);
+    var lo = t.lo$2;
+    var hi = t.hi$2;
+    return (lo ^ hi)
   }
 });
 $c_sjsr_Bits$.prototype.doubleToLongBitsPolyfill__p1__D__J = (function(value) {
@@ -12363,12 +12295,14 @@ $c_sjsr_Bits$.prototype.doubleToLongBitsPolyfill__p1__D__J = (function(value) {
   var hif = $uI((x$1 | 0));
   var hi = (((s$1 ? (-2147483648) : 0) | (e$1 << 20)) | hif);
   var lo = $uI((f$3 | 0));
-  return new $c_sjsr_RuntimeLong().init___I(hi).$$less$less__I__sjsr_RuntimeLong(32).$$bar__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I((-1), 0).$$amp__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I(lo)))
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_sjsr_Bits$.prototype.doubleToLongBits__D__J = (function(value) {
   if (this.scala$scalajs$runtime$Bits$$$undareTypedArraysSupported$f) {
     this.float64Array$1[0] = value;
-    return new $c_sjsr_RuntimeLong().init___I($uI(this.int32Array$1[this.highOffset$1])).$$less$less__I__sjsr_RuntimeLong(32).$$bar__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I((-1), 0).$$amp__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I($uI(this.int32Array$1[this.lowOffset$1]))))
+    var value$1 = $uI(this.int32Array$1[this.highOffset$1]);
+    var value$2 = $uI(this.int32Array$1[this.lowOffset$1]);
+    return new $c_sjsr_RuntimeLong().init___I__I(value$2, value$1)
   } else {
     return this.doubleToLongBitsPolyfill__p1__D__J(value)
   }
@@ -12542,23 +12476,17 @@ $c_sjsr_StackTrace$.prototype.extractOpera10a__p1__sjs_js_Dynamic__sjs_js_Array 
   while ((i < len)) {
     var mtch = lineRE.exec($as_T(lines[i]));
     if ((mtch !== null)) {
-      var $$this = mtch[3];
-      var fnName = $as_T((($$this === (void 0)) ? "{anonymous}" : $$this));
-      var $$this$1 = mtch[2];
-      if (($$this$1 === (void 0))) {
-        var jsx$3;
+      var value = mtch[3];
+      var fnName = $as_T(((value === (void 0)) ? "{anonymous}" : value));
+      var value$1 = mtch[2];
+      if ((value$1 === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$3 = $$this$1
       };
-      var $$this$2 = mtch[1];
-      if (($$this$2 === (void 0))) {
-        var jsx$2;
+      var value$2 = mtch[1];
+      if ((value$2 === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$2 = $$this$2
       };
-      var jsx$1 = result.push(((((fnName + "()@") + jsx$3) + ":") + jsx$2));
+      var jsx$1 = result.push(((((fnName + "()@") + value$1) + ":") + value$2));
       $uI(jsx$1)
     };
     i = ((2 + i) | 0)
@@ -12581,28 +12509,22 @@ $c_sjsr_StackTrace$.prototype.extractOpera10b__p1__sjs_js_Dynamic__sjs_js_Array 
   while ((i < len)) {
     var mtch = lineRE.exec($as_T(lines[i]));
     if ((mtch !== null)) {
-      var $$this = mtch[1];
-      if (($$this === (void 0))) {
+      var value = mtch[1];
+      if ((value === (void 0))) {
         var fnName = "global code"
       } else {
-        var x$3 = $as_T($$this);
+        var x$3 = $as_T(value);
         var fnName = (x$3 + "()")
       };
-      var $$this$1 = mtch[2];
-      if (($$this$1 === (void 0))) {
-        var jsx$3;
+      var value$1 = mtch[2];
+      if ((value$1 === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$3 = $$this$1
       };
-      var $$this$2 = mtch[3];
-      if (($$this$2 === (void 0))) {
-        var jsx$2;
+      var value$2 = mtch[3];
+      if ((value$2 === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$2 = $$this$2
       };
-      var jsx$1 = result.push(((((fnName + "@") + jsx$3) + ":") + jsx$2));
+      var jsx$1 = result.push(((((fnName + "@") + value$1) + ":") + value$2));
       $uI(jsx$1)
     };
     i = ((1 + i) | 0)
@@ -12614,13 +12536,10 @@ $c_sjsr_StackTrace$.prototype.decodeClassName__p1__T__T = (function(encodedName)
   var dict = this.decompressedClasses__p1__sjs_js_Dictionary();
   if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, encoded))) {
     var dict$1 = this.decompressedClasses__p1__sjs_js_Dictionary();
-    if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, encoded))) {
-      var jsx$1 = dict$1[encoded]
-    } else {
-      var jsx$1;
+    if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, encoded)))) {
       throw new $c_ju_NoSuchElementException().init___T(("key not found: " + encoded))
     };
-    var base = $as_T(jsx$1)
+    var base = $as_T(dict$1[encoded])
   } else {
     var base = this.loop$1__p1__I__T__T(0, encoded)
   };
@@ -12666,25 +12585,19 @@ $c_sjsr_StackTrace$.prototype.extractClassMethod__p1__T__T2 = (function(function
     }
   };
   if ((mtch !== null)) {
-    var $$this = mtch[1];
-    if (($$this === (void 0))) {
-      var jsx$1;
+    var value = mtch[1];
+    if ((value === (void 0))) {
       throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-    } else {
-      var jsx$1 = $$this
     };
-    var className = this.decodeClassName__p1__T__T($as_T(jsx$1));
+    var className = this.decodeClassName__p1__T__T($as_T(value));
     if (isModule) {
       var methodName = "<clinit>"
     } else {
-      var $$this$1 = mtch[2];
-      if (($$this$1 === (void 0))) {
-        var jsx$2;
+      var value$1 = mtch[2];
+      if ((value$1 === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$2 = $$this$1
       };
-      var methodName = this.decodeMethodName__p1__T__T($as_T(jsx$2))
+      var methodName = this.decodeMethodName__p1__T__T($as_T(value$1))
     };
     return new $c_T2().init___O__O(className, methodName)
   } else {
@@ -12817,34 +12730,25 @@ $c_sjsr_StackTrace$.prototype.extractOpera11__p1__sjs_js_Dynamic__sjs_js_Array =
   while ((i < len)) {
     var mtch = lineRE.exec($as_T(lines[i]));
     if ((mtch !== null)) {
-      var $$this = mtch[4];
-      if (($$this === (void 0))) {
-        var jsx$4;
+      var value = mtch[4];
+      if ((value === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$4 = $$this
       };
-      var jsx$3 = $as_T(jsx$4);
-      var $$this$1 = mtch[1];
-      if (($$this$1 === (void 0))) {
-        var jsx$2;
+      var jsx$1 = $as_T(value);
+      var value$1 = mtch[1];
+      if ((value$1 === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$2 = $$this$1
       };
-      var $$this$2 = mtch[2];
-      if (($$this$2 === (void 0))) {
-        var jsx$1;
+      var value$2 = mtch[2];
+      if ((value$2 === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$1 = $$this$2
       };
-      var location = ((((jsx$3 + ":") + jsx$2) + ":") + jsx$1);
-      var $$this$3 = mtch[2];
-      var fnName0 = $as_T((($$this$3 === (void 0)) ? "global code" : $$this$3));
+      var location = ((((jsx$1 + ":") + value$1) + ":") + value$2);
+      var value$3 = mtch[2];
+      var fnName0 = $as_T(((value$3 === (void 0)) ? "global code" : value$3));
       var x$1 = $as_T(fnName0.replace($m_sjsr_StackTrace$StringRE$().re$extension0__T__sjs_js_RegExp("<anonymous function: (\\S+)>"), "$1"));
-      var jsx$5 = x$1.replace($m_sjsr_StackTrace$StringRE$().re$extension0__T__sjs_js_RegExp("<anonymous function>"), "{anonymous}");
-      var fnName = $as_T(jsx$5);
+      var jsx$2 = x$1.replace($m_sjsr_StackTrace$StringRE$().re$extension0__T__sjs_js_RegExp("<anonymous function>"), "{anonymous}");
+      var fnName = $as_T(jsx$2);
       $uI(result.push(((fnName + "@") + location)))
     };
     i = ((2 + i) | 0)
@@ -12859,122 +12763,87 @@ $c_sjsr_StackTrace$.prototype.normalizedLinesToStackTrace__p1__sjs_js_Array__Ajl
   while ((i < $uI(lines.length))) {
     var line = $as_T(lines[i]);
     if ((line === null)) {
-      var jsx$1;
       throw new $c_jl_NullPointerException().init___()
-    } else {
-      var jsx$1 = line
     };
-    if ((jsx$1 !== "")) {
+    if ((line !== "")) {
       var mtch1 = NormalizedFrameLineWithColumn.exec(line);
       if ((mtch1 !== null)) {
-        var $$this = mtch1[1];
-        if (($$this === (void 0))) {
-          var jsx$2;
+        var value = mtch1[1];
+        if ((value === (void 0))) {
           throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-        } else {
-          var jsx$2 = $$this
         };
-        var x1 = this.extractClassMethod__p1__T__T2($as_T(jsx$2));
-        if ((x1 !== null)) {
-          var className = $as_T(x1.$$und1__O());
-          var methodName = $as_T(x1.$$und2__O());
-          var x$1_$_$$und1$f = className;
-          var x$1_$_$$und2$f = methodName
-        } else {
-          var x$1_$_$$und1$f;
-          var x$1_$_$$und2$f;
+        var x1 = this.extractClassMethod__p1__T__T2($as_T(value));
+        if ((x1 === null)) {
           throw new $c_s_MatchError().init___O(x1)
         };
-        var className$2 = $as_T(x$1_$_$$und1$f);
-        var methodName$2 = $as_T(x$1_$_$$und2$f);
-        var $$this$1 = mtch1[2];
-        if (($$this$1 === (void 0))) {
-          var jsx$4;
+        var className = $as_T(x1.$$und1__O());
+        var methodName = $as_T(x1.$$und2__O());
+        var value$1 = mtch1[2];
+        if ((value$1 === (void 0))) {
           throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-        } else {
-          var jsx$4 = $$this$1
         };
-        var fileName = $as_T(jsx$4);
-        var $$this$2 = mtch1[3];
-        if (($$this$2 === (void 0))) {
-          var jsx$5;
+        var fileName = $as_T(value$1);
+        var value$2 = mtch1[3];
+        if ((value$2 === (void 0))) {
           throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-        } else {
-          var jsx$5 = $$this$2
         };
-        var this$12 = new $c_sci_StringOps().init___T($as_T(jsx$5));
+        var x = $as_T(value$2);
+        var this$12 = new $c_sci_StringOps().init___T(x);
         var this$14 = $m_jl_Integer$();
-        var s = this$12.repr$1;
-        var lineNumber = this$14.parseInt__T__I__I(s, 10);
-        var $$this$4 = mtch1[4];
-        if (($$this$4 === (void 0))) {
-          var jsx$6;
+        var $$this = this$12.repr$1;
+        var lineNumber = this$14.parseInt__T__I__I($$this, 10);
+        var value$3 = mtch1[4];
+        if ((value$3 === (void 0))) {
           throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-        } else {
-          var jsx$6 = $$this$4
         };
-        var this$19 = new $c_sci_StringOps().init___T($as_T(jsx$6));
+        var x$1 = $as_T(value$3);
+        var this$19 = new $c_sci_StringOps().init___T(x$1);
         var this$21 = $m_jl_Integer$();
-        var s$1 = this$19.repr$1;
-        var columnNumber = this$21.parseInt__T__I__I(s$1, 10);
-        var jsx$3 = trace.push({
-          "declaringClass": className$2,
-          "methodName": methodName$2,
+        var $$this$1 = this$19.repr$1;
+        var value$4 = this$21.parseInt__T__I__I($$this$1, 10);
+        var jsx$1 = trace.push({
+          "declaringClass": className,
+          "methodName": methodName,
           "fileName": fileName,
           "lineNumber": lineNumber,
-          "columnNumber": ((columnNumber === (void 0)) ? (void 0) : columnNumber)
+          "columnNumber": ((value$4 === (void 0)) ? (void 0) : value$4)
         });
-        $uI(jsx$3)
+        $uI(jsx$1)
       } else {
         var mtch2 = NormalizedFrameLine.exec(line);
         if ((mtch2 !== null)) {
-          var $$this$6 = mtch2[1];
-          if (($$this$6 === (void 0))) {
-            var jsx$7;
+          var value$5 = mtch2[1];
+          if ((value$5 === (void 0))) {
             throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-          } else {
-            var jsx$7 = $$this$6
           };
-          var x1$2 = this.extractClassMethod__p1__T__T2($as_T(jsx$7));
-          if ((x1$2 !== null)) {
-            var className$3 = $as_T(x1$2.$$und1__O());
-            var methodName$3 = $as_T(x1$2.$$und2__O());
-            var x$2$1_$_$$und1$f = className$3;
-            var x$2$1_$_$$und2$f = methodName$3
-          } else {
-            var x$2$1_$_$$und1$f;
-            var x$2$1_$_$$und2$f;
+          var x1$2 = this.extractClassMethod__p1__T__T2($as_T(value$5));
+          if ((x1$2 === null)) {
             throw new $c_s_MatchError().init___O(x1$2)
           };
-          var className$4 = $as_T(x$2$1_$_$$und1$f);
-          var methodName$4 = $as_T(x$2$1_$_$$und2$f);
-          var $$this$7 = mtch2[2];
-          if (($$this$7 === (void 0))) {
-            var jsx$9;
+          var className$3 = $as_T(x1$2.$$und1__O());
+          var methodName$3 = $as_T(x1$2.$$und2__O());
+          var value$6 = mtch2[2];
+          if ((value$6 === (void 0))) {
             throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-          } else {
-            var jsx$9 = $$this$7
           };
-          var fileName$1 = $as_T(jsx$9);
-          var $$this$8 = mtch2[3];
-          if (($$this$8 === (void 0))) {
-            var jsx$10;
+          var fileName$1 = $as_T(value$6);
+          var value$7 = mtch2[3];
+          if ((value$7 === (void 0))) {
             throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-          } else {
-            var jsx$10 = $$this$8
           };
-          var this$43 = new $c_sci_StringOps().init___T($as_T(jsx$10));
+          var x$2 = $as_T(value$7);
+          var this$43 = new $c_sci_StringOps().init___T(x$2);
           var this$45 = $m_jl_Integer$();
-          var s$2 = this$43.repr$1;
-          var lineNumber$1 = this$45.parseInt__T__I__I(s$2, 10);
-          var jsx$8 = trace.push({
-            "declaringClass": className$4,
-            "methodName": methodName$4,
+          var $$this$2 = this$43.repr$1;
+          var lineNumber$1 = this$45.parseInt__T__I__I($$this$2, 10);
+          var jsx$2 = trace.push({
+            "declaringClass": className$3,
+            "methodName": methodName$3,
             "fileName": fileName$1,
             "lineNumber": lineNumber$1,
             "columnNumber": (void 0)
           });
-          $uI(jsx$8)
+          $uI(jsx$2)
         } else {
           $uI(trace.push({
             "declaringClass": "<jscode>",
@@ -12988,17 +12857,17 @@ $c_sjsr_StackTrace$.prototype.normalizedLinesToStackTrace__p1__sjs_js_Array__Ajl
     };
     i = ((1 + i) | 0)
   };
-  var $$this$10 = $env.sourceMapper;
-  var mappedTrace = (($$this$10 === (void 0)) ? trace : $$this$10(trace));
+  var value$8 = $env.sourceMapper;
+  var mappedTrace = ((value$8 === (void 0)) ? trace : value$8(trace));
   var result = $newArrayObject($d_jl_StackTraceElement.getArrayOf(), [$uI(mappedTrace.length)]);
   i = 0;
   while ((i < $uI(mappedTrace.length))) {
     var jsSte = mappedTrace[i];
     var ste = new $c_jl_StackTraceElement().init___T__T__T__I($as_T(jsSte.declaringClass), $as_T(jsSte.methodName), $as_T(jsSte.fileName), $uI(jsSte.lineNumber));
-    var $$this$11 = jsSte.columnNumber;
-    if (($$this$11 !== (void 0))) {
-      var columnNumber$1 = $uI($$this$11);
-      ste.setColumnNumber(columnNumber$1)
+    var value$9 = jsSte.columnNumber;
+    if ((value$9 !== (void 0))) {
+      var columnNumber = $uI(value$9);
+      ste.setColumnNumber(columnNumber)
     };
     result.u[i] = ste;
     i = ((1 + i) | 0)
@@ -13015,21 +12884,15 @@ $c_sjsr_StackTrace$.prototype.extractOpera9__p1__sjs_js_Dynamic__sjs_js_Array = 
   while ((i < len)) {
     var mtch = lineRE.exec($as_T(lines[i]));
     if ((mtch !== null)) {
-      var $$this = mtch[2];
-      if (($$this === (void 0))) {
-        var jsx$3;
+      var value = mtch[2];
+      if ((value === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$3 = $$this
       };
-      var $$this$1 = mtch[1];
-      if (($$this$1 === (void 0))) {
-        var jsx$2;
+      var value$1 = mtch[1];
+      if ((value$1 === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$2 = $$this$1
       };
-      var jsx$1 = result.push(((("{anonymous}()@" + jsx$3) + ":") + jsx$2));
+      var jsx$1 = result.push(((("{anonymous}()@" + value) + ":") + value$1));
       $uI(jsx$1)
     };
     i = ((2 + i) | 0)
@@ -13052,13 +12915,10 @@ $c_sjsr_StackTrace$.prototype.loop$1__p1__I__T__T = (function(i, encoded$1) {
       var prefix = $as_T(this.compressedPrefixes__p1__sjs_js_Array()[i]);
       if ((($uI(encoded$1.length) >= 0) && ($as_T(encoded$1.substring(0, $uI(prefix.length))) === prefix))) {
         var dict = this.decompressedPrefixes__p1__sjs_js_Dictionary();
-        if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, prefix))) {
-          var jsx$2 = dict[prefix]
-        } else {
-          var jsx$2;
+        if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, prefix)))) {
           throw new $c_ju_NoSuchElementException().init___T(("key not found: " + prefix))
         };
-        var jsx$1 = $as_T(jsx$2);
+        var jsx$1 = $as_T(dict[prefix]);
         var beginIndex = $uI(prefix.length);
         return (("" + jsx$1) + $as_T(encoded$1.substring(beginIndex)))
       } else {
@@ -13091,8 +12951,8 @@ $c_sjsr_StackTrace$.prototype.decompressedPrefixes__p1__sjs_js_Dictionary = (fun
   return (((4 & this.bitmap$0$1) === 0) ? this.decompressedPrefixes$lzycompute__p1__sjs_js_Dictionary() : this.decompressedPrefixes$1)
 });
 $c_sjsr_StackTrace$.prototype.extractRhino__p1__sjs_js_Dynamic__sjs_js_Array = (function(e) {
-  var $$this = e.stack;
-  var x = $as_T((($$this === (void 0)) ? "" : $$this));
+  var value = e.stack;
+  var x = $as_T(((value === (void 0)) ? "" : value));
   var jsx$3 = x.replace($m_sjsr_StackTrace$StringRE$().re$extension1__T__T__sjs_js_RegExp("^\\s+at\\s+", "gm"), "");
   var x$1 = $as_T(jsx$3);
   var jsx$2 = x$1.replace($m_sjsr_StackTrace$StringRE$().re$extension1__T__T__sjs_js_RegExp("^(.+?)(?: \\((.+)\\))?$", "gm"), "$2@$1");
@@ -13240,8 +13100,12 @@ $c_sr_BoxesRunTime$.prototype.equalsCharObject__jl_Character__O__Z = (function(x
       var x2$1 = $uD(x3);
       return (x2$1 === xc.value$1)
     } else if ($is_sjsr_RuntimeLong(x3)) {
-      var x3$1 = $uJ(x3);
-      return x3$1.equals__sjsr_RuntimeLong__Z(new $c_sjsr_RuntimeLong().init___I(xc.value$1))
+      var t = $uJ(x3);
+      var lo = t.lo$2;
+      var hi = t.hi$2;
+      var value = xc.value$1;
+      var hi$1 = (value >> 31);
+      return ((lo === value) && (hi === hi$1))
     } else {
       return ((x3 === null) ? (xc === null) : $objectEquals(x3, xc))
     }
@@ -13259,8 +13123,12 @@ $c_sr_BoxesRunTime$.prototype.equalsNumObject__jl_Number__O__Z = (function(xn, y
       var x2$1 = $uD(xn);
       return (x2$1 === x3.value$1)
     } else if ($is_sjsr_RuntimeLong(xn)) {
-      var x3$1 = $uJ(xn);
-      return x3$1.equals__sjsr_RuntimeLong__Z(new $c_sjsr_RuntimeLong().init___I(x3.value$1))
+      var t = $uJ(xn);
+      var lo = t.lo$2;
+      var hi = t.hi$2;
+      var value = x3.value$1;
+      var hi$1 = (value >> 31);
+      return ((lo === value) && (hi === hi$1))
     } else {
       return ((xn === null) ? (x3 === null) : $objectEquals(xn, x3))
     }
@@ -13288,8 +13156,10 @@ $c_sr_BoxesRunTime$.prototype.equalsNumNum__jl_Number__jl_Number__Z = (function(
       var x2$2 = $uD(yn);
       return (x2 === x2$2)
     } else if ($is_sjsr_RuntimeLong(yn)) {
-      var x3 = $uJ(yn);
-      return (x2 === x3.toDouble__D())
+      var t = $uJ(yn);
+      var lo = t.lo$2;
+      var hi = t.hi$2;
+      return (x2 === $m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$toDouble__I__I__D(lo, hi))
     } else if ($is_s_math_ScalaNumber(yn)) {
       var x4 = $as_s_math_ScalaNumber(yn);
       return x4.equals__O__Z(x2)
@@ -13297,16 +13167,20 @@ $c_sr_BoxesRunTime$.prototype.equalsNumNum__jl_Number__jl_Number__Z = (function(
       return false
     }
   } else if ($is_sjsr_RuntimeLong(xn)) {
-    var x3$2 = $uJ(xn);
+    var t$1 = $uJ(xn);
+    var lo$1 = t$1.lo$2;
+    var hi$1 = t$1.hi$2;
     if ($is_sjsr_RuntimeLong(yn)) {
-      var x2$3 = $uJ(yn);
-      return x3$2.equals__sjsr_RuntimeLong__Z(x2$3)
+      var t$2 = $uJ(yn);
+      var lo$2 = t$2.lo$2;
+      var hi$2 = t$2.hi$2;
+      return ((lo$1 === lo$2) && (hi$1 === hi$2))
     } else if (((typeof yn) === "number")) {
       var x3$3 = $uD(yn);
-      return (x3$2.toDouble__D() === x3$3)
+      return ($m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$toDouble__I__I__D(lo$1, hi$1) === x3$3)
     } else if ($is_s_math_ScalaNumber(yn)) {
       var x4$2 = $as_s_math_ScalaNumber(yn);
-      return x4$2.equals__O__Z(x3$2)
+      return x4$2.equals__O__Z(new $c_sjsr_RuntimeLong().init___I__I(lo$1, hi$1))
     } else {
       return false
     }
@@ -13394,8 +13268,10 @@ $c_sr_ScalaRunTime$.prototype.hash__O__I = (function(x) {
       var x2 = $uD(n);
       return $m_sr_Statics$().doubleHash__D__I(x2)
     } else if ($is_sjsr_RuntimeLong(n)) {
-      var x3 = $uJ(n);
-      return $m_sr_Statics$().longHash__J__I(x3)
+      var t = $uJ(n);
+      var lo = t.lo$2;
+      var hi = t.hi$2;
+      return $m_sr_Statics$().longHash__J__I(new $c_sjsr_RuntimeLong().init___I__I(lo, hi))
     } else {
       return $objectHashCode(n)
     }
@@ -13522,14 +13398,16 @@ $c_sr_Statics$.prototype.doubleHash__D__I = (function(dv) {
   if ((iv === dv)) {
     return iv
   } else {
-    var lv = $m_sjsr_RuntimeLong$().fromDouble__D__sjsr_RuntimeLong(dv);
-    return ((lv.toDouble__D() === dv) ? (lv.lo$2 ^ lv.hi$2) : $m_sjsr_Bits$().numberHashCode__D__I(dv))
+    var this$1 = $m_sjsr_RuntimeLong$();
+    var lo = this$1.scala$scalajs$runtime$RuntimeLong$$fromDoubleImpl__D__I(dv);
+    var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+    return (($m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$toDouble__I__I__D(lo, hi) === dv) ? (lo ^ hi) : $m_sjsr_Bits$().numberHashCode__D__I(dv))
   }
 });
 $c_sr_Statics$.prototype.longHash__J__I = (function(lv) {
   var lo = lv.lo$2;
-  var hi = lv.hi$2;
-  return ((hi === (lo >> 31)) ? lo : (lo ^ hi))
+  var lo$1 = lv.hi$2;
+  return ((lo$1 === (lo >> 31)) ? lo : (lo ^ lo$1))
 });
 var $d_sr_Statics$ = new $TypeData().initClass({
   sr_Statics$: 0
@@ -13606,11 +13484,13 @@ $c_Lcom_microsoft_awt_AWTServerJsApp$.prototype.$$js$exported$meth$main__O = (fu
 });
 $c_Lcom_microsoft_awt_AWTServerJsApp$.prototype.startServer__Lorg_scalajs_nodejs_Bootstrap__V = (function(bootstrap) {
   var require = bootstrap.require;
-  var startTime = $m_jl_System$().currentTimeMillis__J();
+  var t = $m_jl_System$().currentTimeMillis__J();
+  var lo = t.lo$2;
+  var hi = t.hi$2;
   var dict = $g.process.env;
-  var $$this = ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "port")) ? new $c_s_Some().init___O(dict.port) : $m_s_None$());
-  if ($$this.isDefined__Z()) {
-    var this$7 = $$this
+  var valueA = ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "port")) ? new $c_s_Some().init___O(dict.port) : $m_s_None$());
+  if (valueA.isDefined__Z()) {
+    var this$7 = valueA
   } else {
     var dict$1 = $g.process.env;
     var this$7 = ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, "PORT")) ? new $c_s_Some().init___O(dict$1.PORT) : $m_s_None$())
@@ -13619,36 +13499,38 @@ $c_Lcom_microsoft_awt_AWTServerJsApp$.prototype.startServer__Lorg_scalajs_nodejs
   var dict$2 = $g.process.env;
   var this$10 = ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$2, "db_connection")) ? new $c_s_Some().init___O(dict$2.db_connection) : $m_s_None$());
   var connectionString = $as_T((this$10.isEmpty__Z() ? "mongodb://localhost:27017/msatool" : this$10.get__O()));
-  $m_Lorg_scalajs_nodejs_globals_Process$ProcessExtensions$().onUncaughtException$extension__Lorg_scalajs_nodejs_globals_Process__F1__Lorg_scalajs_nodejs_globals_Process($g.process, new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(err$2) {
+  var jsx$1 = $m_Lorg_scalajs_nodejs_globals_Process$ProcessExtensions$();
+  var process = $g.process;
+  jsx$1.onUncaughtException$extension__Lorg_scalajs_nodejs_globals_Process__F1__Lorg_scalajs_nodejs_globals_Process(process, new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(err$2) {
     $g.console.error("An uncaught exception was fired:");
     $g.console.error(err$2.stack)
   })));
   $g.console.log("Loading Express modules...");
   var express = $m_Lorg_scalajs_nodejs_express_Express$().apply__Lorg_scalajs_nodejs_NodeRequire__Lorg_scalajs_nodejs_express_Express(require);
-  var app = express();
-  var wss = $m_Lorg_scalajs_nodejs_expressws_ExpressWS$().apply__Lorg_scalajs_nodejs_express_Application__Lorg_scalajs_nodejs_NodeRequire__Lorg_scalajs_nodejs_expressws_WsInstance(app, require);
+  var router = express();
+  var wss = $m_Lorg_scalajs_nodejs_expressws_ExpressWS$().apply__Lorg_scalajs_nodejs_express_Application__Lorg_scalajs_nodejs_NodeRequire__Lorg_scalajs_nodejs_expressws_WsInstance(router, require);
   var fileUpload = $m_Lorg_scalajs_nodejs_express_fileupload_ExpressFileUpload$().apply__Lorg_scalajs_nodejs_NodeRequire__Lorg_scalajs_nodejs_express_fileupload_ExpressFileUpload(require);
   $g.console.log("Loading MongoDB module...");
   var mongo = $m_Lorg_scalajs_nodejs_mongodb_MongoDB$().apply__Lorg_scalajs_nodejs_NodeRequire__Lorg_scalajs_nodejs_mongodb_MongoDB(require);
   $g.console.log("Setting up body parsers...");
   var bodyParser = $m_Lorg_scalajs_nodejs_bodyparser_BodyParser$().apply__Lorg_scalajs_nodejs_NodeRequire__Lorg_scalajs_nodejs_bodyparser_BodyParser(require);
-  app.use(bodyParser.json());
+  router.use(bodyParser.json());
   var a = new $c_Lorg_scalajs_nodejs_bodyparser_UrlEncodedBodyOptions(true);
-  var jsx$1 = bodyParser.urlencoded(a);
-  app.use(jsx$1);
+  var jsx$2 = bodyParser.urlencoded(a);
+  router.use(jsx$2);
   $g.console.log("Setting up the routes for serving static files...");
-  app.use(fileUpload());
-  app.use(express["static"]("public"));
-  app.use("/assets", express["static"]("public"));
-  app.use("/bower_components", express["static"]("bower_components"));
-  app.disable("etag");
-  app.use((function(f) {
+  router.use(fileUpload());
+  router.use(express["static"]("public"));
+  router.use("/assets", express["static"]("public"));
+  router.use("/bower_components", express["static"]("bower_components"));
+  router.disable("etag");
+  router.use((function(f) {
     return (function(arg1, arg2, arg3) {
       return f.apply__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__Lorg_scalajs_nodejs_stream_Writable(arg1, arg2, arg3)
     })
   })(new $c_Lcom_microsoft_awt_AWTServerJsApp$$anonfun$startServer$3().init___()));
   $g.console.log("Connecting to '%s'...", connectionString);
-  var $$this$2 = mongo.MongoClient;
+  var $class = mongo.MongoClient;
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1$1 = (function(promise$1) {
     return (function(err$2$1, result$2) {
@@ -13660,29 +13542,36 @@ $c_Lcom_microsoft_awt_AWTServerJsApp$.prototype.startServer__Lorg_scalajs_nodejs
       }
     })
   })(promise);
-  $$this$2.connect(connectionString, arg1$1);
-  $m_Lcom_microsoft_awt_routes_EventRoutes$().init__Lorg_scalajs_nodejs_express_Application__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__V(app, promise, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1, mongo);
-  $m_Lcom_microsoft_awt_routes_GroupRoutes$().init__Lorg_scalajs_nodejs_express_Application__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__V(app, promise, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1, mongo);
-  $m_Lcom_microsoft_awt_routes_SearchRoutes$().init__Lorg_scalajs_nodejs_express_Application__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__V(app, promise, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1, mongo);
-  $m_Lcom_microsoft_awt_routes_WorkloadRoutes$().init__Lorg_scalajs_nodejs_express_Application__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__Lorg_scalajs_nodejs_NodeRequire__V(app, promise, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1, mongo, require);
-  $m_Lcom_microsoft_awt_routes_UserRoutes$().init__Lorg_scalajs_nodejs_express_Application__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__Lorg_scalajs_nodejs_NodeRequire__V(app, promise, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1, mongo, require);
-  $m_Lcom_microsoft_awt_routes_NotificationRoutes$().init__Lorg_scalajs_nodejs_express_Application__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__V(app, promise, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1, mongo);
-  $m_Lcom_microsoft_awt_routes_WebSocketRoutes$().init__Lorg_scalajs_nodejs_express_Application__Lorg_scalajs_nodejs_expressws_WsInstance__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__V(app, wss, promise, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1, mongo);
-  $m_Lcom_microsoft_awt_routes_PostRoutes$().init__Lorg_scalajs_nodejs_express_Application__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_NodeRequire__Lorg_scalajs_nodejs_mongodb_MongoDB__Lorg_scalajs_nodejs_express_fileupload_ExpressFileUpload__V(app, promise, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1, require, mongo, fileUpload);
-  $m_Lcom_microsoft_awt_routes_AuthenticationRoutes$().init__Lorg_scalajs_nodejs_express_Application__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_NodeRequire__Lorg_scalajs_nodejs_mongodb_MongoDB__V(app, promise, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1, require, mongo);
-  $m_Lcom_microsoft_awt_routes_SessionRoutes$().init__Lorg_scalajs_nodejs_express_Application__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__V(app, promise, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1, mongo);
-  app.listen(port, (function(startTime$1, port$1) {
+  $class.connect(connectionString, arg1$1);
+  $m_Lcom_microsoft_awt_routes_EventRoutes$().init__Lorg_scalajs_nodejs_express_Application__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__V(router, promise, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1, mongo);
+  $m_Lcom_microsoft_awt_routes_GroupRoutes$().init__Lorg_scalajs_nodejs_express_Application__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__V(router, promise, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1, mongo);
+  $m_Lcom_microsoft_awt_routes_SearchRoutes$().init__Lorg_scalajs_nodejs_express_Application__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__V(router, promise, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1, mongo);
+  $m_Lcom_microsoft_awt_routes_WorkloadRoutes$().init__Lorg_scalajs_nodejs_express_Application__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__Lorg_scalajs_nodejs_NodeRequire__V(router, promise, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1, mongo, require);
+  $m_Lcom_microsoft_awt_routes_UserRoutes$().init__Lorg_scalajs_nodejs_express_Application__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__Lorg_scalajs_nodejs_NodeRequire__V(router, promise, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1, mongo, require);
+  $m_Lcom_microsoft_awt_routes_NotificationRoutes$().init__Lorg_scalajs_nodejs_express_Application__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__V(router, promise, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1, mongo);
+  $m_Lcom_microsoft_awt_routes_WebSocketRoutes$().init__Lorg_scalajs_nodejs_express_Application__Lorg_scalajs_nodejs_expressws_WsInstance__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__V(router, wss, promise, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1, mongo);
+  $m_Lcom_microsoft_awt_routes_PostRoutes$().init__Lorg_scalajs_nodejs_express_Application__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_NodeRequire__Lorg_scalajs_nodejs_mongodb_MongoDB__Lorg_scalajs_nodejs_express_fileupload_ExpressFileUpload__V(router, promise, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1, require, mongo, fileUpload);
+  $m_Lcom_microsoft_awt_routes_AuthenticationRoutes$().init__Lorg_scalajs_nodejs_express_Application__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_NodeRequire__Lorg_scalajs_nodejs_mongodb_MongoDB__V(router, promise, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1, require, mongo);
+  $m_Lcom_microsoft_awt_routes_SessionRoutes$().init__Lorg_scalajs_nodejs_express_Application__s_concurrent_Future__s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_mongodb_MongoDB__V(router, promise, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1, mongo);
+  router.listen(port, (function(startTime$1, port$1) {
     return (function() {
-      $g.console.log("Server now listening on port %s [%d msec]", port$1, $m_jl_System$().currentTimeMillis__J().$$minus__sjsr_RuntimeLong__sjsr_RuntimeLong(startTime$1))
+      var jsx$3 = $g.console;
+      var t$1 = $m_jl_System$().currentTimeMillis__J();
+      var lo$1 = t$1.lo$2;
+      var hi$1 = t$1.hi$2;
+      var bhi = startTime$1.hi$2;
+      var lo$2 = ((lo$1 - startTime$1.lo$2) | 0);
+      var hi$2 = ((((-2147483648) ^ lo$2) > ((-2147483648) ^ lo$1)) ? (((-1) + ((hi$1 - bhi) | 0)) | 0) : ((hi$1 - bhi) | 0));
+      jsx$3.log("Server now listening on port %s [%d msec]", port$1, new $c_sjsr_RuntimeLong().init___I__I(lo$2, hi$2))
     })
-  })(startTime, port))
-});
-$c_Lcom_microsoft_awt_AWTServerJsApp$.prototype.main = (function() {
-  return this.$$js$exported$meth$main__O()
+  })(new $c_sjsr_RuntimeLong().init___I__I(lo, hi), port))
 });
 $c_Lcom_microsoft_awt_AWTServerJsApp$.prototype.startServer = (function(arg$1) {
   var prep0 = arg$1;
   return this.$$js$exported$meth$startServer__Lorg_scalajs_nodejs_Bootstrap__O(prep0)
+});
+$c_Lcom_microsoft_awt_AWTServerJsApp$.prototype.main = (function() {
+  return this.$$js$exported$meth$main__O()
 });
 var $d_Lcom_microsoft_awt_AWTServerJsApp$ = new $TypeData().initClass({
   Lcom_microsoft_awt_AWTServerJsApp$: 0
@@ -13790,12 +13679,12 @@ $c_jl_StackTraceElement.prototype.hashCode__I = (function() {
   var this$2 = this.methodName$1;
   return (jsx$1 ^ $m_sjsr_RuntimeString$().hashCode__T__I(this$2))
 });
-$c_jl_StackTraceElement.prototype.getColumnNumber = (function() {
-  return this.$$js$exported$meth$getColumnNumber__O()
-});
 $c_jl_StackTraceElement.prototype.setColumnNumber = (function(arg$1) {
   var prep0 = $uI(arg$1);
   return this.$$js$exported$meth$setColumnNumber__I__O(prep0)
+});
+$c_jl_StackTraceElement.prototype.getColumnNumber = (function() {
+  return this.$$js$exported$meth$getColumnNumber__O()
 });
 function $is_jl_StackTraceElement(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.jl_StackTraceElement)))
@@ -14023,21 +13912,15 @@ $c_ju_regex_Matcher.prototype.find__Z = (function() {
     this.lastMatchIsValid$1 = true;
     this.lastMatch$1 = this.regexp$1.exec(this.inputstr$1);
     if ((this.lastMatch$1 !== null)) {
-      var $$this = this.lastMatch$1[0];
-      if (($$this === (void 0))) {
-        var jsx$1;
+      var value = this.lastMatch$1[0];
+      if ((value === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$1 = $$this
       };
-      var thiz = $as_T(jsx$1);
+      var thiz = $as_T(value);
       if ((thiz === null)) {
-        var jsx$2;
         throw new $c_jl_NullPointerException().init___()
-      } else {
-        var jsx$2 = thiz
       };
-      if ((jsx$2 === "")) {
+      if ((thiz === "")) {
         var ev$1 = this.regexp$1;
         ev$1.lastIndex = ((1 + $uI(ev$1.lastIndex)) | 0)
       }
@@ -14056,8 +13939,8 @@ $c_ju_regex_Matcher.prototype.ensureLastMatch__p1__sjs_js_RegExp$ExecResult = (f
   return this.lastMatch$1
 });
 $c_ju_regex_Matcher.prototype.group__I__T = (function(group) {
-  var $$this = this.ensureLastMatch__p1__sjs_js_RegExp$ExecResult()[group];
-  return $as_T((($$this === (void 0)) ? null : $$this))
+  var value = this.ensureLastMatch__p1__sjs_js_RegExp$ExecResult()[group];
+  return $as_T(((value === (void 0)) ? null : value))
 });
 $c_ju_regex_Matcher.prototype.matches__Z = (function() {
   this.reset__ju_regex_Matcher();
@@ -14167,14 +14050,11 @@ $c_ju_regex_Matcher.prototype.replaceAll__T__T = (function(replacement) {
   return sb.content$1
 });
 $c_ju_regex_Matcher.prototype.group__T = (function() {
-  var $$this = this.ensureLastMatch__p1__sjs_js_RegExp$ExecResult()[0];
-  if (($$this === (void 0))) {
-    var jsx$1;
+  var value = this.ensureLastMatch__p1__sjs_js_RegExp$ExecResult()[0];
+  if ((value === (void 0))) {
     throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-  } else {
-    var jsx$1 = $$this
   };
-  return $as_T(jsx$1)
+  return $as_T(value)
 });
 $c_ju_regex_Matcher.prototype.start__I = (function() {
   return $uI(this.ensureLastMatch__p1__sjs_js_RegExp$ExecResult().index)
@@ -16530,10 +16410,10 @@ $c_jl_Long$.prototype.init___ = (function() {
 });
 $c_jl_Long$.prototype.toOctalString__J__T = (function(l) {
   var lo = l.lo$2;
-  var hi = l.hi$2;
+  var lo$1 = l.hi$2;
   var lp = (1073741823 & lo);
-  var mp = (1073741823 & ((((lo >>> 30) | 0) + (hi << 2)) | 0));
-  var hp = ((hi >>> 28) | 0);
+  var mp = (1073741823 & ((((lo >>> 30) | 0) + (lo$1 << 2)) | 0));
+  var hp = ((lo$1 >>> 28) | 0);
   if ((hp !== 0)) {
     var x = $uD((hp >>> 0));
     var jsx$5 = x.toString(8);
@@ -16565,9 +16445,9 @@ $c_jl_Long$.prototype.toOctalString__J__T = (function(l) {
 });
 $c_jl_Long$.prototype.toHexString__J__T = (function(l) {
   var lo = l.lo$2;
-  var hi = l.hi$2;
-  if ((hi !== 0)) {
-    var x = $uD((hi >>> 0));
+  var lo$1 = l.hi$2;
+  if ((lo$1 !== 0)) {
+    var x = $uD((lo$1 >>> 0));
     var jsx$3 = x.toString(16);
     var jsx$2 = $as_T(jsx$3);
     var x$1 = $uD((lo >>> 0));
@@ -16625,11 +16505,9 @@ $c_ju_Formatter.prototype.pad$1__p1__T__T__jl_Boolean__T__I__C__jl_Appendable = 
     var padChar = (padZero ? "0" : " ");
     var padding = this.strRepeat$1__p1__T__I__T(padChar, padLength);
     if ((padZero && padRight)) {
-      var padStr;
       throw new $c_ju_IllegalFormatFlagsException().init___T(flags$1)
-    } else {
-      var padStr = (padRight ? ((("" + prefix) + argStr) + padding) : (padZero ? ((("" + prefix) + padding) + argStr) : ((("" + padding) + prefix) + argStr)))
-    }
+    };
+    var padStr = (padRight ? ((("" + prefix) + argStr) + padding) : (padZero ? ((("" + prefix) + padding) + argStr) : ((("" + padding) + prefix) + argStr)))
   };
   var casedStr = ((conversion$1 <= 90) ? $as_T(padStr.toUpperCase()) : padStr);
   return this.java$util$Formatter$$dest$1.append__jl_CharSequence__jl_Appendable(casedStr)
@@ -16650,292 +16528,268 @@ $c_ju_Formatter.prototype.hasFlag$1__p1__T__T__Z = (function(flag, flags$1) {
   return ($uI(flags$1.indexOf(flag)) >= 0)
 });
 $c_ju_Formatter.prototype.out__jl_Appendable = (function() {
-  return (this.closed$1 ? this.java$util$Formatter$$throwClosedException__sr_Nothing$() : this.java$util$Formatter$$dest$1)
+  if (this.closed$1) {
+    this.java$util$Formatter$$throwClosedException__sr_Nothing$()
+  };
+  return this.java$util$Formatter$$dest$1
 });
 $c_ju_Formatter.prototype.format__T__AO__ju_Formatter = (function(format_in, args) {
   if (this.closed$1) {
     this.java$util$Formatter$$throwClosedException__sr_Nothing$()
-  } else {
-    var fmt = format_in;
-    var lastImplicitIndex = 0;
-    var lastIndex = 0;
-    while (true) {
-      var thiz = fmt;
-      if ((thiz === null)) {
-        var jsx$1;
-        throw new $c_jl_NullPointerException().init___()
-      } else {
-        var jsx$1 = thiz
-      };
-      if ((!(jsx$1 === ""))) {
-        var x1 = fmt;
-        matchEnd9: {
-          var o12 = $m_ju_Formatter$().java$util$Formatter$$RegularChunk$1.unapply__T__s_Option(x1);
-          if ((!o12.isEmpty__Z())) {
-            var matchResult = o12.get__O();
-            var thiz$2 = fmt;
-            var $$this = matchResult[0];
-            if (($$this === (void 0))) {
-              var jsx$2;
-              throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-            } else {
-              var jsx$2 = $$this
-            };
-            var thiz$1 = $as_T(jsx$2);
-            var beginIndex = $uI(thiz$1.length);
-            fmt = $as_T(thiz$2.substring(beginIndex));
-            var jsx$4 = this.java$util$Formatter$$dest$1;
-            var $$this$1 = matchResult[0];
-            if (($$this$1 === (void 0))) {
-              var jsx$3;
-              throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-            } else {
-              var jsx$3 = $$this$1
-            };
-            jsx$4.append__jl_CharSequence__jl_Appendable($as_jl_CharSequence(jsx$3));
-            break matchEnd9
-          };
-          var o14 = $m_ju_Formatter$().java$util$Formatter$$DoublePercent$1.unapply__T__s_Option(x1);
-          if ((!o14.isEmpty__Z())) {
-            var thiz$3 = fmt;
-            fmt = $as_T(thiz$3.substring(2));
-            this.java$util$Formatter$$dest$1.append__C__jl_Appendable(37);
-            break matchEnd9
-          };
-          var o16 = $m_ju_Formatter$().java$util$Formatter$$EOLChunk$1.unapply__T__s_Option(x1);
-          if ((!o16.isEmpty__Z())) {
-            var thiz$4 = fmt;
-            fmt = $as_T(thiz$4.substring(2));
-            this.java$util$Formatter$$dest$1.append__C__jl_Appendable(10);
-            break matchEnd9
-          };
-          var o18 = $m_ju_Formatter$().java$util$Formatter$$FormattedChunk$1.unapply__T__s_Option(x1);
-          if ((!o18.isEmpty__Z())) {
-            var matchResult$2 = o18.get__O();
-            var thiz$6 = fmt;
-            var $$this$2 = matchResult$2[0];
-            if (($$this$2 === (void 0))) {
-              var jsx$5;
-              throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-            } else {
-              var jsx$5 = $$this$2
-            };
-            var thiz$5 = $as_T(jsx$5);
-            var beginIndex$1 = $uI(thiz$5.length);
-            fmt = $as_T(thiz$6.substring(beginIndex$1));
-            var $$this$3 = matchResult$2[2];
-            if (($$this$3 === (void 0))) {
-              var jsx$6;
-              throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-            } else {
-              var jsx$6 = $$this$3
-            };
-            var flags = $as_T(jsx$6);
-            var $$this$4 = matchResult$2[1];
-            var indexStr = $as_T((($$this$4 === (void 0)) ? "" : $$this$4));
-            if ((indexStr === null)) {
-              var jsx$7;
-              throw new $c_jl_NullPointerException().init___()
-            } else {
-              var jsx$7 = indexStr
-            };
-            if ((jsx$7 !== "")) {
-              var this$28 = $m_jl_Integer$();
-              var index = this$28.parseInt__T__I__I(indexStr, 10)
-            } else if (this.hasFlag$1__p1__T__T__Z("<", flags)) {
-              var index = lastIndex
-            } else {
-              lastImplicitIndex = ((1 + lastImplicitIndex) | 0);
-              var index = lastImplicitIndex
-            };
-            lastIndex = index;
-            if (((index <= 0) || (index > args.u.length))) {
-              var $$this$5 = matchResult$2[5];
-              if (($$this$5 === (void 0))) {
-                var jsx$8;
-                throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-              } else {
-                var jsx$8 = $$this$5
-              };
-              throw new $c_ju_MissingFormatArgumentException().init___T($as_T(jsx$8))
-            };
-            var arg = args.u[(((-1) + index) | 0)];
-            var $$this$6 = matchResult$2[3];
-            var widthStr = $as_T((($$this$6 === (void 0)) ? "" : $$this$6));
-            if ((widthStr === null)) {
-              var jsx$9;
-              throw new $c_jl_NullPointerException().init___()
-            } else {
-              var jsx$9 = widthStr
-            };
-            var hasWidth = (jsx$9 !== "");
-            if (hasWidth) {
-              var this$36 = $m_jl_Integer$();
-              var width = this$36.parseInt__T__I__I(widthStr, 10)
-            } else if (this.hasFlag$1__p1__T__T__Z("-", flags)) {
-              var width;
-              throw new $c_ju_MissingFormatWidthException().init___T(format_in)
-            } else {
-              var width = 0
-            };
-            var $$this$7 = matchResult$2[4];
-            var precisionStr = $as_T((($$this$7 === (void 0)) ? "" : $$this$7));
-            if ((precisionStr === null)) {
-              var jsx$10;
-              throw new $c_jl_NullPointerException().init___()
-            } else {
-              var jsx$10 = precisionStr
-            };
-            var hasPrecision = (jsx$10 !== "");
-            if (hasPrecision) {
-              var this$41 = $m_jl_Integer$();
-              var precision = this$41.parseInt__T__I__I(precisionStr, 10)
-            } else {
-              var precision = 0
-            };
-            var $$this$8 = matchResult$2[5];
-            if (($$this$8 === (void 0))) {
-              var jsx$11;
-              throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-            } else {
-              var jsx$11 = $$this$8
-            };
-            var thiz$7 = $as_T(jsx$11);
-            var conversion = (65535 & $uI(thiz$7.charCodeAt(0)));
-            switch (conversion) {
-              case 98:
-              case 66: {
-                if ((arg === null)) {
-                  var jsx$12 = "false"
-                } else if (((typeof arg) === "boolean")) {
-                  var x3 = $asBoolean(arg);
-                  var jsx$12 = $m_sjsr_RuntimeString$().valueOf__O__T(x3)
-                } else {
-                  var jsx$12 = "true"
-                };
-                this.pad$1__p1__T__T__jl_Boolean__T__I__C__jl_Appendable(jsx$12, "", false, flags, width, conversion);
-                break
-              }
-              case 104:
-              case 72: {
-                if ((arg === null)) {
-                  var jsx$13 = "null"
-                } else {
-                  var i = $objectHashCode(arg);
-                  var x = $uD((i >>> 0));
-                  var jsx$14 = x.toString(16);
-                  var jsx$13 = $as_T(jsx$14)
-                };
-                this.pad$1__p1__T__T__jl_Boolean__T__I__C__jl_Appendable(jsx$13, "", false, flags, width, conversion);
-                break
-              }
-              case 115:
-              case 83: {
-                if ($is_ju_Formattable(arg)) {
-                  var x2 = $as_ju_Formattable(arg);
-                  var flags$2 = (((this.hasFlag$1__p1__T__T__Z("-", flags) ? 1 : 0) | (this.hasFlag$1__p1__T__T__Z("#", flags) ? 4 : 0)) | ((conversion <= 90) ? 2 : 0));
-                  x2.formatTo__ju_Formatter__I__I__I__V(this, flags$2, (hasWidth ? width : (-1)), (hasPrecision ? precision : (-1)))
-                } else if ((!this.hasFlag$1__p1__T__T__Z("#", flags))) {
-                  this.pad$1__p1__T__T__jl_Boolean__T__I__C__jl_Appendable($m_sjsr_RuntimeString$().valueOf__O__T(arg), "", false, flags, width, conversion)
-                } else {
-                  throw new $c_ju_FormatFlagsConversionMismatchException().init___T__C("#", 115)
-                };
-                break
-              }
-              case 99:
-              case 67: {
-                var c = (65535 & this.intArg$1__p1__O__I(arg));
-                this.pad$1__p1__T__T__jl_Boolean__T__I__C__jl_Appendable($as_T($g.String.fromCharCode(c)), "", false, flags, width, conversion);
-                break
-              }
-              case 100: {
-                var this$64 = this.numberArg$1__p1__O__D(arg);
-                this.with$und$plus$1__p1__T__Z__T__I__C__jl_Appendable(("" + this$64), false, flags, width, conversion);
-                break
-              }
-              case 111: {
-                if ($isInt(arg)) {
-                  var x2$2 = $uI(arg);
-                  var x$1 = $uD((x2$2 >>> 0));
-                  var jsx$15 = x$1.toString(8);
-                  var str = $as_T(jsx$15)
-                } else if ($is_sjsr_RuntimeLong(arg)) {
-                  var x3$2 = $uJ(arg);
-                  var str = $m_jl_Long$().toOctalString__J__T(x3$2)
-                } else {
-                  var str;
-                  throw new $c_s_MatchError().init___O(arg)
-                };
-                this.padCaptureSign$1__p1__T__T__T__I__C__jl_Appendable(str, (this.hasFlag$1__p1__T__T__Z("#", flags) ? "0" : ""), flags, width, conversion);
-                break
-              }
-              case 120:
-              case 88: {
-                if ($isInt(arg)) {
-                  var x2$3 = $uI(arg);
-                  var x$2 = $uD((x2$3 >>> 0));
-                  var jsx$16 = x$2.toString(16);
-                  var str$2 = $as_T(jsx$16)
-                } else if ($is_sjsr_RuntimeLong(arg)) {
-                  var x3$3 = $uJ(arg);
-                  var str$2 = $m_jl_Long$().toHexString__J__T(x3$3)
-                } else {
-                  var str$2;
-                  throw new $c_s_MatchError().init___O(arg)
-                };
-                this.padCaptureSign$1__p1__T__T__T__I__C__jl_Appendable(str$2, (this.hasFlag$1__p1__T__T__Z("#", flags) ? "0x" : ""), flags, width, conversion);
-                break
-              }
-              case 101:
-              case 69: {
-                this.sciNotation$1__p1__I__T__O__I__C__jl_Appendable((hasPrecision ? precision : 6), flags, arg, width, conversion);
-                break
-              }
-              case 103:
-              case 71: {
-                var a = this.numberArg$1__p1__O__D(arg);
-                var m = $uD($g.Math.abs(a));
-                var p = ((!hasPrecision) ? 6 : ((precision === 0) ? 1 : precision));
-                if (((m >= 1.0E-4) && (m < $uD($g.Math.pow(10.0, p))))) {
-                  var a$1 = ($uD($g.Math.log(m)) / 2.302585092994046);
-                  var sig = $doubleToInt($uD($g.Math.ceil(a$1)));
-                  var x$3 = this.numberArg$1__p1__O__D(arg);
-                  var a$2 = ((p - sig) | 0);
-                  var jsx$17 = x$3.toFixed(((a$2 > 0) ? a$2 : 0));
-                  this.with$und$plus$1__p1__T__Z__T__I__C__jl_Appendable($as_T(jsx$17), false, flags, width, conversion)
-                } else {
-                  this.sciNotation$1__p1__I__T__O__I__C__jl_Appendable((((-1) + p) | 0), flags, arg, width, conversion)
-                };
-                break
-              }
-              case 102: {
-                var x$4 = this.numberArg$1__p1__O__D(arg);
-                var jsx$20 = x$4.toFixed((hasPrecision ? precision : 6));
-                var jsx$19 = $as_T(jsx$20);
-                var this$83 = this.numberArg$1__p1__O__D(arg);
-                if ((this$83 !== this$83)) {
-                  var jsx$18 = true
-                } else {
-                  var this$87 = this.numberArg$1__p1__O__D(arg);
-                  var jsx$18 = ((this$87 === Infinity) || (this$87 === (-Infinity)))
-                };
-                this.with$und$plus$1__p1__T__Z__T__I__C__jl_Appendable(jsx$19, jsx$18, flags, width, conversion);
-                break
-              }
-              default: {
-                throw new $c_s_MatchError().init___O(new $c_jl_Character().init___C(conversion))
-              }
-            };
-            break matchEnd9
-          };
-          throw new $c_s_MatchError().init___O(x1)
-        }
-      } else {
-        break
-      }
+  };
+  var fmt = format_in;
+  var lastImplicitIndex = 0;
+  var lastIndex = 0;
+  while (true) {
+    var thiz = fmt;
+    if ((thiz === null)) {
+      throw new $c_jl_NullPointerException().init___()
     };
-    return this
-  }
+    if ((!(thiz === ""))) {
+      var x1 = fmt;
+      matchEnd9: {
+        var o12 = $m_ju_Formatter$().java$util$Formatter$$RegularChunk$1.unapply__T__s_Option(x1);
+        if ((!o12.isEmpty__Z())) {
+          var matchResult = o12.get__O();
+          var thiz$2 = fmt;
+          var value = matchResult[0];
+          if ((value === (void 0))) {
+            throw new $c_ju_NoSuchElementException().init___T("undefined.get")
+          };
+          var thiz$1 = $as_T(value);
+          var beginIndex = $uI(thiz$1.length);
+          fmt = $as_T(thiz$2.substring(beginIndex));
+          var jsx$1 = this.java$util$Formatter$$dest$1;
+          var value$1 = matchResult[0];
+          if ((value$1 === (void 0))) {
+            throw new $c_ju_NoSuchElementException().init___T("undefined.get")
+          };
+          jsx$1.append__jl_CharSequence__jl_Appendable($as_jl_CharSequence(value$1));
+          break matchEnd9
+        };
+        var o14 = $m_ju_Formatter$().java$util$Formatter$$DoublePercent$1.unapply__T__s_Option(x1);
+        if ((!o14.isEmpty__Z())) {
+          var thiz$3 = fmt;
+          fmt = $as_T(thiz$3.substring(2));
+          this.java$util$Formatter$$dest$1.append__C__jl_Appendable(37);
+          break matchEnd9
+        };
+        var o16 = $m_ju_Formatter$().java$util$Formatter$$EOLChunk$1.unapply__T__s_Option(x1);
+        if ((!o16.isEmpty__Z())) {
+          var thiz$4 = fmt;
+          fmt = $as_T(thiz$4.substring(2));
+          this.java$util$Formatter$$dest$1.append__C__jl_Appendable(10);
+          break matchEnd9
+        };
+        var o18 = $m_ju_Formatter$().java$util$Formatter$$FormattedChunk$1.unapply__T__s_Option(x1);
+        if ((!o18.isEmpty__Z())) {
+          var matchResult$2 = o18.get__O();
+          var thiz$6 = fmt;
+          var value$2 = matchResult$2[0];
+          if ((value$2 === (void 0))) {
+            throw new $c_ju_NoSuchElementException().init___T("undefined.get")
+          };
+          var thiz$5 = $as_T(value$2);
+          var beginIndex$1 = $uI(thiz$5.length);
+          fmt = $as_T(thiz$6.substring(beginIndex$1));
+          var value$3 = matchResult$2[2];
+          if ((value$3 === (void 0))) {
+            throw new $c_ju_NoSuchElementException().init___T("undefined.get")
+          };
+          var flags = $as_T(value$3);
+          var value$4 = matchResult$2[1];
+          var indexStr = $as_T(((value$4 === (void 0)) ? "" : value$4));
+          if ((indexStr === null)) {
+            throw new $c_jl_NullPointerException().init___()
+          };
+          if ((indexStr !== "")) {
+            var this$28 = $m_jl_Integer$();
+            var index = this$28.parseInt__T__I__I(indexStr, 10)
+          } else if (this.hasFlag$1__p1__T__T__Z("<", flags)) {
+            var index = lastIndex
+          } else {
+            lastImplicitIndex = ((1 + lastImplicitIndex) | 0);
+            var index = lastImplicitIndex
+          };
+          lastIndex = index;
+          if (((index <= 0) || (index > args.u.length))) {
+            var value$5 = matchResult$2[5];
+            if ((value$5 === (void 0))) {
+              throw new $c_ju_NoSuchElementException().init___T("undefined.get")
+            };
+            throw new $c_ju_MissingFormatArgumentException().init___T($as_T(value$5))
+          };
+          var arg = args.u[(((-1) + index) | 0)];
+          var value$6 = matchResult$2[3];
+          var widthStr = $as_T(((value$6 === (void 0)) ? "" : value$6));
+          if ((widthStr === null)) {
+            throw new $c_jl_NullPointerException().init___()
+          };
+          var hasWidth = (widthStr !== "");
+          if (hasWidth) {
+            var this$36 = $m_jl_Integer$();
+            var width = this$36.parseInt__T__I__I(widthStr, 10)
+          } else {
+            if (this.hasFlag$1__p1__T__T__Z("-", flags)) {
+              throw new $c_ju_MissingFormatWidthException().init___T(format_in)
+            };
+            var width = 0
+          };
+          var value$7 = matchResult$2[4];
+          var precisionStr = $as_T(((value$7 === (void 0)) ? "" : value$7));
+          if ((precisionStr === null)) {
+            throw new $c_jl_NullPointerException().init___()
+          };
+          var hasPrecision = (precisionStr !== "");
+          if (hasPrecision) {
+            var this$41 = $m_jl_Integer$();
+            var precision = this$41.parseInt__T__I__I(precisionStr, 10)
+          } else {
+            var precision = 0
+          };
+          var value$8 = matchResult$2[5];
+          if ((value$8 === (void 0))) {
+            throw new $c_ju_NoSuchElementException().init___T("undefined.get")
+          };
+          var thiz$7 = $as_T(value$8);
+          var conversion = (65535 & $uI(thiz$7.charCodeAt(0)));
+          switch (conversion) {
+            case 98:
+            case 66: {
+              if ((arg === null)) {
+                var jsx$2 = "false"
+              } else if (((typeof arg) === "boolean")) {
+                var x3 = $asBoolean(arg);
+                var jsx$2 = $m_sjsr_RuntimeString$().valueOf__O__T(x3)
+              } else {
+                var jsx$2 = "true"
+              };
+              this.pad$1__p1__T__T__jl_Boolean__T__I__C__jl_Appendable(jsx$2, "", false, flags, width, conversion);
+              break
+            }
+            case 104:
+            case 72: {
+              if ((arg === null)) {
+                var jsx$3 = "null"
+              } else {
+                var i = $objectHashCode(arg);
+                var x = $uD((i >>> 0));
+                var jsx$4 = x.toString(16);
+                var jsx$3 = $as_T(jsx$4)
+              };
+              this.pad$1__p1__T__T__jl_Boolean__T__I__C__jl_Appendable(jsx$3, "", false, flags, width, conversion);
+              break
+            }
+            case 115:
+            case 83: {
+              if ($is_ju_Formattable(arg)) {
+                var x2 = $as_ju_Formattable(arg);
+                var flags$2 = (((this.hasFlag$1__p1__T__T__Z("-", flags) ? 1 : 0) | (this.hasFlag$1__p1__T__T__Z("#", flags) ? 4 : 0)) | ((conversion <= 90) ? 2 : 0));
+                x2.formatTo__ju_Formatter__I__I__I__V(this, flags$2, (hasWidth ? width : (-1)), (hasPrecision ? precision : (-1)))
+              } else if ((!this.hasFlag$1__p1__T__T__Z("#", flags))) {
+                this.pad$1__p1__T__T__jl_Boolean__T__I__C__jl_Appendable($m_sjsr_RuntimeString$().valueOf__O__T(arg), "", false, flags, width, conversion)
+              } else {
+                throw new $c_ju_FormatFlagsConversionMismatchException().init___T__C("#", 115)
+              };
+              break
+            }
+            case 99:
+            case 67: {
+              var c = (65535 & this.intArg$1__p1__O__I(arg));
+              this.pad$1__p1__T__T__jl_Boolean__T__I__C__jl_Appendable($as_T($g.String.fromCharCode(c)), "", false, flags, width, conversion);
+              break
+            }
+            case 100: {
+              var this$64 = this.numberArg$1__p1__O__D(arg);
+              this.with$und$plus$1__p1__T__Z__T__I__C__jl_Appendable(("" + this$64), false, flags, width, conversion);
+              break
+            }
+            case 111: {
+              if ($isInt(arg)) {
+                var x2$2 = $uI(arg);
+                var x$1 = $uD((x2$2 >>> 0));
+                var jsx$5 = x$1.toString(8);
+                var str = $as_T(jsx$5)
+              } else {
+                if ((!$is_sjsr_RuntimeLong(arg))) {
+                  throw new $c_s_MatchError().init___O(arg)
+                };
+                var t = $uJ(arg);
+                var lo = t.lo$2;
+                var hi = t.hi$2;
+                var str = $m_jl_Long$().toOctalString__J__T(new $c_sjsr_RuntimeLong().init___I__I(lo, hi))
+              };
+              this.padCaptureSign$1__p1__T__T__T__I__C__jl_Appendable(str, (this.hasFlag$1__p1__T__T__Z("#", flags) ? "0" : ""), flags, width, conversion);
+              break
+            }
+            case 120:
+            case 88: {
+              if ($isInt(arg)) {
+                var x2$3 = $uI(arg);
+                var x$2 = $uD((x2$3 >>> 0));
+                var jsx$6 = x$2.toString(16);
+                var str$2 = $as_T(jsx$6)
+              } else {
+                if ((!$is_sjsr_RuntimeLong(arg))) {
+                  throw new $c_s_MatchError().init___O(arg)
+                };
+                var t$1 = $uJ(arg);
+                var lo$1 = t$1.lo$2;
+                var hi$1 = t$1.hi$2;
+                var str$2 = $m_jl_Long$().toHexString__J__T(new $c_sjsr_RuntimeLong().init___I__I(lo$1, hi$1))
+              };
+              this.padCaptureSign$1__p1__T__T__T__I__C__jl_Appendable(str$2, (this.hasFlag$1__p1__T__T__Z("#", flags) ? "0x" : ""), flags, width, conversion);
+              break
+            }
+            case 101:
+            case 69: {
+              this.sciNotation$1__p1__I__T__O__I__C__jl_Appendable((hasPrecision ? precision : 6), flags, arg, width, conversion);
+              break
+            }
+            case 103:
+            case 71: {
+              var a = this.numberArg$1__p1__O__D(arg);
+              var m = $uD($g.Math.abs(a));
+              var p = ((!hasPrecision) ? 6 : ((precision === 0) ? 1 : precision));
+              if (((m >= 1.0E-4) && (m < $uD($g.Math.pow(10.0, p))))) {
+                var a$1 = ($uD($g.Math.log(m)) / 2.302585092994046);
+                var sig = $doubleToInt($uD($g.Math.ceil(a$1)));
+                var x$3 = this.numberArg$1__p1__O__D(arg);
+                var a$2 = ((p - sig) | 0);
+                var jsx$7 = x$3.toFixed(((a$2 > 0) ? a$2 : 0));
+                this.with$und$plus$1__p1__T__Z__T__I__C__jl_Appendable($as_T(jsx$7), false, flags, width, conversion)
+              } else {
+                this.sciNotation$1__p1__I__T__O__I__C__jl_Appendable((((-1) + p) | 0), flags, arg, width, conversion)
+              };
+              break
+            }
+            case 102: {
+              var x$4 = this.numberArg$1__p1__O__D(arg);
+              var jsx$10 = x$4.toFixed((hasPrecision ? precision : 6));
+              var jsx$9 = $as_T(jsx$10);
+              var x$5 = this.numberArg$1__p1__O__D(arg);
+              if ((x$5 !== x$5)) {
+                var jsx$8 = true
+              } else {
+                var x$6 = this.numberArg$1__p1__O__D(arg);
+                var jsx$8 = ((x$6 === Infinity) || (x$6 === (-Infinity)))
+              };
+              this.with$und$plus$1__p1__T__Z__T__I__C__jl_Appendable(jsx$9, jsx$8, flags, width, conversion);
+              break
+            }
+            default: {
+              throw new $c_s_MatchError().init___O(new $c_jl_Character().init___C(conversion))
+            }
+          };
+          break matchEnd9
+        };
+        throw new $c_s_MatchError().init___O(x1)
+      }
+    } else {
+      break
+    }
+  };
+  return this
 });
 $c_ju_Formatter.prototype.strRepeat$1__p1__T__I__T = (function(s, times) {
   var result = "";
@@ -16960,12 +16814,12 @@ $c_ju_Formatter.prototype.sciNotation$1__p1__I__T__O__I__C__jl_Appendable = (fun
   } else {
     var jsx$3 = exp
   };
-  var this$13 = this.numberArg$1__p1__O__D(arg$1);
-  if ((this$13 !== this$13)) {
+  var x$1 = this.numberArg$1__p1__O__D(arg$1);
+  if ((x$1 !== x$1)) {
     var jsx$2 = true
   } else {
-    var this$17 = this.numberArg$1__p1__O__D(arg$1);
-    var jsx$2 = ((this$17 === Infinity) || (this$17 === (-Infinity)))
+    var x$2 = this.numberArg$1__p1__O__D(arg$1);
+    var jsx$2 = ((x$2 === Infinity) || (x$2 === (-Infinity)))
   };
   return this.with$und$plus$1__p1__T__Z__T__I__C__jl_Appendable(jsx$3, jsx$2, flags$1, width$1, conversion$1)
 });
@@ -17109,12 +16963,9 @@ $c_ju_regex_Pattern.prototype.split__jl_CharSequence__I__AT = (function(input, l
         if ((len$1 > 1)) {
           var thiz = $as_T(result[(((-1) + len$1) | 0)]);
           if ((thiz === null)) {
-            var jsx$2;
             throw new $c_jl_NullPointerException().init___()
-          } else {
-            var jsx$2 = thiz
           };
-          var jsx$1 = (jsx$2 === "")
+          var jsx$1 = (thiz === "")
         } else {
           var jsx$1 = false
         };
@@ -17129,14 +16980,14 @@ $c_ju_regex_Pattern.prototype.split__jl_CharSequence__I__AT = (function(input, l
     var len$2 = actualResult.u.length;
     var i = 0;
     var j = 0;
-    var $$this = $uI(result.length);
-    var $$this$1 = (($$this < len$2) ? $$this : len$2);
+    var x = $uI(result.length);
+    var x$1 = ((x < len$2) ? x : len$2);
     var that = actualResult.u.length;
-    var end = (($$this$1 < that) ? $$this$1 : that);
+    var end = ((x$1 < that) ? x$1 : that);
     while ((i < end)) {
-      var jsx$3 = j;
+      var jsx$2 = j;
       var index = i;
-      actualResult.u[jsx$3] = result[index];
+      actualResult.u[jsx$2] = result[index];
       i = ((1 + i) | 0);
       j = ((1 + j) | 0)
     };
@@ -17199,101 +17050,89 @@ $c_ju_regex_Pattern$.prototype.compile__T__I__ju_regex_Pattern = (function(regex
   } else {
     var m = this.java$util$regex$Pattern$$splitHackPat$1.exec(regex);
     if ((m !== null)) {
-      var $$this = m[1];
-      if (($$this === (void 0))) {
-        var jsx$1;
+      var value = m[1];
+      if ((value === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$1 = $$this
       };
-      var this$4 = new $c_s_Some().init___O(new $c_T2().init___O__O(this.quote__T__T($as_T(jsx$1)), flags))
+      var this$4 = new $c_s_Some().init___O(new $c_T2().init___O__O(this.quote__T__T($as_T(value)), flags))
     } else {
       var this$4 = $m_s_None$()
     };
     if (this$4.isEmpty__Z()) {
       var m$1 = this.java$util$regex$Pattern$$flagHackPat$1.exec(regex);
       if ((m$1 !== null)) {
-        var $$this$1 = m$1[0];
-        if (($$this$1 === (void 0))) {
-          var jsx$2;
+        var value$1 = m$1[0];
+        if ((value$1 === (void 0))) {
           throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-        } else {
-          var jsx$2 = $$this$1
         };
-        var thiz = $as_T(jsx$2);
+        var thiz = $as_T(value$1);
         var beginIndex = $uI(thiz.length);
         var newPat = $as_T(regex.substring(beginIndex));
-        var $$this$2 = m$1[1];
-        if (($$this$2 === (void 0))) {
+        var value$2 = m$1[1];
+        if ((value$2 === (void 0))) {
           var flags1 = flags
         } else {
-          var chars = $as_T($$this$2);
+          var chars = $as_T(value$2);
           var this$15 = new $c_sci_StringOps().init___T(chars);
           var start = 0;
-          var $$this$3 = this$15.repr$1;
-          var end = $uI($$this$3.length);
+          var $$this = this$15.repr$1;
+          var end = $uI($$this.length);
           var z = flags;
-          x: {
-            var jsx$3;
-            _foldl: while (true) {
-              if ((start === end)) {
-                var jsx$3 = z;
-                break x
+          var jsx$1;
+          _foldl: while (true) {
+            if ((start !== end)) {
+              var temp$start = ((1 + start) | 0);
+              var arg1 = z;
+              var arg2 = this$15.apply__I__O(start);
+              var f = $uI(arg1);
+              if ((arg2 === null)) {
+                var c = 0
               } else {
-                var temp$start = ((1 + start) | 0);
-                var arg1 = z;
-                var arg2 = this$15.apply__I__O(start);
-                var f = $uI(arg1);
-                if ((arg2 === null)) {
-                  var c = 0
-                } else {
-                  var this$19 = $as_jl_Character(arg2);
-                  var c = this$19.value$1
-                };
-                var temp$z = (f | this.java$util$regex$Pattern$$charToFlag__C__I(c));
-                start = temp$start;
-                z = temp$z;
-                continue _foldl
-              }
-            }
+                var this$19 = $as_jl_Character(arg2);
+                var c = this$19.value$1
+              };
+              var temp$z = (f | this.java$util$regex$Pattern$$charToFlag__C__I(c));
+              start = temp$start;
+              z = temp$z;
+              continue _foldl
+            };
+            var jsx$1 = z;
+            break
           };
-          var flags1 = $uI(jsx$3)
+          var flags1 = $uI(jsx$1)
         };
-        var $$this$4 = m$1[2];
-        if (($$this$4 === (void 0))) {
+        var value$3 = m$1[2];
+        if ((value$3 === (void 0))) {
           var flags2 = flags1
         } else {
-          var chars$3 = $as_T($$this$4);
+          var chars$3 = $as_T(value$3);
           var this$24 = new $c_sci_StringOps().init___T(chars$3);
           var start$1 = 0;
-          var $$this$5 = this$24.repr$1;
-          var end$1 = $uI($$this$5.length);
+          var $$this$1 = this$24.repr$1;
+          var end$1 = $uI($$this$1.length);
           var z$1 = flags1;
-          x$1: {
-            var jsx$4;
-            _foldl$1: while (true) {
-              if ((start$1 === end$1)) {
-                var jsx$4 = z$1;
-                break x$1
+          var jsx$2;
+          _foldl$1: while (true) {
+            if ((start$1 !== end$1)) {
+              var temp$start$1 = ((1 + start$1) | 0);
+              var arg1$1 = z$1;
+              var arg2$1 = this$24.apply__I__O(start$1);
+              var f$1 = $uI(arg1$1);
+              if ((arg2$1 === null)) {
+                var c$1 = 0
               } else {
-                var temp$start$1 = ((1 + start$1) | 0);
-                var arg1$1 = z$1;
-                var arg2$1 = this$24.apply__I__O(start$1);
-                var f$1 = $uI(arg1$1);
-                if ((arg2$1 === null)) {
-                  var c$1 = 0
-                } else {
-                  var this$28 = $as_jl_Character(arg2$1);
-                  var c$1 = this$28.value$1
-                };
-                var temp$z$1 = (f$1 & (~this.java$util$regex$Pattern$$charToFlag__C__I(c$1)));
-                start$1 = temp$start$1;
-                z$1 = temp$z$1;
-                continue _foldl$1
-              }
-            }
+                var this$28 = $as_jl_Character(arg2$1);
+                var c$1 = this$28.value$1
+              };
+              var temp$z$1 = (f$1 & (~this.java$util$regex$Pattern$$charToFlag__C__I(c$1)));
+              start$1 = temp$start$1;
+              z$1 = temp$z$1;
+              continue _foldl$1
+            };
+            var jsx$2 = z$1;
+            break
           };
-          var flags2 = $uI(jsx$4)
+          var flags2 = $uI(jsx$2)
         };
         var this$29 = new $c_s_Some().init___O(new $c_T2().init___O__O(newPat, flags2))
       } else {
@@ -17304,21 +17143,14 @@ $c_ju_regex_Pattern$.prototype.compile__T__I__ju_regex_Pattern = (function(regex
     };
     var x1 = $as_T2((this$29.isEmpty__Z() ? new $c_T2().init___O__O(regex, flags) : this$29.get__O()))
   };
-  if ((x1 !== null)) {
-    var jsPattern = $as_T(x1.$$und1__O());
-    var flags1$1 = x1.$$und2$mcI$sp__I();
-    var x$1_$_$$und1$f = jsPattern;
-    var x$1_$_$$und2$f = flags1$1
-  } else {
-    var x$1_$_$$und1$f;
-    var x$1_$_$$und2$f;
+  if ((x1 === null)) {
     throw new $c_s_MatchError().init___O(x1)
   };
-  var jsPattern$2 = $as_T(x$1_$_$$und1$f);
-  var flags1$2 = $uI(x$1_$_$$und2$f);
-  var jsFlags = (("g" + (((2 & flags1$2) !== 0) ? "i" : "")) + (((8 & flags1$2) !== 0) ? "m" : ""));
-  var jsRegExp = new $g.RegExp(jsPattern$2, jsFlags);
-  return new $c_ju_regex_Pattern().init___sjs_js_RegExp__T__I(jsRegExp, regex, flags1$2)
+  var jsPattern = $as_T(x1.$$und1__O());
+  var flags1$1 = x1.$$und2$mcI$sp__I();
+  var jsFlags = (("g" + (((2 & flags1$1) !== 0) ? "i" : "")) + (((8 & flags1$1) !== 0) ? "m" : ""));
+  var jsRegExp = new $g.RegExp(jsPattern, jsFlags);
+  return new $c_ju_regex_Pattern().init___sjs_js_RegExp__T__I(jsRegExp, regex, flags1$1)
 });
 $c_ju_regex_Pattern$.prototype.quote__T__T = (function(s) {
   var result = "";
@@ -17593,7 +17425,7 @@ $c_s_StringContext$.prototype.loop$1__p1__I__I__T__Z__I__jl_StringBuilder__T = (
             if (jsx$1) {
               var jsx$3 = oct;
               var index$4 = idx;
-              oct = (((-48) + (($imul(8, jsx$3) + (65535 & $uI(str$1.charCodeAt(index$4)))) | 0)) | 0);
+              oct = (((-48) + (((jsx$3 << 3) + (65535 & $uI(str$1.charCodeAt(index$4)))) | 0)) | 0);
               idx = ((1 + idx) | 0);
               if (((idx < len$1) && (leadch <= 51))) {
                 var index$5 = idx;
@@ -17610,7 +17442,7 @@ $c_s_StringContext$.prototype.loop$1__p1__I__I__T__Z__I__jl_StringBuilder__T = (
               if (jsx$4) {
                 var jsx$6 = oct;
                 var index$7 = idx;
-                oct = (((-48) + (($imul(8, jsx$6) + (65535 & $uI(str$1.charCodeAt(index$7)))) | 0)) | 0);
+                oct = (((-48) + (((jsx$6 << 3) + (65535 & $uI(str$1.charCodeAt(index$7)))) | 0)) | 0);
                 idx = ((1 + idx) | 0)
               }
             };
@@ -17690,38 +17522,36 @@ $c_s_concurrent_BatchingExecutor$Batch.prototype.run__V = (function() {
     try {
       this.scala$concurrent$BatchingExecutor$Batch$$parentBlockContext$1 = prevBlockContext;
       var batch = this.initial$1;
-      x: {
-        _processBatch: while (true) {
-          var x1 = batch;
-          var x$2 = $m_sci_Nil$();
-          if ((!x$2.equals__O__Z(x1))) {
-            if ($is_sci_$colon$colon(x1)) {
-              var x2 = $as_sci_$colon$colon(x1);
-              var head = $as_jl_Runnable(x2.head$5);
-              var tail = x2.tl$5;
-              this.$$outer$f.scala$concurrent$BatchingExecutor$$$undtasksLocal$1.set__O__V(tail);
-              try {
-                head.run__V()
-              } catch (e) {
-                var e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
-                if ((e$2 !== null)) {
-                  var remaining = $as_sci_List(this.$$outer$f.scala$concurrent$BatchingExecutor$$$undtasksLocal$1.get__O());
-                  this.$$outer$f.scala$concurrent$BatchingExecutor$$$undtasksLocal$1.set__O__V($m_sci_Nil$());
-                  var r = new $c_s_concurrent_BatchingExecutor$Batch().init___s_concurrent_BatchingExecutor__sci_List(this.$$outer$f, remaining);
-                  r.run__V();
-                  throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$2)
-                } else {
-                  throw e
-                }
-              };
-              batch = $as_sci_List(this.$$outer$f.scala$concurrent$BatchingExecutor$$$undtasksLocal$1.get__O());
-              continue _processBatch
-            } else {
-              throw new $c_s_MatchError().init___O(x1)
-            }
-          };
-          break x
-        }
+      _processBatch: while (true) {
+        var x1 = batch;
+        var x$2 = $m_sci_Nil$();
+        if ((!x$2.equals__O__Z(x1))) {
+          if ($is_sci_$colon$colon(x1)) {
+            var x2 = $as_sci_$colon$colon(x1);
+            var head = $as_jl_Runnable(x2.head$5);
+            var tail = x2.tl$5;
+            this.$$outer$f.scala$concurrent$BatchingExecutor$$$undtasksLocal$1.set__O__V(tail);
+            try {
+              head.run__V()
+            } catch (e) {
+              var e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
+              if ((e$2 !== null)) {
+                var remaining = $as_sci_List(this.$$outer$f.scala$concurrent$BatchingExecutor$$$undtasksLocal$1.get__O());
+                this.$$outer$f.scala$concurrent$BatchingExecutor$$$undtasksLocal$1.set__O__V($m_sci_Nil$());
+                var r = new $c_s_concurrent_BatchingExecutor$Batch().init___s_concurrent_BatchingExecutor__sci_List(this.$$outer$f, remaining);
+                r.run__V();
+                throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$2)
+              } else {
+                throw e
+              }
+            };
+            batch = $as_sci_List(this.$$outer$f.scala$concurrent$BatchingExecutor$$$undtasksLocal$1.get__O());
+            continue _processBatch
+          } else {
+            throw new $c_s_MatchError().init___O(x1)
+          }
+        };
+        break
       }
     } finally {
       this.$$outer$f.scala$concurrent$BatchingExecutor$$$undtasksLocal$1.remove__V();
@@ -18246,18 +18076,16 @@ $h_sci_Stream$StreamWithFilter.prototype = $c_sci_Stream$StreamWithFilter.protot
 $c_sci_Stream$StreamWithFilter.prototype.foreach__F1__V = (function(f) {
   var this$1 = $as_sci_Stream(this.$$outer$f);
   var _$this = this$1;
-  x: {
-    _foreach: while (true) {
-      if ((!_$this.isEmpty__Z())) {
-        var arg1 = _$this.head__O();
-        if ($uZ(this.p$2.apply__O__O(arg1))) {
-          f.apply__O__O(arg1)
-        };
-        _$this = $as_sci_Stream(_$this.tail__O());
-        continue _foreach
+  _foreach: while (true) {
+    if ((!_$this.isEmpty__Z())) {
+      var arg1 = _$this.head__O();
+      if ($uZ(this.p$2.apply__O__O(arg1))) {
+        f.apply__O__O(arg1)
       };
-      break x
-    }
+      _$this = $as_sci_Stream(_$this.tail__O());
+      continue _foreach
+    };
+    break
   }
 });
 $c_sci_Stream$StreamWithFilter.prototype.init___sci_Stream__F1 = (function($$outer, p) {
@@ -18392,16 +18220,13 @@ $c_sjsr_AnonFunction2.prototype.$classData = $d_sjsr_AnonFunction2;
 function $c_sjsr_RuntimeLong$() {
   $c_O.call(this);
   this.TwoPow32$1 = 0.0;
-  this.TwoPow53$1 = 0.0;
+  this.TwoPow63$1 = 0.0;
   this.UnsignedSafeDoubleHiMask$1 = 0;
   this.AskQuotient$1 = 0;
   this.AskRemainder$1 = 0;
   this.AskBoth$1 = 0;
-  this.Zero$1 = null;
-  this.One$1 = null;
-  this.MinusOne$1 = null;
-  this.MinValue$1 = null;
-  this.MaxValue$1 = null
+  this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = 0;
+  this.Zero$1 = null
 }
 $c_sjsr_RuntimeLong$.prototype = new $h_O();
 $c_sjsr_RuntimeLong$.prototype.constructor = $c_sjsr_RuntimeLong$;
@@ -18413,30 +18238,314 @@ $h_sjsr_RuntimeLong$.prototype = $c_sjsr_RuntimeLong$.prototype;
 $c_sjsr_RuntimeLong$.prototype.init___ = (function() {
   $n_sjsr_RuntimeLong$ = this;
   this.Zero$1 = new $c_sjsr_RuntimeLong().init___I__I(0, 0);
-  this.One$1 = new $c_sjsr_RuntimeLong().init___I__I(1, 0);
-  this.MinusOne$1 = new $c_sjsr_RuntimeLong().init___I__I((-1), (-1));
-  this.MinValue$1 = new $c_sjsr_RuntimeLong().init___I__I(0, (-2147483648));
-  this.MaxValue$1 = new $c_sjsr_RuntimeLong().init___I__I((-1), 2147483647);
   return this
 });
 $c_sjsr_RuntimeLong$.prototype.Zero__sjsr_RuntimeLong = (function() {
   return this.Zero$1
 });
-$c_sjsr_RuntimeLong$.prototype.fromDouble__D__sjsr_RuntimeLong = (function(value) {
-  if ((value !== value)) {
-    return this.Zero$1
-  } else if ((value < (-9.223372036854776E18))) {
-    return this.MinValue$1
-  } else if ((value >= 9.223372036854776E18)) {
-    return this.MaxValue$1
+$c_sjsr_RuntimeLong$.prototype.toUnsignedString__p1__I__I__T = (function(lo, hi) {
+  if ((((-2097152) & hi) === 0)) {
+    var this$5 = ((4.294967296E9 * hi) + $uD((lo >>> 0)));
+    return ("" + this$5)
   } else {
-    var neg = (value < 0);
-    var absValue = (neg ? (-value) : value);
-    var lo = $uI((absValue | 0));
-    var x = (absValue / 4.294967296E9);
-    var hi = $uI((x | 0));
-    return (neg ? new $c_sjsr_RuntimeLong().init___I__I(((-lo) | 0), ((lo !== 0) ? (~hi) : ((-hi) | 0))) : new $c_sjsr_RuntimeLong().init___I__I(lo, hi))
+    var quotRem = this.unsignedDivModHelper__p1__I__I__I__I__I__sjs_js_$bar(lo, hi, 1000000000, 0, 2);
+    var quotLo = $uI(quotRem["0"]);
+    var quotHi = $uI(quotRem["1"]);
+    var rem = $uI(quotRem["2"]);
+    var quot = ((4.294967296E9 * quotHi) + $uD((quotLo >>> 0)));
+    var remStr = ("" + rem);
+    return ((("" + quot) + $as_T("000000000".substring($uI(remStr.length)))) + remStr)
   }
+});
+$c_sjsr_RuntimeLong$.prototype.divideImpl__I__I__I__I__I = (function(alo, ahi, blo, bhi) {
+  if (((blo | bhi) === 0)) {
+    throw new $c_jl_ArithmeticException().init___T("/ by zero")
+  };
+  if ((ahi === (alo >> 31))) {
+    if ((bhi === (blo >> 31))) {
+      if (((alo === (-2147483648)) && (blo === (-1)))) {
+        this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = 0;
+        return (-2147483648)
+      } else {
+        var lo = ((alo / blo) | 0);
+        this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = (lo >> 31);
+        return lo
+      }
+    } else if (((alo === (-2147483648)) && ((blo === (-2147483648)) && (bhi === 0)))) {
+      this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = (-1);
+      return (-1)
+    } else {
+      this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = 0;
+      return 0
+    }
+  } else {
+    var neg = (ahi < 0);
+    if (neg) {
+      var lo$1 = ((-alo) | 0);
+      var hi = ((alo !== 0) ? (~ahi) : ((-ahi) | 0));
+      var abs_$_lo$2 = lo$1;
+      var abs_$_hi$2 = hi
+    } else {
+      var abs_$_lo$2 = alo;
+      var abs_$_hi$2 = ahi
+    };
+    var neg$1 = (bhi < 0);
+    if (neg$1) {
+      var lo$2 = ((-blo) | 0);
+      var hi$1 = ((blo !== 0) ? (~bhi) : ((-bhi) | 0));
+      var abs$1_$_lo$2 = lo$2;
+      var abs$1_$_hi$2 = hi$1
+    } else {
+      var abs$1_$_lo$2 = blo;
+      var abs$1_$_hi$2 = bhi
+    };
+    var absRLo = this.unsigned$und$div__p1__I__I__I__I__I(abs_$_lo$2, abs_$_hi$2, abs$1_$_lo$2, abs$1_$_hi$2);
+    if ((neg === neg$1)) {
+      return absRLo
+    } else {
+      var hi$2 = this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+      this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = ((absRLo !== 0) ? (~hi$2) : ((-hi$2) | 0));
+      return ((-absRLo) | 0)
+    }
+  }
+});
+$c_sjsr_RuntimeLong$.prototype.scala$scalajs$runtime$RuntimeLong$$toDouble__I__I__D = (function(lo, hi) {
+  if ((hi < 0)) {
+    var x = ((lo !== 0) ? (~hi) : ((-hi) | 0));
+    var jsx$1 = $uD((x >>> 0));
+    var x$1 = ((-lo) | 0);
+    return (-((4.294967296E9 * jsx$1) + $uD((x$1 >>> 0))))
+  } else {
+    return ((4.294967296E9 * hi) + $uD((lo >>> 0)))
+  }
+});
+$c_sjsr_RuntimeLong$.prototype.fromDouble__D__sjsr_RuntimeLong = (function(value) {
+  var lo = this.scala$scalajs$runtime$RuntimeLong$$fromDoubleImpl__D__I(value);
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f)
+});
+$c_sjsr_RuntimeLong$.prototype.scala$scalajs$runtime$RuntimeLong$$fromDoubleImpl__D__I = (function(value) {
+  if ((value < (-9.223372036854776E18))) {
+    this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = (-2147483648);
+    return 0
+  } else if ((value >= 9.223372036854776E18)) {
+    this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = 2147483647;
+    return (-1)
+  } else {
+    var rawLo = $uI((value | 0));
+    var x = (value / 4.294967296E9);
+    var rawHi = $uI((x | 0));
+    this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = (((value < 0) && (rawLo !== 0)) ? (((-1) + rawHi) | 0) : rawHi);
+    return rawLo
+  }
+});
+$c_sjsr_RuntimeLong$.prototype.unsigned$und$div__p1__I__I__I__I__I = (function(alo, ahi, blo, bhi) {
+  if ((((-2097152) & ahi) === 0)) {
+    if ((((-2097152) & bhi) === 0)) {
+      var aDouble = ((4.294967296E9 * ahi) + $uD((alo >>> 0)));
+      var bDouble = ((4.294967296E9 * bhi) + $uD((blo >>> 0)));
+      var rDouble = (aDouble / bDouble);
+      var x = (rDouble / 4.294967296E9);
+      this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = $uI((x | 0));
+      return $uI((rDouble | 0))
+    } else {
+      this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = 0;
+      return 0
+    }
+  } else if (((bhi === 0) && ((blo & (((-1) + blo) | 0)) === 0))) {
+    var pow = ((31 - $clz32(blo)) | 0);
+    this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = ((ahi >>> pow) | 0);
+    return (((alo >>> pow) | 0) | ((ahi << 1) << ((31 - pow) | 0)))
+  } else if (((blo === 0) && ((bhi & (((-1) + bhi) | 0)) === 0))) {
+    var pow$2 = ((31 - $clz32(bhi)) | 0);
+    this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = 0;
+    return ((ahi >>> pow$2) | 0)
+  } else {
+    return $uI(this.unsignedDivModHelper__p1__I__I__I__I__I__sjs_js_$bar(alo, ahi, blo, bhi, 0))
+  }
+});
+$c_sjsr_RuntimeLong$.prototype.scala$scalajs$runtime$RuntimeLong$$toString__I__I__T = (function(lo, hi) {
+  return ((hi === (lo >> 31)) ? ("" + lo) : ((hi < 0) ? ("-" + this.toUnsignedString__p1__I__I__T(((-lo) | 0), ((lo !== 0) ? (~hi) : ((-hi) | 0)))) : this.toUnsignedString__p1__I__I__T(lo, hi)))
+});
+$c_sjsr_RuntimeLong$.prototype.scala$scalajs$runtime$RuntimeLong$$compare__I__I__I__I__I = (function(alo, ahi, blo, bhi) {
+  return ((ahi === bhi) ? ((alo === blo) ? 0 : ((((-2147483648) ^ alo) < ((-2147483648) ^ blo)) ? (-1) : 1)) : ((ahi < bhi) ? (-1) : 1))
+});
+$c_sjsr_RuntimeLong$.prototype.unsignedDivModHelper__p1__I__I__I__I__I__sjs_js_$bar = (function(alo, ahi, blo, bhi, ask) {
+  var shift = ((((bhi !== 0) ? $clz32(bhi) : ((32 + $clz32(blo)) | 0)) - ((ahi !== 0) ? $clz32(ahi) : ((32 + $clz32(alo)) | 0))) | 0);
+  var n = shift;
+  var lo = (((32 & n) === 0) ? (blo << n) : 0);
+  var hi = (((32 & n) === 0) ? (((((blo >>> 1) | 0) >>> ((31 - n) | 0)) | 0) | (bhi << n)) : (blo << n));
+  var bShiftLo = lo;
+  var bShiftHi = hi;
+  var remLo = alo;
+  var remHi = ahi;
+  var quotLo = 0;
+  var quotHi = 0;
+  while (((shift >= 0) && (((-2097152) & remHi) !== 0))) {
+    var alo$1 = remLo;
+    var ahi$1 = remHi;
+    var blo$1 = bShiftLo;
+    var bhi$1 = bShiftHi;
+    if (((ahi$1 === bhi$1) ? (((-2147483648) ^ alo$1) >= ((-2147483648) ^ blo$1)) : (((-2147483648) ^ ahi$1) >= ((-2147483648) ^ bhi$1)))) {
+      var lo$1 = remLo;
+      var hi$1 = remHi;
+      var lo$2 = bShiftLo;
+      var hi$2 = bShiftHi;
+      var lo$3 = ((lo$1 - lo$2) | 0);
+      var hi$3 = ((((-2147483648) ^ lo$3) > ((-2147483648) ^ lo$1)) ? (((-1) + ((hi$1 - hi$2) | 0)) | 0) : ((hi$1 - hi$2) | 0));
+      remLo = lo$3;
+      remHi = hi$3;
+      if ((shift < 32)) {
+        quotLo = (quotLo | (1 << shift))
+      } else {
+        quotHi = (quotHi | (1 << shift))
+      }
+    };
+    shift = (((-1) + shift) | 0);
+    var lo$4 = bShiftLo;
+    var hi$4 = bShiftHi;
+    var lo$5 = (((lo$4 >>> 1) | 0) | (hi$4 << 31));
+    var hi$5 = ((hi$4 >>> 1) | 0);
+    bShiftLo = lo$5;
+    bShiftHi = hi$5
+  };
+  var alo$2 = remLo;
+  var ahi$2 = remHi;
+  if (((ahi$2 === bhi) ? (((-2147483648) ^ alo$2) >= ((-2147483648) ^ blo)) : (((-2147483648) ^ ahi$2) >= ((-2147483648) ^ bhi)))) {
+    var lo$6 = remLo;
+    var hi$6 = remHi;
+    var remDouble = ((4.294967296E9 * hi$6) + $uD((lo$6 >>> 0)));
+    var bDouble = ((4.294967296E9 * bhi) + $uD((blo >>> 0)));
+    if ((ask !== 1)) {
+      var x = (remDouble / bDouble);
+      var lo$7 = $uI((x | 0));
+      var x$1 = (x / 4.294967296E9);
+      var hi$7 = $uI((x$1 | 0));
+      var lo$8 = quotLo;
+      var hi$8 = quotHi;
+      var lo$9 = ((lo$8 + lo$7) | 0);
+      var hi$9 = ((((-2147483648) ^ lo$9) < ((-2147483648) ^ lo$8)) ? ((1 + ((hi$8 + hi$7) | 0)) | 0) : ((hi$8 + hi$7) | 0));
+      quotLo = lo$9;
+      quotHi = hi$9
+    };
+    if ((ask !== 0)) {
+      var rem_mod_bDouble = (remDouble % bDouble);
+      remLo = $uI((rem_mod_bDouble | 0));
+      var x$2 = (rem_mod_bDouble / 4.294967296E9);
+      remHi = $uI((x$2 | 0))
+    }
+  };
+  if ((ask === 0)) {
+    this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = quotHi;
+    var a = quotLo;
+    return a
+  } else if ((ask === 1)) {
+    this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = remHi;
+    var a$1 = remLo;
+    return a$1
+  } else {
+    var _1 = quotLo;
+    var _2 = quotHi;
+    var _3 = remLo;
+    var _4 = remHi;
+    var a$2 = [_1, _2, _3, _4];
+    return a$2
+  }
+});
+$c_sjsr_RuntimeLong$.prototype.remainderImpl__I__I__I__I__I = (function(alo, ahi, blo, bhi) {
+  if (((blo | bhi) === 0)) {
+    throw new $c_jl_ArithmeticException().init___T("/ by zero")
+  };
+  if ((ahi === (alo >> 31))) {
+    if ((bhi === (blo >> 31))) {
+      if ((blo !== (-1))) {
+        var lo = ((alo % blo) | 0);
+        this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = (lo >> 31);
+        return lo
+      } else {
+        this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = 0;
+        return 0
+      }
+    } else if (((alo === (-2147483648)) && ((blo === (-2147483648)) && (bhi === 0)))) {
+      this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = 0;
+      return 0
+    } else {
+      this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = ahi;
+      return alo
+    }
+  } else {
+    var neg = (ahi < 0);
+    if (neg) {
+      var lo$1 = ((-alo) | 0);
+      var hi = ((alo !== 0) ? (~ahi) : ((-ahi) | 0));
+      var abs_$_lo$2 = lo$1;
+      var abs_$_hi$2 = hi
+    } else {
+      var abs_$_lo$2 = alo;
+      var abs_$_hi$2 = ahi
+    };
+    var neg$1 = (bhi < 0);
+    if (neg$1) {
+      var lo$2 = ((-blo) | 0);
+      var hi$1 = ((blo !== 0) ? (~bhi) : ((-bhi) | 0));
+      var abs$1_$_lo$2 = lo$2;
+      var abs$1_$_hi$2 = hi$1
+    } else {
+      var abs$1_$_lo$2 = blo;
+      var abs$1_$_hi$2 = bhi
+    };
+    var absRLo = this.unsigned$und$percent__p1__I__I__I__I__I(abs_$_lo$2, abs_$_hi$2, abs$1_$_lo$2, abs$1_$_hi$2);
+    if (neg) {
+      var hi$2 = this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+      this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = ((absRLo !== 0) ? (~hi$2) : ((-hi$2) | 0));
+      return ((-absRLo) | 0)
+    } else {
+      return absRLo
+    }
+  }
+});
+$c_sjsr_RuntimeLong$.prototype.unsigned$und$percent__p1__I__I__I__I__I = (function(alo, ahi, blo, bhi) {
+  if ((((-2097152) & ahi) === 0)) {
+    if ((((-2097152) & bhi) === 0)) {
+      var aDouble = ((4.294967296E9 * ahi) + $uD((alo >>> 0)));
+      var bDouble = ((4.294967296E9 * bhi) + $uD((blo >>> 0)));
+      var rDouble = (aDouble % bDouble);
+      var x = (rDouble / 4.294967296E9);
+      this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = $uI((x | 0));
+      return $uI((rDouble | 0))
+    } else {
+      this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = ahi;
+      return alo
+    }
+  } else if (((bhi === 0) && ((blo & (((-1) + blo) | 0)) === 0))) {
+    this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = 0;
+    return (alo & (((-1) + blo) | 0))
+  } else if (((blo === 0) && ((bhi & (((-1) + bhi) | 0)) === 0))) {
+    this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = (ahi & (((-1) + bhi) | 0));
+    return alo
+  } else {
+    return $uI(this.unsignedDivModHelper__p1__I__I__I__I__I__sjs_js_$bar(alo, ahi, blo, bhi, 1))
+  }
+});
+$c_sjsr_RuntimeLong$.prototype.scala$scalajs$runtime$RuntimeLong$$timesHi__I__I__I__I__I = (function(alo, ahi, blo, bhi) {
+  var a0 = (65535 & alo);
+  var a1 = ((alo >>> 16) | 0);
+  var a2 = (65535 & ahi);
+  var a3 = ((ahi >>> 16) | 0);
+  var b0 = (65535 & blo);
+  var b1 = ((blo >>> 16) | 0);
+  var b2 = (65535 & bhi);
+  var b3 = ((bhi >>> 16) | 0);
+  var c1part = (((($imul(a0, b0) >>> 16) | 0) + $imul(a1, b0)) | 0);
+  var c2 = ((((c1part >>> 16) | 0) + (((((65535 & c1part) + $imul(a0, b1)) | 0) >>> 16) | 0)) | 0);
+  var c3 = ((c2 >>> 16) | 0);
+  c2 = (((65535 & c2) + $imul(a2, b0)) | 0);
+  c3 = ((c3 + ((c2 >>> 16) | 0)) | 0);
+  c2 = (((65535 & c2) + $imul(a1, b1)) | 0);
+  c3 = ((c3 + ((c2 >>> 16) | 0)) | 0);
+  c2 = (((65535 & c2) + $imul(a0, b2)) | 0);
+  c3 = ((c3 + ((c2 >>> 16) | 0)) | 0);
+  c3 = ((((((((c3 + $imul(a3, b0)) | 0) + $imul(a2, b1)) | 0) + $imul(a1, b2)) | 0) + $imul(a0, b3)) | 0);
+  return ((65535 & c2) | (c3 << 16))
 });
 var $d_sjsr_RuntimeLong$ = new $TypeData().initClass({
   sjsr_RuntimeLong$: 0
@@ -19720,9 +19829,9 @@ $c_scm_WrappedArrayBuilder.prototype.init___s_reflect_ClassTag = (function(tag) 
 });
 $c_scm_WrappedArrayBuilder.prototype.ensureSize__p1__I__V = (function(size) {
   if ((this.capacity$1 < size)) {
-    var newsize = ((this.capacity$1 === 0) ? 16 : $imul(2, this.capacity$1));
+    var newsize = ((this.capacity$1 === 0) ? 16 : (this.capacity$1 << 1));
     while ((newsize < size)) {
-      newsize = $imul(2, newsize)
+      newsize = (newsize << 1)
     };
     this.resize__p1__I__V(newsize)
   }
@@ -19741,11 +19850,11 @@ $c_scm_WrappedArrayBuilder.prototype.mkArray__p1__I__scm_WrappedArray = (functio
   if ($is_jl_Class(schematic)) {
     var x2 = $as_jl_Class(schematic);
     var runtimeClass = x2.getComponentType__jl_Class()
-  } else if ((schematic !== null)) {
-    var runtimeClass = schematic.runtimeClass__jl_Class()
   } else {
-    var runtimeClass;
-    throw new $c_jl_UnsupportedOperationException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["unsupported schematic ", " (", ")"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([schematic, $objectGetClass(schematic)])))
+    if ((schematic === null)) {
+      throw new $c_jl_UnsupportedOperationException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["unsupported schematic ", " (", ")"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([schematic, $objectGetClass(schematic)])))
+    };
+    var runtimeClass = schematic.runtimeClass__jl_Class()
   };
   var newelems = ((runtimeClass === $d_B.getClassOf()) ? new $c_scm_WrappedArray$ofByte().init___AB($newArrayObject($d_B.getArrayOf(), [size])) : ((runtimeClass === $d_S.getClassOf()) ? new $c_scm_WrappedArray$ofShort().init___AS($newArrayObject($d_S.getArrayOf(), [size])) : ((runtimeClass === $d_C.getClassOf()) ? new $c_scm_WrappedArray$ofChar().init___AC($newArrayObject($d_C.getArrayOf(), [size])) : ((runtimeClass === $d_I.getClassOf()) ? new $c_scm_WrappedArray$ofInt().init___AI($newArrayObject($d_I.getArrayOf(), [size])) : ((runtimeClass === $d_J.getClassOf()) ? new $c_scm_WrappedArray$ofLong().init___AJ($newArrayObject($d_J.getArrayOf(), [size])) : ((runtimeClass === $d_F.getClassOf()) ? new $c_scm_WrappedArray$ofFloat().init___AF($newArrayObject($d_F.getArrayOf(), [size])) : ((runtimeClass === $d_D.getClassOf()) ? new $c_scm_WrappedArray$ofDouble().init___AD($newArrayObject($d_D.getArrayOf(), [size])) : ((runtimeClass === $d_Z.getClassOf()) ? new $c_scm_WrappedArray$ofBoolean().init___AZ($newArrayObject($d_Z.getArrayOf(), [size])) : ((runtimeClass === $d_V.getClassOf()) ? new $c_scm_WrappedArray$ofUnit().init___Asr_BoxedUnit($newArrayObject($d_sr_BoxedUnit.getArrayOf(), [size])) : new $c_scm_WrappedArray$ofRef().init___AO($asArrayOf_O(this.tag$1.newArray__I__O(size), 1)))))))))));
   if ((this.size$1 > 0)) {
@@ -20044,35 +20153,10 @@ $c_sjsr_RuntimeLong.prototype.$$bar__sjsr_RuntimeLong__sjsr_RuntimeLong = (funct
 $c_sjsr_RuntimeLong.prototype.$$greater$eq__sjsr_RuntimeLong__Z = (function(b) {
   var ahi = this.hi$2;
   var bhi = b.hi$2;
-  if ((ahi === bhi)) {
-    var a = this.lo$2;
-    var b$1 = b.lo$2;
-    return (((-2147483648) ^ a) >= ((-2147483648) ^ b$1))
-  } else {
-    return (bhi < ahi)
-  }
-});
-$c_sjsr_RuntimeLong.prototype.unsigned$und$percent__p2__I__I__I__I__sjsr_RuntimeLong = (function(alo, ahi, blo, bhi) {
-  if ((((-2097152) & ahi) === 0)) {
-    if ((((-2097152) & bhi) === 0)) {
-      var aDouble = ((4.294967296E9 * ahi) + $uD((alo >>> 0)));
-      var bDouble = ((4.294967296E9 * bhi) + $uD((blo >>> 0)));
-      var rDouble = (aDouble % bDouble);
-      var jsx$1 = $uI((rDouble | 0));
-      var x = (rDouble / 4.294967296E9);
-      return new $c_sjsr_RuntimeLong().init___I__I(jsx$1, $uI((x | 0)))
-    } else {
-      return new $c_sjsr_RuntimeLong().init___I__I(alo, ahi)
-    }
-  } else {
-    return (((bhi === 0) && ((blo & (((-1) + blo) | 0)) === 0)) ? new $c_sjsr_RuntimeLong().init___I__I((alo & (((-1) + blo) | 0)), 0) : (((blo === 0) && ((bhi & (((-1) + bhi) | 0)) === 0)) ? new $c_sjsr_RuntimeLong().init___I__I(alo, (ahi & (((-1) + bhi) | 0))) : $as_sjsr_RuntimeLong(this.unsignedDivModHelper__p2__I__I__I__I__I__sjs_js_$bar(alo, ahi, blo, bhi, 1))))
-  }
+  return ((ahi === bhi) ? (((-2147483648) ^ this.lo$2) >= ((-2147483648) ^ b.lo$2)) : (ahi > bhi))
 });
 $c_sjsr_RuntimeLong.prototype.byteValue__B = (function() {
-  return this.toByte__B()
-});
-$c_sjsr_RuntimeLong.prototype.toShort__S = (function() {
-  return ((this.lo$2 << 16) >> 16)
+  return ((this.lo$2 << 24) >> 24)
 });
 $c_sjsr_RuntimeLong.prototype.equals__O__Z = (function(that) {
   if ($is_sjsr_RuntimeLong(that)) {
@@ -20085,206 +20169,24 @@ $c_sjsr_RuntimeLong.prototype.equals__O__Z = (function(that) {
 $c_sjsr_RuntimeLong.prototype.$$less__sjsr_RuntimeLong__Z = (function(b) {
   var ahi = this.hi$2;
   var bhi = b.hi$2;
-  if ((ahi === bhi)) {
-    var a = this.lo$2;
-    var b$1 = b.lo$2;
-    return (((-2147483648) ^ a) < ((-2147483648) ^ b$1))
-  } else {
-    return (ahi < bhi)
-  }
+  return ((ahi === bhi) ? (((-2147483648) ^ this.lo$2) < ((-2147483648) ^ b.lo$2)) : (ahi < bhi))
 });
 $c_sjsr_RuntimeLong.prototype.$$times__sjsr_RuntimeLong__sjsr_RuntimeLong = (function(b) {
   var alo = this.lo$2;
-  var ahi = this.hi$2;
   var blo = b.lo$2;
-  var bhi = b.hi$2;
-  var a0 = (65535 & alo);
-  var a1 = ((alo >>> 16) | 0);
-  var a2 = (65535 & ahi);
-  var a3 = ((ahi >>> 16) | 0);
-  var b0 = (65535 & blo);
-  var b1 = ((blo >>> 16) | 0);
-  var b2 = (65535 & bhi);
-  var b3 = ((bhi >>> 16) | 0);
-  var c0 = $imul(a0, b0);
-  var c1 = ((c0 >>> 16) | 0);
-  c1 = ((c1 + $imul(a1, b0)) | 0);
-  var c2 = ((c1 >>> 16) | 0);
-  c1 = (((65535 & c1) + $imul(a0, b1)) | 0);
-  c2 = ((c2 + ((c1 >>> 16) | 0)) | 0);
-  var c3 = ((c2 >>> 16) | 0);
-  c2 = (((65535 & c2) + $imul(a2, b0)) | 0);
-  c3 = ((c3 + ((c2 >>> 16) | 0)) | 0);
-  c2 = (((65535 & c2) + $imul(a1, b1)) | 0);
-  c3 = ((c3 + ((c2 >>> 16) | 0)) | 0);
-  c2 = (((65535 & c2) + $imul(a0, b2)) | 0);
-  c3 = ((c3 + ((c2 >>> 16) | 0)) | 0);
-  c3 = ((((((((c3 + $imul(a3, b0)) | 0) + $imul(a2, b1)) | 0) + $imul(a1, b2)) | 0) + $imul(a0, b3)) | 0);
-  return new $c_sjsr_RuntimeLong().init___I__I(((65535 & c0) | (c1 << 16)), ((65535 & c2) | (c3 << 16)))
+  return new $c_sjsr_RuntimeLong().init___I__I($imul(alo, blo), $m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$timesHi__I__I__I__I__I(alo, this.hi$2, blo, b.hi$2))
 });
 $c_sjsr_RuntimeLong.prototype.init___I__I__I = (function(l, m, h) {
   $c_sjsr_RuntimeLong.prototype.init___I__I.call(this, (l | (m << 22)), ((m >> 10) | (h << 12)));
   return this
 });
 $c_sjsr_RuntimeLong.prototype.$$percent__sjsr_RuntimeLong__sjsr_RuntimeLong = (function(b) {
-  var alo = this.lo$2;
-  var ahi = this.hi$2;
-  var blo = b.lo$2;
-  var bhi = b.hi$2;
-  if (((blo | bhi) === 0)) {
-    throw new $c_jl_ArithmeticException().init___T("/ by zero")
-  };
-  if ((ahi === (alo >> 31))) {
-    return ((bhi === (blo >> 31)) ? ((blo !== (-1)) ? new $c_sjsr_RuntimeLong().init___I(((alo % blo) | 0)) : $m_sjsr_RuntimeLong$().Zero$1) : (((alo === (-2147483648)) && ((blo === (-2147483648)) && (bhi === 0))) ? $m_sjsr_RuntimeLong$().Zero$1 : this))
-  } else {
-    var neg = (ahi < 0);
-    var absLo = alo;
-    var absHi = ahi;
-    if (neg) {
-      absLo = ((-alo) | 0);
-      absHi = ((alo !== 0) ? (~ahi) : ((-ahi) | 0))
-    };
-    var _2 = absLo;
-    var _3 = absHi;
-    var neg$1 = (bhi < 0);
-    var absLo$1 = blo;
-    var absHi$1 = bhi;
-    if (neg$1) {
-      absLo$1 = ((-blo) | 0);
-      absHi$1 = ((blo !== 0) ? (~bhi) : ((-bhi) | 0))
-    };
-    var _2$1 = absLo$1;
-    var _3$1 = absHi$1;
-    var absR = this.unsigned$und$percent__p2__I__I__I__I__sjsr_RuntimeLong(_2, _3, _2$1, _3$1);
-    if (neg) {
-      var lo = absR.lo$2;
-      var hi = absR.hi$2;
-      return new $c_sjsr_RuntimeLong().init___I__I(((-lo) | 0), ((lo !== 0) ? (~hi) : ((-hi) | 0)))
-    } else {
-      return absR
-    }
-  }
-});
-$c_sjsr_RuntimeLong.prototype.unsignedDivModHelper__p2__I__I__I__I__I__sjs_js_$bar = (function(alo, ahi, blo, bhi, ask) {
-  var shift = ((((bhi !== 0) ? $clz32(bhi) : ((32 + $clz32(blo)) | 0)) - ((ahi !== 0) ? $clz32(ahi) : ((32 + $clz32(alo)) | 0))) | 0);
-  var n = shift;
-  if ((n === 0)) {
-    var initialBShift_$_$$und1$f = null;
-    var initialBShift_$_$$und2$f = null;
-    var initialBShift_$_$$und1$mcI$sp$f = blo;
-    var initialBShift_$_$$und2$mcI$sp$f = bhi
-  } else if ((n < 32)) {
-    var _1$mcI$sp = (blo << n);
-    var _2$mcI$sp = (((blo >>> ((-n) | 0)) | 0) | (bhi << n));
-    var initialBShift_$_$$und1$f = null;
-    var initialBShift_$_$$und2$f = null;
-    var initialBShift_$_$$und1$mcI$sp$f = _1$mcI$sp;
-    var initialBShift_$_$$und2$mcI$sp$f = _2$mcI$sp
-  } else {
-    var _2$mcI$sp$1 = (blo << n);
-    var initialBShift_$_$$und1$f = null;
-    var initialBShift_$_$$und2$f = null;
-    var initialBShift_$_$$und1$mcI$sp$f = 0;
-    var initialBShift_$_$$und2$mcI$sp$f = _2$mcI$sp$1
-  };
-  var bShiftLo = initialBShift_$_$$und1$mcI$sp$f;
-  var bShiftHi = initialBShift_$_$$und2$mcI$sp$f;
-  var remLo = alo;
-  var remHi = ahi;
-  var quotLo = 0;
-  var quotHi = 0;
-  while (((shift >= 0) && (((-2097152) & remHi) !== 0))) {
-    var alo$1 = remLo;
-    var ahi$1 = remHi;
-    var blo$1 = bShiftLo;
-    var bhi$1 = bShiftHi;
-    if (((ahi$1 === bhi$1) ? (((-2147483648) ^ alo$1) >= ((-2147483648) ^ blo$1)) : (((-2147483648) ^ ahi$1) >= ((-2147483648) ^ bhi$1)))) {
-      var alo$2 = remLo;
-      var ahi$2 = remHi;
-      var blo$2 = bShiftLo;
-      var bhi$2 = bShiftHi;
-      var lo = ((alo$2 - blo$2) | 0);
-      var _2$mcI$sp$2 = ((((ahi$2 - bhi$2) | 0) + ((((-2147483648) ^ alo$2) < ((-2147483648) ^ lo)) ? (-1) : 0)) | 0);
-      remLo = lo;
-      remHi = _2$mcI$sp$2;
-      if ((shift < 32)) {
-        quotLo = (quotLo | (1 << shift))
-      } else {
-        quotHi = (quotHi | (1 << shift))
-      }
-    };
-    shift = (((-1) + shift) | 0);
-    var lo$1 = bShiftLo;
-    var hi = bShiftHi;
-    var _1$mcI$sp$1 = (((lo$1 >>> 1) | 0) | (hi << (-1)));
-    var _2$mcI$sp$3 = ((hi >>> 1) | 0);
-    bShiftLo = _1$mcI$sp$1;
-    bShiftHi = _2$mcI$sp$3
-  };
-  var alo$3 = remLo;
-  var ahi$3 = remHi;
-  if (((ahi$3 === bhi) ? (((-2147483648) ^ alo$3) >= ((-2147483648) ^ blo)) : (((-2147483648) ^ ahi$3) >= ((-2147483648) ^ bhi)))) {
-    var lo$2 = remLo;
-    var hi$1 = remHi;
-    var remDouble = ((4.294967296E9 * hi$1) + $uD((lo$2 >>> 0)));
-    var bDouble = ((4.294967296E9 * bhi) + $uD((blo >>> 0)));
-    if ((ask !== 1)) {
-      var rem_div_bDouble = (remDouble / bDouble);
-      var alo$4 = quotLo;
-      var ahi$4 = quotHi;
-      var blo$3 = $uI((rem_div_bDouble | 0));
-      var x = (rem_div_bDouble / 4.294967296E9);
-      var bhi$3 = $uI((x | 0));
-      var lo$3 = ((alo$4 + blo$3) | 0);
-      var _2$mcI$sp$4 = ((((ahi$4 + bhi$3) | 0) + ((((-2147483648) ^ lo$3) < ((-2147483648) ^ alo$4)) ? 1 : 0)) | 0);
-      quotLo = lo$3;
-      quotHi = _2$mcI$sp$4
-    };
-    if ((ask !== 0)) {
-      var rem_mod_bDouble = (remDouble % bDouble);
-      remLo = $uI((rem_mod_bDouble | 0));
-      var x$1 = (rem_mod_bDouble / 4.294967296E9);
-      remHi = $uI((x$1 | 0))
-    }
-  };
-  if ((ask === 0)) {
-    var a = new $c_sjsr_RuntimeLong().init___I__I(quotLo, quotHi);
-    return a
-  } else if ((ask === 1)) {
-    var a$1 = new $c_sjsr_RuntimeLong().init___I__I(remLo, remHi);
-    return a$1
-  } else {
-    var _1 = quotLo;
-    var _2 = quotHi;
-    var _3 = remLo;
-    var _4 = remHi;
-    var a$2 = [_1, _2, _3, _4];
-    return a$2
-  }
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.remainderImpl__I__I__I__I__I(this.lo$2, this.hi$2, b.lo$2, b.hi$2);
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f)
 });
 $c_sjsr_RuntimeLong.prototype.toString__T = (function() {
-  var lo = this.lo$2;
-  var hi = this.hi$2;
-  if ((hi === (lo >> 31))) {
-    return ("" + lo)
-  } else if ((hi < 0)) {
-    var _1$mcI$sp = ((-lo) | 0);
-    var _2$mcI$sp = ((lo !== 0) ? (~hi) : ((-hi) | 0));
-    return ("-" + this.toUnsignedString__p2__I__I__T(_1$mcI$sp, _2$mcI$sp))
-  } else {
-    return this.toUnsignedString__p2__I__I__T(lo, hi)
-  }
-});
-$c_sjsr_RuntimeLong.prototype.$$less$eq__sjsr_RuntimeLong__Z = (function(b) {
-  var ahi = this.hi$2;
-  var bhi = b.hi$2;
-  if ((ahi === bhi)) {
-    var a = this.lo$2;
-    var b$1 = b.lo$2;
-    return (((-2147483648) ^ b$1) >= ((-2147483648) ^ a))
-  } else {
-    return (ahi < bhi)
-  }
+  return $m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$toString__I__I__T(this.lo$2, this.hi$2)
 });
 $c_sjsr_RuntimeLong.prototype.init___I__I = (function(lo, hi) {
   this.lo$2 = lo;
@@ -20293,49 +20195,33 @@ $c_sjsr_RuntimeLong.prototype.init___I__I = (function(lo, hi) {
 });
 $c_sjsr_RuntimeLong.prototype.compareTo__O__I = (function(x$1) {
   var that = $as_sjsr_RuntimeLong(x$1);
-  return this.compareTo__sjsr_RuntimeLong__I($as_sjsr_RuntimeLong(that))
+  return $m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$compare__I__I__I__I__I(this.lo$2, this.hi$2, that.lo$2, that.hi$2)
+});
+$c_sjsr_RuntimeLong.prototype.$$less$eq__sjsr_RuntimeLong__Z = (function(b) {
+  var ahi = this.hi$2;
+  var bhi = b.hi$2;
+  return ((ahi === bhi) ? (((-2147483648) ^ this.lo$2) <= ((-2147483648) ^ b.lo$2)) : (ahi < bhi))
 });
 $c_sjsr_RuntimeLong.prototype.$$amp__sjsr_RuntimeLong__sjsr_RuntimeLong = (function(b) {
   return new $c_sjsr_RuntimeLong().init___I__I((this.lo$2 & b.lo$2), (this.hi$2 & b.hi$2))
 });
-$c_sjsr_RuntimeLong.prototype.compareTo__sjsr_RuntimeLong__I = (function(b) {
-  var ahi = this.hi$2;
-  var bhi = b.hi$2;
-  if ((ahi === bhi)) {
-    var alo = this.lo$2;
-    var blo = b.lo$2;
-    return ((alo === blo) ? 0 : ((((-2147483648) ^ alo) < ((-2147483648) ^ blo)) ? (-1) : 1))
-  } else {
-    return ((ahi < bhi) ? (-1) : 1)
-  }
-});
-$c_sjsr_RuntimeLong.prototype.$$greater$greater$greater__I__sjsr_RuntimeLong = (function(n0) {
-  var n = (63 & n0);
-  var hi = this.hi$2;
-  return ((n === 0) ? this : ((n < 32) ? new $c_sjsr_RuntimeLong().init___I__I((((this.lo$2 >>> n) | 0) | (hi << ((-n) | 0))), ((hi >>> n) | 0)) : new $c_sjsr_RuntimeLong().init___I__I(((hi >>> n) | 0), 0)))
+$c_sjsr_RuntimeLong.prototype.$$greater$greater$greater__I__sjsr_RuntimeLong = (function(n) {
+  return new $c_sjsr_RuntimeLong().init___I__I((((32 & n) === 0) ? (((this.lo$2 >>> n) | 0) | ((this.hi$2 << 1) << ((31 - n) | 0))) : ((this.hi$2 >>> n) | 0)), (((32 & n) === 0) ? ((this.hi$2 >>> n) | 0) : 0))
 });
 $c_sjsr_RuntimeLong.prototype.$$greater__sjsr_RuntimeLong__Z = (function(b) {
   var ahi = this.hi$2;
   var bhi = b.hi$2;
-  if ((ahi === bhi)) {
-    var a = this.lo$2;
-    var b$1 = b.lo$2;
-    return (((-2147483648) ^ b$1) < ((-2147483648) ^ a))
-  } else {
-    return (bhi < ahi)
-  }
+  return ((ahi === bhi) ? (((-2147483648) ^ this.lo$2) > ((-2147483648) ^ b.lo$2)) : (ahi > bhi))
 });
-$c_sjsr_RuntimeLong.prototype.$$less$less__I__sjsr_RuntimeLong = (function(n0) {
-  var n = (63 & n0);
-  var lo = this.lo$2;
-  return ((n === 0) ? this : ((n < 32) ? new $c_sjsr_RuntimeLong().init___I__I((lo << n), (((lo >>> ((-n) | 0)) | 0) | (this.hi$2 << n))) : new $c_sjsr_RuntimeLong().init___I__I(0, (lo << n))))
-});
-$c_sjsr_RuntimeLong.prototype.toInt__I = (function() {
-  return this.lo$2
+$c_sjsr_RuntimeLong.prototype.$$less$less__I__sjsr_RuntimeLong = (function(n) {
+  return new $c_sjsr_RuntimeLong().init___I__I((((32 & n) === 0) ? (this.lo$2 << n) : 0), (((32 & n) === 0) ? (((((this.lo$2 >>> 1) | 0) >>> ((31 - n) | 0)) | 0) | (this.hi$2 << n)) : (this.lo$2 << n)))
 });
 $c_sjsr_RuntimeLong.prototype.init___I = (function(value) {
   $c_sjsr_RuntimeLong.prototype.init___I__I.call(this, value, (value >> 31));
   return this
+});
+$c_sjsr_RuntimeLong.prototype.toInt__I = (function() {
+  return this.lo$2
 });
 $c_sjsr_RuntimeLong.prototype.notEquals__sjsr_RuntimeLong__Z = (function(b) {
   return (!((this.lo$2 === b.lo$2) && (this.hi$2 === b.hi$2)))
@@ -20345,100 +20231,29 @@ $c_sjsr_RuntimeLong.prototype.unary$und$minus__sjsr_RuntimeLong = (function() {
   var hi = this.hi$2;
   return new $c_sjsr_RuntimeLong().init___I__I(((-lo) | 0), ((lo !== 0) ? (~hi) : ((-hi) | 0)))
 });
-$c_sjsr_RuntimeLong.prototype.shortValue__S = (function() {
-  return this.toShort__S()
-});
 $c_sjsr_RuntimeLong.prototype.$$plus__sjsr_RuntimeLong__sjsr_RuntimeLong = (function(b) {
   var alo = this.lo$2;
   var ahi = this.hi$2;
-  var blo = b.lo$2;
   var bhi = b.hi$2;
-  var lo = ((alo + blo) | 0);
-  var _2$mcI$sp = ((((ahi + bhi) | 0) + ((((-2147483648) ^ lo) < ((-2147483648) ^ alo)) ? 1 : 0)) | 0);
-  return new $c_sjsr_RuntimeLong().init___I__I(lo, _2$mcI$sp)
+  var lo = ((alo + b.lo$2) | 0);
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, ((((-2147483648) ^ lo) < ((-2147483648) ^ alo)) ? ((1 + ((ahi + bhi) | 0)) | 0) : ((ahi + bhi) | 0)))
+});
+$c_sjsr_RuntimeLong.prototype.shortValue__S = (function() {
+  return ((this.lo$2 << 16) >> 16)
+});
+$c_sjsr_RuntimeLong.prototype.$$greater$greater__I__sjsr_RuntimeLong = (function(n) {
+  return new $c_sjsr_RuntimeLong().init___I__I((((32 & n) === 0) ? (((this.lo$2 >>> n) | 0) | ((this.hi$2 << 1) << ((31 - n) | 0))) : (this.hi$2 >> n)), (((32 & n) === 0) ? (this.hi$2 >> n) : (this.hi$2 >> 31)))
 });
 $c_sjsr_RuntimeLong.prototype.toDouble__D = (function() {
-  var lo = this.lo$2;
-  var hi = this.hi$2;
-  if ((hi < 0)) {
-    var _1$mcI$sp = ((-lo) | 0);
-    var _2$mcI$sp = ((lo !== 0) ? (~hi) : ((-hi) | 0));
-    return (-((4.294967296E9 * $uD((_2$mcI$sp >>> 0))) + $uD((_1$mcI$sp >>> 0))))
-  } else {
-    return ((4.294967296E9 * hi) + $uD((lo >>> 0)))
-  }
-});
-$c_sjsr_RuntimeLong.prototype.$$greater$greater__I__sjsr_RuntimeLong = (function(n0) {
-  var n = (63 & n0);
-  var hi = this.hi$2;
-  return ((n === 0) ? this : ((n < 32) ? new $c_sjsr_RuntimeLong().init___I__I((((this.lo$2 >>> n) | 0) | (hi << ((-n) | 0))), (hi >> n)) : new $c_sjsr_RuntimeLong().init___I__I((hi >> n), (hi >> 31))))
-});
-$c_sjsr_RuntimeLong.prototype.unsigned$und$div__p2__I__I__I__I__sjsr_RuntimeLong = (function(alo, ahi, blo, bhi) {
-  if ((((-2097152) & ahi) === 0)) {
-    if ((((-2097152) & bhi) === 0)) {
-      var aDouble = ((4.294967296E9 * ahi) + $uD((alo >>> 0)));
-      var bDouble = ((4.294967296E9 * bhi) + $uD((blo >>> 0)));
-      var rDouble = (aDouble / bDouble);
-      var jsx$1 = $uI((rDouble | 0));
-      var x = (rDouble / 4.294967296E9);
-      return new $c_sjsr_RuntimeLong().init___I__I(jsx$1, $uI((x | 0)))
-    } else {
-      return $m_sjsr_RuntimeLong$().Zero$1
-    }
-  } else if (((bhi === 0) && ((blo & (((-1) + blo) | 0)) === 0))) {
-    var pow = ((31 - $clz32(blo)) | 0);
-    return ((pow === 0) ? new $c_sjsr_RuntimeLong().init___I__I(alo, ahi) : new $c_sjsr_RuntimeLong().init___I__I((((alo >>> pow) | 0) | (ahi << ((-pow) | 0))), ((ahi >>> pow) | 0)))
-  } else if (((blo === 0) && ((bhi & (((-1) + bhi) | 0)) === 0))) {
-    var pow$2 = ((31 - $clz32(bhi)) | 0);
-    return new $c_sjsr_RuntimeLong().init___I__I(((ahi >>> pow$2) | 0), 0)
-  } else {
-    return $as_sjsr_RuntimeLong(this.unsignedDivModHelper__p2__I__I__I__I__I__sjs_js_$bar(alo, ahi, blo, bhi, 0))
-  }
+  return $m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$toDouble__I__I__D(this.lo$2, this.hi$2)
 });
 $c_sjsr_RuntimeLong.prototype.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong = (function(b) {
-  var alo = this.lo$2;
-  var ahi = this.hi$2;
-  var blo = b.lo$2;
-  var bhi = b.hi$2;
-  if (((blo | bhi) === 0)) {
-    throw new $c_jl_ArithmeticException().init___T("/ by zero")
-  };
-  if ((ahi === (alo >> 31))) {
-    return ((bhi === (blo >> 31)) ? (((alo === (-2147483648)) && (blo === (-1))) ? new $c_sjsr_RuntimeLong().init___I__I((-2147483648), 0) : new $c_sjsr_RuntimeLong().init___I(((alo / blo) | 0))) : (((alo === (-2147483648)) && ((blo === (-2147483648)) && (bhi === 0))) ? $m_sjsr_RuntimeLong$().MinusOne$1 : $m_sjsr_RuntimeLong$().Zero$1))
-  } else {
-    var neg = (ahi < 0);
-    var absLo = alo;
-    var absHi = ahi;
-    if (neg) {
-      absLo = ((-alo) | 0);
-      absHi = ((alo !== 0) ? (~ahi) : ((-ahi) | 0))
-    };
-    var _2 = absLo;
-    var _3 = absHi;
-    var neg$1 = (bhi < 0);
-    var absLo$1 = blo;
-    var absHi$1 = bhi;
-    if (neg$1) {
-      absLo$1 = ((-blo) | 0);
-      absHi$1 = ((blo !== 0) ? (~bhi) : ((-bhi) | 0))
-    };
-    var _2$1 = absLo$1;
-    var _3$1 = absHi$1;
-    var absR = this.unsigned$und$div__p2__I__I__I__I__sjsr_RuntimeLong(_2, _3, _2$1, _3$1);
-    if ((neg === neg$1)) {
-      return absR
-    } else {
-      var lo = absR.lo$2;
-      var hi = absR.hi$2;
-      return new $c_sjsr_RuntimeLong().init___I__I(((-lo) | 0), ((lo !== 0) ? (~hi) : ((-hi) | 0)))
-    }
-  }
-});
-$c_sjsr_RuntimeLong.prototype.toByte__B = (function() {
-  return ((this.lo$2 << 24) >> 24)
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(this.lo$2, this.hi$2, b.lo$2, b.hi$2);
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f)
 });
 $c_sjsr_RuntimeLong.prototype.doubleValue__D = (function() {
-  return this.toDouble__D()
+  return $m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$toDouble__I__I__D(this.lo$2, this.hi$2)
 });
 $c_sjsr_RuntimeLong.prototype.hashCode__I = (function() {
   return (this.lo$2 ^ this.hi$2)
@@ -20446,40 +20261,21 @@ $c_sjsr_RuntimeLong.prototype.hashCode__I = (function() {
 $c_sjsr_RuntimeLong.prototype.intValue__I = (function() {
   return this.lo$2
 });
-$c_sjsr_RuntimeLong.prototype.toUnsignedString__p2__I__I__T = (function(lo, hi) {
-  if ((((-2097152) & hi) === 0)) {
-    var this$5 = ((4.294967296E9 * hi) + $uD((lo >>> 0)));
-    return ("" + this$5)
-  } else {
-    var quotRem = this.unsignedDivModHelper__p2__I__I__I__I__I__sjs_js_$bar(lo, hi, 1000000000, 0, 2);
-    var quotLo = $uI(quotRem["0"]);
-    var quotHi = $uI(quotRem["1"]);
-    var rem = $uI(quotRem["2"]);
-    var quot = ((4.294967296E9 * quotHi) + $uD((quotLo >>> 0)));
-    var remStr = ("" + rem);
-    return ((("" + quot) + $as_T("000000000".substring($uI(remStr.length)))) + remStr)
-  }
-});
-$c_sjsr_RuntimeLong.prototype.compareTo__jl_Long__I = (function(that) {
-  return this.compareTo__sjsr_RuntimeLong__I($as_sjsr_RuntimeLong(that))
-});
 $c_sjsr_RuntimeLong.prototype.unary$und$tilde__sjsr_RuntimeLong = (function() {
   return new $c_sjsr_RuntimeLong().init___I__I((~this.lo$2), (~this.hi$2))
 });
+$c_sjsr_RuntimeLong.prototype.compareTo__jl_Long__I = (function(that) {
+  return $m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$compare__I__I__I__I__I(this.lo$2, this.hi$2, that.lo$2, that.hi$2)
+});
 $c_sjsr_RuntimeLong.prototype.floatValue__F = (function() {
-  return this.toFloat__F()
+  return $fround($m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$toDouble__I__I__D(this.lo$2, this.hi$2))
 });
 $c_sjsr_RuntimeLong.prototype.$$minus__sjsr_RuntimeLong__sjsr_RuntimeLong = (function(b) {
   var alo = this.lo$2;
   var ahi = this.hi$2;
-  var blo = b.lo$2;
   var bhi = b.hi$2;
-  var lo = ((alo - blo) | 0);
-  var _2$mcI$sp = ((((ahi - bhi) | 0) + ((((-2147483648) ^ alo) < ((-2147483648) ^ lo)) ? (-1) : 0)) | 0);
-  return new $c_sjsr_RuntimeLong().init___I__I(lo, _2$mcI$sp)
-});
-$c_sjsr_RuntimeLong.prototype.toFloat__F = (function() {
-  return $fround(this.toDouble__D())
+  var lo = ((alo - b.lo$2) | 0);
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, ((((-2147483648) ^ lo) > ((-2147483648) ^ alo)) ? (((-1) + ((ahi - bhi) | 0)) | 0) : ((ahi - bhi) | 0)))
 });
 $c_sjsr_RuntimeLong.prototype.$$up__sjsr_RuntimeLong__sjsr_RuntimeLong = (function(b) {
   return new $c_sjsr_RuntimeLong().init___I__I((this.lo$2 ^ b.lo$2), (this.hi$2 ^ b.hi$2))
@@ -20535,13 +20331,15 @@ $c_Lcom_microsoft_awt_AWTServerJsApp$$anonfun$startServer$3.prototype.init___ = 
   return this
 });
 $c_Lcom_microsoft_awt_AWTServerJsApp$$anonfun$startServer$3.prototype.apply__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response__sjs_js_Function0__Lorg_scalajs_nodejs_stream_Writable = (function(request, response, next) {
-  var startTime = $m_jl_System$().currentTimeMillis__J();
+  var t = $m_jl_System$().currentTimeMillis__J();
+  var lo = t.lo$2;
+  var hi = t.hi$2;
   next();
   var callback = (function(f) {
     return (function() {
       return f.apply__O()
     })
-  })(new $c_Lcom_microsoft_awt_AWTServerJsApp$$anonfun$startServer$3$$anonfun$apply$1().init___Lcom_microsoft_awt_AWTServerJsApp$$anonfun$startServer$3__J__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response(this, startTime, request, response));
+  })(new $c_Lcom_microsoft_awt_AWTServerJsApp$$anonfun$startServer$3$$anonfun$apply$1().init___Lcom_microsoft_awt_AWTServerJsApp$$anonfun$startServer$3__J__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response(this, new $c_sjsr_RuntimeLong().init___I__I(lo, hi), request, response));
   return response.on("finish", callback)
 });
 var $d_Lcom_microsoft_awt_AWTServerJsApp$$anonfun$startServer$3 = new $TypeData().initClass({
@@ -20582,7 +20380,9 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$12.prototype.apply__T
     var this$2 = this.sessionDAO$3$2;
     var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(newSession$1) {
       return (function(x$12$2) {
-        return $m_sjs_js_Thenable$ThenableOps$().toFuture$extension__sjs_js_Thenable__s_concurrent_Future(x$12$2.insert(newSession$1))
+        var jsx$1 = $m_sjs_js_Thenable$ThenableOps$();
+        var p = x$12$2.insert(newSession$1);
+        return jsx$1.toFuture$extension__sjs_js_Thenable__s_concurrent_Future(p)
       })
     })(newSession));
     var executor = this.ec$3$2;
@@ -20825,12 +20625,10 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$5.prototype.apply__O_
 });
 $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$5.prototype.apply__s_Option__T2 = (function(userOpt) {
   if (userOpt.isEmpty__Z()) {
-    var user;
     var message = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Account not found"])).s__sc_Seq__T($m_sci_Nil$());
     throw new $c_jl_IllegalStateException().init___T(message)
-  } else {
-    var user = userOpt.get__O()
   };
+  var user = userOpt.get__O();
   return new $c_T2().init___O__O(userOpt, user)
 });
 var $d_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$5 = new $TypeData().initClass({
@@ -20878,8 +20676,8 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$7.prototype.apply__T2
         var jsx$2 = $m_Lorg_scalajs_nodejs_util_ScalaJsHelper$();
         var x$21 = user$1.username;
         var x$22 = arg$outer.form$1$f.password0;
-        var x$23 = new $g.Date();
-        var jsx$1 = x$5$2.insert(new $c_Lcom_microsoft_awt_data_CredentialData((void 0), x$21, x$22, x$23));
+        var value = new $g.Date();
+        var jsx$1 = x$5$2.insert(new $c_Lcom_microsoft_awt_data_CredentialData((void 0), x$21, x$22, value));
         return jsx$2.promise2Future__sjs_js_Promise__s_concurrent_Future(jsx$1)
       })
     })(this, user));
@@ -20887,12 +20685,10 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$7.prototype.apply__T2
     var this$6 = $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$2, f, executor);
     var f$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(writeResult$2) {
       if (($uI(writeResult$2.insertedCount) < 1)) {
-        var x$8;
         var message = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Account could not be activated"])).s__sc_Seq__T($m_sci_Nil$());
         throw new $c_jl_IllegalStateException().init___T(message)
-      } else {
-        var x$8 = (void 0)
       };
+      var x$8 = (void 0);
       return new $c_T2().init___O__O(writeResult$2, x$8)
     }));
     var executor$1 = this.ec$2$f;
@@ -21085,11 +20881,9 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$9.prototype.apply__s_
     var this$1 = new $c_s_Some().init___O($m_Lcom_microsoft_awt_routes_AuthenticationRoutes$().com$microsoft$awt$routes$AuthenticationRoutes$$toSession__Lcom_microsoft_awt_models_User__Lcom_microsoft_awt_models_Session(arg1))
   };
   if (this$1.isEmpty__Z()) {
-    var newSession;
     throw new $c_jl_IllegalStateException().init___T("The username was invalid")
-  } else {
-    var newSession = this$1.get__O()
   };
+  var newSession = this$1.get__O();
   return new $c_T2().init___O__O(userOpt, newSession)
 });
 var $d_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$9 = new $TypeData().initClass({
@@ -21135,26 +20929,38 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$authToken$1.prototype
       var x1$2 = $m_s_None$()
     } else {
       var v1 = this$5.get__O();
-      var $$this = v1._id;
-      var $$this$1 = (($$this === (void 0)) ? (void 0) : $as_T($$this.toHexString()));
-      var this$13 = (($$this$1 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this$1));
+      var value = v1._id;
+      if ((value === (void 0))) {
+        var value$2 = (void 0)
+      } else {
+        var value$1 = $as_T(value.toHexString());
+        var value$2 = value$1
+      };
+      var this$13 = ((value$2 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value$2));
       if (this$13.isEmpty__Z()) {
         var x1$2 = $m_s_None$()
       } else {
         var arg1 = this$13.get__O();
-        var x1$2 = new $c_s_Some().init___O($as_T(arg1))
+        var id = $as_T(arg1);
+        var x1$2 = new $c_s_Some().init___O(id)
       }
     };
     if ($is_s_Some(x1$2)) {
       var x2$2 = $as_s_Some(x1$2);
       var id$1 = $as_T(x2$2.x$2);
-      this.response$3$2.send(new $c_Lcom_microsoft_awt_models_AuthToken(id$1, new $c_sjsr_RuntimeLong().init___I__I(10000, 0).$$plus__sjsr_RuntimeLong__sjsr_RuntimeLong($m_jl_System$().currentTimeMillis__J()).toDouble__D()));
+      var jsx$2 = this.response$3$2;
+      var b = $m_jl_System$().currentTimeMillis__J();
+      var bhi = b.hi$2;
+      var lo = ((10000 + b.lo$2) | 0);
+      var hi = ((((-2147483648) ^ lo) < (-2147473648)) ? ((1 + bhi) | 0) : bhi);
+      var jsx$1 = new $c_Lcom_microsoft_awt_models_AuthToken(id$1, $m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$toDouble__I__I__D(lo, hi));
+      jsx$2.send(jsx$1);
       $asUnit((0, this.next$3$2)())
     } else {
       var x = $m_s_None$();
       if ((x === x1$2)) {
-        var $$this$2 = this.response$3$2;
-        $$this$2.status(400).send("Session could not be created");
+        var response = this.response$3$2;
+        response.status(400).send("Session could not be created");
         $asUnit((0, this.next$3$2)())
       } else {
         throw new $c_s_MatchError().init___O(x1$2)
@@ -21163,11 +20969,11 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$authToken$1.prototype
   } else if ($is_s_util_Failure(x0$4)) {
     var x3 = $as_s_util_Failure(x0$4);
     var e = x3.exception$2;
-    var $$this$3 = this.response$3$2;
+    var response$1 = this.response$3$2;
     e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-    var jsx$1 = $$this$3.status(500);
+    var jsx$3 = response$1.status(500);
     var s = e.getMessage__T();
-    jsx$1.send(s);
+    jsx$3.send(s);
     $asUnit((0, this.next$3$2)())
   } else {
     throw new $c_s_MatchError().init___O(x0$4)
@@ -21203,10 +21009,10 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$logout$1.prototype.ap
 $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$logout$1.prototype.apply__Lcom_microsoft_awt_data_SessionDAO__s_concurrent_Future = (function(x$20) {
   var jsx$4 = $m_Lorg_scalajs_nodejs_util_ScalaJsHelper$();
   var jsx$3 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var $$this = this.sessionID$1$f;
+  var attribute = this.sessionID$1$f;
   var mongo = this.mongo$2$f;
-  var $$this$1 = mongo.ObjectID;
-  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [$$this]));
+  var $class = mongo.ObjectID;
+  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [attribute]));
   if ($is_sjs_js_ArrayOps(args)) {
     var x2 = $as_sjs_js_ArrayOps(args);
     var jsx$2 = x2.scala$scalajs$js$ArrayOps$$array$f
@@ -21224,7 +21030,7 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$logout$1.prototype.ap
     };
     var jsx$2 = result
   };
-  var y = $newJSObjectWithVarargs($$this$1, jsx$2);
+  var y = $newJSObjectWithVarargs($class, jsx$2);
   var jsx$1 = x$20.deleteOne(jsx$3.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y)));
   return jsx$4.promise2Future__sjs_js_Promise__s_concurrent_Future(jsx$1)
 });
@@ -21265,8 +21071,8 @@ $c_Lcom_microsoft_awt_routes_EventRoutes$$anonfun$getEventsByOwner$1.prototype.i
 });
 $c_Lcom_microsoft_awt_routes_EventRoutes$$anonfun$getEventsByOwner$1.prototype.apply__Lcom_microsoft_awt_data_EventDAO__s_concurrent_Future = (function(x$2) {
   var jsx$1 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var y = this.ownerID$1$f;
-  var $$this = x$2.find(jsx$1.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("ownerId", y)));
+  var s = this.ownerID$1$f;
+  var cursor = x$2.find(jsx$1.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("ownerId", s)));
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1 = (function(promise$1) {
     return (function(err$2, result$2) {
@@ -21278,7 +21084,7 @@ $c_Lcom_microsoft_awt_routes_EventRoutes$$anonfun$getEventsByOwner$1.prototype.a
       }
     })
   })(promise);
-  $$this.toArray(arg1);
+  cursor.toArray(arg1);
   return promise
 });
 var $d_Lcom_microsoft_awt_routes_EventRoutes$$anonfun$getEventsByOwner$1 = new $TypeData().initClass({
@@ -21313,8 +21119,8 @@ $c_Lcom_microsoft_awt_routes_EventRoutes$$anonfun$getUpcomingEvents$1.prototype.
 });
 $c_Lcom_microsoft_awt_routes_EventRoutes$$anonfun$getUpcomingEvents$1.prototype.apply__Lcom_microsoft_awt_data_EventDAO__s_concurrent_Future = (function(x$3) {
   var jsx$1 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var y = this.ownerID$2$f;
-  var $$this = x$3.find(jsx$1.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("ownerId", y)));
+  var s = this.ownerID$2$f;
+  var cursor = x$3.find(jsx$1.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("ownerId", s)));
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1 = (function(promise$1) {
     return (function(err$2, result$2) {
@@ -21326,7 +21132,7 @@ $c_Lcom_microsoft_awt_routes_EventRoutes$$anonfun$getUpcomingEvents$1.prototype.
       }
     })
   })(promise);
-  $$this.toArray(arg1);
+  cursor.toArray(arg1);
   return promise
 });
 var $d_Lcom_microsoft_awt_routes_EventRoutes$$anonfun$getUpcomingEvents$1 = new $TypeData().initClass({
@@ -21359,10 +21165,10 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupByID$1.prototype.apply
 });
 $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupByID$1.prototype.apply__Lcom_microsoft_awt_data_GroupDAO__s_concurrent_Future = (function(x$3) {
   var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var $$this = this.groupID$1$f;
+  var attribute = this.groupID$1$f;
   var mongo = this.mongo$2$f;
-  var $$this$1 = mongo.ObjectID;
-  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [$$this]));
+  var $class = mongo.ObjectID;
+  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [attribute]));
   if ($is_sjs_js_ArrayOps(args)) {
     var x2 = $as_sjs_js_ArrayOps(args);
     var jsx$1 = x2.scala$scalajs$js$ArrayOps$$array$f
@@ -21380,7 +21186,7 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupByID$1.prototype.apply
     };
     var jsx$1 = result
   };
-  var y = $newJSObjectWithVarargs($$this$1, jsx$1);
+  var y = $newJSObjectWithVarargs($class, jsx$1);
   var selector = jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
   var ec = this.ec$2$2;
   var eta$0$1 = x$3.find(selector).limit(1);
@@ -21441,7 +21247,7 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1.proto
   var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$nin", y)]);
   var y$1 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
   var jsx$1 = x$5.find(jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("members", y$1)));
-  var $$this = jsx$1.limit(this.maxResults$4$2);
+  var cursor = jsx$1.limit(this.maxResults$4$2);
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1 = (function(promise$1) {
     return (function(err$2, result$2) {
@@ -21453,7 +21259,7 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1.proto
       }
     })
   })(promise);
-  $$this.toArray(arg1);
+  cursor.toArray(arg1);
   return promise
 });
 $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1.prototype.init___T__I = (function(userID$3, maxResults$4) {
@@ -21490,13 +21296,13 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUse
 });
 $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUser$1.prototype.apply__Lcom_microsoft_awt_data_GroupDAO__s_concurrent_Future = (function(x$7) {
   var jsx$3 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var y = this.userID$1$f;
-  var jsx$2 = new $c_T2().init___O__O("owner", y);
-  var y$1 = [this.userID$1$f];
-  var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$in", y$1)]);
-  var y$2 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
-  var array = [jsx$2, new $c_T2().init___O__O("members", y$2)];
-  var this$15 = $m_sc_Seq$();
+  var s = this.userID$1$f;
+  var jsx$2 = new $c_T2().init___O__O("owner", s);
+  var y = [this.userID$1$f];
+  var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$in", y)]);
+  var y$1 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
+  var array = [jsx$2, new $c_T2().init___O__O("members", y$1)];
+  $m_sc_Seq$();
   $m_sjs_js_WrappedArray$();
   var array$1 = [];
   $uI(array.length);
@@ -21511,9 +21317,9 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUse
     array$1.push(elem);
     i = ((1 + i) | 0)
   };
-  var y$3 = array$1;
-  var jsx$1 = x$7.find(jsx$3.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("$or", y$3)));
-  var $$this = jsx$1.limit(this.maxResults$2$2);
+  var y$2 = array$1;
+  var jsx$1 = x$7.find(jsx$3.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("$or", y$2)));
+  var cursor = jsx$1.limit(this.maxResults$2$2);
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1$1 = (function(promise$1) {
     return (function(err$2, result$2) {
@@ -21525,7 +21331,7 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUse
       }
     })
   })(promise);
-  $$this.toArray(arg1$1);
+  cursor.toArray(arg1$1);
   return promise
 });
 $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUser$1.prototype.init___T__I = (function(userID$1, maxResults$2) {
@@ -21566,7 +21372,7 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1.proto
   var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$in", y)]);
   var y$1 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
   var jsx$1 = x$6.find(jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("members", y$1)));
-  var $$this = jsx$1.limit(this.maxResults$3$2);
+  var cursor = jsx$1.limit(this.maxResults$3$2);
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1 = (function(promise$1) {
     return (function(err$2, result$2) {
@@ -21578,7 +21384,7 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1.proto
       }
     })
   })(promise);
-  $$this.toArray(arg1);
+  cursor.toArray(arg1);
   return promise
 });
 $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1.prototype.init___T__I = (function(userID$2, maxResults$3) {
@@ -21615,18 +21421,18 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$updateGroup$1.prototype.apply_
   return this.apply__Lcom_microsoft_awt_data_GroupDAO__s_concurrent_Future(v1)
 });
 $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$updateGroup$1.prototype.apply__Lcom_microsoft_awt_data_GroupDAO__s_concurrent_Future = (function(x$8) {
-  var jsx$4 = $m_sjs_js_Thenable$ThenableOps$();
-  var jsx$3 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var $$this = this.groupID$2$f;
+  var jsx$3 = $m_sjs_js_Thenable$ThenableOps$();
+  var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+  var attribute = this.groupID$2$f;
   var mongo = this.mongo$3$f;
-  var $$this$1 = mongo.ObjectID;
-  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [$$this]));
+  var $class = mongo.ObjectID;
+  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [attribute]));
   if ($is_sjs_js_ArrayOps(args)) {
     var x2 = $as_sjs_js_ArrayOps(args);
-    var jsx$2 = x2.scala$scalajs$js$ArrayOps$$array$f
+    var jsx$1 = x2.scala$scalajs$js$ArrayOps$$array$f
   } else if ($is_sjs_js_WrappedArray(args)) {
     var x3 = $as_sjs_js_WrappedArray(args);
-    var jsx$2 = x3.array$6
+    var jsx$1 = x3.array$6
   } else {
     var result = [];
     var i = 0;
@@ -21636,11 +21442,11 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$updateGroup$1.prototype.apply_
       $uI(result.push(arg1));
       i = ((1 + i) | 0)
     };
-    var jsx$2 = result
+    var jsx$1 = result
   };
-  var y = $newJSObjectWithVarargs($$this$1, jsx$2);
-  var jsx$1 = x$8.findOneAndUpdate(jsx$3.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y)), this.group$2$2);
-  return jsx$4.toFuture$extension__sjs_js_Thenable__s_concurrent_Future(jsx$1)
+  var y = $newJSObjectWithVarargs($class, jsx$1);
+  var p = x$8.findOneAndUpdate(jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y)), this.group$2$2);
+  return jsx$3.toFuture$extension__sjs_js_Thenable__s_concurrent_Future(p)
 });
 $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$updateGroup$1.prototype.init___Lorg_scalajs_nodejs_mongodb_MongoDB__T__Lcom_microsoft_awt_data_GroupData = (function(mongo$3, groupID$2, group$2) {
   this.mongo$3$f = mongo$3;
@@ -21682,10 +21488,10 @@ $c_Lcom_microsoft_awt_routes_NotificationRoutes$$anonfun$getNotificationsByOwner
 });
 $c_Lcom_microsoft_awt_routes_NotificationRoutes$$anonfun$getNotificationsByOwner$1.prototype.apply__Lcom_microsoft_awt_data_NotificationDAO__s_concurrent_Future = (function(x$3) {
   var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var $$this = this.ownerID$1$f;
+  var attribute = this.ownerID$1$f;
   var mongo = this.mongo$2$f;
-  var $$this$1 = mongo.ObjectID;
-  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [$$this]));
+  var $class = mongo.ObjectID;
+  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [attribute]));
   if ($is_sjs_js_ArrayOps(args)) {
     var x2 = $as_sjs_js_ArrayOps(args);
     var jsx$1 = x2.scala$scalajs$js$ArrayOps$$array$f
@@ -21703,8 +21509,8 @@ $c_Lcom_microsoft_awt_routes_NotificationRoutes$$anonfun$getNotificationsByOwner
     };
     var jsx$1 = result
   };
-  var y = $newJSObjectWithVarargs($$this$1, jsx$1);
-  var $$this$2 = x$3.find(jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("owner._id", y)));
+  var y = $newJSObjectWithVarargs($class, jsx$1);
+  var cursor = x$3.find(jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("owner._id", y)));
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1$1 = (function(promise$1) {
     return (function(err$2, result$2) {
@@ -21716,7 +21522,7 @@ $c_Lcom_microsoft_awt_routes_NotificationRoutes$$anonfun$getNotificationsByOwner
       }
     })
   })(promise);
-  $$this$2.toArray(arg1$1);
+  cursor.toArray(arg1$1);
   return promise
 });
 var $d_Lcom_microsoft_awt_routes_NotificationRoutes$$anonfun$getNotificationsByOwner$1 = new $TypeData().initClass({
@@ -21811,7 +21617,7 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10$$anonfun$apply$12.prototype.
   var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$in", y)]);
   var y$1 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
   var jsx$1 = x$17.find(jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("submitterId", y$1)));
-  var $$this = jsx$1.limit(this.$$outer$2.maxResults$3$f);
+  var cursor = jsx$1.limit(this.$$outer$2.maxResults$3$f);
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1 = (function(promise$1) {
     return (function(err$2, result$2) {
@@ -21823,7 +21629,7 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10$$anonfun$apply$12.prototype.
       }
     })
   })(promise);
-  $$this.toArray(arg1);
+  cursor.toArray(arg1);
   return promise
 });
 var $d_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10$$anonfun$apply$12 = new $TypeData().initClass({
@@ -21859,8 +21665,8 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$8.prototype.apply__s_Option__sj
     var this$4 = $m_s_None$()
   } else {
     var arg1 = x$15.get__O();
-    var $$this = arg1.followers;
-    var this$4 = (($$this === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this))
+    var value = arg1.followers;
+    var this$4 = ((value === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value))
   };
   return (this$4.isEmpty__Z() ? [] : this$4.get__O())
 });
@@ -21894,10 +21700,10 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$deletePost$1.prototype.apply__O
 $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$deletePost$1.prototype.apply__Lcom_microsoft_awt_data_PostDAO__s_concurrent_Future = (function(x$5) {
   var jsx$4 = $m_Lorg_scalajs_nodejs_util_ScalaJsHelper$();
   var jsx$3 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var $$this = this.postID$2$f;
+  var attribute = this.postID$2$f;
   var mongo = this.mongo$4$f;
-  var $$this$1 = mongo.ObjectID;
-  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [$$this]));
+  var $class = mongo.ObjectID;
+  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [attribute]));
   if ($is_sjs_js_ArrayOps(args)) {
     var x2 = $as_sjs_js_ArrayOps(args);
     var jsx$2 = x2.scala$scalajs$js$ArrayOps$$array$f
@@ -21915,7 +21721,7 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$deletePost$1.prototype.apply__L
     };
     var jsx$2 = result
   };
-  var y = $newJSObjectWithVarargs($$this$1, jsx$2);
+  var y = $newJSObjectWithVarargs($class, jsx$2);
   var jsx$1 = x$5.deleteOne(jsx$3.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y)));
   return jsx$4.promise2Future__sjs_js_Promise__s_concurrent_Future(jsx$1)
 });
@@ -21973,9 +21779,9 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$downloadAttachment$2.prototype.
   } else if ($is_s_util_Failure(x0$8)) {
     var x3 = $as_s_util_Failure(x0$8);
     var e = x3.exception$2;
-    var $$this = this.response$8$2;
+    var response = this.response$8$2;
     e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-    var jsx$1 = $$this.status(500);
+    var jsx$1 = response.status(500);
     var s = e.getMessage__T();
     jsx$1.send(s);
     return (0, this.next$8$f)()
@@ -22012,10 +21818,10 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$getAttachementIDs$1.prototype.a
 });
 $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$getAttachementIDs$1.prototype.apply__Lcom_microsoft_awt_data_PostAttachmentDAO__s_concurrent_Future = (function(x$7) {
   var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var $$this = this.userID$1$f;
+  var attribute = this.userID$1$f;
   var mongo = this.mongo$7$f;
-  var $$this$1 = mongo.ObjectID;
-  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [$$this]));
+  var $class = mongo.ObjectID;
+  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [attribute]));
   if ($is_sjs_js_ArrayOps(args)) {
     var x2 = $as_sjs_js_ArrayOps(args);
     var jsx$1 = x2.scala$scalajs$js$ArrayOps$$array$f
@@ -22033,8 +21839,8 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$getAttachementIDs$1.prototype.a
     };
     var jsx$1 = result
   };
-  var y = $newJSObjectWithVarargs($$this$1, jsx$1);
-  var $$this$2 = x$7.find(jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("metadata.userID", y)));
+  var y = $newJSObjectWithVarargs($class, jsx$1);
+  var cursor = x$7.find(jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("metadata.userID", y)));
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1$1 = (function(promise$1) {
     return (function(err$2, result$2) {
@@ -22046,7 +21852,7 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$getAttachementIDs$1.prototype.a
       }
     })
   })(promise);
-  $$this$2.toArray(arg1$1);
+  cursor.toArray(arg1$1);
   return promise
 });
 $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$getAttachementIDs$1.prototype.init___Lorg_scalajs_nodejs_mongodb_MongoDB__T = (function(mongo$7, userID$1) {
@@ -22088,9 +21894,9 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$getPostsByOwner$1.prototype.ini
 });
 $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$getPostsByOwner$1.prototype.apply__Lcom_microsoft_awt_data_PostDAO__s_concurrent_Future = (function(x$13) {
   var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var y = this.ownerID$1$f;
-  var jsx$1 = x$13.find(jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("submitterId", y)));
-  var $$this = jsx$1.limit(this.maxResults$2$2);
+  var s = this.ownerID$1$f;
+  var jsx$1 = x$13.find(jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("submitterId", s)));
+  var cursor = jsx$1.limit(this.maxResults$2$2);
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1 = (function(promise$1) {
     return (function(err$2, result$2) {
@@ -22102,7 +21908,7 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$getPostsByOwner$1.prototype.app
       }
     })
   })(promise);
-  $$this.toArray(arg1);
+  cursor.toArray(arg1);
   return promise
 });
 var $d_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$getPostsByOwner$1 = new $TypeData().initClass({
@@ -22142,10 +21948,10 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$updatePost$1.prototype.init___L
 $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$updatePost$1.prototype.apply__Lcom_microsoft_awt_data_PostDAO__s_concurrent_Future = (function(x$24) {
   var jsx$4 = $m_Lorg_scalajs_nodejs_util_ScalaJsHelper$();
   var jsx$3 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var $$this = this.$$undid$1$f;
+  var attribute = this.$$undid$1$f;
   var mongo = this.mongo$2$f;
-  var $$this$1 = mongo.ObjectID;
-  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [$$this]));
+  var $class = mongo.ObjectID;
+  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [attribute]));
   if ($is_sjs_js_ArrayOps(args)) {
     var x2 = $as_sjs_js_ArrayOps(args);
     var jsx$2 = x2.scala$scalajs$js$ArrayOps$$array$f
@@ -22163,7 +21969,7 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$updatePost$1.prototype.apply__L
     };
     var jsx$2 = result
   };
-  var y = $newJSObjectWithVarargs($$this$1, jsx$2);
+  var y = $newJSObjectWithVarargs($class, jsx$2);
   var jsx$1 = x$24.updateOne(jsx$3.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y)), this.post$2$2, new $c_Lorg_scalajs_nodejs_mongodb_UpdateOptions((void 0), (void 0), (void 0), false));
   return jsx$4.promise2Future__sjs_js_Promise__s_concurrent_Future(jsx$1)
 });
@@ -22205,10 +22011,10 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$uploadAttachment$1.prototype.ap
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer, file$1) {
     return (function(fs$2) {
       var jsx$4 = $as_T(file$1.name);
-      var $$this = arg$outer.userID$2$f;
+      var attribute = arg$outer.userID$2$f;
       var mongo = arg$outer.mongo$8$f;
-      var $$this$1 = mongo.ObjectID;
-      var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [$$this]));
+      var $class = mongo.ObjectID;
+      var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [attribute]));
       if ($is_sjs_js_ArrayOps(args)) {
         var x2 = $as_sjs_js_ArrayOps(args);
         var jsx$2 = x2.scala$scalajs$js$ArrayOps$$array$f
@@ -22226,12 +22032,12 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$uploadAttachment$1.prototype.ap
         };
         var jsx$2 = result
       };
-      var y = $newJSObjectWithVarargs($$this$1, jsx$2);
+      var y = $newJSObjectWithVarargs($class, jsx$2);
       var jsx$3 = new $c_T2().init___O__O("userID", y);
-      var $$this$2 = arg$outer.postID$3$f;
+      var attribute$1 = arg$outer.postID$3$f;
       var mongo$1 = arg$outer.mongo$8$f;
-      var $$this$3 = mongo$1.ObjectID;
-      var args$1 = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [$$this$2]));
+      var $class$1 = mongo$1.ObjectID;
+      var args$1 = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [attribute$1]));
       if ($is_sjs_js_ArrayOps(args$1)) {
         var x2$1 = $as_sjs_js_ArrayOps(args$1);
         var jsx$1 = x2$1.scala$scalajs$js$ArrayOps$$array$f
@@ -22249,7 +22055,7 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$uploadAttachment$1.prototype.ap
         };
         var jsx$1 = result$1
       };
-      var y$1 = $newJSObjectWithVarargs($$this$3, jsx$1);
+      var y$1 = $newJSObjectWithVarargs($class$1, jsx$1);
       var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$3, new $c_T2().init___O__O("postID", y$1)]);
       var x$32 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
       var ustream = fs$2.openUploadStream(jsx$4, new $c_Lorg_scalajs_nodejs_mongodb_gridfs_UploadStreamOptions((void 0), x$32));
@@ -22281,9 +22087,9 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$uploadAttachment$1.prototype.ap
       } else if ($is_s_util_Failure(x0$10)) {
         var x3$2 = $as_s_util_Failure(x0$10);
         var e = x3$2.exception$2;
-        var $$this$4 = arg$outer$1.response$10$f;
+        var response = arg$outer$1.response$10$f;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        var jsx$6 = $$this$4.status(500);
+        var jsx$6 = response.status(500);
         var s = e.getMessage__T();
         jsx$6.send(s);
         $asUnit((0, arg$outer$1.next$10$f)())
@@ -22393,10 +22199,10 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$uploadAttachment$1$$anonfun$6$$
 $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$uploadAttachment$1$$anonfun$6$$anonfun$apply$4.prototype.apply__Lcom_microsoft_awt_data_PostDAO__s_concurrent_Future = (function(x$9) {
   var jsx$6 = $m_Lorg_scalajs_nodejs_util_ScalaJsHelper$();
   var jsx$5 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var $$this = this.$$outer$2.$$outer$2.postID$3$f;
+  var attribute = this.$$outer$2.$$outer$2.postID$3$f;
   var mongo = this.$$outer$2.$$outer$2.mongo$8$f;
-  var $$this$1 = mongo.ObjectID;
-  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [$$this]));
+  var $class = mongo.ObjectID;
+  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [attribute]));
   if ($is_sjs_js_ArrayOps(args)) {
     var x2 = $as_sjs_js_ArrayOps(args);
     var jsx$4 = x2.scala$scalajs$js$ArrayOps$$array$f
@@ -22414,13 +22220,13 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$uploadAttachment$1$$anonfun$6$$
     };
     var jsx$4 = result
   };
-  var y = $newJSObjectWithVarargs($$this$1, jsx$4);
+  var y = $newJSObjectWithVarargs($class, jsx$4);
   var jsx$3 = jsx$5.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
   var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var y$1 = $as_T(this.attachmentId$1$f.toHexString());
-  var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("attachments", y$1)]);
-  var y$2 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
-  var jsx$1 = x$9.findOneAndUpdate(jsx$3, jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("$addToSet", y$2)));
+  var s = $as_T(this.attachmentId$1$f.toHexString());
+  var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("attachments", s)]);
+  var y$1 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
+  var jsx$1 = x$9.findOneAndUpdate(jsx$3, jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("$addToSet", y$1)));
   return jsx$6.promise2Future__sjs_js_Promise__s_concurrent_Future(jsx$1)
 });
 var $d_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$uploadAttachment$1$$anonfun$6$$anonfun$apply$4 = new $TypeData().initClass({
@@ -22590,8 +22396,8 @@ $c_Lcom_microsoft_awt_routes_SessionRoutes$$anonfun$getSessions$1.prototype.appl
   var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$in", y)]);
   var y$1 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
   var jsx$1 = x$4.find(jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y$1)));
-  var qual$1 = this.form$1$2;
-  var $$this = jsx$1.limit($m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(qual$1, 20));
+  var form = this.form$1$2;
+  var cursor = jsx$1.limit($m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(form, 20));
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1 = (function(promise$1) {
     return (function(err$2, result$2) {
@@ -22603,7 +22409,7 @@ $c_Lcom_microsoft_awt_routes_SessionRoutes$$anonfun$getSessions$1.prototype.appl
       }
     })
   })(promise);
-  $$this.toArray(arg1);
+  cursor.toArray(arg1);
   return promise
 });
 var $d_Lcom_microsoft_awt_routes_SessionRoutes$$anonfun$getSessions$1 = new $TypeData().initClass({
@@ -22643,16 +22449,13 @@ $c_Lcom_microsoft_awt_routes_SharedContentParser$$anonfun$parse$2.prototype.appl
     } else {
       var arg1 = this$2.get__O();
       var x0$1 = $as_T2(arg1);
-      if ((x0$1 !== null)) {
-        var start = x0$1.$$und1$mcI$sp__I();
-        var end = x0$1.$$und2$mcI$sp__I();
-        var endIndex = ((end - start) | 0);
-        var jsx$1 = $as_T(body.substring(start, endIndex))
-      } else {
-        var jsx$1;
+      if ((x0$1 === null)) {
         throw new $c_s_MatchError().init___O(x0$1)
       };
-      var x1$2 = new $c_s_Some().init___O(jsx$1)
+      var start = x0$1.$$und1$mcI$sp__I();
+      var end = x0$1.$$und2$mcI$sp__I();
+      var endIndex = ((end - start) | 0);
+      var x1$2 = new $c_s_Some().init___O($as_T(body.substring(start, endIndex)))
     };
     if ($is_s_Some(x1$2)) {
       var x2 = $as_s_Some(x1$2);
@@ -22660,12 +22463,10 @@ $c_Lcom_microsoft_awt_routes_SharedContentParser$$anonfun$parse$2.prototype.appl
       var dataSet = $m_Lcom_microsoft_awt_StringHelper$StringExtensions$().extractAll$extension__T__T__T__I__sci_List(text, "<meta", ">", 0)
     } else {
       var x = $m_s_None$();
-      if ((x === x1$2)) {
-        var dataSet = $m_sci_Nil$()
-      } else {
-        var dataSet;
+      if ((!(x === x1$2))) {
         throw new $c_s_MatchError().init___O(x1$2)
-      }
+      };
+      var dataSet = $m_sci_Nil$()
     };
     return new $c_T2().init___O__O(x$2, dataSet)
   } else {
@@ -22939,46 +22740,76 @@ $c_Lcom_microsoft_awt_routes_SharedContentProcessor$SharedContent.prototype.toJs
   var jsx$12 = $m_sjs_js_Dictionary$();
   var this$2 = this.author$1;
   if (this$2.isEmpty__Z()) {
-    var $$this = $m_s_None$()
+    var opt = $m_s_None$()
   } else {
     var arg1 = this$2.get__O();
     var x$27 = $as_T(arg1);
-    var $$this = new $c_s_Some().init___O($m_Lcom_microsoft_awt_routes_SharedContentProcessor$StringExtensions$().expandMarkup$extension__T__T(($m_Lcom_microsoft_awt_routes_SharedContentProcessor$(), x$27)))
+    var opt = new $c_s_Some().init___O($m_Lcom_microsoft_awt_routes_SharedContentProcessor$StringExtensions$().expandMarkup$extension__T__T(($m_Lcom_microsoft_awt_routes_SharedContentProcessor$(), x$27)))
   };
-  var y = ($$this.isEmpty__Z() ? (void 0) : $$this.get__O());
+  if (opt.isEmpty__Z()) {
+    var y = (void 0)
+  } else {
+    var arg1$1 = opt.get__O();
+    var y = arg1$1
+  };
   var jsx$11 = new $c_T2().init___O__O("author", y);
   var this$9 = this.description$1;
   if (this$9.isEmpty__Z()) {
-    var $$this$1 = $m_s_None$()
+    var opt$1 = $m_s_None$()
   } else {
     var arg1$2 = this$9.get__O();
     var x$28 = $as_T(arg1$2);
-    var $$this$1 = new $c_s_Some().init___O($m_Lcom_microsoft_awt_routes_SharedContentProcessor$StringExtensions$().expandMarkup$extension__T__T(($m_Lcom_microsoft_awt_routes_SharedContentProcessor$(), x$28)))
+    var opt$1 = new $c_s_Some().init___O($m_Lcom_microsoft_awt_routes_SharedContentProcessor$StringExtensions$().expandMarkup$extension__T__T(($m_Lcom_microsoft_awt_routes_SharedContentProcessor$(), x$28)))
   };
-  var y$1 = ($$this$1.isEmpty__Z() ? (void 0) : $$this$1.get__O());
+  if (opt$1.isEmpty__Z()) {
+    var y$1 = (void 0)
+  } else {
+    var arg1$3 = opt$1.get__O();
+    var y$1 = arg1$3
+  };
   var jsx$10 = new $c_T2().init___O__O("description", y$1);
   var this$16 = this.locale$1;
   if (this$16.isEmpty__Z()) {
-    var $$this$2 = $m_s_None$()
+    var opt$2 = $m_s_None$()
   } else {
     var arg1$4 = this$16.get__O();
     var x$29 = $as_T(arg1$4);
-    var $$this$2 = new $c_s_Some().init___O($m_Lcom_microsoft_awt_routes_SharedContentProcessor$StringExtensions$().expandMarkup$extension__T__T(($m_Lcom_microsoft_awt_routes_SharedContentProcessor$(), x$29)))
+    var opt$2 = new $c_s_Some().init___O($m_Lcom_microsoft_awt_routes_SharedContentProcessor$StringExtensions$().expandMarkup$extension__T__T(($m_Lcom_microsoft_awt_routes_SharedContentProcessor$(), x$29)))
   };
-  var y$2 = ($$this$2.isEmpty__Z() ? (void 0) : $$this$2.get__O());
+  if (opt$2.isEmpty__Z()) {
+    var y$2 = (void 0)
+  } else {
+    var arg1$5 = opt$2.get__O();
+    var y$2 = arg1$5
+  };
   var jsx$9 = new $c_T2().init___O__O("locale", y$2);
-  var $$this$3 = this.publishedTime$1;
-  var y$3 = ($$this$3.isEmpty__Z() ? (void 0) : $$this$3.get__O());
+  var opt$3 = this.publishedTime$1;
+  if (opt$3.isEmpty__Z()) {
+    var y$3 = (void 0)
+  } else {
+    var arg1$6 = opt$3.get__O();
+    var y$3 = arg1$6
+  };
   var jsx$8 = new $c_T2().init___O__O("publishedTime", y$3);
-  var $$this$4 = this.section$1;
-  var y$4 = ($$this$4.isEmpty__Z() ? (void 0) : $$this$4.get__O());
+  var opt$4 = this.section$1;
+  if (opt$4.isEmpty__Z()) {
+    var y$4 = (void 0)
+  } else {
+    var arg1$7 = opt$4.get__O();
+    var y$4 = arg1$7
+  };
   var jsx$7 = new $c_T2().init___O__O("section", y$4);
-  var $$this$5 = this.source$1;
-  var y$5 = ($$this$5.isEmpty__Z() ? (void 0) : $$this$5.get__O());
+  var opt$5 = this.source$1;
+  if (opt$5.isEmpty__Z()) {
+    var y$5 = (void 0)
+  } else {
+    var arg1$8 = opt$5.get__O();
+    var y$5 = arg1$8
+  };
   var jsx$6 = new $c_T2().init___O__O("source", y$5);
   var this$38 = this.tags$1;
   if (this$38.isEmpty__Z()) {
-    var $$this$6 = $m_s_None$()
+    var opt$6 = $m_s_None$()
   } else {
     var arg1$9 = this$38.get__O();
     var x$30 = $as_sci_List(arg1$9);
@@ -22999,28 +22830,53 @@ $c_Lcom_microsoft_awt_routes_SharedContentProcessor$SharedContent.prototype.toJs
       };
       var jsx$4 = result
     };
-    var $$this$6 = new $c_s_Some().init___O(jsx$4)
+    var opt$6 = new $c_s_Some().init___O(jsx$4)
   };
-  var y$6 = ($$this$6.isEmpty__Z() ? (void 0) : $$this$6.get__O());
+  if (opt$6.isEmpty__Z()) {
+    var y$6 = (void 0)
+  } else {
+    var arg1$11 = opt$6.get__O();
+    var y$6 = arg1$11
+  };
   var jsx$5 = new $c_T2().init___O__O("tags", y$6);
-  var $$this$7 = this.thumbnailUrl$1;
-  var y$7 = ($$this$7.isEmpty__Z() ? (void 0) : $$this$7.get__O());
+  var opt$7 = this.thumbnailUrl$1;
+  if (opt$7.isEmpty__Z()) {
+    var y$7 = (void 0)
+  } else {
+    var arg1$12 = opt$7.get__O();
+    var y$7 = arg1$12
+  };
   var jsx$3 = new $c_T2().init___O__O("thumbnailUrl", y$7);
   var this$51 = this.title$1;
   if (this$51.isEmpty__Z()) {
-    var $$this$8 = $m_s_None$()
+    var opt$8 = $m_s_None$()
   } else {
     var arg1$13 = this$51.get__O();
     var x$31 = $as_T(arg1$13);
-    var $$this$8 = new $c_s_Some().init___O($m_Lcom_microsoft_awt_routes_SharedContentProcessor$StringExtensions$().expandMarkup$extension__T__T(($m_Lcom_microsoft_awt_routes_SharedContentProcessor$(), x$31)))
+    var opt$8 = new $c_s_Some().init___O($m_Lcom_microsoft_awt_routes_SharedContentProcessor$StringExtensions$().expandMarkup$extension__T__T(($m_Lcom_microsoft_awt_routes_SharedContentProcessor$(), x$31)))
   };
-  var y$8 = ($$this$8.isEmpty__Z() ? (void 0) : $$this$8.get__O());
+  if (opt$8.isEmpty__Z()) {
+    var y$8 = (void 0)
+  } else {
+    var arg1$14 = opt$8.get__O();
+    var y$8 = arg1$14
+  };
   var jsx$2 = new $c_T2().init___O__O("title", y$8);
-  var $$this$9 = this.updatedTime$1;
-  var y$9 = ($$this$9.isEmpty__Z() ? (void 0) : $$this$9.get__O());
+  var opt$9 = this.updatedTime$1;
+  if (opt$9.isEmpty__Z()) {
+    var y$9 = (void 0)
+  } else {
+    var arg1$15 = opt$9.get__O();
+    var y$9 = arg1$15
+  };
   var jsx$1 = new $c_T2().init___O__O("updatedTime", y$9);
-  var $$this$10 = this.url$1;
-  var y$10 = ($$this$10.isEmpty__Z() ? (void 0) : $$this$10.get__O());
+  var opt$10 = this.url$1;
+  if (opt$10.isEmpty__Z()) {
+    var y$10 = (void 0)
+  } else {
+    var arg1$16 = opt$10.get__O();
+    var y$10 = arg1$16
+  };
   return jsx$12.apply__sc_Seq__sjs_js_Dictionary(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$11, jsx$10, jsx$9, jsx$8, jsx$7, jsx$6, jsx$5, jsx$3, jsx$2, jsx$1, new $c_T2().init___O__O("url", y$10)]))
 });
 $c_Lcom_microsoft_awt_routes_SharedContentProcessor$SharedContent.prototype.productIterator__sc_Iterator = (function() {
@@ -23135,24 +22991,24 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$$anonfun$getAvatarByID$2.prototype.apply
     if ($is_s_Some(p3)) {
       var x4 = $as_s_Some(p3);
       var user = x4.x$2;
-      var $$this = user.avatarId;
-      if (($$this === (void 0))) {
+      var value = user.avatarId;
+      if ((value === (void 0))) {
         /*<skip>*/
       } else {
-        new $c_s_Some().init___O($$this)
+        new $c_s_Some().init___O(value)
       };
-      var $$this$1 = user.avatarURL;
-      var avatarURL = (($$this$1 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this$1));
+      var value$1 = user.avatarURL;
+      var avatarURL = ((value$1 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value$1));
       if ($is_s_Some(avatarURL)) {
         var x2$2 = $as_s_Some(avatarURL);
         var url = $as_T(x2$2.x$2);
-        var $$this$2 = this.client$2$2.get(url).pipe(this.response$7$2);
+        var readable = this.client$2$2.get(url).pipe(this.response$7$2);
         var callback = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(arg$outer) {
           return (function() {
             (0, arg$outer.next$7$f)()
           })
         })(this));
-        return $$this$2.on("end", (function(f) {
+        return readable.on("end", (function(f) {
           return (function() {
             return f.apply__O()
           })
@@ -23160,13 +23016,13 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$$anonfun$getAvatarByID$2.prototype.apply
       } else {
         var x = $m_s_None$();
         if ((x === avatarURL)) {
-          var $$this$3 = this.client$2$2.get(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["http://", "/images/avatars/anonymous.png"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([this.host$1$2]))).pipe(this.response$7$2);
+          var readable$1 = this.client$2$2.get(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["http://", "/images/avatars/anonymous.png"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([this.host$1$2]))).pipe(this.response$7$2);
           var callback$1 = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(arg$outer$1) {
             return (function() {
               (0, arg$outer$1.next$7$f)()
             })
           })(this));
-          return $$this$3.on("end", (function(f$1) {
+          return readable$1.on("end", (function(f$1) {
             return (function() {
               return f$1.apply__O()
             })
@@ -23181,13 +23037,13 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$$anonfun$getAvatarByID$2.prototype.apply
     var p6 = $as_s_Option(x2.value$2);
     var x$3 = $m_s_None$();
     if ((x$3 === p6)) {
-      var $$this$4 = this.client$2$2.get(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["http://", "/images/avatars/anonymous.png"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([this.host$1$2]))).pipe(this.response$7$2);
+      var readable$2 = this.client$2$2.get(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["http://", "/images/avatars/anonymous.png"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([this.host$1$2]))).pipe(this.response$7$2);
       var callback$2 = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(arg$outer$2) {
         return (function() {
           (0, arg$outer$2.next$7$f)()
         })
       })(this));
-      return $$this$4.on("end", (function(f$2) {
+      return readable$2.on("end", (function(f$2) {
         return (function() {
           return f$2.apply__O()
         })
@@ -23197,9 +23053,9 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$$anonfun$getAvatarByID$2.prototype.apply
   if ($is_s_util_Failure(x0$7)) {
     var x7 = $as_s_util_Failure(x0$7);
     var e = x7.exception$2;
-    var $$this$5 = this.response$7$2;
+    var response = this.response$7$2;
     e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-    var jsx$1 = $$this$5.status(500);
+    var jsx$1 = response.status(500);
     var s = e.getMessage__T();
     jsx$1.send(s);
     return (0, this.next$7$f)()
@@ -23237,7 +23093,7 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$$anonfun$getEndorsers$1.prototype.apply_
   var y = [this.endorseeID$1$f];
   var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$in", y)]);
   var y$1 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
-  var $$this = x$13.find(jsx$1.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("likedBy", y$1)));
+  var cursor = x$13.find(jsx$1.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("likedBy", y$1)));
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1 = (function(promise$1) {
     return (function(err$2, result$2) {
@@ -23249,7 +23105,7 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$$anonfun$getEndorsers$1.prototype.apply_
       }
     })
   })(promise);
-  $$this.toArray(arg1);
+  cursor.toArray(arg1);
   return promise
 });
 $c_Lcom_microsoft_awt_routes_UserRoutes$$anonfun$getEndorsers$1.prototype.init___T = (function(endorseeID$1) {
@@ -23291,17 +23147,17 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$$anonfun$updateUser$1.prototype.init___L
   return this
 });
 $c_Lcom_microsoft_awt_routes_UserRoutes$$anonfun$updateUser$1.prototype.apply__Lcom_microsoft_awt_data_UserDAO__s_concurrent_Future = (function(x$9) {
-  var jsx$9 = $m_sjs_js_Thenable$ThenableOps$();
-  var $$this = this.userID$2$2;
+  var jsx$8 = $m_sjs_js_Thenable$ThenableOps$();
+  var attribute = this.userID$2$2;
   var mongo = this.mongo$3$2;
-  var $$this$1 = mongo.ObjectID;
-  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [$$this]));
+  var $class = mongo.ObjectID;
+  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [attribute]));
   if ($is_sjs_js_ArrayOps(args)) {
     var x2 = $as_sjs_js_ArrayOps(args);
-    var jsx$7 = x2.scala$scalajs$js$ArrayOps$$array$f
+    var jsx$6 = x2.scala$scalajs$js$ArrayOps$$array$f
   } else if ($is_sjs_js_WrappedArray(args)) {
     var x3 = $as_sjs_js_WrappedArray(args);
-    var jsx$7 = x3.array$6
+    var jsx$6 = x3.array$6
   } else {
     var result = [];
     var i = 0;
@@ -23311,30 +23167,55 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$$anonfun$updateUser$1.prototype.apply__L
       $uI(result.push(arg1));
       i = ((1 + i) | 0)
     };
-    var jsx$7 = result
+    var jsx$6 = result
   };
-  var y = $newJSObjectWithVarargs($$this$1, jsx$7);
+  var y = $newJSObjectWithVarargs($class, jsx$6);
   var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("_id", y)]);
-  var jsx$8 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
-  var jsx$6 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+  var jsx$7 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
+  var jsx$5 = $m_Lorg_scalajs_nodejs_mongodb_package$();
   var value = this.form$1$f.avatarURL;
-  var y$1 = ((value === (void 0)) ? (void 0) : $as_T(value));
-  var jsx$5 = new $c_T2().init___O__O("avatarURL", y$1);
-  var value$2 = this.form$1$f.firstName;
-  var y$2 = ((value$2 === (void 0)) ? (void 0) : $as_T(value$2));
-  var jsx$4 = new $c_T2().init___O__O("firstName", y$2);
-  var value$4 = this.form$1$f.lastName;
-  var y$3 = ((value$4 === (void 0)) ? (void 0) : $as_T(value$4));
-  var jsx$3 = new $c_T2().init___O__O("lastName", y$3);
-  var value$6 = this.form$1$f.primaryEmail;
-  var y$4 = ((value$6 === (void 0)) ? (void 0) : $as_T(value$6));
-  var jsx$2 = new $c_T2().init___O__O("primaryEmail", y$4);
-  var value$8 = this.form$1$f.title;
-  var y$5 = ((value$8 === (void 0)) ? (void 0) : $as_T(value$8));
-  var kvps$1 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$5, jsx$4, jsx$3, jsx$2, new $c_T2().init___O__O("title", y$5)]);
+  if ((value === (void 0))) {
+    var y$1 = (void 0)
+  } else {
+    var s = $as_T(value);
+    var y$1 = s
+  };
+  var jsx$4 = new $c_T2().init___O__O("avatarURL", y$1);
+  var value$1 = this.form$1$f.firstName;
+  if ((value$1 === (void 0))) {
+    var y$2 = (void 0)
+  } else {
+    var s$1 = $as_T(value$1);
+    var y$2 = s$1
+  };
+  var jsx$3 = new $c_T2().init___O__O("firstName", y$2);
+  var value$2 = this.form$1$f.lastName;
+  if ((value$2 === (void 0))) {
+    var y$3 = (void 0)
+  } else {
+    var s$2 = $as_T(value$2);
+    var y$3 = s$2
+  };
+  var jsx$2 = new $c_T2().init___O__O("lastName", y$3);
+  var value$3 = this.form$1$f.primaryEmail;
+  if ((value$3 === (void 0))) {
+    var y$4 = (void 0)
+  } else {
+    var s$3 = $as_T(value$3);
+    var y$4 = s$3
+  };
+  var jsx$1 = new $c_T2().init___O__O("primaryEmail", y$4);
+  var value$4 = this.form$1$f.title;
+  if ((value$4 === (void 0))) {
+    var y$5 = (void 0)
+  } else {
+    var s$4 = $as_T(value$4);
+    var y$5 = s$4
+  };
+  var kvps$1 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$4, jsx$3, jsx$2, jsx$1, new $c_T2().init___O__O("title", y$5)]);
   var y$6 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps$1);
-  var jsx$1 = x$9.updateOne(jsx$8, jsx$6.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("$set", y$6)));
-  return jsx$9.toFuture$extension__sjs_js_Thenable__s_concurrent_Future(jsx$1)
+  var p = x$9.updateOne(jsx$7, jsx$5.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("$set", y$6)));
+  return jsx$8.toFuture$extension__sjs_js_Thenable__s_concurrent_Future(p)
 });
 var $d_Lcom_microsoft_awt_routes_UserRoutes$$anonfun$updateUser$1 = new $TypeData().initClass({
   Lcom_microsoft_awt_routes_UserRoutes$$anonfun$updateUser$1: 0
@@ -23401,10 +23282,10 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$activateWorkload$1.prototyp
 });
 $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$activateWorkload$1.prototype.apply__Lcom_microsoft_awt_data_WorkloadDAO__s_concurrent_Future = (function(x$6) {
   var jsx$6 = $m_Lorg_scalajs_nodejs_util_ScalaJsHelper$();
-  var $$this = this.workloadID$4$2;
+  var attribute = this.workloadID$4$2;
   var mongo = this.mongo$5$2;
-  var $$this$1 = mongo.ObjectID;
-  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [$$this]));
+  var $class = mongo.ObjectID;
+  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [attribute]));
   if ($is_sjs_js_ArrayOps(args)) {
     var x2 = $as_sjs_js_ArrayOps(args);
     var jsx$4 = x2.scala$scalajs$js$ArrayOps$$array$f
@@ -23422,7 +23303,7 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$activateWorkload$1.prototyp
     };
     var jsx$4 = result
   };
-  var y = $newJSObjectWithVarargs($$this$1, jsx$4);
+  var y = $newJSObjectWithVarargs($class, jsx$4);
   var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("_id", y)]);
   var jsx$5 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
   var jsx$3 = $m_Lorg_scalajs_nodejs_mongodb_package$();
@@ -23469,10 +23350,10 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$createStatus$1.prototype.ap
 $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$createStatus$1.prototype.apply__Lcom_microsoft_awt_data_WorkloadDAO__s_concurrent_Future = (function(x$3) {
   var jsx$6 = $m_Lorg_scalajs_nodejs_util_ScalaJsHelper$();
   var jsx$5 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var $$this = this.workloadID$6$f;
+  var attribute = this.workloadID$6$f;
   var mongo = this.mongo$8$f;
-  var $$this$1 = mongo.ObjectID;
-  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [$$this]));
+  var $class = mongo.ObjectID;
+  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [attribute]));
   if ($is_sjs_js_ArrayOps(args)) {
     var x2 = $as_sjs_js_ArrayOps(args);
     var jsx$4 = x2.scala$scalajs$js$ArrayOps$$array$f
@@ -23490,7 +23371,7 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$createStatus$1.prototype.ap
     };
     var jsx$4 = result
   };
-  var y = $newJSObjectWithVarargs($$this$1, jsx$4);
+  var y = $newJSObjectWithVarargs($class, jsx$4);
   var jsx$3 = jsx$5.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
   var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
   var y$1 = this.status$1$f;
@@ -23534,10 +23415,10 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$deactivateWorkload$1.protot
 });
 $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$deactivateWorkload$1.prototype.apply__Lcom_microsoft_awt_data_WorkloadDAO__s_concurrent_Future = (function(x$7) {
   var jsx$6 = $m_Lorg_scalajs_nodejs_util_ScalaJsHelper$();
-  var $$this = this.workloadID$3$2;
+  var attribute = this.workloadID$3$2;
   var mongo = this.mongo$4$2;
-  var $$this$1 = mongo.ObjectID;
-  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [$$this]));
+  var $class = mongo.ObjectID;
+  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [attribute]));
   if ($is_sjs_js_ArrayOps(args)) {
     var x2 = $as_sjs_js_ArrayOps(args);
     var jsx$4 = x2.scala$scalajs$js$ArrayOps$$array$f
@@ -23555,7 +23436,7 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$deactivateWorkload$1.protot
     };
     var jsx$4 = result
   };
-  var y = $newJSObjectWithVarargs($$this$1, jsx$4);
+  var y = $newJSObjectWithVarargs($class, jsx$4);
   var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("_id", y)]);
   var jsx$5 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
   var jsx$3 = $m_Lorg_scalajs_nodejs_mongodb_package$();
@@ -23608,10 +23489,10 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$deleteStatus$1.prototype.in
 $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$deleteStatus$1.prototype.apply__Lcom_microsoft_awt_data_WorkloadDAO__s_concurrent_Future = (function(x$4) {
   var jsx$8 = $m_Lorg_scalajs_nodejs_util_ScalaJsHelper$();
   var jsx$7 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var $$this = this.workloadID$5$f;
+  var attribute = this.workloadID$5$f;
   var mongo = this.mongo$7$f;
-  var $$this$1 = mongo.ObjectID;
-  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [$$this]));
+  var $class = mongo.ObjectID;
+  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [attribute]));
   if ($is_sjs_js_ArrayOps(args)) {
     var x2 = $as_sjs_js_ArrayOps(args);
     var jsx$6 = x2.scala$scalajs$js$ArrayOps$$array$f
@@ -23629,14 +23510,14 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$deleteStatus$1.prototype.ap
     };
     var jsx$6 = result
   };
-  var y = $newJSObjectWithVarargs($$this$1, jsx$6);
+  var y = $newJSObjectWithVarargs($class, jsx$6);
   var jsx$5 = jsx$7.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
   var jsx$4 = $m_Lorg_scalajs_nodejs_mongodb_package$();
   var jsx$3 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var $$this$2 = this.statusID$1$f;
+  var attribute$1 = this.statusID$1$f;
   var mongo$1 = this.mongo$7$f;
-  var $$this$3 = mongo$1.ObjectID;
-  var args$1 = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [$$this$2]));
+  var $class$1 = mongo$1.ObjectID;
+  var args$1 = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [attribute$1]));
   if ($is_sjs_js_ArrayOps(args$1)) {
     var x2$1 = $as_sjs_js_ArrayOps(args$1);
     var jsx$2 = x2$1.scala$scalajs$js$ArrayOps$$array$f
@@ -23654,7 +23535,7 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$deleteStatus$1.prototype.ap
     };
     var jsx$2 = result$1
   };
-  var y$1 = $newJSObjectWithVarargs($$this$3, jsx$2);
+  var y$1 = $newJSObjectWithVarargs($class$1, jsx$2);
   var y$2 = jsx$3.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y$1));
   var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("statuses", y$2)]);
   var y$3 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
@@ -23695,14 +23576,12 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$findWorkloadsByGroup$2.prot
 });
 $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$findWorkloadsByGroup$2.prototype.apply__s_Option__T4 = (function(groupOpt) {
   if (groupOpt.isEmpty__Z()) {
-    var group;
     var message = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Group #", " not found"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([this.groupID$1$f]));
     throw new $c_jl_IllegalStateException().init___T(message)
-  } else {
-    var group = groupOpt.get__O()
   };
-  var $$this = group.members;
-  var memberIds = (($$this === (void 0)) ? [] : $$this);
+  var group = groupOpt.get__O();
+  var value = group.members;
+  var memberIds = ((value === (void 0)) ? [] : value);
   if (this.activeOnly$1$2) {
     var jsx$1 = new $c_T2().init___O__O("active", true);
     var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$in", memberIds)]);
@@ -23750,7 +23629,7 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$findWorkloadsByGroup$3.prot
     var this$7 = this.workloadDAO$2$2;
     var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(query$1) {
       return (function(x$14$2) {
-        var $$this = x$14$2.find(query$1);
+        var cursor = x$14$2.find(query$1);
         var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
         var arg1 = (function(promise$1) {
           return (function(err$2, result$2) {
@@ -23762,7 +23641,7 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$findWorkloadsByGroup$3.prot
             }
           })
         })(promise);
-        $$this.toArray(arg1);
+        cursor.toArray(arg1);
         return promise
       })
     })(query));
@@ -23811,17 +23690,17 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$updateWorkload$1.prototype.
   return this.apply__Lcom_microsoft_awt_data_WorkloadDAO__s_concurrent_Future(v1)
 });
 $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$updateWorkload$1.prototype.apply__Lcom_microsoft_awt_data_WorkloadDAO__s_concurrent_Future = (function(x$11) {
-  var jsx$3 = $m_sjs_js_Thenable$ThenableOps$();
-  var $$this = this.workloadID$2$f;
+  var jsx$2 = $m_sjs_js_Thenable$ThenableOps$();
+  var attribute = this.workloadID$2$f;
   var mongo = this.mongo$3$f;
-  var $$this$1 = mongo.ObjectID;
-  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [$$this]));
+  var $class = mongo.ObjectID;
+  var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [attribute]));
   if ($is_sjs_js_ArrayOps(args)) {
     var x2 = $as_sjs_js_ArrayOps(args);
-    var jsx$2 = x2.scala$scalajs$js$ArrayOps$$array$f
+    var jsx$1 = x2.scala$scalajs$js$ArrayOps$$array$f
   } else if ($is_sjs_js_WrappedArray(args)) {
     var x3 = $as_sjs_js_WrappedArray(args);
-    var jsx$2 = x3.array$6
+    var jsx$1 = x3.array$6
   } else {
     var result = [];
     var i = 0;
@@ -23831,12 +23710,12 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$updateWorkload$1.prototype.
       $uI(result.push(arg1));
       i = ((1 + i) | 0)
     };
-    var jsx$2 = result
+    var jsx$1 = result
   };
-  var y = $newJSObjectWithVarargs($$this$1, jsx$2);
+  var y = $newJSObjectWithVarargs($class, jsx$1);
   var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("_id", y)]);
-  var jsx$1 = x$11.updateOne($m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps), this.workload$2$2);
-  return jsx$3.toFuture$extension__sjs_js_Thenable__s_concurrent_Future(jsx$1)
+  var p = x$11.updateOne($m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps), this.workload$2$2);
+  return jsx$2.toFuture$extension__sjs_js_Thenable__s_concurrent_Future(p)
 });
 $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$updateWorkload$1.prototype.init___Lorg_scalajs_nodejs_mongodb_MongoDB__T__Lcom_microsoft_awt_data_WorkloadData = (function(mongo$3, workloadID$2, workload$2) {
   this.mongo$3$f = mongo$3;
@@ -23877,23 +23756,20 @@ $c_Lcom_microsoft_awt_routes_package$ResponseExtensions$$anonfun$5.prototype.app
   return this.apply__Lcom_microsoft_awt_models_WorkloadLike__T(v1)
 });
 $c_Lcom_microsoft_awt_routes_package$ResponseExtensions$$anonfun$5.prototype.apply__Lcom_microsoft_awt_models_WorkloadLike__T = (function(workload) {
-  var jsx$5 = this.headings$1$2;
+  var jsx$4 = this.headings$1$2;
   var jsx$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer, workload$1) {
     return (function(k$2) {
       var k = $as_T(k$2);
-      var jsx$4 = $m_Lcom_microsoft_awt_routes_package$ResponseExtensions$();
-      var jsx$3 = arg$outer.$$this$1$f;
-      if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(workload$1, k))) {
-        var jsx$2 = workload$1[k]
-      } else {
-        var jsx$2;
+      var jsx$3 = $m_Lcom_microsoft_awt_routes_package$ResponseExtensions$();
+      var jsx$2 = arg$outer.$$this$1$f;
+      if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(workload$1, k)))) {
         throw new $c_ju_NoSuchElementException().init___T(("key not found: " + k))
       };
-      return jsx$4.com$microsoft$awt$routes$ResponseExtensions$$asString$extension__Lorg_scalajs_nodejs_express_Response__sjs_js_Any__T(jsx$3, jsx$2)
+      return jsx$3.com$microsoft$awt$routes$ResponseExtensions$$asString$extension__Lorg_scalajs_nodejs_express_Response__sjs_js_Any__T(jsx$2, workload$1[k])
     })
   })(this, workload));
   var this$5 = $m_sc_Iterable$();
-  return $as_sc_TraversableOnce(jsx$5.map__F1__scg_CanBuildFrom__O(jsx$1, this$5.ReusableCBFInstance$2)).mkString__T__T(",")
+  return $as_sc_TraversableOnce(jsx$4.map__F1__scg_CanBuildFrom__O(jsx$1, this$5.ReusableCBFInstance$2)).mkString__T__T(",")
 });
 var $d_Lcom_microsoft_awt_routes_package$ResponseExtensions$$anonfun$5 = new $TypeData().initClass({
   Lcom_microsoft_awt_routes_package$ResponseExtensions$$anonfun$5: 0
@@ -25079,12 +24955,12 @@ $c_sci_TrieIterator.prototype.getElems__p2__sci_Iterable__Asci_Iterable = (funct
   if ($is_sci_HashMap$HashTrieMap(x)) {
     var x2 = $as_sci_HashMap$HashTrieMap(x);
     var jsx$1 = x2.elems$6
-  } else if ($is_sci_HashSet$HashTrieSet(x)) {
+  } else {
+    if ((!$is_sci_HashSet$HashTrieSet(x))) {
+      throw new $c_s_MatchError().init___O(x)
+    };
     var x3 = $as_sci_HashSet$HashTrieSet(x);
     var jsx$1 = x3.elems$5
-  } else {
-    var jsx$1;
-    throw new $c_s_MatchError().init___O(x)
   };
   return $asArrayOf_sci_Iterable(jsx$1, 1)
 });
@@ -25624,14 +25500,15 @@ $c_Lcom_microsoft_awt_routes_SearchRoutes$GroupSearchAgent.prototype.toString__T
 $c_Lcom_microsoft_awt_routes_SearchRoutes$GroupSearchAgent.prototype.toSearchResult__Lcom_microsoft_awt_models_Group__Lcom_microsoft_awt_models_EntitySearchResult = (function(group) {
   var jsx$2 = group._id;
   var jsx$1 = group.name;
-  var $$this = group.description;
-  if (($$this === (void 0))) {
-    var $$this$1 = (void 0)
+  var value = group.description;
+  if ((value === (void 0))) {
+    var valueA = (void 0)
   } else {
-    var x$13 = $as_T($$this);
-    var $$this$1 = $m_Lcom_microsoft_awt_routes_SearchRoutes$StringExtensions$().limit$extension__T__I__T(x$13, 50)
+    var x$13 = $as_T(value);
+    var value$1 = $m_Lcom_microsoft_awt_routes_SearchRoutes$StringExtensions$().limit$extension__T__I__T(x$13, 50);
+    var valueA = value$1
   };
-  return new $c_Lcom_microsoft_awt_models_EntitySearchResult(jsx$2, jsx$1, (($$this$1 !== (void 0)) ? $$this$1 : "Group"), "GROUP", group.owner, group.creationTime)
+  return new $c_Lcom_microsoft_awt_models_EntitySearchResult(jsx$2, jsx$1, ((valueA !== (void 0)) ? valueA : "Group"), "GROUP", group.owner, group.creationTime)
 });
 $c_Lcom_microsoft_awt_routes_SearchRoutes$GroupSearchAgent.prototype.toSearchResult__sjs_js_Any__Lcom_microsoft_awt_models_EntitySearchResult = (function(entity) {
   return this.toSearchResult__Lcom_microsoft_awt_models_Group__Lcom_microsoft_awt_models_EntitySearchResult(entity)
@@ -25732,14 +25609,15 @@ $c_Lcom_microsoft_awt_routes_SearchRoutes$UserSearchAgent.prototype.toSearchResu
 $c_Lcom_microsoft_awt_routes_SearchRoutes$UserSearchAgent.prototype.toSearchResult__Lcom_microsoft_awt_models_User__Lcom_microsoft_awt_models_EntitySearchResult = (function(user) {
   var jsx$1 = user._id;
   var value = $m_Lcom_microsoft_awt_models_User$UserExtensions$().fullName$extension__Lcom_microsoft_awt_models_User__T(user);
-  var $$this = user.title;
-  if (($$this === (void 0))) {
-    var $$this$1 = (void 0)
+  var value$1 = user.title;
+  if ((value$1 === (void 0))) {
+    var valueA = (void 0)
   } else {
-    var x$14 = $as_T($$this);
-    var $$this$1 = $m_Lcom_microsoft_awt_routes_SearchRoutes$StringExtensions$().limit$extension__T__I__T(x$14, 50)
+    var x$14 = $as_T(value$1);
+    var value$2 = $m_Lcom_microsoft_awt_routes_SearchRoutes$StringExtensions$().limit$extension__T__I__T(x$14, 50);
+    var valueA = value$2
   };
-  return new $c_Lcom_microsoft_awt_models_EntitySearchResult(jsx$1, value, (($$this$1 !== (void 0)) ? $$this$1 : "User"), "USER", user.avatarURL, user.creationTime)
+  return new $c_Lcom_microsoft_awt_models_EntitySearchResult(jsx$1, value, ((valueA !== (void 0)) ? valueA : "User"), "USER", user.avatarURL, user.creationTime)
 });
 $c_Lcom_microsoft_awt_routes_SearchRoutes$UserSearchAgent.prototype.hashCode__I = (function() {
   var this$2 = $m_s_util_hashing_MurmurHash3$();
@@ -26938,39 +26816,44 @@ $c_Lcom_microsoft_awt_AWTServerJsApp$$anonfun$startServer$3$$anonfun$apply$1.pro
   return this
 });
 $c_Lcom_microsoft_awt_AWTServerJsApp$$anonfun$startServer$3$$anonfun$apply$1.prototype.apply$mcV$sp__V = (function() {
-  var elapsedTime = $m_jl_System$().currentTimeMillis__J().$$minus__sjsr_RuntimeLong__sjsr_RuntimeLong(this.startTime$2$3);
+  var t = $m_jl_System$().currentTimeMillis__J();
+  var lo = t.lo$2;
+  var hi = t.hi$2;
+  var b = this.startTime$2$3;
+  var bhi = b.hi$2;
+  var lo$1 = ((lo - b.lo$2) | 0);
+  var hi$1 = ((((-2147483648) ^ lo$1) > ((-2147483648) ^ lo)) ? (((-1) + ((hi - bhi) | 0)) | 0) : ((hi - bhi) | 0));
   var dict = this.request$1$3.query;
   var elem$1 = 0;
   elem$1 = 0;
-  var this$3 = new $c_sjs_js_WrappedDictionary$DictionaryIterator().init___sjs_js_Dictionary(dict);
-  while (this$3.hasNext__Z()) {
-    this$3.next__T2();
+  var this$4 = new $c_sjs_js_WrappedDictionary$DictionaryIterator().init___sjs_js_Dictionary(dict);
+  while (this$4.hasNext__Z()) {
+    this$4.next__T2();
     elem$1 = ((1 + elem$1) | 0)
   };
   if ((elem$1 !== 0)) {
     var jsx$1 = $m_Lcom_microsoft_awt_StringHelper$StringExtensions$();
     var dict$1 = this.request$1$3.query;
-    var this$5 = $m_scm_Iterable$();
+    $m_scm_Iterable$();
     $m_scm_Iterable$();
     var b$1 = new $c_scm_ArrayBuffer().init___();
-    var this$7 = new $c_sjs_js_WrappedDictionary$DictionaryIterator().init___sjs_js_Dictionary(dict$1);
-    while (this$7.hasNext__Z()) {
-      var arg1$1 = this$7.next__T2();
-      if ((arg1$1 !== null)) {
-        var k = $as_T(arg1$1.$$und1__O());
-        var v = $as_T(arg1$1.$$und2__O());
-        var elem = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["", "=", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([k, v]))
-      } else {
-        var elem;
+    var this$8 = new $c_sjs_js_WrappedDictionary$DictionaryIterator().init___sjs_js_Dictionary(dict$1);
+    while (this$8.hasNext__Z()) {
+      var arg1$1 = this$8.next__T2();
+      if ((arg1$1 === null)) {
         throw new $c_s_MatchError().init___O(arg1$1)
       };
+      var k = $as_T(arg1$1.$$und1__O());
+      var v = $as_T(arg1$1.$$und2__O());
+      var elem = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["", "=", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([k, v]));
       b$1.$$plus$eq__O__scm_ArrayBuffer(elem)
     };
-    var query = jsx$1.limitTo$extension__T__I__T($s_sc_TraversableOnce$class__mkString__sc_TraversableOnce__T__T__T__T(b$1, "", ",", ""), 120)
+    var text = $s_sc_TraversableOnce$class__mkString__sc_TraversableOnce__T__T__T__T(b$1, "", ",", "");
+    var query = jsx$1.limitTo$extension__T__I__T(text, 120)
   } else {
     var query = "..."
   };
-  $g.console.log("[node] application - %s %s (%s) ~> %d [%d ms]", $as_T(this.request$1$3.method), $as_T(this.request$1$3.path), query, $uI(this.response$1$3.statusCode), elapsedTime)
+  $g.console.log("[node] application - %s %s (%s) ~> %d [%d ms]", $as_T(this.request$1$3.method), $as_T(this.request$1$3.path), query, $uI(this.response$1$3.statusCode), new $c_sjsr_RuntimeLong().init___I__I(lo$1, hi$1))
 });
 $c_Lcom_microsoft_awt_AWTServerJsApp$$anonfun$startServer$3$$anonfun$apply$1.prototype.apply__O = (function() {
   this.apply$mcV$sp__V()
@@ -27088,6 +26971,9 @@ $c_ju_Arrays$$anon$3.prototype.init___ju_Comparator = (function(cmp$1) {
 });
 $c_ju_Arrays$$anon$3.prototype.compare__O__O__I = (function(x, y) {
   return this.cmp$1$1.compare__O__O__I(x, y)
+});
+$c_ju_Arrays$$anon$3.prototype.lteq__O__O__Z = (function(x, y) {
+  return $s_s_math_Ordering$class__lteq__s_math_Ordering__O__O__Z(this, x, y)
 });
 var $d_ju_Arrays$$anon$3 = new $TypeData().initClass({
   ju_Arrays$$anon$3: 0
@@ -27293,6 +27179,9 @@ $c_s_math_Ordering$$anon$5.prototype.init___s_math_Ordering__F1 = (function($$ou
   };
   this.f$2$1 = f$2;
   return this
+});
+$c_s_math_Ordering$$anon$5.prototype.lteq__O__O__Z = (function(x, y) {
+  return $s_s_math_Ordering$class__lteq__s_math_Ordering__O__O__Z(this, x, y)
 });
 var $d_s_math_Ordering$$anon$5 = new $TypeData().initClass({
   s_math_Ordering$$anon$5: 0
@@ -27646,6 +27535,11 @@ $c_s_math_Ordering$Double$.prototype.compare__O__O__I = (function(x, y) {
   var x$1 = $uD(x);
   var y$1 = $uD(y);
   return $m_jl_Double$().compare__D__D__I(x$1, y$1)
+});
+$c_s_math_Ordering$Double$.prototype.lteq__O__O__Z = (function(x, y) {
+  var x$1 = $uD(x);
+  var y$1 = $uD(y);
+  return $s_s_math_Ordering$DoubleOrdering$class__lteq__s_math_Ordering$DoubleOrdering__D__D__Z(this, x$1, y$1)
 });
 var $d_s_math_Ordering$Double$ = new $TypeData().initClass({
   s_math_Ordering$Double$: 0
@@ -28157,69 +28051,64 @@ $c_s_concurrent_impl_Promise$DefaultPromise.prototype.root__p3__s_concurrent_imp
 });
 $c_s_concurrent_impl_Promise$DefaultPromise.prototype.link__p3__s_concurrent_impl_Promise$DefaultPromise__V = (function(target) {
   var _$this = this;
-  x: {
-    _link: while (true) {
-      if ((_$this !== target)) {
-        var this$1 = _$this;
-        var x1 = this$1.value$1;
-        if ($is_s_util_Try(x1)) {
-          var x2 = $as_s_util_Try(x1);
-          if ((!target.tryComplete__s_util_Try__Z(x2))) {
-            throw new $c_jl_IllegalStateException().init___T("Cannot link completed promises together")
-          }
-        } else if ($is_s_concurrent_impl_Promise$DefaultPromise(x1)) {
-          _$this = _$this.compressedRoot__p3__s_concurrent_impl_Promise$DefaultPromise();
-          continue _link
-        } else if ($is_sci_List(x1)) {
-          var x4 = $as_sci_List(x1);
-          var this$2 = _$this;
-          if (this$2.compareAndSet__O__O__Z(x4, target)) {
-            if ((!x4.isEmpty__Z())) {
-              var $this = _$this;
-              var these = x4;
-              while ((!these.isEmpty__Z())) {
-                var arg1 = these.head__O();
-                var x$2 = $as_s_concurrent_impl_CallbackRunnable(arg1);
-                target.dispatchOrAddCallback__p3__s_concurrent_impl_CallbackRunnable__V(x$2);
-                var this$3 = these;
-                these = this$3.tail__sci_List()
-              }
-            }
-          } else {
-            continue _link
-          }
-        } else {
-          throw new $c_s_MatchError().init___O(x1)
-        }
-      };
-      break x
-    }
-  }
-});
-$c_s_concurrent_impl_Promise$DefaultPromise.prototype.dispatchOrAddCallback__p3__s_concurrent_impl_CallbackRunnable__V = (function(runnable) {
-  var _$this = this;
-  x: {
-    _dispatchOrAddCallback: while (true) {
+  _link: while (true) {
+    if ((_$this !== target)) {
       var this$1 = _$this;
       var x1 = this$1.value$1;
       if ($is_s_util_Try(x1)) {
         var x2 = $as_s_util_Try(x1);
-        runnable.executeWithValue__s_util_Try__V(x2)
+        if ((!target.tryComplete__s_util_Try__Z(x2))) {
+          throw new $c_jl_IllegalStateException().init___T("Cannot link completed promises together")
+        }
       } else if ($is_s_concurrent_impl_Promise$DefaultPromise(x1)) {
         _$this = _$this.compressedRoot__p3__s_concurrent_impl_Promise$DefaultPromise();
-        continue _dispatchOrAddCallback
+        continue _link
       } else if ($is_sci_List(x1)) {
         var x4 = $as_sci_List(x1);
         var this$2 = _$this;
-        var newState = new $c_sci_$colon$colon().init___O__sci_List(runnable, x4);
-        if ((!this$2.compareAndSet__O__O__Z(x4, newState))) {
-          continue _dispatchOrAddCallback
+        if (this$2.compareAndSet__O__O__Z(x4, target)) {
+          if ((!x4.isEmpty__Z())) {
+            var these = x4;
+            while ((!these.isEmpty__Z())) {
+              var arg1 = these.head__O();
+              var x$2 = $as_s_concurrent_impl_CallbackRunnable(arg1);
+              target.dispatchOrAddCallback__p3__s_concurrent_impl_CallbackRunnable__V(x$2);
+              var this$3 = these;
+              these = this$3.tail__sci_List()
+            }
+          }
+        } else {
+          continue _link
         }
       } else {
         throw new $c_s_MatchError().init___O(x1)
-      };
-      break x
-    }
+      }
+    };
+    break
+  }
+});
+$c_s_concurrent_impl_Promise$DefaultPromise.prototype.dispatchOrAddCallback__p3__s_concurrent_impl_CallbackRunnable__V = (function(runnable) {
+  var _$this = this;
+  _dispatchOrAddCallback: while (true) {
+    var this$1 = _$this;
+    var x1 = this$1.value$1;
+    if ($is_s_util_Try(x1)) {
+      var x2 = $as_s_util_Try(x1);
+      runnable.executeWithValue__s_util_Try__V(x2)
+    } else if ($is_s_concurrent_impl_Promise$DefaultPromise(x1)) {
+      _$this = _$this.compressedRoot__p3__s_concurrent_impl_Promise$DefaultPromise();
+      continue _dispatchOrAddCallback
+    } else if ($is_sci_List(x1)) {
+      var x4 = $as_sci_List(x1);
+      var this$2 = _$this;
+      var newState = new $c_sci_$colon$colon().init___O__sci_List(runnable, x4);
+      if ((!this$2.compareAndSet__O__O__Z(x4, newState))) {
+        continue _dispatchOrAddCallback
+      }
+    } else {
+      throw new $c_s_MatchError().init___O(x1)
+    };
+    break
   }
 });
 function $is_s_concurrent_impl_Promise$DefaultPromise(obj) {
@@ -29508,7 +29397,9 @@ $c_sci_StringOps.prototype.map__F1__scg_CanBuildFrom__O = (function(f, bf) {
   return $s_sc_TraversableLike$class__map__sc_TraversableLike__F1__scg_CanBuildFrom__O(this, f, bf)
 });
 $c_sci_StringOps.prototype.toArray__s_reflect_ClassTag__O = (function(evidence$1) {
-  return $m_sjsr_RuntimeString$().toCharArray__T__AC(this.repr$1)
+  var jsx$1 = $m_sjsr_RuntimeString$();
+  var $$this = this.repr$1;
+  return jsx$1.toCharArray__T__AC($$this)
 });
 $c_sci_StringOps.prototype.toCollection__O__sc_Seq = (function(repr) {
   var repr$1 = $as_T(repr);
@@ -30559,24 +30450,21 @@ $c_sci_Set$Set4.prototype.$$plus__O__sci_Set = (function(elem) {
     var start = 0;
     var end = $uI(array.length);
     var z = this$2;
-    x: {
-      var jsx$1;
-      _foldl: while (true) {
-        if ((start === end)) {
-          var jsx$1 = z;
-          break x
-        } else {
-          var temp$start = ((1 + start) | 0);
-          var arg1 = z;
-          var index = start;
-          var arg2 = array[index];
-          var x$2 = $as_sc_Set(arg1);
-          var temp$z = x$2.$$plus__O__sc_Set(arg2);
-          start = temp$start;
-          z = temp$z;
-          continue _foldl
-        }
-      }
+    var jsx$1;
+    _foldl: while (true) {
+      if ((start !== end)) {
+        var temp$start = ((1 + start) | 0);
+        var arg1 = z;
+        var index = start;
+        var arg2 = array[index];
+        var x$2 = $as_sc_Set(arg1);
+        var temp$z = x$2.$$plus__O__sc_Set(arg2);
+        start = temp$start;
+        z = temp$z;
+        continue _foldl
+      };
+      var jsx$1 = z;
+      break
     };
     return $as_sci_HashSet($as_sc_Set(jsx$1))
   }
@@ -32561,15 +32449,13 @@ $c_sci_Stream.prototype.toString__T = (function() {
 });
 $c_sci_Stream.prototype.foreach__F1__V = (function(f) {
   var _$this = this;
-  x: {
-    _foreach: while (true) {
-      if ((!_$this.isEmpty__Z())) {
-        f.apply__O__O(_$this.head__O());
-        _$this = $as_sci_Stream(_$this.tail__O());
-        continue _foreach
-      };
-      break x
-    }
+  _foreach: while (true) {
+    if ((!_$this.isEmpty__Z())) {
+      f.apply__O__O(_$this.head__O());
+      _$this = $as_sci_Stream(_$this.tail__O());
+      continue _foreach
+    };
+    break
   }
 });
 $c_sci_Stream.prototype.foldLeft__O__F2__O = (function(z, op) {
@@ -34284,11 +34170,11 @@ $c_scm_WrappedArray.prototype.toArray__s_reflect_ClassTag__O = (function(evidenc
   if ($is_jl_Class(evidence$1)) {
     var x2 = $as_jl_Class(evidence$1);
     var thatElementClass = x2.getComponentType__jl_Class()
-  } else if ((evidence$1 !== null)) {
-    var thatElementClass = evidence$1.runtimeClass__jl_Class()
   } else {
-    var thatElementClass;
-    throw new $c_jl_UnsupportedOperationException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["unsupported schematic ", " (", ")"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([evidence$1, $objectGetClass(evidence$1)])))
+    if ((evidence$1 === null)) {
+      throw new $c_jl_UnsupportedOperationException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["unsupported schematic ", " (", ")"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([evidence$1, $objectGetClass(evidence$1)])))
+    };
+    var thatElementClass = evidence$1.runtimeClass__jl_Class()
   };
   return ((this.elementClass__p5__jl_Class() === thatElementClass) ? this.array__O() : $s_sc_TraversableOnce$class__toArray__sc_TraversableOnce__s_reflect_ClassTag__O(this, evidence$1))
 });

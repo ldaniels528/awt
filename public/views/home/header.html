@@ -4,7 +4,7 @@
     </div>
     <div style="display: inline">
         <div>
-            <span ng-show="user().firstName || user().lastName" class="name_line">{{ showFullName(user()) }}</span>
+            <span ng-show="user().firstName || user().lastName" class="name_line">{{ getFullName(user()) }}</span>
             <span ng-hide="user().firstName || user().lastName" class="name_line">{{ user().username }}</span>
             <span class="home_level pull-right">{{ user().likes || 0 }}</span>
         </div>

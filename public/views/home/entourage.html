@@ -4,7 +4,7 @@
     </div>
     <div class="col-md-12" ng-repeat="follower in followers">
         <img class="avatar16" ng-if="follower.avatarURL" ng-src="{{ follower.avatarURL }}">
-        <span ng-click="navigateToProfileViewer(follower._id)" class="sk_clickable">{{ showFullName(follower) }}</span>
+        <span ng-click="navigateToProfileViewer(follower._id)" class="sk_clickable">{{ getFullName(follower) }}</span>
         <img ng-show="getOnlineStatus(follower) == 'GREEN'" class="pull-right" src="/assets/images/status/greenlight.png">
         <img ng-show="getOnlineStatus(follower) == 'YELLOW'" class="pull-right" src="/assets/images/status/yellowlight.gif">
         <img ng-hide="getOnlineStatus(follower)" class="pull-right" src="/assets/images/status/offlight.png">

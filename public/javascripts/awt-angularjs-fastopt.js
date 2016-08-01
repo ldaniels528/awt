@@ -70,7 +70,7 @@ var $linkingInfo = {
 
   "assumingES6": false,
 
-  "linkerVersion": "0.6.9"
+  "linkerVersion": "0.6.11"
 };
 $g["Object"]["freeze"]($linkingInfo);
 $g["Object"]["freeze"]($linkingInfo["semantics"]);
@@ -1027,8 +1027,8 @@ function $s_Lcom_microsoft_awt_components_GlobalAuthorization$class__$$init$__Lc
 function $s_Lcom_microsoft_awt_components_GlobalLoading$class__$$init$__Lcom_microsoft_awt_components_GlobalLoading__V($$this) {
   $$this.$$scope__Lcom_microsoft_awt_components_GlobalLoadingScope().isLoading = (function(arg$outer) {
     return (function() {
-      var $$this$1 = arg$outer.$$scope__Lcom_microsoft_awt_components_GlobalLoadingScope().loading;
-      return (($$this$1 !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z($$this$1, true))
+      var valueA = arg$outer.$$scope__Lcom_microsoft_awt_components_GlobalLoadingScope().loading;
+      return ((valueA !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueA, true))
     })
   })($$this);
   $$this.$$scope__Lcom_microsoft_awt_components_GlobalLoadingScope().loadingDelayedStop = (function(f) {
@@ -1088,22 +1088,27 @@ function $s_Lcom_microsoft_awt_components_GlobalNavigation$class__$$init$__Lcom_
   })(new $c_Lcom_microsoft_awt_components_GlobalNavigation$$anonfun$6().init___Lcom_microsoft_awt_components_GlobalNavigation($$this))
 }
 function $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microsoft$awt$components$PostingCapabilities$$savePost__Lcom_microsoft_awt_components_PostingCapabilities__Lcom_microsoft_awt_models_User__Lcom_microsoft_awt_models_Post__s_concurrent_Future($$this, user, post) {
-  var $$this$1 = post._id;
-  if (($$this$1 === (void 0))) {
-    var $$this$3 = (void 0)
+  var valueA = post._id;
+  if ((valueA === (void 0))) {
+    var value = (void 0)
   } else {
-    var $$this$2 = $m_s_Option$().apply__O__s_Option($$this$1);
-    var $$this$3 = ($$this$2.isEmpty__Z() ? (void 0) : $$this$2.get__O())
+    var opt = $m_s_Option$().apply__O__s_Option(valueA);
+    if (opt.isEmpty__Z()) {
+      var value = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var value = arg1
+    }
   };
-  var alreadySaved = ($$this$3 !== (void 0));
+  var alreadySaved = (value !== (void 0));
   var jsx$1 = $g.console;
   var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["", " post..."])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([(alreadySaved ? new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Updating (", ") "])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([post._id])) : "Saving")]));
   jsx$1.log(s);
-  var this$18 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future((alreadySaved ? $$this.postService__Lcom_microsoft_awt_components_PostService().updatePost__Lcom_microsoft_awt_models_Post__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(post, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1) : $$this.postService__Lcom_microsoft_awt_components_PostService().createPost__Lcom_microsoft_awt_models_Post__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(post, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)));
+  var this$18 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future((alreadySaved ? $$this.postService$1.updatePost__Lcom_microsoft_awt_models_Post__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(post, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1) : $$this.postService$1.createPost__Lcom_microsoft_awt_models_Post__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(post, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)));
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(user$1) {
     return (function(post$2) {
-      var $$this$4 = post$2.submitter;
-      if (($$this$4 === (void 0))) {
+      var value$1 = post$2.submitter;
+      if ((value$1 === (void 0))) {
         var value$2 = $m_Lcom_microsoft_awt_models_Submitter$().apply__Lcom_microsoft_awt_models_User__Lcom_microsoft_awt_models_Submitter(user$1);
         post$2.submitter = value$2
       };
@@ -1115,29 +1120,31 @@ function $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microso
 }
 function $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microsoft$awt$components$PostingCapabilities$$likeOrUnlikePost__Lcom_microsoft_awt_components_PostingCapabilities__sjs_js_UndefOr__Z__V($$this, aPost, like) {
   var aPostID = ((aPost === (void 0)) ? (void 0) : aPost._id);
-  var $$this$1 = $$this.sessionFactory__Lcom_microsoft_awt_components_SessionFactory().user__sjs_js_UndefOr();
-  var aUserID = (($$this$1 === (void 0)) ? (void 0) : $$this$1._id);
+  var value = $$this.sessionFactory$1.user__sjs_js_UndefOr();
+  if ((value === (void 0))) {
+    var aUserID = (void 0)
+  } else {
+    var value$1 = value._id;
+    var aUserID = value$1
+  };
   var this$11 = ((aPost === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(aPost));
   if (($$this === null)) {
-    var $$outer$2;
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
-  } else {
-    var $$outer$2 = $$this
   };
   if (this$11.isEmpty__Z()) {
     var result = $m_s_None$()
   } else {
     var v1 = this$11.get__O();
-    var $$this$2 = v1._id;
-    var this$15 = (($$this$2 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this$2));
+    var value$2 = v1._id;
+    var this$15 = ((value$2 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value$2));
     if (this$15.isEmpty__Z()) {
       var result = $m_s_None$()
     } else {
       var v1$1 = this$15.get__O();
       var postID = $as_T(v1$1);
-      var $$this$3 = $$outer$2.sessionFactory__Lcom_microsoft_awt_components_SessionFactory().user__sjs_js_UndefOr();
-      var $$this$4 = (($$this$3 === (void 0)) ? (void 0) : $$this$3._id);
-      var this$22 = (($$this$4 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this$4));
+      var value$3 = $$this.sessionFactory$1.user__sjs_js_UndefOr();
+      var value$4 = ((value$3 === (void 0)) ? (void 0) : value$3._id);
+      var this$22 = ((value$4 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value$4));
       if (this$22.isEmpty__Z()) {
         var result = $m_s_None$()
       } else {
@@ -1156,7 +1163,7 @@ function $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microso
         var postID$1 = $as_T(p3.$$und2$1);
         var userID$1 = $as_T(p3.$$und3$1);
         post.likeLoading = true;
-        var promise = (like ? $$this.postService__Lcom_microsoft_awt_components_PostService().likePost__T__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(postID$1, userID$1, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1) : $$this.postService__Lcom_microsoft_awt_components_PostService().unlikePost__T__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(postID$1, userID$1, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1));
+        var promise = (like ? $$this.postService$1.likePost__T__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(postID$1, userID$1, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1) : $$this.postService$1.unlikePost__T__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(postID$1, userID$1, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1));
         $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(promise).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$com$microsoft$awt$components$PostingCapabilities$$likeOrUnlikePost$1().init___Lcom_microsoft_awt_components_PostingCapabilities__sjs_js_UndefOr__sjs_js_UndefOr__Lcom_microsoft_awt_models_Post($$this, aPostID, aUserID, post), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1);
         break matchEnd6
       }
@@ -1172,134 +1179,134 @@ function $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microso
   }
 }
 function $s_Lcom_microsoft_awt_components_PostingCapabilities$class__$$init$__Lcom_microsoft_awt_components_PostingCapabilities__V($$this) {
-  $$this.com$microsoft$awt$components$PostingCapabilities$$lastUploadedPost$und$eq__s_Option__V($m_s_None$());
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().posts = [];
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().tags = [];
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().uploader = $m_Lorg_scalajs_angularjs_fileupload_nervgh_FileUploader$().apply__sjs_js_Any__Lorg_scalajs_angularjs_fileupload_nervgh_FileUploaderConfig__Lorg_scalajs_angularjs_fileupload_nervgh_FileUploader($$this.fileUploader__Lorg_scalajs_angularjs_fileupload_nervgh_FileUploader(), $m_Lorg_scalajs_angularjs_fileupload_nervgh_FileUploaderConfig$().apply__T__sjs_js_Array__Lorg_scalajs_angularjs_fileupload_nervgh_FileUploaderConfig("/api/post/@postID/attachment/@userID", []));
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().deletePost = (function(f) {
+  $$this.com$microsoft$awt$components$PostingCapabilities$$lastUploadedPost$1 = $m_s_None$();
+  $$this.$$scope$1.posts = [];
+  $$this.$$scope$1.tags = [];
+  $$this.$$scope$1.uploader = $m_Lorg_scalajs_angularjs_fileupload_nervgh_FileUploader$().apply__sjs_js_Any__Lorg_scalajs_angularjs_fileupload_nervgh_FileUploaderConfig__Lorg_scalajs_angularjs_fileupload_nervgh_FileUploader($$this.fileUploader$1, $m_Lorg_scalajs_angularjs_fileupload_nervgh_FileUploaderConfig$().apply__T__sjs_js_Array__Lorg_scalajs_angularjs_fileupload_nervgh_FileUploaderConfig("/api/post/@postID/attachment/@userID", []));
+  $$this.$$scope$1.deletePost = (function(f) {
     return (function(arg1) {
       return f.apply__O__O(arg1)
     })
   })(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8().init___Lcom_microsoft_awt_components_PostingCapabilities($$this));
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().isDeletable = (function(f$1) {
+  $$this.$$scope$1.isDeletable = (function(f$1) {
     return (function(arg1$1) {
       return f$1.apply__O__O(arg1$1)
     })
   })(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$10().init___Lcom_microsoft_awt_components_PostingCapabilities($$this));
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().isLikedPost = (function(f$2) {
+  $$this.$$scope$1.isLikedPost = (function(f$2) {
     return (function(arg1$2) {
       return f$2.apply__O__O(arg1$2)
     })
   })(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$11().init___Lcom_microsoft_awt_components_PostingCapabilities($$this));
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().likePost = (function(arg$outer) {
+  $$this.$$scope$1.likePost = (function(arg$outer) {
     return (function(aPost$2) {
       $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microsoft$awt$components$PostingCapabilities$$likeOrUnlikePost__Lcom_microsoft_awt_components_PostingCapabilities__sjs_js_UndefOr__Z__V(arg$outer, aPost$2, true)
     })
   })($$this);
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().unlikePost = (function(arg$outer$1) {
+  $$this.$$scope$1.unlikePost = (function(arg$outer$1) {
     return (function(aPost$2$1) {
       $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microsoft$awt$components$PostingCapabilities$$likeOrUnlikePost__Lcom_microsoft_awt_components_PostingCapabilities__sjs_js_UndefOr__Z__V(arg$outer$1, aPost$2$1, false)
     })
   })($$this);
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().publishPost = (function(f$3) {
+  $$this.$$scope$1.publishPost = (function(f$3) {
     return (function(arg1$3) {
       return f$3.apply__O__O(arg1$3)
     })
   })(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$17().init___Lcom_microsoft_awt_components_PostingCapabilities($$this));
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().reloadPost = (function(f$4) {
+  $$this.$$scope$1.reloadPost = (function(f$4) {
     return (function(arg1$4) {
       return f$4.apply__O__O(arg1$4)
     })
   })(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$18().init___Lcom_microsoft_awt_components_PostingCapabilities($$this));
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().setupNewPost = (function(f$5) {
+  $$this.$$scope$1.setupNewPost = (function(f$5) {
     return (function() {
       return f$5.apply__O()
     })
   })(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$3().init___Lcom_microsoft_awt_components_PostingCapabilities($$this));
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().updatePost = (function(f$6) {
+  $$this.$$scope$1.updatePost = (function(f$6) {
     return (function(arg1$5) {
       return f$6.apply__O__O(arg1$5)
     })
   })(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$19().init___Lcom_microsoft_awt_components_PostingCapabilities($$this));
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().isLikedComment = (function(f$7) {
+  $$this.$$scope$1.isLikedComment = (function(f$7) {
     return (function(arg1$6) {
       return f$7.apply__O__O(arg1$6)
     })
   })(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$21().init___Lcom_microsoft_awt_components_PostingCapabilities($$this));
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().likeComment = (function(arg$outer$2) {
+  $$this.$$scope$1.likeComment = (function(arg$outer$2) {
     return (function(aPostID$2, aComment$2) {
       $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microsoft$awt$components$PostingCapabilities$$likeOrUnlikeComment__Lcom_microsoft_awt_components_PostingCapabilities__sjs_js_UndefOr__sjs_js_UndefOr__Z__V(arg$outer$2, aPostID$2, aComment$2, true)
     })
   })($$this);
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().unlikeComment = (function(arg$outer$3) {
+  $$this.$$scope$1.unlikeComment = (function(arg$outer$3) {
     return (function(aPostID$2$1, aComment$2$1) {
       $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microsoft$awt$components$PostingCapabilities$$likeOrUnlikeComment__Lcom_microsoft_awt_components_PostingCapabilities__sjs_js_UndefOr__sjs_js_UndefOr__Z__V(arg$outer$3, aPostID$2$1, aComment$2$1, false)
     })
   })($$this);
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().publishComment = (function(f$8) {
+  $$this.$$scope$1.publishComment = (function(f$8) {
     return (function(arg1$7, arg2) {
       return f$8.apply__O__O__O(arg1$7, arg2)
     })
   })(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27().init___Lcom_microsoft_awt_components_PostingCapabilities($$this));
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().setupNewComment = (function(f$9) {
+  $$this.$$scope$1.setupNewComment = (function(f$9) {
     return (function(arg1$8) {
       return f$9.apply__O__O(arg1$8)
     })
   })(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$28().init___Lcom_microsoft_awt_components_PostingCapabilities($$this));
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().isLikedReply = (function(f$10) {
+  $$this.$$scope$1.isLikedReply = (function(f$10) {
     return (function(arg1$9, arg2$1) {
       return f$10.apply__O__O__O(arg1$9, arg2$1)
     })
   })(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$29().init___Lcom_microsoft_awt_components_PostingCapabilities($$this));
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().likeReply = (function(arg$outer$4) {
+  $$this.$$scope$1.likeReply = (function(arg$outer$4) {
     return (function(aPostID$2$2, aCommentID$2, aReply$2) {
       $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microsoft$awt$components$PostingCapabilities$$likeOrUnlikeReply__Lcom_microsoft_awt_components_PostingCapabilities__sjs_js_UndefOr__sjs_js_UndefOr__sjs_js_UndefOr__Z__V(arg$outer$4, aPostID$2$2, aCommentID$2, aReply$2, true)
     })
   })($$this);
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().unlikeReply = (function(arg$outer$5) {
+  $$this.$$scope$1.unlikeReply = (function(arg$outer$5) {
     return (function(aPostID$2$3, aCommentID$2$1, aReply$2$1) {
       $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microsoft$awt$components$PostingCapabilities$$likeOrUnlikeReply__Lcom_microsoft_awt_components_PostingCapabilities__sjs_js_UndefOr__sjs_js_UndefOr__sjs_js_UndefOr__Z__V(arg$outer$5, aPostID$2$3, aCommentID$2$1, aReply$2$1, false)
     })
   })($$this);
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().publishReply = (function(f$11) {
+  $$this.$$scope$1.publishReply = (function(f$11) {
     return (function(arg1$10, arg2$2, arg3) {
       return f$11.apply__O__O__O__O(arg1$10, arg2$2, arg3)
     })
   })(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35().init___Lcom_microsoft_awt_components_PostingCapabilities($$this));
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().setupNewReply = (function(f$12) {
+  $$this.$$scope$1.setupNewReply = (function(f$12) {
     return (function(arg1$11) {
       return f$12.apply__O__O(arg1$11)
     })
   })(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$36().init___Lcom_microsoft_awt_components_PostingCapabilities($$this));
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().getTags = (function(f$13) {
+  $$this.$$scope$1.getTags = (function(f$13) {
     return (function(arg1$12) {
       return f$13.apply__O__O(arg1$12)
     })
   })(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$37().init___Lcom_microsoft_awt_components_PostingCapabilities($$this));
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().appendTag = (function(f$14) {
+  $$this.$$scope$1.appendTag = (function(f$14) {
     return (function(arg1$13) {
       return f$14.apply__O__O(arg1$13)
     })
   })(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$38().init___Lcom_microsoft_awt_components_PostingCapabilities($$this));
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().removeTag = (function(f$15) {
+  $$this.$$scope$1.removeTag = (function(f$15) {
     return (function(arg1$14) {
       return f$15.apply__O__O(arg1$14)
     })
   })(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$39().init___Lcom_microsoft_awt_components_PostingCapabilities($$this));
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().uploader.onCompleteAll = (function(f$16) {
+  $$this.$$scope$1.uploader.onCompleteAll = (function(f$16) {
     return (function() {
       return f$16.apply__O()
     })
   })(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$7().init___Lcom_microsoft_awt_components_PostingCapabilities($$this));
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().uploader.onAfterAddingAll = (function(f$17) {
+  $$this.$$scope$1.uploader.onAfterAddingAll = (function(f$17) {
     return (function(arg1$15) {
       return f$17.apply__O__O(arg1$15)
     })
   })(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41().init___Lcom_microsoft_awt_components_PostingCapabilities($$this))
 }
 function $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microsoft$awt$components$PostingCapabilities$$loadPostsByTags__Lcom_microsoft_awt_components_PostingCapabilities__sjs_js_Array__V($$this, tags) {
-  $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().postsLoading = true;
-  var this$2 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future($$this.postService__Lcom_microsoft_awt_components_PostService().getPostsByTag__sjs_js_Array__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(tags, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1));
+  $$this.$$scope$1.postsLoading = true;
+  var this$2 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future($$this.postService$1.getPostsByTag__sjs_js_Array__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(tags, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1));
   var f = new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$40().init___Lcom_microsoft_awt_components_PostingCapabilities($$this);
   var executor = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
   var outcome = $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$2, f, executor);
@@ -1330,15 +1337,15 @@ function $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microso
   }
 }
 function $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microsoft$awt$components$PostingCapabilities$$likeOrUnlikeComment__Lcom_microsoft_awt_components_PostingCapabilities__sjs_js_UndefOr__sjs_js_UndefOr__Z__V($$this, aPostID, aComment, like) {
-  var $$this$1 = $$this.sessionFactory__Lcom_microsoft_awt_components_SessionFactory().user__sjs_js_UndefOr();
-  var aUserID = (($$this$1 === (void 0)) ? (void 0) : $$this$1._id);
+  var value = $$this.sessionFactory$1.user__sjs_js_UndefOr();
+  var aUserID = ((value === (void 0)) ? (void 0) : value._id);
   var this$7 = ((aComment === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(aComment));
   if (this$7.isEmpty__Z()) {
     var result = $m_s_None$()
   } else {
     var v1 = this$7.get__O();
-    var $$this$2 = v1._id;
-    var this$11 = (($$this$2 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this$2));
+    var value$1 = v1._id;
+    var this$11 = ((value$1 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value$1));
     if (this$11.isEmpty__Z()) {
       var result = $m_s_None$()
     } else {
@@ -1371,7 +1378,7 @@ function $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microso
         var commentID$1 = $as_T(p3.$$und3$1);
         var userID$1 = $as_T(p3.$$und4$1);
         comment.likeLoading = true;
-        var promise = (like ? $$this.postService__Lcom_microsoft_awt_components_PostService().likeComment__T__T__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(postID$1, commentID$1, userID$1, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1) : $$this.postService__Lcom_microsoft_awt_components_PostService().unlikeComment__T__T__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(postID$1, commentID$1, userID$1, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1));
+        var promise = (like ? $$this.postService$1.likeComment__T__T__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(postID$1, commentID$1, userID$1, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1) : $$this.postService$1.unlikeComment__T__T__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(postID$1, commentID$1, userID$1, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1));
         $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(promise).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$com$microsoft$awt$components$PostingCapabilities$$likeOrUnlikeComment$1().init___Lcom_microsoft_awt_components_PostingCapabilities__sjs_js_UndefOr__sjs_js_UndefOr__Lcom_microsoft_awt_models_Comment($$this, aComment, aUserID, comment), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1);
         break matchEnd6
       }
@@ -1387,8 +1394,8 @@ function $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microso
   }
 }
 function $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microsoft$awt$components$PostingCapabilities$$likeOrUnlikeReply__Lcom_microsoft_awt_components_PostingCapabilities__sjs_js_UndefOr__sjs_js_UndefOr__sjs_js_UndefOr__Z__V($$this, aPostID, aCommentID, aReply, like) {
-  var $$this$1 = $$this.sessionFactory__Lcom_microsoft_awt_components_SessionFactory().user__sjs_js_UndefOr();
-  var aUserID = (($$this$1 === (void 0)) ? (void 0) : $$this$1._id);
+  var value = $$this.sessionFactory$1.user__sjs_js_UndefOr();
+  var aUserID = ((value === (void 0)) ? (void 0) : value._id);
   var this$7 = ((aPostID === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(aPostID));
   if (this$7.isEmpty__Z()) {
     var result = $m_s_None$()
@@ -1406,8 +1413,8 @@ function $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microso
         var result = $m_s_None$()
       } else {
         var v1$2 = this$15.get__O();
-        var $$this$2 = v1$2._id;
-        var this$19 = (($$this$2 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this$2));
+        var value$1 = v1$2._id;
+        var this$19 = ((value$1 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value$1));
         if (this$19.isEmpty__Z()) {
           var result = $m_s_None$()
         } else {
@@ -1436,7 +1443,7 @@ function $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microso
         var replyID$1 = $as_T(p3.$$und4$1);
         var userID$1 = $as_T(p3.$$und5$1);
         reply.likeLoading = true;
-        var promise = (like ? $$this.postService__Lcom_microsoft_awt_components_PostService().likeReply__T__T__T__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(postID$1, commentID$1, replyID$1, userID$1, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1) : $$this.postService__Lcom_microsoft_awt_components_PostService().unlikeReply__T__T__T__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(postID$1, commentID$1, replyID$1, userID$1, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1));
+        var promise = (like ? $$this.postService$1.likeReply__T__T__T__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(postID$1, commentID$1, replyID$1, userID$1, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1) : $$this.postService$1.unlikeReply__T__T__T__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(postID$1, commentID$1, replyID$1, userID$1, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1));
         $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(promise).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$com$microsoft$awt$components$PostingCapabilities$$likeOrUnlikeReply$1().init___Lcom_microsoft_awt_components_PostingCapabilities__sjs_js_UndefOr__sjs_js_UndefOr__Lcom_microsoft_awt_models_Reply($$this, aReply, aUserID, reply), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1);
         break matchEnd6
       }
@@ -1452,16 +1459,16 @@ function $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microso
   }
 }
 function $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microsoft$awt$components$PostingCapabilities$$removePostFromList__Lcom_microsoft_awt_components_PostingCapabilities__Lcom_microsoft_awt_models_Post__Z($$this, post) {
-  var array = $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().posts;
+  var array = $$this.$$scope$1.posts;
   var len = $uI(array.length);
   var i = 0;
   while (true) {
     if ((i < len)) {
       var index = i;
       var arg1 = array[index];
-      var $$this$1 = arg1._id;
+      var valueA = arg1._id;
       var valueB = post._id;
-      var jsx$1 = (!(($$this$1 !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, $$this$1))))
+      var jsx$1 = (!((valueA !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, valueA))))
     } else {
       var jsx$1 = false
     };
@@ -1475,9 +1482,9 @@ function $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microso
   var index$1 = ((n >= $uI(array.length)) ? (-1) : n);
   var found = (index$1 !== (-1));
   if (found) {
-    $$this.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().$apply((function(arg$outer, index$1$1) {
+    $$this.$$scope$1.$apply((function(arg$outer, index$1$1) {
       return (function() {
-        return arg$outer.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().posts.splice(index$1$1, 1)
+        return arg$outer.$$scope$1.posts.splice(index$1$1, 1)
       })
     })($$this, index$1))
   };
@@ -1553,11 +1560,11 @@ function $s_s_PartialFunction$class__applyOrElse__s_PartialFunction__O__F1__O($$
 function $s_s_Product2$class__productElement__s_Product2__I__O($$this, n) {
   switch (n) {
     case 0: {
-      return $$this.$$und1__O();
+      return $$this.$$und1$f;
       break
     }
     case 1: {
-      return $$this.$$und2__O();
+      return $$this.$$und2$f;
       break
     }
     default: {
@@ -1779,6 +1786,12 @@ function $s_s_concurrent_Promise$class__complete__s_concurrent_Promise__s_util_T
     throw new $c_jl_IllegalStateException().init___T("Promise already completed.")
   }
 }
+function $s_s_math_Ordering$DoubleOrdering$class__lteq__s_math_Ordering$DoubleOrdering__D__D__Z($$this, x, y) {
+  return (x <= y)
+}
+function $s_s_math_Ordering$class__lteq__s_math_Ordering__O__O__Z($$this, x, y) {
+  return ($$this.compare__O__O__I(x, y) <= 0)
+}
 function $s_s_reflect_ClassTag$class__newArray__s_reflect_ClassTag__I__O($$this, len) {
   var x1 = $$this.runtimeClass__jl_Class();
   return ((x1 === $d_B.getClassOf()) ? $newArrayObject($d_B.getArrayOf(), [len]) : ((x1 === $d_S.getClassOf()) ? $newArrayObject($d_S.getArrayOf(), [len]) : ((x1 === $d_C.getClassOf()) ? $newArrayObject($d_C.getArrayOf(), [len]) : ((x1 === $d_I.getClassOf()) ? $newArrayObject($d_I.getArrayOf(), [len]) : ((x1 === $d_J.getClassOf()) ? $newArrayObject($d_J.getArrayOf(), [len]) : ((x1 === $d_F.getClassOf()) ? $newArrayObject($d_F.getArrayOf(), [len]) : ((x1 === $d_D.getClassOf()) ? $newArrayObject($d_D.getArrayOf(), [len]) : ((x1 === $d_Z.getClassOf()) ? $newArrayObject($d_Z.getArrayOf(), [len]) : ((x1 === $d_V.getClassOf()) ? $newArrayObject($d_sr_BoxedUnit.getArrayOf(), [len]) : $m_jl_reflect_Array$().newInstance__jl_Class__I__O($$this.runtimeClass__jl_Class(), len))))))))))
@@ -1797,12 +1810,12 @@ function $s_s_reflect_ClassTag$class__prettyprint$1__p0__s_reflect_ClassTag__jl_
     var jsx$2 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Array[", "]"]));
     if ((clazz !== null)) {
       var jsx$1 = clazz.getComponentType__jl_Class()
-    } else if ($is_s_reflect_ClassTag(clazz)) {
+    } else {
+      if ((!$is_s_reflect_ClassTag(clazz))) {
+        throw new $c_jl_UnsupportedOperationException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["unsupported schematic ", " (", ")"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([clazz, $objectGetClass(clazz)])))
+      };
       var x3 = $as_s_reflect_ClassTag(clazz);
       var jsx$1 = x3.runtimeClass__jl_Class()
-    } else {
-      var jsx$1;
-      throw new $c_jl_UnsupportedOperationException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["unsupported schematic ", " (", ")"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([clazz, $objectGetClass(clazz)])))
     };
     return jsx$2.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$s_s_reflect_ClassTag$class__prettyprint$1__p0__s_reflect_ClassTag__jl_Class__T($$this, jsx$1)]))
   } else {
@@ -1824,24 +1837,22 @@ function $s_sc_GenMapLike$class__liftedTree1$1__p0__sc_GenMapLike__sc_GenMap__Z(
     while ((res && this$1.hasNext__Z())) {
       var arg1 = this$1.next__O();
       var x0$1 = $as_T2(arg1);
-      if ((x0$1 !== null)) {
-        var k = x0$1.$$und1__O();
-        var v = x0$1.$$und2__O();
-        var x1$2 = x2$1.get__O__s_Option(k);
-        matchEnd6: {
-          if ($is_s_Some(x1$2)) {
-            var x2 = $as_s_Some(x1$2);
-            var p3 = x2.x$2;
-            if ($m_sr_BoxesRunTime$().equals__O__O__Z(v, p3)) {
-              res = true;
-              break matchEnd6
-            }
-          };
-          res = false;
-          break matchEnd6
-        }
-      } else {
+      if ((x0$1 === null)) {
         throw new $c_s_MatchError().init___O(x0$1)
+      };
+      var k = x0$1.$$und1$f;
+      var v = x0$1.$$und2$f;
+      var x1$2 = x2$1.get__O__s_Option(k);
+      matchEnd6: {
+        if ($is_s_Some(x1$2)) {
+          var x2 = $as_s_Some(x1$2);
+          var p3 = x2.x$2;
+          if ($m_sr_BoxesRunTime$().equals__O__O__Z(v, p3)) {
+            res = true;
+            break matchEnd6
+          }
+        };
+        res = false
       }
     };
     return res
@@ -1940,10 +1951,10 @@ function $s_sc_IndexedSeqOptimized$class__negLength__p0__sc_IndexedSeqOptimized_
 function $s_sc_IndexedSeqOptimized$class__copyToArray__sc_IndexedSeqOptimized__O__I__I__V($$this, xs, start, len) {
   var i = 0;
   var j = start;
-  var $$this$1 = $$this.length__I();
-  var $$this$2 = (($$this$1 < len) ? $$this$1 : len);
+  var x = $$this.length__I();
+  var x$1 = ((x < len) ? x : len);
   var that = (($m_sr_ScalaRunTime$().array$undlength__O__I(xs) - start) | 0);
-  var end = (($$this$2 < that) ? $$this$2 : that);
+  var end = ((x$1 < that) ? x$1 : that);
   while ((i < end)) {
     $m_sr_ScalaRunTime$().array$undupdate__O__I__O__V(xs, j, $$this.apply__I__O(i));
     i = ((1 + i) | 0);
@@ -2038,9 +2049,9 @@ function $s_sc_IterableLike$class__drop__sc_IterableLike__I__O($$this, n) {
 }
 function $s_sc_IterableLike$class__copyToArray__sc_IterableLike__O__I__I__V($$this, xs, start, len) {
   var i = start;
-  var $$this$1 = ((start + len) | 0);
+  var x = ((start + len) | 0);
   var that = $m_sr_ScalaRunTime$().array$undlength__O__I(xs);
-  var end = (($$this$1 < that) ? $$this$1 : that);
+  var end = ((x < that) ? x : that);
   var it = $$this.iterator__sc_Iterator();
   while (((i < end) && it.hasNext__Z())) {
     $m_sr_ScalaRunTime$().array$undupdate__O__I__O__V(xs, i, it.next__O());
@@ -2219,8 +2230,8 @@ function $s_sc_MapLike$class__addString__sc_MapLike__scm_StringBuilder__T__T__T_
     return (function(x0$1$2) {
       var x0$1 = $as_T2(x0$1$2);
       if ((x0$1 !== null)) {
-        var k = x0$1.$$und1__O();
-        var v = x0$1.$$und2__O();
+        var k = x0$1.$$und1$f;
+        var v = x0$1.$$und2$f;
         return (("" + $m_s_Predef$any2stringadd$().$$plus$extension__O__T__T(k, " -> ")) + v)
       } else {
         throw new $c_s_MatchError().init___O(x0$1)
@@ -2403,16 +2414,14 @@ function $s_scg_GenericTraversableTemplate$class__flatten__scg_GenericTraversabl
   return $as_sc_GenTraversable(b.result__O())
 }
 function $s_scg_Growable$class__loop$1__p0__scg_Growable__sc_LinearSeq__V($$this, xs) {
-  x: {
-    _loop: while (true) {
-      var this$1 = xs;
-      if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$1)) {
-        $$this.$$plus$eq__O__scg_Growable(xs.head__O());
-        xs = $as_sc_LinearSeq(xs.tail__O());
-        continue _loop
-      };
-      break x
-    }
+  _loop: while (true) {
+    var this$1 = xs;
+    if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$1)) {
+      $$this.$$plus$eq__O__scg_Growable(xs.head__O());
+      xs = $as_sc_LinearSeq(xs.tail__O());
+      continue _loop
+    };
+    break
   }
 }
 function $s_scg_Growable$class__$$plus$plus$eq__scg_Growable__sc_TraversableOnce__scg_Growable($$this, xs) {
@@ -2431,7 +2440,7 @@ function $s_scg_Growable$class__$$plus$plus$eq__scg_Growable__sc_TraversableOnce
 function $s_sci_DefaultMap$class__$$plus__sci_DefaultMap__T2__sci_Map($$this, kv) {
   var b = new $c_scm_MapBuilder().init___sc_GenMap($m_sci_Map$EmptyMap$());
   $s_scg_Growable$class__$$plus$plus$eq__scg_Growable__sc_TraversableOnce__scg_Growable(b, $$this);
-  var elem = new $c_T2().init___O__O(kv.$$und1__O(), kv.$$und2__O());
+  var elem = new $c_T2().init___O__O(kv.$$und1$f, kv.$$und2$f);
   b.$$plus$eq__T2__scm_MapBuilder(elem);
   return $as_sci_Map(b.elems$1)
 }
@@ -2459,12 +2468,9 @@ function $s_sci_StringLike$class__split__sci_StringLike__C__AT($$this, separator
       if ((pos > 0)) {
         var thiz = initialResult.u[(((-1) + pos) | 0)];
         if ((thiz === null)) {
-          var jsx$2;
           throw new $c_jl_NullPointerException().init___()
-        } else {
-          var jsx$2 = thiz
         };
-        var jsx$1 = (jsx$2 === "")
+        var jsx$1 = (thiz === "")
       } else {
         var jsx$1 = false
       };
@@ -2510,7 +2516,8 @@ function $s_sci_StringLike$class__slice__sci_StringLike__I__I__O($$this, from, u
   } else {
     var jsx$1 = $$this.newBuilder__scm_Builder();
     var thiz = $$this.toString__T();
-    return $as_scm_Builder(jsx$1.$$plus$plus$eq__sc_TraversableOnce__scg_Growable(new $c_sci_StringOps().init___T($as_T(thiz.substring(start, end))))).result__O()
+    var x = $as_T(thiz.substring(start, end));
+    return $as_scm_Builder(jsx$1.$$plus$plus$eq__sc_TraversableOnce__scg_Growable(new $c_sci_StringOps().init___T(x))).result__O()
   }
 }
 function $s_sci_VectorPointer$class__getElem__sci_VectorPointer__I__I__O($$this, index, xor) {
@@ -2971,8 +2978,8 @@ function $s_scm_ArrayOps$class__copyToArray__scm_ArrayOps__O__I__I__V($$this, xs
   var y = $$this.repr$1.u.length;
   var l = ((len < y) ? len : y);
   if (((($m_sr_ScalaRunTime$().array$undlength__O__I(xs) - start) | 0) < l)) {
-    var $$this$1 = (($m_sr_ScalaRunTime$().array$undlength__O__I(xs) - start) | 0);
-    l = (($$this$1 > 0) ? $$this$1 : 0)
+    var x = (($m_sr_ScalaRunTime$().array$undlength__O__I(xs) - start) | 0);
+    l = ((x > 0) ? x : 0)
   };
   $m_s_Array$().copy__O__I__O__I__I__V($$this.repr$1, 0, xs, start, l)
 }
@@ -3006,7 +3013,7 @@ function $s_scm_FlatHashTable$HashUtils$class__elemToEntry__scm_FlatHashTable$Ha
 }
 function $s_scm_FlatHashTable$class__growTable__p0__scm_FlatHashTable__V($$this) {
   var oldtable = $$this.table$5;
-  $$this.table$5 = $newArrayObject($d_O.getArrayOf(), [$imul(2, $$this.table$5.u.length)]);
+  $$this.table$5 = $newArrayObject($d_O.getArrayOf(), [($$this.table$5.u.length << 1)]);
   $$this.tableSize$5 = 0;
   var tableLength = $$this.table$5.u.length;
   $s_scm_FlatHashTable$class__nnSizeMapReset__scm_FlatHashTable__I__V($$this, tableLength);
@@ -3111,23 +3118,50 @@ function $s_scm_FlatHashTable$class__containsElem__scm_FlatHashTable__O__Z($$thi
 }
 function $s_scm_ResizableArray$class__copyToArray__scm_ResizableArray__O__I__I__V($$this, xs, start, len) {
   var that = (($m_sr_ScalaRunTime$().array$undlength__O__I(xs) - start) | 0);
-  var $$this$1 = ((len < that) ? len : that);
+  var x = ((len < that) ? len : that);
   var that$1 = $$this.size0$6;
-  var len1 = (($$this$1 < that$1) ? $$this$1 : that$1);
+  var len1 = ((x < that$1) ? x : that$1);
   $m_s_Array$().copy__O__I__O__I__I__V($$this.array$6, 0, xs, start, len1)
 }
 function $s_scm_ResizableArray$class__ensureSize__scm_ResizableArray__I__V($$this, n) {
-  var x = $$this.array$6.u.length;
-  var arrayLength = new $c_sjsr_RuntimeLong().init___I(x);
-  if (new $c_sjsr_RuntimeLong().init___I(n).$$greater__sjsr_RuntimeLong__Z(arrayLength)) {
-    var newSize = new $c_sjsr_RuntimeLong().init___I__I(2, 0).$$times__sjsr_RuntimeLong__sjsr_RuntimeLong(arrayLength);
-    while (new $c_sjsr_RuntimeLong().init___I(n).$$greater__sjsr_RuntimeLong__Z(newSize)) {
-      newSize = new $c_sjsr_RuntimeLong().init___I__I(2, 0).$$times__sjsr_RuntimeLong__sjsr_RuntimeLong(newSize)
+  var value = $$this.array$6.u.length;
+  var hi = (value >> 31);
+  var hi$1 = (n >> 31);
+  if (((hi$1 === hi) ? (((-2147483648) ^ n) > ((-2147483648) ^ value)) : (hi$1 > hi))) {
+    var lo = (value << 1);
+    var hi$2 = (((value >>> 31) | 0) | (hi << 1));
+    var newSize_$_lo$2 = lo;
+    var newSize_$_hi$2 = hi$2;
+    while (true) {
+      var hi$3 = (n >> 31);
+      var b_$_lo$2 = newSize_$_lo$2;
+      var b_$_hi$2 = newSize_$_hi$2;
+      var bhi = b_$_hi$2;
+      if (((hi$3 === bhi) ? (((-2147483648) ^ n) > ((-2147483648) ^ b_$_lo$2)) : (hi$3 > bhi))) {
+        var this$1_$_lo$2 = newSize_$_lo$2;
+        var this$1_$_hi$2 = newSize_$_hi$2;
+        var lo$1 = (this$1_$_lo$2 << 1);
+        var hi$4 = (((this$1_$_lo$2 >>> 31) | 0) | (this$1_$_hi$2 << 1));
+        var jsx$1_$_lo$2 = lo$1;
+        var jsx$1_$_hi$2 = hi$4;
+        newSize_$_lo$2 = jsx$1_$_lo$2;
+        newSize_$_hi$2 = jsx$1_$_hi$2
+      } else {
+        break
+      }
     };
-    if (newSize.$$greater__sjsr_RuntimeLong__Z(new $c_sjsr_RuntimeLong().init___I__I(2147483647, 0))) {
-      newSize = new $c_sjsr_RuntimeLong().init___I__I(2147483647, 0)
+    var this$2_$_lo$2 = newSize_$_lo$2;
+    var this$2_$_hi$2 = newSize_$_hi$2;
+    var ahi = this$2_$_hi$2;
+    if (((ahi === 0) ? (((-2147483648) ^ this$2_$_lo$2) > (-1)) : (ahi > 0))) {
+      var jsx$2_$_lo$2 = 2147483647;
+      var jsx$2_$_hi$2 = 0;
+      newSize_$_lo$2 = jsx$2_$_lo$2;
+      newSize_$_hi$2 = jsx$2_$_hi$2
     };
-    var newArray = $newArrayObject($d_O.getArrayOf(), [newSize.lo$2]);
+    var this$3_$_lo$2 = newSize_$_lo$2;
+    var this$3_$_hi$2 = newSize_$_hi$2;
+    var newArray = $newArrayObject($d_O.getArrayOf(), [this$3_$_lo$2]);
     var src = $$this.array$6;
     var length = $$this.size0$6;
     $systemArraycopy(src, 0, newArray, 0, length);
@@ -3197,39 +3231,97 @@ $c_Lcom_microsoft_awt_Filters$.prototype.init___ = (function() {
 });
 $c_Lcom_microsoft_awt_Filters$.prototype.toDuration__sjs_js_UndefOr__Z__sjs_js_UndefOr = (function(aTime, noFuture) {
   if ((aTime === (void 0))) {
-    var $$this$1 = (void 0)
+    var value = (void 0)
   } else {
-    var $$this = $m_s_Option$().apply__O__s_Option(aTime);
-    var $$this$1 = ($$this.isEmpty__Z() ? (void 0) : $$this.get__O())
+    var opt = $m_s_Option$().apply__O__s_Option(aTime);
+    if (opt.isEmpty__Z()) {
+      var value = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var value = arg1
+    }
   };
-  if (($$this$1 === (void 0))) {
+  if ((value === (void 0))) {
     var aTimeMillis = (void 0)
-  } else if ($uZ($g.angular.isString($$this$1))) {
-    var aTimeMillis = $uD($g.Date.parse($as_T($$this$1)))
-  } else if ($uZ($g.angular.isDate($$this$1))) {
-    var aTimeMillis = $uI($$this$1.getDate())
-  } else if ($uZ($g.angular.isNumber($$this$1))) {
-    var aTimeMillis = $numberDoubleValue($as_jl_Number($$this$1))
   } else {
-    var jsx$1 = $g.console;
-    var s = $objectGetClass($$this$1).getName__T();
-    jsx$1.log("v =", $$this$1, s);
-    var aTimeMillis = $uD($g.Date.now())
+    if ($uZ($g.angular.isString(value))) {
+      var value$1 = $uD($g.Date.parse($as_T(value)))
+    } else if ($uZ($g.angular.isDate(value))) {
+      var value$1 = $uI(value.getDate())
+    } else if ($uZ($g.angular.isNumber(value))) {
+      var value$1 = $numberDoubleValue($as_jl_Number(value))
+    } else {
+      var jsx$1 = $g.console;
+      var s = $objectGetClass(value).getName__T();
+      jsx$1.log("v =", value, s);
+      var value$1 = $uD($g.Date.now())
+    };
+    var aTimeMillis = value$1
   };
   if ((aTimeMillis === (void 0))) {
     return (void 0)
   } else {
     var timeMillis = $uD(aTimeMillis);
-    var elapsedMinutes = $m_sjsr_RuntimeLong$().fromDouble__D__sjsr_RuntimeLong((($uD($g.Date.now()) - timeMillis) / 60000.0));
-    var age = elapsedMinutes;
+    var this$18 = $m_sjsr_RuntimeLong$();
+    var value$2 = (($uD($g.Date.now()) - timeMillis) / 60000.0);
+    var lo = this$18.scala$scalajs$runtime$RuntimeLong$$fromDoubleImpl__D__I(value$2);
+    var hi = this$18.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+    var age_$_lo$2 = lo;
+    var age_$_hi$2 = hi;
     var unit = 0;
-    while (((unit < $m_Lcom_microsoft_awt_Filters$().com$microsoft$awt$Filters$$timeFactors$1.length__I()) && age.$$greater$eq__sjsr_RuntimeLong__Z(new $c_sjsr_RuntimeLong().init___I($uI($m_Lcom_microsoft_awt_Filters$().com$microsoft$awt$Filters$$timeFactors$1.apply__I__O(unit)))))) {
-      age = age.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I($uI($m_Lcom_microsoft_awt_Filters$().com$microsoft$awt$Filters$$timeFactors$1.apply__I__O(unit))));
-      unit = ((1 + unit) | 0)
+    while (true) {
+      if ((unit < $m_Lcom_microsoft_awt_Filters$().com$microsoft$awt$Filters$$timeFactors$1.length__I())) {
+        var this$19_$_lo$2 = age_$_lo$2;
+        var this$19_$_hi$2 = age_$_hi$2;
+        var value$3 = $uI($m_Lcom_microsoft_awt_Filters$().com$microsoft$awt$Filters$$timeFactors$1.apply__I__O(unit));
+        var hi$1 = (value$3 >> 31);
+        var ahi = this$19_$_hi$2;
+        var jsx$2 = ((ahi === hi$1) ? (((-2147483648) ^ this$19_$_lo$2) >= ((-2147483648) ^ value$3)) : (ahi > hi$1))
+      } else {
+        var jsx$2 = false
+      };
+      if (jsx$2) {
+        var this$20_$_lo$2 = age_$_lo$2;
+        var this$20_$_hi$2 = age_$_hi$2;
+        var value$4 = $uI($m_Lcom_microsoft_awt_Filters$().com$microsoft$awt$Filters$$timeFactors$1.apply__I__O(unit));
+        var hi$2 = (value$4 >> 31);
+        var this$21 = $m_sjsr_RuntimeLong$();
+        var lo$1 = this$21.divideImpl__I__I__I__I__I(this$20_$_lo$2, this$20_$_hi$2, value$4, hi$2);
+        var hi$3 = this$21.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+        var jsx$3_$_lo$2 = lo$1;
+        var jsx$3_$_hi$2 = hi$3;
+        age_$_lo$2 = jsx$3_$_lo$2;
+        age_$_hi$2 = jsx$3_$_hi$2;
+        unit = ((1 + unit) | 0)
+      } else {
+        break
+      }
     };
-    var unitName = ($as_T($m_Lcom_microsoft_awt_Filters$().com$microsoft$awt$Filters$$timeUnits$1.apply__I__O(unit)) + ((age.lo$2 !== 1) ? "s" : ""));
-    var value$2 = (((unit === 0) && (age.$$greater$eq__sjsr_RuntimeLong__Z($m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong()) && age.$$less__sjsr_RuntimeLong__Z(new $c_sjsr_RuntimeLong().init___I__I(1, 0)))) ? "just now" : (elapsedMinutes.$$less__sjsr_RuntimeLong__Z($m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong()) ? (noFuture ? "moments ago" : new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["", " ", " from now"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([age, unitName]))) : new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["", " ", " ago"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([age, unitName]))));
-    return value$2
+    var jsx$4 = $as_T($m_Lcom_microsoft_awt_Filters$().com$microsoft$awt$Filters$$timeUnits$1.apply__I__O(unit));
+    var this$22_$_lo$2 = age_$_lo$2;
+    var this$22_$_hi$2 = age_$_hi$2;
+    var unitName = (jsx$4 + ((this$22_$_lo$2 !== 1) ? "s" : ""));
+    if ((unit === 0)) {
+      var this$23_$_lo$2 = age_$_lo$2;
+      var this$23_$_hi$2 = age_$_hi$2;
+      var ahi$1 = this$23_$_hi$2;
+      if ((ahi$1 >= 0)) {
+        var this$24_$_lo$2 = age_$_lo$2;
+        var this$24_$_hi$2 = age_$_hi$2;
+        var ahi$2 = this$24_$_hi$2;
+        var jsx$5 = ((ahi$2 === 0) ? (this$24_$_lo$2 === 0) : (ahi$2 < 0))
+      } else {
+        var jsx$5 = false
+      }
+    } else {
+      var jsx$5 = false
+    };
+    if (jsx$5) {
+      var value$5 = "just now"
+    } else {
+      var value$5 = ((hi < 0) ? (noFuture ? "moments ago" : new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["", " ", " from now"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_sjsr_RuntimeLong().init___I__I(age_$_lo$2, age_$_hi$2), unitName]))) : new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["", " ", " ago"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_sjsr_RuntimeLong().init___I__I(age_$_lo$2, age_$_hi$2), unitName])))
+    };
+    return value$5
   }
 });
 var $d_Lcom_microsoft_awt_Filters$ = new $TypeData().initClass({
@@ -3329,11 +3421,11 @@ $c_Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentForm$Workl
   return this
 });
 $c_Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentForm$WorkloadCommentFormEnrichment$.prototype.toStatus$extension__Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentForm__Lcom_microsoft_awt_models_Workload$Status = (function($$this) {
-  var $$this$1 = $$this.submitter;
-  var x$15 = (($$this$1 === (void 0)) ? (void 0) : $$this$1._id);
+  var value = $$this.submitter;
+  var x$15 = ((value === (void 0)) ? (void 0) : value._id);
   var x$16 = $$this.statusText;
-  var x$17 = new $g.Date();
-  return new $c_Lcom_microsoft_awt_models_Workload$Status((void 0), x$15, x$16, x$17)
+  var value$1 = new $g.Date();
+  return new $c_Lcom_microsoft_awt_models_Workload$Status((void 0), x$15, x$16, value$1)
 });
 var $d_Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentForm$WorkloadCommentFormEnrichment$ = new $TypeData().initClass({
   Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentForm$WorkloadCommentFormEnrichment$: 0
@@ -3382,28 +3474,43 @@ $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogForm$.prototype.$$
   return (void 0)
 });
 $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogForm$.prototype.apply__Lcom_microsoft_awt_models_Workload__Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogForm = (function(workload) {
-  var $$this = workload.name;
-  if (($$this === (void 0))) {
+  var valueA = workload.name;
+  if ((valueA === (void 0))) {
     var x$31 = (void 0)
   } else {
-    var $$this$1 = $m_s_Option$().apply__O__s_Option($$this);
-    var x$31 = ($$this$1.isEmpty__Z() ? (void 0) : $$this$1.get__O())
+    var opt = $m_s_Option$().apply__O__s_Option(valueA);
+    if (opt.isEmpty__Z()) {
+      var x$31 = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var x$31 = arg1
+    }
   };
-  var $$this$2 = workload.technologyProduct;
-  if (($$this$2 === (void 0))) {
+  var valueA$1 = workload.technologyProduct;
+  if ((valueA$1 === (void 0))) {
     var x$32 = (void 0)
   } else {
-    var $$this$3 = $m_s_Option$().apply__O__s_Option($$this$2);
-    var x$32 = ($$this$3.isEmpty__Z() ? (void 0) : $$this$3.get__O())
+    var opt$1 = $m_s_Option$().apply__O__s_Option(valueA$1);
+    if (opt$1.isEmpty__Z()) {
+      var x$32 = (void 0)
+    } else {
+      var arg1$1 = opt$1.get__O();
+      var x$32 = arg1$1
+    }
   };
-  var $$this$4 = workload.azureServices;
-  if (($$this$4 === (void 0))) {
-    var $$this$6 = (void 0)
+  var valueA$2 = workload.azureServices;
+  if ((valueA$2 === (void 0))) {
+    var value = (void 0)
   } else {
-    var $$this$5 = $m_s_Option$().apply__O__s_Option($$this$4);
-    var $$this$6 = ($$this$5.isEmpty__Z() ? (void 0) : $$this$5.get__O())
+    var opt$2 = $m_s_Option$().apply__O__s_Option(valueA$2);
+    if (opt$2.isEmpty__Z()) {
+      var value = (void 0)
+    } else {
+      var arg1$2 = opt$2.get__O();
+      var value = arg1$2
+    }
   };
-  if (($$this$6 === (void 0))) {
+  if ((value === (void 0))) {
     var x$33 = (void 0)
   } else {
     var b = new $c_scm_StringBuilder().init___();
@@ -3411,10 +3518,10 @@ $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogForm$.prototype.ap
     elem$1 = true;
     b.append__T__scm_StringBuilder("");
     var i = 0;
-    var len = $uI($$this$6.length);
+    var len = $uI(value.length);
     while ((i < len)) {
       var index = i;
-      var arg1$3 = $$this$6[index];
+      var arg1$3 = value[index];
       if (elem$1) {
         b.append__O__scm_StringBuilder(arg1$3);
         elem$1 = false
@@ -3426,70 +3533,117 @@ $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogForm$.prototype.ap
     };
     b.append__T__scm_StringBuilder("");
     var this$30 = b.underlying$5;
-    var x$33 = this$30.content$1
+    var value$1 = this$30.content$1;
+    var x$33 = value$1
   };
-  var $$this$7 = workload.customerSegment;
-  if (($$this$7 === (void 0))) {
+  var valueA$3 = workload.customerSegment;
+  if ((valueA$3 === (void 0))) {
     var x$34 = (void 0)
   } else {
-    var $$this$8 = $m_s_Option$().apply__O__s_Option($$this$7);
-    var x$34 = ($$this$8.isEmpty__Z() ? (void 0) : $$this$8.get__O())
+    var opt$3 = $m_s_Option$().apply__O__s_Option(valueA$3);
+    if (opt$3.isEmpty__Z()) {
+      var x$34 = (void 0)
+    } else {
+      var arg1$4 = opt$3.get__O();
+      var x$34 = arg1$4
+    }
   };
-  var $$this$9 = workload.businessSponsor;
-  if (($$this$9 === (void 0))) {
+  var valueA$4 = workload.businessSponsor;
+  if ((valueA$4 === (void 0))) {
     var x$35 = (void 0)
   } else {
-    var $$this$10 = $m_s_Option$().apply__O__s_Option($$this$9);
-    var x$35 = ($$this$10.isEmpty__Z() ? (void 0) : $$this$10.get__O())
+    var opt$4 = $m_s_Option$().apply__O__s_Option(valueA$4);
+    if (opt$4.isEmpty__Z()) {
+      var x$35 = (void 0)
+    } else {
+      var arg1$5 = opt$4.get__O();
+      var x$35 = arg1$5
+    }
   };
-  var $$this$11 = workload.technicalContact;
-  if (($$this$11 === (void 0))) {
+  var valueA$5 = workload.technicalContact;
+  if ((valueA$5 === (void 0))) {
     var x$36 = (void 0)
   } else {
-    var $$this$12 = $m_s_Option$().apply__O__s_Option($$this$11);
-    var x$36 = ($$this$12.isEmpty__Z() ? (void 0) : $$this$12.get__O())
+    var opt$5 = $m_s_Option$().apply__O__s_Option(valueA$5);
+    if (opt$5.isEmpty__Z()) {
+      var x$36 = (void 0)
+    } else {
+      var arg1$6 = opt$5.get__O();
+      var x$36 = arg1$6
+    }
   };
-  var $$this$13 = workload.statusCode;
-  if (($$this$13 === (void 0))) {
+  var valueA$6 = workload.statusCode;
+  if ((valueA$6 === (void 0))) {
     var x$37 = (void 0)
   } else {
-    var $$this$14 = $m_s_Option$().apply__O__s_Option($$this$13);
-    var x$37 = ($$this$14.isEmpty__Z() ? (void 0) : $$this$14.get__O())
+    var opt$6 = $m_s_Option$().apply__O__s_Option(valueA$6);
+    if (opt$6.isEmpty__Z()) {
+      var x$37 = (void 0)
+    } else {
+      var arg1$7 = opt$6.get__O();
+      var x$37 = arg1$7
+    }
   };
-  var $$this$15 = workload.statuses;
-  if (($$this$15 === (void 0))) {
+  var valueA$7 = workload.statuses;
+  if ((valueA$7 === (void 0))) {
     var x$38 = (void 0)
   } else {
-    var $$this$16 = $m_s_Option$().apply__O__s_Option($$this$15);
-    var x$38 = ($$this$16.isEmpty__Z() ? (void 0) : $$this$16.get__O())
+    var opt$7 = $m_s_Option$().apply__O__s_Option(valueA$7);
+    if (opt$7.isEmpty__Z()) {
+      var x$38 = (void 0)
+    } else {
+      var arg1$8 = opt$7.get__O();
+      var x$38 = arg1$8
+    }
   };
-  var $$this$17 = workload.deployedStatus;
-  if (($$this$17 === (void 0))) {
+  var valueA$8 = workload.deployedStatus;
+  if ((valueA$8 === (void 0))) {
     var x$39 = (void 0)
   } else {
-    var $$this$18 = $m_s_Option$().apply__O__s_Option($$this$17);
-    var x$39 = ($$this$18.isEmpty__Z() ? (void 0) : $$this$18.get__O())
+    var opt$8 = $m_s_Option$().apply__O__s_Option(valueA$8);
+    if (opt$8.isEmpty__Z()) {
+      var x$39 = (void 0)
+    } else {
+      var arg1$9 = opt$8.get__O();
+      var x$39 = arg1$9
+    }
   };
-  var $$this$19 = workload.estimateGoLiveDate;
-  if (($$this$19 === (void 0))) {
-    var $$this$21 = (void 0)
+  var valueA$9 = workload.estimateGoLiveDate;
+  if ((valueA$9 === (void 0))) {
+    var value$2 = (void 0)
   } else {
-    var $$this$20 = $m_s_Option$().apply__O__s_Option($$this$19);
-    var $$this$21 = ($$this$20.isEmpty__Z() ? (void 0) : $$this$20.get__O())
+    var opt$9 = $m_s_Option$().apply__O__s_Option(valueA$9);
+    if (opt$9.isEmpty__Z()) {
+      var value$2 = (void 0)
+    } else {
+      var arg1$10 = opt$9.get__O();
+      var value$2 = arg1$10
+    }
   };
-  var x$40 = (($$this$21 === (void 0)) ? (void 0) : $as_T($$this$21.toDateString()));
-  var $$this$22 = workload.consumption;
-  if (($$this$22 === (void 0))) {
-    var $$this$24 = (void 0)
+  if ((value$2 === (void 0))) {
+    var x$40 = (void 0)
   } else {
-    var $$this$23 = $m_s_Option$().apply__O__s_Option($$this$22);
-    var $$this$24 = ($$this$23.isEmpty__Z() ? (void 0) : $$this$23.get__O())
+    var value$3 = $as_T(value$2.toDateString());
+    var x$40 = value$3
   };
-  if (($$this$24 === (void 0))) {
+  var valueA$10 = workload.consumption;
+  if ((valueA$10 === (void 0))) {
+    var value$4 = (void 0)
+  } else {
+    var opt$10 = $m_s_Option$().apply__O__s_Option(valueA$10);
+    if (opt$10.isEmpty__Z()) {
+      var value$4 = (void 0)
+    } else {
+      var arg1$11 = opt$10.get__O();
+      var value$4 = arg1$11
+    }
+  };
+  if ((value$4 === (void 0))) {
     var x$41 = (void 0)
   } else {
-    var x$17 = $uD($$this$24);
-    var x$41 = ("" + x$17)
+    var x$17 = $uD(value$4);
+    var value$5 = ("" + x$17);
+    var x$41 = value$5
   };
   return new $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogForm(x$31, x$32, x$33, x$34, x$35, x$36, (void 0), x$37, (void 0), x$38, x$39, x$40, x$41)
 });
@@ -3652,9 +3806,9 @@ $c_Lcom_microsoft_awt_forms_LoginForm$LoginFormEnrichment$.prototype.init___ = (
 });
 $c_Lcom_microsoft_awt_forms_LoginForm$LoginFormEnrichment$.prototype.validate$extension__Lcom_microsoft_awt_forms_LoginForm__sjs_js_Array = (function($$this) {
   var messages = [];
-  var $$this$1 = $$this.username;
-  if (($$this$1 !== (void 0))) {
-    var x$1 = $as_T($$this$1);
+  var value = $$this.username;
+  if ((value !== (void 0))) {
+    var x$1 = $as_T(value);
     var this$5 = new $c_sci_StringOps().init___T(x$1);
     var jsx$1 = $s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$5)
   } else {
@@ -3663,9 +3817,9 @@ $c_Lcom_microsoft_awt_forms_LoginForm$LoginFormEnrichment$.prototype.validate$ex
   if ((!jsx$1)) {
     $uI(messages.push("Username is required"))
   };
-  var $$this$2 = $$this.password;
-  if (($$this$2 !== (void 0))) {
-    var x$2 = $as_T($$this$2);
+  var value$1 = $$this.password;
+  if ((value$1 !== (void 0))) {
+    var x$2 = $as_T(value$1);
     var this$10 = new $c_sci_StringOps().init___T(x$2);
     var jsx$2 = $s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$10)
   } else {
@@ -4039,10 +4193,10 @@ $c_Lcom_microsoft_awt_models_User$UserExtensions$.prototype.init___ = (function(
 });
 $c_Lcom_microsoft_awt_models_User$UserExtensions$.prototype.fullName$extension__Lcom_microsoft_awt_models_User__T = (function($$this) {
   var jsx$2 = $m_sc_Seq$();
-  var $$this$1 = $$this.firstName;
-  var jsx$1 = (($$this$1 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this$1));
-  var $$this$2 = $$this.lastName;
-  return $as_sc_TraversableOnce(jsx$2.apply__sc_Seq__sc_GenTraversable(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$1, (($$this$2 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this$2))])).flatten__F1__sc_GenTraversable(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(xo$2) {
+  var value = $$this.firstName;
+  var jsx$1 = ((value === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value));
+  var value$1 = $$this.lastName;
+  return $as_sc_TraversableOnce(jsx$2.apply__sc_Seq__sc_GenTraversable(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$1, ((value$1 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value$1))])).flatten__F1__sc_GenTraversable(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(xo$2) {
     var xo = $as_s_Option(xo$2);
     return xo.toList__sci_List()
   })))).mkString__T__T(" ")
@@ -4335,7 +4489,8 @@ $c_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$.prototype.init___
 });
 $c_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$.prototype.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T = (function($$this, s) {
   var this$2 = new $c_sci_StringOps().init___T(s);
-  var this$4 = new $c_sci_StringOps().init___T($s_sci_StringLike$class__replaceAllLiterally__sci_StringLike__T__T__T(this$2, "\"", ""));
+  var x = $s_sci_StringLike$class__replaceAllLiterally__sci_StringLike__T__T__T(this$2, "\"", "");
+  var this$4 = new $c_sci_StringOps().init___T(x);
   return $s_sci_StringLike$class__replaceAllLiterally__sci_StringLike__T__T__T(this$4, "'", "")
 });
 var $d_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$ = new $TypeData().initClass({
@@ -4491,7 +4646,9 @@ $c_Lorg_scalajs_angularjs_package$.prototype.init___ = (function() {
   return this
 });
 $c_Lorg_scalajs_angularjs_package$.prototype.durationToInt__s_concurrent_duration_FiniteDuration__I = (function(duration) {
-  return duration.unit$2.toMillis__J__J(duration.length$2).lo$2
+  var t = duration.unit$2.toMillis__J__J(duration.length$2);
+  var lo = t.lo$2;
+  return lo
 });
 var $d_Lorg_scalajs_angularjs_package$ = new $TypeData().initClass({
   Lorg_scalajs_angularjs_package$: 0
@@ -4835,10 +4992,12 @@ $c_jl_Class.prototype.newArrayOfThisClass__sjs_js_Array__O = (function(dimension
   return this.data$1.newArrayOfThisClass(dimensions)
 });
 $c_jl_Class.prototype.getSimpleName__T = (function() {
-  var this$2 = new $c_sci_StringOps().init___T($as_T(this.data$1.name));
+  var x = $as_T(this.data$1.name);
+  var this$2 = new $c_sci_StringOps().init___T(x);
   var xs = $s_sci_StringLike$class__split__sci_StringLike__C__AT(this$2, 46);
   var this$4 = new $c_scm_ArrayOps$ofRef().init___AO(xs);
-  var this$6 = new $c_sci_StringOps().init___T($as_T($s_sc_IndexedSeqOptimized$class__last__sc_IndexedSeqOptimized__O(this$4)));
+  var x$1 = $as_T($s_sc_IndexedSeqOptimized$class__last__sc_IndexedSeqOptimized__O(this$4));
+  var this$6 = new $c_sci_StringOps().init___T(x$1);
   var xs$1 = $s_sci_StringLike$class__split__sci_StringLike__C__AT(this$6, 36);
   var this$8 = new $c_scm_ArrayOps$ofRef().init___AO(xs$1);
   return $as_T($s_sc_IndexedSeqOptimized$class__last__sc_IndexedSeqOptimized__O(this$8))
@@ -4916,7 +5075,11 @@ $c_jl_System$.prototype.init___ = (function() {
   return this
 });
 $c_jl_System$.prototype.currentTimeMillis__J = (function() {
-  return $m_sjsr_RuntimeLong$().fromDouble__D__sjsr_RuntimeLong($uD(new $g.Date().getTime()))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var value = $uD(new $g.Date().getTime());
+  var lo = this$1.scala$scalajs$runtime$RuntimeLong$$fromDoubleImpl__D__I(value);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 var $d_jl_System$ = new $TypeData().initClass({
   jl_System$: 0
@@ -5036,7 +5199,7 @@ function $m_jl_reflect_Array$() {
 /** @constructor */
 function $c_ju_Arrays$() {
   $c_O.call(this);
-  this.qSortThreshold$1 = 0
+  this.inPlaceSortThreshold$1 = 0
 }
 $c_ju_Arrays$.prototype = new $h_O();
 $c_ju_Arrays$.prototype.constructor = $c_ju_Arrays$;
@@ -5069,28 +5232,20 @@ $c_ju_Arrays$.prototype.binarySearch__AI__I__I = (function(a, key) {
     }
   }
 });
-$c_ju_Arrays$.prototype.fill__AI__I__V = (function(a, value) {
-  var toIndex = a.u.length;
-  var i = 0;
-  while ((i !== toIndex)) {
-    a.u[i] = value;
-    i = ((1 + i) | 0)
-  }
-});
-$c_ju_Arrays$.prototype.insertionSortAnyRef__p1__AO__I__I__s_math_Ordering__V = (function(a, i0, iN, ord) {
-  var n = ((iN - i0) | 0);
+$c_ju_Arrays$.prototype.java$util$Arrays$$insertionSortAnyRef__AO__I__I__s_math_Ordering__V = (function(a, start, end, ord) {
+  var n = ((end - start) | 0);
   if ((n >= 2)) {
-    if ((ord.compare__O__O__I(a.u[i0], a.u[((1 + i0) | 0)]) > 0)) {
-      var temp = a.u[i0];
-      a.u[i0] = a.u[((1 + i0) | 0)];
-      a.u[((1 + i0) | 0)] = temp
+    if ((ord.compare__O__O__I(a.u[start], a.u[((1 + start) | 0)]) > 0)) {
+      var temp = a.u[start];
+      a.u[start] = a.u[((1 + start) | 0)];
+      a.u[((1 + start) | 0)] = temp
     };
     var m = 2;
     while ((m < n)) {
-      var next = a.u[((i0 + m) | 0)];
-      if ((ord.compare__O__O__I(next, a.u[(((-1) + ((i0 + m) | 0)) | 0)]) < 0)) {
-        var iA = i0;
-        var iB = (((-1) + ((i0 + m) | 0)) | 0);
+      var next = a.u[((start + m) | 0)];
+      if ((ord.compare__O__O__I(next, a.u[(((-1) + ((start + m) | 0)) | 0)]) < 0)) {
+        var iA = start;
+        var iB = (((-1) + ((start + m) | 0)) | 0);
         while ((((iB - iA) | 0) > 1)) {
           var ix = ((((iA + iB) | 0) >>> 1) | 0);
           if ((ord.compare__O__O__I(next, a.u[ix]) < 0)) {
@@ -5100,7 +5255,7 @@ $c_ju_Arrays$.prototype.insertionSortAnyRef__p1__AO__I__I__s_math_Ordering__V = 
           }
         };
         var ix$2 = ((iA + ((ord.compare__O__O__I(next, a.u[iA]) < 0) ? 0 : 1)) | 0);
-        var i = ((i0 + m) | 0);
+        var i = ((start + m) | 0);
         while ((i > ix$2)) {
           a.u[i] = a.u[(((-1) + i) | 0)];
           i = (((-1) + i) | 0)
@@ -5111,92 +5266,46 @@ $c_ju_Arrays$.prototype.insertionSortAnyRef__p1__AO__I__I__s_math_Ordering__V = 
     }
   }
 });
-$c_ju_Arrays$.prototype.java$util$Arrays$$quickSortAnyRef__AO__I__I__s_math_Ordering__V = (function(a, i0, iN, ord) {
-  x: {
-    _java$util$Arrays$$quickSortAnyRef: while (true) {
-      if ((((iN - i0) | 0) < 16)) {
-        this.insertionSortAnyRef__p1__AO__I__I__s_math_Ordering__V(a, i0, iN, ord)
-      } else {
-        var iK = ((((i0 + iN) | 0) >>> 1) | 0);
-        var pL = ((ord.compare__O__O__I(a.u[i0], a.u[(((-1) + iN) | 0)]) <= 0) ? ((ord.compare__O__O__I(a.u[i0], a.u[iK]) >= 0) ? i0 : ((ord.compare__O__O__I(a.u[(((-1) + iN) | 0)], a.u[iK]) < 0) ? (((-1) + iN) | 0) : iK)) : ((ord.compare__O__O__I(a.u[i0], a.u[iK]) < 0) ? i0 : ((ord.compare__O__O__I(a.u[(((-1) + iN) | 0)], a.u[iK]) <= 0) ? (((-1) + iN) | 0) : iK)));
-        var pivot = a.u[pL];
-        if ((pL !== iK)) {
-          a.u[pL] = a.u[iK];
-          a.u[iK] = pivot;
-          pL = iK
-        };
-        var pR = ((1 + pL) | 0);
-        var iA = i0;
-        var iB = iN;
-        while ((((pL - iA) | 0) > 0)) {
-          var current = a.u[iA];
-          var x1 = ord.compare__O__O__I(current, pivot);
-          switch (x1) {
-            case 0: {
-              a.u[iA] = a.u[(((-1) + pL) | 0)];
-              a.u[(((-1) + pL) | 0)] = current;
-              pL = (((-1) + pL) | 0);
-              break
-            }
-            default: {
-              if ((x1 < 0)) {
-                iA = ((1 + iA) | 0)
-              } else if ((iB > pR)) {
-                a.u[iA] = a.u[(((-1) + iB) | 0)];
-                a.u[(((-1) + iB) | 0)] = current;
-                iB = (((-1) + iB) | 0)
-              } else {
-                a.u[iA] = a.u[(((-1) + pL) | 0)];
-                a.u[(((-1) + pL) | 0)] = a.u[(((-1) + pR) | 0)];
-                a.u[(((-1) + pR) | 0)] = current;
-                pL = (((-1) + pL) | 0);
-                pR = (((-1) + pR) | 0);
-                iB = (((-1) + iB) | 0)
-              }
-            }
-          }
-        };
-        while ((((iB - pR) | 0) > 0)) {
-          var current$2 = a.u[(((-1) + iB) | 0)];
-          var x1$2 = ord.compare__O__O__I(current$2, pivot);
-          switch (x1$2) {
-            case 0: {
-              a.u[(((-1) + iB) | 0)] = a.u[pR];
-              a.u[pR] = current$2;
-              pR = ((1 + pR) | 0);
-              break
-            }
-            default: {
-              if ((x1$2 > 0)) {
-                iB = (((-1) + iB) | 0)
-              } else {
-                a.u[(((-1) + iB) | 0)] = a.u[pR];
-                a.u[pR] = a.u[pL];
-                a.u[pL] = current$2;
-                iA = ((1 + iA) | 0);
-                pL = ((1 + pL) | 0);
-                pR = ((1 + pR) | 0)
-              }
-            }
-          }
-        };
-        if ((((iA - i0) | 0) < ((iN - iB) | 0))) {
-          this.java$util$Arrays$$quickSortAnyRef__AO__I__I__s_math_Ordering__V(a, i0, iA, ord);
-          i0 = iB;
-          continue _java$util$Arrays$$quickSortAnyRef
-        } else {
-          this.java$util$Arrays$$quickSortAnyRef__AO__I__I__s_math_Ordering__V(a, iB, iN, ord);
-          iN = iA;
-          continue _java$util$Arrays$$quickSortAnyRef
-        }
-      };
-      break x
-    }
+$c_ju_Arrays$.prototype.fill__AI__I__V = (function(a, value) {
+  var toIndex = a.u.length;
+  var i = 0;
+  while ((i !== toIndex)) {
+    a.u[i] = value;
+    i = ((1 + i) | 0)
   }
 });
 $c_ju_Arrays$.prototype.sort__AO__ju_Comparator__V = (function(array, comparator) {
   var ord = new $c_ju_Arrays$$anon$3().init___ju_Comparator(comparator);
-  this.java$util$Arrays$$quickSortAnyRef__AO__I__I__s_math_Ordering__V(array, 0, array.u.length, ord)
+  var end = array.u.length;
+  if ((end > 16)) {
+    this.java$util$Arrays$$stableSplitMergeAnyRef__AO__AO__I__I__s_math_Ordering__V(array, $newArrayObject($d_O.getArrayOf(), [array.u.length]), 0, end, ord)
+  } else {
+    this.java$util$Arrays$$insertionSortAnyRef__AO__I__I__s_math_Ordering__V(array, 0, end, ord)
+  }
+});
+$c_ju_Arrays$.prototype.java$util$Arrays$$stableSplitMergeAnyRef__AO__AO__I__I__s_math_Ordering__V = (function(a, temp, start, end, ord) {
+  var length = ((end - start) | 0);
+  if ((length > 16)) {
+    var middle = ((start + ((length / 2) | 0)) | 0);
+    this.java$util$Arrays$$stableSplitMergeAnyRef__AO__AO__I__I__s_math_Ordering__V(a, temp, start, middle, ord);
+    this.java$util$Arrays$$stableSplitMergeAnyRef__AO__AO__I__I__s_math_Ordering__V(a, temp, middle, end, ord);
+    var outIndex = start;
+    var leftInIndex = start;
+    var rightInIndex = middle;
+    while ((outIndex < end)) {
+      if (((leftInIndex < middle) && ((rightInIndex >= end) || ord.lteq__O__O__Z(a.u[leftInIndex], a.u[rightInIndex])))) {
+        temp.u[outIndex] = a.u[leftInIndex];
+        leftInIndex = ((1 + leftInIndex) | 0)
+      } else {
+        temp.u[outIndex] = a.u[rightInIndex];
+        rightInIndex = ((1 + rightInIndex) | 0)
+      };
+      outIndex = ((1 + outIndex) | 0)
+    };
+    $systemArraycopy(temp, start, a, start, length)
+  } else {
+    this.java$util$Arrays$$insertionSortAnyRef__AO__I__I__s_math_Ordering__V(a, start, end, ord)
+  }
 });
 var $d_ju_Arrays$ = new $TypeData().initClass({
   ju_Arrays$: 0
@@ -5565,8 +5674,8 @@ $c_s_concurrent_duration_package$DurationInt$.prototype.equals$extension__I__O__
 });
 $c_s_concurrent_duration_package$DurationInt$.prototype.durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration = (function($$this, unit) {
   $m_s_concurrent_duration_Duration$();
-  var length = new $c_sjsr_RuntimeLong().init___I($$this);
-  return new $c_s_concurrent_duration_FiniteDuration().init___J__ju_concurrent_TimeUnit(length, unit)
+  var hi = ($$this >> 31);
+  return new $c_s_concurrent_duration_FiniteDuration().init___J__ju_concurrent_TimeUnit(new $c_sjsr_RuntimeLong().init___I__I($$this, hi), unit)
 });
 var $d_s_concurrent_duration_package$DurationInt$ = new $TypeData().initClass({
   s_concurrent_duration_package$DurationInt$: 0
@@ -6033,14 +6142,14 @@ $c_s_util_hashing_MurmurHash3.prototype.mixLast__I__I__I = (function(hash, data)
   var k = data;
   k = $imul((-862048943), k);
   var i = k;
-  k = ((i << 15) | ((i >>> (-15)) | 0));
+  k = ((i << 15) | ((i >>> 17) | 0));
   k = $imul(461845907, k);
   return (hash ^ k)
 });
 $c_s_util_hashing_MurmurHash3.prototype.mix__I__I__I = (function(hash, data) {
   var h = this.mixLast__I__I__I(hash, data);
   var i = h;
-  h = ((i << 13) | ((i >>> (-13)) | 0));
+  h = ((i << 13) | ((i >>> 19) | 0));
   return (((-430675100) + $imul(5, h)) | 0)
 });
 $c_s_util_hashing_MurmurHash3.prototype.avalanche__p1__I__I = (function(hash) {
@@ -6543,7 +6652,13 @@ $c_scm_FlatHashTable$.prototype.newThreshold__I__I__I = (function(_loadFactor, s
   if ((!assertion)) {
     throw new $c_jl_AssertionError().init___O("assertion failed: loadFactor too large; must be < 0.5")
   };
-  return new $c_sjsr_RuntimeLong().init___I(size).$$times__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I(_loadFactor)).$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(1000, 0)).lo$2
+  var hi = (size >> 31);
+  var hi$1 = (_loadFactor >> 31);
+  var lo = $imul(size, _loadFactor);
+  var hi$2 = $m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$timesHi__I__I__I__I__I(size, hi, _loadFactor, hi$1);
+  var this$2 = $m_sjsr_RuntimeLong$();
+  var lo$1 = this$2.divideImpl__I__I__I__I__I(lo, hi$2, 1000, 0);
+  return lo$1
 });
 var $d_scm_FlatHashTable$ = new $TypeData().initClass({
   scm_FlatHashTable$: 0
@@ -6788,8 +6903,8 @@ $c_sjs_js_Dictionary$.prototype.apply__sc_Seq__sjs_js_Dictionary = (function(pro
     return (function(x$1$2) {
       var x$1 = $as_T2(x$1$2);
       if ((x$1 !== null)) {
-        var key = $as_T(x$1.$$und1__O());
-        var value = x$1.$$und2__O();
+        var key = $as_T(x$1.$$und1$f);
+        var value = x$1.$$und2$f;
         result$1[key] = value
       } else {
         throw new $c_s_MatchError().init___O(x$1)
@@ -6833,7 +6948,12 @@ $c_sjs_js_Thenable$ThenableOps$.prototype.toFuture$extension__sjs_js_Thenable__s
   var p2 = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var x = (function(this$2$1, p2$2) {
     return (function(e$2) {
-      var cause = ($is_jl_Throwable(e$2) ? $as_jl_Throwable(e$2) : new $c_sjs_js_JavaScriptException().init___O(e$2));
+      if ($is_jl_Throwable(e$2)) {
+        var x2 = $as_jl_Throwable(e$2);
+        var cause = x2
+      } else {
+        var cause = new $c_sjs_js_JavaScriptException().init___O(e$2)
+      };
       $s_s_concurrent_Promise$class__failure__s_concurrent_Promise__jl_Throwable__s_concurrent_Promise(p2$2, cause)
     })
   })(this, p2);
@@ -6963,8 +7083,10 @@ $c_sjsr_Bits$.prototype.numberHashCode__D__I = (function(value) {
   if (((iv === value) && ((1.0 / value) !== (-Infinity)))) {
     return iv
   } else {
-    var this$1 = this.doubleToLongBits__D__J(value);
-    return (this$1.lo$2 ^ this$1.hi$2)
+    var t = this.doubleToLongBits__D__J(value);
+    var lo = t.lo$2;
+    var hi = t.hi$2;
+    return (lo ^ hi)
   }
 });
 $c_sjsr_Bits$.prototype.doubleToLongBitsPolyfill__p1__D__J = (function(value) {
@@ -7030,12 +7152,14 @@ $c_sjsr_Bits$.prototype.doubleToLongBitsPolyfill__p1__D__J = (function(value) {
   var hif = $uI((x$1 | 0));
   var hi = (((s$1 ? (-2147483648) : 0) | (e$1 << 20)) | hif);
   var lo = $uI((f$3 | 0));
-  return new $c_sjsr_RuntimeLong().init___I(hi).$$less$less__I__sjsr_RuntimeLong(32).$$bar__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I((-1), 0).$$amp__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I(lo)))
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_sjsr_Bits$.prototype.doubleToLongBits__D__J = (function(value) {
   if (this.scala$scalajs$runtime$Bits$$$undareTypedArraysSupported$f) {
     this.float64Array$1[0] = value;
-    return new $c_sjsr_RuntimeLong().init___I($uI(this.int32Array$1[this.highOffset$1])).$$less$less__I__sjsr_RuntimeLong(32).$$bar__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I((-1), 0).$$amp__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I($uI(this.int32Array$1[this.lowOffset$1]))))
+    var value$1 = $uI(this.int32Array$1[this.highOffset$1]);
+    var value$2 = $uI(this.int32Array$1[this.lowOffset$1]);
+    return new $c_sjsr_RuntimeLong().init___I__I(value$2, value$1)
   } else {
     return this.doubleToLongBitsPolyfill__p1__D__J(value)
   }
@@ -7184,23 +7308,17 @@ $c_sjsr_StackTrace$.prototype.extractOpera10a__p1__sjs_js_Dynamic__sjs_js_Array 
   while ((i < len)) {
     var mtch = lineRE.exec($as_T(lines[i]));
     if ((mtch !== null)) {
-      var $$this = mtch[3];
-      var fnName = $as_T((($$this === (void 0)) ? "{anonymous}" : $$this));
-      var $$this$1 = mtch[2];
-      if (($$this$1 === (void 0))) {
-        var jsx$3;
+      var value = mtch[3];
+      var fnName = $as_T(((value === (void 0)) ? "{anonymous}" : value));
+      var value$1 = mtch[2];
+      if ((value$1 === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$3 = $$this$1
       };
-      var $$this$2 = mtch[1];
-      if (($$this$2 === (void 0))) {
-        var jsx$2;
+      var value$2 = mtch[1];
+      if ((value$2 === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$2 = $$this$2
       };
-      var jsx$1 = result.push(((((fnName + "()@") + jsx$3) + ":") + jsx$2));
+      var jsx$1 = result.push(((((fnName + "()@") + value$1) + ":") + value$2));
       $uI(jsx$1)
     };
     i = ((2 + i) | 0)
@@ -7223,28 +7341,22 @@ $c_sjsr_StackTrace$.prototype.extractOpera10b__p1__sjs_js_Dynamic__sjs_js_Array 
   while ((i < len)) {
     var mtch = lineRE.exec($as_T(lines[i]));
     if ((mtch !== null)) {
-      var $$this = mtch[1];
-      if (($$this === (void 0))) {
+      var value = mtch[1];
+      if ((value === (void 0))) {
         var fnName = "global code"
       } else {
-        var x$3 = $as_T($$this);
+        var x$3 = $as_T(value);
         var fnName = (x$3 + "()")
       };
-      var $$this$1 = mtch[2];
-      if (($$this$1 === (void 0))) {
-        var jsx$3;
+      var value$1 = mtch[2];
+      if ((value$1 === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$3 = $$this$1
       };
-      var $$this$2 = mtch[3];
-      if (($$this$2 === (void 0))) {
-        var jsx$2;
+      var value$2 = mtch[3];
+      if ((value$2 === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$2 = $$this$2
       };
-      var jsx$1 = result.push(((((fnName + "@") + jsx$3) + ":") + jsx$2));
+      var jsx$1 = result.push(((((fnName + "@") + value$1) + ":") + value$2));
       $uI(jsx$1)
     };
     i = ((1 + i) | 0)
@@ -7256,13 +7368,10 @@ $c_sjsr_StackTrace$.prototype.decodeClassName__p1__T__T = (function(encodedName)
   var dict = this.decompressedClasses__p1__sjs_js_Dictionary();
   if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, encoded))) {
     var dict$1 = this.decompressedClasses__p1__sjs_js_Dictionary();
-    if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, encoded))) {
-      var jsx$1 = dict$1[encoded]
-    } else {
-      var jsx$1;
+    if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict$1, encoded)))) {
       throw new $c_ju_NoSuchElementException().init___T(("key not found: " + encoded))
     };
-    var base = $as_T(jsx$1)
+    var base = $as_T(dict$1[encoded])
   } else {
     var base = this.loop$1__p1__I__T__T(0, encoded)
   };
@@ -7308,25 +7417,19 @@ $c_sjsr_StackTrace$.prototype.extractClassMethod__p1__T__T2 = (function(function
     }
   };
   if ((mtch !== null)) {
-    var $$this = mtch[1];
-    if (($$this === (void 0))) {
-      var jsx$1;
+    var value = mtch[1];
+    if ((value === (void 0))) {
       throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-    } else {
-      var jsx$1 = $$this
     };
-    var className = this.decodeClassName__p1__T__T($as_T(jsx$1));
+    var className = this.decodeClassName__p1__T__T($as_T(value));
     if (isModule) {
       var methodName = "<clinit>"
     } else {
-      var $$this$1 = mtch[2];
-      if (($$this$1 === (void 0))) {
-        var jsx$2;
+      var value$1 = mtch[2];
+      if ((value$1 === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$2 = $$this$1
       };
-      var methodName = this.decodeMethodName__p1__T__T($as_T(jsx$2))
+      var methodName = this.decodeMethodName__p1__T__T($as_T(value$1))
     };
     return new $c_T2().init___O__O(className, methodName)
   } else {
@@ -7459,34 +7562,25 @@ $c_sjsr_StackTrace$.prototype.extractOpera11__p1__sjs_js_Dynamic__sjs_js_Array =
   while ((i < len)) {
     var mtch = lineRE.exec($as_T(lines[i]));
     if ((mtch !== null)) {
-      var $$this = mtch[4];
-      if (($$this === (void 0))) {
-        var jsx$4;
+      var value = mtch[4];
+      if ((value === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$4 = $$this
       };
-      var jsx$3 = $as_T(jsx$4);
-      var $$this$1 = mtch[1];
-      if (($$this$1 === (void 0))) {
-        var jsx$2;
+      var jsx$1 = $as_T(value);
+      var value$1 = mtch[1];
+      if ((value$1 === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$2 = $$this$1
       };
-      var $$this$2 = mtch[2];
-      if (($$this$2 === (void 0))) {
-        var jsx$1;
+      var value$2 = mtch[2];
+      if ((value$2 === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$1 = $$this$2
       };
-      var location = ((((jsx$3 + ":") + jsx$2) + ":") + jsx$1);
-      var $$this$3 = mtch[2];
-      var fnName0 = $as_T((($$this$3 === (void 0)) ? "global code" : $$this$3));
+      var location = ((((jsx$1 + ":") + value$1) + ":") + value$2);
+      var value$3 = mtch[2];
+      var fnName0 = $as_T(((value$3 === (void 0)) ? "global code" : value$3));
       var x$1 = $as_T(fnName0.replace($m_sjsr_StackTrace$StringRE$().re$extension0__T__sjs_js_RegExp("<anonymous function: (\\S+)>"), "$1"));
-      var jsx$5 = x$1.replace($m_sjsr_StackTrace$StringRE$().re$extension0__T__sjs_js_RegExp("<anonymous function>"), "{anonymous}");
-      var fnName = $as_T(jsx$5);
+      var jsx$2 = x$1.replace($m_sjsr_StackTrace$StringRE$().re$extension0__T__sjs_js_RegExp("<anonymous function>"), "{anonymous}");
+      var fnName = $as_T(jsx$2);
       $uI(result.push(((fnName + "@") + location)))
     };
     i = ((2 + i) | 0)
@@ -7501,122 +7595,87 @@ $c_sjsr_StackTrace$.prototype.normalizedLinesToStackTrace__p1__sjs_js_Array__Ajl
   while ((i < $uI(lines.length))) {
     var line = $as_T(lines[i]);
     if ((line === null)) {
-      var jsx$1;
       throw new $c_jl_NullPointerException().init___()
-    } else {
-      var jsx$1 = line
     };
-    if ((jsx$1 !== "")) {
+    if ((line !== "")) {
       var mtch1 = NormalizedFrameLineWithColumn.exec(line);
       if ((mtch1 !== null)) {
-        var $$this = mtch1[1];
-        if (($$this === (void 0))) {
-          var jsx$2;
+        var value = mtch1[1];
+        if ((value === (void 0))) {
           throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-        } else {
-          var jsx$2 = $$this
         };
-        var x1 = this.extractClassMethod__p1__T__T2($as_T(jsx$2));
-        if ((x1 !== null)) {
-          var className = $as_T(x1.$$und1__O());
-          var methodName = $as_T(x1.$$und2__O());
-          var x$1_$_$$und1$f = className;
-          var x$1_$_$$und2$f = methodName
-        } else {
-          var x$1_$_$$und1$f;
-          var x$1_$_$$und2$f;
+        var x1 = this.extractClassMethod__p1__T__T2($as_T(value));
+        if ((x1 === null)) {
           throw new $c_s_MatchError().init___O(x1)
         };
-        var className$2 = $as_T(x$1_$_$$und1$f);
-        var methodName$2 = $as_T(x$1_$_$$und2$f);
-        var $$this$1 = mtch1[2];
-        if (($$this$1 === (void 0))) {
-          var jsx$4;
+        var className = $as_T(x1.$$und1$f);
+        var methodName = $as_T(x1.$$und2$f);
+        var value$1 = mtch1[2];
+        if ((value$1 === (void 0))) {
           throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-        } else {
-          var jsx$4 = $$this$1
         };
-        var fileName = $as_T(jsx$4);
-        var $$this$2 = mtch1[3];
-        if (($$this$2 === (void 0))) {
-          var jsx$5;
+        var fileName = $as_T(value$1);
+        var value$2 = mtch1[3];
+        if ((value$2 === (void 0))) {
           throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-        } else {
-          var jsx$5 = $$this$2
         };
-        var this$12 = new $c_sci_StringOps().init___T($as_T(jsx$5));
+        var x = $as_T(value$2);
+        var this$12 = new $c_sci_StringOps().init___T(x);
         var this$14 = $m_jl_Integer$();
-        var s = this$12.repr$1;
-        var lineNumber = this$14.parseInt__T__I__I(s, 10);
-        var $$this$4 = mtch1[4];
-        if (($$this$4 === (void 0))) {
-          var jsx$6;
+        var $$this = this$12.repr$1;
+        var lineNumber = this$14.parseInt__T__I__I($$this, 10);
+        var value$3 = mtch1[4];
+        if ((value$3 === (void 0))) {
           throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-        } else {
-          var jsx$6 = $$this$4
         };
-        var this$19 = new $c_sci_StringOps().init___T($as_T(jsx$6));
+        var x$1 = $as_T(value$3);
+        var this$19 = new $c_sci_StringOps().init___T(x$1);
         var this$21 = $m_jl_Integer$();
-        var s$1 = this$19.repr$1;
-        var columnNumber = this$21.parseInt__T__I__I(s$1, 10);
-        var jsx$3 = trace.push({
-          "declaringClass": className$2,
-          "methodName": methodName$2,
+        var $$this$1 = this$19.repr$1;
+        var value$4 = this$21.parseInt__T__I__I($$this$1, 10);
+        var jsx$1 = trace.push({
+          "declaringClass": className,
+          "methodName": methodName,
           "fileName": fileName,
           "lineNumber": lineNumber,
-          "columnNumber": ((columnNumber === (void 0)) ? (void 0) : columnNumber)
+          "columnNumber": ((value$4 === (void 0)) ? (void 0) : value$4)
         });
-        $uI(jsx$3)
+        $uI(jsx$1)
       } else {
         var mtch2 = NormalizedFrameLine.exec(line);
         if ((mtch2 !== null)) {
-          var $$this$6 = mtch2[1];
-          if (($$this$6 === (void 0))) {
-            var jsx$7;
+          var value$5 = mtch2[1];
+          if ((value$5 === (void 0))) {
             throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-          } else {
-            var jsx$7 = $$this$6
           };
-          var x1$2 = this.extractClassMethod__p1__T__T2($as_T(jsx$7));
-          if ((x1$2 !== null)) {
-            var className$3 = $as_T(x1$2.$$und1__O());
-            var methodName$3 = $as_T(x1$2.$$und2__O());
-            var x$2$1_$_$$und1$f = className$3;
-            var x$2$1_$_$$und2$f = methodName$3
-          } else {
-            var x$2$1_$_$$und1$f;
-            var x$2$1_$_$$und2$f;
+          var x1$2 = this.extractClassMethod__p1__T__T2($as_T(value$5));
+          if ((x1$2 === null)) {
             throw new $c_s_MatchError().init___O(x1$2)
           };
-          var className$4 = $as_T(x$2$1_$_$$und1$f);
-          var methodName$4 = $as_T(x$2$1_$_$$und2$f);
-          var $$this$7 = mtch2[2];
-          if (($$this$7 === (void 0))) {
-            var jsx$9;
+          var className$3 = $as_T(x1$2.$$und1$f);
+          var methodName$3 = $as_T(x1$2.$$und2$f);
+          var value$6 = mtch2[2];
+          if ((value$6 === (void 0))) {
             throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-          } else {
-            var jsx$9 = $$this$7
           };
-          var fileName$1 = $as_T(jsx$9);
-          var $$this$8 = mtch2[3];
-          if (($$this$8 === (void 0))) {
-            var jsx$10;
+          var fileName$1 = $as_T(value$6);
+          var value$7 = mtch2[3];
+          if ((value$7 === (void 0))) {
             throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-          } else {
-            var jsx$10 = $$this$8
           };
-          var this$43 = new $c_sci_StringOps().init___T($as_T(jsx$10));
+          var x$2 = $as_T(value$7);
+          var this$43 = new $c_sci_StringOps().init___T(x$2);
           var this$45 = $m_jl_Integer$();
-          var s$2 = this$43.repr$1;
-          var lineNumber$1 = this$45.parseInt__T__I__I(s$2, 10);
-          var jsx$8 = trace.push({
-            "declaringClass": className$4,
-            "methodName": methodName$4,
+          var $$this$2 = this$43.repr$1;
+          var lineNumber$1 = this$45.parseInt__T__I__I($$this$2, 10);
+          var jsx$2 = trace.push({
+            "declaringClass": className$3,
+            "methodName": methodName$3,
             "fileName": fileName$1,
             "lineNumber": lineNumber$1,
             "columnNumber": (void 0)
           });
-          $uI(jsx$8)
+          $uI(jsx$2)
         } else {
           $uI(trace.push({
             "declaringClass": "<jscode>",
@@ -7630,17 +7689,17 @@ $c_sjsr_StackTrace$.prototype.normalizedLinesToStackTrace__p1__sjs_js_Array__Ajl
     };
     i = ((1 + i) | 0)
   };
-  var $$this$10 = $env.sourceMapper;
-  var mappedTrace = (($$this$10 === (void 0)) ? trace : $$this$10(trace));
+  var value$8 = $env.sourceMapper;
+  var mappedTrace = ((value$8 === (void 0)) ? trace : value$8(trace));
   var result = $newArrayObject($d_jl_StackTraceElement.getArrayOf(), [$uI(mappedTrace.length)]);
   i = 0;
   while ((i < $uI(mappedTrace.length))) {
     var jsSte = mappedTrace[i];
     var ste = new $c_jl_StackTraceElement().init___T__T__T__I($as_T(jsSte.declaringClass), $as_T(jsSte.methodName), $as_T(jsSte.fileName), $uI(jsSte.lineNumber));
-    var $$this$11 = jsSte.columnNumber;
-    if (($$this$11 !== (void 0))) {
-      var columnNumber$1 = $uI($$this$11);
-      ste.setColumnNumber(columnNumber$1)
+    var value$9 = jsSte.columnNumber;
+    if ((value$9 !== (void 0))) {
+      var columnNumber = $uI(value$9);
+      ste.setColumnNumber(columnNumber)
     };
     result.u[i] = ste;
     i = ((1 + i) | 0)
@@ -7657,21 +7716,15 @@ $c_sjsr_StackTrace$.prototype.extractOpera9__p1__sjs_js_Dynamic__sjs_js_Array = 
   while ((i < len)) {
     var mtch = lineRE.exec($as_T(lines[i]));
     if ((mtch !== null)) {
-      var $$this = mtch[2];
-      if (($$this === (void 0))) {
-        var jsx$3;
+      var value = mtch[2];
+      if ((value === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$3 = $$this
       };
-      var $$this$1 = mtch[1];
-      if (($$this$1 === (void 0))) {
-        var jsx$2;
+      var value$1 = mtch[1];
+      if ((value$1 === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$2 = $$this$1
       };
-      var jsx$1 = result.push(((("{anonymous}()@" + jsx$3) + ":") + jsx$2));
+      var jsx$1 = result.push(((("{anonymous}()@" + value) + ":") + value$1));
       $uI(jsx$1)
     };
     i = ((2 + i) | 0)
@@ -7694,13 +7747,10 @@ $c_sjsr_StackTrace$.prototype.loop$1__p1__I__T__T = (function(i, encoded$1) {
       var prefix = $as_T(this.compressedPrefixes__p1__sjs_js_Array()[i]);
       if ((($uI(encoded$1.length) >= 0) && ($as_T(encoded$1.substring(0, $uI(prefix.length))) === prefix))) {
         var dict = this.decompressedPrefixes__p1__sjs_js_Dictionary();
-        if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, prefix))) {
-          var jsx$2 = dict[prefix]
-        } else {
-          var jsx$2;
+        if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, prefix)))) {
           throw new $c_ju_NoSuchElementException().init___T(("key not found: " + prefix))
         };
-        var jsx$1 = $as_T(jsx$2);
+        var jsx$1 = $as_T(dict[prefix]);
         var beginIndex = $uI(prefix.length);
         return (("" + jsx$1) + $as_T(encoded$1.substring(beginIndex)))
       } else {
@@ -7733,8 +7783,8 @@ $c_sjsr_StackTrace$.prototype.decompressedPrefixes__p1__sjs_js_Dictionary = (fun
   return (((4 & this.bitmap$0$1) === 0) ? this.decompressedPrefixes$lzycompute__p1__sjs_js_Dictionary() : this.decompressedPrefixes$1)
 });
 $c_sjsr_StackTrace$.prototype.extractRhino__p1__sjs_js_Dynamic__sjs_js_Array = (function(e) {
-  var $$this = e.stack;
-  var x = $as_T((($$this === (void 0)) ? "" : $$this));
+  var value = e.stack;
+  var x = $as_T(((value === (void 0)) ? "" : value));
   var jsx$3 = x.replace($m_sjsr_StackTrace$StringRE$().re$extension1__T__T__sjs_js_RegExp("^\\s+at\\s+", "gm"), "");
   var x$1 = $as_T(jsx$3);
   var jsx$2 = x$1.replace($m_sjsr_StackTrace$StringRE$().re$extension1__T__T__sjs_js_RegExp("^(.+?)(?: \\((.+)\\))?$", "gm"), "$2@$1");
@@ -7882,8 +7932,12 @@ $c_sr_BoxesRunTime$.prototype.equalsCharObject__jl_Character__O__Z = (function(x
       var x2$1 = $uD(x3);
       return (x2$1 === xc.value$1)
     } else if ($is_sjsr_RuntimeLong(x3)) {
-      var x3$1 = $uJ(x3);
-      return x3$1.equals__sjsr_RuntimeLong__Z(new $c_sjsr_RuntimeLong().init___I(xc.value$1))
+      var t = $uJ(x3);
+      var lo = t.lo$2;
+      var hi = t.hi$2;
+      var value = xc.value$1;
+      var hi$1 = (value >> 31);
+      return ((lo === value) && (hi === hi$1))
     } else {
       return ((x3 === null) ? (xc === null) : $objectEquals(x3, xc))
     }
@@ -7901,8 +7955,12 @@ $c_sr_BoxesRunTime$.prototype.equalsNumObject__jl_Number__O__Z = (function(xn, y
       var x2$1 = $uD(xn);
       return (x2$1 === x3.value$1)
     } else if ($is_sjsr_RuntimeLong(xn)) {
-      var x3$1 = $uJ(xn);
-      return x3$1.equals__sjsr_RuntimeLong__Z(new $c_sjsr_RuntimeLong().init___I(x3.value$1))
+      var t = $uJ(xn);
+      var lo = t.lo$2;
+      var hi = t.hi$2;
+      var value = x3.value$1;
+      var hi$1 = (value >> 31);
+      return ((lo === value) && (hi === hi$1))
     } else {
       return ((xn === null) ? (x3 === null) : $objectEquals(xn, x3))
     }
@@ -7930,8 +7988,10 @@ $c_sr_BoxesRunTime$.prototype.equalsNumNum__jl_Number__jl_Number__Z = (function(
       var x2$2 = $uD(yn);
       return (x2 === x2$2)
     } else if ($is_sjsr_RuntimeLong(yn)) {
-      var x3 = $uJ(yn);
-      return (x2 === x3.toDouble__D())
+      var t = $uJ(yn);
+      var lo = t.lo$2;
+      var hi = t.hi$2;
+      return (x2 === $m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$toDouble__I__I__D(lo, hi))
     } else if ($is_s_math_ScalaNumber(yn)) {
       var x4 = $as_s_math_ScalaNumber(yn);
       return x4.equals__O__Z(x2)
@@ -7939,16 +7999,20 @@ $c_sr_BoxesRunTime$.prototype.equalsNumNum__jl_Number__jl_Number__Z = (function(
       return false
     }
   } else if ($is_sjsr_RuntimeLong(xn)) {
-    var x3$2 = $uJ(xn);
+    var t$1 = $uJ(xn);
+    var lo$1 = t$1.lo$2;
+    var hi$1 = t$1.hi$2;
     if ($is_sjsr_RuntimeLong(yn)) {
-      var x2$3 = $uJ(yn);
-      return x3$2.equals__sjsr_RuntimeLong__Z(x2$3)
+      var t$2 = $uJ(yn);
+      var lo$2 = t$2.lo$2;
+      var hi$2 = t$2.hi$2;
+      return ((lo$1 === lo$2) && (hi$1 === hi$2))
     } else if (((typeof yn) === "number")) {
       var x3$3 = $uD(yn);
-      return (x3$2.toDouble__D() === x3$3)
+      return ($m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$toDouble__I__I__D(lo$1, hi$1) === x3$3)
     } else if ($is_s_math_ScalaNumber(yn)) {
       var x4$2 = $as_s_math_ScalaNumber(yn);
-      return x4$2.equals__O__Z(x3$2)
+      return x4$2.equals__O__Z(new $c_sjsr_RuntimeLong().init___I__I(lo$1, hi$1))
     } else {
       return false
     }
@@ -8036,8 +8100,10 @@ $c_sr_ScalaRunTime$.prototype.hash__O__I = (function(x) {
       var x2 = $uD(n);
       return $m_sr_Statics$().doubleHash__D__I(x2)
     } else if ($is_sjsr_RuntimeLong(n)) {
-      var x3 = $uJ(n);
-      return $m_sr_Statics$().longHash__J__I(x3)
+      var t = $uJ(n);
+      var lo = t.lo$2;
+      var hi = t.hi$2;
+      return $m_sr_Statics$().longHash__J__I(new $c_sjsr_RuntimeLong().init___I__I(lo, hi))
     } else {
       return $objectHashCode(n)
     }
@@ -8164,14 +8230,16 @@ $c_sr_Statics$.prototype.doubleHash__D__I = (function(dv) {
   if ((iv === dv)) {
     return iv
   } else {
-    var lv = $m_sjsr_RuntimeLong$().fromDouble__D__sjsr_RuntimeLong(dv);
-    return ((lv.toDouble__D() === dv) ? (lv.lo$2 ^ lv.hi$2) : $m_sjsr_Bits$().numberHashCode__D__I(dv))
+    var this$1 = $m_sjsr_RuntimeLong$();
+    var lo = this$1.scala$scalajs$runtime$RuntimeLong$$fromDoubleImpl__D__I(dv);
+    var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+    return (($m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$toDouble__I__I__D(lo, hi) === dv) ? (lo ^ hi) : $m_sjsr_Bits$().numberHashCode__D__I(dv))
   }
 });
 $c_sr_Statics$.prototype.longHash__J__I = (function(lv) {
   var lo = lv.lo$2;
-  var hi = lv.hi$2;
-  return ((hi === (lo >> 31)) ? lo : (lo ^ hi))
+  var lo$1 = lv.hi$2;
+  return ((lo$1 === (lo >> 31)) ? lo : (lo ^ lo$1))
 });
 var $d_sr_Statics$ = new $TypeData().initClass({
   sr_Statics$: 0
@@ -8262,17 +8330,17 @@ $c_Lcom_microsoft_awt_AWTClientJsApp$.prototype.configureServices__p1__Lorg_scal
   })])
 });
 $c_Lcom_microsoft_awt_AWTClientJsApp$.prototype.main__V = (function() {
-  var $$this = $g.angular;
+  var self = $g.angular;
   var array = ["ngAnimate", "ngCookies", "ngRoute", "ngSanitize", "angularFileUpload", "angular-md5", "toaster", "ui.bootstrap"];
-  var module = $$this.module("AWT", array);
-  this.configureControllers__p1__Lorg_scalajs_angularjs_Module__V(module);
-  this.configureDialogs__p1__Lorg_scalajs_angularjs_Module__V(module);
-  this.configureDirectives__p1__Lorg_scalajs_angularjs_Module__V(module);
-  this.configureFactories__p1__Lorg_scalajs_angularjs_Module__V(module);
-  this.configureFilters__p1__Lorg_scalajs_angularjs_Module__V(module);
-  this.configureServices__p1__Lorg_scalajs_angularjs_Module__V(module);
-  this.configureApplication__p1__Lorg_scalajs_angularjs_Module__V(module);
-  this.runApplication__p1__Lorg_scalajs_angularjs_Module__V(module)
+  var self$1 = self.module("AWT", array);
+  this.configureControllers__p1__Lorg_scalajs_angularjs_Module__V(self$1);
+  this.configureDialogs__p1__Lorg_scalajs_angularjs_Module__V(self$1);
+  this.configureDirectives__p1__Lorg_scalajs_angularjs_Module__V(self$1);
+  this.configureFactories__p1__Lorg_scalajs_angularjs_Module__V(self$1);
+  this.configureFilters__p1__Lorg_scalajs_angularjs_Module__V(self$1);
+  this.configureServices__p1__Lorg_scalajs_angularjs_Module__V(self$1);
+  this.configureApplication__p1__Lorg_scalajs_angularjs_Module__V(self$1);
+  this.runApplication__p1__Lorg_scalajs_angularjs_Module__V(self$1)
 });
 $c_Lcom_microsoft_awt_AWTClientJsApp$.prototype.configureDialogs__p1__Lorg_scalajs_angularjs_Module__V = (function(module) {
   module.service("GroupDialog", ["$modal", (function(x$macro$82$2) {
@@ -9181,8 +9249,8 @@ $c_Lcom_microsoft_awt_components_SessionFactory.prototype.com$microsoft$awt$comp
   jsx$1.log(s);
   this.sessionFactory$1 = loadedSession;
   this.setSessionCookie__p1__Lcom_microsoft_awt_models_Session__V(loadedSession);
-  var $$this = this.$$rootScope$1;
-  return $$this.$broadcast("session_loaded", loadedSession)
+  var $$scope = this.$$rootScope$1;
+  return $$scope.$broadcast("session_loaded", loadedSession)
 });
 $c_Lcom_microsoft_awt_components_SessionFactory.prototype.login__T__Lcom_microsoft_awt_forms_LoginForm__Lorg_scalajs_angularjs_http_HttpResponse = (function(tokenId, loginForm) {
   return this.authenticationService$1.login__T__Lcom_microsoft_awt_forms_LoginForm__Lorg_scalajs_angularjs_http_HttpResponse(tokenId, loginForm)
@@ -9194,8 +9262,8 @@ $c_Lcom_microsoft_awt_components_SessionFactory.prototype.getAuthToken__T__Lorg_
   return this.authenticationService$1.getAuthToken__T__Lorg_scalajs_angularjs_http_HttpResponse(username)
 });
 $c_Lcom_microsoft_awt_components_SessionFactory.prototype.loadSessionAndUser__p1__V = (function() {
-  var $$this = this.$$cookies$1.get(this.SESSION$undCOOKIE$undNAME$1);
-  var x1 = (($$this === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this));
+  var value = this.$$cookies$1.get(this.SESSION$undCOOKIE$undNAME$1);
+  var x1 = ((value === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value));
   if ($is_s_Some(x1)) {
     var x2 = $as_s_Some(x1);
     var sessionId = $as_T(x2.x$2);
@@ -9216,8 +9284,8 @@ $c_Lcom_microsoft_awt_components_SessionFactory.prototype.loadSessionAndUser__p1
           var x2$1 = $as_s_util_Success(x0$2);
           var p3 = $as_T2(x2$1.value$2);
           if ((p3 !== null)) {
-            var loadedSession = p3.$$und1__O();
-            var loadedUser = p3.$$und2__O();
+            var loadedSession = p3.$$und1$f;
+            var loadedUser = p3.$$und2$f;
             arg$outer.com$microsoft$awt$components$SessionFactory$$announceSession__Lcom_microsoft_awt_models_Session__sjs_js_Object(loadedSession);
             return arg$outer.com$microsoft$awt$components$SessionFactory$$announceUser__Lcom_microsoft_awt_models_User__sjs_js_Object(loadedUser)
           }
@@ -9242,8 +9310,8 @@ $c_Lcom_microsoft_awt_components_SessionFactory.prototype.loadSessionAndUser__p1
                 var this$16 = new $c_sci_StringOps().init___T(s$1);
                 var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
                 var n = $uI(thiz.length);
-                var $$this$1 = this$16.repr$1;
-                var until = $uI($$this$1.length);
+                var $$this = this$16.repr$1;
+                var until = $uI($$this.length);
                 var jsx$2 = this$8.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$16.repr$1, n, until));
                 break matchEnd7
               }
@@ -9262,9 +9330,9 @@ $c_Lcom_microsoft_awt_components_SessionFactory.prototype.loadSessionAndUser__p1
           };
           var s$3 = jsx$3.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$2]));
           jsx$4.error(s$3);
-          var $$this$2 = arg$outer.com$microsoft$awt$components$SessionFactory$$toaster$f;
+          var toaster = arg$outer.com$microsoft$awt$components$SessionFactory$$toaster$f;
           var s$4 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().WARNING$1;
-          $$this$2.pop(s$4, "Session Not Found", "Session could not be retrieved");
+          toaster.pop(s$4, "Session Not Found", "Session could not be retrieved");
           arg$outer.com$microsoft$awt$components$SessionFactory$$returnToLoginPage__V();
           return (void 0)
         };
@@ -9281,18 +9349,23 @@ $c_Lcom_microsoft_awt_components_SessionFactory.prototype.loadSessionAndUser__p1
   }
 });
 $c_Lcom_microsoft_awt_components_SessionFactory.prototype.com$microsoft$awt$components$SessionFactory$$updateOnlineStatusesForFollowers__T__V = (function(userID) {
-  var $$this = this.sessionFactory$1;
+  var value = this.sessionFactory$1;
   var f = new $c_Lcom_microsoft_awt_components_SessionFactory$$anonfun$com$microsoft$awt$components$SessionFactory$$updateOnlineStatusesForFollowers$1().init___Lcom_microsoft_awt_components_SessionFactory(this);
-  if (($$this !== (void 0))) {
-    f.apply__Lcom_microsoft_awt_models_Session__V($$this)
+  if ((value !== (void 0))) {
+    f.apply__Lcom_microsoft_awt_models_Session__V(value)
   }
 });
 $c_Lcom_microsoft_awt_components_SessionFactory.prototype.user__sjs_js_UndefOr = (function() {
-  var $$this = this.sessionFactory$1;
-  if (($$this !== (void 0))) {
+  var value = this.sessionFactory$1;
+  if ((value !== (void 0))) {
     return this.myUser$1
   } else {
-    if (this.elapsedTime__p1__J().$$greater__sjsr_RuntimeLong__Z(this.INITIAL$undGRACE$undPERIOD$1)) {
+    var t = this.elapsedTime__p1__J();
+    var lo = t.lo$2;
+    var hi = t.hi$2;
+    var b = this.INITIAL$undGRACE$undPERIOD$1;
+    var bhi = b.hi$2;
+    if (((hi === bhi) ? (((-2147483648) ^ lo) > ((-2147483648) ^ b.lo$2)) : (hi > bhi))) {
       this.com$microsoft$awt$components$SessionFactory$$returnToLoginPage__V()
     };
     return (void 0)
@@ -9312,18 +9385,15 @@ $c_Lcom_microsoft_awt_components_SessionFactory.prototype.com$microsoft$awt$comp
   jsx$1.log(s);
   this.myUser$1 = loadedUser;
   this.webSocketSvc$1.init__Lcom_microsoft_awt_models_User__V(loadedUser);
-  var $$this = loadedUser._id;
-  if (($$this === (void 0))) {
-    var jsx$2;
+  var value = loadedUser._id;
+  if ((value === (void 0))) {
     throw new $c_jl_IllegalStateException().init___T("User ID not found")
-  } else {
-    var jsx$2 = $$this
   };
-  var userID = $as_T(jsx$2);
+  var userID = $as_T(value);
   this.com$microsoft$awt$components$SessionFactory$$updateOnlineStatusesForFollowers__T__V(userID);
-  var $$this$1 = this.$$rootScope$1;
+  var $$scope = this.$$rootScope$1;
   $g.console.log("emitting user loaded event...");
-  return $$this$1.$broadcast("user_loaded", loadedUser)
+  return $$scope.$broadcast("user_loaded", loadedUser)
 });
 $c_Lcom_microsoft_awt_components_SessionFactory.prototype.logout__V = (function() {
   this.$$cookies$1.remove(this.SESSION$undCOOKIE$undNAME$1);
@@ -9332,33 +9402,45 @@ $c_Lcom_microsoft_awt_components_SessionFactory.prototype.logout__V = (function(
   this.com$microsoft$awt$components$SessionFactory$$returnToLoginPage__V()
 });
 $c_Lcom_microsoft_awt_components_SessionFactory.prototype.elapsedTime__p1__J = (function() {
-  return $m_jl_System$().currentTimeMillis__J().$$minus__sjsr_RuntimeLong__sjsr_RuntimeLong(this.initTime$1)
+  var t = $m_jl_System$().currentTimeMillis__J();
+  var lo = t.lo$2;
+  var hi = t.hi$2;
+  var b = this.initTime$1;
+  var bhi = b.hi$2;
+  var lo$1 = ((lo - b.lo$2) | 0);
+  var hi$1 = ((((-2147483648) ^ lo$1) > ((-2147483648) ^ lo)) ? (((-1) + ((hi - bhi) | 0)) | 0) : ((hi - bhi) | 0));
+  return new $c_sjsr_RuntimeLong().init___I__I(lo$1, hi$1)
 });
 $c_Lcom_microsoft_awt_components_SessionFactory.prototype.getSessionLastUpdatedTime__Lcom_microsoft_awt_models_UserLike__sjs_js_UndefOr = (function(user) {
-  var $$this = user._id;
-  if (($$this === (void 0))) {
+  var value = user._id;
+  if ((value === (void 0))) {
     return (void 0)
   } else {
-    var id = $as_T($$this);
+    var id = $as_T(value);
     var dict = this.onlineStatuses$1;
-    var $$this$1 = ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, id)) ? new $c_s_Some().init___O(dict[id]) : $m_s_None$());
-    var $$this$2 = ($$this$1.isEmpty__Z() ? (void 0) : $$this$1.get__O());
-    if (($$this$2 === (void 0))) {
+    var opt = ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, id)) ? new $c_s_Some().init___O(dict[id]) : $m_s_None$());
+    if (opt.isEmpty__Z()) {
+      var value$1 = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var value$1 = arg1
+    };
+    if ((value$1 === (void 0))) {
       return (void 0)
     } else {
-      var $$this$3 = $$this$2.lastUpdated;
-      if (($$this$3 === (void 0))) {
+      var value$2 = value$1.lastUpdated;
+      if ((value$2 === (void 0))) {
         return (void 0)
       } else {
-        var value$3 = $uD($$this$3);
-        return value$3
+        var lastUpdated = $uD(value$2);
+        return lastUpdated
       }
     }
   }
 });
 $c_Lcom_microsoft_awt_components_SessionFactory.prototype.setSessionCookie__p1__Lcom_microsoft_awt_models_Session__V = (function(loadedSession) {
-  var $$this = loadedSession._id;
-  var x1 = (($$this === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this));
+  var value = loadedSession._id;
+  var x1 = ((value === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value));
   if ($is_s_Some(x1)) {
     var x2 = $as_s_Some(x1);
     var sessionId = $as_T(x2.x$2);
@@ -9380,19 +9462,24 @@ $c_Lcom_microsoft_awt_components_SessionFactory.prototype.setSessionCookie__p1__
 $c_Lcom_microsoft_awt_components_SessionFactory.prototype.loadUserForSession__Lcom_microsoft_awt_models_Session__V = (function(loadedSession) {
   this.myUser$1 = (void 0);
   this.com$microsoft$awt$components$SessionFactory$$announceSession__Lcom_microsoft_awt_models_Session__sjs_js_Object(loadedSession);
-  var $$this = this.session__sjs_js_UndefOr();
-  if (($$this === (void 0))) {
-    var $$this$3 = (void 0)
+  var value = this.session__sjs_js_UndefOr();
+  if ((value === (void 0))) {
+    var value$1 = (void 0)
   } else {
-    var $$this$1 = $$this.userID;
-    if (($$this$1 === (void 0))) {
-      var $$this$3 = (void 0)
+    var valueA = value.userID;
+    if ((valueA === (void 0))) {
+      var value$1 = (void 0)
     } else {
-      var $$this$2 = $m_s_Option$().apply__O__s_Option($$this$1);
-      var $$this$3 = ($$this$2.isEmpty__Z() ? (void 0) : $$this$2.get__O())
+      var opt = $m_s_Option$().apply__O__s_Option(valueA);
+      if (opt.isEmpty__Z()) {
+        var value$1 = (void 0)
+      } else {
+        var arg1 = opt.get__O();
+        var value$1 = arg1
+      }
     }
   };
-  var x1 = (($$this$3 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this$3));
+  var x1 = ((value$1 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value$1));
   if ($is_s_Some(x1)) {
     var x2 = $as_s_Some(x1);
     var userID = $as_T(x2.x$2);
@@ -9423,8 +9510,8 @@ $c_Lcom_microsoft_awt_components_SessionFactory.prototype.loadUserForSession__Lc
                 var this$24 = new $c_sci_StringOps().init___T(s);
                 var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
                 var n = $uI(thiz.length);
-                var $$this$4 = this$24.repr$1;
-                var until = $uI($$this$4.length);
+                var $$this = this$24.repr$1;
+                var until = $uI($$this.length);
                 var jsx$1 = this$16.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$24.repr$1, n, until));
                 break matchEnd7
               }
@@ -9459,11 +9546,16 @@ $c_Lcom_microsoft_awt_components_SessionFactory.prototype.loadUserForSession__Lc
   }
 });
 $c_Lcom_microsoft_awt_components_SessionFactory.prototype.session__sjs_js_UndefOr = (function() {
-  var $$this = this.sessionFactory$1;
-  if (($$this !== (void 0))) {
+  var value = this.sessionFactory$1;
+  if ((value !== (void 0))) {
     return this.sessionFactory$1
   } else {
-    if (this.elapsedTime__p1__J().$$greater__sjsr_RuntimeLong__Z(this.INITIAL$undGRACE$undPERIOD$1)) {
+    var t = this.elapsedTime__p1__J();
+    var lo = t.lo$2;
+    var hi = t.hi$2;
+    var b = this.INITIAL$undGRACE$undPERIOD$1;
+    var bhi = b.hi$2;
+    if (((hi === bhi) ? (((-2147483648) ^ lo) > ((-2147483648) ^ b.lo$2)) : (hi > bhi))) {
       this.com$microsoft$awt$components$SessionFactory$$returnToLoginPage__V()
     };
     return (void 0)
@@ -9605,22 +9697,28 @@ $c_Lcom_microsoft_awt_components_SignUpController.prototype.init___Lcom_microsof
   return this
 });
 $c_Lcom_microsoft_awt_components_SignUpController.prototype.com$microsoft$awt$components$SignUpController$$validate__Lcom_microsoft_awt_forms_AccountActivationForm__Z = (function(form) {
-  var $$this = this.com$microsoft$awt$components$SignUpController$$$scope$f.messages;
-  var count = $uI($$this.length);
-  $$this.splice(0, count);
+  var array = this.com$microsoft$awt$components$SignUpController$$$scope$f.messages;
+  var count = $uI(array.length);
+  array.splice(0, count);
   var jsx$1 = this.com$microsoft$awt$components$SignUpController$$$scope$f.messages;
   var jsx$7 = jsx$1.push;
   var messages = [];
-  var $$this$1 = form.username;
-  if (($$this$1 === (void 0))) {
-    var $$this$3 = (void 0)
+  var valueA = form.username;
+  if ((valueA === (void 0))) {
+    var value = (void 0)
   } else {
-    var $$this$2 = $m_s_Option$().apply__O__s_Option($$this$1);
-    var $$this$3 = ($$this$2.isEmpty__Z() ? (void 0) : $$this$2.get__O())
+    var opt = $m_s_Option$().apply__O__s_Option(valueA);
+    if (opt.isEmpty__Z()) {
+      var value = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var value = arg1
+    }
   };
-  if (($$this$3 !== (void 0))) {
-    var x$1 = $as_T($$this$3);
-    var this$19 = new $c_sci_StringOps().init___T($as_T(x$1.trim()));
+  if ((value !== (void 0))) {
+    var x$1 = $as_T(value);
+    var x = $as_T(x$1.trim());
+    var this$19 = new $c_sci_StringOps().init___T(x);
     var jsx$2 = $s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$19)
   } else {
     var jsx$2 = false
@@ -9628,16 +9726,22 @@ $c_Lcom_microsoft_awt_components_SignUpController.prototype.com$microsoft$awt$co
   if ((!jsx$2)) {
     $uI(messages.push("Username is required"))
   };
-  var $$this$4 = form.password0;
-  if (($$this$4 === (void 0))) {
-    var $$this$6 = (void 0)
+  var valueA$1 = form.password0;
+  if ((valueA$1 === (void 0))) {
+    var value$1 = (void 0)
   } else {
-    var $$this$5 = $m_s_Option$().apply__O__s_Option($$this$4);
-    var $$this$6 = ($$this$5.isEmpty__Z() ? (void 0) : $$this$5.get__O())
+    var opt$1 = $m_s_Option$().apply__O__s_Option(valueA$1);
+    if (opt$1.isEmpty__Z()) {
+      var value$1 = (void 0)
+    } else {
+      var arg1$1 = opt$1.get__O();
+      var value$1 = arg1$1
+    }
   };
-  if (($$this$6 !== (void 0))) {
-    var x$2 = $as_T($$this$6);
-    var this$33 = new $c_sci_StringOps().init___T($as_T(x$2.trim()));
+  if ((value$1 !== (void 0))) {
+    var x$2 = $as_T(value$1);
+    var x$3 = $as_T(x$2.trim());
+    var this$33 = new $c_sci_StringOps().init___T(x$3);
     var jsx$3 = $s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$33)
   } else {
     var jsx$3 = false
@@ -9645,16 +9749,22 @@ $c_Lcom_microsoft_awt_components_SignUpController.prototype.com$microsoft$awt$co
   if ((!jsx$3)) {
     $uI(messages.push("Password is required"))
   };
-  var $$this$7 = form.password1;
-  if (($$this$7 === (void 0))) {
-    var $$this$9 = (void 0)
+  var valueA$2 = form.password1;
+  if ((valueA$2 === (void 0))) {
+    var value$2 = (void 0)
   } else {
-    var $$this$8 = $m_s_Option$().apply__O__s_Option($$this$7);
-    var $$this$9 = ($$this$8.isEmpty__Z() ? (void 0) : $$this$8.get__O())
+    var opt$2 = $m_s_Option$().apply__O__s_Option(valueA$2);
+    if (opt$2.isEmpty__Z()) {
+      var value$2 = (void 0)
+    } else {
+      var arg1$2 = opt$2.get__O();
+      var value$2 = arg1$2
+    }
   };
-  if (($$this$9 !== (void 0))) {
-    var x$3$1 = $as_T($$this$9);
-    var this$47 = new $c_sci_StringOps().init___T($as_T(x$3$1.trim()));
+  if ((value$2 !== (void 0))) {
+    var x$3$1 = $as_T(value$2);
+    var x$4 = $as_T(x$3$1.trim());
+    var this$47 = new $c_sci_StringOps().init___T(x$4);
     var jsx$4 = $s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$47)
   } else {
     var jsx$4 = false
@@ -9662,15 +9772,16 @@ $c_Lcom_microsoft_awt_components_SignUpController.prototype.com$microsoft$awt$co
   if ((!jsx$4)) {
     $uI(messages.push("Confirmation password is required"))
   };
-  var $$this$10 = form.password0;
+  var valueA$3 = form.password0;
   var valueB = form.password1;
-  if ((!(($$this$10 !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, $$this$10))))) {
+  if ((!((valueA$3 !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, valueA$3))))) {
     $uI(messages.push("The passwords do not match"))
   };
-  var $$this$11 = form.primaryEmail;
-  if (($$this$11 !== (void 0))) {
-    var x$4$1 = $as_T($$this$11);
-    var this$63 = new $c_sci_StringOps().init___T($as_T(x$4$1.trim()));
+  var value$3 = form.primaryEmail;
+  if ((value$3 !== (void 0))) {
+    var x$4$1 = $as_T(value$3);
+    var x$5 = $as_T(x$4$1.trim());
+    var this$63 = new $c_sci_StringOps().init___T(x$5);
     var jsx$5 = $s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$63)
   } else {
     var jsx$5 = false
@@ -9678,10 +9789,11 @@ $c_Lcom_microsoft_awt_components_SignUpController.prototype.com$microsoft$awt$co
   if ((!jsx$5)) {
     $uI(messages.push("Email address is required"))
   };
-  var $$this$12 = form.primaryEmail;
-  if (($$this$12 !== (void 0))) {
-    var s = $as_T($$this$12);
-    var this$69 = new $c_sci_StringOps().init___T($as_T(s.trim()));
+  var value$4 = form.primaryEmail;
+  if ((value$4 !== (void 0))) {
+    var s = $as_T(value$4);
+    var x$6 = $as_T(s.trim());
+    var this$69 = new $c_sci_StringOps().init___T(x$6);
     if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$69)) {
       if ((s === null)) {
         throw new $c_jl_NullPointerException().init___()
@@ -9765,7 +9877,7 @@ $c_Lcom_microsoft_awt_components_UserDialog.prototype.init___Lorg_scalajs_angula
 });
 $c_Lcom_microsoft_awt_components_UserDialog.prototype.popup__T__sjs_js_Promise = (function(userID) {
   var jsx$2 = this.$$modal$1;
-  var x$2 = $d_Lcom_microsoft_awt_components_UserDialog$UserDialogController.getClassOf().getSimpleName__T();
+  var value = $d_Lcom_microsoft_awt_components_UserDialog$UserDialogController.getClassOf().getSimpleName__T();
   var jsx$1 = $m_sjs_js_Dictionary$();
   var y = (function(userID$1) {
     return (function() {
@@ -9773,7 +9885,7 @@ $c_Lcom_microsoft_awt_components_UserDialog.prototype.popup__T__sjs_js_Promise =
     })
   })(userID);
   var x$3 = jsx$1.apply__sc_Seq__sjs_js_Dictionary(new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("userID", y)]));
-  var $$modalInstance = jsx$2.open(new $c_Lorg_scalajs_angularjs_uibootstrap_ModalOptions((void 0), "user_dialog.html", x$2, (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), x$3));
+  var $$modalInstance = jsx$2.open(new $c_Lorg_scalajs_angularjs_uibootstrap_ModalOptions((void 0), "user_dialog.html", value, (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), x$3));
   return $$modalInstance.result
 });
 function $is_Lcom_microsoft_awt_components_UserDialog(obj) {
@@ -9818,14 +9930,14 @@ $c_Lcom_microsoft_awt_components_UserFactory.prototype.getUsers__sjs_js_Array__s
     var index = i;
     var arg1 = userIds[index];
     var key = $as_T(arg1);
-    if ((!$uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, key)))) {
+    if (($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, key)) !== true)) {
       array.push(arg1)
     };
     i = ((1 + i) | 0)
   };
   if (($uI(array.length) !== 0)) {
-    var $$this = this.com$microsoft$awt$components$UserFactory$$userService$f.getUsers__sjs_js_Array__Lorg_scalajs_angularjs_http_HttpResponse(array);
-    var this$8 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future($$this)
+    var response = this.com$microsoft$awt$components$UserFactory$$userService$f.getUsers__sjs_js_Array__Lorg_scalajs_angularjs_http_HttpResponse(array);
+    var this$8 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(response)
   } else {
     var this$8 = $m_s_concurrent_Future$().successful__O__s_concurrent_Future([])
   };
@@ -9843,25 +9955,23 @@ $c_Lcom_microsoft_awt_components_UserFactory.prototype.enrich__sjs_js_Array__s_c
   while ((i < len)) {
     var index = i;
     var arg1 = posts[index];
-    var $$this = arg1.submitterId;
-    var xo = (($$this === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this));
-    var xs = xo.toList__sci_List();
-    if ((xs !== null)) {
-      var xs$1 = xs;
-      x: {
-        _loop: while (true) {
-          var this$8 = xs$1;
-          if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$8)) {
-            var elem = xs$1.head__O();
-            array.push(elem);
-            xs$1 = $as_sc_LinearSeq(xs$1.tail__O());
-            continue _loop
-          };
-          break x
-        }
+    var value = arg1.submitterId;
+    var xo = ((value === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value));
+    var this$7 = xo.toList__sci_List();
+    if ((this$7 !== null)) {
+      var xs = this$7;
+      _loop: while (true) {
+        var this$8 = xs;
+        if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$8)) {
+          var elem = xs.head__O();
+          array.push(elem);
+          xs = $as_sc_LinearSeq(xs.tail__O());
+          continue _loop
+        };
+        break
       }
     } else {
-      var these = xs;
+      var these = this$7;
       while ((!these.isEmpty__Z())) {
         var arg1$1 = these.head__O();
         array.push(arg1$1);
@@ -9885,17 +9995,16 @@ $c_Lcom_microsoft_awt_components_UserFactory.prototype.getUserByID__T__s_concurr
   var x1 = ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, userId)) ? new $c_s_Some().init___O(dict[userId]) : $m_s_None$());
   if ($is_s_Some(x1)) {
     var x2 = $as_s_Some(x1);
-    var jsx$1 = x2.x$2
+    var v = x2.x$2;
+    var jsx$1 = v
   } else {
     var x = $m_s_None$();
-    if ((x === x1)) {
-      var d = op.apply__s_concurrent_Future();
-      dict[userId] = d;
-      var jsx$1 = d
-    } else {
-      var jsx$1;
+    if ((!(x === x1))) {
       throw new $c_s_MatchError().init___O(x1)
-    }
+    };
+    var d = op.apply__s_concurrent_Future();
+    dict[userId] = d;
+    var jsx$1 = d
   };
   return $as_s_concurrent_Future(jsx$1)
 });
@@ -10094,23 +10203,23 @@ $c_Lcom_microsoft_awt_components_WebSocketService.prototype.com$microsoft$awt$co
 $c_Lcom_microsoft_awt_components_WebSocketService.prototype.init__Lcom_microsoft_awt_models_User__V = (function(user) {
   this.connectedUser$1 = $m_s_Option$().apply__O__s_Option(user);
   $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console().log("Initializing Websocket service...");
-  var $$this = $g.window;
-  var obj$1 = $$this.WebSocket;
+  var obj = $g.window;
+  var obj$1 = obj.WebSocket;
   if ((!((obj$1 !== null) && (obj$1 !== (void 0))))) {
     $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console().log("Using a Mozilla Web Socket");
-    var $$this$1 = $g.window;
-    var $$this$2 = $g.window;
-    var jsx$1 = $$this$2.MozWebSocket;
-    $$this$1.WebSocket = jsx$1
+    var obj$2 = $g.window;
+    var obj$3 = $g.window;
+    var jsx$1 = obj$3.MozWebSocket;
+    obj$2.WebSocket = jsx$1
   };
-  var $$this$3 = $g.window;
-  var obj$5 = $$this$3.WebSocket;
+  var obj$4 = $g.window;
+  var obj$5 = obj$4.WebSocket;
   if (((obj$5 !== null) && (obj$5 !== (void 0)))) {
     this.com$microsoft$awt$components$WebSocketService$$connect__V()
   } else {
-    var qual$1 = this.toaster$1;
+    var toaster = this.toaster$1;
     var s = $m_Lorg_scalajs_angularjs_toaster_Toaster$().INFO$1;
-    qual$1.pop(s, "Your browser does not support Web Sockets.", null)
+    toaster.pop(s, "Your browser does not support Web Sockets.", null)
   }
 });
 $c_Lcom_microsoft_awt_components_WebSocketService.prototype.init___Lorg_scalajs_angularjs_Scope__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster = (function($$rootScope, $$location, $$timeout, toaster) {
@@ -10123,8 +10232,8 @@ $c_Lcom_microsoft_awt_components_WebSocketService.prototype.init___Lorg_scalajs_
   return this
 });
 $c_Lcom_microsoft_awt_components_WebSocketService.prototype.com$microsoft$awt$components$WebSocketService$$handleOnClose__Lorg_scalajs_dom_raw_Event__V = (function(event) {
-  var $$this = this.$$rootScope$1;
-  $$this.$broadcast("WS_STATE_CHANGE", false);
+  var $$scope = this.$$rootScope$1;
+  $$scope.$broadcast("WS_STATE_CHANGE", false);
   $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console().warn("Web socket connection lost");
   var jsx$2 = this.$$timeout$1;
   var jsx$1 = $m_Lorg_scalajs_angularjs_package$();
@@ -10137,22 +10246,22 @@ $c_Lcom_microsoft_awt_components_WebSocketService.prototype.com$microsoft$awt$co
   })(this), jsx$1.durationToInt__s_concurrent_duration_FiniteDuration__I($m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$11.scala$concurrent$duration$DurationInt$$n$1, unit)))
 });
 $c_Lcom_microsoft_awt_components_WebSocketService.prototype.com$microsoft$awt$components$WebSocketService$$handleOnOpen__Lorg_scalajs_dom_raw_Event__V = (function(event) {
-  var $$this = this.$$rootScope$1;
-  $$this.$broadcast("WS_STATE_CHANGE", true);
+  var $$scope = this.$$rootScope$1;
+  $$scope.$broadcast("WS_STATE_CHANGE", true);
   $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console().log("Web socket connection established")
 });
 $c_Lcom_microsoft_awt_components_WebSocketService.prototype.com$microsoft$awt$components$WebSocketService$$handleOnMessage__Lorg_scalajs_dom_raw_MessageEvent__V = (function(event) {
   if ((event.data !== null)) {
     var message = $g.JSON.parse($as_T(event.data));
-    var $$this = message.action;
-    var this$4 = (($$this === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this));
+    var value = message.action;
+    var this$4 = ((value === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value));
     if (this$4.isEmpty__Z()) {
       var params = $m_s_None$()
     } else {
       var v1 = this$4.get__O();
       var action = $as_T(v1);
-      var $$this$1 = message.data;
-      var this$8 = (($$this$1 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this$1));
+      var value$1 = message.data;
+      var this$8 = ((value$1 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value$1));
       if (this$8.isEmpty__Z()) {
         var params = $m_s_None$()
       } else {
@@ -10166,8 +10275,8 @@ $c_Lcom_microsoft_awt_components_WebSocketService.prototype.com$microsoft$awt$co
         var x2 = $as_s_Some(params);
         var p3 = $as_T2(x2.x$2);
         if ((p3 !== null)) {
-          var action$1 = $as_T(p3.$$und1__O());
-          var data$1 = $as_T(p3.$$und2__O());
+          var action$1 = $as_T(p3.$$und1$f);
+          var data$1 = $as_T(p3.$$und2$f);
           var jsx$1 = $m_Lorg_scalajs_dom_package$().console__Lorg_scalajs_dom_raw_Console();
           var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Broadcasting action '", "'"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([action$1]));
           jsx$1.log(s);
@@ -10228,7 +10337,7 @@ $c_Lcom_microsoft_awt_components_WorkloadCommentDialog.prototype.init___Lorg_sca
 });
 $c_Lcom_microsoft_awt_components_WorkloadCommentDialog.prototype.popup__T__sjs_js_Promise = (function(workloadID) {
   var jsx$2 = this.$$modal$1;
-  var x$3 = $d_Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentDialogController.getClassOf().getSimpleName__T();
+  var value = $d_Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentDialogController.getClassOf().getSimpleName__T();
   var jsx$1 = $m_sjs_js_Dictionary$();
   var y = (function(workloadID$1) {
     return (function() {
@@ -10236,7 +10345,7 @@ $c_Lcom_microsoft_awt_components_WorkloadCommentDialog.prototype.popup__T__sjs_j
     })
   })(workloadID);
   var x$4 = jsx$1.apply__sc_Seq__sjs_js_Dictionary(new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("workloadID", y)]));
-  var $$modalInstance = jsx$2.open(new $c_Lorg_scalajs_angularjs_uibootstrap_ModalOptions((void 0), "workload_comment_dialog.html", x$3, (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), x$4));
+  var $$modalInstance = jsx$2.open(new $c_Lorg_scalajs_angularjs_uibootstrap_ModalOptions((void 0), "workload_comment_dialog.html", value, (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), x$4));
   return $$modalInstance.result
 });
 function $is_Lcom_microsoft_awt_components_WorkloadCommentDialog(obj) {
@@ -10279,20 +10388,25 @@ $h_Lcom_microsoft_awt_components_WorkloadController.prototype = $c_Lcom_microsof
 $c_Lcom_microsoft_awt_components_WorkloadController.prototype.com$microsoft$awt$components$WorkloadController$$selectDefaultWorkload__sjs_js_UndefOr__V = (function(theWorkloads) {
   var jsx$2 = this.com$microsoft$awt$components$WorkloadController$$$scope$f;
   if ((theWorkloads === (void 0))) {
-    var $$this$1 = (void 0)
+    var value = (void 0)
   } else {
-    var $$this = $m_s_Option$().apply__O__s_Option(theWorkloads);
-    var $$this$1 = ($$this.isEmpty__Z() ? (void 0) : $$this.get__O())
+    var opt = $m_s_Option$().apply__O__s_Option(theWorkloads);
+    if (opt.isEmpty__Z()) {
+      var value = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var value = arg1
+    }
   };
-  if (($$this$1 === (void 0))) {
+  if ((value === (void 0))) {
     var jsx$1 = (void 0)
   } else {
-    var this$13 = new $c_sjs_js_ArrayOps().init___sjs_js_Array($$this$1);
-    var $$this$2 = $s_sc_TraversableLike$class__headOption__sc_TraversableLike__s_Option(this$13);
-    if ($$this$2.isEmpty__Z()) {
+    var this$13 = new $c_sjs_js_ArrayOps().init___sjs_js_Array(value);
+    var opt$1 = $s_sc_TraversableLike$class__headOption__sc_TraversableLike__s_Option(this$13);
+    if (opt$1.isEmpty__Z()) {
       var jsx$1 = (void 0)
     } else {
-      var arg1$1 = $$this$2.get__O();
+      var arg1$1 = opt$1.get__O();
       var jsx$1 = arg1$1
     }
   };
@@ -10372,18 +10486,18 @@ $c_Lcom_microsoft_awt_components_WorkloadController.prototype.init___Lcom_micros
   $$scope.toggleActiveWorkloads = (function(arg$outer) {
     return (function() {
       var jsx$1 = arg$outer.com$microsoft$awt$components$WorkloadController$$$scope$f;
-      var $$this = arg$outer.com$microsoft$awt$components$WorkloadController$$$scope$f.activeOnly;
-      var value = (!(($$this !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z($$this, true)));
+      var valueA = arg$outer.com$microsoft$awt$components$WorkloadController$$$scope$f.activeOnly;
+      var value = (!((valueA !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueA, true)));
       jsx$1.activeOnly = value;
-      var $$this$1 = arg$outer.com$microsoft$awt$components$WorkloadController$$$scope$f;
+      var $$scope$1 = arg$outer.com$microsoft$awt$components$WorkloadController$$$scope$f;
       var state = arg$outer.com$microsoft$awt$components$WorkloadController$$$scope$f.activeOnly;
       if ((state === (void 0))) {
         var jsx$2 = (void 0)
       } else {
-        var value$2 = $uZ(state);
-        var jsx$2 = value$2
+        var value$1 = $uZ(state);
+        var jsx$2 = value$1
       };
-      $$this$1.$emit("toggleActiveWorkloads", jsx$2)
+      $$scope$1.$emit("toggleActiveWorkloads", jsx$2)
     })
   })(this);
   $$scope.updateSorting = (function(arg$outer$1) {
@@ -10400,40 +10514,38 @@ $c_Lcom_microsoft_awt_components_WorkloadController.prototype.init___Lcom_micros
   return this
 });
 $c_Lcom_microsoft_awt_components_WorkloadController.prototype.getLatestStatus__Lcom_microsoft_awt_models_Workload__sjs_js_UndefOr = (function(workload) {
-  var $$this = workload.statuses;
+  var value = workload.statuses;
   var f = new $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$getLatestStatus$1().init___Lcom_microsoft_awt_components_WorkloadController(this);
-  return (($$this === (void 0)) ? (void 0) : f.apply__sjs_js_Array__sjs_js_UndefOr($$this))
+  return ((value === (void 0)) ? (void 0) : f.apply__sjs_js_Array__sjs_js_UndefOr(value))
 });
 $c_Lcom_microsoft_awt_components_WorkloadController.prototype.com$microsoft$awt$components$WorkloadController$$loadStatusMembers__Lcom_microsoft_awt_models_Workload__V = (function(workload) {
-  var $$this = workload.statuses;
-  if (($$this === (void 0))) {
-    var $$this$2 = (void 0)
+  var value = workload.statuses;
+  if ((value === (void 0))) {
+    var value$2 = (void 0)
   } else {
     var array = [];
     var i = 0;
-    var len = $uI($$this.length);
+    var len = $uI(value.length);
     while ((i < len)) {
       var index = i;
-      var arg1 = $$this[index];
-      var $$this$1 = arg1.submitterId;
-      var xo = (($$this$1 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this$1));
-      var xs = xo.toList__sci_List();
-      if ((xs !== null)) {
-        var xs$1 = xs;
-        x: {
-          _loop: while (true) {
-            var this$11 = xs$1;
-            if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$11)) {
-              var elem = xs$1.head__O();
-              array.push(elem);
-              xs$1 = $as_sc_LinearSeq(xs$1.tail__O());
-              continue _loop
-            };
-            break x
-          }
+      var arg1 = value[index];
+      var value$1 = arg1.submitterId;
+      var xo = ((value$1 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value$1));
+      var this$10 = xo.toList__sci_List();
+      if ((this$10 !== null)) {
+        var xs = this$10;
+        _loop: while (true) {
+          var this$11 = xs;
+          if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$11)) {
+            var elem = xs.head__O();
+            array.push(elem);
+            xs = $as_sc_LinearSeq(xs.tail__O());
+            continue _loop
+          };
+          break
         }
       } else {
-        var these = xs;
+        var these = this$10;
         while ((!these.isEmpty__Z())) {
           var arg1$1 = these.head__O();
           array.push(arg1$1);
@@ -10443,27 +10555,27 @@ $c_Lcom_microsoft_awt_components_WorkloadController.prototype.com$microsoft$awt$
       };
       i = ((1 + i) | 0)
     };
-    var $$this$2 = array
+    var value$2 = array
   };
-  if (($$this$2 === (void 0))) {
-    var $$this$3 = (void 0)
+  if ((value$2 === (void 0))) {
+    var value$3 = (void 0)
   } else {
     var array$1 = [];
     var seen = $as_scm_HashSet($m_scm_HashSet$().apply__sc_Seq__sc_GenTraversable($m_sci_Nil$()));
     var i$1 = 0;
-    var len$1 = $uI($$this$2.length);
+    var len$1 = $uI(value$2.length);
     while ((i$1 < len$1)) {
       var index$1 = i$1;
-      var arg1$2 = $$this$2[index$1];
+      var arg1$2 = value$2[index$1];
       if ((!$s_scm_FlatHashTable$class__containsElem__scm_FlatHashTable__O__Z(seen, arg1$2))) {
         array$1.push(arg1$2);
         seen.$$plus$eq__O__scm_HashSet(arg1$2)
       };
       i$1 = ((1 + i$1) | 0)
     };
-    var $$this$3 = array$1
+    var value$3 = array$1
   };
-  var userIds = (($$this$3 === (void 0)) ? [] : $$this$3);
+  var userIds = ((value$3 === (void 0)) ? [] : value$3);
   if (($uI(userIds.length) !== 0)) {
     var jsx$2 = $g.console;
     var jsx$1 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Loading status members for users # ", ""]));
@@ -10518,25 +10630,25 @@ $c_Lcom_microsoft_awt_components_WorkloadDialog.prototype.init___Lorg_scalajs_an
 });
 $c_Lcom_microsoft_awt_components_WorkloadDialog.prototype.popup__sjs_js_UndefOr__sjs_js_Promise = (function(workload) {
   var jsx$2 = this.$$modal$1;
-  var x$19 = $d_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController.getClassOf().getSimpleName__T();
+  var value = $d_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController.getClassOf().getSimpleName__T();
   var jsx$1 = $m_sjs_js_Dictionary$();
   var y = (function(workload$1) {
     return (function() {
       if ((workload$1 === (void 0))) {
         return (void 0)
       } else {
-        var $$this = $m_s_Option$().apply__O__s_Option(workload$1);
-        if ($$this.isEmpty__Z()) {
+        var opt = $m_s_Option$().apply__O__s_Option(workload$1);
+        if (opt.isEmpty__Z()) {
           return (void 0)
         } else {
-          var arg1 = $$this.get__O();
+          var arg1 = opt.get__O();
           return arg1
         }
       }
     })
   })(workload);
   var x$20 = jsx$1.apply__sc_Seq__sjs_js_Dictionary(new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("updateWorkload", y)]));
-  var $$modalInstance = jsx$2.open(new $c_Lorg_scalajs_angularjs_uibootstrap_ModalOptions((void 0), "workload_dialog.html", x$19, (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), x$20));
+  var $$modalInstance = jsx$2.open(new $c_Lorg_scalajs_angularjs_uibootstrap_ModalOptions((void 0), "workload_dialog.html", value, (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), x$20));
   return $$modalInstance.result
 });
 function $is_Lcom_microsoft_awt_components_WorkloadDialog(obj) {
@@ -10589,8 +10701,13 @@ $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController.prototy
   this.statusService$1 = statusService;
   $$scope.statusCodes = ["GREEN", "YELLOW", "RED"];
   $$scope.updating = (updateWorkload !== (void 0));
-  var $$this = ((updateWorkload === (void 0)) ? (void 0) : $m_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogForm$().apply__Lcom_microsoft_awt_models_Workload__Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogForm(updateWorkload));
-  $$scope.form = (($$this === (void 0)) ? new $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogForm() : $$this);
+  if ((updateWorkload === (void 0))) {
+    var value$1 = (void 0)
+  } else {
+    var value = $m_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogForm$().apply__Lcom_microsoft_awt_models_Workload__Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogForm(updateWorkload);
+    var value$1 = value
+  };
+  $$scope.form = ((value$1 === (void 0)) ? new $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogForm() : value$1);
   $$scope.processing = false;
   $$scope.users = [];
   $$scope.init = (function(f) {
@@ -10615,10 +10732,10 @@ $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController.prototy
   var value = new $g.Date();
   workload.lastUpdatedTime = value;
   if ($uZ(this.com$microsoft$awt$components$WorkloadDialog$WorkloadDialogController$$$scope$f.updating)) {
-    var $$this = this.com$microsoft$awt$components$WorkloadDialog$WorkloadDialogController$$updateWorkload$f;
-    var $$this$1 = (($$this === (void 0)) ? (void 0) : $$this.creationTime);
-    if (($$this$1 !== (void 0))) {
-      var jsx$1 = $$this$1
+    var value$1 = this.com$microsoft$awt$components$WorkloadDialog$WorkloadDialogController$$updateWorkload$f;
+    var valueA = ((value$1 === (void 0)) ? (void 0) : value$1.creationTime);
+    if ((valueA !== (void 0))) {
+      var jsx$1 = valueA
     } else {
       var value$2 = new $g.Date();
       var jsx$1 = value$2
@@ -10629,10 +10746,10 @@ $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController.prototy
   };
   workload.creationTime = jsx$1;
   if ($uZ(this.com$microsoft$awt$components$WorkloadDialog$WorkloadDialogController$$$scope$f.updating)) {
-    var $$this$2 = this.com$microsoft$awt$components$WorkloadDialog$WorkloadDialogController$$updateWorkload$f;
-    var $$this$3 = (($$this$2 === (void 0)) ? (void 0) : $$this$2.statuses);
-    if (($$this$3 !== (void 0))) {
-      var jsx$2 = $$this$3
+    var value$4 = this.com$microsoft$awt$components$WorkloadDialog$WorkloadDialogController$$updateWorkload$f;
+    var valueA$1 = ((value$4 === (void 0)) ? (void 0) : value$4.statuses);
+    if ((valueA$1 !== (void 0))) {
+      var jsx$2 = valueA$1
     } else {
       var value$5 = [];
       var jsx$2 = value$5
@@ -10642,34 +10759,40 @@ $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController.prototy
     var jsx$2 = value$6
   };
   workload.statuses = jsx$2;
-  var $$this$4 = form.statusText;
-  if (($$this$4 === (void 0))) {
-    var $$this$6 = (void 0)
+  var valueA$2 = form.statusText;
+  if ((valueA$2 === (void 0))) {
+    var value$7 = (void 0)
   } else {
-    var $$this$5 = $m_s_Option$().apply__O__s_Option($$this$4);
-    var $$this$6 = ($$this$5.isEmpty__Z() ? (void 0) : $$this$5.get__O())
+    var opt = $m_s_Option$().apply__O__s_Option(valueA$2);
+    if (opt.isEmpty__Z()) {
+      var value$7 = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var value$7 = arg1
+    }
   };
-  if (($$this$6 !== (void 0))) {
-    var x$7 = $as_T($$this$6);
-    var this$35 = new $c_sci_StringOps().init___T($as_T(x$7.trim()));
+  if ((value$7 !== (void 0))) {
+    var x$7 = $as_T(value$7);
+    var x = $as_T(x$7.trim());
+    var this$35 = new $c_sci_StringOps().init___T(x);
     var jsx$3 = $s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$35)
   } else {
     var jsx$3 = false
   };
   if (jsx$3) {
-    var $$this$7 = workload.statuses;
-    if (($$this$7 !== (void 0))) {
-      var $$this$8 = this.com$microsoft$awt$components$WorkloadDialog$WorkloadDialogController$$sessionFactory$f.user__sjs_js_UndefOr();
-      var x$61 = (($$this$8 === (void 0)) ? (void 0) : $$this$8._id);
+    var value$8 = workload.statuses;
+    if ((value$8 !== (void 0))) {
+      var value$9 = this.com$microsoft$awt$components$WorkloadDialog$WorkloadDialogController$$sessionFactory$f.user__sjs_js_UndefOr();
+      var x$61 = ((value$9 === (void 0)) ? (void 0) : value$9._id);
       var x$62 = form.statusText;
-      var x$63 = new $g.Date();
-      var jsx$4 = $$this$7.push(new $c_Lcom_microsoft_awt_models_Workload$Status((void 0), x$61, x$62, x$63));
+      var value$10 = new $g.Date();
+      var jsx$4 = value$8.push(new $c_Lcom_microsoft_awt_models_Workload$Status((void 0), x$61, x$62, value$10));
       $uI(jsx$4)
     }
   };
   if ($uZ(this.com$microsoft$awt$components$WorkloadDialog$WorkloadDialogController$$$scope$f.updating)) {
-    var $$this$9 = this.com$microsoft$awt$components$WorkloadDialog$WorkloadDialogController$$updateWorkload$f;
-    workload._id = (($$this$9 === (void 0)) ? (void 0) : $$this$9._id);
+    var value$11 = this.com$microsoft$awt$components$WorkloadDialog$WorkloadDialogController$$updateWorkload$f;
+    workload._id = ((value$11 === (void 0)) ? (void 0) : value$11._id);
     var this$47 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.statusService$1.updateWorkload__Lcom_microsoft_awt_models_Workload__Lorg_scalajs_angularjs_http_HttpResponse(workload));
     var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(workload$2) {
       return (function(x0$3$2) {
@@ -10823,27 +10946,24 @@ $c_Lcom_microsoft_awt_directives_AwtPostDirective.prototype.com$microsoft$awt$di
   var start = 0;
   var end = $uI(array.length);
   var z = text;
-  x: {
-    var jsx$1;
-    _foldl: while (true) {
-      if ((start === end)) {
-        var jsx$1 = z;
-        break x
-      } else {
-        var temp$start = ((1 + start) | 0);
-        var arg1 = z;
-        var index = start;
-        var arg2 = array[index];
-        var html = $as_T(arg1);
-        var this$3 = new $c_sci_StringOps().init___T(html);
-        var literal = $as_T(arg2.symbol);
-        var replacement = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["<img src=\"/assets/images/smilies/", "\">"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$as_T(arg2.uri)]));
-        var temp$z = $s_sci_StringLike$class__replaceAllLiterally__sci_StringLike__T__T__T(this$3, literal, replacement);
-        start = temp$start;
-        z = temp$z;
-        continue _foldl
-      }
-    }
+  var jsx$1;
+  _foldl: while (true) {
+    if ((start !== end)) {
+      var temp$start = ((1 + start) | 0);
+      var arg1 = z;
+      var index = start;
+      var arg2 = array[index];
+      var html = $as_T(arg1);
+      var this$3 = new $c_sci_StringOps().init___T(html);
+      var literal = $as_T(arg2.symbol);
+      var replacement = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["<img src=\"/assets/images/smilies/", "\">"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$as_T(arg2.uri)]));
+      var temp$z = $s_sci_StringLike$class__replaceAllLiterally__sci_StringLike__T__T__T(this$3, literal, replacement);
+      start = temp$start;
+      z = temp$z;
+      continue _foldl
+    };
+    var jsx$1 = z;
+    break
   };
   return $as_T(jsx$1)
 });
@@ -10993,16 +11113,21 @@ function $h_Lcom_microsoft_awt_directives_NameDirective() {
 }
 $h_Lcom_microsoft_awt_directives_NameDirective.prototype = $c_Lcom_microsoft_awt_directives_NameDirective.prototype;
 $c_Lcom_microsoft_awt_directives_NameDirective.prototype.com$microsoft$awt$directives$NameDirective$$populateScope__Lcom_microsoft_awt_directives_NameDirectiveScope__O__O__V = (function(scope, newValue, oldValue) {
-  var $$this = scope.id;
-  if (($$this === (void 0))) {
-    var $$this$2 = (void 0)
+  var valueA = scope.id;
+  if ((valueA === (void 0))) {
+    var value = (void 0)
   } else {
-    var $$this$1 = $m_s_Option$().apply__O__s_Option($$this);
-    var $$this$2 = ($$this$1.isEmpty__Z() ? (void 0) : $$this$1.get__O())
+    var opt = $m_s_Option$().apply__O__s_Option(valueA);
+    if (opt.isEmpty__Z()) {
+      var value = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var value = arg1
+    }
   };
   var f = new $c_Lcom_microsoft_awt_directives_NameDirective$$anonfun$com$microsoft$awt$directives$NameDirective$$populateScope$1().init___Lcom_microsoft_awt_directives_NameDirective__Lcom_microsoft_awt_directives_NameDirectiveScope(this, scope);
-  if (($$this$2 !== (void 0))) {
-    f.apply__T__V($as_T($$this$2))
+  if ((value !== (void 0))) {
+    f.apply__T__V($as_T(value))
   }
 });
 $c_Lcom_microsoft_awt_directives_NameDirective.prototype.link__Lcom_microsoft_awt_directives_NameDirectiveScope__Lorg_scalajs_angularjs_JQLite__Lorg_scalajs_angularjs_Attributes__V = (function(scope, element, attrs) {
@@ -11173,12 +11298,12 @@ $c_jl_StackTraceElement.prototype.hashCode__I = (function() {
   var this$2 = this.methodName$1;
   return (jsx$1 ^ $m_sjsr_RuntimeString$().hashCode__T__I(this$2))
 });
-$c_jl_StackTraceElement.prototype.getColumnNumber = (function() {
-  return this.$$js$exported$meth$getColumnNumber__O()
-});
 $c_jl_StackTraceElement.prototype.setColumnNumber = (function(arg$1) {
   var prep0 = $uI(arg$1);
   return this.$$js$exported$meth$setColumnNumber__I__O(prep0)
+});
+$c_jl_StackTraceElement.prototype.getColumnNumber = (function() {
+  return this.$$js$exported$meth$getColumnNumber__O()
 });
 function $is_jl_StackTraceElement(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.jl_StackTraceElement)))
@@ -11406,21 +11531,15 @@ $c_ju_regex_Matcher.prototype.find__Z = (function() {
     this.lastMatchIsValid$1 = true;
     this.lastMatch$1 = this.regexp$1.exec(this.inputstr$1);
     if ((this.lastMatch$1 !== null)) {
-      var $$this = this.lastMatch$1[0];
-      if (($$this === (void 0))) {
-        var jsx$1;
+      var value = this.lastMatch$1[0];
+      if ((value === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$1 = $$this
       };
-      var thiz = $as_T(jsx$1);
+      var thiz = $as_T(value);
       if ((thiz === null)) {
-        var jsx$2;
         throw new $c_jl_NullPointerException().init___()
-      } else {
-        var jsx$2 = thiz
       };
-      if ((jsx$2 === "")) {
+      if ((thiz === "")) {
         var ev$1 = this.regexp$1;
         ev$1.lastIndex = ((1 + $uI(ev$1.lastIndex)) | 0)
       }
@@ -11439,8 +11558,8 @@ $c_ju_regex_Matcher.prototype.ensureLastMatch__p1__sjs_js_RegExp$ExecResult = (f
   return this.lastMatch$1
 });
 $c_ju_regex_Matcher.prototype.group__I__T = (function(group) {
-  var $$this = this.ensureLastMatch__p1__sjs_js_RegExp$ExecResult()[group];
-  return $as_T((($$this === (void 0)) ? null : $$this))
+  var value = this.ensureLastMatch__p1__sjs_js_RegExp$ExecResult()[group];
+  return $as_T(((value === (void 0)) ? null : value))
 });
 $c_ju_regex_Matcher.prototype.matches__Z = (function() {
   this.reset__ju_regex_Matcher();
@@ -11550,14 +11669,11 @@ $c_ju_regex_Matcher.prototype.replaceAll__T__T = (function(replacement) {
   return sb.content$1
 });
 $c_ju_regex_Matcher.prototype.group__T = (function() {
-  var $$this = this.ensureLastMatch__p1__sjs_js_RegExp$ExecResult()[0];
-  if (($$this === (void 0))) {
-    var jsx$1;
+  var value = this.ensureLastMatch__p1__sjs_js_RegExp$ExecResult()[0];
+  if ((value === (void 0))) {
     throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-  } else {
-    var jsx$1 = $$this
   };
-  return $as_T(jsx$1)
+  return $as_T(value)
 });
 $c_ju_regex_Matcher.prototype.start__I = (function() {
   return $uI(this.ensureLastMatch__p1__sjs_js_RegExp$ExecResult().index)
@@ -12246,11 +12362,11 @@ function $s_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogForm__toM
   var now = new $g.Date();
   var x$44 = $this.name;
   var x$45 = $this.technologyProduct;
-  var $$this = $this.azureServices;
-  if (($$this === (void 0))) {
+  var value = $this.azureServices;
+  if ((value === (void 0))) {
     var x$46 = (void 0)
   } else {
-    var s = $as_T($$this);
+    var s = $as_T(value);
     var xs = $m_sjsr_RuntimeString$().split__T__T__I__AT(s, "[,]", 0);
     var elems$2 = [];
     var i = 0;
@@ -12274,33 +12390,43 @@ function $s_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogForm__toM
       $uI(result.push(arg1$1));
       i$1 = ((1 + i$1) | 0)
     };
-    var x$46 = result
+    var value$1 = result;
+    var x$46 = value$1
   };
   var x$47 = $this.customerSegment;
   var x$48 = $this.businessSponsor;
   var x$49 = $this.technicalContact;
-  var $$this$1 = $this.msftLead;
-  var x$50 = (($$this$1 === (void 0)) ? (void 0) : $$this$1._id);
-  var $$this$2 = $this.msftLead;
-  var x$51 = (($$this$2 === (void 0)) ? (void 0) : $m_Lcom_microsoft_awt_models_User$UserExtensions$().fullName$extension__Lcom_microsoft_awt_models_User__T($$this$2));
+  var value$2 = $this.msftLead;
+  var x$50 = ((value$2 === (void 0)) ? (void 0) : value$2._id);
+  var value$3 = $this.msftLead;
+  if ((value$3 === (void 0))) {
+    var x$51 = (void 0)
+  } else {
+    var value$4 = $m_Lcom_microsoft_awt_models_User$UserExtensions$().fullName$extension__Lcom_microsoft_awt_models_User__T(value$3);
+    var x$51 = value$4
+  };
   var x$52 = $this.statusCode;
   var x$53 = $this.statuses;
   var x$54 = $this.deployedStatus;
-  var $$this$3 = $this.estimateGoLiveDate;
-  if (($$this$3 === (void 0))) {
+  var value$5 = $this.estimateGoLiveDate;
+  if ((value$5 === (void 0))) {
     var x$55 = (void 0)
   } else {
-    var x$14 = $as_T($$this$3);
-    var x$55 = new $g.Date(x$14)
+    var x$14 = $as_T(value$5);
+    var value$6 = new $g.Date(x$14);
+    var x$55 = value$6
   };
-  var $$this$4 = $this.consumption;
-  if (($$this$4 === (void 0))) {
+  var value$7 = $this.consumption;
+  if ((value$7 === (void 0))) {
     var x$56 = (void 0)
   } else {
-    var s$1 = $as_T($$this$4);
+    var s$1 = $as_T(value$7);
     try {
-      var this$36 = new $c_sci_StringOps().init___T($as_T(s$1.trim()));
-      var jsx$1 = new $c_s_util_Success().init___O($m_jl_Double$().parseDouble__T__D(this$36.repr$1))
+      var x = $as_T(s$1.trim());
+      var this$36 = new $c_sci_StringOps().init___T(x);
+      var jsx$2 = $m_jl_Double$();
+      var $$this = this$36.repr$1;
+      var jsx$1 = new $c_s_util_Success().init___O(jsx$2.parseDouble__T__D($$this))
     } catch (e) {
       var e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
       if ((e$2 !== null)) {
@@ -12319,8 +12445,13 @@ function $s_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogForm__toM
         throw e
       }
     };
-    var $$this$6 = jsx$1.toOption__s_Option();
-    var x$56 = ($$this$6.isEmpty__Z() ? (void 0) : $$this$6.get__O())
+    var opt = jsx$1.toOption__s_Option();
+    if (opt.isEmpty__Z()) {
+      var x$56 = (void 0)
+    } else {
+      var arg1$2 = opt.get__O();
+      var x$56 = arg1$2
+    }
   };
   return new $c_Lcom_microsoft_awt_models_Workload((void 0), x$44, x$45, x$46, x$47, x$48, x$49, x$50, x$51, x$53, x$52, x$54, x$55, x$56, true, now, now)
 }
@@ -13985,25 +14116,23 @@ $c_jl_Character$.prototype.java$lang$Character$$charTypesFirst256$lzycompute__p1
 });
 $c_jl_Character$.prototype.toUpperCase__C__C = (function(c) {
   var thiz = $as_T($g.String.fromCharCode(c));
-  var $$this = $as_T(thiz.toUpperCase());
-  return (65535 & $uI($$this.charCodeAt(0)))
+  var x = $as_T(thiz.toUpperCase());
+  return (65535 & $uI(x.charCodeAt(0)))
 });
 $c_jl_Character$.prototype.uncompressDeltas__p1__AI__AI = (function(deltas) {
   var end = deltas.u.length;
   var isEmpty$4 = (end <= 1);
-  var numRangeElements$4 = (isEmpty$4 ? 0 : (((-1) + end) | 0));
   var lastElement$4 = (isEmpty$4 ? 0 : (((-1) + end) | 0));
-  var terminalElement$4 = ((1 + lastElement$4) | 0);
-  if ((numRangeElements$4 < 0)) {
-    $m_sci_Range$().scala$collection$immutable$Range$$fail__I__I__I__Z__sr_Nothing$(1, end, 1, false)
-  };
-  var i = 1;
-  var count = 0;
-  while ((i !== terminalElement$4)) {
-    var v1 = i;
-    deltas.u[v1] = ((deltas.u[v1] + deltas.u[(((-1) + v1) | 0)]) | 0);
-    count = ((1 + count) | 0);
-    i = ((1 + i) | 0)
+  if ((!isEmpty$4)) {
+    var i = 1;
+    while (true) {
+      var v1 = i;
+      deltas.u[v1] = ((deltas.u[v1] + deltas.u[(((-1) + v1) | 0)]) | 0);
+      if ((i === lastElement$4)) {
+        break
+      };
+      i = ((1 + i) | 0)
+    }
   };
   return deltas
 });
@@ -14296,7 +14425,26 @@ $c_ju_concurrent_TimeUnit$.prototype.init___ = (function() {
   return this
 });
 $c_ju_concurrent_TimeUnit$.prototype.java$util$concurrent$TimeUnit$$x__J__J__J__J = (function(a, b, max) {
-  return (a.$$greater__sjsr_RuntimeLong__Z(max) ? new $c_sjsr_RuntimeLong().init___I__I((-1), 2147483647) : (a.$$less__sjsr_RuntimeLong__Z(max.unary$und$minus__sjsr_RuntimeLong()) ? new $c_sjsr_RuntimeLong().init___I__I(1, (-2147483648)) : a.$$times__sjsr_RuntimeLong__sjsr_RuntimeLong(b)))
+  var ahi = a.hi$2;
+  var bhi = max.hi$2;
+  if (((ahi === bhi) ? (((-2147483648) ^ a.lo$2) > ((-2147483648) ^ max.lo$2)) : (ahi > bhi))) {
+    return new $c_sjsr_RuntimeLong().init___I__I((-1), 2147483647)
+  } else {
+    var lo = max.lo$2;
+    var hi = max.hi$2;
+    var lo$1 = ((-lo) | 0);
+    var hi$1 = ((lo !== 0) ? (~hi) : ((-hi) | 0));
+    var ahi$1 = a.hi$2;
+    if (((ahi$1 === hi$1) ? (((-2147483648) ^ a.lo$2) < ((-2147483648) ^ lo$1)) : (ahi$1 < hi$1))) {
+      return new $c_sjsr_RuntimeLong().init___I__I(1, (-2147483648))
+    } else {
+      var alo = a.lo$2;
+      var blo = b.lo$2;
+      var lo$2 = $imul(alo, blo);
+      var hi$2 = $m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$timesHi__I__I__I__I__I(alo, a.hi$2, blo, b.hi$2);
+      return new $c_sjsr_RuntimeLong().init___I__I(lo$2, hi$2)
+    }
+  }
 });
 var $d_ju_concurrent_TimeUnit$ = new $TypeData().initClass({
   ju_concurrent_TimeUnit$: 0
@@ -14398,12 +14546,9 @@ $c_ju_regex_Pattern.prototype.split__jl_CharSequence__I__AT = (function(input, l
         if ((len$1 > 1)) {
           var thiz = $as_T(result[(((-1) + len$1) | 0)]);
           if ((thiz === null)) {
-            var jsx$2;
             throw new $c_jl_NullPointerException().init___()
-          } else {
-            var jsx$2 = thiz
           };
-          var jsx$1 = (jsx$2 === "")
+          var jsx$1 = (thiz === "")
         } else {
           var jsx$1 = false
         };
@@ -14418,14 +14563,14 @@ $c_ju_regex_Pattern.prototype.split__jl_CharSequence__I__AT = (function(input, l
     var len$2 = actualResult.u.length;
     var i = 0;
     var j = 0;
-    var $$this = $uI(result.length);
-    var $$this$1 = (($$this < len$2) ? $$this : len$2);
+    var x = $uI(result.length);
+    var x$1 = ((x < len$2) ? x : len$2);
     var that = actualResult.u.length;
-    var end = (($$this$1 < that) ? $$this$1 : that);
+    var end = ((x$1 < that) ? x$1 : that);
     while ((i < end)) {
-      var jsx$3 = j;
+      var jsx$2 = j;
       var index = i;
-      actualResult.u[jsx$3] = result[index];
+      actualResult.u[jsx$2] = result[index];
       i = ((1 + i) | 0);
       j = ((1 + j) | 0)
     };
@@ -14488,101 +14633,89 @@ $c_ju_regex_Pattern$.prototype.compile__T__I__ju_regex_Pattern = (function(regex
   } else {
     var m = this.java$util$regex$Pattern$$splitHackPat$1.exec(regex);
     if ((m !== null)) {
-      var $$this = m[1];
-      if (($$this === (void 0))) {
-        var jsx$1;
+      var value = m[1];
+      if ((value === (void 0))) {
         throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-      } else {
-        var jsx$1 = $$this
       };
-      var this$4 = new $c_s_Some().init___O(new $c_T2().init___O__O(this.quote__T__T($as_T(jsx$1)), flags))
+      var this$4 = new $c_s_Some().init___O(new $c_T2().init___O__O(this.quote__T__T($as_T(value)), flags))
     } else {
       var this$4 = $m_s_None$()
     };
     if (this$4.isEmpty__Z()) {
       var m$1 = this.java$util$regex$Pattern$$flagHackPat$1.exec(regex);
       if ((m$1 !== null)) {
-        var $$this$1 = m$1[0];
-        if (($$this$1 === (void 0))) {
-          var jsx$2;
+        var value$1 = m$1[0];
+        if ((value$1 === (void 0))) {
           throw new $c_ju_NoSuchElementException().init___T("undefined.get")
-        } else {
-          var jsx$2 = $$this$1
         };
-        var thiz = $as_T(jsx$2);
+        var thiz = $as_T(value$1);
         var beginIndex = $uI(thiz.length);
         var newPat = $as_T(regex.substring(beginIndex));
-        var $$this$2 = m$1[1];
-        if (($$this$2 === (void 0))) {
+        var value$2 = m$1[1];
+        if ((value$2 === (void 0))) {
           var flags1 = flags
         } else {
-          var chars = $as_T($$this$2);
+          var chars = $as_T(value$2);
           var this$15 = new $c_sci_StringOps().init___T(chars);
           var start = 0;
-          var $$this$3 = this$15.repr$1;
-          var end = $uI($$this$3.length);
+          var $$this = this$15.repr$1;
+          var end = $uI($$this.length);
           var z = flags;
-          x: {
-            var jsx$3;
-            _foldl: while (true) {
-              if ((start === end)) {
-                var jsx$3 = z;
-                break x
+          var jsx$1;
+          _foldl: while (true) {
+            if ((start !== end)) {
+              var temp$start = ((1 + start) | 0);
+              var arg1 = z;
+              var arg2 = this$15.apply__I__O(start);
+              var f = $uI(arg1);
+              if ((arg2 === null)) {
+                var c = 0
               } else {
-                var temp$start = ((1 + start) | 0);
-                var arg1 = z;
-                var arg2 = this$15.apply__I__O(start);
-                var f = $uI(arg1);
-                if ((arg2 === null)) {
-                  var c = 0
-                } else {
-                  var this$19 = $as_jl_Character(arg2);
-                  var c = this$19.value$1
-                };
-                var temp$z = (f | this.java$util$regex$Pattern$$charToFlag__C__I(c));
-                start = temp$start;
-                z = temp$z;
-                continue _foldl
-              }
-            }
+                var this$19 = $as_jl_Character(arg2);
+                var c = this$19.value$1
+              };
+              var temp$z = (f | this.java$util$regex$Pattern$$charToFlag__C__I(c));
+              start = temp$start;
+              z = temp$z;
+              continue _foldl
+            };
+            var jsx$1 = z;
+            break
           };
-          var flags1 = $uI(jsx$3)
+          var flags1 = $uI(jsx$1)
         };
-        var $$this$4 = m$1[2];
-        if (($$this$4 === (void 0))) {
+        var value$3 = m$1[2];
+        if ((value$3 === (void 0))) {
           var flags2 = flags1
         } else {
-          var chars$3 = $as_T($$this$4);
+          var chars$3 = $as_T(value$3);
           var this$24 = new $c_sci_StringOps().init___T(chars$3);
           var start$1 = 0;
-          var $$this$5 = this$24.repr$1;
-          var end$1 = $uI($$this$5.length);
+          var $$this$1 = this$24.repr$1;
+          var end$1 = $uI($$this$1.length);
           var z$1 = flags1;
-          x$1: {
-            var jsx$4;
-            _foldl$1: while (true) {
-              if ((start$1 === end$1)) {
-                var jsx$4 = z$1;
-                break x$1
+          var jsx$2;
+          _foldl$1: while (true) {
+            if ((start$1 !== end$1)) {
+              var temp$start$1 = ((1 + start$1) | 0);
+              var arg1$1 = z$1;
+              var arg2$1 = this$24.apply__I__O(start$1);
+              var f$1 = $uI(arg1$1);
+              if ((arg2$1 === null)) {
+                var c$1 = 0
               } else {
-                var temp$start$1 = ((1 + start$1) | 0);
-                var arg1$1 = z$1;
-                var arg2$1 = this$24.apply__I__O(start$1);
-                var f$1 = $uI(arg1$1);
-                if ((arg2$1 === null)) {
-                  var c$1 = 0
-                } else {
-                  var this$28 = $as_jl_Character(arg2$1);
-                  var c$1 = this$28.value$1
-                };
-                var temp$z$1 = (f$1 & (~this.java$util$regex$Pattern$$charToFlag__C__I(c$1)));
-                start$1 = temp$start$1;
-                z$1 = temp$z$1;
-                continue _foldl$1
-              }
-            }
+                var this$28 = $as_jl_Character(arg2$1);
+                var c$1 = this$28.value$1
+              };
+              var temp$z$1 = (f$1 & (~this.java$util$regex$Pattern$$charToFlag__C__I(c$1)));
+              start$1 = temp$start$1;
+              z$1 = temp$z$1;
+              continue _foldl$1
+            };
+            var jsx$2 = z$1;
+            break
           };
-          var flags2 = $uI(jsx$4)
+          var flags2 = $uI(jsx$2)
         };
         var this$29 = new $c_s_Some().init___O(new $c_T2().init___O__O(newPat, flags2))
       } else {
@@ -14593,21 +14726,14 @@ $c_ju_regex_Pattern$.prototype.compile__T__I__ju_regex_Pattern = (function(regex
     };
     var x1 = $as_T2((this$29.isEmpty__Z() ? new $c_T2().init___O__O(regex, flags) : this$29.get__O()))
   };
-  if ((x1 !== null)) {
-    var jsPattern = $as_T(x1.$$und1__O());
-    var flags1$1 = x1.$$und2$mcI$sp__I();
-    var x$1_$_$$und1$f = jsPattern;
-    var x$1_$_$$und2$f = flags1$1
-  } else {
-    var x$1_$_$$und1$f;
-    var x$1_$_$$und2$f;
+  if ((x1 === null)) {
     throw new $c_s_MatchError().init___O(x1)
   };
-  var jsPattern$2 = $as_T(x$1_$_$$und1$f);
-  var flags1$2 = $uI(x$1_$_$$und2$f);
-  var jsFlags = (("g" + (((2 & flags1$2) !== 0) ? "i" : "")) + (((8 & flags1$2) !== 0) ? "m" : ""));
-  var jsRegExp = new $g.RegExp(jsPattern$2, jsFlags);
-  return new $c_ju_regex_Pattern().init___sjs_js_RegExp__T__I(jsRegExp, regex, flags1$2)
+  var jsPattern = $as_T(x1.$$und1$f);
+  var flags1$1 = $uI(x1.$$und2$f);
+  var jsFlags = (("g" + (((2 & flags1$1) !== 0) ? "i" : "")) + (((8 & flags1$1) !== 0) ? "m" : ""));
+  var jsRegExp = new $g.RegExp(jsPattern, jsFlags);
+  return new $c_ju_regex_Pattern().init___sjs_js_RegExp__T__I(jsRegExp, regex, flags1$1)
 });
 $c_ju_regex_Pattern$.prototype.quote__T__T = (function(s) {
   var result = "";
@@ -14926,7 +15052,7 @@ $c_s_StringContext$.prototype.loop$1__p1__I__I__T__Z__I__jl_StringBuilder__T = (
             if (jsx$1) {
               var jsx$3 = oct;
               var index$4 = idx;
-              oct = (((-48) + (($imul(8, jsx$3) + (65535 & $uI(str$1.charCodeAt(index$4)))) | 0)) | 0);
+              oct = (((-48) + (((jsx$3 << 3) + (65535 & $uI(str$1.charCodeAt(index$4)))) | 0)) | 0);
               idx = ((1 + idx) | 0);
               if (((idx < len$1) && (leadch <= 51))) {
                 var index$5 = idx;
@@ -14943,7 +15069,7 @@ $c_s_StringContext$.prototype.loop$1__p1__I__I__T__Z__I__jl_StringBuilder__T = (
               if (jsx$4) {
                 var jsx$6 = oct;
                 var index$7 = idx;
-                oct = (((-48) + (($imul(8, jsx$6) + (65535 & $uI(str$1.charCodeAt(index$7)))) | 0)) | 0);
+                oct = (((-48) + (((jsx$6 << 3) + (65535 & $uI(str$1.charCodeAt(index$7)))) | 0)) | 0);
                 idx = ((1 + idx) | 0)
               }
             };
@@ -15023,38 +15149,36 @@ $c_s_concurrent_BatchingExecutor$Batch.prototype.run__V = (function() {
     try {
       this.scala$concurrent$BatchingExecutor$Batch$$parentBlockContext$1 = prevBlockContext;
       var batch = this.initial$1;
-      x: {
-        _processBatch: while (true) {
-          var x1 = batch;
-          var x$2 = $m_sci_Nil$();
-          if ((!x$2.equals__O__Z(x1))) {
-            if ($is_sci_$colon$colon(x1)) {
-              var x2 = $as_sci_$colon$colon(x1);
-              var head = $as_jl_Runnable(x2.head$5);
-              var tail = x2.tl$5;
-              this.$$outer$f.scala$concurrent$BatchingExecutor$$$undtasksLocal$1.set__O__V(tail);
-              try {
-                head.run__V()
-              } catch (e) {
-                var e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
-                if ((e$2 !== null)) {
-                  var remaining = $as_sci_List(this.$$outer$f.scala$concurrent$BatchingExecutor$$$undtasksLocal$1.get__O());
-                  this.$$outer$f.scala$concurrent$BatchingExecutor$$$undtasksLocal$1.set__O__V($m_sci_Nil$());
-                  var r = new $c_s_concurrent_BatchingExecutor$Batch().init___s_concurrent_BatchingExecutor__sci_List(this.$$outer$f, remaining);
-                  r.run__V();
-                  throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$2)
-                } else {
-                  throw e
-                }
-              };
-              batch = $as_sci_List(this.$$outer$f.scala$concurrent$BatchingExecutor$$$undtasksLocal$1.get__O());
-              continue _processBatch
-            } else {
-              throw new $c_s_MatchError().init___O(x1)
-            }
-          };
-          break x
-        }
+      _processBatch: while (true) {
+        var x1 = batch;
+        var x$2 = $m_sci_Nil$();
+        if ((!x$2.equals__O__Z(x1))) {
+          if ($is_sci_$colon$colon(x1)) {
+            var x2 = $as_sci_$colon$colon(x1);
+            var head = $as_jl_Runnable(x2.head$5);
+            var tail = x2.tl$5;
+            this.$$outer$f.scala$concurrent$BatchingExecutor$$$undtasksLocal$1.set__O__V(tail);
+            try {
+              head.run__V()
+            } catch (e) {
+              var e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
+              if ((e$2 !== null)) {
+                var remaining = $as_sci_List(this.$$outer$f.scala$concurrent$BatchingExecutor$$$undtasksLocal$1.get__O());
+                this.$$outer$f.scala$concurrent$BatchingExecutor$$$undtasksLocal$1.set__O__V($m_sci_Nil$());
+                var r = new $c_s_concurrent_BatchingExecutor$Batch().init___s_concurrent_BatchingExecutor__sci_List(this.$$outer$f, remaining);
+                r.run__V();
+                throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$2)
+              } else {
+                throw e
+              }
+            };
+            batch = $as_sci_List(this.$$outer$f.scala$concurrent$BatchingExecutor$$$undtasksLocal$1.get__O());
+            continue _processBatch
+          } else {
+            throw new $c_s_MatchError().init___O(x1)
+          }
+        };
+        break
       }
     } finally {
       this.$$outer$f.scala$concurrent$BatchingExecutor$$$undtasksLocal$1.remove__V();
@@ -15101,20 +15225,20 @@ $h_s_concurrent_duration_Duration$.prototype = $c_s_concurrent_duration_Duration
 $c_s_concurrent_duration_Duration$.prototype.init___ = (function() {
   $n_s_concurrent_duration_Duration$ = this;
   $m_sci_List$();
-  var $$this = $m_ju_concurrent_TimeUnit$().DAYS$1;
-  var jsx$6 = new $c_T2().init___O__O($$this, "d day");
-  var $$this$1 = $m_ju_concurrent_TimeUnit$().HOURS$1;
-  var jsx$5 = new $c_T2().init___O__O($$this$1, "h hour");
-  var $$this$2 = $m_ju_concurrent_TimeUnit$().MINUTES$1;
-  var jsx$4 = new $c_T2().init___O__O($$this$2, "min minute");
-  var $$this$3 = $m_ju_concurrent_TimeUnit$().SECONDS$1;
-  var jsx$3 = new $c_T2().init___O__O($$this$3, "s sec second");
-  var $$this$4 = $m_ju_concurrent_TimeUnit$().MILLISECONDS$1;
-  var jsx$2 = new $c_T2().init___O__O($$this$4, "ms milli millisecond");
-  var $$this$5 = $m_ju_concurrent_TimeUnit$().MICROSECONDS$1;
-  var jsx$1 = new $c_T2().init___O__O($$this$5, "\u00b5s micro microsecond");
-  var $$this$6 = $m_ju_concurrent_TimeUnit$().NANOSECONDS$1;
-  var xs = new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$6, jsx$5, jsx$4, jsx$3, jsx$2, jsx$1, new $c_T2().init___O__O($$this$6, "ns nano nanosecond")]);
+  var self = $m_ju_concurrent_TimeUnit$().DAYS$1;
+  var jsx$6 = new $c_T2().init___O__O(self, "d day");
+  var self$1 = $m_ju_concurrent_TimeUnit$().HOURS$1;
+  var jsx$5 = new $c_T2().init___O__O(self$1, "h hour");
+  var self$2 = $m_ju_concurrent_TimeUnit$().MINUTES$1;
+  var jsx$4 = new $c_T2().init___O__O(self$2, "min minute");
+  var self$3 = $m_ju_concurrent_TimeUnit$().SECONDS$1;
+  var jsx$3 = new $c_T2().init___O__O(self$3, "s sec second");
+  var self$4 = $m_ju_concurrent_TimeUnit$().MILLISECONDS$1;
+  var jsx$2 = new $c_T2().init___O__O(self$4, "ms milli millisecond");
+  var self$5 = $m_ju_concurrent_TimeUnit$().MICROSECONDS$1;
+  var jsx$1 = new $c_T2().init___O__O(self$5, "\u00b5s micro microsecond");
+  var self$6 = $m_ju_concurrent_TimeUnit$().NANOSECONDS$1;
+  var xs = new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$6, jsx$5, jsx$4, jsx$3, jsx$2, jsx$1, new $c_T2().init___O__O(self$6, "ns nano nanosecond")]);
   var this$16 = $m_sci_List$();
   var cbf = this$16.ReusableCBFInstance$2;
   this.timeUnitLabels$1 = $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs, cbf));
@@ -15142,8 +15266,8 @@ $c_s_concurrent_duration_Duration$.prototype.init___ = (function() {
     return (function(x0$1$2) {
       var x0$1 = $as_T2(x0$1$2);
       if ((x0$1 !== null)) {
-        var unit = $as_ju_concurrent_TimeUnit(x0$1.$$und1__O());
-        var names = $as_T(x0$1.$$und2__O());
+        var unit = $as_ju_concurrent_TimeUnit(x0$1.$$und1$f);
+        var names = $as_T(x0$1.$$und2$f);
         var this$26 = this$2$1.expandLabels__p1__T__sci_List(names);
         var f$1 = (function($this$1, unit$1) {
           return (function(x$5$2) {
@@ -15239,43 +15363,86 @@ $c_s_concurrent_duration_Duration$.prototype.init___ = (function() {
   return this
 });
 $c_s_concurrent_duration_Duration$.prototype.apply__D__ju_concurrent_TimeUnit__s_concurrent_duration_Duration = (function(length, unit) {
-  return this.fromNanos__D__s_concurrent_duration_Duration((unit.toNanos__J__J(new $c_sjsr_RuntimeLong().init___I__I(1, 0)).toDouble__D() * length))
+  var t = unit.toNanos__J__J(new $c_sjsr_RuntimeLong().init___I__I(1, 0));
+  var lo = t.lo$2;
+  var hi = t.hi$2;
+  return this.fromNanos__D__s_concurrent_duration_Duration(($m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$toDouble__I__I__D(lo, hi) * length))
 });
 $c_s_concurrent_duration_Duration$.prototype.fromNanos__J__s_concurrent_duration_FiniteDuration = (function(nanos) {
-  if (nanos.$$percent__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I((-1857093632), 20116)).equals__sjsr_RuntimeLong__Z($m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong())) {
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.remainderImpl__I__I__I__I__I(nanos.lo$2, nanos.hi$2, (-1857093632), 20116);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  if (((lo === 0) && (hi === 0))) {
     $m_s_concurrent_duration_Duration$();
-    var length = nanos.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I((-1857093632), 20116));
+    var this$2 = $m_sjsr_RuntimeLong$();
+    var lo$1 = this$2.divideImpl__I__I__I__I__I(nanos.lo$2, nanos.hi$2, (-1857093632), 20116);
+    var hi$1 = this$2.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
     var unit = $m_ju_concurrent_TimeUnit$().DAYS$1;
-    return new $c_s_concurrent_duration_FiniteDuration().init___J__ju_concurrent_TimeUnit(length, unit)
-  } else if (nanos.$$percent__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(817405952, 838)).equals__sjsr_RuntimeLong__Z($m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong())) {
-    $m_s_concurrent_duration_Duration$();
-    var length$1 = nanos.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(817405952, 838));
-    var unit$1 = $m_ju_concurrent_TimeUnit$().HOURS$1;
-    return new $c_s_concurrent_duration_FiniteDuration().init___J__ju_concurrent_TimeUnit(length$1, unit$1)
-  } else if (nanos.$$percent__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I((-129542144), 13)).equals__sjsr_RuntimeLong__Z($m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong())) {
-    $m_s_concurrent_duration_Duration$();
-    var length$2 = nanos.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I((-129542144), 13));
-    var unit$2 = $m_ju_concurrent_TimeUnit$().MINUTES$1;
-    return new $c_s_concurrent_duration_FiniteDuration().init___J__ju_concurrent_TimeUnit(length$2, unit$2)
-  } else if (nanos.$$percent__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(1000000000, 0)).equals__sjsr_RuntimeLong__Z($m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong())) {
-    $m_s_concurrent_duration_Duration$();
-    var length$3 = nanos.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(1000000000, 0));
-    var unit$3 = $m_ju_concurrent_TimeUnit$().SECONDS$1;
-    return new $c_s_concurrent_duration_FiniteDuration().init___J__ju_concurrent_TimeUnit(length$3, unit$3)
-  } else if (nanos.$$percent__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(1000000, 0)).equals__sjsr_RuntimeLong__Z($m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong())) {
-    $m_s_concurrent_duration_Duration$();
-    var length$4 = nanos.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(1000000, 0));
-    var unit$4 = $m_ju_concurrent_TimeUnit$().MILLISECONDS$1;
-    return new $c_s_concurrent_duration_FiniteDuration().init___J__ju_concurrent_TimeUnit(length$4, unit$4)
-  } else if (nanos.$$percent__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(1000, 0)).equals__sjsr_RuntimeLong__Z($m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong())) {
-    $m_s_concurrent_duration_Duration$();
-    var length$5 = nanos.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(1000, 0));
-    var unit$5 = $m_ju_concurrent_TimeUnit$().MICROSECONDS$1;
-    return new $c_s_concurrent_duration_FiniteDuration().init___J__ju_concurrent_TimeUnit(length$5, unit$5)
+    return new $c_s_concurrent_duration_FiniteDuration().init___J__ju_concurrent_TimeUnit(new $c_sjsr_RuntimeLong().init___I__I(lo$1, hi$1), unit)
   } else {
-    $m_s_concurrent_duration_Duration$();
-    var unit$6 = $m_ju_concurrent_TimeUnit$().NANOSECONDS$1;
-    return new $c_s_concurrent_duration_FiniteDuration().init___J__ju_concurrent_TimeUnit(nanos, unit$6)
+    var this$4 = $m_sjsr_RuntimeLong$();
+    var lo$2 = this$4.remainderImpl__I__I__I__I__I(nanos.lo$2, nanos.hi$2, 817405952, 838);
+    var hi$2 = this$4.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+    if (((lo$2 === 0) && (hi$2 === 0))) {
+      $m_s_concurrent_duration_Duration$();
+      var this$5 = $m_sjsr_RuntimeLong$();
+      var lo$3 = this$5.divideImpl__I__I__I__I__I(nanos.lo$2, nanos.hi$2, 817405952, 838);
+      var hi$3 = this$5.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+      var unit$1 = $m_ju_concurrent_TimeUnit$().HOURS$1;
+      return new $c_s_concurrent_duration_FiniteDuration().init___J__ju_concurrent_TimeUnit(new $c_sjsr_RuntimeLong().init___I__I(lo$3, hi$3), unit$1)
+    } else {
+      var this$7 = $m_sjsr_RuntimeLong$();
+      var lo$4 = this$7.remainderImpl__I__I__I__I__I(nanos.lo$2, nanos.hi$2, (-129542144), 13);
+      var hi$4 = this$7.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+      if (((lo$4 === 0) && (hi$4 === 0))) {
+        $m_s_concurrent_duration_Duration$();
+        var this$8 = $m_sjsr_RuntimeLong$();
+        var lo$5 = this$8.divideImpl__I__I__I__I__I(nanos.lo$2, nanos.hi$2, (-129542144), 13);
+        var hi$5 = this$8.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+        var unit$2 = $m_ju_concurrent_TimeUnit$().MINUTES$1;
+        return new $c_s_concurrent_duration_FiniteDuration().init___J__ju_concurrent_TimeUnit(new $c_sjsr_RuntimeLong().init___I__I(lo$5, hi$5), unit$2)
+      } else {
+        var this$10 = $m_sjsr_RuntimeLong$();
+        var lo$6 = this$10.remainderImpl__I__I__I__I__I(nanos.lo$2, nanos.hi$2, 1000000000, 0);
+        var hi$6 = this$10.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+        if (((lo$6 === 0) && (hi$6 === 0))) {
+          $m_s_concurrent_duration_Duration$();
+          var this$11 = $m_sjsr_RuntimeLong$();
+          var lo$7 = this$11.divideImpl__I__I__I__I__I(nanos.lo$2, nanos.hi$2, 1000000000, 0);
+          var hi$7 = this$11.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+          var unit$3 = $m_ju_concurrent_TimeUnit$().SECONDS$1;
+          return new $c_s_concurrent_duration_FiniteDuration().init___J__ju_concurrent_TimeUnit(new $c_sjsr_RuntimeLong().init___I__I(lo$7, hi$7), unit$3)
+        } else {
+          var this$13 = $m_sjsr_RuntimeLong$();
+          var lo$8 = this$13.remainderImpl__I__I__I__I__I(nanos.lo$2, nanos.hi$2, 1000000, 0);
+          var hi$8 = this$13.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+          if (((lo$8 === 0) && (hi$8 === 0))) {
+            $m_s_concurrent_duration_Duration$();
+            var this$14 = $m_sjsr_RuntimeLong$();
+            var lo$9 = this$14.divideImpl__I__I__I__I__I(nanos.lo$2, nanos.hi$2, 1000000, 0);
+            var hi$9 = this$14.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+            var unit$4 = $m_ju_concurrent_TimeUnit$().MILLISECONDS$1;
+            return new $c_s_concurrent_duration_FiniteDuration().init___J__ju_concurrent_TimeUnit(new $c_sjsr_RuntimeLong().init___I__I(lo$9, hi$9), unit$4)
+          } else {
+            var this$16 = $m_sjsr_RuntimeLong$();
+            var lo$10 = this$16.remainderImpl__I__I__I__I__I(nanos.lo$2, nanos.hi$2, 1000, 0);
+            var hi$10 = this$16.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+            if (((lo$10 === 0) && (hi$10 === 0))) {
+              $m_s_concurrent_duration_Duration$();
+              var this$17 = $m_sjsr_RuntimeLong$();
+              var lo$11 = this$17.divideImpl__I__I__I__I__I(nanos.lo$2, nanos.hi$2, 1000, 0);
+              var hi$11 = this$17.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+              var unit$5 = $m_ju_concurrent_TimeUnit$().MICROSECONDS$1;
+              return new $c_s_concurrent_duration_FiniteDuration().init___J__ju_concurrent_TimeUnit(new $c_sjsr_RuntimeLong().init___I__I(lo$11, hi$11), unit$5)
+            } else {
+              $m_s_concurrent_duration_Duration$();
+              var unit$6 = $m_ju_concurrent_TimeUnit$().NANOSECONDS$1;
+              return new $c_s_concurrent_duration_FiniteDuration().init___J__ju_concurrent_TimeUnit(nanos, unit$6)
+            }
+          }
+        }
+      }
+    }
   }
 });
 $c_s_concurrent_duration_Duration$.prototype.words__p1__T__sci_List = (function(s) {
@@ -15290,19 +15457,12 @@ $c_s_concurrent_duration_Duration$.prototype.words__p1__T__sci_List = (function(
 });
 $c_s_concurrent_duration_Duration$.prototype.expandLabels__p1__T__sci_List = (function(labels) {
   var x1 = this.words__p1__T__sci_List(labels);
-  if ($is_sci_$colon$colon(x1)) {
-    var x2 = $as_sci_$colon$colon(x1);
-    var hd = $as_T(x2.head$5);
-    var rest = x2.tl$5;
-    var x$3_$_$$und1$f = hd;
-    var x$3_$_$$und2$f = rest
-  } else {
-    var x$3_$_$$und1$f;
-    var x$3_$_$$und2$f;
+  if ((!$is_sci_$colon$colon(x1))) {
     throw new $c_s_MatchError().init___O(x1)
   };
-  var hd$2 = $as_T(x$3_$_$$und1$f);
-  var rest$2 = $as_sci_List(x$3_$_$$und2$f);
+  var x2 = $as_sci_$colon$colon(x1);
+  var hd = $as_T(x2.head$5);
+  var rest = x2.tl$5;
   var f = (function($this) {
     return (function(s$2) {
       var s = $as_T(s$2);
@@ -15316,10 +15476,10 @@ $c_s_concurrent_duration_Duration$.prototype.expandLabels__p1__T__sci_List = (fu
   var this$3 = $m_sci_List$();
   var bf = this$3.ReusableCBFInstance$2;
   if ((bf === $m_sci_List$().ReusableCBFInstance$2)) {
-    if ((rest$2 === $m_sci_Nil$())) {
+    if ((rest === $m_sci_Nil$())) {
       var jsx$1 = $m_sci_Nil$()
     } else {
-      var rest$1 = rest$2;
+      var rest$1 = rest;
       var found = new $c_sr_BooleanRef().init___Z(false);
       var h = new $c_sr_ObjectRef().init___O(null);
       var t = new $c_sr_ObjectRef().init___O(null);
@@ -15337,7 +15497,7 @@ $c_s_concurrent_duration_Duration$.prototype.expandLabels__p1__T__sci_List = (fu
               t$1.elem$1 = nx
             }
           })
-        })(rest$2, found, h, t)));
+        })(rest, found, h, t)));
         var this$7 = rest$1;
         rest$1 = this$7.tail__sci_List()
       };
@@ -15346,7 +15506,7 @@ $c_s_concurrent_duration_Duration$.prototype.expandLabels__p1__T__sci_List = (fu
   } else {
     $m_sci_List$();
     var b = new $c_scm_ListBuffer().init___();
-    var these = rest$2;
+    var these = rest;
     while ((!these.isEmpty__Z())) {
       var arg1$1 = these.head__O();
       var xs$1 = $as_sc_GenTraversableOnce(f(arg1$1)).seq__sc_TraversableOnce();
@@ -15357,7 +15517,7 @@ $c_s_concurrent_duration_Duration$.prototype.expandLabels__p1__T__sci_List = (fu
     var jsx$1 = b.toList__sci_List()
   };
   var this$10 = $as_sci_List(jsx$1);
-  return new $c_sci_$colon$colon().init___O__sci_List(hd$2, this$10)
+  return new $c_sci_$colon$colon().init___O__sci_List(hd, this$10)
 });
 $c_s_concurrent_duration_Duration$.prototype.fromNanos__D__s_concurrent_duration_Duration = (function(nanos) {
   if (((nanos === Infinity) || (nanos === (-Infinity)))) {
@@ -15367,7 +15527,11 @@ $c_s_concurrent_duration_Duration$.prototype.fromNanos__D__s_concurrent_duration
   } else if (((nanos > 9.223372036854776E18) || (nanos < (-9.223372036854776E18)))) {
     throw new $c_jl_IllegalArgumentException().init___T((("trying to construct too large duration with " + nanos) + "ns"))
   } else {
-    return this.fromNanos__J__s_concurrent_duration_FiniteDuration($m_sjsr_RuntimeLong$().fromDouble__D__sjsr_RuntimeLong((0.5 + nanos)))
+    var this$7 = $m_sjsr_RuntimeLong$();
+    var value = (0.5 + nanos);
+    var lo = this$7.scala$scalajs$runtime$RuntimeLong$$fromDoubleImpl__D__I(value);
+    var hi = this$7.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+    return this.fromNanos__J__s_concurrent_duration_FiniteDuration(new $c_sjsr_RuntimeLong().init___I__I(lo, hi))
   }
 });
 var $d_s_concurrent_duration_Duration$ = new $TypeData().initClass({
@@ -15837,12 +16001,6 @@ $c_sci_Range$.prototype.init___ = (function() {
   this.MAX$undPRINT$1 = 512;
   return this
 });
-$c_sci_Range$.prototype.description__p1__I__I__I__Z__T = (function(start, end, step, isInclusive) {
-  return ((((start + (isInclusive ? " to " : " until ")) + end) + " by ") + step)
-});
-$c_sci_Range$.prototype.scala$collection$immutable$Range$$fail__I__I__I__Z__sr_Nothing$ = (function(start, end, step, isInclusive) {
-  throw new $c_jl_IllegalArgumentException().init___T((this.description__p1__I__I__I__Z__T(start, end, step, isInclusive) + ": seqs cannot contain more than Int.MaxValue elements."))
-});
 var $d_sci_Range$ = new $TypeData().initClass({
   sci_Range$: 0
 }, false, "scala.collection.immutable.Range$", {
@@ -15898,18 +16056,16 @@ $h_sci_Stream$StreamWithFilter.prototype = $c_sci_Stream$StreamWithFilter.protot
 $c_sci_Stream$StreamWithFilter.prototype.foreach__F1__V = (function(f) {
   var this$1 = $as_sci_Stream(this.$$outer$f);
   var _$this = this$1;
-  x: {
-    _foreach: while (true) {
-      if ((!_$this.isEmpty__Z())) {
-        var arg1 = _$this.head__O();
-        if ($uZ(this.p$2.apply__O__O(arg1))) {
-          f.apply__O__O(arg1)
-        };
-        _$this = $as_sci_Stream(_$this.tail__O());
-        continue _foreach
+  _foreach: while (true) {
+    if ((!_$this.isEmpty__Z())) {
+      var arg1 = _$this.head__O();
+      if ($uZ(this.p$2.apply__O__O(arg1))) {
+        f.apply__O__O(arg1)
       };
-      break x
-    }
+      _$this = $as_sci_Stream(_$this.tail__O());
+      continue _foreach
+    };
+    break
   }
 });
 $c_sci_Stream$StreamWithFilter.prototype.init___sci_Stream__F1 = (function($$outer, p) {
@@ -16044,16 +16200,13 @@ $c_sjsr_AnonFunction2.prototype.$classData = $d_sjsr_AnonFunction2;
 function $c_sjsr_RuntimeLong$() {
   $c_O.call(this);
   this.TwoPow32$1 = 0.0;
-  this.TwoPow53$1 = 0.0;
+  this.TwoPow63$1 = 0.0;
   this.UnsignedSafeDoubleHiMask$1 = 0;
   this.AskQuotient$1 = 0;
   this.AskRemainder$1 = 0;
   this.AskBoth$1 = 0;
-  this.Zero$1 = null;
-  this.One$1 = null;
-  this.MinusOne$1 = null;
-  this.MinValue$1 = null;
-  this.MaxValue$1 = null
+  this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = 0;
+  this.Zero$1 = null
 }
 $c_sjsr_RuntimeLong$.prototype = new $h_O();
 $c_sjsr_RuntimeLong$.prototype.constructor = $c_sjsr_RuntimeLong$;
@@ -16065,30 +16218,314 @@ $h_sjsr_RuntimeLong$.prototype = $c_sjsr_RuntimeLong$.prototype;
 $c_sjsr_RuntimeLong$.prototype.init___ = (function() {
   $n_sjsr_RuntimeLong$ = this;
   this.Zero$1 = new $c_sjsr_RuntimeLong().init___I__I(0, 0);
-  this.One$1 = new $c_sjsr_RuntimeLong().init___I__I(1, 0);
-  this.MinusOne$1 = new $c_sjsr_RuntimeLong().init___I__I((-1), (-1));
-  this.MinValue$1 = new $c_sjsr_RuntimeLong().init___I__I(0, (-2147483648));
-  this.MaxValue$1 = new $c_sjsr_RuntimeLong().init___I__I((-1), 2147483647);
   return this
 });
 $c_sjsr_RuntimeLong$.prototype.Zero__sjsr_RuntimeLong = (function() {
   return this.Zero$1
 });
-$c_sjsr_RuntimeLong$.prototype.fromDouble__D__sjsr_RuntimeLong = (function(value) {
-  if ((value !== value)) {
-    return this.Zero$1
-  } else if ((value < (-9.223372036854776E18))) {
-    return this.MinValue$1
-  } else if ((value >= 9.223372036854776E18)) {
-    return this.MaxValue$1
+$c_sjsr_RuntimeLong$.prototype.toUnsignedString__p1__I__I__T = (function(lo, hi) {
+  if ((((-2097152) & hi) === 0)) {
+    var this$5 = ((4.294967296E9 * hi) + $uD((lo >>> 0)));
+    return ("" + this$5)
   } else {
-    var neg = (value < 0);
-    var absValue = (neg ? (-value) : value);
-    var lo = $uI((absValue | 0));
-    var x = (absValue / 4.294967296E9);
-    var hi = $uI((x | 0));
-    return (neg ? new $c_sjsr_RuntimeLong().init___I__I(((-lo) | 0), ((lo !== 0) ? (~hi) : ((-hi) | 0))) : new $c_sjsr_RuntimeLong().init___I__I(lo, hi))
+    var quotRem = this.unsignedDivModHelper__p1__I__I__I__I__I__sjs_js_$bar(lo, hi, 1000000000, 0, 2);
+    var quotLo = $uI(quotRem["0"]);
+    var quotHi = $uI(quotRem["1"]);
+    var rem = $uI(quotRem["2"]);
+    var quot = ((4.294967296E9 * quotHi) + $uD((quotLo >>> 0)));
+    var remStr = ("" + rem);
+    return ((("" + quot) + $as_T("000000000".substring($uI(remStr.length)))) + remStr)
   }
+});
+$c_sjsr_RuntimeLong$.prototype.divideImpl__I__I__I__I__I = (function(alo, ahi, blo, bhi) {
+  if (((blo | bhi) === 0)) {
+    throw new $c_jl_ArithmeticException().init___T("/ by zero")
+  };
+  if ((ahi === (alo >> 31))) {
+    if ((bhi === (blo >> 31))) {
+      if (((alo === (-2147483648)) && (blo === (-1)))) {
+        this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = 0;
+        return (-2147483648)
+      } else {
+        var lo = ((alo / blo) | 0);
+        this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = (lo >> 31);
+        return lo
+      }
+    } else if (((alo === (-2147483648)) && ((blo === (-2147483648)) && (bhi === 0)))) {
+      this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = (-1);
+      return (-1)
+    } else {
+      this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = 0;
+      return 0
+    }
+  } else {
+    var neg = (ahi < 0);
+    if (neg) {
+      var lo$1 = ((-alo) | 0);
+      var hi = ((alo !== 0) ? (~ahi) : ((-ahi) | 0));
+      var abs_$_lo$2 = lo$1;
+      var abs_$_hi$2 = hi
+    } else {
+      var abs_$_lo$2 = alo;
+      var abs_$_hi$2 = ahi
+    };
+    var neg$1 = (bhi < 0);
+    if (neg$1) {
+      var lo$2 = ((-blo) | 0);
+      var hi$1 = ((blo !== 0) ? (~bhi) : ((-bhi) | 0));
+      var abs$1_$_lo$2 = lo$2;
+      var abs$1_$_hi$2 = hi$1
+    } else {
+      var abs$1_$_lo$2 = blo;
+      var abs$1_$_hi$2 = bhi
+    };
+    var absRLo = this.unsigned$und$div__p1__I__I__I__I__I(abs_$_lo$2, abs_$_hi$2, abs$1_$_lo$2, abs$1_$_hi$2);
+    if ((neg === neg$1)) {
+      return absRLo
+    } else {
+      var hi$2 = this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+      this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = ((absRLo !== 0) ? (~hi$2) : ((-hi$2) | 0));
+      return ((-absRLo) | 0)
+    }
+  }
+});
+$c_sjsr_RuntimeLong$.prototype.scala$scalajs$runtime$RuntimeLong$$toDouble__I__I__D = (function(lo, hi) {
+  if ((hi < 0)) {
+    var x = ((lo !== 0) ? (~hi) : ((-hi) | 0));
+    var jsx$1 = $uD((x >>> 0));
+    var x$1 = ((-lo) | 0);
+    return (-((4.294967296E9 * jsx$1) + $uD((x$1 >>> 0))))
+  } else {
+    return ((4.294967296E9 * hi) + $uD((lo >>> 0)))
+  }
+});
+$c_sjsr_RuntimeLong$.prototype.fromDouble__D__sjsr_RuntimeLong = (function(value) {
+  var lo = this.scala$scalajs$runtime$RuntimeLong$$fromDoubleImpl__D__I(value);
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f)
+});
+$c_sjsr_RuntimeLong$.prototype.scala$scalajs$runtime$RuntimeLong$$fromDoubleImpl__D__I = (function(value) {
+  if ((value < (-9.223372036854776E18))) {
+    this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = (-2147483648);
+    return 0
+  } else if ((value >= 9.223372036854776E18)) {
+    this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = 2147483647;
+    return (-1)
+  } else {
+    var rawLo = $uI((value | 0));
+    var x = (value / 4.294967296E9);
+    var rawHi = $uI((x | 0));
+    this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = (((value < 0) && (rawLo !== 0)) ? (((-1) + rawHi) | 0) : rawHi);
+    return rawLo
+  }
+});
+$c_sjsr_RuntimeLong$.prototype.unsigned$und$div__p1__I__I__I__I__I = (function(alo, ahi, blo, bhi) {
+  if ((((-2097152) & ahi) === 0)) {
+    if ((((-2097152) & bhi) === 0)) {
+      var aDouble = ((4.294967296E9 * ahi) + $uD((alo >>> 0)));
+      var bDouble = ((4.294967296E9 * bhi) + $uD((blo >>> 0)));
+      var rDouble = (aDouble / bDouble);
+      var x = (rDouble / 4.294967296E9);
+      this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = $uI((x | 0));
+      return $uI((rDouble | 0))
+    } else {
+      this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = 0;
+      return 0
+    }
+  } else if (((bhi === 0) && ((blo & (((-1) + blo) | 0)) === 0))) {
+    var pow = ((31 - $clz32(blo)) | 0);
+    this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = ((ahi >>> pow) | 0);
+    return (((alo >>> pow) | 0) | ((ahi << 1) << ((31 - pow) | 0)))
+  } else if (((blo === 0) && ((bhi & (((-1) + bhi) | 0)) === 0))) {
+    var pow$2 = ((31 - $clz32(bhi)) | 0);
+    this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = 0;
+    return ((ahi >>> pow$2) | 0)
+  } else {
+    return $uI(this.unsignedDivModHelper__p1__I__I__I__I__I__sjs_js_$bar(alo, ahi, blo, bhi, 0))
+  }
+});
+$c_sjsr_RuntimeLong$.prototype.scala$scalajs$runtime$RuntimeLong$$toString__I__I__T = (function(lo, hi) {
+  return ((hi === (lo >> 31)) ? ("" + lo) : ((hi < 0) ? ("-" + this.toUnsignedString__p1__I__I__T(((-lo) | 0), ((lo !== 0) ? (~hi) : ((-hi) | 0)))) : this.toUnsignedString__p1__I__I__T(lo, hi)))
+});
+$c_sjsr_RuntimeLong$.prototype.scala$scalajs$runtime$RuntimeLong$$compare__I__I__I__I__I = (function(alo, ahi, blo, bhi) {
+  return ((ahi === bhi) ? ((alo === blo) ? 0 : ((((-2147483648) ^ alo) < ((-2147483648) ^ blo)) ? (-1) : 1)) : ((ahi < bhi) ? (-1) : 1))
+});
+$c_sjsr_RuntimeLong$.prototype.unsignedDivModHelper__p1__I__I__I__I__I__sjs_js_$bar = (function(alo, ahi, blo, bhi, ask) {
+  var shift = ((((bhi !== 0) ? $clz32(bhi) : ((32 + $clz32(blo)) | 0)) - ((ahi !== 0) ? $clz32(ahi) : ((32 + $clz32(alo)) | 0))) | 0);
+  var n = shift;
+  var lo = (((32 & n) === 0) ? (blo << n) : 0);
+  var hi = (((32 & n) === 0) ? (((((blo >>> 1) | 0) >>> ((31 - n) | 0)) | 0) | (bhi << n)) : (blo << n));
+  var bShiftLo = lo;
+  var bShiftHi = hi;
+  var remLo = alo;
+  var remHi = ahi;
+  var quotLo = 0;
+  var quotHi = 0;
+  while (((shift >= 0) && (((-2097152) & remHi) !== 0))) {
+    var alo$1 = remLo;
+    var ahi$1 = remHi;
+    var blo$1 = bShiftLo;
+    var bhi$1 = bShiftHi;
+    if (((ahi$1 === bhi$1) ? (((-2147483648) ^ alo$1) >= ((-2147483648) ^ blo$1)) : (((-2147483648) ^ ahi$1) >= ((-2147483648) ^ bhi$1)))) {
+      var lo$1 = remLo;
+      var hi$1 = remHi;
+      var lo$2 = bShiftLo;
+      var hi$2 = bShiftHi;
+      var lo$3 = ((lo$1 - lo$2) | 0);
+      var hi$3 = ((((-2147483648) ^ lo$3) > ((-2147483648) ^ lo$1)) ? (((-1) + ((hi$1 - hi$2) | 0)) | 0) : ((hi$1 - hi$2) | 0));
+      remLo = lo$3;
+      remHi = hi$3;
+      if ((shift < 32)) {
+        quotLo = (quotLo | (1 << shift))
+      } else {
+        quotHi = (quotHi | (1 << shift))
+      }
+    };
+    shift = (((-1) + shift) | 0);
+    var lo$4 = bShiftLo;
+    var hi$4 = bShiftHi;
+    var lo$5 = (((lo$4 >>> 1) | 0) | (hi$4 << 31));
+    var hi$5 = ((hi$4 >>> 1) | 0);
+    bShiftLo = lo$5;
+    bShiftHi = hi$5
+  };
+  var alo$2 = remLo;
+  var ahi$2 = remHi;
+  if (((ahi$2 === bhi) ? (((-2147483648) ^ alo$2) >= ((-2147483648) ^ blo)) : (((-2147483648) ^ ahi$2) >= ((-2147483648) ^ bhi)))) {
+    var lo$6 = remLo;
+    var hi$6 = remHi;
+    var remDouble = ((4.294967296E9 * hi$6) + $uD((lo$6 >>> 0)));
+    var bDouble = ((4.294967296E9 * bhi) + $uD((blo >>> 0)));
+    if ((ask !== 1)) {
+      var x = (remDouble / bDouble);
+      var lo$7 = $uI((x | 0));
+      var x$1 = (x / 4.294967296E9);
+      var hi$7 = $uI((x$1 | 0));
+      var lo$8 = quotLo;
+      var hi$8 = quotHi;
+      var lo$9 = ((lo$8 + lo$7) | 0);
+      var hi$9 = ((((-2147483648) ^ lo$9) < ((-2147483648) ^ lo$8)) ? ((1 + ((hi$8 + hi$7) | 0)) | 0) : ((hi$8 + hi$7) | 0));
+      quotLo = lo$9;
+      quotHi = hi$9
+    };
+    if ((ask !== 0)) {
+      var rem_mod_bDouble = (remDouble % bDouble);
+      remLo = $uI((rem_mod_bDouble | 0));
+      var x$2 = (rem_mod_bDouble / 4.294967296E9);
+      remHi = $uI((x$2 | 0))
+    }
+  };
+  if ((ask === 0)) {
+    this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = quotHi;
+    var a = quotLo;
+    return a
+  } else if ((ask === 1)) {
+    this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = remHi;
+    var a$1 = remLo;
+    return a$1
+  } else {
+    var _1 = quotLo;
+    var _2 = quotHi;
+    var _3 = remLo;
+    var _4 = remHi;
+    var a$2 = [_1, _2, _3, _4];
+    return a$2
+  }
+});
+$c_sjsr_RuntimeLong$.prototype.remainderImpl__I__I__I__I__I = (function(alo, ahi, blo, bhi) {
+  if (((blo | bhi) === 0)) {
+    throw new $c_jl_ArithmeticException().init___T("/ by zero")
+  };
+  if ((ahi === (alo >> 31))) {
+    if ((bhi === (blo >> 31))) {
+      if ((blo !== (-1))) {
+        var lo = ((alo % blo) | 0);
+        this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = (lo >> 31);
+        return lo
+      } else {
+        this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = 0;
+        return 0
+      }
+    } else if (((alo === (-2147483648)) && ((blo === (-2147483648)) && (bhi === 0)))) {
+      this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = 0;
+      return 0
+    } else {
+      this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = ahi;
+      return alo
+    }
+  } else {
+    var neg = (ahi < 0);
+    if (neg) {
+      var lo$1 = ((-alo) | 0);
+      var hi = ((alo !== 0) ? (~ahi) : ((-ahi) | 0));
+      var abs_$_lo$2 = lo$1;
+      var abs_$_hi$2 = hi
+    } else {
+      var abs_$_lo$2 = alo;
+      var abs_$_hi$2 = ahi
+    };
+    var neg$1 = (bhi < 0);
+    if (neg$1) {
+      var lo$2 = ((-blo) | 0);
+      var hi$1 = ((blo !== 0) ? (~bhi) : ((-bhi) | 0));
+      var abs$1_$_lo$2 = lo$2;
+      var abs$1_$_hi$2 = hi$1
+    } else {
+      var abs$1_$_lo$2 = blo;
+      var abs$1_$_hi$2 = bhi
+    };
+    var absRLo = this.unsigned$und$percent__p1__I__I__I__I__I(abs_$_lo$2, abs_$_hi$2, abs$1_$_lo$2, abs$1_$_hi$2);
+    if (neg) {
+      var hi$2 = this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+      this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = ((absRLo !== 0) ? (~hi$2) : ((-hi$2) | 0));
+      return ((-absRLo) | 0)
+    } else {
+      return absRLo
+    }
+  }
+});
+$c_sjsr_RuntimeLong$.prototype.unsigned$und$percent__p1__I__I__I__I__I = (function(alo, ahi, blo, bhi) {
+  if ((((-2097152) & ahi) === 0)) {
+    if ((((-2097152) & bhi) === 0)) {
+      var aDouble = ((4.294967296E9 * ahi) + $uD((alo >>> 0)));
+      var bDouble = ((4.294967296E9 * bhi) + $uD((blo >>> 0)));
+      var rDouble = (aDouble % bDouble);
+      var x = (rDouble / 4.294967296E9);
+      this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = $uI((x | 0));
+      return $uI((rDouble | 0))
+    } else {
+      this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = ahi;
+      return alo
+    }
+  } else if (((bhi === 0) && ((blo & (((-1) + blo) | 0)) === 0))) {
+    this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = 0;
+    return (alo & (((-1) + blo) | 0))
+  } else if (((blo === 0) && ((bhi & (((-1) + bhi) | 0)) === 0))) {
+    this.scala$scalajs$runtime$RuntimeLong$$hiReturn$f = (ahi & (((-1) + bhi) | 0));
+    return alo
+  } else {
+    return $uI(this.unsignedDivModHelper__p1__I__I__I__I__I__sjs_js_$bar(alo, ahi, blo, bhi, 1))
+  }
+});
+$c_sjsr_RuntimeLong$.prototype.scala$scalajs$runtime$RuntimeLong$$timesHi__I__I__I__I__I = (function(alo, ahi, blo, bhi) {
+  var a0 = (65535 & alo);
+  var a1 = ((alo >>> 16) | 0);
+  var a2 = (65535 & ahi);
+  var a3 = ((ahi >>> 16) | 0);
+  var b0 = (65535 & blo);
+  var b1 = ((blo >>> 16) | 0);
+  var b2 = (65535 & bhi);
+  var b3 = ((bhi >>> 16) | 0);
+  var c1part = (((($imul(a0, b0) >>> 16) | 0) + $imul(a1, b0)) | 0);
+  var c2 = ((((c1part >>> 16) | 0) + (((((65535 & c1part) + $imul(a0, b1)) | 0) >>> 16) | 0)) | 0);
+  var c3 = ((c2 >>> 16) | 0);
+  c2 = (((65535 & c2) + $imul(a2, b0)) | 0);
+  c3 = ((c3 + ((c2 >>> 16) | 0)) | 0);
+  c2 = (((65535 & c2) + $imul(a1, b1)) | 0);
+  c3 = ((c3 + ((c2 >>> 16) | 0)) | 0);
+  c2 = (((65535 & c2) + $imul(a0, b2)) | 0);
+  c3 = ((c3 + ((c2 >>> 16) | 0)) | 0);
+  c3 = ((((((((c3 + $imul(a3, b0)) | 0) + $imul(a2, b1)) | 0) + $imul(a1, b2)) | 0) + $imul(a0, b3)) | 0);
+  return ((65535 & c2) | (c3 << 16))
 });
 var $d_sjsr_RuntimeLong$ = new $TypeData().initClass({
   sjsr_RuntimeLong$: 0
@@ -17409,9 +17846,9 @@ $c_scm_WrappedArrayBuilder.prototype.init___s_reflect_ClassTag = (function(tag) 
 });
 $c_scm_WrappedArrayBuilder.prototype.ensureSize__p1__I__V = (function(size) {
   if ((this.capacity$1 < size)) {
-    var newsize = ((this.capacity$1 === 0) ? 16 : $imul(2, this.capacity$1));
+    var newsize = ((this.capacity$1 === 0) ? 16 : (this.capacity$1 << 1));
     while ((newsize < size)) {
-      newsize = $imul(2, newsize)
+      newsize = (newsize << 1)
     };
     this.resize__p1__I__V(newsize)
   }
@@ -17430,11 +17867,11 @@ $c_scm_WrappedArrayBuilder.prototype.mkArray__p1__I__scm_WrappedArray = (functio
   if ($is_jl_Class(schematic)) {
     var x2 = $as_jl_Class(schematic);
     var runtimeClass = x2.getComponentType__jl_Class()
-  } else if ((schematic !== null)) {
-    var runtimeClass = schematic.runtimeClass__jl_Class()
   } else {
-    var runtimeClass;
-    throw new $c_jl_UnsupportedOperationException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["unsupported schematic ", " (", ")"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([schematic, $objectGetClass(schematic)])))
+    if ((schematic === null)) {
+      throw new $c_jl_UnsupportedOperationException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["unsupported schematic ", " (", ")"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([schematic, $objectGetClass(schematic)])))
+    };
+    var runtimeClass = schematic.runtimeClass__jl_Class()
   };
   var newelems = ((runtimeClass === $d_B.getClassOf()) ? new $c_scm_WrappedArray$ofByte().init___AB($newArrayObject($d_B.getArrayOf(), [size])) : ((runtimeClass === $d_S.getClassOf()) ? new $c_scm_WrappedArray$ofShort().init___AS($newArrayObject($d_S.getArrayOf(), [size])) : ((runtimeClass === $d_C.getClassOf()) ? new $c_scm_WrappedArray$ofChar().init___AC($newArrayObject($d_C.getArrayOf(), [size])) : ((runtimeClass === $d_I.getClassOf()) ? new $c_scm_WrappedArray$ofInt().init___AI($newArrayObject($d_I.getArrayOf(), [size])) : ((runtimeClass === $d_J.getClassOf()) ? new $c_scm_WrappedArray$ofLong().init___AJ($newArrayObject($d_J.getArrayOf(), [size])) : ((runtimeClass === $d_F.getClassOf()) ? new $c_scm_WrappedArray$ofFloat().init___AF($newArrayObject($d_F.getArrayOf(), [size])) : ((runtimeClass === $d_D.getClassOf()) ? new $c_scm_WrappedArray$ofDouble().init___AD($newArrayObject($d_D.getArrayOf(), [size])) : ((runtimeClass === $d_Z.getClassOf()) ? new $c_scm_WrappedArray$ofBoolean().init___AZ($newArrayObject($d_Z.getArrayOf(), [size])) : ((runtimeClass === $d_V.getClassOf()) ? new $c_scm_WrappedArray$ofUnit().init___Asr_BoxedUnit($newArrayObject($d_sr_BoxedUnit.getArrayOf(), [size])) : new $c_scm_WrappedArray$ofRef().init___AO($asArrayOf_O(this.tag$1.newArray__I__O(size), 1)))))))))));
   if ((this.size$1 > 0)) {
@@ -17633,35 +18070,10 @@ $c_sjsr_RuntimeLong.prototype.$$bar__sjsr_RuntimeLong__sjsr_RuntimeLong = (funct
 $c_sjsr_RuntimeLong.prototype.$$greater$eq__sjsr_RuntimeLong__Z = (function(b) {
   var ahi = this.hi$2;
   var bhi = b.hi$2;
-  if ((ahi === bhi)) {
-    var a = this.lo$2;
-    var b$1 = b.lo$2;
-    return (((-2147483648) ^ a) >= ((-2147483648) ^ b$1))
-  } else {
-    return (bhi < ahi)
-  }
-});
-$c_sjsr_RuntimeLong.prototype.unsigned$und$percent__p2__I__I__I__I__sjsr_RuntimeLong = (function(alo, ahi, blo, bhi) {
-  if ((((-2097152) & ahi) === 0)) {
-    if ((((-2097152) & bhi) === 0)) {
-      var aDouble = ((4.294967296E9 * ahi) + $uD((alo >>> 0)));
-      var bDouble = ((4.294967296E9 * bhi) + $uD((blo >>> 0)));
-      var rDouble = (aDouble % bDouble);
-      var jsx$1 = $uI((rDouble | 0));
-      var x = (rDouble / 4.294967296E9);
-      return new $c_sjsr_RuntimeLong().init___I__I(jsx$1, $uI((x | 0)))
-    } else {
-      return new $c_sjsr_RuntimeLong().init___I__I(alo, ahi)
-    }
-  } else {
-    return (((bhi === 0) && ((blo & (((-1) + blo) | 0)) === 0)) ? new $c_sjsr_RuntimeLong().init___I__I((alo & (((-1) + blo) | 0)), 0) : (((blo === 0) && ((bhi & (((-1) + bhi) | 0)) === 0)) ? new $c_sjsr_RuntimeLong().init___I__I(alo, (ahi & (((-1) + bhi) | 0))) : $as_sjsr_RuntimeLong(this.unsignedDivModHelper__p2__I__I__I__I__I__sjs_js_$bar(alo, ahi, blo, bhi, 1))))
-  }
+  return ((ahi === bhi) ? (((-2147483648) ^ this.lo$2) >= ((-2147483648) ^ b.lo$2)) : (ahi > bhi))
 });
 $c_sjsr_RuntimeLong.prototype.byteValue__B = (function() {
-  return this.toByte__B()
-});
-$c_sjsr_RuntimeLong.prototype.toShort__S = (function() {
-  return ((this.lo$2 << 16) >> 16)
+  return ((this.lo$2 << 24) >> 24)
 });
 $c_sjsr_RuntimeLong.prototype.equals__O__Z = (function(that) {
   if ($is_sjsr_RuntimeLong(that)) {
@@ -17674,206 +18086,24 @@ $c_sjsr_RuntimeLong.prototype.equals__O__Z = (function(that) {
 $c_sjsr_RuntimeLong.prototype.$$less__sjsr_RuntimeLong__Z = (function(b) {
   var ahi = this.hi$2;
   var bhi = b.hi$2;
-  if ((ahi === bhi)) {
-    var a = this.lo$2;
-    var b$1 = b.lo$2;
-    return (((-2147483648) ^ a) < ((-2147483648) ^ b$1))
-  } else {
-    return (ahi < bhi)
-  }
+  return ((ahi === bhi) ? (((-2147483648) ^ this.lo$2) < ((-2147483648) ^ b.lo$2)) : (ahi < bhi))
 });
 $c_sjsr_RuntimeLong.prototype.$$times__sjsr_RuntimeLong__sjsr_RuntimeLong = (function(b) {
   var alo = this.lo$2;
-  var ahi = this.hi$2;
   var blo = b.lo$2;
-  var bhi = b.hi$2;
-  var a0 = (65535 & alo);
-  var a1 = ((alo >>> 16) | 0);
-  var a2 = (65535 & ahi);
-  var a3 = ((ahi >>> 16) | 0);
-  var b0 = (65535 & blo);
-  var b1 = ((blo >>> 16) | 0);
-  var b2 = (65535 & bhi);
-  var b3 = ((bhi >>> 16) | 0);
-  var c0 = $imul(a0, b0);
-  var c1 = ((c0 >>> 16) | 0);
-  c1 = ((c1 + $imul(a1, b0)) | 0);
-  var c2 = ((c1 >>> 16) | 0);
-  c1 = (((65535 & c1) + $imul(a0, b1)) | 0);
-  c2 = ((c2 + ((c1 >>> 16) | 0)) | 0);
-  var c3 = ((c2 >>> 16) | 0);
-  c2 = (((65535 & c2) + $imul(a2, b0)) | 0);
-  c3 = ((c3 + ((c2 >>> 16) | 0)) | 0);
-  c2 = (((65535 & c2) + $imul(a1, b1)) | 0);
-  c3 = ((c3 + ((c2 >>> 16) | 0)) | 0);
-  c2 = (((65535 & c2) + $imul(a0, b2)) | 0);
-  c3 = ((c3 + ((c2 >>> 16) | 0)) | 0);
-  c3 = ((((((((c3 + $imul(a3, b0)) | 0) + $imul(a2, b1)) | 0) + $imul(a1, b2)) | 0) + $imul(a0, b3)) | 0);
-  return new $c_sjsr_RuntimeLong().init___I__I(((65535 & c0) | (c1 << 16)), ((65535 & c2) | (c3 << 16)))
+  return new $c_sjsr_RuntimeLong().init___I__I($imul(alo, blo), $m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$timesHi__I__I__I__I__I(alo, this.hi$2, blo, b.hi$2))
 });
 $c_sjsr_RuntimeLong.prototype.init___I__I__I = (function(l, m, h) {
   $c_sjsr_RuntimeLong.prototype.init___I__I.call(this, (l | (m << 22)), ((m >> 10) | (h << 12)));
   return this
 });
 $c_sjsr_RuntimeLong.prototype.$$percent__sjsr_RuntimeLong__sjsr_RuntimeLong = (function(b) {
-  var alo = this.lo$2;
-  var ahi = this.hi$2;
-  var blo = b.lo$2;
-  var bhi = b.hi$2;
-  if (((blo | bhi) === 0)) {
-    throw new $c_jl_ArithmeticException().init___T("/ by zero")
-  };
-  if ((ahi === (alo >> 31))) {
-    return ((bhi === (blo >> 31)) ? ((blo !== (-1)) ? new $c_sjsr_RuntimeLong().init___I(((alo % blo) | 0)) : $m_sjsr_RuntimeLong$().Zero$1) : (((alo === (-2147483648)) && ((blo === (-2147483648)) && (bhi === 0))) ? $m_sjsr_RuntimeLong$().Zero$1 : this))
-  } else {
-    var neg = (ahi < 0);
-    var absLo = alo;
-    var absHi = ahi;
-    if (neg) {
-      absLo = ((-alo) | 0);
-      absHi = ((alo !== 0) ? (~ahi) : ((-ahi) | 0))
-    };
-    var _2 = absLo;
-    var _3 = absHi;
-    var neg$1 = (bhi < 0);
-    var absLo$1 = blo;
-    var absHi$1 = bhi;
-    if (neg$1) {
-      absLo$1 = ((-blo) | 0);
-      absHi$1 = ((blo !== 0) ? (~bhi) : ((-bhi) | 0))
-    };
-    var _2$1 = absLo$1;
-    var _3$1 = absHi$1;
-    var absR = this.unsigned$und$percent__p2__I__I__I__I__sjsr_RuntimeLong(_2, _3, _2$1, _3$1);
-    if (neg) {
-      var lo = absR.lo$2;
-      var hi = absR.hi$2;
-      return new $c_sjsr_RuntimeLong().init___I__I(((-lo) | 0), ((lo !== 0) ? (~hi) : ((-hi) | 0)))
-    } else {
-      return absR
-    }
-  }
-});
-$c_sjsr_RuntimeLong.prototype.unsignedDivModHelper__p2__I__I__I__I__I__sjs_js_$bar = (function(alo, ahi, blo, bhi, ask) {
-  var shift = ((((bhi !== 0) ? $clz32(bhi) : ((32 + $clz32(blo)) | 0)) - ((ahi !== 0) ? $clz32(ahi) : ((32 + $clz32(alo)) | 0))) | 0);
-  var n = shift;
-  if ((n === 0)) {
-    var initialBShift_$_$$und1$f = null;
-    var initialBShift_$_$$und2$f = null;
-    var initialBShift_$_$$und1$mcI$sp$f = blo;
-    var initialBShift_$_$$und2$mcI$sp$f = bhi
-  } else if ((n < 32)) {
-    var _1$mcI$sp = (blo << n);
-    var _2$mcI$sp = (((blo >>> ((-n) | 0)) | 0) | (bhi << n));
-    var initialBShift_$_$$und1$f = null;
-    var initialBShift_$_$$und2$f = null;
-    var initialBShift_$_$$und1$mcI$sp$f = _1$mcI$sp;
-    var initialBShift_$_$$und2$mcI$sp$f = _2$mcI$sp
-  } else {
-    var _2$mcI$sp$1 = (blo << n);
-    var initialBShift_$_$$und1$f = null;
-    var initialBShift_$_$$und2$f = null;
-    var initialBShift_$_$$und1$mcI$sp$f = 0;
-    var initialBShift_$_$$und2$mcI$sp$f = _2$mcI$sp$1
-  };
-  var bShiftLo = initialBShift_$_$$und1$mcI$sp$f;
-  var bShiftHi = initialBShift_$_$$und2$mcI$sp$f;
-  var remLo = alo;
-  var remHi = ahi;
-  var quotLo = 0;
-  var quotHi = 0;
-  while (((shift >= 0) && (((-2097152) & remHi) !== 0))) {
-    var alo$1 = remLo;
-    var ahi$1 = remHi;
-    var blo$1 = bShiftLo;
-    var bhi$1 = bShiftHi;
-    if (((ahi$1 === bhi$1) ? (((-2147483648) ^ alo$1) >= ((-2147483648) ^ blo$1)) : (((-2147483648) ^ ahi$1) >= ((-2147483648) ^ bhi$1)))) {
-      var alo$2 = remLo;
-      var ahi$2 = remHi;
-      var blo$2 = bShiftLo;
-      var bhi$2 = bShiftHi;
-      var lo = ((alo$2 - blo$2) | 0);
-      var _2$mcI$sp$2 = ((((ahi$2 - bhi$2) | 0) + ((((-2147483648) ^ alo$2) < ((-2147483648) ^ lo)) ? (-1) : 0)) | 0);
-      remLo = lo;
-      remHi = _2$mcI$sp$2;
-      if ((shift < 32)) {
-        quotLo = (quotLo | (1 << shift))
-      } else {
-        quotHi = (quotHi | (1 << shift))
-      }
-    };
-    shift = (((-1) + shift) | 0);
-    var lo$1 = bShiftLo;
-    var hi = bShiftHi;
-    var _1$mcI$sp$1 = (((lo$1 >>> 1) | 0) | (hi << (-1)));
-    var _2$mcI$sp$3 = ((hi >>> 1) | 0);
-    bShiftLo = _1$mcI$sp$1;
-    bShiftHi = _2$mcI$sp$3
-  };
-  var alo$3 = remLo;
-  var ahi$3 = remHi;
-  if (((ahi$3 === bhi) ? (((-2147483648) ^ alo$3) >= ((-2147483648) ^ blo)) : (((-2147483648) ^ ahi$3) >= ((-2147483648) ^ bhi)))) {
-    var lo$2 = remLo;
-    var hi$1 = remHi;
-    var remDouble = ((4.294967296E9 * hi$1) + $uD((lo$2 >>> 0)));
-    var bDouble = ((4.294967296E9 * bhi) + $uD((blo >>> 0)));
-    if ((ask !== 1)) {
-      var rem_div_bDouble = (remDouble / bDouble);
-      var alo$4 = quotLo;
-      var ahi$4 = quotHi;
-      var blo$3 = $uI((rem_div_bDouble | 0));
-      var x = (rem_div_bDouble / 4.294967296E9);
-      var bhi$3 = $uI((x | 0));
-      var lo$3 = ((alo$4 + blo$3) | 0);
-      var _2$mcI$sp$4 = ((((ahi$4 + bhi$3) | 0) + ((((-2147483648) ^ lo$3) < ((-2147483648) ^ alo$4)) ? 1 : 0)) | 0);
-      quotLo = lo$3;
-      quotHi = _2$mcI$sp$4
-    };
-    if ((ask !== 0)) {
-      var rem_mod_bDouble = (remDouble % bDouble);
-      remLo = $uI((rem_mod_bDouble | 0));
-      var x$1 = (rem_mod_bDouble / 4.294967296E9);
-      remHi = $uI((x$1 | 0))
-    }
-  };
-  if ((ask === 0)) {
-    var a = new $c_sjsr_RuntimeLong().init___I__I(quotLo, quotHi);
-    return a
-  } else if ((ask === 1)) {
-    var a$1 = new $c_sjsr_RuntimeLong().init___I__I(remLo, remHi);
-    return a$1
-  } else {
-    var _1 = quotLo;
-    var _2 = quotHi;
-    var _3 = remLo;
-    var _4 = remHi;
-    var a$2 = [_1, _2, _3, _4];
-    return a$2
-  }
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.remainderImpl__I__I__I__I__I(this.lo$2, this.hi$2, b.lo$2, b.hi$2);
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f)
 });
 $c_sjsr_RuntimeLong.prototype.toString__T = (function() {
-  var lo = this.lo$2;
-  var hi = this.hi$2;
-  if ((hi === (lo >> 31))) {
-    return ("" + lo)
-  } else if ((hi < 0)) {
-    var _1$mcI$sp = ((-lo) | 0);
-    var _2$mcI$sp = ((lo !== 0) ? (~hi) : ((-hi) | 0));
-    return ("-" + this.toUnsignedString__p2__I__I__T(_1$mcI$sp, _2$mcI$sp))
-  } else {
-    return this.toUnsignedString__p2__I__I__T(lo, hi)
-  }
-});
-$c_sjsr_RuntimeLong.prototype.$$less$eq__sjsr_RuntimeLong__Z = (function(b) {
-  var ahi = this.hi$2;
-  var bhi = b.hi$2;
-  if ((ahi === bhi)) {
-    var a = this.lo$2;
-    var b$1 = b.lo$2;
-    return (((-2147483648) ^ b$1) >= ((-2147483648) ^ a))
-  } else {
-    return (ahi < bhi)
-  }
+  return $m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$toString__I__I__T(this.lo$2, this.hi$2)
 });
 $c_sjsr_RuntimeLong.prototype.init___I__I = (function(lo, hi) {
   this.lo$2 = lo;
@@ -17882,49 +18112,33 @@ $c_sjsr_RuntimeLong.prototype.init___I__I = (function(lo, hi) {
 });
 $c_sjsr_RuntimeLong.prototype.compareTo__O__I = (function(x$1) {
   var that = $as_sjsr_RuntimeLong(x$1);
-  return this.compareTo__sjsr_RuntimeLong__I($as_sjsr_RuntimeLong(that))
+  return $m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$compare__I__I__I__I__I(this.lo$2, this.hi$2, that.lo$2, that.hi$2)
+});
+$c_sjsr_RuntimeLong.prototype.$$less$eq__sjsr_RuntimeLong__Z = (function(b) {
+  var ahi = this.hi$2;
+  var bhi = b.hi$2;
+  return ((ahi === bhi) ? (((-2147483648) ^ this.lo$2) <= ((-2147483648) ^ b.lo$2)) : (ahi < bhi))
 });
 $c_sjsr_RuntimeLong.prototype.$$amp__sjsr_RuntimeLong__sjsr_RuntimeLong = (function(b) {
   return new $c_sjsr_RuntimeLong().init___I__I((this.lo$2 & b.lo$2), (this.hi$2 & b.hi$2))
 });
-$c_sjsr_RuntimeLong.prototype.compareTo__sjsr_RuntimeLong__I = (function(b) {
-  var ahi = this.hi$2;
-  var bhi = b.hi$2;
-  if ((ahi === bhi)) {
-    var alo = this.lo$2;
-    var blo = b.lo$2;
-    return ((alo === blo) ? 0 : ((((-2147483648) ^ alo) < ((-2147483648) ^ blo)) ? (-1) : 1))
-  } else {
-    return ((ahi < bhi) ? (-1) : 1)
-  }
-});
-$c_sjsr_RuntimeLong.prototype.$$greater$greater$greater__I__sjsr_RuntimeLong = (function(n0) {
-  var n = (63 & n0);
-  var hi = this.hi$2;
-  return ((n === 0) ? this : ((n < 32) ? new $c_sjsr_RuntimeLong().init___I__I((((this.lo$2 >>> n) | 0) | (hi << ((-n) | 0))), ((hi >>> n) | 0)) : new $c_sjsr_RuntimeLong().init___I__I(((hi >>> n) | 0), 0)))
+$c_sjsr_RuntimeLong.prototype.$$greater$greater$greater__I__sjsr_RuntimeLong = (function(n) {
+  return new $c_sjsr_RuntimeLong().init___I__I((((32 & n) === 0) ? (((this.lo$2 >>> n) | 0) | ((this.hi$2 << 1) << ((31 - n) | 0))) : ((this.hi$2 >>> n) | 0)), (((32 & n) === 0) ? ((this.hi$2 >>> n) | 0) : 0))
 });
 $c_sjsr_RuntimeLong.prototype.$$greater__sjsr_RuntimeLong__Z = (function(b) {
   var ahi = this.hi$2;
   var bhi = b.hi$2;
-  if ((ahi === bhi)) {
-    var a = this.lo$2;
-    var b$1 = b.lo$2;
-    return (((-2147483648) ^ b$1) < ((-2147483648) ^ a))
-  } else {
-    return (bhi < ahi)
-  }
+  return ((ahi === bhi) ? (((-2147483648) ^ this.lo$2) > ((-2147483648) ^ b.lo$2)) : (ahi > bhi))
 });
-$c_sjsr_RuntimeLong.prototype.$$less$less__I__sjsr_RuntimeLong = (function(n0) {
-  var n = (63 & n0);
-  var lo = this.lo$2;
-  return ((n === 0) ? this : ((n < 32) ? new $c_sjsr_RuntimeLong().init___I__I((lo << n), (((lo >>> ((-n) | 0)) | 0) | (this.hi$2 << n))) : new $c_sjsr_RuntimeLong().init___I__I(0, (lo << n))))
-});
-$c_sjsr_RuntimeLong.prototype.toInt__I = (function() {
-  return this.lo$2
+$c_sjsr_RuntimeLong.prototype.$$less$less__I__sjsr_RuntimeLong = (function(n) {
+  return new $c_sjsr_RuntimeLong().init___I__I((((32 & n) === 0) ? (this.lo$2 << n) : 0), (((32 & n) === 0) ? (((((this.lo$2 >>> 1) | 0) >>> ((31 - n) | 0)) | 0) | (this.hi$2 << n)) : (this.lo$2 << n)))
 });
 $c_sjsr_RuntimeLong.prototype.init___I = (function(value) {
   $c_sjsr_RuntimeLong.prototype.init___I__I.call(this, value, (value >> 31));
   return this
+});
+$c_sjsr_RuntimeLong.prototype.toInt__I = (function() {
+  return this.lo$2
 });
 $c_sjsr_RuntimeLong.prototype.notEquals__sjsr_RuntimeLong__Z = (function(b) {
   return (!((this.lo$2 === b.lo$2) && (this.hi$2 === b.hi$2)))
@@ -17934,100 +18148,29 @@ $c_sjsr_RuntimeLong.prototype.unary$und$minus__sjsr_RuntimeLong = (function() {
   var hi = this.hi$2;
   return new $c_sjsr_RuntimeLong().init___I__I(((-lo) | 0), ((lo !== 0) ? (~hi) : ((-hi) | 0)))
 });
-$c_sjsr_RuntimeLong.prototype.shortValue__S = (function() {
-  return this.toShort__S()
-});
 $c_sjsr_RuntimeLong.prototype.$$plus__sjsr_RuntimeLong__sjsr_RuntimeLong = (function(b) {
   var alo = this.lo$2;
   var ahi = this.hi$2;
-  var blo = b.lo$2;
   var bhi = b.hi$2;
-  var lo = ((alo + blo) | 0);
-  var _2$mcI$sp = ((((ahi + bhi) | 0) + ((((-2147483648) ^ lo) < ((-2147483648) ^ alo)) ? 1 : 0)) | 0);
-  return new $c_sjsr_RuntimeLong().init___I__I(lo, _2$mcI$sp)
+  var lo = ((alo + b.lo$2) | 0);
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, ((((-2147483648) ^ lo) < ((-2147483648) ^ alo)) ? ((1 + ((ahi + bhi) | 0)) | 0) : ((ahi + bhi) | 0)))
+});
+$c_sjsr_RuntimeLong.prototype.shortValue__S = (function() {
+  return ((this.lo$2 << 16) >> 16)
+});
+$c_sjsr_RuntimeLong.prototype.$$greater$greater__I__sjsr_RuntimeLong = (function(n) {
+  return new $c_sjsr_RuntimeLong().init___I__I((((32 & n) === 0) ? (((this.lo$2 >>> n) | 0) | ((this.hi$2 << 1) << ((31 - n) | 0))) : (this.hi$2 >> n)), (((32 & n) === 0) ? (this.hi$2 >> n) : (this.hi$2 >> 31)))
 });
 $c_sjsr_RuntimeLong.prototype.toDouble__D = (function() {
-  var lo = this.lo$2;
-  var hi = this.hi$2;
-  if ((hi < 0)) {
-    var _1$mcI$sp = ((-lo) | 0);
-    var _2$mcI$sp = ((lo !== 0) ? (~hi) : ((-hi) | 0));
-    return (-((4.294967296E9 * $uD((_2$mcI$sp >>> 0))) + $uD((_1$mcI$sp >>> 0))))
-  } else {
-    return ((4.294967296E9 * hi) + $uD((lo >>> 0)))
-  }
-});
-$c_sjsr_RuntimeLong.prototype.$$greater$greater__I__sjsr_RuntimeLong = (function(n0) {
-  var n = (63 & n0);
-  var hi = this.hi$2;
-  return ((n === 0) ? this : ((n < 32) ? new $c_sjsr_RuntimeLong().init___I__I((((this.lo$2 >>> n) | 0) | (hi << ((-n) | 0))), (hi >> n)) : new $c_sjsr_RuntimeLong().init___I__I((hi >> n), (hi >> 31))))
-});
-$c_sjsr_RuntimeLong.prototype.unsigned$und$div__p2__I__I__I__I__sjsr_RuntimeLong = (function(alo, ahi, blo, bhi) {
-  if ((((-2097152) & ahi) === 0)) {
-    if ((((-2097152) & bhi) === 0)) {
-      var aDouble = ((4.294967296E9 * ahi) + $uD((alo >>> 0)));
-      var bDouble = ((4.294967296E9 * bhi) + $uD((blo >>> 0)));
-      var rDouble = (aDouble / bDouble);
-      var jsx$1 = $uI((rDouble | 0));
-      var x = (rDouble / 4.294967296E9);
-      return new $c_sjsr_RuntimeLong().init___I__I(jsx$1, $uI((x | 0)))
-    } else {
-      return $m_sjsr_RuntimeLong$().Zero$1
-    }
-  } else if (((bhi === 0) && ((blo & (((-1) + blo) | 0)) === 0))) {
-    var pow = ((31 - $clz32(blo)) | 0);
-    return ((pow === 0) ? new $c_sjsr_RuntimeLong().init___I__I(alo, ahi) : new $c_sjsr_RuntimeLong().init___I__I((((alo >>> pow) | 0) | (ahi << ((-pow) | 0))), ((ahi >>> pow) | 0)))
-  } else if (((blo === 0) && ((bhi & (((-1) + bhi) | 0)) === 0))) {
-    var pow$2 = ((31 - $clz32(bhi)) | 0);
-    return new $c_sjsr_RuntimeLong().init___I__I(((ahi >>> pow$2) | 0), 0)
-  } else {
-    return $as_sjsr_RuntimeLong(this.unsignedDivModHelper__p2__I__I__I__I__I__sjs_js_$bar(alo, ahi, blo, bhi, 0))
-  }
+  return $m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$toDouble__I__I__D(this.lo$2, this.hi$2)
 });
 $c_sjsr_RuntimeLong.prototype.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong = (function(b) {
-  var alo = this.lo$2;
-  var ahi = this.hi$2;
-  var blo = b.lo$2;
-  var bhi = b.hi$2;
-  if (((blo | bhi) === 0)) {
-    throw new $c_jl_ArithmeticException().init___T("/ by zero")
-  };
-  if ((ahi === (alo >> 31))) {
-    return ((bhi === (blo >> 31)) ? (((alo === (-2147483648)) && (blo === (-1))) ? new $c_sjsr_RuntimeLong().init___I__I((-2147483648), 0) : new $c_sjsr_RuntimeLong().init___I(((alo / blo) | 0))) : (((alo === (-2147483648)) && ((blo === (-2147483648)) && (bhi === 0))) ? $m_sjsr_RuntimeLong$().MinusOne$1 : $m_sjsr_RuntimeLong$().Zero$1))
-  } else {
-    var neg = (ahi < 0);
-    var absLo = alo;
-    var absHi = ahi;
-    if (neg) {
-      absLo = ((-alo) | 0);
-      absHi = ((alo !== 0) ? (~ahi) : ((-ahi) | 0))
-    };
-    var _2 = absLo;
-    var _3 = absHi;
-    var neg$1 = (bhi < 0);
-    var absLo$1 = blo;
-    var absHi$1 = bhi;
-    if (neg$1) {
-      absLo$1 = ((-blo) | 0);
-      absHi$1 = ((blo !== 0) ? (~bhi) : ((-bhi) | 0))
-    };
-    var _2$1 = absLo$1;
-    var _3$1 = absHi$1;
-    var absR = this.unsigned$und$div__p2__I__I__I__I__sjsr_RuntimeLong(_2, _3, _2$1, _3$1);
-    if ((neg === neg$1)) {
-      return absR
-    } else {
-      var lo = absR.lo$2;
-      var hi = absR.hi$2;
-      return new $c_sjsr_RuntimeLong().init___I__I(((-lo) | 0), ((lo !== 0) ? (~hi) : ((-hi) | 0)))
-    }
-  }
-});
-$c_sjsr_RuntimeLong.prototype.toByte__B = (function() {
-  return ((this.lo$2 << 24) >> 24)
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(this.lo$2, this.hi$2, b.lo$2, b.hi$2);
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f)
 });
 $c_sjsr_RuntimeLong.prototype.doubleValue__D = (function() {
-  return this.toDouble__D()
+  return $m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$toDouble__I__I__D(this.lo$2, this.hi$2)
 });
 $c_sjsr_RuntimeLong.prototype.hashCode__I = (function() {
   return (this.lo$2 ^ this.hi$2)
@@ -18035,40 +18178,21 @@ $c_sjsr_RuntimeLong.prototype.hashCode__I = (function() {
 $c_sjsr_RuntimeLong.prototype.intValue__I = (function() {
   return this.lo$2
 });
-$c_sjsr_RuntimeLong.prototype.toUnsignedString__p2__I__I__T = (function(lo, hi) {
-  if ((((-2097152) & hi) === 0)) {
-    var this$5 = ((4.294967296E9 * hi) + $uD((lo >>> 0)));
-    return ("" + this$5)
-  } else {
-    var quotRem = this.unsignedDivModHelper__p2__I__I__I__I__I__sjs_js_$bar(lo, hi, 1000000000, 0, 2);
-    var quotLo = $uI(quotRem["0"]);
-    var quotHi = $uI(quotRem["1"]);
-    var rem = $uI(quotRem["2"]);
-    var quot = ((4.294967296E9 * quotHi) + $uD((quotLo >>> 0)));
-    var remStr = ("" + rem);
-    return ((("" + quot) + $as_T("000000000".substring($uI(remStr.length)))) + remStr)
-  }
-});
-$c_sjsr_RuntimeLong.prototype.compareTo__jl_Long__I = (function(that) {
-  return this.compareTo__sjsr_RuntimeLong__I($as_sjsr_RuntimeLong(that))
-});
 $c_sjsr_RuntimeLong.prototype.unary$und$tilde__sjsr_RuntimeLong = (function() {
   return new $c_sjsr_RuntimeLong().init___I__I((~this.lo$2), (~this.hi$2))
 });
+$c_sjsr_RuntimeLong.prototype.compareTo__jl_Long__I = (function(that) {
+  return $m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$compare__I__I__I__I__I(this.lo$2, this.hi$2, that.lo$2, that.hi$2)
+});
 $c_sjsr_RuntimeLong.prototype.floatValue__F = (function() {
-  return this.toFloat__F()
+  return $fround($m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$toDouble__I__I__D(this.lo$2, this.hi$2))
 });
 $c_sjsr_RuntimeLong.prototype.$$minus__sjsr_RuntimeLong__sjsr_RuntimeLong = (function(b) {
   var alo = this.lo$2;
   var ahi = this.hi$2;
-  var blo = b.lo$2;
   var bhi = b.hi$2;
-  var lo = ((alo - blo) | 0);
-  var _2$mcI$sp = ((((ahi - bhi) | 0) + ((((-2147483648) ^ alo) < ((-2147483648) ^ lo)) ? (-1) : 0)) | 0);
-  return new $c_sjsr_RuntimeLong().init___I__I(lo, _2$mcI$sp)
-});
-$c_sjsr_RuntimeLong.prototype.toFloat__F = (function() {
-  return $fround(this.toDouble__D())
+  var lo = ((alo - b.lo$2) | 0);
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, ((((-2147483648) ^ lo) > ((-2147483648) ^ alo)) ? (((-1) + ((ahi - bhi) | 0)) | 0) : ((ahi - bhi) | 0)))
 });
 $c_sjsr_RuntimeLong.prototype.$$up__sjsr_RuntimeLong__sjsr_RuntimeLong = (function(b) {
   return new $c_sjsr_RuntimeLong().init___I__I((this.lo$2 ^ b.lo$2), (this.hi$2 ^ b.hi$2))
@@ -18138,11 +18262,21 @@ $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureApplication$1.prototype.a
   $$httpProvider.defaults.useXDomain = true;
   var dict = $$httpProvider.defaults;
   var this$3 = ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, "headers")) ? new $c_s_Some().init___O(dict.headers) : $m_s_None$());
-  var this$4 = (this$3.isEmpty__Z() ? $m_s_None$() : new $c_s_Some().init___O(this$3.get__O()));
+  if (this$3.isEmpty__Z()) {
+    var this$4 = $m_s_None$()
+  } else {
+    var arg1 = this$3.get__O();
+    var this$4 = new $c_s_Some().init___O(arg1)
+  };
   if ((!this$4.isEmpty__Z())) {
     var v1 = this$4.get__O();
     var this$7 = ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(v1, "common")) ? new $c_s_Some().init___O(v1.common) : $m_s_None$());
-    var this$8 = (this$7.isEmpty__Z() ? $m_s_None$() : new $c_s_Some().init___O(this$7.get__O()));
+    if (this$7.isEmpty__Z()) {
+      var this$8 = $m_s_None$()
+    } else {
+      var arg1$1 = this$7.get__O();
+      var this$8 = new $c_s_Some().init___O(arg1$1)
+    };
     if ((!this$8.isEmpty__Z())) {
       var arg1$2 = this$8.get__O();
       if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(arg1$2, "X-Requested-With"))) {
@@ -18532,12 +18666,12 @@ $c_Lcom_microsoft_awt_Filters$$anonfun$1$$anonfun$apply$1.prototype.apply__sjs_j
       var this$7 = new $c_sci_StringOps().init___T(s);
       var c = $s_sc_IndexedSeqOptimized$class__head__sc_IndexedSeqOptimized__O(this$7);
       if ((c === null)) {
-        var $$this = 0
+        var c$1 = 0
       } else {
         var this$9 = $as_jl_Character(c);
-        var $$this = this$9.value$1
+        var c$1 = this$9.value$1
       };
-      var c$2 = $m_jl_Character$().toUpperCase__C__C($$this);
+      var c$2 = $m_jl_Character$().toUpperCase__C__C(c$1);
       var jsx$1 = new $c_jl_Character().init___C(c$2);
       var this$15 = new $c_sci_StringOps().init___T(s);
       var value$1 = (("" + jsx$1) + $as_T($s_sc_IndexedSeqOptimized$class__tail__sc_IndexedSeqOptimized__O(this$15)))
@@ -18686,9 +18820,9 @@ $c_Lcom_microsoft_awt_components_AuthenticationController$$anonfun$2$$anonfun$ap
   if (($uI(array.length) === 0)) {
     this.$$outer$2.$$outer$2.com$microsoft$awt$components$AuthenticationController$$$scope$f.loginLoading = true;
     var jsx$1 = this.$$outer$2.$$outer$2.com$microsoft$awt$components$AuthenticationController$$sessionFactory$f;
-    var $$this = form.username;
-    var $$this$1 = jsx$1.getAuthToken__T__Lorg_scalajs_angularjs_http_HttpResponse($as_T((($$this === (void 0)) ? null : $$this)));
-    var this$10 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future($$this$1);
+    var value = form.username;
+    var response = jsx$1.getAuthToken__T__Lorg_scalajs_angularjs_http_HttpResponse($as_T(((value === (void 0)) ? null : value)));
+    var this$10 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(response);
     var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer, form$1) {
       return (function(authData$2) {
         var jsx$3 = arg$outer.$$outer$2.$$outer$2.com$microsoft$awt$components$AuthenticationController$$md5$f;
@@ -18755,10 +18889,10 @@ $c_Lcom_microsoft_awt_components_AuthenticationController$$anonfun$2$$anonfun$ap
 });
 $c_Lcom_microsoft_awt_components_AuthenticationController$$anonfun$2$$anonfun$apply$2$$anonfun$4.prototype.apply__T2__s_concurrent_Future = (function(x$1) {
   if ((x$1 !== null)) {
-    var authData = x$1.$$und1__O();
-    var hashPassword = $as_T(x$1.$$und2__O());
-    var $$this = this.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$AuthenticationController$$sessionFactory$f.login__T__Lcom_microsoft_awt_forms_LoginForm__Lorg_scalajs_angularjs_http_HttpResponse($as_T(authData.code), new $c_Lcom_microsoft_awt_forms_LoginForm(this.form$1$2.username, hashPassword));
-    var this$4 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future($$this);
+    var authData = x$1.$$und1$f;
+    var hashPassword = $as_T(x$1.$$und2$f);
+    var response = this.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$AuthenticationController$$sessionFactory$f.login__T__Lcom_microsoft_awt_forms_LoginForm__Lorg_scalajs_angularjs_http_HttpResponse($as_T(authData.code), new $c_Lcom_microsoft_awt_forms_LoginForm(this.form$1$2.username, hashPassword));
+    var this$4 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(response);
     var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(authData$1) {
       return (function(session$2) {
         return new $c_T2().init___O__O(authData$1, session$2)
@@ -18809,7 +18943,7 @@ $c_Lcom_microsoft_awt_components_AuthenticationController$$anonfun$2$$anonfun$ap
     var x2 = $as_s_util_Success(x0$1);
     var p3 = $as_T2(x2.value$2);
     if ((p3 !== null)) {
-      var session = p3.$$und2__O();
+      var session = p3.$$und2$f;
       $g.console.log("Login successful... ");
       return this.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$AuthenticationController$$$scope$f.$apply((function(arg$outer, session$1) {
         return (function() {
@@ -18823,13 +18957,13 @@ $c_Lcom_microsoft_awt_components_AuthenticationController$$anonfun$2$$anonfun$ap
   if ($is_s_util_Failure(x0$1)) {
     var x4 = $as_s_util_Failure(x0$1);
     var e = x4.exception$2;
-    var $$this$1 = this.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$AuthenticationController$$toaster$f;
+    var toaster = this.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$AuthenticationController$$toaster$f;
     var this$6 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6 = false;
     var x2$1 = null;
     var x1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7: {
-      var message;
+      var s$1;
       if ($is_s_Some(x1)) {
         rc6 = true;
         x2$1 = $as_s_Some(x1);
@@ -18841,24 +18975,24 @@ $c_Lcom_microsoft_awt_components_AuthenticationController$$anonfun$2$$anonfun$ap
           var n = $uI(thiz.length);
           var $$this = this$14.repr$1;
           var until = $uI($$this.length);
-          var message = this$6.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$14.repr$1, n, until));
+          var s$1 = this$6.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$14.repr$1, n, until));
           break matchEnd7
         }
       };
       if (rc6) {
         var s$2 = $as_T(x2$1.x$2);
-        var message = s$2;
+        var s$1 = s$2;
         break matchEnd7
       };
       var x = $m_s_None$();
       if ((x === x1)) {
-        var message = "Cause unknown";
+        var s$1 = "Cause unknown";
         break matchEnd7
       };
       throw new $c_s_MatchError().init___O(x1)
     };
     var s$3 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$1.pop(s$3, "Authentication Failure", message);
+    toaster.pop(s$3, "Authentication Failure", s$1);
     return this.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$AuthenticationController$$$scope$f.$apply((function(arg$outer$1, e$1) {
       return (function() {
         arg$outer$1.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$AuthenticationController$$$scope$f.loginLoading = false;
@@ -18878,8 +19012,8 @@ $c_Lcom_microsoft_awt_components_AuthenticationController$$anonfun$2$$anonfun$ap
               var this$30 = new $c_sci_StringOps().init___T(s$4);
               var thiz$1 = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
               var n$1 = $uI(thiz$1.length);
-              var $$this$2 = this$30.repr$1;
-              var until$1 = $uI($$this$2.length);
+              var $$this$1 = this$30.repr$1;
+              var until$1 = $uI($$this$1.length);
               var jsx$1 = this$22.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e$1, $m_sci_StringOps$().slice$extension__T__I__I__T(this$30.repr$1, n$1, until$1));
               break matchEnd7$1
             }
@@ -18913,8 +19047,8 @@ $c_Lcom_microsoft_awt_components_AuthenticationController$$anonfun$2$$anonfun$ap
               var this$42 = new $c_sci_StringOps().init___T(s$5);
               var thiz$2 = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
               var n$2 = $uI(thiz$2.length);
-              var $$this$3 = this$42.repr$1;
-              var until$2 = $uI($$this$3.length);
+              var $$this$2 = this$42.repr$1;
+              var until$2 = $uI($$this$2.length);
               var s$6 = this$34.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e$1, $m_sci_StringOps$().slice$extension__T__I__I__T(this$42.repr$1, n$2, until$2));
               break matchEnd7$2
             }
@@ -19049,35 +19183,35 @@ function $h_Lcom_microsoft_awt_components_EventController$$anonfun$4() {
 $h_Lcom_microsoft_awt_components_EventController$$anonfun$4.prototype = $c_Lcom_microsoft_awt_components_EventController$$anonfun$4.prototype;
 $c_Lcom_microsoft_awt_components_EventController$$anonfun$4.prototype.apply__sjs_js_Array__sjs_js_UndefOr__V = (function(oldEvents, newEvents) {
   var jsx$2 = this.$$outer$2.com$microsoft$awt$components$EventController$$$scope$f;
-  var $$this = this.$$outer$2.com$microsoft$awt$components$EventController$$$scope$f.events;
-  if (($$this === (void 0))) {
+  var value = this.$$outer$2.com$microsoft$awt$components$EventController$$$scope$f.events;
+  if ((value === (void 0))) {
     var jsx$1 = (void 0)
   } else {
-    var this$5 = new $c_sjs_js_ArrayOps().init___sjs_js_Array($$this);
-    var $$this$1 = $s_sc_TraversableLike$class__headOption__sc_TraversableLike__s_Option(this$5);
-    if ($$this$1.isEmpty__Z()) {
+    var this$5 = new $c_sjs_js_ArrayOps().init___sjs_js_Array(value);
+    var opt = $s_sc_TraversableLike$class__headOption__sc_TraversableLike__s_Option(this$5);
+    if (opt.isEmpty__Z()) {
       var jsx$1 = (void 0)
     } else {
-      var arg1 = $$this$1.get__O();
+      var arg1 = opt.get__O();
       var jsx$1 = arg1
     }
   };
   jsx$2.selectedEvent = jsx$1;
   var jsx$4 = this.$$outer$2.com$microsoft$awt$components$EventController$$$scope$f;
-  var $$this$2 = this.$$outer$2.com$microsoft$awt$components$EventController$$$scope$f.selectedEvent;
-  if (($$this$2 === (void 0))) {
+  var value$1 = this.$$outer$2.com$microsoft$awt$components$EventController$$$scope$f.selectedEvent;
+  if ((value$1 === (void 0))) {
     var jsx$3 = (void 0)
   } else {
-    var $$this$3 = $$this$2.agenda;
-    if (($$this$3 === (void 0))) {
+    var value$2 = value$1.agenda;
+    if ((value$2 === (void 0))) {
       var jsx$3 = (void 0)
     } else {
-      var this$16 = new $c_sjs_js_ArrayOps().init___sjs_js_Array($$this$3);
-      var $$this$4 = $s_sc_TraversableLike$class__headOption__sc_TraversableLike__s_Option(this$16);
-      if ($$this$4.isEmpty__Z()) {
+      var this$16 = new $c_sjs_js_ArrayOps().init___sjs_js_Array(value$2);
+      var opt$1 = $s_sc_TraversableLike$class__headOption__sc_TraversableLike__s_Option(this$16);
+      if (opt$1.isEmpty__Z()) {
         var jsx$3 = (void 0)
       } else {
-        var arg1$1 = $$this$4.get__O();
+        var arg1$1 = opt$1.get__O();
         var jsx$3 = arg1$1
       }
     }
@@ -19125,7 +19259,7 @@ $c_Lcom_microsoft_awt_components_GlobalAuthorization$$anonfun$1$$anonfun$apply$m
   var this$1 = this.$$outer$2.$$outer$3;
   var jsx$1 = this$1.$$scope$1.loadingStart;
   jsx$1();
-  $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$3.sessionFactory__Lcom_microsoft_awt_components_SessionFactory().logout__T__Lorg_scalajs_angularjs_http_HttpResponse(sessionID)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_GlobalAuthorization$$anonfun$1$$anonfun$apply$mcV$sp$2$$anonfun$apply$3().init___Lcom_microsoft_awt_components_GlobalAuthorization$$anonfun$1$$anonfun$apply$mcV$sp$2(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+  $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$3.sessionFactory$1.logout__T__Lorg_scalajs_angularjs_http_HttpResponse(sessionID)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_GlobalAuthorization$$anonfun$1$$anonfun$apply$mcV$sp$2$$anonfun$apply$3().init___Lcom_microsoft_awt_components_GlobalAuthorization$$anonfun$1$$anonfun$apply$mcV$sp$2(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
 });
 $c_Lcom_microsoft_awt_components_GlobalAuthorization$$anonfun$1$$anonfun$apply$mcV$sp$2.prototype.init___Lcom_microsoft_awt_components_GlobalAuthorization$$anonfun$1 = (function($$outer) {
   if (($$outer === null)) {
@@ -19166,11 +19300,11 @@ $c_Lcom_microsoft_awt_components_GlobalAuthorization$$anonfun$1$$anonfun$apply$m
     var x2 = $as_s_util_Success(x0$1);
     var result = x2.value$2;
     if ($m_Lcom_microsoft_awt_components_AuthenticationService$LogoutResponse$LogoutResultEnrichment$().isOk$extension__Lcom_microsoft_awt_components_AuthenticationService$LogoutResponse__Z(result)) {
-      this.$$outer$2.$$outer$2.$$outer$3.sessionFactory__Lcom_microsoft_awt_components_SessionFactory().logout__V()
+      this.$$outer$2.$$outer$2.$$outer$3.sessionFactory$1.logout__V()
     } else {
-      var $$this = this.$$outer$2.$$outer$2.$$outer$3.toaster__Lorg_scalajs_angularjs_toaster_Toaster();
+      var toaster = this.$$outer$2.$$outer$2.$$outer$3.toaster$1;
       var s = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-      $$this.pop(s, "Logout Failure", "")
+      toaster.pop(s, "Logout Failure", "")
     };
     var this$7 = this.$$outer$2.$$outer$2.$$outer$3;
     return this$7.$$scope$1.$apply((function(arg$outer) {
@@ -19183,13 +19317,13 @@ $c_Lcom_microsoft_awt_components_GlobalAuthorization$$anonfun$1$$anonfun$apply$m
   } else if ($is_s_util_Failure(x0$1)) {
     var x3 = $as_s_util_Failure(x0$1);
     var e = x3.exception$2;
-    var $$this$2 = this.$$outer$2.$$outer$2.$$outer$3.toaster__Lorg_scalajs_angularjs_toaster_Toaster();
+    var toaster$1 = this.$$outer$2.$$outer$2.$$outer$3.toaster$1;
     var this$12 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6 = false;
     var x2$1 = null;
     var x1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7: {
-      var message;
+      var s$3;
       if ($is_s_Some(x1)) {
         rc6 = true;
         x2$1 = $as_s_Some(x1);
@@ -19199,26 +19333,26 @@ $c_Lcom_microsoft_awt_components_GlobalAuthorization$$anonfun$1$$anonfun$apply$m
           var this$20 = new $c_sci_StringOps().init___T(s$1);
           var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n = $uI(thiz.length);
-          var $$this$1 = this$20.repr$1;
-          var until = $uI($$this$1.length);
-          var message = this$12.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$20.repr$1, n, until));
+          var $$this = this$20.repr$1;
+          var until = $uI($$this.length);
+          var s$3 = this$12.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$20.repr$1, n, until));
           break matchEnd7
         }
       };
       if (rc6) {
         var s$2 = $as_T(x2$1.x$2);
-        var message = s$2;
+        var s$3 = s$2;
         break matchEnd7
       };
       var x = $m_s_None$();
       if ((x === x1)) {
-        var message = "Cause unknown";
+        var s$3 = "Cause unknown";
         break matchEnd7
       };
       throw new $c_s_MatchError().init___O(x1)
     };
     var s$4 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$2.pop(s$4, "Logout Failure", message);
+    toaster$1.pop(s$4, "Logout Failure", s$3);
     var this$26 = this.$$outer$2.$$outer$2.$$outer$3;
     return this$26.$$scope$1.$apply((function(arg$outer$1) {
       return (function() {
@@ -19391,8 +19525,8 @@ $c_Lcom_microsoft_awt_components_GroupDetailsController$$anonfun$3.prototype.ini
   return this
 });
 $c_Lcom_microsoft_awt_components_GroupDetailsController$$anonfun$3.prototype.apply__Lcom_microsoft_awt_models_Group__T2 = (function(group) {
-  var $$this = group.members;
-  var memberIds = (($$this === (void 0)) ? [] : $$this);
+  var value = group.members;
+  var memberIds = ((value === (void 0)) ? [] : value);
   return new $c_T2().init___O__O(group, memberIds)
 });
 var $d_Lcom_microsoft_awt_components_GroupDetailsController$$anonfun$3 = new $TypeData().initClass({
@@ -19424,8 +19558,8 @@ $c_Lcom_microsoft_awt_components_GroupDetailsController$$anonfun$5.prototype.app
 });
 $c_Lcom_microsoft_awt_components_GroupDetailsController$$anonfun$5.prototype.apply__T2__s_concurrent_Future = (function(x$2) {
   if ((x$2 !== null)) {
-    var group = x$2.$$und1__O();
-    var memberIds = x$2.$$und2__O();
+    var group = x$2.$$und1$f;
+    var memberIds = x$2.$$und2$f;
     var this$1 = this.$$outer$2.userFactory$1.getUsers__sjs_js_Array__s_concurrent_ExecutionContext__s_concurrent_Future(memberIds, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1);
     var f = new $c_Lcom_microsoft_awt_components_GroupDetailsController$$anonfun$5$$anonfun$apply$3().init___Lcom_microsoft_awt_components_GroupDetailsController$$anonfun$5__Lcom_microsoft_awt_models_Group(this, group);
     var executor = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
@@ -19471,8 +19605,8 @@ $c_Lcom_microsoft_awt_components_GroupDetailsController$$anonfun$5$$anonfun$appl
   return this.apply__sjs_js_Array__s_concurrent_Future(v1)
 });
 $c_Lcom_microsoft_awt_components_GroupDetailsController$$anonfun$5$$anonfun$apply$3.prototype.apply__sjs_js_Array__s_concurrent_Future = (function(members) {
-  var $$this = this.$$outer$2.$$outer$2.workloadService$1.getWorkloadsByGroup__T__Z__Lorg_scalajs_angularjs_http_HttpResponse(this.$$outer$2.groupId$1$f, true);
-  var this$3 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future($$this);
+  var response = this.$$outer$2.$$outer$2.workloadService$1.getWorkloadsByGroup__T__Z__Lorg_scalajs_angularjs_http_HttpResponse(this.$$outer$2.groupId$1$f, true);
+  var this$3 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(response);
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer, members$2) {
     return (function(workloads$2) {
       return new $c_T3().init___O__O__O(arg$outer.group$1$f, members$2, workloads$2)
@@ -19541,11 +19675,11 @@ $c_Lcom_microsoft_awt_components_GroupDetailsController$$anonfun$com$microsoft$a
           group$2.workloads = workloads$1;
           var jsx$2 = arg$outer.$$outer$2.$$scope$1;
           var this$5 = new $c_sjs_js_ArrayOps().init___sjs_js_Array(workloads$1);
-          var $$this = $s_sc_TraversableLike$class__headOption__sc_TraversableLike__s_Option(this$5);
-          if ($$this.isEmpty__Z()) {
+          var opt = $s_sc_TraversableLike$class__headOption__sc_TraversableLike__s_Option(this$5);
+          if (opt.isEmpty__Z()) {
             var jsx$1 = (void 0)
           } else {
-            var arg1 = $$this.get__O();
+            var arg1 = opt.get__O();
             var jsx$1 = arg1
           };
           jsx$2.selectedWorkload = jsx$1
@@ -19574,8 +19708,8 @@ $c_Lcom_microsoft_awt_components_GroupDetailsController$$anonfun$com$microsoft$a
           var this$18 = new $c_sci_StringOps().init___T(s);
           var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n = $uI(thiz.length);
-          var $$this$1 = this$18.repr$1;
-          var until = $uI($$this$1.length);
+          var $$this = this$18.repr$1;
+          var until = $uI($$this.length);
           var jsx$3 = this$10.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$18.repr$1, n, until));
           break matchEnd7
         }
@@ -19594,10 +19728,10 @@ $c_Lcom_microsoft_awt_components_GroupDetailsController$$anonfun$com$microsoft$a
     };
     var s$1 = jsx$5.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$4, jsx$3]));
     jsx$6.log(s$1);
-    var $$this$2 = this.$$outer$2.toaster$1;
-    var message = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Failed to load group #", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([this.groupId$1$2]));
+    var toaster = this.$$outer$2.toaster$1;
+    var s$3 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Failed to load group #", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([this.groupId$1$2]));
     var s$4 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$2.pop(s$4, "Loading Error", message);
+    toaster.pop(s$4, "Loading Error", s$3);
     return (void 0)
   };
   throw new $c_s_MatchError().init___O(x0$1)
@@ -19648,13 +19782,13 @@ $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$a
   } else if ($is_s_util_Failure(x0$1)) {
     var x3 = $as_s_util_Failure(x0$1);
     var e = x3.exception$2;
-    var $$this$1 = this.$$outer$2.$$outer$3.com$microsoft$awt$components$GroupDialog$GroupDialogController$$toaster$f;
+    var toaster = this.$$outer$2.$$outer$3.com$microsoft$awt$components$GroupDialog$GroupDialogController$$toaster$f;
     var this$4 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6 = false;
     var x2$1 = null;
     var x1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7: {
-      var message;
+      var s$1;
       if ($is_s_Some(x1)) {
         rc6 = true;
         x2$1 = $as_s_Some(x1);
@@ -19666,24 +19800,24 @@ $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$a
           var n = $uI(thiz.length);
           var $$this = this$12.repr$1;
           var until = $uI($$this.length);
-          var message = this$4.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$12.repr$1, n, until));
+          var s$1 = this$4.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$12.repr$1, n, until));
           break matchEnd7
         }
       };
       if (rc6) {
         var s$2 = $as_T(x2$1.x$2);
-        var message = s$2;
+        var s$1 = s$2;
         break matchEnd7
       };
       var x = $m_s_None$();
       if ((x === x1)) {
-        var message = "Cause unknown";
+        var s$1 = "Cause unknown";
         break matchEnd7
       };
       throw new $c_s_MatchError().init___O(x1)
     };
     var s$3 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$1.pop(s$3, "Loading Error", message);
+    toaster.pop(s$3, "Loading Error", s$1);
     return (void 0)
   } else {
     throw new $c_s_MatchError().init___O(x0$1)
@@ -19827,13 +19961,13 @@ $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$a
         arg$outer$1.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$GroupDialog$GroupDialogController$$$scope$f.processing = false
       })
     })(this), jsx$3.durationToInt__s_concurrent_duration_FiniteDuration__I($m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$4.scala$concurrent$duration$DurationInt$$n$1, unit$1)));
-    var $$this$1 = this.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$GroupDialog$GroupDialogController$$toaster$f;
+    var toaster = this.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$GroupDialog$GroupDialogController$$toaster$f;
     var this$8 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6 = false;
     var x2$1 = null;
     var x1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7: {
-      var message;
+      var s$1;
       if ($is_s_Some(x1)) {
         rc6 = true;
         x2$1 = $as_s_Some(x1);
@@ -19845,24 +19979,24 @@ $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$4$$a
           var n = $uI(thiz.length);
           var $$this = this$16.repr$1;
           var until = $uI($$this.length);
-          var message = this$8.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$16.repr$1, n, until));
+          var s$1 = this$8.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$16.repr$1, n, until));
           break matchEnd7
         }
       };
       if (rc6) {
         var s$2 = $as_T(x2$1.x$2);
-        var message = s$2;
+        var s$1 = s$2;
         break matchEnd7
       };
       var x = $m_s_None$();
       if ((x === x1)) {
-        var message = "Cause unknown";
+        var s$1 = "Cause unknown";
         break matchEnd7
       };
       throw new $c_s_MatchError().init___O(x1)
     };
     var s$3 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$1.pop(s$3, "Workload Creation Error", message)
+    toaster.pop(s$3, "Workload Creation Error", s$1)
   } else {
     throw new $c_s_MatchError().init___O(x0$2)
   }
@@ -19932,13 +20066,13 @@ $c_Lcom_microsoft_awt_components_GroupListController$$anonfun$3.prototype.apply_
 });
 $c_Lcom_microsoft_awt_components_GroupListController$$anonfun$3.prototype.apply__sjs_js_UndefOr__V = (function(aGroup) {
   if ((aGroup !== (void 0))) {
-    var $$this = aGroup.expanded;
-    var value = (!(($$this !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z($$this, true)));
+    var valueA = aGroup.expanded;
+    var value = (!((valueA !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueA, true)));
     aGroup.expanded = value;
-    var $$this$1 = aGroup.expanded;
-    if ((($$this$1 !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z($$this$1, true))) {
-      var $$this$2 = aGroup.memberUsers;
-      var jsx$1 = ($$this$2 === (void 0))
+    var valueA$1 = aGroup.expanded;
+    if (((valueA$1 !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueA$1, true))) {
+      var value$1 = aGroup.memberUsers;
+      var jsx$1 = (value$1 === (void 0))
     } else {
       var jsx$1 = false
     };
@@ -19999,10 +20133,10 @@ $c_Lcom_microsoft_awt_components_GroupListController$$anonfun$com$microsoft$awt$
   var value = [];
   jsx$2.memberUsers = value;
   this.group$1$f.loading = true;
-  var $$this = this.group$1$f.members;
+  var value$1 = this.group$1$f.members;
   var f = new $c_Lcom_microsoft_awt_components_GroupListController$$anonfun$com$microsoft$awt$components$GroupListController$$enrichGroupWithMembersAndWorkloads$1$$anonfun$apply$6().init___Lcom_microsoft_awt_components_GroupListController$$anonfun$com$microsoft$awt$components$GroupListController$$enrichGroupWithMembersAndWorkloads$1__T(this, groupID);
-  if (($$this !== (void 0))) {
-    f.apply__sjs_js_Array__V($$this)
+  if ((value$1 !== (void 0))) {
+    f.apply__sjs_js_Array__V(value$1)
   }
 });
 var $d_Lcom_microsoft_awt_components_GroupListController$$anonfun$com$microsoft$awt$components$GroupListController$$enrichGroupWithMembersAndWorkloads$1 = new $TypeData().initClass({
@@ -20131,8 +20265,8 @@ $c_Lcom_microsoft_awt_components_GroupListController$$anonfun$com$microsoft$awt$
     var x2 = $as_s_util_Success(x0$1);
     var p3 = $as_T2(x2.value$2);
     if ((p3 !== null)) {
-      var users = p3.$$und1__O();
-      var workloads = p3.$$und2__O();
+      var users = p3.$$und1$f;
+      var workloads = p3.$$und2$f;
       var jsx$2 = this.$$outer$2.$$outer$2.$$outer$2.$$timeout$1;
       var jsx$1 = $m_Lorg_scalajs_angularjs_package$();
       var this$3 = new $c_s_concurrent_duration_package$DurationInt().init___I(500);
@@ -20162,9 +20296,9 @@ $c_Lcom_microsoft_awt_components_GroupListController$$anonfun$com$microsoft$awt$
         arg$outer$2.$$outer$2.$$outer$2.group$1$f.loading = false
       })
     })(this), jsx$3.durationToInt__s_concurrent_duration_FiniteDuration__I($m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$8.scala$concurrent$duration$DurationInt$$n$1, unit$1)));
-    var $$this = this.$$outer$2.$$outer$2.$$outer$2.toaster$1;
+    var toaster = this.$$outer$2.$$outer$2.$$outer$2.toaster$1;
     var s = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this.pop(s, "Loading Error", "Error loading group information");
+    toaster.pop(s, "Loading Error", "Error loading group information");
     var jsx$8 = $g.console;
     var jsx$7 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Error retrieving group members for ", ": ", ""]));
     var jsx$6 = this.$$outer$2.$$outer$2.group$1$f.name;
@@ -20183,8 +20317,8 @@ $c_Lcom_microsoft_awt_components_GroupListController$$anonfun$com$microsoft$awt$
           var this$23 = new $c_sci_StringOps().init___T(s$1);
           var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n = $uI(thiz.length);
-          var $$this$1 = this$23.repr$1;
-          var until = $uI($$this$1.length);
+          var $$this = this$23.repr$1;
+          var until = $uI($$this.length);
           var jsx$5 = this$15.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$23.repr$1, n, until));
           break matchEnd7
         }
@@ -20448,10 +20582,10 @@ $c_Lcom_microsoft_awt_components_HomeController$$anonfun$13$$anonfun$apply$12.pr
   return this.apply__Lcom_microsoft_awt_models_Post__O(v1)
 });
 $c_Lcom_microsoft_awt_components_HomeController$$anonfun$13$$anonfun$apply$12.prototype.apply__Lcom_microsoft_awt_models_Post__O = (function(post) {
-  var $$this = post.summaryLoaded;
-  if ((!(($$this !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z($$this, true)))) {
-    var $$this$1 = post.summaryLoadQueued;
-    var jsx$1 = (!(($$this$1 !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z($$this$1, true)))
+  var valueA = post.summaryLoaded;
+  if ((!((valueA !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueA, true)))) {
+    var valueA$1 = post.summaryLoadQueued;
+    var jsx$1 = (!((valueA$1 !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueA$1, true)))
   } else {
     var jsx$1 = false
   };
@@ -20597,31 +20731,39 @@ $h_Lcom_microsoft_awt_components_HomeController$$anonfun$14.prototype = $c_Lcom_
 $c_Lcom_microsoft_awt_components_HomeController$$anonfun$14.prototype.apply__O__O = (function(v1) {
   return this.apply__sjs_js_UndefOr__sjs_js_UndefOr(v1)
 });
+$c_Lcom_microsoft_awt_components_HomeController$$anonfun$14.prototype.init___Lcom_microsoft_awt_components_HomeController = (function($$outer) {
+  if (($$outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    this.$$outer$2 = $$outer
+  };
+  return this
+});
 $c_Lcom_microsoft_awt_components_HomeController$$anonfun$14.prototype.apply__sjs_js_UndefOr__sjs_js_UndefOr = (function(aPost) {
-  var $$this = this.$$outer$2.sessionFactory$1.user__sjs_js_UndefOr();
-  if (($$this === (void 0))) {
+  var value = this.$$outer$2.sessionFactory$1.user__sjs_js_UndefOr();
+  if ((value === (void 0))) {
     return (void 0)
   } else if ((aPost === (void 0))) {
     return (void 0)
   } else {
-    var $$this$1 = aPost.text;
-    if (($$this$1 === (void 0))) {
+    var value$1 = aPost.text;
+    if ((value$1 === (void 0))) {
       return (void 0)
     } else {
-      var text = $as_T($$this$1);
-      var $$this$2 = aPost.submitterId;
-      if (($$this$2 === (void 0))) {
+      var text = $as_T(value$1);
+      var value$2 = aPost.submitterId;
+      if ((value$2 === (void 0))) {
         return (void 0)
       } else {
-        var submitterId = $as_T($$this$2);
-        var $$this$3 = $$this._id;
-        if (($$this$3 === (void 0))) {
+        var submitterId = $as_T(value$2);
+        var value$3 = value._id;
+        if ((value$3 === (void 0))) {
           return (void 0)
         } else {
-          var userId = $as_T($$this$3);
+          var userId = $as_T(value$3);
           if (($uI(text.indexOf("http")) !== (-1))) {
-            var $$this$4 = $$this.isAdmin;
-            if ((($$this$4 !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z($$this$4, true))) {
+            var valueA = value.isAdmin;
+            if (((valueA !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueA, true))) {
               var value$4 = true
             } else {
               var value$4 = (submitterId === userId)
@@ -20634,14 +20776,6 @@ $c_Lcom_microsoft_awt_components_HomeController$$anonfun$14.prototype.apply__sjs
       }
     }
   }
-});
-$c_Lcom_microsoft_awt_components_HomeController$$anonfun$14.prototype.init___Lcom_microsoft_awt_components_HomeController = (function($$outer) {
-  if (($$outer === null)) {
-    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
-  } else {
-    this.$$outer$2 = $$outer
-  };
-  return this
 });
 var $d_Lcom_microsoft_awt_components_HomeController$$anonfun$14 = new $TypeData().initClass({
   Lcom_microsoft_awt_components_HomeController$$anonfun$14: 0
@@ -21013,9 +21147,9 @@ $c_Lcom_microsoft_awt_components_HomeController$$anonfun$com$microsoft$awt$compo
     var this$4 = new $c_s_concurrent_duration_package$DurationInt().init___I(250);
     var unit$1 = $m_ju_concurrent_TimeUnit$().MILLISECONDS$1;
     jsx$4(jsx$3.durationToInt__s_concurrent_duration_FiniteDuration__I($m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$4.scala$concurrent$duration$DurationInt$$n$1, unit$1)));
-    var $$this = this.$$outer$2.$$outer$2.toaster$1;
+    var toaster = this.$$outer$2.$$outer$2.toaster$1;
     var s = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this.pop(s, "Retrieval Error", "Error loading posts");
+    toaster.pop(s, "Retrieval Error", "Error loading posts");
     var jsx$7 = $g.console;
     var jsx$6 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Failed while retrieving posts: ", ""]));
     var this$11 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
@@ -21033,8 +21167,8 @@ $c_Lcom_microsoft_awt_components_HomeController$$anonfun$com$microsoft$awt$compo
           var this$19 = new $c_sci_StringOps().init___T(s$1);
           var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n = $uI(thiz.length);
-          var $$this$1 = this$19.repr$1;
-          var until = $uI($$this$1.length);
+          var $$this = this$19.repr$1;
+          var until = $uI($$this.length);
           var jsx$5 = this$11.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$19.repr$1, n, until));
           break matchEnd7
         }
@@ -21081,18 +21215,18 @@ function $h_Lcom_microsoft_awt_components_MainController$$anonfun$12() {
 }
 $h_Lcom_microsoft_awt_components_MainController$$anonfun$12.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$12.prototype;
 $c_Lcom_microsoft_awt_components_MainController$$anonfun$12.prototype.apply__O__O = (function(v1) {
-  return this.apply__sjs_js_UndefOr__sjs_js_UndefOr(v1)
+  this.apply__sjs_js_UndefOr__V(v1)
+});
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12.prototype.apply__sjs_js_UndefOr__V = (function(open) {
+  if ((open !== (void 0))) {
+    var isOpen = $uZ(open);
+    var jsx$1 = $g.console;
+    var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["toggled open ? ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([isOpen]));
+    jsx$1.log(s)
+  }
 });
 $c_Lcom_microsoft_awt_components_MainController$$anonfun$12.prototype.init___Lcom_microsoft_awt_components_MainController = (function($$outer) {
   return this
-});
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$12.prototype.apply__sjs_js_UndefOr__sjs_js_UndefOr = (function(aUser) {
-  if ((aUser === (void 0))) {
-    return (void 0)
-  } else {
-    var value = $m_Lcom_microsoft_awt_models_User$UserExtensions$().fullName$extension__Lcom_microsoft_awt_models_User__T(aUser);
-    return value
-  }
 });
 var $d_Lcom_microsoft_awt_components_MainController$$anonfun$12 = new $TypeData().initClass({
   Lcom_microsoft_awt_components_MainController$$anonfun$12: 0
@@ -21106,63 +21240,27 @@ var $d_Lcom_microsoft_awt_components_MainController$$anonfun$12 = new $TypeData(
 });
 $c_Lcom_microsoft_awt_components_MainController$$anonfun$12.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$12;
 /** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$13() {
-  $c_sr_AbstractFunction1.call(this)
-}
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$13.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$13.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$13;
-/** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController$$anonfun$13() {
-  /*<skip>*/
-}
-$h_Lcom_microsoft_awt_components_MainController$$anonfun$13.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$13.prototype;
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$13.prototype.apply__O__O = (function(v1) {
-  this.apply__sjs_js_UndefOr__V(v1)
-});
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$13.prototype.apply__sjs_js_UndefOr__V = (function(open) {
-  if ((open !== (void 0))) {
-    var isOpen = $uZ(open);
-    var jsx$1 = $g.console;
-    var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["toggled open ? ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([isOpen]));
-    jsx$1.log(s)
-  }
-});
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$13.prototype.init___Lcom_microsoft_awt_components_MainController = (function($$outer) {
-  return this
-});
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$13 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$13: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$13", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$13: 1,
-  sr_AbstractFunction1: 1,
-  O: 1,
-  F1: 1,
-  s_Serializable: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$13.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$13;
-/** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$15() {
+function $c_Lcom_microsoft_awt_components_MainController$$anonfun$14() {
   $c_sr_AbstractFunction1.call(this);
   this.$$outer$2 = null
 }
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$15;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14;
 /** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController$$anonfun$15() {
+function $h_Lcom_microsoft_awt_components_MainController$$anonfun$14() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_components_MainController$$anonfun$15.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$15.prototype;
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15.prototype.apply__O__O = (function(v1) {
+$h_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype.apply__O__O = (function(v1) {
   this.apply__sjs_js_UndefOr__V(v1)
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15.prototype.apply__sjs_js_UndefOr__V = (function(aNotification) {
-  var f = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15().init___Lcom_microsoft_awt_components_MainController$$anonfun$15(this);
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype.apply__sjs_js_UndefOr__V = (function(aNotification) {
+  var f = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14().init___Lcom_microsoft_awt_components_MainController$$anonfun$14(this);
   if ((aNotification !== (void 0))) {
     f.apply__Lcom_microsoft_awt_models_Notification__V(aNotification)
   }
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15.prototype.init___Lcom_microsoft_awt_components_MainController = (function($$outer) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype.init___Lcom_microsoft_awt_components_MainController = (function($$outer) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -21170,33 +21268,40 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$15.prototype.init___Lco
   };
   return this
 });
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$15 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$15: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$15", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$15: 1,
+var $d_Lcom_microsoft_awt_components_MainController$$anonfun$14 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController$$anonfun$14: 0
+}, false, "com.microsoft.awt.components.MainController$$anonfun$14", {
+  Lcom_microsoft_awt_components_MainController$$anonfun$14: 1,
   sr_AbstractFunction1: 1,
   O: 1,
   F1: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$15;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$14;
 /** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15() {
+function $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14() {
   $c_sr_AbstractFunction1.call(this);
   this.$$outer$2 = null
 }
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14;
 /** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15() {
+function $h_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15.prototype;
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15.prototype.apply__O__O = (function(v1) {
+$h_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14.prototype;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14.prototype.apply__O__O = (function(v1) {
   this.apply__Lcom_microsoft_awt_models_Notification__V(v1)
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$15 = (function($$outer) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14.prototype.apply__Lcom_microsoft_awt_models_Notification__V = (function(notification) {
+  var value = notification._id;
+  var f = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15().init___Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14__Lcom_microsoft_awt_models_Notification(this, notification);
+  if ((value !== (void 0))) {
+    f.apply__T__V($as_T(value))
+  }
+});
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$14 = (function($$outer) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -21204,47 +21309,34 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15.pr
   };
   return this
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15.prototype.apply__Lcom_microsoft_awt_models_Notification__V = (function(notification) {
-  var $$this = notification._id;
-  var f = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16().init___Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15__Lcom_microsoft_awt_models_Notification(this, notification);
-  if (($$this !== (void 0))) {
-    f.apply__T__V($as_T($$this))
-  }
-});
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$15$$anonfun$apply$15", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15: 1,
+var $d_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14: 0
+}, false, "com.microsoft.awt.components.MainController$$anonfun$14$$anonfun$apply$14", {
+  Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14: 1,
   sr_AbstractFunction1: 1,
   O: 1,
   F1: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14;
 /** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16() {
+function $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15() {
   $c_sr_AbstractFunction1.call(this);
   this.$$outer$2 = null;
   this.notification$1$f = null
 }
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15;
 /** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16() {
+function $h_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16.prototype;
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16.prototype.apply__O__O = (function(v1) {
+$h_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15.prototype;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15.prototype.apply__O__O = (function(v1) {
   this.apply__T__V($as_T(v1))
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16.prototype.apply__T__V = (function(id) {
-  var jsx$1 = $g.console;
-  var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Deleting notification ", "..."])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([id]));
-  jsx$1.log(s);
-  $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.$$outer$2.notificationSvc$2.deleteNotification__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(id, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17().init___Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
-});
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15__Lcom_microsoft_awt_models_Notification = (function($$outer, notification$1) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14__Lcom_microsoft_awt_models_Notification = (function($$outer, notification$1) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -21253,33 +21345,47 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$a
   this.notification$1$f = notification$1;
   return this
 });
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16: 1,
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15.prototype.apply__T__V = (function(id) {
+  var jsx$1 = $g.console;
+  var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Deleting notification ", "..."])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([id]));
+  jsx$1.log(s);
+  $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.$$outer$2.notificationSvc$2.deleteNotification__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(id, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16().init___Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+});
+var $d_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15: 0
+}, false, "com.microsoft.awt.components.MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15", {
+  Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15: 1,
   sr_AbstractFunction1: 1,
   O: 1,
   F1: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15;
 /** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17() {
+function $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16() {
   $c_sr_AbstractFunction1.call(this);
   this.$$outer$2 = null
 }
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16;
 /** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17() {
+function $h_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype;
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype.apply__O__O = (function(v1) {
+$h_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype.apply__O__O = (function(v1) {
   return this.apply__s_util_Try__O($as_s_util_Try(v1))
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype.apply__s_util_Try__O = (function(x0$1) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15 = (function($$outer) {
+  if (($$outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    this.$$outer$2 = $$outer
+  };
+  return this
+});
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype.apply__s_util_Try__O = (function(x0$1) {
   if ($is_s_util_Success(x0$1)) {
     var x2 = $as_s_util_Success(x0$1);
     var result = x2.value$2;
@@ -21287,7 +21393,7 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$a
       return (function() {
         return f.apply__O()
       })
-    })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17$$anonfun$apply$18().init___Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17__Lcom_microsoft_awt_models_OperationResult(this, result)))
+    })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17().init___Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16__Lcom_microsoft_awt_models_OperationResult(this, result)))
   } else if ($is_s_util_Failure(x0$1)) {
     var x3 = $as_s_util_Failure(x0$1);
     var e = x3.exception$2;
@@ -21328,47 +21434,39 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$a
     };
     var s$1 = jsx$2.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$1]));
     jsx$3.error(s$1);
-    var qual$2 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster$2;
+    var toaster = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster$2;
     var s$3 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    qual$2.pop(s$3, "Failed to delete notification", null);
+    toaster.pop(s$3, "Failed to delete notification", null);
     return (void 0)
   } else {
     throw new $c_s_MatchError().init___O(x0$1)
   }
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16 = (function($$outer) {
-  if (($$outer === null)) {
-    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
-  } else {
-    this.$$outer$2 = $$outer
-  };
-  return this
-});
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17: 1,
+var $d_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16: 0
+}, false, "com.microsoft.awt.components.MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16", {
+  Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16: 1,
   sr_AbstractFunction1: 1,
   O: 1,
   F1: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16;
 /** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17$$anonfun$apply$18() {
+function $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17() {
   $c_sr_AbstractFunction0.call(this);
   this.$$outer$2 = null;
   this.result$1$2 = null
 }
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17$$anonfun$apply$18.prototype = new $h_sr_AbstractFunction0();
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17$$anonfun$apply$18.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17$$anonfun$apply$18;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype = new $h_sr_AbstractFunction0();
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17;
 /** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17$$anonfun$apply$18() {
+function $h_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17$$anonfun$apply$18.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17$$anonfun$apply$18.prototype;
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17$$anonfun$apply$18.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17__Lcom_microsoft_awt_models_OperationResult = (function($$outer, result$1) {
+$h_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16__Lcom_microsoft_awt_models_OperationResult = (function($$outer, result$1) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -21377,7 +21475,7 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$a
   this.result$1$2 = result$1;
   return this
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17$$anonfun$apply$18.prototype.apply__O = (function() {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype.apply__O = (function() {
   var jsx$1 = $g.console;
   var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["result => ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$as_T($g.angular.toJson(this.result$1$2))]));
   jsx$1.log(s);
@@ -21389,9 +21487,9 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$a
       if ((i < len)) {
         var index = i;
         var arg1 = array[index];
-        var $$this = arg1._id;
+        var valueA = arg1._id;
         var valueB = this.$$outer$2.$$outer$2.notification$1$f._id;
-        var jsx$2 = (!(($$this !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, $$this))))
+        var jsx$2 = (!((valueA !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, valueA))))
       } else {
         var jsx$2 = false
       };
@@ -21405,9 +21503,9 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$a
     var x1 = ((n >= $uI(array.length)) ? (-1) : n);
     switch (x1) {
       case (-1): {
-        var qual$1 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster$2;
+        var toaster = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster$2;
         var s$1 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-        qual$1.pop(s$1, "Failed to delete notification", null);
+        toaster.pop(s$1, "Failed to delete notification", null);
         return (void 0);
         break
       }
@@ -21420,33 +21518,33 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$a
     return (void 0)
   }
 });
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17$$anonfun$apply$18 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17$$anonfun$apply$18: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17$$anonfun$apply$18", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17$$anonfun$apply$18: 1,
+var $d_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17: 0
+}, false, "com.microsoft.awt.components.MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17", {
+  Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17: 1,
   sr_AbstractFunction0: 1,
   O: 1,
   F0: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17$$anonfun$apply$18.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$15$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17$$anonfun$apply$18;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17;
 /** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$17() {
+function $c_Lcom_microsoft_awt_components_MainController$$anonfun$16() {
   $c_sr_AbstractFunction1.call(this);
   this.$$outer$2 = null
 }
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$17.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$17.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$17;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$16.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$16.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$16;
 /** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController$$anonfun$17() {
+function $h_Lcom_microsoft_awt_components_MainController$$anonfun$16() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_components_MainController$$anonfun$17.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$17.prototype;
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$17.prototype.apply__O__O = (function(v1) {
+$h_Lcom_microsoft_awt_components_MainController$$anonfun$16.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$16.prototype;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$16.prototype.apply__O__O = (function(v1) {
   return this.apply__sjs_js_UndefOr__sjs_js_UndefOr(v1)
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$17.prototype.init___Lcom_microsoft_awt_components_MainController = (function($$outer) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$16.prototype.init___Lcom_microsoft_awt_components_MainController = (function($$outer) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -21454,47 +21552,47 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$17.prototype.init___Lco
   };
   return this
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$17.prototype.apply__sjs_js_UndefOr__sjs_js_UndefOr = (function(aNotification) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$16.prototype.apply__sjs_js_UndefOr__sjs_js_UndefOr = (function(aNotification) {
   if ((aNotification === (void 0))) {
     return (void 0)
   } else {
-    var $$this = aNotification.type;
-    if (($$this === (void 0))) {
+    var value = aNotification.type;
+    if ((value === (void 0))) {
       return (void 0)
     } else {
-      var kind = $as_T($$this);
+      var kind = $as_T(value);
       var value$1 = this.$$outer$2.com$microsoft$awt$components$MainController$$getNotificationTypeIcon__T__T(kind);
       return value$1
     }
   }
 });
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$17 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$17: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$17", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$17: 1,
+var $d_Lcom_microsoft_awt_components_MainController$$anonfun$16 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController$$anonfun$16: 0
+}, false, "com.microsoft.awt.components.MainController$$anonfun$16", {
+  Lcom_microsoft_awt_components_MainController$$anonfun$16: 1,
   sr_AbstractFunction1: 1,
   O: 1,
   F1: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$17.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$17;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$16.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$16;
 /** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$19() {
+function $c_Lcom_microsoft_awt_components_MainController$$anonfun$18() {
   $c_sr_AbstractFunction1.call(this);
   this.$$outer$2 = null
 }
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$19.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$19.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$19;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$18.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$18.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$18;
 /** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController$$anonfun$19() {
+function $h_Lcom_microsoft_awt_components_MainController$$anonfun$18() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_components_MainController$$anonfun$19.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$19.prototype;
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$19.prototype.apply__O__O = (function(v1) {
+$h_Lcom_microsoft_awt_components_MainController$$anonfun$18.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$18.prototype;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$18.prototype.apply__O__O = (function(v1) {
   return this.apply__sjs_js_UndefOr__sjs_js_UndefOr(v1)
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$19.prototype.init___Lcom_microsoft_awt_components_MainController = (function($$outer) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$18.prototype.init___Lcom_microsoft_awt_components_MainController = (function($$outer) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -21502,7 +21600,7 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$19.prototype.init___Lco
   };
   return this
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$19.prototype.apply__sjs_js_UndefOr__sjs_js_UndefOr = (function(aNotificationType) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$18.prototype.apply__sjs_js_UndefOr__sjs_js_UndefOr = (function(aNotificationType) {
   if ((aNotificationType === (void 0))) {
     return (void 0)
   } else {
@@ -21514,14 +21612,14 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$19.prototype.apply__sjs
     while ((i < len)) {
       var index = i;
       var arg1 = array[index];
-      var $$this = arg1.type;
-      if (($$this !== (void 0))) {
-        var x$5 = $as_T($$this);
-        var jsx$1 = (x$5 === notificationType)
+      var value = arg1.type;
+      if ((value !== (void 0))) {
+        var x$4 = $as_T(value);
+        var jsx$1 = (x$4 === notificationType)
       } else {
         var jsx$1 = false
       };
-      if (jsx$1) {
+      if ((jsx$1 !== false)) {
         array$1.push(arg1)
       };
       i = ((1 + i) | 0)
@@ -21529,30 +21627,30 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$19.prototype.apply__sjs
     return array$1
   }
 });
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$19 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$19: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$19", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$19: 1,
+var $d_Lcom_microsoft_awt_components_MainController$$anonfun$18 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController$$anonfun$18: 0
+}, false, "com.microsoft.awt.components.MainController$$anonfun$18", {
+  Lcom_microsoft_awt_components_MainController$$anonfun$18: 1,
   sr_AbstractFunction1: 1,
   O: 1,
   F1: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$19.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$19;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$18.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$18;
 /** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$23() {
+function $c_Lcom_microsoft_awt_components_MainController$$anonfun$22() {
   $c_sr_AbstractFunction2.call(this);
   this.$$outer$2 = null
 }
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$23.prototype = new $h_sr_AbstractFunction2();
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$23.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$23;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$22.prototype = new $h_sr_AbstractFunction2();
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$22.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$22;
 /** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController$$anonfun$23() {
+function $h_Lcom_microsoft_awt_components_MainController$$anonfun$22() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_components_MainController$$anonfun$23.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$23.prototype;
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$23.prototype.init___Lcom_microsoft_awt_components_MainController = (function($$outer) {
+$h_Lcom_microsoft_awt_components_MainController$$anonfun$22.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$22.prototype;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$22.prototype.init___Lcom_microsoft_awt_components_MainController = (function($$outer) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -21560,7 +21658,7 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$23.prototype.init___Lco
   };
   return this
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$23.prototype.apply__Lorg_scalajs_dom_raw_Event__Z__sjs_js_Any = (function(x$8, connected) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$22.prototype.apply__Lorg_scalajs_dom_raw_Event__Z__sjs_js_Any = (function(x$7, connected) {
   var jsx$1 = $g.console;
   var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Web socket state change: connected = ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([connected]));
   jsx$1.log(s);
@@ -21570,20 +21668,20 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$23.prototype.apply__Lor
     })
   })(this, connected))
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$23.prototype.apply__O__O__O = (function(v1, v2) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$22.prototype.apply__O__O__O = (function(v1, v2) {
   return this.apply__Lorg_scalajs_dom_raw_Event__Z__sjs_js_Any(v1, $uZ(v2))
 });
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$23 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$23: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$23", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$23: 1,
+var $d_Lcom_microsoft_awt_components_MainController$$anonfun$22 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController$$anonfun$22: 0
+}, false, "com.microsoft.awt.components.MainController$$anonfun$22", {
+  Lcom_microsoft_awt_components_MainController$$anonfun$22: 1,
   sr_AbstractFunction2: 1,
   O: 1,
   F2: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$23.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$23;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$22.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$22;
 /** @constructor */
 function $c_Lcom_microsoft_awt_components_MainController$$anonfun$4() {
   $c_sr_AbstractFunction1.call(this)
@@ -21605,12 +21703,12 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$4.prototype.apply__sjs_
   if ((aResult === (void 0))) {
     return (void 0)
   } else {
-    var $$this = aResult.name;
-    if (($$this === (void 0))) {
+    var value = aResult.name;
+    if ((value === (void 0))) {
       return (void 0)
     } else {
-      var value$1 = $as_T($$this);
-      return value$1
+      var name = $as_T(value);
+      return name
     }
   }
 });
@@ -21646,9 +21744,9 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$5.prototype.apply__sjs_
   if ((aUser === (void 0))) {
     return (void 0)
   } else {
-    var $$this = aUser.avatarURL;
-    if (($$this !== (void 0))) {
-      var x$1 = $as_T($$this);
+    var value = aUser.avatarURL;
+    if ((value !== (void 0))) {
+      var x$1 = $as_T(value);
       var this$8 = new $c_sci_StringOps().init___T(x$1);
       var jsx$1 = $s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$8)
     } else {
@@ -21699,12 +21797,19 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$6.prototype.apply__sjs_
   if ((aUser === (void 0))) {
     return (void 0)
   } else {
-    var $$this = this.$$outer$2.sessionFactory$2.getSessionLastUpdatedTime__Lcom_microsoft_awt_models_UserLike__sjs_js_UndefOr(aUser);
-    if (($$this === (void 0))) {
+    var value = this.$$outer$2.sessionFactory$2.getSessionLastUpdatedTime__Lcom_microsoft_awt_models_UserLike__sjs_js_UndefOr(aUser);
+    if ((value === (void 0))) {
       return (void 0)
     } else {
-      var lastUpdated = $uD($$this);
-      var value$1 = ((($m_jl_System$().currentTimeMillis__J().toDouble__D() - lastUpdated) < 15) ? "GREEN" : "YELLOW");
+      var lastUpdated = $uD(value);
+      var t = $m_jl_System$().currentTimeMillis__J();
+      var lo = t.lo$2;
+      var hi = t.hi$2;
+      if ((($m_sjsr_RuntimeLong$().scala$scalajs$runtime$RuntimeLong$$toDouble__I__I__D(lo, hi) - lastUpdated) < 15)) {
+        var value$1 = "GREEN"
+      } else {
+        var value$1 = "YELLOW"
+      };
       return value$1
     }
   }
@@ -21778,12 +21883,12 @@ function $h_Lcom_microsoft_awt_components_MainController$$anonfun$9() {
 $h_Lcom_microsoft_awt_components_MainController$$anonfun$9.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$9.prototype;
 $c_Lcom_microsoft_awt_components_MainController$$anonfun$9.prototype.apply__sjs_js_UndefOr__sjs_js_UndefOr__sjs_js_UndefOr__V = (function(item, aModel, label) {
   if ((aModel !== (void 0))) {
-    var $$this = aModel.type;
-    if (($$this !== (void 0))) {
-      var entity = $as_T($$this);
-      var $$this$1 = aModel._id;
-      if (($$this$1 !== (void 0))) {
-        var modelId = $as_T($$this$1);
+    var value = aModel.type;
+    if ((value !== (void 0))) {
+      var entity = $as_T(value);
+      var value$1 = aModel._id;
+      if ((value$1 !== (void 0))) {
+        var modelId = $as_T(value$1);
         var jsx$1 = $g.console;
         var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Handling ", " ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([entity, label]));
         jsx$1.log(s);
@@ -21840,10 +21945,10 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$compo
 $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1.prototype.apply__T__V = (function(userID) {
   $g.console.log("Loading events, groups and notifications...");
   var this$2 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.eventService$2.getEvents__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(userID, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1));
-  var f = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20().init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1__T(this, userID);
+  var f = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19().init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1__T(this, userID);
   var executor = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
   var outcome = $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$2, f, executor);
-  outcome.onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$26().init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+  outcome.onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$25().init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
 });
 $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1.prototype.init___Lcom_microsoft_awt_components_MainController = (function($$outer) {
   if (($$outer === null)) {
@@ -21865,22 +21970,22 @@ var $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$c
 });
 $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1;
 /** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20() {
+function $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19() {
   $c_sr_AbstractFunction1.call(this);
   this.$$outer$2 = null;
   this.userID$1$f = null
 }
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19;
 /** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20() {
+function $h_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20.prototype;
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20.prototype.apply__O__O = (function(v1) {
+$h_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19.prototype;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19.prototype.apply__O__O = (function(v1) {
   return this.apply__sjs_js_Array__s_concurrent_Future(v1)
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1__T = (function($$outer, userID$1) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1__T = (function($$outer, userID$1) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -21889,49 +21994,40 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$compo
   this.userID$1$f = userID$1;
   return this
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20.prototype.apply__sjs_js_Array__s_concurrent_Future = (function(events) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19.prototype.apply__sjs_js_Array__s_concurrent_Future = (function(events) {
   var this$1 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.groupService$2.getGroupsIncludingOrOwnedByUser__T__I__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(this.userID$1$f, 10, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1));
-  var f = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20$$anonfun$apply$24().init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20__sjs_js_Array(this, events);
+  var f = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23().init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19__sjs_js_Array(this, events);
   var executor = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
   return $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$1, f, executor)
 });
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20: 1,
+var $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19: 0
+}, false, "com.microsoft.awt.components.MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19", {
+  Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19: 1,
   sr_AbstractFunction1: 1,
   O: 1,
   F1: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19;
 /** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20$$anonfun$apply$24() {
+function $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23() {
   $c_sr_AbstractFunction1.call(this);
   this.$$outer$2 = null;
   this.events$2$f = null
 }
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20$$anonfun$apply$24.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20$$anonfun$apply$24.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20$$anonfun$apply$24;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23;
 /** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20$$anonfun$apply$24() {
+function $h_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20$$anonfun$apply$24.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20$$anonfun$apply$24.prototype;
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20$$anonfun$apply$24.prototype.apply__O__O = (function(v1) {
+$h_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23.prototype;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23.prototype.apply__O__O = (function(v1) {
   return this.apply__sjs_js_Array__s_concurrent_Future(v1)
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20$$anonfun$apply$24.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20__sjs_js_Array = (function($$outer, events$2) {
-  if (($$outer === null)) {
-    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
-  } else {
-    this.$$outer$2 = $$outer
-  };
-  this.events$2$f = events$2;
-  return this
-});
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20$$anonfun$apply$24.prototype.apply__sjs_js_Array__s_concurrent_Future = (function(groups) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23.prototype.apply__sjs_js_Array__s_concurrent_Future = (function(groups) {
   var this$1 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.$$outer$2.notificationSvc$2.getNotificationsByUserID__T__Z__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(this.$$outer$2.userID$1$f, true, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1));
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer, groups$2) {
     return (function(notifications$2) {
@@ -21941,33 +22037,42 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$compo
   var executor = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
   return $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$1, f, executor)
 });
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20$$anonfun$apply$24 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20$$anonfun$apply$24: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20$$anonfun$apply$24", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20$$anonfun$apply$24: 1,
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19__sjs_js_Array = (function($$outer, events$2) {
+  if (($$outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    this.$$outer$2 = $$outer
+  };
+  this.events$2$f = events$2;
+  return this
+});
+var $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23: 0
+}, false, "com.microsoft.awt.components.MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23", {
+  Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23: 1,
   sr_AbstractFunction1: 1,
   O: 1,
   F1: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20$$anonfun$apply$24.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$20$$anonfun$apply$24;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23;
 /** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$26() {
+function $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$25() {
   $c_sr_AbstractFunction1.call(this);
   this.$$outer$2 = null
 }
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$26.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$26.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$26;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$25.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$25.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$25;
 /** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$26() {
+function $h_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$25() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$26.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$26.prototype;
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$26.prototype.apply__O__O = (function(v1) {
+$h_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$25.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$25.prototype;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$25.prototype.apply__O__O = (function(v1) {
   return this.apply__s_util_Try__O($as_s_util_Try(v1))
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$26.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1 = (function($$outer) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$25.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1 = (function($$outer) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -21975,7 +22080,7 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$compo
   };
   return this
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$26.prototype.apply__s_util_Try__O = (function(x0$2) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$25.prototype.apply__s_util_Try__O = (function(x0$2) {
   if ($is_s_util_Success(x0$2)) {
     var x2 = $as_s_util_Success(x0$2);
     var p3 = $as_T3(x2.value$2);
@@ -22032,24 +22137,24 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$compo
     };
     var s$1 = jsx$2.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$1]));
     jsx$3.error(s$1);
-    var $$this$1 = this.$$outer$2.$$outer$2.toaster$2;
+    var toaster = this.$$outer$2.$$outer$2.toaster$2;
     var s$3 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$1.pop(s$3, "Loading Error", "Failed to load events and notifications");
+    toaster.pop(s$3, "Loading Error", "Failed to load events and notifications");
     return (void 0)
   };
   throw new $c_s_MatchError().init___O(x0$2)
 });
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$26 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$26: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$26", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$26: 1,
+var $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$25 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$25: 0
+}, false, "com.microsoft.awt.components.MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$25", {
+  Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$25: 1,
   sr_AbstractFunction1: 1,
   O: 1,
   F1: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$26.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$26;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$25.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$25;
 /** @constructor */
 function $c_Lcom_microsoft_awt_components_PhotosController$$anonfun$2$$anonfun$apply$mcV$sp$1() {
   $c_sr_AbstractFunction1.call(this);
@@ -22066,10 +22171,10 @@ $c_Lcom_microsoft_awt_components_PhotosController$$anonfun$2$$anonfun$apply$mcV$
   this.apply__Lcom_microsoft_awt_models_User__V(v1)
 });
 $c_Lcom_microsoft_awt_components_PhotosController$$anonfun$2$$anonfun$apply$mcV$sp$1.prototype.apply__Lcom_microsoft_awt_models_User__V = (function(user) {
-  var $$this = user._id;
+  var value = user._id;
   var f = new $c_Lcom_microsoft_awt_components_PhotosController$$anonfun$2$$anonfun$apply$mcV$sp$1$$anonfun$apply$2().init___Lcom_microsoft_awt_components_PhotosController$$anonfun$2$$anonfun$apply$mcV$sp$1__Lcom_microsoft_awt_models_User(this, user);
-  if (($$this !== (void 0))) {
-    f.apply__T__V($as_T($$this))
+  if ((value !== (void 0))) {
+    f.apply__T__V($as_T(value))
   }
 });
 $c_Lcom_microsoft_awt_components_PhotosController$$anonfun$2$$anonfun$apply$mcV$sp$1.prototype.init___Lcom_microsoft_awt_components_PhotosController$$anonfun$2 = (function($$outer) {
@@ -22205,9 +22310,9 @@ $c_Lcom_microsoft_awt_components_PhotosController$$anonfun$2$$anonfun$apply$mcV$
     };
     var s$1 = jsx$2.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$1]));
     jsx$3.error(s$1);
-    var $$this$1 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$3.com$microsoft$awt$components$PhotosController$$toaster$f;
+    var toaster = this.$$outer$2.$$outer$2.$$outer$2.$$outer$3.com$microsoft$awt$components$PhotosController$$toaster$f;
     var s$3 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$1.pop(s$3, "Loading Error", "General fault while retrieving photos");
+    toaster.pop(s$3, "Loading Error", "General fault while retrieving photos");
     return (void 0)
   } else {
     throw new $c_s_MatchError().init___O(x0$1)
@@ -22251,13 +22356,13 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$10.prototype.apply
   if ((aPost === (void 0))) {
     return (void 0)
   } else {
-    var $$this = this.$$outer$2.sessionFactory__Lcom_microsoft_awt_components_SessionFactory().user__sjs_js_UndefOr();
-    if (($$this === (void 0))) {
+    var value = this.$$outer$2.sessionFactory$1.user__sjs_js_UndefOr();
+    if ((value === (void 0))) {
       return (void 0)
     } else {
-      var $$this$1 = $$this._id;
+      var valueA = value._id;
       var valueB = aPost.submitterId;
-      var value$1 = (($$this$1 !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, $$this$1)));
+      var value$1 = ((valueA !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, valueA)));
       return value$1
     }
   }
@@ -22300,20 +22405,20 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$11.prototype.apply
   if ((aPost === (void 0))) {
     return (void 0)
   } else {
-    var $$this = this.$$outer$2.sessionFactory__Lcom_microsoft_awt_components_SessionFactory().user__sjs_js_UndefOr();
-    var $$this$1 = (($$this === (void 0)) ? (void 0) : $$this._id);
-    if (($$this$1 === (void 0))) {
+    var value = this.$$outer$2.sessionFactory$1.user__sjs_js_UndefOr();
+    var value$1 = ((value === (void 0)) ? (void 0) : value._id);
+    if ((value$1 === (void 0))) {
       return (void 0)
     } else {
-      var userID = $as_T($$this$1);
-      var $$this$2 = aPost.likedBy;
-      if (($$this$2 !== (void 0))) {
+      var userID = $as_T(value$1);
+      var value$2 = aPost.likedBy;
+      if ((value$2 !== (void 0))) {
         var i = 0;
         while (true) {
-          if ((i < $uI($$this$2.length))) {
+          if ((i < $uI(value$2.length))) {
             var index = i;
-            var arg1 = $$this$2[index];
-            var jsx$1 = (!$m_sr_BoxesRunTime$().equals__O__O__Z(arg1, userID))
+            var arg1 = value$2[index];
+            var jsx$1 = ($m_sr_BoxesRunTime$().equals__O__O__Z(arg1, userID) === false)
           } else {
             var jsx$1 = false
           };
@@ -22323,7 +22428,7 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$11.prototype.apply
             break
           }
         };
-        var value$3 = (i !== $uI($$this$2.length))
+        var value$3 = (i !== $uI(value$2.length))
       } else {
         var value$3 = false
       };
@@ -22366,10 +22471,10 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$17.prototype.apply
   this.apply__sjs_js_UndefOr__V(v1)
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$17.prototype.apply__sjs_js_UndefOr__V = (function(aPost) {
-  var $$this = this.$$outer$2.sessionFactory__Lcom_microsoft_awt_components_SessionFactory().user__sjs_js_UndefOr();
+  var value = this.$$outer$2.sessionFactory$1.user__sjs_js_UndefOr();
   var f = new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$17$$anonfun$apply$26().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$17__sjs_js_UndefOr(this, aPost);
-  if (($$this !== (void 0))) {
-    f.apply__Lcom_microsoft_awt_models_User__V($$this)
+  if ((value !== (void 0))) {
+    f.apply__Lcom_microsoft_awt_models_User__V(value)
   }
 });
 var $d_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$17 = new $TypeData().initClass({
@@ -22400,10 +22505,10 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$17$$anonfun$apply$
   this.apply__Lcom_microsoft_awt_models_User__V(v1)
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$17$$anonfun$apply$26.prototype.apply__Lcom_microsoft_awt_models_User__V = (function(user) {
-  var $$this = this.aPost$2$2;
+  var value = this.aPost$2$2;
   var f = new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$17$$anonfun$apply$26$$anonfun$apply$27().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$17$$anonfun$apply$26__Lcom_microsoft_awt_models_User(this, user);
-  if (($$this !== (void 0))) {
-    f.apply__Lcom_microsoft_awt_models_Post__V($$this)
+  if ((value !== (void 0))) {
+    f.apply__Lcom_microsoft_awt_models_Post__V(value)
   }
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$17$$anonfun$apply$26.prototype.init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$17__sjs_js_UndefOr = (function($$outer, aPost$2) {
@@ -22501,7 +22606,7 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$17$$anonfun$apply$
     var jsx$1 = $g.console;
     var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["updatedPost = ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$as_T($g.angular.toJson(updatedPost))]));
     jsx$1.log(s);
-    var qual$3 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$timeout__Lorg_scalajs_angularjs_Timeout();
+    var qual$3 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$timeout$1;
     var x$29 = (function(arg$outer) {
       return (function() {
         arg$outer.post$8$f.loading = false
@@ -22512,58 +22617,67 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$17$$anonfun$apply$
     var unit = $m_ju_concurrent_TimeUnit$().SECONDS$1;
     var x$30 = jsx$2.durationToInt__s_concurrent_duration_FiniteDuration__I($m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$4.scala$concurrent$duration$DurationInt$$n$1, unit));
     qual$3(x$29, x$30);
-    var array = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().uploader.getNotUploadedItems();
+    var this$5 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2;
+    var jsx$3 = this$5.$$scope$1.uploader;
+    var array = jsx$3.getNotUploadedItems();
     if (($uI(array.length) !== 0)) {
       $g.console.log("Scheduling pending files for upload...");
-      this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$PostingCapabilities$$lastUploadedPost$und$eq__s_Option__V($m_s_Option$().apply__O__s_Option(updatedPost));
-      this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().uploader.uploadAll()
+      this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$PostingCapabilities$$lastUploadedPost$1 = $m_s_Option$().apply__O__s_Option(updatedPost);
+      var this$8 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2;
+      var jsx$4 = this$8.$$scope$1.uploader;
+      jsx$4.uploadAll()
     };
-    (0, this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().setupNewPost)();
-    $asUnit((0, this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().updatePost)(updatedPost))
+    var this$9 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2;
+    var jsx$5 = this$9.$$scope$1.setupNewPost;
+    jsx$5();
+    var this$10 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2;
+    var jsx$7 = this$10.$$scope$1.updatePost;
+    var jsx$6 = jsx$7(updatedPost);
+    $asUnit(jsx$6)
   } else if ($is_s_util_Failure(x0$3)) {
     var x3 = $as_s_util_Failure(x0$3);
     var e = x3.exception$2;
     this.post$8$f.loading = false;
-    var jsx$5 = $g.console;
-    var jsx$4 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Failed saving a post: ", ""]));
-    var this$10 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
+    var jsx$10 = $g.console;
+    var jsx$9 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Failed saving a post: ", ""]));
+    var this$14 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6 = false;
     var x2$1 = null;
     var x1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7: {
-      var jsx$3;
+      var jsx$8;
       if ($is_s_Some(x1)) {
         rc6 = true;
         x2$1 = $as_s_Some(x1);
         var s$1 = $as_T(x2$1.x$2);
         var prefix = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
         if ((($uI(s$1.length) >= 0) && ($as_T(s$1.substring(0, $uI(prefix.length))) === prefix))) {
-          var this$18 = new $c_sci_StringOps().init___T(s$1);
+          var this$22 = new $c_sci_StringOps().init___T(s$1);
           var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n = $uI(thiz.length);
-          var $$this = this$18.repr$1;
+          var $$this = this$22.repr$1;
           var until = $uI($$this.length);
-          var jsx$3 = this$10.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$18.repr$1, n, until));
+          var jsx$8 = this$14.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$22.repr$1, n, until));
           break matchEnd7
         }
       };
       if (rc6) {
         var s$2 = $as_T(x2$1.x$2);
-        var jsx$3 = s$2;
+        var jsx$8 = s$2;
         break matchEnd7
       };
       var x = $m_s_None$();
       if ((x === x1)) {
-        var jsx$3 = "Cause unknown";
+        var jsx$8 = "Cause unknown";
         break matchEnd7
       };
       throw new $c_s_MatchError().init___O(x1)
     };
-    var s$3 = jsx$4.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$3]));
-    jsx$5.error(s$3);
-    var $$this$1 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster__Lorg_scalajs_angularjs_toaster_Toaster();
+    var s$3 = jsx$9.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$8]));
+    jsx$10.error(s$3);
+    var toaster = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster$1;
     var s$4 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$1.pop(s$4, "Posting Error", "General fault while publishing a post")
+    toaster.pop(s$4, "Posting Error", "General fault while publishing a post")
   } else {
     throw new $c_s_MatchError().init___O(x0$3)
   }
@@ -22638,16 +22752,17 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$18$$anonfun$apply$
   var jsx$1 = $g.console;
   var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Attempting to reload post ", "..."])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([postID]));
   jsx$1.log(s);
-  var array = this.$$outer$2.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().posts;
+  var this$2 = this.$$outer$2.$$outer$2;
+  var array = this$2.$$scope$1.posts;
   var len = $uI(array.length);
   var i = 0;
   while (true) {
     if ((i < len)) {
       var index = i;
       var arg1 = array[index];
-      var $$this = arg1._id;
-      if (($$this !== (void 0))) {
-        var x$8 = $as_T($$this);
+      var value = arg1._id;
+      if ((value !== (void 0))) {
+        var x$8 = $as_T(value);
         var jsx$3 = (x$8 === postID)
       } else {
         var jsx$3 = false
@@ -22663,12 +22778,12 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$18$$anonfun$apply$
     }
   };
   var i$1 = i;
-  var this$6 = ((i$1 < $uI(array.length)) ? new $c_s_Some().init___O(array[i$1]) : $m_s_None$());
-  if ((!this$6.isEmpty__Z())) {
-    var arg1$1 = this$6.get__O();
+  var this$7 = ((i$1 < $uI(array.length)) ? new $c_s_Some().init___O(array[i$1]) : $m_s_None$());
+  if ((!this$7.isEmpty__Z())) {
+    var arg1$1 = this$7.get__O();
     arg1$1.loading = true
   };
-  $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.postService__Lcom_microsoft_awt_components_PostService().getPostByID__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(postID, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$18$$anonfun$apply$29$$anonfun$apply$33().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$18$$anonfun$apply$29__T(this, postID), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+  $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.postService$1.getPostByID__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(postID, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$18$$anonfun$apply$29$$anonfun$apply$33().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$18$$anonfun$apply$29__T(this, postID), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$18$$anonfun$apply$29.prototype.init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$18 = (function($$outer) {
   if (($$outer === null)) {
@@ -22718,15 +22833,18 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$18$$anonfun$apply$
   if ($is_s_util_Success(x0$4)) {
     var x2 = $as_s_util_Success(x0$4);
     var updatedPost = x2.value$2;
-    return this.$$outer$2.$$outer$2.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().$apply((function(arg$outer, updatedPost$1) {
+    var this$1 = this.$$outer$2.$$outer$2.$$outer$2;
+    return this$1.$$scope$1.$apply((function(arg$outer, updatedPost$1) {
       return (function() {
-        (0, arg$outer.$$outer$2.$$outer$2.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().updatePost)(updatedPost$1)
+        var this$2 = arg$outer.$$outer$2.$$outer$2.$$outer$2;
+        var jsx$1 = this$2.$$scope$1.updatePost;
+        jsx$1(updatedPost$1)
       })
     })(this, updatedPost))
   } else if ($is_s_util_Failure(x0$4)) {
-    var jsx$1 = $g.console;
+    var jsx$2 = $g.console;
     var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Failed to reload post ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([this.postID$3$2]));
-    jsx$1.error(s);
+    jsx$2.error(s);
     return (void 0)
   } else {
     throw new $c_s_MatchError().init___O(x0$4)
@@ -22807,16 +22925,17 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$19$$anonfun$apply$
   this.apply__Lcom_microsoft_awt_models_Post__V(v1)
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$19$$anonfun$apply$34.prototype.apply__Lcom_microsoft_awt_models_Post__V = (function(updatedPost) {
-  var array = this.$$outer$2.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().posts;
+  var this$1 = this.$$outer$2.$$outer$2;
+  var array = this$1.$$scope$1.posts;
   var len = $uI(array.length);
   var i = 0;
   while (true) {
     if ((i < len)) {
       var index = i;
       var arg1 = array[index];
-      var $$this = arg1._id;
+      var valueA = arg1._id;
       var valueB = updatedPost._id;
-      var jsx$1 = (!(($$this !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, $$this))))
+      var jsx$1 = (!((valueA !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, valueA))))
     } else {
       var jsx$1 = false
     };
@@ -22830,31 +22949,46 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$19$$anonfun$apply$
   var x1 = ((n >= $uI(array.length)) ? (-1) : n);
   switch (x1) {
     case (-1): {
-      $uI(this.$$outer$2.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().posts.push(updatedPost));
+      var this$17 = this.$$outer$2.$$outer$2;
+      var jsx$3 = this$17.$$scope$1.posts;
+      var jsx$2 = jsx$3.push(updatedPost);
+      $uI(jsx$2);
       break
     }
     default: {
-      this.$$outer$2.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().posts[x1] = updatedPost
+      var this$18 = this.$$outer$2.$$outer$2;
+      var jsx$4 = this$18.$$scope$1.posts;
+      jsx$4[x1] = updatedPost
     }
   };
-  var $$this$1 = updatedPost.submitter;
-  if (($$this$1 === (void 0))) {
-    var $$this$3 = (void 0)
+  var valueA$1 = updatedPost.submitter;
+  if ((valueA$1 === (void 0))) {
+    var value = (void 0)
   } else {
-    var $$this$2 = $m_s_Option$().apply__O__s_Option($$this$1);
-    var $$this$3 = ($$this$2.isEmpty__Z() ? (void 0) : $$this$2.get__O())
-  };
-  if (($$this$3 === (void 0))) {
-    var $$this$4 = updatedPost.submitterId;
-    if (($$this$4 === (void 0))) {
-      var $$this$6 = (void 0)
+    var opt = $m_s_Option$().apply__O__s_Option(valueA$1);
+    if (opt.isEmpty__Z()) {
+      var value = (void 0)
     } else {
-      var $$this$5 = $m_s_Option$().apply__O__s_Option($$this$4);
-      var $$this$6 = ($$this$5.isEmpty__Z() ? (void 0) : $$this$5.get__O())
+      var arg1$1 = opt.get__O();
+      var value = arg1$1
+    }
+  };
+  if ((value === (void 0))) {
+    var valueA$2 = updatedPost.submitterId;
+    if ((valueA$2 === (void 0))) {
+      var value$1 = (void 0)
+    } else {
+      var opt$1 = $m_s_Option$().apply__O__s_Option(valueA$2);
+      if (opt$1.isEmpty__Z()) {
+        var value$1 = (void 0)
+      } else {
+        var arg1$2 = opt$1.get__O();
+        var value$1 = arg1$2
+      }
     };
     var f = new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$19$$anonfun$apply$34$$anonfun$apply$35().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$19$$anonfun$apply$34__Lcom_microsoft_awt_models_Post(this, updatedPost);
-    if (($$this$6 !== (void 0))) {
-      f.apply__T__V($as_T($$this$6))
+    if ((value$1 !== (void 0))) {
+      f.apply__T__V($as_T(value$1))
     }
   }
 });
@@ -22886,7 +23020,7 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$19$$anonfun$apply$
   this.apply__T__V($as_T(v1))
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$19$$anonfun$apply$34$$anonfun$apply$35.prototype.apply__T__V = (function(submitterId) {
-  this.$$outer$2.$$outer$2.$$outer$2.userFactory__Lcom_microsoft_awt_components_UserFactory().getUserByID__T__s_concurrent_ExecutionContext__s_concurrent_Future(submitterId, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$19$$anonfun$apply$34$$anonfun$apply$35$$anonfun$apply$36().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$19$$anonfun$apply$34$$anonfun$apply$35(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+  this.$$outer$2.$$outer$2.$$outer$2.userFactory$1.getUserByID__T__s_concurrent_ExecutionContext__s_concurrent_Future(submitterId, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$19$$anonfun$apply$34$$anonfun$apply$35$$anonfun$apply$36().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$19$$anonfun$apply$34$$anonfun$apply$35(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$19$$anonfun$apply$34$$anonfun$apply$35.prototype.init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$19$$anonfun$apply$34__Lcom_microsoft_awt_models_Post = (function($$outer, updatedPost$5) {
   if (($$outer === null)) {
@@ -22935,7 +23069,8 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$19$$anonfun$apply$
   if ($is_s_util_Success(x0$5)) {
     var x2 = $as_s_util_Success(x0$5);
     var user = x2.value$2;
-    return this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().$apply((function(arg$outer, user$2) {
+    var this$1 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2;
+    return this$1.$$scope$1.$apply((function(arg$outer, user$2) {
       return (function() {
         var jsx$1 = arg$outer.$$outer$2.updatedPost$5$f;
         var value = $m_Lcom_microsoft_awt_models_Submitter$().apply__Lcom_microsoft_awt_models_User__Lcom_microsoft_awt_models_Submitter(user$2);
@@ -22945,42 +23080,42 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$19$$anonfun$apply$
   } else if ($is_s_util_Failure(x0$5)) {
     var x3 = $as_s_util_Failure(x0$5);
     var e = x3.exception$2;
-    var $$this$1 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster__Lorg_scalajs_angularjs_toaster_Toaster();
-    var this$5 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
+    var toaster = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster$1;
+    var this$6 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6 = false;
     var x2$1 = null;
     var x1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7: {
-      var message;
+      var s$1;
       if ($is_s_Some(x1)) {
         rc6 = true;
         x2$1 = $as_s_Some(x1);
         var s = $as_T(x2$1.x$2);
         var prefix = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
         if ((($uI(s.length) >= 0) && ($as_T(s.substring(0, $uI(prefix.length))) === prefix))) {
-          var this$13 = new $c_sci_StringOps().init___T(s);
+          var this$14 = new $c_sci_StringOps().init___T(s);
           var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n = $uI(thiz.length);
-          var $$this = this$13.repr$1;
+          var $$this = this$14.repr$1;
           var until = $uI($$this.length);
-          var message = this$5.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$13.repr$1, n, until));
+          var s$1 = this$6.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$14.repr$1, n, until));
           break matchEnd7
         }
       };
       if (rc6) {
         var s$2 = $as_T(x2$1.x$2);
-        var message = s$2;
+        var s$1 = s$2;
         break matchEnd7
       };
       var x = $m_s_None$();
       if ((x === x1)) {
-        var message = "Cause unknown";
+        var s$1 = "Cause unknown";
         break matchEnd7
       };
       throw new $c_s_MatchError().init___O(x1)
     };
     var s$3 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$1.pop(s$3, "Submitter retrieval", message);
+    toaster.pop(s$3, "Submitter retrieval", s$1);
     return (void 0)
   } else {
     throw new $c_s_MatchError().init___O(x0$5)
@@ -23024,20 +23159,20 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$21.prototype.apply
   if ((aComment === (void 0))) {
     return (void 0)
   } else {
-    var $$this = this.$$outer$2.sessionFactory__Lcom_microsoft_awt_components_SessionFactory().user__sjs_js_UndefOr();
-    var $$this$1 = (($$this === (void 0)) ? (void 0) : $$this._id);
-    if (($$this$1 === (void 0))) {
+    var value = this.$$outer$2.sessionFactory$1.user__sjs_js_UndefOr();
+    var value$1 = ((value === (void 0)) ? (void 0) : value._id);
+    if ((value$1 === (void 0))) {
       return (void 0)
     } else {
-      var userID = $as_T($$this$1);
-      var $$this$2 = aComment.likedBy;
-      if (($$this$2 !== (void 0))) {
+      var userID = $as_T(value$1);
+      var value$2 = aComment.likedBy;
+      if ((value$2 !== (void 0))) {
         var i = 0;
         while (true) {
-          if ((i < $uI($$this$2.length))) {
+          if ((i < $uI(value$2.length))) {
             var index = i;
-            var arg1 = $$this$2[index];
-            var jsx$1 = (!$m_sr_BoxesRunTime$().equals__O__O__Z(arg1, userID))
+            var arg1 = value$2[index];
+            var jsx$1 = ($m_sr_BoxesRunTime$().equals__O__O__Z(arg1, userID) === false)
           } else {
             var jsx$1 = false
           };
@@ -23047,7 +23182,7 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$21.prototype.apply
             break
           }
         };
-        var value$3 = (i !== $uI($$this$2.length))
+        var value$3 = (i !== $uI(value$2.length))
       } else {
         var value$3 = false
       };
@@ -23124,10 +23259,10 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$
   this.apply__Lcom_microsoft_awt_models_Post__V(v1)
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$44.prototype.apply__Lcom_microsoft_awt_models_Post__V = (function(post) {
-  var $$this = post._id;
+  var value = post._id;
   var f = new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$44$$anonfun$apply$45().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$44(this);
-  if (($$this !== (void 0))) {
-    f.apply__T__V($as_T($$this))
+  if ((value !== (void 0))) {
+    f.apply__T__V($as_T(value))
   }
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$44.prototype.init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27__sjs_js_UndefOr__sjs_js_UndefOr = (function($$outer, aPost$3, aComment$2) {
@@ -23175,10 +23310,10 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$
   this.apply__T__V($as_T(v1))
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$44$$anonfun$apply$45.prototype.apply__T__V = (function(postID) {
-  var $$this = this.$$outer$2.$$outer$2.$$outer$2.sessionFactory__Lcom_microsoft_awt_components_SessionFactory().user__sjs_js_UndefOr();
+  var value = this.$$outer$2.$$outer$2.$$outer$2.sessionFactory$1.user__sjs_js_UndefOr();
   var f = new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$44$$anonfun$apply$45$$anonfun$apply$46().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$44$$anonfun$apply$45__T(this, postID);
-  if (($$this !== (void 0))) {
-    f.apply__Lcom_microsoft_awt_models_User__V($$this)
+  if ((value !== (void 0))) {
+    f.apply__Lcom_microsoft_awt_models_User__V(value)
   }
 });
 var $d_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$44$$anonfun$apply$45 = new $TypeData().initClass({
@@ -23218,10 +23353,10 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$
   return this
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$44$$anonfun$apply$45$$anonfun$apply$46.prototype.apply__Lcom_microsoft_awt_models_User__V = (function(user) {
-  var $$this = this.$$outer$2.$$outer$2.aComment$2$f;
+  var value = this.$$outer$2.$$outer$2.aComment$2$f;
   var f = new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$44$$anonfun$apply$45$$anonfun$apply$46$$anonfun$apply$47().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$44$$anonfun$apply$45$$anonfun$apply$46__Lcom_microsoft_awt_models_User(this, user);
-  if (($$this !== (void 0))) {
-    f.apply__T__V($as_T($$this))
+  if ((value !== (void 0))) {
+    f.apply__T__V($as_T(value))
   }
 });
 var $d_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$44$$anonfun$apply$45$$anonfun$apply$46 = new $TypeData().initClass({
@@ -23254,7 +23389,7 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$44$$anonfun$apply$45$$anonfun$apply$46$$anonfun$apply$47.prototype.apply__T__V = (function(text) {
   var submitter = $m_Lcom_microsoft_awt_models_Submitter$().apply__Lcom_microsoft_awt_models_User__Lcom_microsoft_awt_models_Submitter(this.user$4$f);
   var comment = $m_Lcom_microsoft_awt_models_Comment$().apply__T__Lcom_microsoft_awt_models_Submitter__Lcom_microsoft_awt_models_Comment(text, submitter);
-  $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.postService__Lcom_microsoft_awt_components_PostService().createComment__T__Lcom_microsoft_awt_models_Comment__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(this.$$outer$2.postID$5$f, comment, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$44$$anonfun$apply$45$$anonfun$apply$46$$anonfun$apply$47$$anonfun$apply$48().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$44$$anonfun$apply$45$$anonfun$apply$46$$anonfun$apply$47(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+  $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.postService$1.createComment__T__Lcom_microsoft_awt_models_Comment__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(this.$$outer$2.postID$5$f, comment, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$44$$anonfun$apply$45$$anonfun$apply$46$$anonfun$apply$47$$anonfun$apply$48().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$44$$anonfun$apply$45$$anonfun$apply$46$$anonfun$apply$47(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$44$$anonfun$apply$45$$anonfun$apply$46$$anonfun$apply$47.prototype.init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$44$$anonfun$apply$45$$anonfun$apply$46__Lcom_microsoft_awt_models_User = (function($$outer, user$4) {
   if (($$outer === null)) {
@@ -23295,89 +23430,92 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$27$$anonfun$apply$
   if ($is_s_util_Success(x0$7)) {
     var x2 = $as_s_util_Success(x0$7);
     var updatedPost = x2.value$2;
-    return this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().$apply((function(arg$outer, updatedPost$3) {
+    var this$1 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2;
+    return this$1.$$scope$1.$apply((function(arg$outer, updatedPost$3) {
       return (function() {
-        (0, arg$outer.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().updatePost)(updatedPost$3)
+        var this$2 = arg$outer.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2;
+        var jsx$1 = this$2.$$scope$1.updatePost;
+        jsx$1(updatedPost$3)
       })
     })(this, updatedPost))
   } else if ($is_s_util_Failure(x0$7)) {
     var x3 = $as_s_util_Failure(x0$7);
     var e = x3.exception$2;
-    var jsx$5 = $g.console;
-    var jsx$4 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Failed while adding a new comment the post (", ") or userID (", "): ", ""]));
-    var jsx$3 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.aPost$3$f;
-    var jsx$2 = this.$$outer$2.user$4$f._id;
-    var this$3 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
+    var jsx$6 = $g.console;
+    var jsx$5 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Failed while adding a new comment the post (", ") or userID (", "): ", ""]));
+    var jsx$4 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.aPost$3$f;
+    var jsx$3 = this.$$outer$2.user$4$f._id;
+    var this$5 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6 = false;
     var x2$1 = null;
     var x1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7: {
-      var jsx$1;
+      var jsx$2;
       if ($is_s_Some(x1)) {
         rc6 = true;
         x2$1 = $as_s_Some(x1);
         var s = $as_T(x2$1.x$2);
         var prefix = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
         if ((($uI(s.length) >= 0) && ($as_T(s.substring(0, $uI(prefix.length))) === prefix))) {
-          var this$11 = new $c_sci_StringOps().init___T(s);
+          var this$13 = new $c_sci_StringOps().init___T(s);
           var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n = $uI(thiz.length);
-          var $$this = this$11.repr$1;
+          var $$this = this$13.repr$1;
           var until = $uI($$this.length);
-          var jsx$1 = this$3.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$11.repr$1, n, until));
+          var jsx$2 = this$5.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$13.repr$1, n, until));
           break matchEnd7
         }
       };
       if (rc6) {
         var s$2 = $as_T(x2$1.x$2);
-        var jsx$1 = s$2;
+        var jsx$2 = s$2;
         break matchEnd7
       };
       var x = $m_s_None$();
       if ((x === x1)) {
-        var jsx$1 = "Cause unknown";
+        var jsx$2 = "Cause unknown";
         break matchEnd7
       };
       throw new $c_s_MatchError().init___O(x1)
     };
-    var s$1 = jsx$4.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$3, jsx$2, jsx$1]));
-    jsx$5.error(s$1);
-    var $$this$2 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster__Lorg_scalajs_angularjs_toaster_Toaster();
-    var this$18 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
+    var s$1 = jsx$5.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$4, jsx$3, jsx$2]));
+    jsx$6.error(s$1);
+    var toaster = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster$1;
+    var this$20 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6$1 = false;
     var x2$2 = null;
     var x1$1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7$1: {
-      var message;
+      var s$4;
       if ($is_s_Some(x1$1)) {
         rc6$1 = true;
         x2$2 = $as_s_Some(x1$1);
         var s$3 = $as_T(x2$2.x$2);
         var prefix$1 = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
         if ((($uI(s$3.length) >= 0) && ($as_T(s$3.substring(0, $uI(prefix$1.length))) === prefix$1))) {
-          var this$26 = new $c_sci_StringOps().init___T(s$3);
+          var this$28 = new $c_sci_StringOps().init___T(s$3);
           var thiz$1 = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n$1 = $uI(thiz$1.length);
-          var $$this$1 = this$26.repr$1;
+          var $$this$1 = this$28.repr$1;
           var until$1 = $uI($$this$1.length);
-          var message = this$18.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$26.repr$1, n$1, until$1));
+          var s$4 = this$20.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$28.repr$1, n$1, until$1));
           break matchEnd7$1
         }
       };
       if (rc6$1) {
         var s$2$1 = $as_T(x2$2.x$2);
-        var message = s$2$1;
+        var s$4 = s$2$1;
         break matchEnd7$1
       };
       var x$1 = $m_s_None$();
       if ((x$1 === x1$1)) {
-        var message = "Cause unknown";
+        var s$4 = "Cause unknown";
         break matchEnd7$1
       };
       throw new $c_s_MatchError().init___O(x1$1)
     };
     var s$5 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$2.pop(s$5, "Error adding comment", message);
+    toaster.pop(s$5, "Error adding comment", s$4);
     return (void 0)
   } else {
     throw new $c_s_MatchError().init___O(x0$7)
@@ -23461,29 +23599,29 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$29.prototype.apply
   } else if ((aReply === (void 0))) {
     return (void 0)
   } else {
-    var $$this = aPost.replyLikes;
-    if (($$this === (void 0))) {
+    var value = aPost.replyLikes;
+    if ((value === (void 0))) {
       return (void 0)
     } else {
-      var $$this$1 = this.$$outer$2.sessionFactory__Lcom_microsoft_awt_components_SessionFactory().user__sjs_js_UndefOr();
-      var $$this$2 = (($$this$1 === (void 0)) ? (void 0) : $$this$1._id);
-      if (($$this$2 === (void 0))) {
+      var value$1 = this.$$outer$2.sessionFactory$1.user__sjs_js_UndefOr();
+      var value$2 = ((value$1 === (void 0)) ? (void 0) : value$1._id);
+      if ((value$2 === (void 0))) {
         return (void 0)
       } else {
-        var userID = $as_T($$this$2);
+        var userID = $as_T(value$2);
         var i = 0;
         while (true) {
-          if ((i < $uI($$this.length))) {
+          if ((i < $uI(value.length))) {
             var index = i;
-            var v1 = $$this[index];
-            var $$this$3 = v1.likedBy;
-            if (($$this$3 !== (void 0))) {
+            var v1 = value[index];
+            var value$3 = v1.likedBy;
+            if ((value$3 !== (void 0))) {
               var i$1 = 0;
               while (true) {
-                if ((i$1 < $uI($$this$3.length))) {
+                if ((i$1 < $uI(value$3.length))) {
                   var index$1 = i$1;
-                  var arg1 = $$this$3[index$1];
-                  var jsx$3 = (!$m_sr_BoxesRunTime$().equals__O__O__Z(arg1, userID))
+                  var arg1 = value$3[index$1];
+                  var jsx$3 = ($m_sr_BoxesRunTime$().equals__O__O__Z(arg1, userID) === false)
                 } else {
                   var jsx$3 = false
                 };
@@ -23493,11 +23631,11 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$29.prototype.apply
                   break
                 }
               };
-              var jsx$2 = (i$1 !== $uI($$this$3.length))
+              var jsx$2 = (i$1 !== $uI(value$3.length))
             } else {
               var jsx$2 = false
             };
-            var jsx$1 = (!jsx$2)
+            var jsx$1 = (jsx$2 === false)
           } else {
             var jsx$1 = false
           };
@@ -23507,7 +23645,7 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$29.prototype.apply
             break
           }
         };
-        var value$4 = (i !== $uI($$this.length));
+        var value$4 = (i !== $uI(value.length));
         return value$4
       }
     }
@@ -23586,10 +23724,10 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$
   this.apply__Lcom_microsoft_awt_models_Post__V(v1)
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61.prototype.apply__Lcom_microsoft_awt_models_Post__V = (function(post) {
-  var $$this = post._id;
+  var value = post._id;
   var f = new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61(this);
-  if (($$this !== (void 0))) {
-    f.apply__T__V($as_T($$this))
+  if ((value !== (void 0))) {
+    f.apply__T__V($as_T(value))
   }
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61.prototype.init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35__sjs_js_UndefOr__sjs_js_UndefOr__sjs_js_UndefOr = (function($$outer, aPost$4, aComment$3, aText$1) {
@@ -23630,10 +23768,10 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$
   this.apply__T__V($as_T(v1))
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62.prototype.apply__T__V = (function(postID) {
-  var $$this = this.$$outer$2.aComment$3$f;
+  var value = this.$$outer$2.aComment$3$f;
   var f = new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62__T(this, postID);
-  if (($$this !== (void 0))) {
-    f.apply__Lcom_microsoft_awt_models_Comment__V($$this)
+  if ((value !== (void 0))) {
+    f.apply__Lcom_microsoft_awt_models_Comment__V(value)
   }
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62.prototype.init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61 = (function($$outer) {
@@ -23681,10 +23819,10 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$
   return this
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63.prototype.apply__Lcom_microsoft_awt_models_Comment__V = (function(comment) {
-  var $$this = comment._id;
+  var value = comment._id;
   var f = new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63$$anonfun$apply$64().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63__Lcom_microsoft_awt_models_Comment(this, comment);
-  if (($$this !== (void 0))) {
-    f.apply__T__V($as_T($$this))
+  if ((value !== (void 0))) {
+    f.apply__T__V($as_T(value))
   }
 });
 var $d_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63 = new $TypeData().initClass({
@@ -23715,10 +23853,10 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$
   this.apply__T__V($as_T(v1))
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63$$anonfun$apply$64.prototype.apply__T__V = (function(commentID) {
-  var $$this = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.sessionFactory__Lcom_microsoft_awt_components_SessionFactory().user__sjs_js_UndefOr();
+  var value = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.sessionFactory$1.user__sjs_js_UndefOr();
   var f = new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63$$anonfun$apply$64$$anonfun$apply$65().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63$$anonfun$apply$64__T(this, commentID);
-  if (($$this !== (void 0))) {
-    f.apply__Lcom_microsoft_awt_models_User__V($$this)
+  if ((value !== (void 0))) {
+    f.apply__Lcom_microsoft_awt_models_User__V(value)
   }
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63$$anonfun$apply$64.prototype.init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63__Lcom_microsoft_awt_models_Comment = (function($$outer, comment$4) {
@@ -23767,10 +23905,10 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$
   return this
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63$$anonfun$apply$64$$anonfun$apply$65.prototype.apply__Lcom_microsoft_awt_models_User__V = (function(user) {
-  var $$this = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.aText$1$f;
+  var value = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.aText$1$f;
   var f = new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63$$anonfun$apply$64$$anonfun$apply$65$$anonfun$apply$66().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63$$anonfun$apply$64$$anonfun$apply$65__Lcom_microsoft_awt_models_User(this, user);
-  if (($$this !== (void 0))) {
-    f.apply__T__V($as_T($$this))
+  if ((value !== (void 0))) {
+    f.apply__T__V($as_T(value))
   }
 });
 var $d_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63$$anonfun$apply$64$$anonfun$apply$65 = new $TypeData().initClass({
@@ -23812,7 +23950,7 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63$$anonfun$apply$64$$anonfun$apply$65$$anonfun$apply$66.prototype.apply__T__V = (function(text) {
   var submitter = $m_Lcom_microsoft_awt_models_Submitter$().apply__Lcom_microsoft_awt_models_User__Lcom_microsoft_awt_models_Submitter(this.user$5$f);
   var reply = $m_Lcom_microsoft_awt_models_Reply$().apply__T__Lcom_microsoft_awt_models_Submitter__Lcom_microsoft_awt_models_Reply(text, submitter);
-  $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.postService__Lcom_microsoft_awt_components_PostService().createReply__T__T__Lcom_microsoft_awt_models_Reply__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(this.$$outer$2.$$outer$2.$$outer$2.postID$7$f, this.$$outer$2.commentID$3$f, reply, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63$$anonfun$apply$64$$anonfun$apply$65$$anonfun$apply$66$$anonfun$apply$67().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63$$anonfun$apply$64$$anonfun$apply$65$$anonfun$apply$66__Lcom_microsoft_awt_models_Reply(this, reply), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+  $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.postService$1.createReply__T__T__Lcom_microsoft_awt_models_Reply__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(this.$$outer$2.$$outer$2.$$outer$2.postID$7$f, this.$$outer$2.commentID$3$f, reply, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63$$anonfun$apply$64$$anonfun$apply$65$$anonfun$apply$66$$anonfun$apply$67().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63$$anonfun$apply$64$$anonfun$apply$65$$anonfun$apply$66__Lcom_microsoft_awt_models_Reply(this, reply), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
 });
 var $d_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63$$anonfun$apply$64$$anonfun$apply$65$$anonfun$apply$66 = new $TypeData().initClass({
   Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63$$anonfun$apply$64$$anonfun$apply$65$$anonfun$apply$66: 0
@@ -23852,7 +23990,8 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63$$anonfun$apply$64$$anonfun$apply$65$$anonfun$apply$66$$anonfun$apply$67.prototype.apply__s_util_Try__O = (function(x0$9) {
   if ($is_s_util_Success(x0$9)) {
-    return this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().$apply((function(f) {
+    var this$1 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2;
+    return this$1.$$scope$1.$apply((function(f) {
       return (function() {
         return f.apply__O()
       })
@@ -23864,7 +24003,7 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$
     var jsx$4 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Failed while adding a new reply the post (", ") or userID (", "): ", ""]));
     var jsx$3 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.aPost$4$f;
     var jsx$2 = this.$$outer$2.user$5$f._id;
-    var this$2 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
+    var this$3 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6 = false;
     var x2 = null;
     var x1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
@@ -23876,12 +24015,12 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$
         var s = $as_T(x2.x$2);
         var prefix = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
         if ((($uI(s.length) >= 0) && ($as_T(s.substring(0, $uI(prefix.length))) === prefix))) {
-          var this$10 = new $c_sci_StringOps().init___T(s);
+          var this$11 = new $c_sci_StringOps().init___T(s);
           var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n = $uI(thiz.length);
-          var $$this = this$10.repr$1;
+          var $$this = this$11.repr$1;
           var until = $uI($$this.length);
-          var jsx$1 = this$2.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$10.repr$1, n, until));
+          var jsx$1 = this$3.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$11.repr$1, n, until));
           break matchEnd7
         }
       };
@@ -23899,42 +24038,42 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$
     };
     var s$1 = jsx$4.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$3, jsx$2, jsx$1]));
     jsx$5.error(s$1);
-    var $$this$2 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster__Lorg_scalajs_angularjs_toaster_Toaster();
-    var this$17 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
+    var toaster = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster$1;
+    var this$18 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6$1 = false;
     var x2$1 = null;
     var x1$1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7$1: {
-      var message;
+      var s$4;
       if ($is_s_Some(x1$1)) {
         rc6$1 = true;
         x2$1 = $as_s_Some(x1$1);
         var s$3 = $as_T(x2$1.x$2);
         var prefix$1 = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
         if ((($uI(s$3.length) >= 0) && ($as_T(s$3.substring(0, $uI(prefix$1.length))) === prefix$1))) {
-          var this$25 = new $c_sci_StringOps().init___T(s$3);
+          var this$26 = new $c_sci_StringOps().init___T(s$3);
           var thiz$1 = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n$1 = $uI(thiz$1.length);
-          var $$this$1 = this$25.repr$1;
+          var $$this$1 = this$26.repr$1;
           var until$1 = $uI($$this$1.length);
-          var message = this$17.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$25.repr$1, n$1, until$1));
+          var s$4 = this$18.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$26.repr$1, n$1, until$1));
           break matchEnd7$1
         }
       };
       if (rc6$1) {
         var s$2$1 = $as_T(x2$1.x$2);
-        var message = s$2$1;
+        var s$4 = s$2$1;
         break matchEnd7$1
       };
       var x$1 = $m_s_None$();
       if ((x$1 === x1$1)) {
-        var message = "Cause unknown";
+        var s$4 = "Cause unknown";
         break matchEnd7$1
       };
       throw new $c_s_MatchError().init___O(x1$1)
     };
     var s$5 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$2.pop(s$5, "Error adding reply", message);
+    toaster.pop(s$5, "Error adding reply", s$4);
     return (void 0)
   } else {
     throw new $c_s_MatchError().init___O(x0$9)
@@ -24011,14 +24150,14 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$37.prototype.apply
   if ((aPost === (void 0))) {
     return (void 0)
   } else {
-    var $$this = aPost.text;
-    if (($$this === (void 0))) {
-      var $$this$1 = (void 0)
+    var value = aPost.text;
+    if ((value === (void 0))) {
+      var valueA = (void 0)
     } else {
-      var text = $as_T($$this);
-      var $$this$1 = $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microsoft$awt$components$PostingCapabilities$$extractHashTags__Lcom_microsoft_awt_components_PostingCapabilities__T__sjs_js_UndefOr(this.$$outer$2, text)
+      var text = $as_T(value);
+      var valueA = $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microsoft$awt$components$PostingCapabilities$$extractHashTags__Lcom_microsoft_awt_components_PostingCapabilities__T__sjs_js_UndefOr(this.$$outer$2, text)
     };
-    return (($$this$1 !== (void 0)) ? $$this$1 : aPost.tags)
+    return ((valueA !== (void 0)) ? valueA : aPost.tags)
   }
 });
 var $d_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$37 = new $TypeData().initClass({
@@ -24061,8 +24200,13 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$38.prototype.apply
     var jsx$1 = $g.console;
     var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Adding '", "' to filter..."])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([tag]));
     jsx$1.log(s);
-    this.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().tags.push(tag);
-    $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microsoft$awt$components$PostingCapabilities$$loadPostsByTags__Lcom_microsoft_awt_components_PostingCapabilities__sjs_js_Array__V(this.$$outer$2, this.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().tags)
+    var this$5 = this.$$outer$2;
+    var jsx$2 = this$5.$$scope$1.tags;
+    jsx$2.push(tag);
+    var jsx$4 = this.$$outer$2;
+    var this$6 = this.$$outer$2;
+    var jsx$3 = this$6.$$scope$1.tags;
+    $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microsoft$awt$components$PostingCapabilities$$loadPostsByTags__Lcom_microsoft_awt_components_PostingCapabilities__sjs_js_Array__V(jsx$4, jsx$3)
   }
 });
 var $d_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$38 = new $TypeData().initClass({
@@ -24102,7 +24246,8 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$39.prototype.apply
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$39.prototype.apply__sjs_js_UndefOr__V = (function(aTag) {
   if ((aTag !== (void 0))) {
     var tag = $as_T(aTag);
-    var array = this.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().tags;
+    var this$4 = this.$$outer$2;
+    var array = this$4.$$scope$1.tags;
     var len = $uI(array.length);
     var i = 0;
     while (true) {
@@ -24126,9 +24271,13 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$39.prototype.apply
         break
       }
       default: {
-        var array$1 = this.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().tags;
+        var this$10 = this.$$outer$2;
+        var array$1 = this$10.$$scope$1.tags;
         array$1.splice(x1, 1)[0];
-        $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microsoft$awt$components$PostingCapabilities$$loadPostsByTags__Lcom_microsoft_awt_components_PostingCapabilities__sjs_js_Array__V(this.$$outer$2, this.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().tags)
+        var jsx$3 = this.$$outer$2;
+        var this$12 = this.$$outer$2;
+        var jsx$2 = this$12.$$scope$1.tags;
+        $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microsoft$awt$components$PostingCapabilities$$loadPostsByTags__Lcom_microsoft_awt_components_PostingCapabilities__sjs_js_Array__V(jsx$3, jsx$2)
       }
     }
   }
@@ -24168,7 +24317,7 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$40.prototype.apply
   return this.apply__sjs_js_Array__s_concurrent_Future(v1)
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$40.prototype.apply__sjs_js_Array__s_concurrent_Future = (function(posts) {
-  var this$1 = this.$$outer$2.userFactory__Lcom_microsoft_awt_components_UserFactory().enrich__sjs_js_Array__s_concurrent_ExecutionContext__s_concurrent_Future(posts, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1);
+  var this$1 = this.$$outer$2.userFactory$1.enrich__sjs_js_Array__s_concurrent_ExecutionContext__s_concurrent_Future(posts, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1);
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(enrichedPosts$2) {
     return enrichedPosts$2
   }));
@@ -24214,15 +24363,17 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41.prototype.apply
   var jsx$4 = $g.console;
   var jsx$3 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["newPost = ", ""]));
   var jsx$2 = $g.angular;
-  var value = this.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().newPost;
+  var this$2 = this.$$outer$2;
+  var value = this$2.$$scope$1.newPost;
   var jsx$1 = jsx$2.toJson(((value === (void 0)) ? (void 0) : value));
   var s = jsx$3.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$as_T(jsx$1)]));
   jsx$4.log(s);
   $g.console.log(addedFileItems);
-  var $$this = this.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().newPost;
+  var this$8 = this.$$outer$2;
+  var value$1 = this$8.$$scope$1.newPost;
   var f = new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$75().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41__sjs_js_Array(this, addedFileItems);
-  if (($$this !== (void 0))) {
-    f.apply__Lcom_microsoft_awt_models_Post__V($$this)
+  if ((value$1 !== (void 0))) {
+    f.apply__Lcom_microsoft_awt_models_Post__V(value$1)
   }
 });
 var $d_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41 = new $TypeData().initClass({
@@ -24262,10 +24413,10 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$
   this.apply__Lcom_microsoft_awt_models_Post__V(v1)
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$75.prototype.apply__Lcom_microsoft_awt_models_Post__V = (function(newPost) {
-  var $$this = this.$$outer$2.$$outer$2.sessionFactory__Lcom_microsoft_awt_components_SessionFactory().user__sjs_js_UndefOr();
+  var value = this.$$outer$2.$$outer$2.sessionFactory$1.user__sjs_js_UndefOr();
   var f = new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$75$$anonfun$apply$76().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$75__Lcom_microsoft_awt_models_Post(this, newPost);
-  if (($$this !== (void 0))) {
-    f.apply__Lcom_microsoft_awt_models_User__V($$this)
+  if ((value !== (void 0))) {
+    f.apply__Lcom_microsoft_awt_models_User__V(value)
   }
 });
 var $d_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$75 = new $TypeData().initClass({
@@ -24305,16 +24456,21 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$
   this.apply__Lcom_microsoft_awt_models_User__V(v1)
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$75$$anonfun$apply$76.prototype.apply__Lcom_microsoft_awt_models_User__V = (function(user) {
-  var $$this = user._id;
-  if (($$this === (void 0))) {
-    var $$this$2 = (void 0)
+  var valueA = user._id;
+  if ((valueA === (void 0))) {
+    var value = (void 0)
   } else {
-    var $$this$1 = $m_s_Option$().apply__O__s_Option($$this);
-    var $$this$2 = ($$this$1.isEmpty__Z() ? (void 0) : $$this$1.get__O())
+    var opt = $m_s_Option$().apply__O__s_Option(valueA);
+    if (opt.isEmpty__Z()) {
+      var value = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var value = arg1
+    }
   };
   var f = new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$75$$anonfun$apply$76$$anonfun$apply$77().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$75$$anonfun$apply$76__Lcom_microsoft_awt_models_User(this, user);
-  if (($$this$2 !== (void 0))) {
-    f.apply__T__V($as_T($$this$2))
+  if ((value !== (void 0))) {
+    f.apply__T__V($as_T(value))
   }
 });
 var $d_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$75$$anonfun$apply$76 = new $TypeData().initClass({
@@ -24345,18 +24501,23 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$
   this.apply__T__V($as_T(v1))
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$75$$anonfun$apply$76$$anonfun$apply$77.prototype.apply__T__V = (function(userId) {
-  var $$this = this.$$outer$2.newPost$1$f._id;
-  if (($$this === (void 0))) {
-    var $$this$2 = (void 0)
+  var valueA = this.$$outer$2.newPost$1$f._id;
+  if ((valueA === (void 0))) {
+    var value = (void 0)
   } else {
-    var $$this$1 = $m_s_Option$().apply__O__s_Option($$this);
-    var $$this$2 = ($$this$1.isEmpty__Z() ? (void 0) : $$this$1.get__O())
+    var opt = $m_s_Option$().apply__O__s_Option(valueA);
+    if (opt.isEmpty__Z()) {
+      var value = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var value = arg1
+    }
   };
-  if (($$this$2 === (void 0))) {
+  if ((value === (void 0))) {
     var jsx$1 = this.$$outer$2.newPost$1$f;
     var value$1 = $m_Lcom_microsoft_awt_models_Submitter$().apply__Lcom_microsoft_awt_models_User__Lcom_microsoft_awt_models_Submitter(this.user$6$2);
     jsx$1.submitter = value$1;
-    $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.postService__Lcom_microsoft_awt_components_PostService().createPost__Lcom_microsoft_awt_models_Post__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(this.$$outer$2.newPost$1$f, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$75$$anonfun$apply$76$$anonfun$apply$77$$anonfun$apply$78().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$75$$anonfun$apply$76$$anonfun$apply$77__T(this, userId), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+    $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.postService$1.createPost__Lcom_microsoft_awt_models_Post__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(this.$$outer$2.newPost$1$f, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$75$$anonfun$apply$76$$anonfun$apply$77$$anonfun$apply$78().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$75$$anonfun$apply$76$$anonfun$apply$77__T(this, userId), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
   } else {
     var array = this.$$outer$2.$$outer$2.addedFileItems$1$f;
     var i = 0;
@@ -24364,16 +24525,21 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$
     while ((i < len)) {
       var index = i;
       var v1 = array[index];
-      var $$this$3 = this.$$outer$2.newPost$1$f._id;
-      if (($$this$3 === (void 0))) {
-        var $$this$5 = (void 0)
+      var valueA$1 = this.$$outer$2.newPost$1$f._id;
+      if ((valueA$1 === (void 0))) {
+        var value$2 = (void 0)
       } else {
-        var $$this$4 = $m_s_Option$().apply__O__s_Option($$this$3);
-        var $$this$5 = ($$this$4.isEmpty__Z() ? (void 0) : $$this$4.get__O())
+        var opt$1 = $m_s_Option$().apply__O__s_Option(valueA$1);
+        if (opt$1.isEmpty__Z()) {
+          var value$2 = (void 0)
+        } else {
+          var arg1$1 = opt$1.get__O();
+          var value$2 = arg1$1
+        }
       };
-      if (($$this$5 !== (void 0))) {
-        var postId = $as_T($$this$5);
-        v1.url = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.postService__Lcom_microsoft_awt_components_PostService().getUploadURL__T__T__s_concurrent_ExecutionContext__T(postId, userId, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+      if ((value$2 !== (void 0))) {
+        var postId = $as_T(value$2);
+        v1.url = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.postService$1.getUploadURL__T__T__s_concurrent_ExecutionContext__T(postId, userId, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
       };
       i = ((1 + i) | 0)
     }
@@ -24428,7 +24594,8 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$
   if ($is_s_util_Success(x0$11)) {
     var x2 = $as_s_util_Success(x0$11);
     var post = x2.value$2;
-    return this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().$apply((function(f) {
+    var this$1 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2;
+    return this$1.$$scope$1.$apply((function(f) {
       return (function() {
         return f.apply__O()
       })
@@ -24438,7 +24605,7 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$
     var e = x3.exception$2;
     var jsx$3 = $g.console;
     var jsx$2 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Failed while creating post for upload: ", ""]));
-    var this$2 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
+    var this$3 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6 = false;
     var x2$1 = null;
     var x1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
@@ -24450,12 +24617,12 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$
         var s = $as_T(x2$1.x$2);
         var prefix = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
         if ((($uI(s.length) >= 0) && ($as_T(s.substring(0, $uI(prefix.length))) === prefix))) {
-          var this$10 = new $c_sci_StringOps().init___T(s);
+          var this$11 = new $c_sci_StringOps().init___T(s);
           var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n = $uI(thiz.length);
-          var $$this = this$10.repr$1;
+          var $$this = this$11.repr$1;
           var until = $uI($$this.length);
-          var jsx$1 = this$2.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$10.repr$1, n, until));
+          var jsx$1 = this$3.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$11.repr$1, n, until));
           break matchEnd7
         }
       };
@@ -24473,9 +24640,9 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$
     };
     var s$1 = jsx$2.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$1]));
     jsx$3.error(s$1);
-    var $$this$1 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster__Lorg_scalajs_angularjs_toaster_Toaster();
+    var toaster = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster$1;
     var s$3 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$1.pop(s$3, "Post Error", "Failed while creating post for upload");
+    toaster.pop(s$3, "Post Error", "Failed while creating post for upload");
     return (void 0)
   } else {
     throw new $c_s_MatchError().init___O(x0$11)
@@ -24516,10 +24683,10 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8.prototype.apply_
   this.apply__sjs_js_UndefOr__V(v1)
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8.prototype.apply__sjs_js_UndefOr__V = (function(aPost) {
-  var $$this = this.$$outer$2.sessionFactory__Lcom_microsoft_awt_components_SessionFactory().user__sjs_js_UndefOr();
+  var value = this.$$outer$2.sessionFactory$1.user__sjs_js_UndefOr();
   var f = new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8__sjs_js_UndefOr(this, aPost);
-  if (($$this !== (void 0))) {
-    f.apply__Lcom_microsoft_awt_models_User__V($$this)
+  if ((value !== (void 0))) {
+    f.apply__Lcom_microsoft_awt_models_User__V(value)
   }
 });
 var $d_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8 = new $TypeData().initClass({
@@ -24550,10 +24717,10 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$1
   this.apply__Lcom_microsoft_awt_models_User__V(v1)
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12.prototype.apply__Lcom_microsoft_awt_models_User__V = (function(user) {
-  var $$this = user._id;
+  var value = user._id;
   var f = new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12$$anonfun$apply$13().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12(this);
-  if (($$this !== (void 0))) {
-    f.apply__T__V($as_T($$this))
+  if ((value !== (void 0))) {
+    f.apply__T__V($as_T(value))
   }
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12.prototype.init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8__sjs_js_UndefOr = (function($$outer, aPost$1) {
@@ -24592,10 +24759,10 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$1
   this.apply__T__V($as_T(v1))
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12$$anonfun$apply$13.prototype.apply__T__V = (function(userID) {
-  var $$this = this.$$outer$2.aPost$1$f;
+  var value = this.$$outer$2.aPost$1$f;
   var f = new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12$$anonfun$apply$13__T(this, userID);
-  if (($$this !== (void 0))) {
-    f.apply__Lcom_microsoft_awt_models_Post__V($$this)
+  if ((value !== (void 0))) {
+    f.apply__Lcom_microsoft_awt_models_Post__V(value)
   }
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12$$anonfun$apply$13.prototype.init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12 = (function($$outer) {
@@ -24634,10 +24801,10 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$1
   this.apply__Lcom_microsoft_awt_models_Post__V(v1)
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14.prototype.apply__Lcom_microsoft_awt_models_Post__V = (function(post) {
-  var $$this = post._id;
+  var value = post._id;
   var f = new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14$$anonfun$apply$15().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14__Lcom_microsoft_awt_models_Post(this, post);
-  if (($$this !== (void 0))) {
-    f.apply__T__V($as_T($$this))
+  if ((value !== (void 0))) {
+    f.apply__T__V($as_T(value))
   }
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14.prototype.init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12$$anonfun$apply$13__T = (function($$outer, userID$1) {
@@ -24677,14 +24844,16 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$1
   this.apply__T__V($as_T(v1))
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14$$anonfun$apply$15.prototype.apply__T__V = (function(postID) {
-  var $$this = (0, this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().isDeletable)(this.$$outer$2.$$outer$2.$$outer$2.aPost$1$f);
-  if ((($$this !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(true, $$this))) {
+  var this$1 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2;
+  var jsx$1 = this$1.$$scope$1.isDeletable;
+  var valueA = jsx$1(this.$$outer$2.$$outer$2.$$outer$2.aPost$1$f);
+  if (((valueA !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(true, valueA))) {
     this.post$4$f.deleteLoading = true;
-    $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.postService__Lcom_microsoft_awt_components_PostService().deletePost__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(postID, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14$$anonfun$apply$15__T(this, postID), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+    $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.postService$1.deletePost__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(postID, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16().init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14$$anonfun$apply$15__T(this, postID), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
   } else {
-    var $$this$1 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster__Lorg_scalajs_angularjs_toaster_Toaster();
+    var toaster = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster$1;
     var s = $m_Lorg_scalajs_angularjs_toaster_Toaster$().WARNING$1;
-    $$this$1.pop(s, "Access denied", "You cannot delete this post")
+    toaster.pop(s, "Access denied", "You cannot delete this post")
   }
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14$$anonfun$apply$15.prototype.init___Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14__Lcom_microsoft_awt_models_Post = (function($$outer, post$4) {
@@ -24736,20 +24905,22 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$1
   if ($is_s_util_Success(x0$1)) {
     var x2 = $as_s_util_Success(x0$1);
     var result = x2.value$2;
-    this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().$apply((function(arg$outer) {
+    var this$1 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2;
+    this$1.$$scope$1.$apply((function(arg$outer) {
       return (function() {
         arg$outer.$$outer$2.post$4$f.deleteLoading = false
       })
     })(this));
     if (($uZ(result.success) && $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microsoft$awt$components$PostingCapabilities$$removePostFromList__Lcom_microsoft_awt_components_PostingCapabilities__Lcom_microsoft_awt_models_Post__Z(this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2, this.$$outer$2.post$4$f))) {
-      var qual$1 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster__Lorg_scalajs_angularjs_toaster_Toaster();
+      var toaster = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster$1;
       var s = $m_Lorg_scalajs_angularjs_toaster_Toaster$().SUCCESS$1;
-      qual$1.pop(s, "Post deleted", null)
+      toaster.pop(s, "Post deleted", null)
     }
   } else if ($is_s_util_Failure(x0$1)) {
     var x3 = $as_s_util_Failure(x0$1);
     var e = x3.exception$2;
-    this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().$apply((function(arg$outer$1) {
+    var this$7 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2;
+    this$7.$$scope$1.$apply((function(arg$outer$1) {
       return (function() {
         arg$outer$1.$$outer$2.post$4$f.deleteLoading = false
       })
@@ -24758,7 +24929,7 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$1
     var jsx$4 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Failed while delete the post (", ") for userID (", "): ", ""]));
     var jsx$3 = this.postID$1$2;
     var jsx$2 = this.$$outer$2.$$outer$2.userID$1$f;
-    var this$8 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
+    var this$10 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6 = false;
     var x2$1 = null;
     var x1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
@@ -24770,12 +24941,12 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$1
         var s$1 = $as_T(x2$1.x$2);
         var prefix = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
         if ((($uI(s$1.length) >= 0) && ($as_T(s$1.substring(0, $uI(prefix.length))) === prefix))) {
-          var this$16 = new $c_sci_StringOps().init___T(s$1);
+          var this$18 = new $c_sci_StringOps().init___T(s$1);
           var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n = $uI(thiz.length);
-          var $$this = this$16.repr$1;
+          var $$this = this$18.repr$1;
           var until = $uI($$this.length);
-          var jsx$1 = this$8.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$16.repr$1, n, until));
+          var jsx$1 = this$10.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$18.repr$1, n, until));
           break matchEnd7
         }
       };
@@ -24793,42 +24964,42 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$8$$anonfun$apply$1
     };
     var s$3 = jsx$4.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$3, jsx$2, jsx$1]));
     jsx$5.error(s$3);
-    var $$this$2 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster__Lorg_scalajs_angularjs_toaster_Toaster();
-    var this$23 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
+    var toaster$1 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster$1;
+    var this$25 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6$1 = false;
     var x2$2 = null;
     var x1$1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7$1: {
-      var message;
+      var s$5;
       if ($is_s_Some(x1$1)) {
         rc6$1 = true;
         x2$2 = $as_s_Some(x1$1);
         var s$4 = $as_T(x2$2.x$2);
         var prefix$1 = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
         if ((($uI(s$4.length) >= 0) && ($as_T(s$4.substring(0, $uI(prefix$1.length))) === prefix$1))) {
-          var this$31 = new $c_sci_StringOps().init___T(s$4);
+          var this$33 = new $c_sci_StringOps().init___T(s$4);
           var thiz$1 = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n$1 = $uI(thiz$1.length);
-          var $$this$1 = this$31.repr$1;
+          var $$this$1 = this$33.repr$1;
           var until$1 = $uI($$this$1.length);
-          var message = this$23.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$31.repr$1, n$1, until$1));
+          var s$5 = this$25.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$33.repr$1, n$1, until$1));
           break matchEnd7$1
         }
       };
       if (rc6$1) {
         var s$2$1 = $as_T(x2$2.x$2);
-        var message = s$2$1;
+        var s$5 = s$2$1;
         break matchEnd7$1
       };
       var x$1 = $m_s_None$();
       if ((x$1 === x1$1)) {
-        var message = "Cause unknown";
+        var s$5 = "Cause unknown";
         break matchEnd7$1
       };
       throw new $c_s_MatchError().init___O(x1$1)
     };
     var s$6 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$2.pop(s$6, "Error deleting post", message)
+    toaster$1.pop(s$6, "Error deleting post", s$5)
   } else {
     throw new $c_s_MatchError().init___O(x0$1)
   }
@@ -24877,7 +25048,7 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$com$microsoft$awt$
   if ($is_s_util_Success(x0$6)) {
     var x2 = $as_s_util_Success(x0$6);
     var updatedPost = x2.value$2;
-    var qual$4 = this.$$outer$2.$$timeout__Lorg_scalajs_angularjs_Timeout();
+    var qual$4 = this.$$outer$2.$$timeout$1;
     var x$33 = (function(arg$outer) {
       return (function() {
         arg$outer.comment$1$f.likeLoading = false
@@ -24888,16 +25059,17 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$com$microsoft$awt$
     var unit = $m_ju_concurrent_TimeUnit$().SECONDS$1;
     var x$34 = jsx$1.durationToInt__s_concurrent_duration_FiniteDuration__I($m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$3.scala$concurrent$duration$DurationInt$$n$1, unit));
     qual$4(x$33, x$34);
-    var array = this.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().posts;
+    var this$4 = this.$$outer$2;
+    var array = this$4.$$scope$1.posts;
     var len = $uI(array.length);
     var i = 0;
     while (true) {
       if ((i < len)) {
         var index = i;
         var arg1 = array[index];
-        var $$this = arg1._id;
+        var valueA = arg1._id;
         var valueB = updatedPost._id;
-        var jsx$2 = (!(($$this !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, $$this))))
+        var jsx$2 = (!((valueA !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, valueA))))
       } else {
         var jsx$2 = false
       };
@@ -24913,9 +25085,12 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$com$microsoft$awt$
       var jsx$3 = $g.console;
       var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Updating post index ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([index$1]));
       jsx$3.log(s);
-      return this.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().$apply((function(arg$outer$1, updatedPost$2, index$2) {
+      var this$21 = this.$$outer$2;
+      return this$21.$$scope$1.$apply((function(arg$outer$1, updatedPost$2, index$2) {
         return (function() {
-          arg$outer$1.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().posts[index$2] = updatedPost$2
+          var this$22 = arg$outer$1.$$outer$2;
+          var jsx$4 = this$22.$$scope$1.posts;
+          jsx$4[index$2] = updatedPost$2
         })
       })(this, updatedPost, index$1))
     } else {
@@ -24925,81 +25100,81 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$com$microsoft$awt$
     var x3 = $as_s_util_Failure(x0$6);
     var e = x3.exception$2;
     this.comment$1$f.likeLoading = false;
-    var jsx$8 = $g.console;
-    var jsx$7 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Failed while liking the comment (", ") or userID (", "): ", ""]));
-    var jsx$6 = this.aComment$1$2;
-    var jsx$5 = this.aUserID$2$2;
-    var this$22 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
+    var jsx$9 = $g.console;
+    var jsx$8 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Failed while liking the comment (", ") or userID (", "): ", ""]));
+    var jsx$7 = this.aComment$1$2;
+    var jsx$6 = this.aUserID$2$2;
+    var this$25 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6 = false;
     var x2$1 = null;
     var x1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7: {
-      var jsx$4;
+      var jsx$5;
       if ($is_s_Some(x1)) {
         rc6 = true;
         x2$1 = $as_s_Some(x1);
         var s$1 = $as_T(x2$1.x$2);
         var prefix = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
         if ((($uI(s$1.length) >= 0) && ($as_T(s$1.substring(0, $uI(prefix.length))) === prefix))) {
-          var this$30 = new $c_sci_StringOps().init___T(s$1);
+          var this$33 = new $c_sci_StringOps().init___T(s$1);
           var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n$1 = $uI(thiz.length);
-          var $$this$1 = this$30.repr$1;
-          var until = $uI($$this$1.length);
-          var jsx$4 = this$22.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$30.repr$1, n$1, until));
+          var $$this = this$33.repr$1;
+          var until = $uI($$this.length);
+          var jsx$5 = this$25.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$33.repr$1, n$1, until));
           break matchEnd7
         }
       };
       if (rc6) {
         var s$2 = $as_T(x2$1.x$2);
-        var jsx$4 = s$2;
+        var jsx$5 = s$2;
         break matchEnd7
       };
       var x = $m_s_None$();
       if ((x === x1)) {
-        var jsx$4 = "Cause unknown";
+        var jsx$5 = "Cause unknown";
         break matchEnd7
       };
       throw new $c_s_MatchError().init___O(x1)
     };
-    var s$3 = jsx$7.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$6, jsx$5, jsx$4]));
-    jsx$8.error(s$3);
-    var $$this$3 = this.$$outer$2.toaster__Lorg_scalajs_angularjs_toaster_Toaster();
-    var this$37 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
+    var s$3 = jsx$8.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$7, jsx$6, jsx$5]));
+    jsx$9.error(s$3);
+    var toaster = this.$$outer$2.toaster$1;
+    var this$40 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6$1 = false;
     var x2$2 = null;
     var x1$1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7$1: {
-      var message;
+      var s$5;
       if ($is_s_Some(x1$1)) {
         rc6$1 = true;
         x2$2 = $as_s_Some(x1$1);
         var s$4 = $as_T(x2$2.x$2);
         var prefix$1 = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
         if ((($uI(s$4.length) >= 0) && ($as_T(s$4.substring(0, $uI(prefix$1.length))) === prefix$1))) {
-          var this$45 = new $c_sci_StringOps().init___T(s$4);
+          var this$48 = new $c_sci_StringOps().init___T(s$4);
           var thiz$1 = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n$2 = $uI(thiz$1.length);
-          var $$this$2 = this$45.repr$1;
-          var until$1 = $uI($$this$2.length);
-          var message = this$37.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$45.repr$1, n$2, until$1));
+          var $$this$1 = this$48.repr$1;
+          var until$1 = $uI($$this$1.length);
+          var s$5 = this$40.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$48.repr$1, n$2, until$1));
           break matchEnd7$1
         }
       };
       if (rc6$1) {
         var s$2$1 = $as_T(x2$2.x$2);
-        var message = s$2$1;
+        var s$5 = s$2$1;
         break matchEnd7$1
       };
       var x$1 = $m_s_None$();
       if ((x$1 === x1$1)) {
-        var message = "Cause unknown";
+        var s$5 = "Cause unknown";
         break matchEnd7$1
       };
       throw new $c_s_MatchError().init___O(x1$1)
     };
     var s$6 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$3.pop(s$6, "Error performing LIKE", message);
+    toaster.pop(s$6, "Error performing LIKE", s$5);
     return (void 0)
   } else {
     throw new $c_s_MatchError().init___O(x0$6)
@@ -25052,7 +25227,7 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$com$microsoft$awt$
     var jsx$1 = $g.console;
     var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["updatedPost = ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$as_T($g.angular.toJson(updatedPost, true))]));
     jsx$1.log(s);
-    var qual$2 = this.$$outer$2.$$timeout__Lorg_scalajs_angularjs_Timeout();
+    var qual$2 = this.$$outer$2.$$timeout$1;
     var x$25 = (function(arg$outer) {
       return (function() {
         arg$outer.post$2$f.likeLoading = false
@@ -25063,90 +25238,94 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$com$microsoft$awt$
     var unit = $m_ju_concurrent_TimeUnit$().SECONDS$1;
     var x$26 = jsx$2.durationToInt__s_concurrent_duration_FiniteDuration__I($m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$4.scala$concurrent$duration$DurationInt$$n$1, unit));
     qual$2(x$25, x$26);
-    $asUnit((0, this.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().updatePost)(updatedPost))
+    var this$5 = this.$$outer$2;
+    var jsx$4 = this$5.$$scope$1.updatePost;
+    var jsx$3 = jsx$4(updatedPost);
+    $asUnit(jsx$3)
   } else if ($is_s_util_Failure(x0$2)) {
     var x3 = $as_s_util_Failure(x0$2);
     var e = x3.exception$2;
-    this.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().$apply((function(arg$outer$1) {
+    var this$7 = this.$$outer$2;
+    this$7.$$scope$1.$apply((function(arg$outer$1) {
       return (function() {
         arg$outer$1.post$2$f.likeLoading = false
       })
     })(this));
-    var jsx$7 = $g.console;
-    var jsx$6 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Failed while liking the post (", ") for userID (", "): ", ""]));
-    var jsx$5 = this.aPostID$1$2;
-    var jsx$4 = this.aUserID$1$2;
-    var this$8 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
+    var jsx$9 = $g.console;
+    var jsx$8 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Failed while liking the post (", ") for userID (", "): ", ""]));
+    var jsx$7 = this.aPostID$1$2;
+    var jsx$6 = this.aUserID$1$2;
+    var this$10 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6 = false;
     var x2$1 = null;
     var x1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7: {
-      var jsx$3;
+      var jsx$5;
       if ($is_s_Some(x1)) {
         rc6 = true;
         x2$1 = $as_s_Some(x1);
         var s$1 = $as_T(x2$1.x$2);
         var prefix = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
         if ((($uI(s$1.length) >= 0) && ($as_T(s$1.substring(0, $uI(prefix.length))) === prefix))) {
-          var this$16 = new $c_sci_StringOps().init___T(s$1);
+          var this$18 = new $c_sci_StringOps().init___T(s$1);
           var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n = $uI(thiz.length);
-          var $$this = this$16.repr$1;
+          var $$this = this$18.repr$1;
           var until = $uI($$this.length);
-          var jsx$3 = this$8.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$16.repr$1, n, until));
+          var jsx$5 = this$10.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$18.repr$1, n, until));
           break matchEnd7
         }
       };
       if (rc6) {
         var s$2 = $as_T(x2$1.x$2);
-        var jsx$3 = s$2;
+        var jsx$5 = s$2;
         break matchEnd7
       };
       var x = $m_s_None$();
       if ((x === x1)) {
-        var jsx$3 = "Cause unknown";
+        var jsx$5 = "Cause unknown";
         break matchEnd7
       };
       throw new $c_s_MatchError().init___O(x1)
     };
-    var s$3 = jsx$6.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$5, jsx$4, jsx$3]));
-    jsx$7.error(s$3);
-    var $$this$2 = this.$$outer$2.toaster__Lorg_scalajs_angularjs_toaster_Toaster();
-    var this$23 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
+    var s$3 = jsx$8.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$7, jsx$6, jsx$5]));
+    jsx$9.error(s$3);
+    var toaster = this.$$outer$2.toaster$1;
+    var this$25 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6$1 = false;
     var x2$2 = null;
     var x1$1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7$1: {
-      var message;
+      var s$5;
       if ($is_s_Some(x1$1)) {
         rc6$1 = true;
         x2$2 = $as_s_Some(x1$1);
         var s$4 = $as_T(x2$2.x$2);
         var prefix$1 = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
         if ((($uI(s$4.length) >= 0) && ($as_T(s$4.substring(0, $uI(prefix$1.length))) === prefix$1))) {
-          var this$31 = new $c_sci_StringOps().init___T(s$4);
+          var this$33 = new $c_sci_StringOps().init___T(s$4);
           var thiz$1 = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n$1 = $uI(thiz$1.length);
-          var $$this$1 = this$31.repr$1;
+          var $$this$1 = this$33.repr$1;
           var until$1 = $uI($$this$1.length);
-          var message = this$23.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$31.repr$1, n$1, until$1));
+          var s$5 = this$25.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$33.repr$1, n$1, until$1));
           break matchEnd7$1
         }
       };
       if (rc6$1) {
         var s$2$1 = $as_T(x2$2.x$2);
-        var message = s$2$1;
+        var s$5 = s$2$1;
         break matchEnd7$1
       };
       var x$1 = $m_s_None$();
       if ((x$1 === x1$1)) {
-        var message = "Cause unknown";
+        var s$5 = "Cause unknown";
         break matchEnd7$1
       };
       throw new $c_s_MatchError().init___O(x1$1)
     };
     var s$6 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$2.pop(s$6, "Error liking a post", message)
+    toaster.pop(s$6, "Error liking a post", s$5)
   } else {
     throw new $c_s_MatchError().init___O(x0$2)
   }
@@ -25195,7 +25374,7 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$com$microsoft$awt$
   if ($is_s_util_Success(x0$8)) {
     var x2 = $as_s_util_Success(x0$8);
     var updatedPost = x2.value$2;
-    var qual$5 = this.$$outer$2.$$timeout__Lorg_scalajs_angularjs_Timeout();
+    var qual$5 = this.$$outer$2.$$timeout$1;
     var x$37 = (function(arg$outer) {
       return (function() {
         arg$outer.reply$1$f.likeLoading = false
@@ -25206,16 +25385,17 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$com$microsoft$awt$
     var unit = $m_ju_concurrent_TimeUnit$().SECONDS$1;
     var x$38 = jsx$1.durationToInt__s_concurrent_duration_FiniteDuration__I($m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$3.scala$concurrent$duration$DurationInt$$n$1, unit));
     qual$5(x$37, x$38);
-    var array = this.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().posts;
+    var this$4 = this.$$outer$2;
+    var array = this$4.$$scope$1.posts;
     var len = $uI(array.length);
     var i = 0;
     while (true) {
       if ((i < len)) {
         var index = i;
         var arg1 = array[index];
-        var $$this = arg1._id;
+        var valueA = arg1._id;
         var valueB = updatedPost._id;
-        var jsx$2 = (!(($$this !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, $$this))))
+        var jsx$2 = (!((valueA !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, valueA))))
       } else {
         var jsx$2 = false
       };
@@ -25231,9 +25411,12 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$com$microsoft$awt$
       var jsx$3 = $g.console;
       var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Updating post index ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([index$1]));
       jsx$3.log(s);
-      return this.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().$apply((function(arg$outer$1, updatedPost$4, index$3) {
+      var this$21 = this.$$outer$2;
+      return this$21.$$scope$1.$apply((function(arg$outer$1, updatedPost$4, index$3) {
         return (function() {
-          arg$outer$1.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().posts[index$3] = updatedPost$4
+          var this$22 = arg$outer$1.$$outer$2;
+          var jsx$4 = this$22.$$scope$1.posts;
+          jsx$4[index$3] = updatedPost$4
         })
       })(this, updatedPost, index$1))
     } else {
@@ -25243,81 +25426,81 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$com$microsoft$awt$
     var x3 = $as_s_util_Failure(x0$8);
     var e = x3.exception$2;
     this.reply$1$f.likeLoading = false;
-    var jsx$8 = $g.console;
-    var jsx$7 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Failed while liking the reply (", ") or userID (", "): ", ""]));
-    var jsx$6 = this.aReply$1$2;
-    var jsx$5 = this.aUserID$3$2;
-    var this$22 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
+    var jsx$9 = $g.console;
+    var jsx$8 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Failed while liking the reply (", ") or userID (", "): ", ""]));
+    var jsx$7 = this.aReply$1$2;
+    var jsx$6 = this.aUserID$3$2;
+    var this$25 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6 = false;
     var x2$1 = null;
     var x1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7: {
-      var jsx$4;
+      var jsx$5;
       if ($is_s_Some(x1)) {
         rc6 = true;
         x2$1 = $as_s_Some(x1);
         var s$1 = $as_T(x2$1.x$2);
         var prefix = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
         if ((($uI(s$1.length) >= 0) && ($as_T(s$1.substring(0, $uI(prefix.length))) === prefix))) {
-          var this$30 = new $c_sci_StringOps().init___T(s$1);
+          var this$33 = new $c_sci_StringOps().init___T(s$1);
           var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n$1 = $uI(thiz.length);
-          var $$this$1 = this$30.repr$1;
-          var until = $uI($$this$1.length);
-          var jsx$4 = this$22.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$30.repr$1, n$1, until));
+          var $$this = this$33.repr$1;
+          var until = $uI($$this.length);
+          var jsx$5 = this$25.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$33.repr$1, n$1, until));
           break matchEnd7
         }
       };
       if (rc6) {
         var s$2 = $as_T(x2$1.x$2);
-        var jsx$4 = s$2;
+        var jsx$5 = s$2;
         break matchEnd7
       };
       var x = $m_s_None$();
       if ((x === x1)) {
-        var jsx$4 = "Cause unknown";
+        var jsx$5 = "Cause unknown";
         break matchEnd7
       };
       throw new $c_s_MatchError().init___O(x1)
     };
-    var s$3 = jsx$7.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$6, jsx$5, jsx$4]));
-    jsx$8.error(s$3);
-    var $$this$3 = this.$$outer$2.toaster__Lorg_scalajs_angularjs_toaster_Toaster();
-    var this$37 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
+    var s$3 = jsx$8.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$7, jsx$6, jsx$5]));
+    jsx$9.error(s$3);
+    var toaster = this.$$outer$2.toaster$1;
+    var this$40 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6$1 = false;
     var x2$2 = null;
     var x1$1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7$1: {
-      var message;
+      var s$5;
       if ($is_s_Some(x1$1)) {
         rc6$1 = true;
         x2$2 = $as_s_Some(x1$1);
         var s$4 = $as_T(x2$2.x$2);
         var prefix$1 = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
         if ((($uI(s$4.length) >= 0) && ($as_T(s$4.substring(0, $uI(prefix$1.length))) === prefix$1))) {
-          var this$45 = new $c_sci_StringOps().init___T(s$4);
+          var this$48 = new $c_sci_StringOps().init___T(s$4);
           var thiz$1 = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n$2 = $uI(thiz$1.length);
-          var $$this$2 = this$45.repr$1;
-          var until$1 = $uI($$this$2.length);
-          var message = this$37.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$45.repr$1, n$2, until$1));
+          var $$this$1 = this$48.repr$1;
+          var until$1 = $uI($$this$1.length);
+          var s$5 = this$40.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$48.repr$1, n$2, until$1));
           break matchEnd7$1
         }
       };
       if (rc6$1) {
         var s$2$1 = $as_T(x2$2.x$2);
-        var message = s$2$1;
+        var s$5 = s$2$1;
         break matchEnd7$1
       };
       var x$1 = $m_s_None$();
       if ((x$1 === x1$1)) {
-        var message = "Cause unknown";
+        var s$5 = "Cause unknown";
         break matchEnd7$1
       };
       throw new $c_s_MatchError().init___O(x1$1)
     };
     var s$6 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$3.pop(s$6, "Error performing LIKE", message);
+    toaster.pop(s$6, "Error performing LIKE", s$5);
     return (void 0)
   } else {
     throw new $c_s_MatchError().init___O(x0$8)
@@ -25363,26 +25546,30 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$com$microsoft$awt$
   if ($is_s_util_Success(x0$10)) {
     var x2 = $as_s_util_Success(x0$10);
     var posts = x2.value$2;
-    var qual$6 = this.$$outer$2.$$timeout__Lorg_scalajs_angularjs_Timeout();
+    var qual$6 = this.$$outer$2.$$timeout$1;
     var x$41 = (function(arg$outer) {
       return (function() {
-        arg$outer.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().postsLoading = false
+        var this$1 = arg$outer.$$outer$2;
+        this$1.$$scope$1.postsLoading = false
       })
     })(this);
     var jsx$1 = $m_Lorg_scalajs_angularjs_package$();
-    var this$3 = new $c_s_concurrent_duration_package$DurationInt().init___I(1);
+    var this$4 = new $c_s_concurrent_duration_package$DurationInt().init___I(1);
     var unit = $m_ju_concurrent_TimeUnit$().SECONDS$1;
-    var x$42 = jsx$1.durationToInt__s_concurrent_duration_FiniteDuration__I($m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$3.scala$concurrent$duration$DurationInt$$n$1, unit));
+    var x$42 = jsx$1.durationToInt__s_concurrent_duration_FiniteDuration__I($m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$4.scala$concurrent$duration$DurationInt$$n$1, unit));
     qual$6(x$41, x$42);
-    return this.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().$apply((function(arg$outer$1, posts$1) {
+    var this$5 = this.$$outer$2;
+    return this$5.$$scope$1.$apply((function(arg$outer$1, posts$1) {
       return (function() {
-        arg$outer$1.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().posts = posts$1
+        var this$6 = arg$outer$1.$$outer$2;
+        this$6.$$scope$1.posts = posts$1
       })
     })(this, posts))
   } else if ($is_s_util_Failure(x0$10)) {
     var x3 = $as_s_util_Failure(x0$10);
     var e = x3.exception$2;
-    this.$$outer$2.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().postsLoading = false;
+    var this$7 = this.$$outer$2;
+    this$7.$$scope$1.postsLoading = false;
     var jsx$3 = $g.console;
     var jsx$2 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Error loading posts for tags '", "'"]));
     var array = this.tags$1$2;
@@ -25405,46 +25592,46 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$com$microsoft$awt$
       i = ((1 + i) | 0)
     };
     b.append__T__scm_StringBuilder("");
-    var this$7 = b.underlying$5;
-    var s = jsx$2.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([this$7.content$1]));
+    var this$11 = b.underlying$5;
+    var s = jsx$2.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([this$11.content$1]));
     jsx$3.error(s);
-    var $$this$1 = this.$$outer$2.toaster__Lorg_scalajs_angularjs_toaster_Toaster();
-    var title = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Error loading posts for tags"])).s__sc_Seq__T($m_sci_Nil$());
-    var this$12 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
+    var toaster = this.$$outer$2.toaster$1;
+    var s$1 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Error loading posts for tags"])).s__sc_Seq__T($m_sci_Nil$());
+    var this$16 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6 = false;
     var x2$1 = null;
     var x1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7: {
-      var message;
+      var s$3;
       if ($is_s_Some(x1)) {
         rc6 = true;
         x2$1 = $as_s_Some(x1);
         var s$2 = $as_T(x2$1.x$2);
         var prefix = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
         if ((($uI(s$2.length) >= 0) && ($as_T(s$2.substring(0, $uI(prefix.length))) === prefix))) {
-          var this$20 = new $c_sci_StringOps().init___T(s$2);
+          var this$24 = new $c_sci_StringOps().init___T(s$2);
           var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n = $uI(thiz.length);
-          var $$this = this$20.repr$1;
+          var $$this = this$24.repr$1;
           var until = $uI($$this.length);
-          var message = this$12.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$20.repr$1, n, until));
+          var s$3 = this$16.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$24.repr$1, n, until));
           break matchEnd7
         }
       };
       if (rc6) {
         var s$2$1 = $as_T(x2$1.x$2);
-        var message = s$2$1;
+        var s$3 = s$2$1;
         break matchEnd7
       };
       var x = $m_s_None$();
       if ((x === x1)) {
-        var message = "Cause unknown";
+        var s$3 = "Cause unknown";
         break matchEnd7
       };
       throw new $c_s_MatchError().init___O(x1)
     };
     var s$4 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$1.pop(s$4, title, message);
+    toaster.pop(s$4, s$1, s$3);
     return (void 0)
   } else {
     throw new $c_s_MatchError().init___O(x0$10)
@@ -25551,7 +25738,10 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$12$$anonfun$apply$32
   return this.apply__sjs_js_Array__s_concurrent_Future(v1)
 });
 $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$12$$anonfun$apply$32.prototype.apply__sjs_js_Array__s_concurrent_Future = (function(groups) {
-  var this$2 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.postService$1.getPostsByUserID__sjs_js_UndefOr__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(this.$$outer$2.userID$1$f, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1));
+  var jsx$2 = $m_Lorg_scalajs_angularjs_http_HttpResponse$();
+  var jsx$1 = this.$$outer$2.$$outer$2.postService$1;
+  var value = this.$$outer$2.userID$1$f;
+  var this$2 = jsx$2.promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(jsx$1.getPostsByUserID__sjs_js_UndefOr__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(value, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1));
   var f = new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$12$$anonfun$apply$32$$anonfun$apply$33().init___Lcom_microsoft_awt_components_ProfileController$$anonfun$12$$anonfun$apply$32__sjs_js_Array(this, groups);
   var executor = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
   return $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$2, f, executor)
@@ -25637,8 +25827,8 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$12$$anonfun$apply$32
   var jsx$3 = $m_Lorg_scalajs_angularjs_http_HttpResponse$();
   var jsx$2 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.workloadService$1;
   var jsx$1 = this.$$outer$2.$$outer$2.$$outer$2.userID$1$f;
-  var $$this = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$scope$1.activeOnly;
-  var this$4 = jsx$3.promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(jsx$2.getWorkloadsByUser__T__Z__Lorg_scalajs_angularjs_http_HttpResponse(jsx$1, $uZ((($$this === (void 0)) || $$this))));
+  var value = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$scope$1.activeOnly;
+  var this$4 = jsx$3.promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(jsx$2.getWorkloadsByUser__T__Z__Lorg_scalajs_angularjs_http_HttpResponse(jsx$1, $uZ(((value === (void 0)) || value))));
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer, enrichedPosts$1) {
     return (function(workloads$2) {
       return new $c_T4().init___O__O__O__O(arg$outer.$$outer$2.$$outer$2.user$4$f, arg$outer.$$outer$2.groups$2$f, enrichedPosts$1, workloads$2)
@@ -25690,15 +25880,20 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$13.prototype.init___
   return this
 });
 $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$13.prototype.apply__Lorg_scalajs_dom_raw_Event__Z__V = (function(x$7, activeOnly) {
-  var $$this = this.$$outer$2.$$scope$1.profileID;
-  if (($$this === (void 0))) {
-    var $$this$2 = (void 0)
+  var valueA = this.$$outer$2.$$scope$1.profileID;
+  if ((valueA === (void 0))) {
+    var value = (void 0)
   } else {
-    var $$this$1 = $m_s_Option$().apply__O__s_Option($$this);
-    var $$this$2 = ($$this$1.isEmpty__Z() ? (void 0) : $$this$1.get__O())
+    var opt = $m_s_Option$().apply__O__s_Option(valueA);
+    if (opt.isEmpty__Z()) {
+      var value = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var value = arg1
+    }
   };
-  if (($$this$2 !== (void 0))) {
-    var x$8 = $as_T($$this$2);
+  if ((value !== (void 0))) {
+    var x$8 = $as_T(value);
     this.$$outer$2.com$microsoft$awt$components$ProfileController$$refreshWorkloads__T__Z__V(x$8, activeOnly)
   }
 });
@@ -25808,10 +26003,10 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$6$$anonfun$apply$12.
   return this
 });
 $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$6$$anonfun$apply$12.prototype.apply__Lcom_microsoft_awt_models_User__V = (function(endorsee) {
-  var $$this = endorsee._id;
+  var value = endorsee._id;
   var f = new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$6$$anonfun$apply$12$$anonfun$apply$13().init___Lcom_microsoft_awt_components_ProfileController$$anonfun$6$$anonfun$apply$12__Lcom_microsoft_awt_models_User(this, endorsee);
-  if (($$this !== (void 0))) {
-    f.apply__T__V($as_T($$this))
+  if ((value !== (void 0))) {
+    f.apply__T__V($as_T(value))
   }
 });
 var $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$6$$anonfun$apply$12 = new $TypeData().initClass({
@@ -25842,10 +26037,10 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$6$$anonfun$apply$12$
   this.apply__T__V($as_T(v1))
 });
 $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$6$$anonfun$apply$12$$anonfun$apply$13.prototype.apply__T__V = (function(endorseeID) {
-  var $$this = this.$$outer$2.$$outer$2.$$outer$2.sessionFactory$1.user__sjs_js_UndefOr();
+  var value = this.$$outer$2.$$outer$2.$$outer$2.sessionFactory$1.user__sjs_js_UndefOr();
   var f = new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$6$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14().init___Lcom_microsoft_awt_components_ProfileController$$anonfun$6$$anonfun$apply$12$$anonfun$apply$13__T(this, endorseeID);
-  if (($$this !== (void 0))) {
-    f.apply__Lcom_microsoft_awt_models_User__V($$this)
+  if ((value !== (void 0))) {
+    f.apply__Lcom_microsoft_awt_models_User__V(value)
   }
 });
 $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$6$$anonfun$apply$12$$anonfun$apply$13.prototype.init___Lcom_microsoft_awt_components_ProfileController$$anonfun$6$$anonfun$apply$12__Lcom_microsoft_awt_models_User = (function($$outer, endorsee$1) {
@@ -25894,10 +26089,10 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$6$$anonfun$apply$12$
   return this
 });
 $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$6$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14.prototype.apply__Lcom_microsoft_awt_models_User__V = (function(endorser) {
-  var $$this = endorser._id;
+  var value = endorser._id;
   var f = new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$6$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14$$anonfun$apply$15().init___Lcom_microsoft_awt_components_ProfileController$$anonfun$6$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14(this);
-  if (($$this !== (void 0))) {
-    f.apply__T__V($as_T($$this))
+  if ((value !== (void 0))) {
+    f.apply__T__V($as_T(value))
   }
 });
 var $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$6$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14 = new $TypeData().initClass({
@@ -26031,13 +26226,13 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$6$$anonfun$apply$12$
       throw new $c_s_MatchError().init___O(x1)
     };
     jsx$3.error(s$1);
-    var qual$1 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster$1;
+    var toaster = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster$1;
     var this$20 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6$1 = false;
     var x2$2 = null;
     var x1$1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7$1: {
-      var x$10;
+      var s$4;
       if ($is_s_Some(x1$1)) {
         rc6$1 = true;
         x2$2 = $as_s_Some(x1$1);
@@ -26049,24 +26244,24 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$6$$anonfun$apply$12$
           var n$1 = $uI(thiz$1.length);
           var $$this$1 = this$28.repr$1;
           var until$1 = $uI($$this$1.length);
-          var x$10 = this$20.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$28.repr$1, n$1, until$1));
+          var s$4 = this$20.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$28.repr$1, n$1, until$1));
           break matchEnd7$1
         }
       };
       if (rc6$1) {
         var s$2$1 = $as_T(x2$2.x$2);
-        var x$10 = s$2$1;
+        var s$4 = s$2$1;
         break matchEnd7$1
       };
       var x$1 = $m_s_None$();
       if ((x$1 === x1$1)) {
-        var x$10 = "Cause unknown";
+        var s$4 = "Cause unknown";
         break matchEnd7$1
       };
       throw new $c_s_MatchError().init___O(x1$1)
     };
     var s$5 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    qual$1.pop(s$5, x$10, null);
+    toaster.pop(s$5, s$4, null);
     return (void 0)
   } else {
     throw new $c_s_MatchError().init___O(x0$1)
@@ -26102,25 +26297,25 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$7.prototype.apply__s
   if ((aUser === (void 0))) {
     return (void 0)
   } else {
-    var $$this = this.$$outer$2.sessionFactory$1.user__sjs_js_UndefOr();
-    if (($$this === (void 0))) {
+    var value = this.$$outer$2.sessionFactory$1.user__sjs_js_UndefOr();
+    if ((value === (void 0))) {
       return (void 0)
     } else {
-      var $$this$1 = aUser.endorsers;
-      if (($$this$1 === (void 0))) {
+      var value$1 = aUser.endorsers;
+      if ((value$1 === (void 0))) {
         return (void 0)
       } else {
-        var $$this$2 = $$this._id;
-        if (($$this$2 === (void 0))) {
+        var value$2 = value._id;
+        if ((value$2 === (void 0))) {
           return (void 0)
         } else {
-          var endorserId = $as_T($$this$2);
+          var endorserId = $as_T(value$2);
           var i = 0;
           while (true) {
-            if ((i < $uI($$this$1.length))) {
+            if ((i < $uI(value$1.length))) {
               var index = i;
-              var arg1 = $$this$1[index];
-              var jsx$1 = (!$m_sr_BoxesRunTime$().equals__O__O__Z(arg1, endorserId))
+              var arg1 = value$1[index];
+              var jsx$1 = ($m_sr_BoxesRunTime$().equals__O__O__Z(arg1, endorserId) === false)
             } else {
               var jsx$1 = false
             };
@@ -26130,7 +26325,7 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$7.prototype.apply__s
               break
             }
           };
-          var value$3 = (i !== $uI($$this$1.length));
+          var value$3 = (i !== $uI(value$1.length));
           return value$3
         }
       }
@@ -26220,10 +26415,10 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$21.
   return this
 });
 $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$21.prototype.apply__Lcom_microsoft_awt_models_User__V = (function(followee) {
-  var $$this = followee._id;
+  var value = followee._id;
   var f = new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$21$$anonfun$apply$22().init___Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$21__Lcom_microsoft_awt_models_User(this, followee);
-  if (($$this !== (void 0))) {
-    f.apply__T__V($as_T($$this))
+  if ((value !== (void 0))) {
+    f.apply__T__V($as_T(value))
   }
 });
 var $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$21 = new $TypeData().initClass({
@@ -26263,10 +26458,10 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$21$
   this.apply__T__V($as_T(v1))
 });
 $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$21$$anonfun$apply$22.prototype.apply__T__V = (function(followeeID) {
-  var $$this = this.$$outer$2.$$outer$2.$$outer$2.sessionFactory$1.user__sjs_js_UndefOr();
+  var value = this.$$outer$2.$$outer$2.$$outer$2.sessionFactory$1.user__sjs_js_UndefOr();
   var f = new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$21$$anonfun$apply$22$$anonfun$apply$23().init___Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$21$$anonfun$apply$22__T(this, followeeID);
-  if (($$this !== (void 0))) {
-    f.apply__Lcom_microsoft_awt_models_User__V($$this)
+  if ((value !== (void 0))) {
+    f.apply__Lcom_microsoft_awt_models_User__V(value)
   }
 });
 var $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$21$$anonfun$apply$22 = new $TypeData().initClass({
@@ -26306,10 +26501,10 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$21$
   return this
 });
 $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$21$$anonfun$apply$22$$anonfun$apply$23.prototype.apply__Lcom_microsoft_awt_models_User__V = (function(follower) {
-  var $$this = follower._id;
+  var value = follower._id;
   var f = new $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$21$$anonfun$apply$22$$anonfun$apply$23$$anonfun$apply$24().init___Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$21$$anonfun$apply$22$$anonfun$apply$23(this);
-  if (($$this !== (void 0))) {
-    f.apply__T__V($as_T($$this))
+  if ((value !== (void 0))) {
+    f.apply__T__V($as_T(value))
   }
 });
 var $d_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$21$$anonfun$apply$22$$anonfun$apply$23 = new $TypeData().initClass({
@@ -26443,13 +26638,13 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$21$
       throw new $c_s_MatchError().init___O(x1)
     };
     jsx$3.error(s$1);
-    var qual$2 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster$1;
+    var toaster = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.toaster$1;
     var this$20 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6$1 = false;
     var x2$2 = null;
     var x1$1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7$1: {
-      var x$12;
+      var s$4;
       if ($is_s_Some(x1$1)) {
         rc6$1 = true;
         x2$2 = $as_s_Some(x1$1);
@@ -26461,24 +26656,24 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$21$
           var n$1 = $uI(thiz$1.length);
           var $$this$1 = this$28.repr$1;
           var until$1 = $uI($$this$1.length);
-          var x$12 = this$20.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$28.repr$1, n$1, until$1));
+          var s$4 = this$20.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$28.repr$1, n$1, until$1));
           break matchEnd7$1
         }
       };
       if (rc6$1) {
         var s$2$1 = $as_T(x2$2.x$2);
-        var x$12 = s$2$1;
+        var s$4 = s$2$1;
         break matchEnd7$1
       };
       var x$1 = $m_s_None$();
       if ((x$1 === x1$1)) {
-        var x$12 = "Cause unknown";
+        var s$4 = "Cause unknown";
         break matchEnd7$1
       };
       throw new $c_s_MatchError().init___O(x1$1)
     };
     var s$5 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    qual$2.pop(s$5, x$12, null);
+    toaster.pop(s$5, s$4, null);
     return (void 0)
   } else {
     throw new $c_s_MatchError().init___O(x0$2)
@@ -26514,25 +26709,25 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$9.prototype.apply__s
   if ((aUser === (void 0))) {
     return (void 0)
   } else {
-    var $$this = this.$$outer$2.sessionFactory$1.user__sjs_js_UndefOr();
-    if (($$this === (void 0))) {
+    var value = this.$$outer$2.sessionFactory$1.user__sjs_js_UndefOr();
+    if ((value === (void 0))) {
       return (void 0)
     } else {
-      var $$this$1 = aUser.followers;
-      if (($$this$1 === (void 0))) {
+      var value$1 = aUser.followers;
+      if ((value$1 === (void 0))) {
         return (void 0)
       } else {
-        var $$this$2 = $$this._id;
-        if (($$this$2 === (void 0))) {
+        var value$2 = value._id;
+        if ((value$2 === (void 0))) {
           return (void 0)
         } else {
-          var followerId = $as_T($$this$2);
+          var followerId = $as_T(value$2);
           var i = 0;
           while (true) {
-            if ((i < $uI($$this$1.length))) {
+            if ((i < $uI(value$1.length))) {
               var index = i;
-              var arg1 = $$this$1[index];
-              var jsx$1 = (!$m_sr_BoxesRunTime$().equals__O__O__Z(arg1, followerId))
+              var arg1 = value$1[index];
+              var jsx$1 = ($m_sr_BoxesRunTime$().equals__O__O__Z(arg1, followerId) === false)
             } else {
               var jsx$1 = false
             };
@@ -26542,7 +26737,7 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$9.prototype.apply__s
               break
             }
           };
-          var value$3 = (i !== $uI($$this$1.length));
+          var value$3 = (i !== $uI(value$1.length));
           return value$3
         }
       }
@@ -26660,9 +26855,9 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$co
     };
     var s$1 = jsx$4.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$3]));
     jsx$5.error(s$1);
-    var $$this$1 = this.$$outer$2.toaster$1;
+    var toaster = this.$$outer$2.toaster$1;
     var s$3 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$1.pop(s$3, "Loading Error", "Failed while loading user information");
+    toaster.pop(s$3, "Loading Error", "Failed while loading user information");
     return (void 0)
   };
   throw new $c_s_MatchError().init___O(x0$3)
@@ -26750,9 +26945,9 @@ $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$com$microsoft$awt$co
     };
     var s$1 = jsx$2.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$1]));
     jsx$3.log(s$1);
-    var $$this$1 = this.$$outer$2.toaster$1;
+    var toaster = this.$$outer$2.toaster$1;
     var s$3 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$1.pop(s$3, "Loading Error", "Failed while refreshing user workloads");
+    toaster.pop(s$3, "Loading Error", "Failed while refreshing user workloads");
     return (void 0)
   } else {
     throw new $c_s_MatchError().init___O(x0$4)
@@ -26784,14 +26979,11 @@ $c_Lcom_microsoft_awt_components_SessionFactory$$anonfun$3.prototype.apply__O__O
   return this.apply__Lcom_microsoft_awt_models_Session__T2(v1)
 });
 $c_Lcom_microsoft_awt_components_SessionFactory$$anonfun$3.prototype.apply__Lcom_microsoft_awt_models_Session__T2 = (function(session) {
-  var $$this = session.userID;
-  if (($$this === (void 0))) {
-    var jsx$1;
+  var value = session.userID;
+  if ((value === (void 0))) {
     throw new $c_jl_IllegalStateException().init___T("No user ID specified")
-  } else {
-    var jsx$1 = $$this
   };
-  var userID = $as_T(jsx$1);
+  var userID = $as_T(value);
   return new $c_T2().init___O__O(session, userID)
 });
 $c_Lcom_microsoft_awt_components_SessionFactory$$anonfun$3.prototype.init___Lcom_microsoft_awt_components_SessionFactory = (function($$outer) {
@@ -26825,8 +27017,8 @@ $c_Lcom_microsoft_awt_components_SessionFactory$$anonfun$5.prototype.apply__O__O
 });
 $c_Lcom_microsoft_awt_components_SessionFactory$$anonfun$5.prototype.apply__T2__s_concurrent_Future = (function(x$2) {
   if ((x$2 !== null)) {
-    var session = x$2.$$und1__O();
-    var userID = $as_T(x$2.$$und2__O());
+    var session = x$2.$$und1$f;
+    var userID = $as_T(x$2.$$und2$f);
     var this$1 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.com$microsoft$awt$components$SessionFactory$$userSvc$f.getUserByID__T__Lorg_scalajs_angularjs_http_HttpResponse(userID));
     var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(session$1) {
       return (function(user$2) {
@@ -26874,10 +27066,10 @@ $c_Lcom_microsoft_awt_components_SessionFactory$$anonfun$com$microsoft$awt$compo
   this.apply__Lcom_microsoft_awt_models_Session__V(v1)
 });
 $c_Lcom_microsoft_awt_components_SessionFactory$$anonfun$com$microsoft$awt$components$SessionFactory$$updateOnlineStatusesForFollowers$1.prototype.apply__Lcom_microsoft_awt_models_Session__V = (function(thisSession) {
-  var $$this = thisSession.userID;
+  var value = thisSession.userID;
   var f = new $c_Lcom_microsoft_awt_components_SessionFactory$$anonfun$com$microsoft$awt$components$SessionFactory$$updateOnlineStatusesForFollowers$1$$anonfun$apply$5().init___Lcom_microsoft_awt_components_SessionFactory$$anonfun$com$microsoft$awt$components$SessionFactory$$updateOnlineStatusesForFollowers$1(this);
-  if (($$this !== (void 0))) {
-    f.apply__T__V($as_T($$this))
+  if ((value !== (void 0))) {
+    f.apply__T__V($as_T(value))
   }
 });
 $c_Lcom_microsoft_awt_components_SessionFactory$$anonfun$com$microsoft$awt$components$SessionFactory$$updateOnlineStatusesForFollowers$1.prototype.init___Lcom_microsoft_awt_components_SessionFactory = (function($$outer) {
@@ -26965,25 +27157,23 @@ $c_Lcom_microsoft_awt_components_SessionFactory$$anonfun$com$microsoft$awt$compo
   while ((i < len)) {
     var index = i;
     var arg1 = followers[index];
-    var $$this = arg1._id;
-    var xo = (($$this === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this));
-    var xs = xo.toList__sci_List();
-    if ((xs !== null)) {
-      var xs$1 = xs;
-      x: {
-        _loop: while (true) {
-          var this$8 = xs$1;
-          if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$8)) {
-            var elem = xs$1.head__O();
-            array.push(elem);
-            xs$1 = $as_sc_LinearSeq(xs$1.tail__O());
-            continue _loop
-          };
-          break x
-        }
+    var value = arg1._id;
+    var xo = ((value === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value));
+    var this$7 = xo.toList__sci_List();
+    if ((this$7 !== null)) {
+      var xs = this$7;
+      _loop: while (true) {
+        var this$8 = xs;
+        if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$8)) {
+          var elem = xs.head__O();
+          array.push(elem);
+          xs = $as_sc_LinearSeq(xs.tail__O());
+          continue _loop
+        };
+        break
       }
     } else {
-      var these = xs;
+      var these = this$7;
       while ((!these.isEmpty__Z())) {
         var arg1$1 = these.head__O();
         array.push(arg1$1);
@@ -27336,13 +27526,13 @@ $c_Lcom_microsoft_awt_components_UserDialog$UserDialogController$$anonfun$1$$ano
   } else if ($is_s_util_Failure(x0$1)) {
     var x3 = $as_s_util_Failure(x0$1);
     var e = x3.exception$2;
-    var $$this$1 = this.$$outer$2.$$outer$3.toaster$1;
+    var toaster = this.$$outer$2.$$outer$3.toaster$1;
     var this$5 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6 = false;
     var x2$1 = null;
     var x1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7: {
-      var message;
+      var s$1;
       if ($is_s_Some(x1)) {
         rc6 = true;
         x2$1 = $as_s_Some(x1);
@@ -27354,24 +27544,24 @@ $c_Lcom_microsoft_awt_components_UserDialog$UserDialogController$$anonfun$1$$ano
           var n = $uI(thiz.length);
           var $$this = this$13.repr$1;
           var until = $uI($$this.length);
-          var message = this$5.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$13.repr$1, n, until));
+          var s$1 = this$5.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$13.repr$1, n, until));
           break matchEnd7
         }
       };
       if (rc6) {
         var s$2 = $as_T(x2$1.x$2);
-        var message = s$2;
+        var s$1 = s$2;
         break matchEnd7
       };
       var x = $m_s_None$();
       if ((x === x1)) {
-        var message = "Cause unknown";
+        var s$1 = "Cause unknown";
         break matchEnd7
       };
       throw new $c_s_MatchError().init___O(x1)
     };
     var s$3 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$1.pop(s$3, "Loading Error", message);
+    toaster.pop(s$3, "Loading Error", s$1);
     return (void 0)
   } else {
     throw new $c_s_MatchError().init___O(x0$1)
@@ -27449,9 +27639,9 @@ $c_Lcom_microsoft_awt_components_UserDialog$UserDialogController$$anonfun$4$$ano
         arg$outer.$$outer$2.$$outer$2.$$scope$1.processing = false
       })
     })(this));
-    var qual$1 = this.$$outer$2.$$outer$2.toaster$1;
+    var toaster = this.$$outer$2.$$outer$2.toaster$1;
     var s = $m_Lorg_scalajs_angularjs_toaster_Toaster$().SUCCESS$1;
-    qual$1.pop(s, "Profile Updated", null);
+    toaster.pop(s, "Profile Updated", null);
     this.$$outer$2.$$outer$2.$$modalInstance$1.close(this.form$1$2)
   } else if ($is_s_util_Failure(x0$2)) {
     var x3 = $as_s_util_Failure(x0$2);
@@ -27498,13 +27688,13 @@ $c_Lcom_microsoft_awt_components_UserDialog$UserDialogController$$anonfun$4$$ano
     };
     var s$3 = jsx$2.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$1]));
     jsx$3.error(s$3);
-    var $$this$2 = this.$$outer$2.$$outer$2.toaster$1;
+    var toaster$1 = this.$$outer$2.$$outer$2.toaster$1;
     var this$21 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6$1 = false;
     var x2$1 = null;
     var x1$1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7$1: {
-      var message;
+      var s$5;
       if ($is_s_Some(x1$1)) {
         rc6$1 = true;
         x2$1 = $as_s_Some(x1$1);
@@ -27516,24 +27706,24 @@ $c_Lcom_microsoft_awt_components_UserDialog$UserDialogController$$anonfun$4$$ano
           var n$1 = $uI(thiz$1.length);
           var $$this$1 = this$29.repr$1;
           var until$1 = $uI($$this$1.length);
-          var message = this$21.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$29.repr$1, n$1, until$1));
+          var s$5 = this$21.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$29.repr$1, n$1, until$1));
           break matchEnd7$1
         }
       };
       if (rc6$1) {
         var s$2$1 = $as_T(x2$1.x$2);
-        var message = s$2$1;
+        var s$5 = s$2$1;
         break matchEnd7$1
       };
       var x$1 = $m_s_None$();
       if ((x$1 === x1$1)) {
-        var message = "Cause unknown";
+        var s$5 = "Cause unknown";
         break matchEnd7$1
       };
       throw new $c_s_MatchError().init___O(x1$1)
     };
     var s$6 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$2.pop(s$6, "Profile Update Error", message)
+    toaster$1.pop(s$6, "Profile Update Error", s$5)
   } else {
     throw new $c_s_MatchError().init___O(x0$2)
   }
@@ -27580,10 +27770,10 @@ $c_Lcom_microsoft_awt_components_UserFactory$$anonfun$enrich$1.prototype.apply__
   while ((i < len)) {
     var index = i;
     var arg1 = users[index];
-    var $$this = arg1._id;
-    var $$this$1 = (($$this === (void 0)) ? null : $$this);
+    var value = arg1._id;
+    var self = ((value === (void 0)) ? null : value);
     var y = $m_Lcom_microsoft_awt_models_Submitter$().apply__Lcom_microsoft_awt_models_User__Lcom_microsoft_awt_models_Submitter(arg1);
-    var elem = new $c_T2().init___O__O($$this$1, y);
+    var elem = new $c_T2().init___O__O(self, y);
     array.push(elem);
     i = ((1 + i) | 0)
   };
@@ -27627,23 +27817,23 @@ function $h_Lcom_microsoft_awt_components_UserFactory$$anonfun$enrich$2() {
 $h_Lcom_microsoft_awt_components_UserFactory$$anonfun$enrich$2.prototype = $c_Lcom_microsoft_awt_components_UserFactory$$anonfun$enrich$2.prototype;
 $c_Lcom_microsoft_awt_components_UserFactory$$anonfun$enrich$2.prototype.apply__T2__sjs_js_Array = (function(x$3) {
   if ((x$3 !== null)) {
-    var userMap = $as_sci_Map(x$3.$$und2__O());
+    var userMap = $as_sci_Map(x$3.$$und2$f);
     var array = this.posts$1$2;
     var i = 0;
     var len = $uI(array.length);
     while ((i < len)) {
       var index = i;
       var v1 = array[index];
-      var $$this = v1.submitterId;
-      if (($$this === (void 0))) {
+      var value = v1.submitterId;
+      if ((value === (void 0))) {
         var jsx$1 = (void 0)
       } else {
-        var x$2 = $as_T($$this);
-        var $$this$1 = userMap.get__O__s_Option(x$2);
-        if ($$this$1.isEmpty__Z()) {
+        var x$2 = $as_T(value);
+        var opt = userMap.get__O__s_Option(x$2);
+        if (opt.isEmpty__Z()) {
           var jsx$1 = (void 0)
         } else {
-          var arg1 = $$this$1.get__O();
+          var arg1 = opt.get__O();
           var jsx$1 = arg1
         }
       };
@@ -27742,8 +27932,8 @@ $c_Lcom_microsoft_awt_components_UserFactory$$anonfun$getUsers$1.prototype.apply
     var index = i;
     var arg1 = missingUsers[index];
     var dict = this.$$outer$2.com$microsoft$awt$components$UserFactory$$cache$1;
-    var $$this = arg1._id;
-    var key = (($$this === (void 0)) ? null : $$this);
+    var value = arg1._id;
+    var key = ((value === (void 0)) ? null : value);
     var value$1 = $m_s_concurrent_Future$().successful__O__s_concurrent_Future(arg1);
     var key$1 = $as_T(key);
     if ($uZ($m_sjs_js_WrappedDictionary$Cache$().safeHasOwnProperty$1.call(dict, key$1))) {
@@ -27795,7 +27985,7 @@ $c_Lcom_microsoft_awt_components_UserFactory$$anonfun$getUsers$2.prototype.apply
   if ((x$5 !== null)) {
     var this$5 = $m_s_concurrent_Future$();
     var array = this.userIds$1$2;
-    var this$2 = $m_sc_Seq$();
+    $m_sc_Seq$();
     $m_sjs_js_WrappedArray$();
     var array$1 = [];
     $uI(array.length);
@@ -27809,42 +27999,39 @@ $c_Lcom_microsoft_awt_components_UserFactory$$anonfun$getUsers$2.prototype.apply
       array$1.push(elem);
       i = ((1 + i) | 0)
     };
-    var this$4 = $m_sc_Seq$();
+    $m_sc_Seq$();
     var executor = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
     var z = this$5.successful__O__s_concurrent_Future(($m_sjs_js_WrappedArray$(), new $c_sjs_js_WrappedArray().init___()));
     var start = 0;
     var end = $uI(array$1.length);
     var z$1 = z;
-    x: {
-      var jsx$1;
-      _foldl: while (true) {
-        if ((start === end)) {
-          var jsx$1 = z$1;
-          break x
-        } else {
-          var temp$start = ((1 + start) | 0);
-          var arg1$1 = z$1;
-          var index$1 = start;
-          var arg2 = array$1[index$1];
-          var fr = $as_s_concurrent_Future(arg1$1);
-          var fa = $as_s_concurrent_Future(arg2);
-          var f$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, executor$1, fa$1) {
-            return (function(r$2) {
-              var r = $as_scm_Builder(r$2);
-              var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this$1, r$1) {
-                return (function(a$2) {
-                  return r$1.$$plus$eq__O__scm_Builder(a$2)
-                })
-              })($this, r));
-              return $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(fa$1, f, executor$1)
-            })
-          })(this$5, executor, fa));
-          var temp$z = $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(fr, f$1, executor);
-          start = temp$start;
-          z$1 = temp$z;
-          continue _foldl
-        }
-      }
+    var jsx$1;
+    _foldl: while (true) {
+      if ((start !== end)) {
+        var temp$start = ((1 + start) | 0);
+        var arg1$1 = z$1;
+        var index$1 = start;
+        var arg2 = array$1[index$1];
+        var fr = $as_s_concurrent_Future(arg1$1);
+        var fa = $as_s_concurrent_Future(arg2);
+        var f$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, executor$1, fa$1) {
+          return (function(r$2) {
+            var r = $as_scm_Builder(r$2);
+            var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this$1, r$1) {
+              return (function(a$2) {
+                return r$1.$$plus$eq__O__scm_Builder(a$2)
+              })
+            })($this, r));
+            return $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(fa$1, f, executor$1)
+          })
+        })(this$5, executor, fa));
+        var temp$z = $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(fr, f$1, executor);
+        start = temp$start;
+        z$1 = temp$z;
+        continue _foldl
+      };
+      var jsx$1 = z$1;
+      break
     };
     var this$7 = $as_s_concurrent_Future(jsx$1);
     var f$2 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2$1) {
@@ -27931,9 +28118,9 @@ $c_Lcom_microsoft_awt_components_UserFactory$$anonfun$updateUser$1.prototype.ini
   return this
 });
 $c_Lcom_microsoft_awt_components_UserFactory$$anonfun$updateUser$1.prototype.apply__Lcom_microsoft_awt_models_User__V = (function(user) {
-  var $$this = user._id;
-  if (($$this !== (void 0))) {
-    var id = $as_T($$this);
+  var value = user._id;
+  if ((value !== (void 0))) {
+    var id = $as_T(value);
     this.$$outer$2.com$microsoft$awt$components$UserFactory$$cache$1[id] = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.promise$1$f)
   }
 });
@@ -27983,13 +28170,13 @@ $c_Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentDialogCont
   } else if ($is_s_util_Failure(x0$1)) {
     var x3 = $as_s_util_Failure(x0$1);
     var e = x3.exception$2;
-    var $$this$1 = this.$$outer$2.$$outer$3.toaster$1;
+    var toaster = this.$$outer$2.$$outer$3.toaster$1;
     var this$5 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6 = false;
     var x2$1 = null;
     var x1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7: {
-      var message;
+      var s$1;
       if ($is_s_Some(x1)) {
         rc6 = true;
         x2$1 = $as_s_Some(x1);
@@ -28001,24 +28188,24 @@ $c_Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentDialogCont
           var n = $uI(thiz.length);
           var $$this = this$13.repr$1;
           var until = $uI($$this.length);
-          var message = this$5.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$13.repr$1, n, until));
+          var s$1 = this$5.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$13.repr$1, n, until));
           break matchEnd7
         }
       };
       if (rc6) {
         var s$2 = $as_T(x2$1.x$2);
-        var message = s$2;
+        var s$1 = s$2;
         break matchEnd7
       };
       var x = $m_s_None$();
       if ((x === x1)) {
-        var message = "Cause unknown";
+        var s$1 = "Cause unknown";
         break matchEnd7
       };
       throw new $c_s_MatchError().init___O(x1)
     };
     var s$3 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$1.pop(s$3, "Loading Error", message);
+    toaster.pop(s$3, "Loading Error", s$1);
     return (void 0)
   } else {
     throw new $c_s_MatchError().init___O(x0$1)
@@ -28105,9 +28292,9 @@ $c_Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentDialogCont
         arg$outer.$$outer$2.$$outer$2.$$scope$1.processing = false
       })
     })(this));
-    var $$this = this.$$outer$2.$$outer$2.toaster$1;
+    var toaster = this.$$outer$2.$$outer$2.toaster$1;
     var s = $m_Lorg_scalajs_angularjs_toaster_Toaster$().SUCCESS$1;
-    $$this.pop(s, "Workload Status", "Updated successfully");
+    toaster.pop(s, "Workload Status", "Updated successfully");
     this.$$outer$2.$$outer$2.$$modalInstance$1.close(workload)
   } else if ($is_s_util_Failure(x0$2)) {
     var x3 = $as_s_util_Failure(x0$2);
@@ -28134,8 +28321,8 @@ $c_Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentDialogCont
           var this$15 = new $c_sci_StringOps().init___T(s$1);
           var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n = $uI(thiz.length);
-          var $$this$1 = this$15.repr$1;
-          var until = $uI($$this$1.length);
+          var $$this = this$15.repr$1;
+          var until = $uI($$this.length);
           var jsx$1 = this$7.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$15.repr$1, n, until));
           break matchEnd7
         }
@@ -28154,13 +28341,13 @@ $c_Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentDialogCont
     };
     var s$3 = jsx$2.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$1]));
     jsx$3.error(s$3);
-    var $$this$3 = this.$$outer$2.$$outer$2.toaster$1;
+    var toaster$1 = this.$$outer$2.$$outer$2.toaster$1;
     var this$22 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6$1 = false;
     var x2$2 = null;
     var x1$1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7$1: {
-      var message;
+      var s$5;
       if ($is_s_Some(x1$1)) {
         rc6$1 = true;
         x2$2 = $as_s_Some(x1$1);
@@ -28170,26 +28357,26 @@ $c_Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentDialogCont
           var this$30 = new $c_sci_StringOps().init___T(s$4);
           var thiz$1 = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n$1 = $uI(thiz$1.length);
-          var $$this$2 = this$30.repr$1;
-          var until$1 = $uI($$this$2.length);
-          var message = this$22.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$30.repr$1, n$1, until$1));
+          var $$this$1 = this$30.repr$1;
+          var until$1 = $uI($$this$1.length);
+          var s$5 = this$22.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$30.repr$1, n$1, until$1));
           break matchEnd7$1
         }
       };
       if (rc6$1) {
         var s$2$1 = $as_T(x2$2.x$2);
-        var message = s$2$1;
+        var s$5 = s$2$1;
         break matchEnd7$1
       };
       var x$1 = $m_s_None$();
       if ((x$1 === x1$1)) {
-        var message = "Cause unknown";
+        var s$5 = "Cause unknown";
         break matchEnd7$1
       };
       throw new $c_s_MatchError().init___O(x1$1)
     };
     var s$6 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$3.pop(s$6, "Workload Status", message)
+    toaster$1.pop(s$6, "Workload Status", s$5)
   } else {
     throw new $c_s_MatchError().init___O(x0$2)
   }
@@ -28224,8 +28411,8 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$13.prototype.apply_
   if ((aWorkload === (void 0))) {
     return (void 0)
   } else {
-    var $$this = this.$$outer$2.getLatestStatus__Lcom_microsoft_awt_models_Workload__sjs_js_UndefOr(aWorkload);
-    return (($$this === (void 0)) ? (void 0) : $$this.statusText)
+    var value = this.$$outer$2.getLatestStatus__Lcom_microsoft_awt_models_Workload__sjs_js_UndefOr(aWorkload);
+    return ((value === (void 0)) ? (void 0) : value.statusText)
   }
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$13.prototype.init___Lcom_microsoft_awt_components_WorkloadController = (function($$outer) {
@@ -28266,8 +28453,8 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$14.prototype.apply_
   if ((aWorkload === (void 0))) {
     return (void 0)
   } else {
-    var $$this = this.$$outer$2.getLatestStatus__Lcom_microsoft_awt_models_Workload__sjs_js_UndefOr(aWorkload);
-    return (($$this === (void 0)) ? (void 0) : $$this.creationTime)
+    var value = this.$$outer$2.getLatestStatus__Lcom_microsoft_awt_models_Workload__sjs_js_UndefOr(aWorkload);
+    return ((value === (void 0)) ? (void 0) : value.creationTime)
   }
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$14.prototype.init___Lcom_microsoft_awt_components_WorkloadController = (function($$outer) {
@@ -28303,26 +28490,36 @@ function $h_Lcom_microsoft_awt_components_WorkloadController$$anonfun$15() {
 $h_Lcom_microsoft_awt_components_WorkloadController$$anonfun$15.prototype = $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$15.prototype;
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$15.prototype.apply__sjs_js_UndefOr__sjs_js_UndefOr__sjs_js_UndefOr = (function(aWorkload, anIndex) {
   if ((aWorkload === (void 0))) {
-    var $$this$1 = (void 0)
+    var value = (void 0)
   } else {
-    var $$this = $m_s_Option$().apply__O__s_Option(aWorkload);
-    var $$this$1 = ($$this.isEmpty__Z() ? (void 0) : $$this.get__O())
+    var opt = $m_s_Option$().apply__O__s_Option(aWorkload);
+    if (opt.isEmpty__Z()) {
+      var value = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var value = arg1
+    }
   };
-  if (($$this$1 === (void 0))) {
+  if ((value === (void 0))) {
     return (void 0)
   } else {
     if ((anIndex === (void 0))) {
-      var $$this$3 = (void 0)
+      var value$1 = (void 0)
     } else {
-      var $$this$2 = $m_s_Option$().apply__O__s_Option(anIndex);
-      var $$this$3 = ($$this$2.isEmpty__Z() ? (void 0) : $$this$2.get__O())
+      var opt$1 = $m_s_Option$().apply__O__s_Option(anIndex);
+      if (opt$1.isEmpty__Z()) {
+        var value$1 = (void 0)
+      } else {
+        var arg1$1 = opt$1.get__O();
+        var value$1 = arg1$1
+      }
     };
-    if (($$this$3 === (void 0))) {
+    if ((value$1 === (void 0))) {
       return (void 0)
     } else {
-      var index = $uI($$this$3);
-      var $$this$4 = this.$$outer$2.com$microsoft$awt$components$WorkloadController$$$scope$f.selectedWorkload;
-      if ((($$this$4 !== (void 0)) && (($$this$1 !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z($$this$1, $$this$4)))) {
+      var index = $uI(value$1);
+      var valueA = this.$$outer$2.com$microsoft$awt$components$WorkloadController$$$scope$f.selectedWorkload;
+      if (((valueA !== (void 0)) && ((value !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(value, valueA)))) {
         var value$2 = "status_highlighted"
       } else {
         var value$2 = ((((index % 2) | 0) === 0) ? "status_even" : "status_odd")
@@ -28371,8 +28568,8 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$16.prototype.apply_
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$16.prototype.apply__sjs_js_UndefOr__V = (function(aWorkload) {
   this.$$outer$2.com$microsoft$awt$components$WorkloadController$$$scope$f.selectedWorkload = aWorkload;
   if ((aWorkload !== (void 0))) {
-    var $$this = aWorkload.statusMembers;
-    if (($$this === (void 0))) {
+    var value = aWorkload.statusMembers;
+    if ((value === (void 0))) {
       this.$$outer$2.com$microsoft$awt$components$WorkloadController$$loadStatusMembers__Lcom_microsoft_awt_models_Workload__V(aWorkload)
     }
   }
@@ -28620,7 +28817,7 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$17$$anonfun$apply$4
     var sortedWorkloads_$_array$6 = workloads
   };
   if ($uZ(this.$$outer$2.$$outer$2.com$microsoft$awt$components$WorkloadController$$$scope$f.sortAsc)) {
-    var $$this_$_array$6 = sortedWorkloads_$_array$6
+    var col_$_array$6 = sortedWorkloads_$_array$6
   } else {
     $m_sjs_js_WrappedArray$();
     var array$4 = [];
@@ -28632,9 +28829,9 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$17$$anonfun$apply$4
       var elem$5 = sortedWorkloads_$_array$6[index$8];
       array$4.push(elem$5)
     };
-    var $$this_$_array$6 = array$4
+    var col_$_array$6 = array$4
   };
-  return $$this_$_array$6
+  return col_$_array$6
 });
 var $d_Lcom_microsoft_awt_components_WorkloadController$$anonfun$17$$anonfun$apply$41 = new $TypeData().initClass({
   Lcom_microsoft_awt_components_WorkloadController$$anonfun$17$$anonfun$apply$41: 0
@@ -28665,8 +28862,8 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$17$$anonfun$apply$4
   return this
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$17$$anonfun$apply$41$$anonfun$18.prototype.apply__Lcom_microsoft_awt_models_Workload__T = (function(x$13) {
-  var $$this = x$13.name;
-  return $as_T((($$this === (void 0)) ? "" : $$this))
+  var value = x$13.name;
+  return $as_T(((value === (void 0)) ? "" : value))
 });
 var $d_Lcom_microsoft_awt_components_WorkloadController$$anonfun$17$$anonfun$apply$41$$anonfun$18 = new $TypeData().initClass({
   Lcom_microsoft_awt_components_WorkloadController$$anonfun$17$$anonfun$apply$41$$anonfun$18: 0
@@ -28697,8 +28894,8 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$17$$anonfun$apply$4
   return this
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$17$$anonfun$apply$41$$anonfun$19.prototype.apply__Lcom_microsoft_awt_models_Workload__T = (function(x$14) {
-  var $$this = x$14.msftLead;
-  return $as_T((($$this === (void 0)) ? "" : $$this))
+  var value = x$14.msftLead;
+  return $as_T(((value === (void 0)) ? "" : value))
 });
 var $d_Lcom_microsoft_awt_components_WorkloadController$$anonfun$17$$anonfun$apply$41$$anonfun$19 = new $TypeData().initClass({
   Lcom_microsoft_awt_components_WorkloadController$$anonfun$17$$anonfun$apply$41$$anonfun$19: 0
@@ -28729,8 +28926,8 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$17$$anonfun$apply$4
   return this
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$17$$anonfun$apply$41$$anonfun$20.prototype.apply__Lcom_microsoft_awt_models_Workload__D = (function(x$15) {
-  var $$this = x$15.consumption;
-  return $uD((($$this === (void 0)) ? 0.0 : $$this))
+  var value = x$15.consumption;
+  return $uD(((value === (void 0)) ? 0.0 : value))
 });
 var $d_Lcom_microsoft_awt_components_WorkloadController$$anonfun$17$$anonfun$apply$41$$anonfun$20 = new $TypeData().initClass({
   Lcom_microsoft_awt_components_WorkloadController$$anonfun$17$$anonfun$apply$41$$anonfun$20: 0
@@ -28761,9 +28958,14 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$17$$anonfun$apply$4
   return this
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$17$$anonfun$apply$41$$anonfun$21.prototype.apply__Lcom_microsoft_awt_models_Workload__T = (function(x$16) {
-  var $$this = x$16.lastUpdatedTime;
-  var $$this$1 = (($$this === (void 0)) ? (void 0) : $objectToString($$this));
-  return $as_T((($$this$1 === (void 0)) ? "" : $$this$1))
+  var value = x$16.lastUpdatedTime;
+  if ((value === (void 0))) {
+    var value$2 = (void 0)
+  } else {
+    var value$1 = $objectToString(value);
+    var value$2 = value$1
+  };
+  return $as_T(((value$2 === (void 0)) ? "" : value$2))
 });
 var $d_Lcom_microsoft_awt_components_WorkloadController$$anonfun$17$$anonfun$apply$41$$anonfun$21 = new $TypeData().initClass({
   Lcom_microsoft_awt_components_WorkloadController$$anonfun$17$$anonfun$apply$41$$anonfun$21: 0
@@ -29087,10 +29289,10 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$4$$anonfun$apply$12
   this.apply__sjs_js_Array__V(v1)
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$4$$anonfun$apply$12.prototype.apply__sjs_js_Array__V = (function(workloads) {
-  var $$this = this.aWorkload$1$2;
+  var value = this.aWorkload$1$2;
   var f = new $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$4$$anonfun$apply$12$$anonfun$apply$13().init___Lcom_microsoft_awt_components_WorkloadController$$anonfun$4$$anonfun$apply$12__sjs_js_Array(this, workloads);
-  if (($$this !== (void 0))) {
-    f.apply__Lcom_microsoft_awt_models_Workload__V($$this)
+  if ((value !== (void 0))) {
+    f.apply__Lcom_microsoft_awt_models_Workload__V(value)
   }
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$4$$anonfun$apply$12.prototype.init___Lcom_microsoft_awt_components_WorkloadController$$anonfun$4__sjs_js_UndefOr = (function($$outer, aWorkload$1) {
@@ -29139,10 +29341,10 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$4$$anonfun$apply$12
   return this
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$4$$anonfun$apply$12$$anonfun$apply$13.prototype.apply__Lcom_microsoft_awt_models_Workload__V = (function(workload) {
-  var $$this = workload._id;
+  var value = workload._id;
   var f = new $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$4$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14().init___Lcom_microsoft_awt_components_WorkloadController$$anonfun$4$$anonfun$apply$12$$anonfun$apply$13(this);
-  if (($$this !== (void 0))) {
-    f.apply__T__V($as_T($$this))
+  if ((value !== (void 0))) {
+    f.apply__T__V($as_T(value))
   }
 });
 var $d_Lcom_microsoft_awt_components_WorkloadController$$anonfun$4$$anonfun$apply$12$$anonfun$apply$13 = new $TypeData().initClass({
@@ -29220,16 +29422,16 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$4$$anonfun$apply$12
   if ($is_s_util_Success(x0$2)) {
     var x2 = $as_s_util_Success(x0$2);
     var updatedWorkload = x2.value$2;
-    var $$this = this.$$outer$2.$$outer$2.workloads$2$f;
-    var len = $uI($$this.length);
+    var array = this.$$outer$2.$$outer$2.workloads$2$f;
+    var len = $uI(array.length);
     var i = 0;
     while (true) {
       if ((i < len)) {
         var index = i;
-        var arg1 = $$this[index];
-        var $$this$1 = arg1._id;
+        var arg1 = array[index];
+        var valueA = arg1._id;
         var valueB = updatedWorkload._id;
-        var jsx$1 = (!(($$this$1 !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, $$this$1))))
+        var jsx$1 = (!((valueA !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, valueA))))
       } else {
         var jsx$1 = false
       };
@@ -29240,7 +29442,7 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$4$$anonfun$apply$12
       }
     };
     var n = i;
-    var x1 = ((n >= $uI($$this.length)) ? (-1) : n);
+    var x1 = ((n >= $uI(array.length)) ? (-1) : n);
     switch (x1) {
       case (-1): {
         var this$18 = $m_s_None$();
@@ -29275,8 +29477,8 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$4$$anonfun$apply$12
           var this$28 = new $c_sci_StringOps().init___T(s);
           var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n$1 = $uI(thiz.length);
-          var $$this$2 = this$28.repr$1;
-          var until = $uI($$this$2.length);
+          var $$this = this$28.repr$1;
+          var until = $uI($$this.length);
           var jsx$2 = this$20.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$28.repr$1, n$1, until));
           break matchEnd7
         }
@@ -29414,10 +29616,10 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18
   this.apply__sjs_js_Array__V(v1)
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18.prototype.apply__sjs_js_Array__V = (function(workloads) {
-  var $$this = this.aWorkload$2$2;
+  var value = this.aWorkload$2$2;
   var f = new $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18$$anonfun$apply$19().init___Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18__sjs_js_Array(this, workloads);
-  if (($$this !== (void 0))) {
-    f.apply__Lcom_microsoft_awt_models_Workload__V($$this)
+  if ((value !== (void 0))) {
+    f.apply__Lcom_microsoft_awt_models_Workload__V(value)
   }
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18.prototype.init___Lcom_microsoft_awt_components_WorkloadController$$anonfun$5__sjs_js_UndefOr__sjs_js_UndefOr = (function($$outer, aWorkload$2, theWorkloads$1) {
@@ -29458,10 +29660,10 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18
   this.apply__Lcom_microsoft_awt_models_Workload__V(v1)
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18$$anonfun$apply$19.prototype.apply__Lcom_microsoft_awt_models_Workload__V = (function(workload) {
-  var $$this = workload._id;
+  var value = workload._id;
   var f = new $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18$$anonfun$apply$19$$anonfun$apply$20().init___Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18$$anonfun$apply$19(this);
-  if (($$this !== (void 0))) {
-    f.apply__T__V($as_T($$this))
+  if ((value !== (void 0))) {
+    f.apply__T__V($as_T(value))
   }
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18$$anonfun$apply$19.prototype.init___Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18__sjs_js_Array = (function($$outer, workloads$3) {
@@ -29541,16 +29743,16 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18$$anonfun$apply$19$$anonfun$apply$20$$anonfun$apply$21.prototype.apply__s_util_Try__V = (function(x0$3) {
   if ($is_s_util_Success(x0$3)) {
-    var $$this = this.$$outer$2.$$outer$2.workloads$3$f;
-    var len = $uI($$this.length);
+    var array = this.$$outer$2.$$outer$2.workloads$3$f;
+    var len = $uI(array.length);
     var i = 0;
     while (true) {
       if ((i < len)) {
         var index = i;
-        var arg1 = $$this[index];
-        var $$this$1 = arg1._id;
-        var valueB = this.workloadID$1$f;
-        var jsx$1 = (!(($$this$1 !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, $$this$1))))
+        var arg1 = array[index];
+        var valueA = arg1._id;
+        var value = this.workloadID$1$f;
+        var jsx$1 = (!((valueA !== (void 0)) && ((value !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(value, valueA))))
       } else {
         var jsx$1 = false
       };
@@ -29561,7 +29763,7 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18
       }
     };
     var n = i;
-    var x1 = ((n >= $uI($$this.length)) ? (-1) : n);
+    var x1 = ((n >= $uI(array.length)) ? (-1) : n);
     switch (x1) {
       case (-1): {
         var this$19 = $m_s_None$();
@@ -29596,8 +29798,8 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18
           var this$29 = new $c_sci_StringOps().init___T(s);
           var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n$1 = $uI(thiz.length);
-          var $$this$2 = this$29.repr$1;
-          var until = $uI($$this$2.length);
+          var $$this = this$29.repr$1;
+          var until = $uI($$this.length);
           var jsx$2 = this$21.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$29.repr$1, n$1, until));
           break matchEnd7
         }
@@ -29616,13 +29818,13 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18
     };
     var s$1 = jsx$3.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$2]));
     jsx$4.log(s$1);
-    var $$this$4 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$WorkloadController$$toaster$f;
+    var toaster = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$WorkloadController$$toaster$f;
     var this$36 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6$1 = false;
     var x2$1 = null;
     var x1$2 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7$1: {
-      var message;
+      var s$4;
       if ($is_s_Some(x1$2)) {
         rc6$1 = true;
         x2$1 = $as_s_Some(x1$2);
@@ -29632,26 +29834,26 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18
           var this$44 = new $c_sci_StringOps().init___T(s$3);
           var thiz$1 = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n$2 = $uI(thiz$1.length);
-          var $$this$3 = this$44.repr$1;
-          var until$1 = $uI($$this$3.length);
-          var message = this$36.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$44.repr$1, n$2, until$1));
+          var $$this$1 = this$44.repr$1;
+          var until$1 = $uI($$this$1.length);
+          var s$4 = this$36.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$44.repr$1, n$2, until$1));
           break matchEnd7$1
         }
       };
       if (rc6$1) {
         var s$2$1 = $as_T(x2$1.x$2);
-        var message = s$2$1;
+        var s$4 = s$2$1;
         break matchEnd7$1
       };
       var x$1 = $m_s_None$();
       if ((x$1 === x1$2)) {
-        var message = "Cause unknown";
+        var s$4 = "Cause unknown";
         break matchEnd7$1
       };
       throw new $c_s_MatchError().init___O(x1$2)
     };
     var s$5 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$4.pop(s$5, "Update Error", message)
+    toaster.pop(s$5, "Update Error", s$4)
   } else {
     throw new $c_s_MatchError().init___O(x0$3)
   }
@@ -29776,10 +29978,10 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24
   this.apply__sjs_js_Array__V(v1)
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24.prototype.apply__sjs_js_Array__V = (function(workloads) {
-  var $$this = this.aWorkload$3$2;
+  var value = this.aWorkload$3$2;
   var f = new $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24$$anonfun$apply$25().init___Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24__sjs_js_Array(this, workloads);
-  if (($$this !== (void 0))) {
-    f.apply__Lcom_microsoft_awt_models_Workload__V($$this)
+  if ((value !== (void 0))) {
+    f.apply__Lcom_microsoft_awt_models_Workload__V(value)
   }
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24.prototype.init___Lcom_microsoft_awt_components_WorkloadController$$anonfun$6__sjs_js_UndefOr = (function($$outer, aWorkload$3) {
@@ -29819,7 +30021,9 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24
   this.apply__Lcom_microsoft_awt_models_Workload__V(v1)
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24$$anonfun$apply$25.prototype.apply__Lcom_microsoft_awt_models_Workload__V = (function(workload) {
-  $m_sjs_js_Thenable$ThenableOps$().toFuture$extension__sjs_js_Thenable__s_concurrent_Future(this.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$WorkloadController$$workloadDialog$f.popup__sjs_js_UndefOr__sjs_js_Promise(workload)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24$$anonfun$apply$25$$anonfun$apply$26().init___Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24$$anonfun$apply$25(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+  var jsx$1 = $m_sjs_js_Thenable$ThenableOps$();
+  var p = this.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$WorkloadController$$workloadDialog$f.popup__sjs_js_UndefOr__sjs_js_Promise(workload);
+  jsx$1.toFuture$extension__sjs_js_Thenable__s_concurrent_Future(p).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24$$anonfun$apply$25$$anonfun$apply$26().init___Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24$$anonfun$apply$25(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24$$anonfun$apply$25.prototype.init___Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24__sjs_js_Array = (function($$outer, workloads$4) {
   if (($$outer === null)) {
@@ -29868,16 +30072,16 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24
   if ($is_s_util_Success(x0$4)) {
     var x2 = $as_s_util_Success(x0$4);
     var updatedWorkload = x2.value$2;
-    var $$this = this.$$outer$2.workloads$4$f;
-    var len = $uI($$this.length);
+    var array = this.$$outer$2.workloads$4$f;
+    var len = $uI(array.length);
     var i = 0;
     while (true) {
       if ((i < len)) {
         var index = i;
-        var arg1 = $$this[index];
-        var $$this$1 = arg1._id;
+        var arg1 = array[index];
+        var valueA = arg1._id;
         var valueB = updatedWorkload._id;
-        var jsx$1 = (!(($$this$1 !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, $$this$1))))
+        var jsx$1 = (!((valueA !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, valueA))))
       } else {
         var jsx$1 = false
       };
@@ -29888,7 +30092,7 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24
       }
     };
     var n = i;
-    var x1 = ((n >= $uI($$this.length)) ? (-1) : n);
+    var x1 = ((n >= $uI(array.length)) ? (-1) : n);
     switch (x1) {
       case (-1): {
         var x1$2 = $m_s_None$();
@@ -29909,9 +30113,9 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24
     } else {
       var x = $m_s_None$();
       if ((x === x1$2)) {
-        var $$this$2 = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$WorkloadController$$toaster$f;
+        var toaster = this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$WorkloadController$$toaster$f;
         var s = $m_Lorg_scalajs_angularjs_toaster_Toaster$().WARNING$1;
-        $$this$2.pop(s, "Workload Update", "Workload updated but not found locally");
+        toaster.pop(s, "Workload Update", "Workload updated but not found locally");
         $uI(this.$$outer$2.workloads$4$f.push(updatedWorkload))
       } else {
         throw new $c_s_MatchError().init___O(x1$2)
@@ -29942,8 +30146,8 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24
           var this$33 = new $c_sci_StringOps().init___T(s$1);
           var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
           var n$1 = $uI(thiz.length);
-          var $$this$3 = this$33.repr$1;
-          var until = $uI($$this$3.length);
+          var $$this = this$33.repr$1;
+          var until = $uI($$this.length);
           var jsx$2 = this$25.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$33.repr$1, n$1, until));
           break matchEnd7
         }
@@ -29996,8 +30200,8 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$8.prototype.apply__
   if ((aWorkload === (void 0))) {
     return (void 0)
   } else {
-    var $$this = aWorkload.azureServices;
-    if (($$this === (void 0))) {
+    var value = aWorkload.azureServices;
+    if ((value === (void 0))) {
       return (void 0)
     } else {
       var b = new $c_scm_StringBuilder().init___();
@@ -30005,10 +30209,10 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$8.prototype.apply__
       elem$1 = true;
       b.append__T__scm_StringBuilder("");
       var i = 0;
-      var len = $uI($$this.length);
+      var len = $uI(value.length);
       while ((i < len)) {
         var index = i;
-        var arg1 = $$this[index];
+        var arg1 = value[index];
         if (elem$1) {
           b.append__O__scm_StringBuilder(arg1);
           elem$1 = false
@@ -30146,9 +30350,9 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$com$microsoft$awt$c
     };
     var s$1 = jsx$3.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$2]));
     jsx$4.log(s$1);
-    var $$this$1 = this.$$outer$2.com$microsoft$awt$components$WorkloadController$$toaster$f;
+    var toaster = this.$$outer$2.com$microsoft$awt$components$WorkloadController$$toaster$f;
     var s$3 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$1.pop(s$3, "Loading Error", "Failed to retrieve workload status users");
+    toaster.pop(s$3, "Loading Error", "Failed to retrieve workload status users");
     return (void 0)
   } else {
     throw new $c_s_MatchError().init___O(x0$5)
@@ -30216,11 +30420,11 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$getLatestStatus$1.p
     }
   };
   var this$4 = new $c_sjs_js_ArrayOps().init___sjs_js_Array(array);
-  var $$this = $s_sc_TraversableLike$class__lastOption__sc_TraversableLike__s_Option(this$4);
-  if ($$this.isEmpty__Z()) {
+  var opt = $s_sc_TraversableLike$class__lastOption__sc_TraversableLike__s_Option(this$4);
+  if (opt.isEmpty__Z()) {
     return (void 0)
   } else {
-    var arg1$2 = $$this.get__O();
+    var arg1$2 = opt.get__O();
     return arg1$2
   }
 });
@@ -30253,9 +30457,14 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$getLatestStatus$1$$
   return this.apply__Lcom_microsoft_awt_models_Workload$Status__T(v1)
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$getLatestStatus$1$$anonfun$apply$35.prototype.apply__Lcom_microsoft_awt_models_Workload$Status__T = (function(x$11) {
-  var $$this = x$11.creationTime;
-  var $$this$1 = (($$this === (void 0)) ? (void 0) : $objectToString($$this));
-  return $as_T((($$this$1 === (void 0)) ? "" : $$this$1))
+  var value = x$11.creationTime;
+  if ((value === (void 0))) {
+    var value$2 = (void 0)
+  } else {
+    var value$1 = $objectToString(value);
+    var value$2 = value$1
+  };
+  return $as_T(((value$2 === (void 0)) ? "" : value$2))
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$getLatestStatus$1$$anonfun$apply$35.prototype.init___Lcom_microsoft_awt_components_WorkloadController$$anonfun$getLatestStatus$1 = (function($$outer) {
   return this
@@ -30306,13 +30515,13 @@ $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController$$anonfu
   } else if ($is_s_util_Failure(x0$1)) {
     var x3 = $as_s_util_Failure(x0$1);
     var e = x3.exception$2;
-    var $$this$1 = this.$$outer$2.$$outer$3.com$microsoft$awt$components$WorkloadDialog$WorkloadDialogController$$toaster$f;
+    var toaster = this.$$outer$2.$$outer$3.com$microsoft$awt$components$WorkloadDialog$WorkloadDialogController$$toaster$f;
     var this$4 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6 = false;
     var x2$1 = null;
     var x1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7: {
-      var message;
+      var s$1;
       if ($is_s_Some(x1)) {
         rc6 = true;
         x2$1 = $as_s_Some(x1);
@@ -30324,24 +30533,24 @@ $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController$$anonfu
           var n = $uI(thiz.length);
           var $$this = this$12.repr$1;
           var until = $uI($$this.length);
-          var message = this$4.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$12.repr$1, n, until));
+          var s$1 = this$4.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$12.repr$1, n, until));
           break matchEnd7
         }
       };
       if (rc6) {
         var s$2 = $as_T(x2$1.x$2);
-        var message = s$2;
+        var s$1 = s$2;
         break matchEnd7
       };
       var x = $m_s_None$();
       if ((x === x1)) {
-        var message = "Cause unknown";
+        var s$1 = "Cause unknown";
         break matchEnd7
       };
       throw new $c_s_MatchError().init___O(x1)
     };
     var s$3 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$1.pop(s$3, "Loading Error", message);
+    toaster.pop(s$3, "Loading Error", s$1);
     return (void 0)
   } else {
     throw new $c_s_MatchError().init___O(x0$1)
@@ -30485,13 +30694,13 @@ $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController$$anonfu
         arg$outer$1.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$WorkloadDialog$WorkloadDialogController$$$scope$f.processing = false
       })
     })(this), jsx$3.durationToInt__s_concurrent_duration_FiniteDuration__I($m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$4.scala$concurrent$duration$DurationInt$$n$1, unit$1)));
-    var $$this$1 = this.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$WorkloadDialog$WorkloadDialogController$$toaster$f;
+    var toaster = this.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$WorkloadDialog$WorkloadDialogController$$toaster$f;
     var this$8 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
     var rc6 = false;
     var x2$1 = null;
     var x1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
     matchEnd7: {
-      var message;
+      var s$1;
       if ($is_s_Some(x1)) {
         rc6 = true;
         x2$1 = $as_s_Some(x1);
@@ -30503,24 +30712,24 @@ $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController$$anonfu
           var n = $uI(thiz.length);
           var $$this = this$16.repr$1;
           var until = $uI($$this.length);
-          var message = this$8.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$16.repr$1, n, until));
+          var s$1 = this$8.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$16.repr$1, n, until));
           break matchEnd7
         }
       };
       if (rc6) {
         var s$2 = $as_T(x2$1.x$2);
-        var message = s$2;
+        var s$1 = s$2;
         break matchEnd7
       };
       var x = $m_s_None$();
       if ((x === x1)) {
-        var message = "Cause unknown";
+        var s$1 = "Cause unknown";
         break matchEnd7
       };
       throw new $c_s_MatchError().init___O(x1)
     };
     var s$3 = $m_Lorg_scalajs_angularjs_toaster_Toaster$().ERROR$1;
-    $$this$1.pop(s$3, "Workload Creation Error", message)
+    toaster.pop(s$3, "Workload Creation Error", s$1)
   } else {
     throw new $c_s_MatchError().init___O(x0$2)
   }
@@ -30607,24 +30816,34 @@ function $h_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1() {
 $h_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1.prototype = $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1.prototype;
 $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1.prototype.apply__sjs_js_UndefOr__sjs_js_UndefOr__V = (function(newValue, oldValue) {
   if ((newValue === (void 0))) {
-    var $$this$1 = (void 0)
+    var value = (void 0)
   } else {
-    var $$this = $m_s_Option$().apply__O__s_Option(newValue);
-    var $$this$1 = ($$this.isEmpty__Z() ? (void 0) : $$this.get__O())
+    var opt = $m_s_Option$().apply__O__s_Option(newValue);
+    if (opt.isEmpty__Z()) {
+      var value = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var value = arg1
+    }
   };
-  if (($$this$1 !== (void 0))) {
-    var x0$1 = $as_T($$this$1);
+  if ((value !== (void 0))) {
+    var x0$1 = $as_T(value);
     var this$13 = new $c_sci_StringOps().init___T(x0$1);
     if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$13)) {
       this.scope$1$f.url = this.$$outer$2.com$microsoft$awt$directives$AvatarDirective$$LOADING$undSPINNER$1;
-      var $$this$2 = this.scope$1$f.named;
-      if (($$this$2 === (void 0))) {
-        var $$this$4 = (void 0)
+      var valueA = this.scope$1$f.named;
+      if ((valueA === (void 0))) {
+        var value$1 = (void 0)
       } else {
-        var $$this$3 = $m_s_Option$().apply__O__s_Option($$this$2);
-        var $$this$4 = ($$this$3.isEmpty__Z() ? (void 0) : $$this$3.get__O())
+        var opt$1 = $m_s_Option$().apply__O__s_Option(valueA);
+        if (opt$1.isEmpty__Z()) {
+          var value$1 = (void 0)
+        } else {
+          var arg1$1 = opt$1.get__O();
+          var value$1 = arg1$1
+        }
       };
-      if (($$this$4 !== (void 0))) {
+      if ((value$1 !== (void 0))) {
         this.scope$1$f.name = "Loading..."
       };
       this.$$outer$2.com$microsoft$awt$directives$AvatarDirective$$loadUserByID__T__Lcom_microsoft_awt_directives_AvatarDirectiveScope__V(x0$1, this.scope$1$f)
@@ -30765,27 +30984,33 @@ $c_Lcom_microsoft_awt_directives_WorkloadStatusDirective$$anonfun$link$1.prototy
   return this
 });
 $c_Lcom_microsoft_awt_directives_WorkloadStatusDirective$$anonfun$link$1.prototype.apply__sjs_js_UndefOr__sjs_js_UndefOr__V = (function(newValue, oldValue) {
-  var $$this = this.scope$1$2.code;
-  if (($$this === (void 0))) {
+  var valueA = this.scope$1$2.code;
+  if ((valueA === (void 0))) {
     var value = (void 0)
   } else {
-    var $$this$1 = $m_s_Option$().apply__O__s_Option($$this);
-    var value = ($$this$1.isEmpty__Z() ? (void 0) : $$this$1.get__O())
+    var opt = $m_s_Option$().apply__O__s_Option(valueA);
+    if (opt.isEmpty__Z()) {
+      var value = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var value = arg1
+    }
   };
   var jsx$1 = this.scope$1$2;
-  var $$this$2 = this.$$outer$2.com$microsoft$awt$directives$WorkloadStatusDirective$$getStatusIcon__sjs_js_UndefOr__sjs_js_UndefOr(value);
-  jsx$1.iconClass = $as_T((($$this$2 === (void 0)) ? null : $$this$2));
+  var value$1 = this.$$outer$2.com$microsoft$awt$directives$WorkloadStatusDirective$$getStatusIcon__sjs_js_UndefOr__sjs_js_UndefOr(value);
+  jsx$1.iconClass = $as_T(((value$1 === (void 0)) ? null : value$1));
   var jsx$2 = this.scope$1$2;
-  var $$this$3 = this.$$outer$2.com$microsoft$awt$directives$WorkloadStatusDirective$$getStatusClass__sjs_js_UndefOr__sjs_js_UndefOr(value);
-  jsx$2.iconTextClass = $as_T((($$this$3 === (void 0)) ? null : $$this$3));
+  var value$2 = this.$$outer$2.com$microsoft$awt$directives$WorkloadStatusDirective$$getStatusClass__sjs_js_UndefOr__sjs_js_UndefOr(value);
+  jsx$2.iconTextClass = $as_T(((value$2 === (void 0)) ? null : value$2));
   var jsx$3 = this.scope$1$2;
   if ((value === (void 0))) {
-    var $$this$4 = (void 0)
+    var value$4 = (void 0)
   } else {
     var x$1 = $as_T(value);
-    var $$this$4 = $as_T(x$1.toUpperCase())
+    var value$3 = $as_T(x$1.toUpperCase());
+    var value$4 = value$3
   };
-  jsx$3.iconText = $as_T((($$this$4 === (void 0)) ? null : $$this$4))
+  jsx$3.iconText = $as_T(((value$4 === (void 0)) ? null : value$4))
 });
 $c_Lcom_microsoft_awt_directives_WorkloadStatusDirective$$anonfun$link$1.prototype.apply__O__O__O = (function(v1, v2) {
   this.apply__sjs_js_UndefOr__sjs_js_UndefOr__V(v1, v2)
@@ -30850,12 +31075,17 @@ $c_Lorg_scalajs_angularjs_http_HttpResponse$$anonfun$promise2future$2.prototype.
 $c_Lorg_scalajs_angularjs_http_HttpResponse$$anonfun$promise2future$2.prototype.apply__sjs_js_Any__jl_Integer__Lorg_scalajs_angularjs_http_HttpConfig__sjs_js_Any__sjs_js_UndefOr__s_concurrent_Promise = (function(data, status, config, headers, statusText) {
   var this$12 = this.promise$1$2;
   if ((statusText === (void 0))) {
-    var $$this$1 = (void 0)
+    var value = (void 0)
   } else {
-    var $$this = $m_s_Option$().apply__O__s_Option(statusText);
-    var $$this$1 = ($$this.isEmpty__Z() ? (void 0) : $$this.get__O())
+    var opt = $m_s_Option$().apply__O__s_Option(statusText);
+    if (opt.isEmpty__Z()) {
+      var value = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var value = arg1
+    }
   };
-  var cause = new $c_Lorg_scalajs_angularjs_http_HttpError().init___jl_Integer__T(status, $as_T((($$this$1 === (void 0)) ? new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Failed to process HTTP request: '", "'"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$as_T($g.angular.toJson(data))])) : $$this$1)));
+  var cause = new $c_Lorg_scalajs_angularjs_http_HttpError().init___jl_Integer__T(status, $as_T(((value === (void 0)) ? new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Failed to process HTTP request: '", "'"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$as_T($g.angular.toJson(data))])) : value)));
   return $s_s_concurrent_Promise$class__failure__s_concurrent_Promise__jl_Throwable__s_concurrent_Promise(this$12, cause)
 });
 var $d_Lorg_scalajs_angularjs_http_HttpResponse$$anonfun$promise2future$2 = new $TypeData().initClass({
@@ -31117,22 +31347,40 @@ $c_ju_concurrent_TimeUnit$$anon$1.prototype.init___ = (function() {
   return this
 });
 $c_ju_concurrent_TimeUnit$$anon$1.prototype.toMinutes__J__J = (function(a) {
-  return a.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I((-129542144), 13))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(a.lo$2, a.hi$2, (-129542144), 13);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_ju_concurrent_TimeUnit$$anon$1.prototype.toHours__J__J = (function(a) {
-  return a.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(817405952, 838))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(a.lo$2, a.hi$2, 817405952, 838);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_ju_concurrent_TimeUnit$$anon$1.prototype.toSeconds__J__J = (function(a) {
-  return a.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(1000000000, 0))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(a.lo$2, a.hi$2, 1000000000, 0);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_ju_concurrent_TimeUnit$$anon$1.prototype.toMicros__J__J = (function(a) {
-  return a.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(1000, 0))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(a.lo$2, a.hi$2, 1000, 0);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_ju_concurrent_TimeUnit$$anon$1.prototype.toDays__J__J = (function(a) {
-  return a.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I((-1857093632), 20116))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(a.lo$2, a.hi$2, (-1857093632), 20116);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_ju_concurrent_TimeUnit$$anon$1.prototype.toMillis__J__J = (function(a) {
-  return a.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(1000000, 0))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(a.lo$2, a.hi$2, 1000000, 0);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_ju_concurrent_TimeUnit$$anon$1.prototype.convert__J__ju_concurrent_TimeUnit__J = (function(a, u) {
   return u.toNanos__J__J(a)
@@ -31167,22 +31415,37 @@ $c_ju_concurrent_TimeUnit$$anon$2.prototype.init___ = (function() {
   return this
 });
 $c_ju_concurrent_TimeUnit$$anon$2.prototype.toMinutes__J__J = (function(a) {
-  return a.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(60000000, 0))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(a.lo$2, a.hi$2, 60000000, 0);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_ju_concurrent_TimeUnit$$anon$2.prototype.toHours__J__J = (function(a) {
-  return a.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I((-694967296), 0))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(a.lo$2, a.hi$2, (-694967296), 0);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_ju_concurrent_TimeUnit$$anon$2.prototype.toSeconds__J__J = (function(a) {
-  return a.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(1000000, 0))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(a.lo$2, a.hi$2, 1000000, 0);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_ju_concurrent_TimeUnit$$anon$2.prototype.toMicros__J__J = (function(a) {
   return a
 });
 $c_ju_concurrent_TimeUnit$$anon$2.prototype.toDays__J__J = (function(a) {
-  return a.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(500654080, 20))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(a.lo$2, a.hi$2, 500654080, 20);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_ju_concurrent_TimeUnit$$anon$2.prototype.toMillis__J__J = (function(a) {
-  return a.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(1000, 0))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(a.lo$2, a.hi$2, 1000, 0);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_ju_concurrent_TimeUnit$$anon$2.prototype.convert__J__ju_concurrent_TimeUnit__J = (function(a, u) {
   return u.toMicros__J__J(a)
@@ -31217,19 +31480,31 @@ $c_ju_concurrent_TimeUnit$$anon$3.prototype.init___ = (function() {
   return this
 });
 $c_ju_concurrent_TimeUnit$$anon$3.prototype.toMinutes__J__J = (function(a) {
-  return a.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(60000, 0))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(a.lo$2, a.hi$2, 60000, 0);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_ju_concurrent_TimeUnit$$anon$3.prototype.toHours__J__J = (function(a) {
-  return a.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(3600000, 0))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(a.lo$2, a.hi$2, 3600000, 0);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_ju_concurrent_TimeUnit$$anon$3.prototype.toSeconds__J__J = (function(a) {
-  return a.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(1000, 0))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(a.lo$2, a.hi$2, 1000, 0);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_ju_concurrent_TimeUnit$$anon$3.prototype.toMicros__J__J = (function(a) {
   return $m_ju_concurrent_TimeUnit$().java$util$concurrent$TimeUnit$$x__J__J__J__J(a, new $c_sjsr_RuntimeLong().init___I__I(1000, 0), new $c_sjsr_RuntimeLong().init___I__I((-1511828489), 2147483))
 });
 $c_ju_concurrent_TimeUnit$$anon$3.prototype.toDays__J__J = (function(a) {
-  return a.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(86400000, 0))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(a.lo$2, a.hi$2, 86400000, 0);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_ju_concurrent_TimeUnit$$anon$3.prototype.toMillis__J__J = (function(a) {
   return a
@@ -31267,10 +31542,16 @@ $c_ju_concurrent_TimeUnit$$anon$4.prototype.init___ = (function() {
   return this
 });
 $c_ju_concurrent_TimeUnit$$anon$4.prototype.toMinutes__J__J = (function(a) {
-  return a.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(60, 0))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(a.lo$2, a.hi$2, 60, 0);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_ju_concurrent_TimeUnit$$anon$4.prototype.toHours__J__J = (function(a) {
-  return a.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(3600, 0))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(a.lo$2, a.hi$2, 3600, 0);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_ju_concurrent_TimeUnit$$anon$4.prototype.toSeconds__J__J = (function(a) {
   return a
@@ -31279,7 +31560,10 @@ $c_ju_concurrent_TimeUnit$$anon$4.prototype.toMicros__J__J = (function(a) {
   return $m_ju_concurrent_TimeUnit$().java$util$concurrent$TimeUnit$$x__J__J__J__J(a, new $c_sjsr_RuntimeLong().init___I__I(1000000, 0), new $c_sjsr_RuntimeLong().init___I__I(2077252342, 2147))
 });
 $c_ju_concurrent_TimeUnit$$anon$4.prototype.toDays__J__J = (function(a) {
-  return a.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(86400, 0))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(a.lo$2, a.hi$2, 86400, 0);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_ju_concurrent_TimeUnit$$anon$4.prototype.toMillis__J__J = (function(a) {
   return $m_ju_concurrent_TimeUnit$().java$util$concurrent$TimeUnit$$x__J__J__J__J(a, new $c_sjsr_RuntimeLong().init___I__I(1000, 0), new $c_sjsr_RuntimeLong().init___I__I((-1511828489), 2147483))
@@ -31320,7 +31604,10 @@ $c_ju_concurrent_TimeUnit$$anon$5.prototype.toMinutes__J__J = (function(a) {
   return a
 });
 $c_ju_concurrent_TimeUnit$$anon$5.prototype.toHours__J__J = (function(a) {
-  return a.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(60, 0))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(a.lo$2, a.hi$2, 60, 0);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_ju_concurrent_TimeUnit$$anon$5.prototype.toSeconds__J__J = (function(a) {
   return $m_ju_concurrent_TimeUnit$().java$util$concurrent$TimeUnit$$x__J__J__J__J(a, new $c_sjsr_RuntimeLong().init___I__I(60, 0), new $c_sjsr_RuntimeLong().init___I__I(572662306, 35791394))
@@ -31329,7 +31616,10 @@ $c_ju_concurrent_TimeUnit$$anon$5.prototype.toMicros__J__J = (function(a) {
   return $m_ju_concurrent_TimeUnit$().java$util$concurrent$TimeUnit$$x__J__J__J__J(a, new $c_sjsr_RuntimeLong().init___I__I(60000000, 0), new $c_sjsr_RuntimeLong().init___I__I((-895955376), 35))
 });
 $c_ju_concurrent_TimeUnit$$anon$5.prototype.toDays__J__J = (function(a) {
-  return a.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(1440, 0))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(a.lo$2, a.hi$2, 1440, 0);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_ju_concurrent_TimeUnit$$anon$5.prototype.toMillis__J__J = (function(a) {
   return $m_ju_concurrent_TimeUnit$().java$util$concurrent$TimeUnit$$x__J__J__J__J(a, new $c_sjsr_RuntimeLong().init___I__I(60000, 0), new $c_sjsr_RuntimeLong().init___I__I(1692789776, 35791))
@@ -31379,7 +31669,10 @@ $c_ju_concurrent_TimeUnit$$anon$6.prototype.toMicros__J__J = (function(a) {
   return $m_ju_concurrent_TimeUnit$().java$util$concurrent$TimeUnit$$x__J__J__J__J(a, new $c_sjsr_RuntimeLong().init___I__I((-694967296), 0), new $c_sjsr_RuntimeLong().init___I__I((-1732919508), 0))
 });
 $c_ju_concurrent_TimeUnit$$anon$6.prototype.toDays__J__J = (function(a) {
-  return a.$$div__sjsr_RuntimeLong__sjsr_RuntimeLong(new $c_sjsr_RuntimeLong().init___I__I(24, 0))
+  var this$1 = $m_sjsr_RuntimeLong$();
+  var lo = this$1.divideImpl__I__I__I__I__I(a.lo$2, a.hi$2, 24, 0);
+  var hi = this$1.scala$scalajs$runtime$RuntimeLong$$hiReturn$f;
+  return new $c_sjsr_RuntimeLong().init___I__I(lo, hi)
 });
 $c_ju_concurrent_TimeUnit$$anon$6.prototype.toMillis__J__J = (function(a) {
   return $m_ju_concurrent_TimeUnit$().java$util$concurrent$TimeUnit$$x__J__J__J__J(a, new $c_sjsr_RuntimeLong().init___I__I(3600000, 0), new $c_sjsr_RuntimeLong().init___I__I((-2047687697), 596))
@@ -32417,12 +32710,12 @@ $c_sci_TrieIterator.prototype.getElems__p2__sci_Iterable__Asci_Iterable = (funct
   if ($is_sci_HashMap$HashTrieMap(x)) {
     var x2 = $as_sci_HashMap$HashTrieMap(x);
     var jsx$1 = x2.elems$6
-  } else if ($is_sci_HashSet$HashTrieSet(x)) {
+  } else {
+    if ((!$is_sci_HashSet$HashTrieSet(x))) {
+      throw new $c_s_MatchError().init___O(x)
+    };
     var x3 = $as_sci_HashSet$HashTrieSet(x);
     var jsx$1 = x3.elems$5
-  } else {
-    var jsx$1;
-    throw new $c_s_MatchError().init___O(x)
   };
   return $asArrayOf_sci_Iterable(jsx$1, 1)
 });
@@ -32872,12 +33165,12 @@ $c_Lcom_microsoft_awt_components_GroupDetailsController.prototype.init___Lcom_mi
   this.workloadDialog$1 = workloadDialog;
   this.workloadCommentDialog$1 = workloadCommentDialog;
   this.workloadService$1 = workloadService;
-  var $$this = $$routeParams.groupId;
-  if (($$this !== (void 0))) {
-    var groupId = $as_T($$this);
+  var value = $$routeParams.groupId;
+  if ((value !== (void 0))) {
+    var groupId = $as_T(value);
     var jsx$1 = this.$$scope$1;
-    var $$this$1 = this.sessionFactory$1.user__sjs_js_UndefOr();
-    jsx$1.currentUserId = (($$this$1 === (void 0)) ? (void 0) : $$this$1._id);
+    var value$1 = this.sessionFactory$1.user__sjs_js_UndefOr();
+    jsx$1.currentUserId = ((value$1 === (void 0)) ? (void 0) : value$1._id);
     this.com$microsoft$awt$components$GroupDetailsController$$loadGroupWithMembersAndWorkloads__T__V(groupId)
   };
   $$scope.init = (function(arg$outer) {
@@ -32943,8 +33236,8 @@ $c_Lcom_microsoft_awt_components_GroupDetailsController.prototype.com$microsoft$
   var jsx$1 = $g.console;
   var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Loading group '", "' with members and workloads..."])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([groupId]));
   jsx$1.log(s);
-  var $$this = this.groupService$1.getGroupByID__T__Lorg_scalajs_angularjs_http_HttpResponse(groupId);
-  var this$4 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future($$this);
+  var response = this.groupService$1.getGroupByID__T__Lorg_scalajs_angularjs_http_HttpResponse(groupId);
+  var this$4 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(response);
   var f = new $c_Lcom_microsoft_awt_components_GroupDetailsController$$anonfun$3().init___Lcom_microsoft_awt_components_GroupDetailsController(this);
   var executor = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
   var this$5 = $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$4, f, executor);
@@ -33010,10 +33303,10 @@ $c_Lcom_microsoft_awt_components_GroupListController.prototype.productArity__I =
   return 8
 });
 $c_Lcom_microsoft_awt_components_GroupListController.prototype.com$microsoft$awt$components$GroupListController$$enrichGroupWithMembersAndWorkloads__Lcom_microsoft_awt_models_Group__V = (function(group) {
-  var $$this = group._id;
+  var value = group._id;
   var f = new $c_Lcom_microsoft_awt_components_GroupListController$$anonfun$com$microsoft$awt$components$GroupListController$$enrichGroupWithMembersAndWorkloads$1().init___Lcom_microsoft_awt_components_GroupListController__Lcom_microsoft_awt_models_Group(this, group);
-  if (($$this !== (void 0))) {
-    f.apply__T__V($as_T($$this))
+  if ((value !== (void 0))) {
+    f.apply__T__V($as_T(value))
   }
 });
 $c_Lcom_microsoft_awt_components_GroupListController.prototype.equals__O__Z = (function(x$1) {
@@ -33129,8 +33422,8 @@ $c_Lcom_microsoft_awt_components_GroupListController.prototype.com$microsoft$awt
   while ((i < len)) {
     var index = i;
     var arg1 = groups[index];
-    var $$this = arg1.memberUsers;
-    if (($$this === (void 0))) {
+    var value = arg1.memberUsers;
+    if ((value === (void 0))) {
       this.com$microsoft$awt$components$GroupListController$$enrichGroupWithMembersAndWorkloads__Lcom_microsoft_awt_models_Group__V(arg1)
     };
     i = ((1 + i) | 0)
@@ -33404,20 +33697,20 @@ $c_Lcom_microsoft_awt_components_ProfileController.prototype.productIterator__sc
   return new $c_sr_ScalaRunTime$$anon$1().init___s_Product(this)
 });
 $c_Lcom_microsoft_awt_components_ProfileController.prototype.com$microsoft$awt$components$ProfileController$$ensureProfileIsLoaded__V = (function() {
-  var $$this = this.$$scope$1.profileID;
-  if (($$this === (void 0))) {
+  var value = this.$$scope$1.profileID;
+  if ((value === (void 0))) {
     var jsx$2 = this.$$scope$1;
-    var $$this$1 = this.$$routeParams$1.id;
-    if (($$this$1 !== (void 0))) {
-      var jsx$1 = $$this$1
+    var valueA = this.$$routeParams$1.id;
+    if ((valueA !== (void 0))) {
+      var jsx$1 = valueA
     } else {
-      var $$this$2 = this.sessionFactory$1.user__sjs_js_UndefOr();
-      var jsx$1 = (($$this$2 === (void 0)) ? (void 0) : $$this$2._id)
+      var value$1 = this.sessionFactory$1.user__sjs_js_UndefOr();
+      var jsx$1 = ((value$1 === (void 0)) ? (void 0) : value$1._id)
     };
     jsx$2.profileID = jsx$1;
-    var $$this$3 = this.$$scope$1.profileID;
-    if (($$this$3 !== (void 0))) {
-      var userID = $as_T($$this$3);
+    var value$2 = this.$$scope$1.profileID;
+    if ((value$2 !== (void 0))) {
+      var userID = $as_T(value$2);
       this.com$microsoft$awt$components$ProfileController$$loadGroupsPostingsAndWorkloads__T__V(userID)
     }
   }
@@ -33883,7 +34176,7 @@ $c_T2.prototype.equals__O__Z = (function(x$1) {
     return true
   } else if ($is_T2(x$1)) {
     var Tuple2$1 = $as_T2(x$1);
-    return ($m_sr_BoxesRunTime$().equals__O__O__Z(this.$$und1__O(), Tuple2$1.$$und1__O()) && $m_sr_BoxesRunTime$().equals__O__O__Z(this.$$und2__O(), Tuple2$1.$$und2__O()))
+    return ($m_sr_BoxesRunTime$().equals__O__O__Z(this.$$und1$f, Tuple2$1.$$und1$f) && $m_sr_BoxesRunTime$().equals__O__O__Z(this.$$und2$f, Tuple2$1.$$und2$f))
   } else {
     return false
   }
@@ -33897,20 +34190,11 @@ $c_T2.prototype.init___O__O = (function(_1, _2) {
   return this
 });
 $c_T2.prototype.toString__T = (function() {
-  return (((("(" + this.$$und1__O()) + ",") + this.$$und2__O()) + ")")
-});
-$c_T2.prototype.$$und2__O = (function() {
-  return this.$$und2$f
-});
-$c_T2.prototype.$$und2$mcI$sp__I = (function() {
-  return $uI(this.$$und2__O())
+  return (((("(" + this.$$und1$f) + ",") + this.$$und2$f) + ")")
 });
 $c_T2.prototype.hashCode__I = (function() {
   var this$2 = $m_s_util_hashing_MurmurHash3$();
   return this$2.productHash__s_Product__I__I(this, (-889275714))
-});
-$c_T2.prototype.$$und1__O = (function() {
-  return this.$$und1$f
 });
 $c_T2.prototype.productIterator__sc_Iterator = (function() {
   return new $c_sr_ScalaRunTime$$anon$1().init___s_Product(this)
@@ -34458,12 +34742,20 @@ function $h_s_concurrent_duration_FiniteDuration() {
 }
 $h_s_concurrent_duration_FiniteDuration.prototype = $c_s_concurrent_duration_FiniteDuration.prototype;
 $c_s_concurrent_duration_FiniteDuration.prototype.unitString__p2__T = (function() {
-  return ($as_T($m_s_concurrent_duration_Duration$().timeUnitName$1.apply__O__O(this.unit$2)) + (this.length$2.equals__sjsr_RuntimeLong__Z(new $c_sjsr_RuntimeLong().init___I__I(1, 0)) ? "" : "s"))
+  var jsx$1 = $as_T($m_s_concurrent_duration_Duration$().timeUnitName$1.apply__O__O(this.unit$2));
+  var t = this.length$2;
+  var lo = t.lo$2;
+  var hi = t.hi$2;
+  return (jsx$1 + (((lo === 1) && (hi === 0)) ? "" : "s"))
 });
 $c_s_concurrent_duration_FiniteDuration.prototype.equals__O__Z = (function(other) {
   if ($is_s_concurrent_duration_FiniteDuration(other)) {
     var x2 = $as_s_concurrent_duration_FiniteDuration(other);
-    return this.unit$2.toNanos__J__J(this.length$2).equals__sjsr_RuntimeLong__Z(x2.unit$2.toNanos__J__J(x2.length$2))
+    var t = this.unit$2.toNanos__J__J(this.length$2);
+    var lo = t.lo$2;
+    var hi = t.hi$2;
+    var b = x2.unit$2.toNanos__J__J(x2.length$2);
+    return ((lo === b.lo$2) && (hi === b.hi$2))
   } else {
     return (this === other)
   }
@@ -34502,8 +34794,10 @@ $c_s_concurrent_duration_FiniteDuration.prototype.init___J__ju_concurrent_TimeUn
               if ((x$13 === unit)) {
                 var requirement = this.bounded__p2__J__Z(new $c_sjsr_RuntimeLong().init___I__I(106751, 0))
               } else {
-                var v = $m_ju_concurrent_TimeUnit$().DAYS$1.convert__J__ju_concurrent_TimeUnit__J(length, unit);
-                var requirement = (v.$$greater$eq__sjsr_RuntimeLong__Z(new $c_sjsr_RuntimeLong().init___I__I((-106751), (-1))) && v.$$less$eq__sjsr_RuntimeLong__Z(new $c_sjsr_RuntimeLong().init___I__I(106751, 0)))
+                var t = $m_ju_concurrent_TimeUnit$().DAYS$1.convert__J__ju_concurrent_TimeUnit__J(length, unit);
+                var lo = t.lo$2;
+                var hi = t.hi$2;
+                var requirement = (((hi === (-1)) ? (((-2147483648) ^ lo) >= 2147376897) : (hi > (-1))) && ((hi === 0) ? (((-2147483648) ^ lo) <= (-2147376897)) : (hi < 0)))
               }
             }
           }
@@ -34517,10 +34811,26 @@ $c_s_concurrent_duration_FiniteDuration.prototype.init___J__ju_concurrent_TimeUn
   return this
 });
 $c_s_concurrent_duration_FiniteDuration.prototype.bounded__p2__J__Z = (function(max) {
-  return (max.unary$und$minus__sjsr_RuntimeLong().$$less$eq__sjsr_RuntimeLong__Z(this.length$2) && this.length$2.$$less$eq__sjsr_RuntimeLong__Z(max))
+  var lo = max.lo$2;
+  var hi = max.hi$2;
+  var lo$1 = ((-lo) | 0);
+  var hi$1 = ((lo !== 0) ? (~hi) : ((-hi) | 0));
+  var b = this.length$2;
+  var bhi = b.hi$2;
+  if (((hi$1 === bhi) ? (((-2147483648) ^ lo$1) <= ((-2147483648) ^ b.lo$2)) : (hi$1 < bhi))) {
+    var t = this.length$2;
+    var lo$2 = t.lo$2;
+    var hi$2 = t.hi$2;
+    var bhi$1 = max.hi$2;
+    return ((hi$2 === bhi$1) ? (((-2147483648) ^ lo$2) <= ((-2147483648) ^ max.lo$2)) : (hi$2 < bhi$1))
+  } else {
+    return false
+  }
 });
 $c_s_concurrent_duration_FiniteDuration.prototype.hashCode__I = (function() {
-  return this.unit$2.toNanos__J__J(this.length$2).lo$2
+  var t = this.unit$2.toNanos__J__J(this.length$2);
+  var lo = t.lo$2;
+  return lo
 });
 function $is_s_concurrent_duration_FiniteDuration(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.s_concurrent_duration_FiniteDuration)))
@@ -35018,11 +35328,11 @@ function $h_Lcom_microsoft_awt_components_GlobalAuthorization$$anonfun$1() {
 }
 $h_Lcom_microsoft_awt_components_GlobalAuthorization$$anonfun$1.prototype = $c_Lcom_microsoft_awt_components_GlobalAuthorization$$anonfun$1.prototype;
 $c_Lcom_microsoft_awt_components_GlobalAuthorization$$anonfun$1.prototype.apply$mcV$sp__V = (function() {
-  var $$this = this.$$outer$3.sessionFactory__Lcom_microsoft_awt_components_SessionFactory().session__sjs_js_UndefOr();
-  var $$this$1 = (($$this === (void 0)) ? (void 0) : $$this._id);
+  var value = this.$$outer$3.sessionFactory$1.session__sjs_js_UndefOr();
+  var value$1 = ((value === (void 0)) ? (void 0) : value._id);
   var f = new $c_Lcom_microsoft_awt_components_GlobalAuthorization$$anonfun$1$$anonfun$apply$mcV$sp$2().init___Lcom_microsoft_awt_components_GlobalAuthorization$$anonfun$1(this);
-  if (($$this$1 !== (void 0))) {
-    f.apply__T__V($as_T($$this$1))
+  if ((value$1 !== (void 0))) {
+    f.apply__T__V($as_T(value$1))
   }
 });
 $c_Lcom_microsoft_awt_components_GlobalAuthorization$$anonfun$1.prototype.apply__O = (function() {
@@ -35118,8 +35428,8 @@ $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$a
 $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$1.prototype.apply$mcV$sp__V = (function() {
   this.$$outer$3.$$outer$2.$$outer$3.com$microsoft$awt$components$GroupDialog$GroupDialogController$$$scope$f.users = this.users$1$3;
   var jsx$1 = this.$$outer$3.$$outer$2.$$outer$3.com$microsoft$awt$components$GroupDialog$GroupDialogController$$$scope$f.form;
-  var $$this = this.$$outer$3.$$outer$2.$$outer$3.com$microsoft$awt$components$GroupDialog$GroupDialogController$$sessionFactory$f.user__sjs_js_UndefOr();
-  jsx$1.owner = (($$this === (void 0)) ? (void 0) : $$this._id)
+  var value = this.$$outer$3.$$outer$2.$$outer$3.com$microsoft$awt$components$GroupDialog$GroupDialogController$$sessionFactory$f.user__sjs_js_UndefOr();
+  jsx$1.owner = ((value === (void 0)) ? (void 0) : value._id)
 });
 $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController$$anonfun$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$1.prototype.apply__O = (function() {
   this.apply$mcV$sp__V()
@@ -35160,13 +35470,13 @@ $c_Lcom_microsoft_awt_components_HomeController$$anonfun$12$$anonfun$apply$10$$a
   return this
 });
 $c_Lcom_microsoft_awt_components_HomeController$$anonfun$12$$anonfun$apply$10$$anonfun$apply$11$$anonfun$apply$1.prototype.apply$mcV$sp__V = (function() {
-  var $$this = this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.sessionFactory$1.user__sjs_js_UndefOr();
-  if (($$this !== (void 0))) {
-    $$this.firstName = this.userForm$1$f.firstName;
-    $$this.lastName = this.userForm$1$f.lastName;
-    $$this.primaryEmail = this.userForm$1$f.primaryEmail;
-    $$this.title = this.userForm$1$f.title;
-    $$this.avatarURL = this.userForm$1$f.avatarURL
+  var value = this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.sessionFactory$1.user__sjs_js_UndefOr();
+  if ((value !== (void 0))) {
+    value.firstName = this.userForm$1$f.firstName;
+    value.lastName = this.userForm$1$f.lastName;
+    value.primaryEmail = this.userForm$1$f.primaryEmail;
+    value.title = this.userForm$1$f.title;
+    value.avatarURL = this.userForm$1$f.avatarURL
   }
 });
 $c_Lcom_microsoft_awt_components_HomeController$$anonfun$12$$anonfun$apply$10$$anonfun$apply$11$$anonfun$apply$1.prototype.apply__O = (function() {
@@ -35250,8 +35560,8 @@ $c_Lcom_microsoft_awt_components_HomeController$$anonfun$2.prototype.init___Lcom
 });
 $c_Lcom_microsoft_awt_components_HomeController$$anonfun$2.prototype.apply$mcV$sp__V = (function() {
   var jsx$1 = this.$$outer$3.$$scope$1.profileEditorPopup;
-  var $$this = this.$$outer$3.sessionFactory$1.user__sjs_js_UndefOr();
-  jsx$1((($$this === (void 0)) ? (void 0) : $$this._id))
+  var value = this.$$outer$3.sessionFactory$1.user__sjs_js_UndefOr();
+  jsx$1(((value === (void 0)) ? (void 0) : value._id))
 });
 $c_Lcom_microsoft_awt_components_HomeController$$anonfun$2.prototype.apply__O = (function() {
   this.apply$mcV$sp__V()
@@ -35290,10 +35600,10 @@ $c_Lcom_microsoft_awt_components_PhotosController$$anonfun$2.prototype.init___Lc
   return this
 });
 $c_Lcom_microsoft_awt_components_PhotosController$$anonfun$2.prototype.apply$mcV$sp__V = (function() {
-  var $$this = this.$$outer$3.com$microsoft$awt$components$PhotosController$$sessionFactory$f.user__sjs_js_UndefOr();
+  var value = this.$$outer$3.com$microsoft$awt$components$PhotosController$$sessionFactory$f.user__sjs_js_UndefOr();
   var f = new $c_Lcom_microsoft_awt_components_PhotosController$$anonfun$2$$anonfun$apply$mcV$sp$1().init___Lcom_microsoft_awt_components_PhotosController$$anonfun$2(this);
-  if (($$this !== (void 0))) {
-    f.apply__Lcom_microsoft_awt_models_User__V($$this)
+  if ((value !== (void 0))) {
+    f.apply__Lcom_microsoft_awt_models_User__V(value)
   }
 });
 $c_Lcom_microsoft_awt_components_PhotosController$$anonfun$2.prototype.apply__O = (function() {
@@ -35333,13 +35643,14 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$3.prototype.init__
   return this
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$3.prototype.apply$mcV$sp__V = (function() {
-  var $$this = this.$$outer$3.sessionFactory__Lcom_microsoft_awt_components_SessionFactory().user__sjs_js_UndefOr();
-  if (($$this !== (void 0))) {
+  var value = this.$$outer$3.sessionFactory$1.user__sjs_js_UndefOr();
+  if ((value !== (void 0))) {
     var jsx$1 = $g.console;
     var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Setting up a new post..."])).s__sc_Seq__T($m_sci_Nil$());
     jsx$1.log(s);
-    var jsx$2 = this.$$outer$3.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope();
-    var value$1 = $m_Lcom_microsoft_awt_models_Post$().apply__Lcom_microsoft_awt_models_User__Lcom_microsoft_awt_models_Post($$this);
+    var this$5 = this.$$outer$3;
+    var jsx$2 = this$5.$$scope$1;
+    var value$1 = $m_Lcom_microsoft_awt_models_Post$().apply__Lcom_microsoft_awt_models_User__Lcom_microsoft_awt_models_Post(value);
     jsx$2.newPost = value$1
   }
 });
@@ -35380,9 +35691,9 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$
   return this
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$35$$anonfun$apply$61$$anonfun$apply$62$$anonfun$apply$63$$anonfun$apply$64$$anonfun$apply$65$$anonfun$apply$66$$anonfun$apply$67$$anonfun$apply$9.prototype.apply$mcV$sp__V = (function() {
-  var $$this = this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.comment$4$f.replies;
-  if (($$this !== (void 0))) {
-    $uI($$this.push(this.$$outer$3.reply$2$f))
+  var value = this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.comment$4$f.replies;
+  if ((value !== (void 0))) {
+    $uI(value.push(this.$$outer$3.reply$2$f))
   };
   this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.comment$4$f.newReply = false
 });
@@ -35432,16 +35743,21 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$41$$anonfun$apply$
   while ((i < len)) {
     var index = i;
     var v1 = array[index];
-    var $$this = this.$$outer$3.$$outer$2.$$outer$2.newPost$1$f._id;
-    if (($$this === (void 0))) {
-      var $$this$2 = (void 0)
+    var valueA = this.$$outer$3.$$outer$2.$$outer$2.newPost$1$f._id;
+    if ((valueA === (void 0))) {
+      var value = (void 0)
     } else {
-      var $$this$1 = $m_s_Option$().apply__O__s_Option($$this);
-      var $$this$2 = ($$this$1.isEmpty__Z() ? (void 0) : $$this$1.get__O())
+      var opt = $m_s_Option$().apply__O__s_Option(valueA);
+      if (opt.isEmpty__Z()) {
+        var value = (void 0)
+      } else {
+        var arg1 = opt.get__O();
+        var value = arg1
+      }
     };
-    if (($$this$2 !== (void 0))) {
-      var postId = $as_T($$this$2);
-      v1.url = this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.postService__Lcom_microsoft_awt_components_PostService().getUploadURL__T__T__s_concurrent_ExecutionContext__T(postId, this.$$outer$3.userId$1$f, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+    if ((value !== (void 0))) {
+      var postId = $as_T(value);
+      v1.url = this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.$$outer$2.$$outer$2.postService$1.getUploadURL__T__T__s_concurrent_ExecutionContext__T(postId, this.$$outer$3.userId$1$f, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
     };
     i = ((1 + i) | 0)
   }
@@ -35483,12 +35799,16 @@ $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$7.prototype.init__
   return this
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$7.prototype.apply$mcV$sp__V = (function() {
-  this.$$outer$3.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().uploader.clearQueue();
-  var this$1 = this.$$outer$3.com$microsoft$awt$components$PostingCapabilities$$lastUploadedPost__s_Option();
-  if ((!this$1.isEmpty__Z())) {
-    var arg1 = this$1.get__O();
-    (0, this.$$outer$3.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope().reloadPost)(arg1._id);
-    this.$$outer$3.com$microsoft$awt$components$PostingCapabilities$$lastUploadedPost$und$eq__s_Option__V($m_s_None$())
+  var this$1 = this.$$outer$3;
+  var jsx$1 = this$1.$$scope$1.uploader;
+  jsx$1.clearQueue();
+  var this$2 = this.$$outer$3.com$microsoft$awt$components$PostingCapabilities$$lastUploadedPost$1;
+  if ((!this$2.isEmpty__Z())) {
+    var arg1 = this$2.get__O();
+    var this$3 = this.$$outer$3;
+    var jsx$2 = this$3.$$scope$1.reloadPost;
+    jsx$2(arg1._id);
+    this.$$outer$3.com$microsoft$awt$components$PostingCapabilities$$lastUploadedPost$1 = $m_s_None$()
   }
 });
 $c_Lcom_microsoft_awt_components_PostingCapabilities$$anonfun$7.prototype.apply__O = (function() {
@@ -35520,33 +35840,44 @@ function $h_Lcom_microsoft_awt_components_ProfileController$$anonfun$2() {
 }
 $h_Lcom_microsoft_awt_components_ProfileController$$anonfun$2.prototype = $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$2.prototype;
 $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$2.prototype.apply$mcZ$sp__Z = (function() {
-  var $$this = this.$$outer$3.$$scope$1.profileID;
-  if (($$this === (void 0))) {
-    var $$this$2 = (void 0)
+  var valueA = this.$$outer$3.$$scope$1.profileID;
+  if ((valueA === (void 0))) {
+    var value = (void 0)
   } else {
-    var $$this$1 = $m_s_Option$().apply__O__s_Option($$this);
-    var $$this$2 = ($$this$1.isEmpty__Z() ? (void 0) : $$this$1.get__O())
-  };
-  if (($$this$2 === (void 0))) {
-    var $$this$7 = (void 0)
-  } else {
-    var id = $as_T($$this$2);
-    var $$this$3 = this.$$outer$3.sessionFactory$1.user__sjs_js_UndefOr();
-    var $$this$4 = (($$this$3 === (void 0)) ? (void 0) : $$this$3._id);
-    if (($$this$4 === (void 0))) {
-      var $$this$6 = (void 0)
+    var opt = $m_s_Option$().apply__O__s_Option(valueA);
+    if (opt.isEmpty__Z()) {
+      var value = (void 0)
     } else {
-      var $$this$5 = $m_s_Option$().apply__O__s_Option($$this$4);
-      var $$this$6 = ($$this$5.isEmpty__Z() ? (void 0) : $$this$5.get__O())
-    };
-    if (($$this$6 === (void 0))) {
-      var $$this$7 = (void 0)
-    } else {
-      var myId = $as_T($$this$6);
-      var $$this$7 = (id === myId)
+      var arg1 = opt.get__O();
+      var value = arg1
     }
   };
-  return (($$this$7 !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z($$this$7, true))
+  if ((value === (void 0))) {
+    var valueA$2 = (void 0)
+  } else {
+    var id = $as_T(value);
+    var value$1 = this.$$outer$3.sessionFactory$1.user__sjs_js_UndefOr();
+    var valueA$1 = ((value$1 === (void 0)) ? (void 0) : value$1._id);
+    if ((valueA$1 === (void 0))) {
+      var value$2 = (void 0)
+    } else {
+      var opt$1 = $m_s_Option$().apply__O__s_Option(valueA$1);
+      if (opt$1.isEmpty__Z()) {
+        var value$2 = (void 0)
+      } else {
+        var arg1$1 = opt$1.get__O();
+        var value$2 = arg1$1
+      }
+    };
+    if ((value$2 === (void 0))) {
+      var valueA$2 = (void 0)
+    } else {
+      var myId = $as_T(value$2);
+      var value$3 = (id === myId);
+      var valueA$2 = value$3
+    }
+  };
+  return ((valueA$2 !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueA$2, true))
 });
 $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$2.prototype.apply__O = (function() {
   return this.apply$mcZ$sp__Z()
@@ -35588,23 +35919,23 @@ $h_Lcom_microsoft_awt_components_ProfileController$$anonfun$6$$anonfun$apply$12$
 $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$6$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$2.prototype.apply$mcV$sp__V = (function() {
   if ($uZ(this.result$1$3.success)) {
     var jsx$2 = this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.endorsee$1$f;
-    var $$this = this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.endorsee$1$f.endorsements;
-    if (($$this === (void 0))) {
+    var value = this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.endorsee$1$f.endorsements;
+    if ((value === (void 0))) {
       var jsx$1 = 1
     } else {
-      var $$this$1 = this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.endorsee$1$f.endorsements;
-      if (($$this$1 === (void 0))) {
+      var value$1 = this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.endorsee$1$f.endorsements;
+      if ((value$1 === (void 0))) {
         var jsx$1 = (void 0)
       } else {
-        var x$2 = $asInt($$this$1);
-        var value$2 = ((1 + $uI(x$2)) | 0);
-        var jsx$1 = value$2
+        var x$2 = $asInt(value$1);
+        var x = ((1 + $uI(x$2)) | 0);
+        var jsx$1 = x
       }
     };
     jsx$2.endorsements = jsx$1;
-    var $$this$2 = this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.endorsee$1$f.endorsers;
-    if (($$this$2 !== (void 0))) {
-      $uI($$this$2.push(this.$$outer$3.endorserID$1$f))
+    var value$2 = this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.endorsee$1$f.endorsers;
+    if ((value$2 !== (void 0))) {
+      $uI(value$2.push(this.$$outer$3.endorserID$1$f))
     }
   }
 });
@@ -35649,23 +35980,23 @@ $h_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$21$
 $c_Lcom_microsoft_awt_components_ProfileController$$anonfun$8$$anonfun$apply$21$$anonfun$apply$22$$anonfun$apply$23$$anonfun$apply$24$$anonfun$apply$25$$anonfun$apply$4.prototype.apply$mcV$sp__V = (function() {
   if ($uZ(this.result$2$3.success)) {
     var jsx$2 = this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.followee$1$f;
-    var $$this = this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.followee$1$f.totalFollowers;
-    if (($$this === (void 0))) {
+    var value = this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.followee$1$f.totalFollowers;
+    if ((value === (void 0))) {
       var jsx$1 = 1
     } else {
-      var $$this$1 = this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.followee$1$f.totalFollowers;
-      if (($$this$1 === (void 0))) {
+      var value$1 = this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.followee$1$f.totalFollowers;
+      if ((value$1 === (void 0))) {
         var jsx$1 = (void 0)
       } else {
-        var x$4 = $asInt($$this$1);
-        var value$2 = ((1 + $uI(x$4)) | 0);
-        var jsx$1 = value$2
+        var x$4 = $asInt(value$1);
+        var x = ((1 + $uI(x$4)) | 0);
+        var jsx$1 = x
       }
     };
     jsx$2.totalFollowers = jsx$1;
-    var $$this$2 = this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.followee$1$f.followers;
-    if (($$this$2 !== (void 0))) {
-      $uI($$this$2.push(this.$$outer$3.followerID$1$f))
+    var value$2 = this.$$outer$3.$$outer$2.$$outer$2.$$outer$2.followee$1$f.followers;
+    if ((value$2 !== (void 0))) {
+      $uI(value$2.push(this.$$outer$3.followerID$1$f))
     }
   }
 });
@@ -35850,10 +36181,10 @@ $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController$$anonfu
       if ((i < len)) {
         var index = i;
         var arg1 = array[index];
-        var $$this$1 = arg1._id;
-        var $$this = this.$$outer$3.$$outer$2.$$outer$3.com$microsoft$awt$components$WorkloadDialog$WorkloadDialogController$$updateWorkload$f;
-        var valueB = (($$this === (void 0)) ? (void 0) : $$this.msftLeadId);
-        var jsx$2 = (!(($$this$1 !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, $$this$1))))
+        var valueA = arg1._id;
+        var value = this.$$outer$3.$$outer$2.$$outer$3.com$microsoft$awt$components$WorkloadDialog$WorkloadDialogController$$updateWorkload$f;
+        var valueB = ((value === (void 0)) ? (void 0) : value.msftLeadId);
+        var jsx$2 = (!((valueA !== (void 0)) && ((valueB !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB, valueA))))
       } else {
         var jsx$2 = false
       };
@@ -35864,11 +36195,11 @@ $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController$$anonfu
       }
     };
     var i$1 = i;
-    var $$this$2 = ((i$1 < $uI(array.length)) ? new $c_s_Some().init___O(array[i$1]) : $m_s_None$());
-    if ($$this$2.isEmpty__Z()) {
+    var opt = ((i$1 < $uI(array.length)) ? new $c_s_Some().init___O(array[i$1]) : $m_s_None$());
+    if (opt.isEmpty__Z()) {
       var jsx$1 = (void 0)
     } else {
-      var arg1$1 = $$this$2.get__O();
+      var arg1$1 = opt.get__O();
       var jsx$1 = arg1$1
     }
   } else {
@@ -35879,10 +36210,10 @@ $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController$$anonfu
       if ((i$2 < len$1)) {
         var index$1 = i$2;
         var arg1$2 = array$1[index$1];
-        var $$this$4 = arg1$2._id;
-        var $$this$3 = this.$$outer$3.$$outer$2.$$outer$3.com$microsoft$awt$components$WorkloadDialog$WorkloadDialogController$$sessionFactory$f.user__sjs_js_UndefOr();
-        var valueB$1 = (($$this$3 === (void 0)) ? (void 0) : $$this$3._id);
-        var jsx$3 = (!(($$this$4 !== (void 0)) && ((valueB$1 !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB$1, $$this$4))))
+        var valueA$1 = arg1$2._id;
+        var value$1 = this.$$outer$3.$$outer$2.$$outer$3.com$microsoft$awt$components$WorkloadDialog$WorkloadDialogController$$sessionFactory$f.user__sjs_js_UndefOr();
+        var valueB$1 = ((value$1 === (void 0)) ? (void 0) : value$1._id);
+        var jsx$3 = (!((valueA$1 !== (void 0)) && ((valueB$1 !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueB$1, valueA$1))))
       } else {
         var jsx$3 = false
       };
@@ -35893,11 +36224,11 @@ $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController$$anonfu
       }
     };
     var i$3 = i$2;
-    var $$this$5 = ((i$3 < $uI(array$1.length)) ? new $c_s_Some().init___O(array$1[i$3]) : $m_s_None$());
-    if ($$this$5.isEmpty__Z()) {
+    var opt$1 = ((i$3 < $uI(array$1.length)) ? new $c_s_Some().init___O(array$1[i$3]) : $m_s_None$());
+    if (opt$1.isEmpty__Z()) {
       var jsx$1 = (void 0)
     } else {
-      var arg1$3 = $$this$5.get__O();
+      var arg1$3 = opt$1.get__O();
       var jsx$1 = arg1$3
     }
   };
@@ -35942,19 +36273,27 @@ function $h_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft
 }
 $h_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1$$anonfun$apply$1.prototype = $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1$$anonfun$apply$1.prototype;
 $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1$$anonfun$apply$1.prototype.apply$mcV$sp__V = (function() {
-  var $$this = this.$$outer$3.scope$2$f.named;
-  if (($$this === (void 0))) {
-    var $$this$2 = (void 0)
+  var valueA = this.$$outer$3.scope$2$f.named;
+  if ((valueA === (void 0))) {
+    var value = (void 0)
   } else {
-    var $$this$1 = $m_s_Option$().apply__O__s_Option($$this);
-    var $$this$2 = ($$this$1.isEmpty__Z() ? (void 0) : $$this$1.get__O())
+    var opt = $m_s_Option$().apply__O__s_Option(valueA);
+    if (opt.isEmpty__Z()) {
+      var value = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var value = arg1
+    }
   };
-  if (($$this$2 !== (void 0))) {
-    this.$$outer$3.scope$2$f.name = $m_Lcom_microsoft_awt_models_User$UserExtensions$().fullName$extension__Lcom_microsoft_awt_models_User__T(this.user$1$3)
+  if ((value !== (void 0))) {
+    var jsx$2 = this.$$outer$3.scope$2$f;
+    var jsx$1 = $m_Lcom_microsoft_awt_models_User$UserExtensions$();
+    var user = this.user$1$3;
+    jsx$2.name = jsx$1.fullName$extension__Lcom_microsoft_awt_models_User__T(user)
   };
-  var jsx$1 = this.$$outer$3.scope$2$f;
-  var $$this$3 = this.user$1$3.avatarURL;
-  jsx$1.url = $as_T((($$this$3 === (void 0)) ? this.$$outer$3.$$outer$2.com$microsoft$awt$directives$AvatarDirective$$UNKNOWN$undPERSON$1 : $$this$3))
+  var jsx$3 = this.$$outer$3.scope$2$f;
+  var value$1 = this.user$1$3.avatarURL;
+  jsx$3.url = $as_T(((value$1 === (void 0)) ? this.$$outer$3.$$outer$2.com$microsoft$awt$directives$AvatarDirective$$UNKNOWN$undPERSON$1 : value$1))
 });
 $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1$$anonfun$apply$1.prototype.apply__O = (function() {
   this.apply$mcV$sp__V()
@@ -36075,6 +36414,9 @@ $c_ju_Arrays$$anon$3.prototype.init___ju_Comparator = (function(cmp$1) {
 });
 $c_ju_Arrays$$anon$3.prototype.compare__O__O__I = (function(x, y) {
   return this.cmp$1$1.compare__O__O__I(x, y)
+});
+$c_ju_Arrays$$anon$3.prototype.lteq__O__O__Z = (function(x, y) {
+  return $s_s_math_Ordering$class__lteq__s_math_Ordering__O__O__Z(this, x, y)
 });
 var $d_ju_Arrays$$anon$3 = new $TypeData().initClass({
   ju_Arrays$$anon$3: 0
@@ -36206,6 +36548,9 @@ $c_s_math_Ordering$$anon$5.prototype.init___s_math_Ordering__F1 = (function($$ou
   };
   this.f$2$1 = f$2;
   return this
+});
+$c_s_math_Ordering$$anon$5.prototype.lteq__O__O__Z = (function(x, y) {
+  return $s_s_math_Ordering$class__lteq__s_math_Ordering__O__O__Z(this, x, y)
 });
 var $d_s_math_Ordering$$anon$5 = new $TypeData().initClass({
   s_math_Ordering$$anon$5: 0
@@ -36492,9 +36837,9 @@ $c_scm_ArrayBuilder$ofRef.prototype.sizeHint__I__V = (function(size) {
 });
 $c_scm_ArrayBuilder$ofRef.prototype.ensureSize__p2__I__V = (function(size) {
   if (((this.capacity$2 < size) || (this.capacity$2 === 0))) {
-    var newsize = ((this.capacity$2 === 0) ? 16 : $imul(2, this.capacity$2));
+    var newsize = ((this.capacity$2 === 0) ? 16 : (this.capacity$2 << 1));
     while ((newsize < size)) {
-      newsize = $imul(2, newsize)
+      newsize = (newsize << 1)
     };
     this.resize__p2__I__V(newsize)
   }
@@ -36629,6 +36974,11 @@ $c_s_math_Ordering$Double$.prototype.compare__O__O__I = (function(x, y) {
   var y$1 = $uD(y);
   return $m_jl_Double$().compare__D__D__I(x$1, y$1)
 });
+$c_s_math_Ordering$Double$.prototype.lteq__O__O__Z = (function(x, y) {
+  var x$1 = $uD(x);
+  var y$1 = $uD(y);
+  return $s_s_math_Ordering$DoubleOrdering$class__lteq__s_math_Ordering$DoubleOrdering__D__D__Z(this, x$1, y$1)
+});
 var $d_s_math_Ordering$Double$ = new $TypeData().initClass({
   s_math_Ordering$Double$: 0
 }, false, "scala.math.Ordering$Double$", {
@@ -36668,6 +37018,9 @@ $c_s_math_Ordering$String$.prototype.compare__O__O__I = (function(x, y) {
   var x$1 = $as_T(x);
   var y$1 = $as_T(y);
   return ((x$1 === y$1) ? 0 : ($uZ((x$1 < y$1)) ? (-1) : 1))
+});
+$c_s_math_Ordering$String$.prototype.lteq__O__O__Z = (function(x, y) {
+  return $s_s_math_Ordering$class__lteq__s_math_Ordering__O__O__Z(this, x, y)
 });
 var $d_s_math_Ordering$String$ = new $TypeData().initClass({
   s_math_Ordering$String$: 0
@@ -37112,14 +37465,8 @@ $h_Lcom_microsoft_awt_components_HomeController.prototype = $c_Lcom_microsoft_aw
 $c_Lcom_microsoft_awt_components_HomeController.prototype.productPrefix__T = (function() {
   return "HomeController"
 });
-$c_Lcom_microsoft_awt_components_HomeController.prototype.sessionFactory__Lcom_microsoft_awt_components_SessionFactory = (function() {
-  return this.sessionFactory$1
-});
 $c_Lcom_microsoft_awt_components_HomeController.prototype.productArity__I = (function() {
   return 12
-});
-$c_Lcom_microsoft_awt_components_HomeController.prototype.fileUploader__Lorg_scalajs_angularjs_fileupload_nervgh_FileUploader = (function() {
-  return this.fileUploader$1
 });
 $c_Lcom_microsoft_awt_components_HomeController.prototype.init___Lcom_microsoft_awt_components_HomeControllerScope__sjs_js_Dynamic__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_EventService__Lorg_scalajs_angularjs_fileupload_nervgh_FileUploader__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_PostService__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_UserDialog__Lcom_microsoft_awt_components_UserService = (function($$scope, $$compile, $$location, $$timeout, toaster, eventService, fileUploader, sessionFactory, postService, userFactory, userDialog, userService) {
   this.$$scope$1 = $$scope;
@@ -37376,18 +37723,20 @@ $c_Lcom_microsoft_awt_components_HomeController.prototype.productElement__I__O =
     }
   }
 });
-$c_Lcom_microsoft_awt_components_HomeController.prototype.userFactory__Lcom_microsoft_awt_components_UserFactory = (function() {
-  return this.userFactory$1
-});
 $c_Lcom_microsoft_awt_components_HomeController.prototype.com$microsoft$awt$components$HomeController$$loadWebPageSummary__Lcom_microsoft_awt_models_Post__s_concurrent_Future = (function(post) {
-  var $$this = post.text;
-  if (($$this === (void 0))) {
-    var $$this$2 = (void 0)
+  var valueA = post.text;
+  if ((valueA === (void 0))) {
+    var value = (void 0)
   } else {
-    var $$this$1 = $m_s_Option$().apply__O__s_Option($$this);
-    var $$this$2 = ($$this$1.isEmpty__Z() ? (void 0) : $$this$1.get__O())
+    var opt = $m_s_Option$().apply__O__s_Option(valueA);
+    if (opt.isEmpty__Z()) {
+      var value = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var value = arg1
+    }
   };
-  var this$12 = (($$this$2 === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O($$this$2));
+  var this$12 = ((value === (void 0)) ? $m_s_None$() : new $c_s_Some().init___O(value));
   if (this$12.isEmpty__Z()) {
     var this$14 = $m_s_None$()
   } else {
@@ -37408,81 +37757,79 @@ $c_Lcom_microsoft_awt_components_HomeController.prototype.com$microsoft$awt$comp
   } else {
     var v1 = this$16.get__O();
     var x$3 = $as_T2(v1);
-    if ((x$3 !== null)) {
-      var text$1 = $as_T(x$3.$$und1__O());
-      var lcText$1 = $as_T(x$3.$$und2__O());
-      var this$19 = $m_s_Option$().apply__O__s_Option(lcText$1);
-      if (this$19.isEmpty__Z()) {
-        var this$22 = $m_s_None$()
+    if ((x$3 === null)) {
+      throw new $c_s_MatchError().init___O(x$3)
+    };
+    var text$1 = $as_T(x$3.$$und1$f);
+    var lcText$1 = $as_T(x$3.$$und2$f);
+    var this$19 = $m_s_Option$().apply__O__s_Option(lcText$1);
+    if (this$19.isEmpty__Z()) {
+      var this$22 = $m_s_None$()
+    } else {
+      var arg1$3 = this$19.get__O();
+      var x$1 = $as_T(arg1$3);
+      var this$22 = new $c_s_Some().init___O($uI(x$1.indexOf("http://")))
+    };
+    if (this$22.isEmpty__Z()) {
+      var valueA$1 = $m_s_None$()
+    } else {
+      var arg1$4 = this$22.get__O();
+      var x0$1 = $uI(arg1$4);
+      switch (x0$1) {
+        case (-1): {
+          var valueA$1 = $m_s_None$();
+          break
+        }
+        default: {
+          var valueA$1 = new $c_s_Some().init___O(x0$1)
+        }
+      }
+    };
+    if (valueA$1.isDefined__Z()) {
+      var this$31 = valueA$1
+    } else {
+      var this$27 = $m_s_Option$().apply__O__s_Option(lcText$1);
+      if (this$27.isEmpty__Z()) {
+        var this$30 = $m_s_None$()
       } else {
-        var arg1$3 = this$19.get__O();
-        var x$1 = $as_T(arg1$3);
-        var this$22 = new $c_s_Some().init___O($uI(x$1.indexOf("http://")))
+        var arg1$5 = this$27.get__O();
+        var x$1$1 = $as_T(arg1$5);
+        var this$30 = new $c_s_Some().init___O($uI(x$1$1.indexOf("https://")))
       };
-      if (this$22.isEmpty__Z()) {
-        var $$this$3 = $m_s_None$()
+      if (this$30.isEmpty__Z()) {
+        var this$31 = $m_s_None$()
       } else {
-        var arg1$4 = this$22.get__O();
-        var x0$1 = $uI(arg1$4);
-        switch (x0$1) {
+        var arg1$6 = this$30.get__O();
+        var x0$1$1 = $uI(arg1$6);
+        switch (x0$1$1) {
           case (-1): {
-            var $$this$3 = $m_s_None$();
+            var this$31 = $m_s_None$();
             break
           }
           default: {
-            var $$this$3 = new $c_s_Some().init___O(x0$1)
+            var this$31 = new $c_s_Some().init___O(x0$1$1)
           }
         }
-      };
-      if ($$this$3.isDefined__Z()) {
-        var this$31 = $$this$3
-      } else {
-        var this$27 = $m_s_Option$().apply__O__s_Option(lcText$1);
-        if (this$27.isEmpty__Z()) {
-          var this$30 = $m_s_None$()
-        } else {
-          var arg1$5 = this$27.get__O();
-          var x$1$1 = $as_T(arg1$5);
-          var this$30 = new $c_s_Some().init___O($uI(x$1$1.indexOf("https://")))
-        };
-        if (this$30.isEmpty__Z()) {
-          var this$31 = $m_s_None$()
-        } else {
-          var arg1$6 = this$30.get__O();
-          var x0$1$1 = $uI(arg1$6);
-          switch (x0$1$1) {
-            case (-1): {
-              var this$31 = $m_s_None$();
-              break
-            }
-            default: {
-              var this$31 = new $c_s_Some().init___O(x0$1$1)
-            }
-          }
-        }
-      };
-      if (this$31.isEmpty__Z()) {
-        var result = $m_s_None$()
-      } else {
-        var arg1$7 = this$31.get__O();
-        var start = $uI(arg1$7);
-        var result = new $c_s_Some().init___O(new $c_T2().init___O__O(text$1, start))
       }
+    };
+    if (this$31.isEmpty__Z()) {
+      var result = $m_s_None$()
     } else {
-      var result;
-      throw new $c_s_MatchError().init___O(x$3)
+      var arg1$7 = this$31.get__O();
+      var start = $uI(arg1$7);
+      var result = new $c_s_Some().init___O(new $c_T2().init___O__O(text$1, start))
     }
   };
   if ($is_s_Some(result)) {
     var x2 = $as_s_Some(result);
     var p3 = $as_T2(x2.x$2);
     if ((p3 !== null)) {
-      var text$2 = $as_T(p3.$$und1__O());
-      var start$1 = p3.$$und2$mcI$sp__I();
+      var text$2 = $as_T(p3.$$und1$f);
+      var start$1 = $uI(p3.$$und2$f);
       var this$33 = new $c_sci_StringOps().init___T(text$2);
       var start$2 = ((start$1 > 0) ? start$1 : 0);
-      var $$this$4 = this$33.repr$1;
-      var len = $uI($$this$4.length);
+      var $$this = this$33.repr$1;
+      var len = $uI($$this.length);
       var i = start$2;
       while (true) {
         if ((i < len)) {
@@ -37526,51 +37873,41 @@ $c_Lcom_microsoft_awt_components_HomeController.prototype.com$microsoft$awt$comp
   };
   throw new $c_s_MatchError().init___O(result)
 });
-$c_Lcom_microsoft_awt_components_HomeController.prototype.toString__T = (function() {
-  return $m_sr_ScalaRunTime$().$$undtoString__s_Product__T(this)
-});
 $c_Lcom_microsoft_awt_components_HomeController.prototype.$$timeout__Lorg_scalajs_angularjs_Timeout = (function() {
   return this.$$timeout$1
 });
+$c_Lcom_microsoft_awt_components_HomeController.prototype.toString__T = (function() {
+  return $m_sr_ScalaRunTime$().$$undtoString__s_Product__T(this)
+});
 $c_Lcom_microsoft_awt_components_HomeController.prototype.com$microsoft$awt$components$HomeController$$loadFollowersAndPostings__V = (function() {
-  var $$this = this.sessionFactory$1.user__sjs_js_UndefOr();
-  if (($$this === (void 0))) {
-    var $$this$3 = (void 0)
+  var value = this.sessionFactory$1.user__sjs_js_UndefOr();
+  if ((value === (void 0))) {
+    var value$1 = (void 0)
   } else {
-    var $$this$1 = $$this._id;
-    if (($$this$1 === (void 0))) {
-      var $$this$3 = (void 0)
+    var valueA = value._id;
+    if ((valueA === (void 0))) {
+      var value$1 = (void 0)
     } else {
-      var $$this$2 = $m_s_Option$().apply__O__s_Option($$this$1);
-      var $$this$3 = ($$this$2.isEmpty__Z() ? (void 0) : $$this$2.get__O())
+      var opt = $m_s_Option$().apply__O__s_Option(valueA);
+      if (opt.isEmpty__Z()) {
+        var value$1 = (void 0)
+      } else {
+        var arg1 = opt.get__O();
+        var value$1 = arg1
+      }
     }
   };
   var f = new $c_Lcom_microsoft_awt_components_HomeController$$anonfun$com$microsoft$awt$components$HomeController$$loadFollowersAndPostings$2().init___Lcom_microsoft_awt_components_HomeController(this);
-  if (($$this$3 !== (void 0))) {
-    f.apply__T__V($as_T($$this$3))
+  if ((value$1 !== (void 0))) {
+    f.apply__T__V($as_T(value$1))
   }
 });
-$c_Lcom_microsoft_awt_components_HomeController.prototype.com$microsoft$awt$components$PostingCapabilities$$lastUploadedPost__s_Option = (function() {
-  return this.com$microsoft$awt$components$PostingCapabilities$$lastUploadedPost$1
-});
-$c_Lcom_microsoft_awt_components_HomeController.prototype.postService__Lcom_microsoft_awt_components_PostService = (function() {
-  return this.postService$1
-});
-$c_Lcom_microsoft_awt_components_HomeController.prototype.com$microsoft$awt$components$PostingCapabilities$$lastUploadedPost$und$eq__s_Option__V = (function(x$1) {
-  this.com$microsoft$awt$components$PostingCapabilities$$lastUploadedPost$1 = x$1
-});
 $c_Lcom_microsoft_awt_components_HomeController.prototype.$$scope__Lcom_microsoft_awt_components_GlobalLoadingScope = (function() {
-  return this.$$scope$1
-});
-$c_Lcom_microsoft_awt_components_HomeController.prototype.$$scope__Lcom_microsoft_awt_components_PostingCapabilitiesScope = (function() {
   return this.$$scope$1
 });
 $c_Lcom_microsoft_awt_components_HomeController.prototype.hashCode__I = (function() {
   var this$2 = $m_s_util_hashing_MurmurHash3$();
   return this$2.productHash__s_Product__I__I(this, (-889275714))
-});
-$c_Lcom_microsoft_awt_components_HomeController.prototype.toaster__Lorg_scalajs_angularjs_toaster_Toaster = (function() {
-  return this.toaster$1
 });
 $c_Lcom_microsoft_awt_components_HomeController.prototype.com$microsoft$awt$components$HomeController$$nonUrlCharacter__C__Z = (function(c) {
   var this$3 = $m_jl_Character$();
@@ -37819,68 +38156,63 @@ $c_Lcom_microsoft_awt_components_MainController.prototype.init___Lcom_microsoft_
       return arg$outer$5.sessionFactory$2.session__sjs_js_UndefOr()
     })
   })(this);
-  $$scope.showFullName = (function(f$5) {
+  $$scope.toggled = (function(f$5) {
     return (function(arg1$5) {
       return f$5.apply__O__O(arg1$5)
     })
   })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$12().init___Lcom_microsoft_awt_components_MainController(this));
-  $$scope.toggled = (function(f$6) {
-    return (function(arg1$6) {
-      return f$6.apply__O__O(arg1$6)
-    })
-  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$13().init___Lcom_microsoft_awt_components_MainController(this));
   $$scope.user = (function(arg$outer$6) {
     return (function() {
       return arg$outer$6.sessionFactory$2.user__sjs_js_UndefOr()
     })
   })(this);
-  $$scope.deleteNotification = (function(f$7) {
+  $$scope.deleteNotification = (function(f$6) {
+    return (function(arg1$6) {
+      return f$6.apply__O__O(arg1$6)
+    })
+  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$14().init___Lcom_microsoft_awt_components_MainController(this));
+  $$scope.getNotificationGlyphClass = (function(f$7) {
     return (function(arg1$7) {
       return f$7.apply__O__O(arg1$7)
     })
-  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$15().init___Lcom_microsoft_awt_components_MainController(this));
-  $$scope.getNotificationGlyphClass = (function(f$8) {
-    return (function(arg1$8) {
-      return f$8.apply__O__O(arg1$8)
-    })
-  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$17().init___Lcom_microsoft_awt_components_MainController(this));
+  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$16().init___Lcom_microsoft_awt_components_MainController(this));
   $$scope.getNotifications = (function(arg$outer$7) {
     return (function() {
       return arg$outer$7.$$scope$2.notifications
     })
   })(this);
-  $$scope.getNotificationsByType = (function(f$9) {
-    return (function(arg1$9) {
-      return f$9.apply__O__O(arg1$9)
+  $$scope.getNotificationsByType = (function(f$8) {
+    return (function(arg1$8) {
+      return f$8.apply__O__O(arg1$8)
     })
-  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$19().init___Lcom_microsoft_awt_components_MainController(this));
+  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$18().init___Lcom_microsoft_awt_components_MainController(this));
   var listener = new $c_sjsr_AnonFunction2().init___sjs_js_Function2((function(arg$outer$8) {
-    return (function(x$6$2, session$2) {
+    return (function(x$5$2, session$2) {
       arg$outer$8.com$microsoft$awt$components$MainController$$loadEventsAndNotifications__Lcom_microsoft_awt_models_Session__V(session$2)
     })
   })(this));
-  $$scope.$on("session_loaded", (function(f$10) {
-    return (function(arg1$10, arg2$1) {
-      return f$10.apply__O__O__O(arg1$10, arg2$1)
+  $$scope.$on("session_loaded", (function(f$9) {
+    return (function(arg1$9, arg2$1) {
+      return f$9.apply__O__O__O(arg1$9, arg2$1)
     })
   })(listener));
   var listener$1 = new $c_sjsr_AnonFunction2().init___sjs_js_Function2((function(arg$outer$9) {
-    return (function(x$7$2, notification$2) {
+    return (function(x$6$2, notification$2) {
       var jsx$2 = $g.console;
       var s$1 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Received notification: ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$as_T($g.angular.toJson(notification$2, true))]));
       jsx$2.log(s$1);
       return $uI(arg$outer$9.$$scope$2.notifications.push(notification$2))
     })
   })(this));
-  $$scope.$on($m_Lcom_microsoft_awt_models_WsEventMessage$().NOTIFICATION$1, (function(f$11) {
-    return (function(arg1$11, arg2$2) {
-      return f$11.apply__O__O__O(arg1$11, arg2$2)
+  $$scope.$on($m_Lcom_microsoft_awt_models_WsEventMessage$().NOTIFICATION$1, (function(f$10) {
+    return (function(arg1$10, arg2$2) {
+      return f$10.apply__O__O__O(arg1$10, arg2$2)
     })
   })(listener$1));
-  var listener$2 = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$23().init___Lcom_microsoft_awt_components_MainController(this);
-  $$scope.$on("WS_STATE_CHANGE", (function(f$12) {
-    return (function(arg1$12, arg2$3) {
-      return f$12.apply__O__O__O(arg1$12, arg2$3)
+  var listener$2 = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$22().init___Lcom_microsoft_awt_components_MainController(this);
+  $$scope.$on("WS_STATE_CHANGE", (function(f$11) {
+    return (function(arg1$11, arg2$3) {
+      return f$11.apply__O__O__O(arg1$11, arg2$3)
     })
   })(listener$2));
   return this
@@ -37903,12 +38235,8 @@ $c_Lcom_microsoft_awt_components_MainController.prototype.com$microsoft$awt$comp
       return "fa-comment-o sk_comment"
     } else if ((x1 === "EVENT")) {
       return "fa-calendar sk_calender"
-    } else if ((x1 === "LEVELUP")) {
-      return "fa-tachometer sk_levelup"
     } else if ((x1 === "NOTIFICATION")) {
       return "fa-info-circle sk_notifications"
-    } else if ((x1 === "TEST")) {
-      return "fa-book sk_test"
     } else {
       var jsx$1 = $g.console;
       var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Unrecognized event type '", "'"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([eventType]));
@@ -37923,10 +38251,10 @@ $c_Lcom_microsoft_awt_components_MainController.prototype.hashCode__I = (functio
   return this$2.productHash__s_Product__I__I(this, (-889275714))
 });
 $c_Lcom_microsoft_awt_components_MainController.prototype.com$microsoft$awt$components$MainController$$loadEventsAndNotifications__Lcom_microsoft_awt_models_Session__V = (function(session) {
-  var $$this = session.userID;
+  var value = session.userID;
   var f = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1().init___Lcom_microsoft_awt_components_MainController(this);
-  if (($$this !== (void 0))) {
-    f.apply__T__V($as_T($$this))
+  if ((value !== (void 0))) {
+    f.apply__T__V($as_T(value))
   }
 });
 $c_Lcom_microsoft_awt_components_MainController.prototype.productIterator__sc_Iterator = (function() {
@@ -38056,69 +38384,64 @@ $c_s_concurrent_impl_Promise$DefaultPromise.prototype.root__p3__s_concurrent_imp
 });
 $c_s_concurrent_impl_Promise$DefaultPromise.prototype.link__p3__s_concurrent_impl_Promise$DefaultPromise__V = (function(target) {
   var _$this = this;
-  x: {
-    _link: while (true) {
-      if ((_$this !== target)) {
-        var this$1 = _$this;
-        var x1 = this$1.value$1;
-        if ($is_s_util_Try(x1)) {
-          var x2 = $as_s_util_Try(x1);
-          if ((!target.tryComplete__s_util_Try__Z(x2))) {
-            throw new $c_jl_IllegalStateException().init___T("Cannot link completed promises together")
-          }
-        } else if ($is_s_concurrent_impl_Promise$DefaultPromise(x1)) {
-          _$this = _$this.compressedRoot__p3__s_concurrent_impl_Promise$DefaultPromise();
-          continue _link
-        } else if ($is_sci_List(x1)) {
-          var x4 = $as_sci_List(x1);
-          var this$2 = _$this;
-          if (this$2.compareAndSet__O__O__Z(x4, target)) {
-            if ((!x4.isEmpty__Z())) {
-              var $this = _$this;
-              var these = x4;
-              while ((!these.isEmpty__Z())) {
-                var arg1 = these.head__O();
-                var x$2 = $as_s_concurrent_impl_CallbackRunnable(arg1);
-                target.dispatchOrAddCallback__p3__s_concurrent_impl_CallbackRunnable__V(x$2);
-                var this$3 = these;
-                these = this$3.tail__sci_List()
-              }
-            }
-          } else {
-            continue _link
-          }
-        } else {
-          throw new $c_s_MatchError().init___O(x1)
-        }
-      };
-      break x
-    }
-  }
-});
-$c_s_concurrent_impl_Promise$DefaultPromise.prototype.dispatchOrAddCallback__p3__s_concurrent_impl_CallbackRunnable__V = (function(runnable) {
-  var _$this = this;
-  x: {
-    _dispatchOrAddCallback: while (true) {
+  _link: while (true) {
+    if ((_$this !== target)) {
       var this$1 = _$this;
       var x1 = this$1.value$1;
       if ($is_s_util_Try(x1)) {
         var x2 = $as_s_util_Try(x1);
-        runnable.executeWithValue__s_util_Try__V(x2)
+        if ((!target.tryComplete__s_util_Try__Z(x2))) {
+          throw new $c_jl_IllegalStateException().init___T("Cannot link completed promises together")
+        }
       } else if ($is_s_concurrent_impl_Promise$DefaultPromise(x1)) {
         _$this = _$this.compressedRoot__p3__s_concurrent_impl_Promise$DefaultPromise();
-        continue _dispatchOrAddCallback
+        continue _link
       } else if ($is_sci_List(x1)) {
         var x4 = $as_sci_List(x1);
         var this$2 = _$this;
-        var newState = new $c_sci_$colon$colon().init___O__sci_List(runnable, x4);
-        if ((!this$2.compareAndSet__O__O__Z(x4, newState))) {
-          continue _dispatchOrAddCallback
+        if (this$2.compareAndSet__O__O__Z(x4, target)) {
+          if ((!x4.isEmpty__Z())) {
+            var these = x4;
+            while ((!these.isEmpty__Z())) {
+              var arg1 = these.head__O();
+              var x$2 = $as_s_concurrent_impl_CallbackRunnable(arg1);
+              target.dispatchOrAddCallback__p3__s_concurrent_impl_CallbackRunnable__V(x$2);
+              var this$3 = these;
+              these = this$3.tail__sci_List()
+            }
+          }
+        } else {
+          continue _link
         }
       } else {
         throw new $c_s_MatchError().init___O(x1)
-      };
-      break x
-    }
+      }
+    };
+    break
+  }
+});
+$c_s_concurrent_impl_Promise$DefaultPromise.prototype.dispatchOrAddCallback__p3__s_concurrent_impl_CallbackRunnable__V = (function(runnable) {
+  var _$this = this;
+  _dispatchOrAddCallback: while (true) {
+    var this$1 = _$this;
+    var x1 = this$1.value$1;
+    if ($is_s_util_Try(x1)) {
+      var x2 = $as_s_util_Try(x1);
+      runnable.executeWithValue__s_util_Try__V(x2)
+    } else if ($is_s_concurrent_impl_Promise$DefaultPromise(x1)) {
+      _$this = _$this.compressedRoot__p3__s_concurrent_impl_Promise$DefaultPromise();
+      continue _dispatchOrAddCallback
+    } else if ($is_sci_List(x1)) {
+      var x4 = $as_sci_List(x1);
+      var this$2 = _$this;
+      var newState = new $c_sci_$colon$colon().init___O__sci_List(runnable, x4);
+      if ((!this$2.compareAndSet__O__O__Z(x4, newState))) {
+        continue _dispatchOrAddCallback
+      }
+    } else {
+      throw new $c_s_MatchError().init___O(x1)
+    };
+    break
   }
 });
 function $is_s_concurrent_impl_Promise$DefaultPromise(obj) {
@@ -39945,8 +40268,8 @@ $c_sc_MapLike$MappedValues.prototype.foreach__F1__V = (function(g) {
     return (function(x$1$2) {
       var x$1 = $as_T2(x$1$2);
       if ((x$1 !== null)) {
-        var k = x$1.$$und1__O();
-        var v = x$1.$$und2__O();
+        var k = x$1.$$und1$f;
+        var v = x$1.$$und2$f;
         return g$1.apply__O__O(new $c_T2().init___O__O(k, this$2.f$4.apply__O__O(v)))
       } else {
         throw new $c_s_MatchError().init___O(x$1)
@@ -39979,8 +40302,8 @@ $c_sc_MapLike$MappedValues.prototype.iterator__sc_Iterator = (function() {
     return (function(x$2$2) {
       var x$2 = $as_T2(x$2$2);
       if ((x$2 !== null)) {
-        var k = x$2.$$und1__O();
-        var v = x$2.$$und2__O();
+        var k = x$2.$$und1$f;
+        var v = x$2.$$und2$f;
         return new $c_T2().init___O__O(k, this$2.f$4.apply__O__O(v))
       } else {
         throw new $c_s_MatchError().init___O(x$2)
@@ -40527,24 +40850,21 @@ $c_sci_Set$Set4.prototype.$$plus__O__sci_Set = (function(elem) {
     var start = 0;
     var end = $uI(array.length);
     var z = this$2;
-    x: {
-      var jsx$1;
-      _foldl: while (true) {
-        if ((start === end)) {
-          var jsx$1 = z;
-          break x
-        } else {
-          var temp$start = ((1 + start) | 0);
-          var arg1 = z;
-          var index = start;
-          var arg2 = array[index];
-          var x$2 = $as_sc_Set(arg1);
-          var temp$z = x$2.$$plus__O__sc_Set(arg2);
-          start = temp$start;
-          z = temp$z;
-          continue _foldl
-        }
-      }
+    var jsx$1;
+    _foldl: while (true) {
+      if ((start !== end)) {
+        var temp$start = ((1 + start) | 0);
+        var arg1 = z;
+        var index = start;
+        var arg2 = array[index];
+        var x$2 = $as_sc_Set(arg1);
+        var temp$z = x$2.$$plus__O__sc_Set(arg2);
+        start = temp$start;
+        z = temp$z;
+        continue _foldl
+      };
+      var jsx$1 = z;
+      break
     };
     return $as_sci_HashSet($as_sc_Set(jsx$1))
   }
@@ -41205,7 +41525,7 @@ $c_sci_ListMap.prototype.next__sci_ListMap = (function() {
   throw new $c_ju_NoSuchElementException().init___T("empty map")
 });
 $c_sci_ListMap.prototype.$$plus__T2__sc_GenMap = (function(kv) {
-  return this.updated__O__O__sci_ListMap(kv.$$und1__O(), kv.$$und2__O())
+  return this.updated__O__O__sci_ListMap(kv.$$und1$f, kv.$$und2$f)
 });
 function $is_sci_ListMap(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.sci_ListMap)))
@@ -41243,8 +41563,8 @@ $c_sci_Map$EmptyMap$.prototype.get__O__s_Option = (function(key) {
   return $m_s_None$()
 });
 $c_sci_Map$EmptyMap$.prototype.$$plus__T2__sc_GenMap = (function(kv) {
-  var key = kv.$$und1__O();
-  var value = kv.$$und2__O();
+  var key = kv.$$und1$f;
+  var value = kv.$$und2$f;
   return new $c_sci_Map$Map1().init___O__O(key, value)
 });
 var $d_sci_Map$EmptyMap$ = new $TypeData().initClass({
@@ -41330,7 +41650,7 @@ $c_sci_Map$Map1.prototype.get__O__s_Option = (function(key) {
   return ($m_sr_BoxesRunTime$().equals__O__O__Z(key, this.key1$5) ? new $c_s_Some().init___O(this.value1$5) : $m_s_None$())
 });
 $c_sci_Map$Map1.prototype.$$plus__T2__sc_GenMap = (function(kv) {
-  return this.updated__O__O__sci_Map(kv.$$und1__O(), kv.$$und2__O())
+  return this.updated__O__O__sci_Map(kv.$$und1$f, kv.$$und2$f)
 });
 var $d_sci_Map$Map1 = new $TypeData().initClass({
   sci_Map$Map1: 0
@@ -41413,7 +41733,7 @@ $c_sci_Map$Map2.prototype.init___O__O__O__O = (function(key1, value1, key2, valu
   return this
 });
 $c_sci_Map$Map2.prototype.$$plus__T2__sc_GenMap = (function(kv) {
-  return this.updated__O__O__sci_Map(kv.$$und1__O(), kv.$$und2__O())
+  return this.updated__O__O__sci_Map(kv.$$und1$f, kv.$$und2$f)
 });
 var $d_sci_Map$Map2 = new $TypeData().initClass({
   sci_Map$Map2: 0
@@ -41501,7 +41821,7 @@ $c_sci_Map$Map3.prototype.get__O__s_Option = (function(key) {
   return ($m_sr_BoxesRunTime$().equals__O__O__Z(key, this.key1$5) ? new $c_s_Some().init___O(this.value1$5) : ($m_sr_BoxesRunTime$().equals__O__O__Z(key, this.key2$5) ? new $c_s_Some().init___O(this.value2$5) : ($m_sr_BoxesRunTime$().equals__O__O__Z(key, this.key3$5) ? new $c_s_Some().init___O(this.value3$5) : $m_s_None$())))
 });
 $c_sci_Map$Map3.prototype.$$plus__T2__sc_GenMap = (function(kv) {
-  return this.updated__O__O__sci_Map(kv.$$und1__O(), kv.$$und2__O())
+  return this.updated__O__O__sci_Map(kv.$$und1$f, kv.$$und2$f)
 });
 var $d_sci_Map$Map3 = new $TypeData().initClass({
   sci_Map$Map3: 0
@@ -41624,7 +41944,7 @@ $c_sci_Map$Map4.prototype.get__O__s_Option = (function(key) {
   return ($m_sr_BoxesRunTime$().equals__O__O__Z(key, this.key1$5) ? new $c_s_Some().init___O(this.value1$5) : ($m_sr_BoxesRunTime$().equals__O__O__Z(key, this.key2$5) ? new $c_s_Some().init___O(this.value2$5) : ($m_sr_BoxesRunTime$().equals__O__O__Z(key, this.key3$5) ? new $c_s_Some().init___O(this.value3$5) : ($m_sr_BoxesRunTime$().equals__O__O__Z(key, this.key4$5) ? new $c_s_Some().init___O(this.value4$5) : $m_s_None$()))))
 });
 $c_sci_Map$Map4.prototype.$$plus__T2__sc_GenMap = (function(kv) {
-  return this.updated__O__O__sci_Map(kv.$$und1__O(), kv.$$und2__O())
+  return this.updated__O__O__sci_Map(kv.$$und1$f, kv.$$und2$f)
 });
 var $d_sci_Map$Map4 = new $TypeData().initClass({
   sci_Map$Map4: 0
@@ -41775,7 +42095,7 @@ $c_sci_HashMap.prototype.foreach__F1__V = (function(f) {
   /*<skip>*/
 });
 $c_sci_HashMap.prototype.$$plus__T2__sci_HashMap = (function(kv) {
-  return this.updated0__O__I__I__O__T2__sci_HashMap$Merger__sci_HashMap(kv.$$und1__O(), this.computeHash__O__I(kv.$$und1__O()), 0, kv.$$und2__O(), kv, null)
+  return this.updated0__O__I__I__O__T2__sci_HashMap$Merger__sci_HashMap(kv.$$und1$f, this.computeHash__O__I(kv.$$und1$f), 0, kv.$$und2$f, kv, null)
 });
 $c_sci_HashMap.prototype.empty__sc_Map = (function() {
   $m_sci_HashMap$();
@@ -42500,15 +42820,13 @@ $c_sci_Stream.prototype.toString__T = (function() {
 });
 $c_sci_Stream.prototype.foreach__F1__V = (function(f) {
   var _$this = this;
-  x: {
-    _foreach: while (true) {
-      if ((!_$this.isEmpty__Z())) {
-        f.apply__O__O(_$this.head__O());
-        _$this = $as_sci_Stream(_$this.tail__O());
-        continue _foreach
-      };
-      break x
-    }
+  _foreach: while (true) {
+    if ((!_$this.isEmpty__Z())) {
+      f.apply__O__O(_$this.head__O());
+      _$this = $as_sci_Stream(_$this.tail__O());
+      continue _foreach
+    };
+    break
   }
 });
 $c_sci_Stream.prototype.indexWhere__F1__I__I = (function(p, from) {
@@ -42809,7 +43127,7 @@ $c_sci_HashMap$HashMap1.prototype.updated0__O__I__I__O__T2__sci_HashMap$Merger__
       return ((this.value$6 === value) ? this : new $c_sci_HashMap$HashMap1().init___O__I__O__T2(key, hash, value, kv))
     } else {
       var nkv = merger.apply__T2__T2__T2(this.kv$6, kv);
-      return new $c_sci_HashMap$HashMap1().init___O__I__O__T2(nkv.$$und1__O(), hash, nkv.$$und2__O(), nkv)
+      return new $c_sci_HashMap$HashMap1().init___O__I__O__T2(nkv.$$und1$f, hash, nkv.$$und2$f, nkv)
     }
   } else if ((hash !== this.hash$6)) {
     var that = new $c_sci_HashMap$HashMap1().init___O__I__O__T2(key, hash, value, kv);
@@ -42915,7 +43233,7 @@ $c_sci_HashMap$HashMapCollision1.prototype.updated0__O__I__I__O__T2__sci_HashMap
     } else {
       var this$2 = this.kvs$6;
       var kv$1 = merger.apply__T2__T2__T2(new $c_T2().init___O__O(key, this.kvs$6.apply__O__O(key)), kv);
-      return new $c_sci_HashMap$HashMapCollision1().init___I__sci_ListMap(hash, this$2.updated__O__O__sci_ListMap(kv$1.$$und1__O(), kv$1.$$und2__O()))
+      return new $c_sci_HashMap$HashMapCollision1().init___I__sci_ListMap(hash, this$2.updated__O__O__sci_ListMap(kv$1.$$und1$f, kv$1.$$und2$f))
     }
   } else {
     var that = new $c_sci_HashMap$HashMap1().init___O__I__O__T2(key, hash, value, kv);
