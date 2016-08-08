@@ -24,6 +24,8 @@ trait GlobalNavigation {
 
   $scope.navigateToHome = () => navigateToPath("/home")
 
+  $scope.navigateToLogin = () => navigateToPath("/login")
+
   $scope.navigateToMessages = () => navigateToPath("/home/messages")
 
   $scope.navigateToNewsFeed = () => navigateToPath("/home/newsfeed")
@@ -52,6 +54,7 @@ trait GlobalNavigationScope extends Scope {
   // home
   var navigateToGroup: js.Function1[js.UndefOr[String], Unit] = js.native
   var navigateToHome: js.Function0[Unit] = js.native
+  var navigateToLogin: js.Function0[Unit] = js.native
   var navigateToMessages: js.Function0[Unit] = js.native
   var navigateToNewsFeed: js.Function0[Unit] = js.native
   var navigateToPhotos: js.Function0[Unit] = js.native

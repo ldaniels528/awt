@@ -38,13 +38,17 @@
                         <a class="sk_black" ng-href="#/home/profile/{{ selectedWorkload.msftLeadId }}">{{ selectedWorkload.msftLead }}</a>
                     </td>
                     <th class="col-md-2">Business Sponsor</th>
-                    <td class="col-md-4">{{ selectedWorkload.businessSponsor }}</td>
+                    <td class="col-md-4">
+                        <restricted>{{ selectedWorkload.businessSponsor }}</restricted>
+                    </td>
                 </tr>
                 <tr>
                     <th class="col-md-2">Service(s)</th>
                     <td class="col-md-4">{{ getServices(selectedWorkload) }}</td>
                     <th class="col-md-2">Technical Contact</th>
-                    <td class="col-md-4">{{ selectedWorkload.technicalContact }}</td>
+                    <td class="col-md-4">
+                        <restricted>{{ selectedWorkload.technicalContact }}</restricted>
+                    </td>
                 </tr>
                 <tr>
                     <th class="col-md-2">Opportunity Status</th>
@@ -60,8 +64,10 @@
                 <tr>
                     <th class="col-md-2">Consumption <br><span class="status_small">(Estimated)</span></th>
                     <td class="col-md-4">
-                        <span ng-show="selectedWorkload.consumption">$ {{ selectedWorkload.consumption | number }}/month</span>
-                        <span ng-hide="selectedWorkload.consumption" class="sk_tbd">TBD</span>
+                        <restricted>
+                            <span ng-show="selectedWorkload.consumption">$ {{ selectedWorkload.consumption | number }}/month</span>
+                            <span ng-hide="selectedWorkload.consumption" class="sk_tbd">TBD</span>
+                        </restricted>
                     </td>
                     <th class="col-md-2">Go Live Estimate<br><span class="status_small">(By Fiscal Month)</span></th>
                     <td class="col-md-4">
@@ -95,7 +101,10 @@
 
                     <tbody class="group_status_history_container">
                         <tr ng-repeat="status in selectedWorkload.statuses | orderBy:'-creationTime'">
-                            <td class="col-md-9"><span class="sk_null sk_ident">{{ $index + 1 }}.</span> {{ status.statusText }}</td>
+                            <td class="col-md-9">
+                                <span class="sk_null sk_ident">{{ $index + 1 }}.</span>
+                                <censor text="{{ status.statusText }}"></censor>
+                            </td>
                             <td class="col-md-2">
                                 <avatar class="avatar16" id="{{ status.submitterId }}"></avatar>
                                 <a class="sk_black" ng-href="#/home/profile/{{ status.submitterId }}"><name id="{{ status.submitterId }}"></name></a>

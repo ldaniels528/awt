@@ -3183,7 +3183,7 @@ $h_Lcom_microsoft_awt_data_SessionDAO$SessionDAOEnrichment$.prototype = $c_Lcom_
 $c_Lcom_microsoft_awt_data_SessionDAO$SessionDAOEnrichment$.prototype.init___ = (function() {
   return this
 });
-$c_Lcom_microsoft_awt_data_SessionDAO$SessionDAOEnrichment$.prototype.findAndUpdateByID$extension__Lcom_microsoft_awt_data_SessionDAO__T__Lorg_scalajs_nodejs_mongodb_MongoDB__sjs_js_Promise = (function($$this, sessionID, mongodb) {
+$c_Lcom_microsoft_awt_data_SessionDAO$SessionDAOEnrichment$.prototype.findAndUpdateByID$extension__Lcom_microsoft_awt_data_SessionDAO__T__Z__Lorg_scalajs_nodejs_mongodb_MongoDB__sjs_js_Promise = (function($$this, sessionID, isAnonymous, mongodb) {
   var jsx$5 = $m_Lorg_scalajs_nodejs_mongodb_package$();
   var $class = mongodb.ObjectID;
   var args = $m_s_Predef$().wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_sjs_js_Any.getArrayOf(), [sessionID]));
@@ -3207,10 +3207,11 @@ $c_Lcom_microsoft_awt_data_SessionDAO$SessionDAOEnrichment$.prototype.findAndUpd
   var y = $newJSObjectWithVarargs($class, jsx$4);
   var jsx$3 = jsx$5.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
   var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var jsx$1 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var y$1 = $uD($g.Date.now());
-  var y$2 = jsx$1.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("lastUpdated", y$1));
-  return $$this.findOneAndUpdate(jsx$3, jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("$set", y$2)))
+  var jsx$1 = new $c_T2().init___O__O("isAnonymous", isAnonymous);
+  var value = $uD($g.Date.now());
+  var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$1, new $c_T2().init___O__O("lastUpdated", value)]);
+  var y$1 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
+  return $$this.findOneAndUpdate(jsx$3, jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("$set", y$1)))
 });
 var $d_Lcom_microsoft_awt_data_SessionDAO$SessionDAOEnrichment$ = new $TypeData().initClass({
   Lcom_microsoft_awt_data_SessionDAO$SessionDAOEnrichment$: 0
@@ -4354,7 +4355,6 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.activateAccount__Lo
             var x7 = $as_s_util_Failure(x0$2);
             var e = x7.exception$2;
             e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-            e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
             var jsx$10 = response$1.status(500);
             var s$1 = e.getMessage__T();
             jsx$10.send(s$1);
@@ -4389,7 +4389,6 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.logout__Lorg_scalaj
       } else if ($is_s_util_Failure(x0$3)) {
         var x3 = $as_s_util_Failure(x0$3);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$2.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -4578,7 +4577,7 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.login__Lorg_scalajs
         })
       })(ec, username));
       var this$53 = $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(credentialDAO, f$1, ec);
-      var f$2 = new $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15().init___s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_pvorb_md5_MD5__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__s_concurrent_Future__T__T__T(ec, md5, mongo, sessionDAO, userDAO, sessionID, username, password);
+      var f$2 = new $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15().init___s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_pvorb_md5_MD5__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__s_concurrent_Future__T__T__T__Lcom_microsoft_awt_routes_AuthenticationRoutes$LoginForm(ec, md5, mongo, sessionDAO, userDAO, sessionID, username, password, x1);
       var outcome = $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$53, f$2, ec);
       outcome.onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$4, next$4) {
         return (function(x0$6$2) {
@@ -4618,7 +4617,6 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.login__Lorg_scalajs
             if ($is_s_util_Failure(x0$6)) {
               var x9 = $as_s_util_Failure(x0$6);
               var e = x9.exception$2;
-              e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
               var jsx$1 = response$4.status(500);
               var s = e.getMessage__T();
               jsx$1.send(s);
@@ -4694,13 +4692,13 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.authToken__Lorg_sca
   outcome.onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$authToken$1().init___Lorg_scalajs_nodejs_express_Response__sjs_js_Function0(response, next), ec)
 });
 $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.com$microsoft$awt$routes$AuthenticationRoutes$$toSession__Lcom_microsoft_awt_models_User__Lcom_microsoft_awt_models_Session = (function(user) {
-  var x$25 = user._id;
-  var x$26 = user.username;
-  var x$27 = user.primaryEmail;
-  var x$28 = user.avatarURL;
+  var x$26 = user._id;
+  var x$27 = user.username;
+  var x$28 = user.primaryEmail;
+  var x$29 = user.avatarURL;
   var value = new $g.Date();
   var value$1 = $uD($g.Date.now());
-  return new $c_Lcom_microsoft_awt_models_Session((void 0), x$25, x$26, x$27, x$28, false, value, value$1)
+  return new $c_Lcom_microsoft_awt_models_Session((void 0), x$26, x$27, x$28, x$29, false, value, value$1)
 });
 var $d_Lcom_microsoft_awt_routes_AuthenticationRoutes$ = new $TypeData().initClass({
   Lcom_microsoft_awt_routes_AuthenticationRoutes$: 0
@@ -4748,7 +4746,6 @@ $c_Lcom_microsoft_awt_routes_EventRoutes$.prototype.getEventsByOwner__Lorg_scala
       } else if ($is_s_util_Failure(x0$1)) {
         var x3 = $as_s_util_Failure(x0$1);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$1.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -4818,7 +4815,6 @@ $c_Lcom_microsoft_awt_routes_EventRoutes$.prototype.getUpcomingEvents__Lorg_scal
       } else if ($is_s_util_Failure(x0$2)) {
         var x3 = $as_s_util_Failure(x0$2);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$2.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -4894,7 +4890,6 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.updateGroup__Lorg_scalajs_no
           if ($is_s_util_Failure(x0$3)) {
             var x4 = $as_s_util_Failure(x0$3);
             var e = x4.exception$2;
-            e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
             var jsx$2 = response$3.status(500);
             var s = e.getMessage__T();
             jsx$2.send(s);
@@ -4908,7 +4903,6 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.updateGroup__Lorg_scalajs_no
   } else if ($is_s_util_Failure(x1)) {
     var x3 = $as_s_util_Failure(x1);
     var e$1 = x3.exception$2;
-    e$1.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
     var jsx$3 = response.status(500);
     var s$1 = e$1.getMessage__T();
     jsx$3.send(s$1);
@@ -4937,7 +4931,6 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroupsIncludingUser__Lorg
       } else if ($is_s_util_Failure(x0$6)) {
         var x3 = $as_s_util_Failure(x0$6);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$6.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -4968,7 +4961,6 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroupsIncludingOrOwnedByU
       } else if ($is_s_util_Failure(x0$5)) {
         var x3 = $as_s_util_Failure(x0$5);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$5.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -5016,7 +5008,6 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroupByID__Lorg_scalajs_n
         if ($is_s_util_Failure(x0$1)) {
           var x7 = $as_s_util_Failure(x0$1);
           var e = x7.exception$2;
-          e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
           var jsx$1 = response$1.status(500);
           var s = e.getMessage__T();
           jsx$1.send(s);
@@ -5133,7 +5124,6 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.createGroup__Lorg_scalajs_no
           if ($is_s_util_Failure(x0$2)) {
             var x4 = $as_s_util_Failure(x0$2);
             var e = x4.exception$2;
-            e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
             var jsx$3 = response$2.status(500);
             var s = e.getMessage__T();
             jsx$3.send(s);
@@ -5147,7 +5137,6 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.createGroup__Lorg_scalajs_no
   } else if ($is_s_util_Failure(x1)) {
     var x3 = $as_s_util_Failure(x1);
     var e$1 = x3.exception$2;
-    e$1.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
     var jsx$4 = response.status(500);
     var s$1 = e$1.getMessage__T();
     jsx$4.send(s$1);
@@ -5176,7 +5165,6 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroupsExcludingUser__Lorg
       } else if ($is_s_util_Failure(x0$7)) {
         var x3 = $as_s_util_Failure(x0$7);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$7.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -5219,7 +5207,6 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroups__Lorg_scalajs_node
       } else if ($is_s_util_Failure(x0$4)) {
         var x3 = $as_s_util_Failure(x0$4);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$4.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -5331,7 +5318,6 @@ $c_Lcom_microsoft_awt_routes_NotificationRoutes$.prototype.getNotifications__Lor
       } else if ($is_s_util_Failure(x0$1)) {
         var x3 = $as_s_util_Failure(x0$1);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$1.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -5369,7 +5355,6 @@ $c_Lcom_microsoft_awt_routes_NotificationRoutes$.prototype.getNotificationsByOwn
       } else if ($is_s_util_Failure(x0$2)) {
         var x3 = $as_s_util_Failure(x0$2);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$2.status(500);
         var s$1 = e.getMessage__T();
         jsx$1.send(s$1);
@@ -5484,7 +5469,6 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getPost__Lorg_scalajs_nodejs_
         if ($is_s_util_Failure(x0$3)) {
           var x7 = $as_s_util_Failure(x0$3);
           var e = x7.exception$2;
-          e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
           var jsx$3 = response$3.status(500);
           var s = e.getMessage__T();
           jsx$3.send(s);
@@ -5554,7 +5538,6 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.deletePost__Lorg_scalajs_node
       } else if ($is_s_util_Failure(x0$4)) {
         var x3 = $as_s_util_Failure(x0$4);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$3 = response$4.status(500);
         var s = e.getMessage__T();
         jsx$3.send(s);
@@ -5671,7 +5654,6 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getNewsFeed__Lorg_scalajs_nod
       } else if ($is_s_util_Failure(x0$7)) {
         var x3$1 = $as_s_util_Failure(x0$7);
         var e = x3$1.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$5 = response$7.status(500);
         var s = e.getMessage__T();
         jsx$5.send(s);
@@ -5873,7 +5855,6 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.createPost__Lorg_scalajs_node
         if ($is_s_util_Failure(x0$1)) {
           var x4 = $as_s_util_Failure(x0$1);
           var e = x4.exception$2;
-          e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
           var jsx$2 = response$1.status(500);
           var s = e.getMessage__T();
           jsx$2.send(s);
@@ -5905,7 +5886,6 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getPostsByOwner__Lorg_scalajs
       } else if ($is_s_util_Failure(x0$6)) {
         var x3 = $as_s_util_Failure(x0$6);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$6.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -5947,7 +5927,6 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getSEOContent__Lorg_scalajs_n
         } else if ($is_s_util_Failure(x0$13)) {
           var x3 = $as_s_util_Failure(x0$13);
           var e = x3.exception$2;
-          e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
           var jsx$1 = response$13.status(500);
           var s = e.getMessage__T();
           jsx$1.send(s);
@@ -6009,7 +5988,6 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.likePost__Lorg_scalajs_nodejs
       } else if ($is_s_util_Failure(x0$11)) {
         var x3 = $as_s_util_Failure(x0$11);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$11.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -6038,7 +6016,6 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getAttachementIDs__Lorg_scala
       } else if ($is_s_util_Failure(x0$9)) {
         var x3 = $as_s_util_Failure(x0$9);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$9.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -6089,7 +6066,6 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.unlike__Lorg_scalajs_nodejs_e
       } else if ($is_s_util_Failure(x0$12)) {
         var x3 = $as_s_util_Failure(x0$12);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$12.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -6144,7 +6120,6 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.updatePost__Lorg_scalajs_node
           if ($is_s_util_Failure(x0$2)) {
             var x4 = $as_s_util_Failure(x0$2);
             var e = x4.exception$2;
-            e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
             var jsx$1 = response$2.status(500);
             var s = e.getMessage__T();
             jsx$1.send(s);
@@ -6197,7 +6172,6 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getPosts__Lorg_scalajs_nodejs
       } else if ($is_s_util_Failure(x0$5)) {
         var x3 = $as_s_util_Failure(x0$5);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$5.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -6282,7 +6256,6 @@ $c_Lcom_microsoft_awt_routes_SearchRoutes$.prototype.getSearchResults__Lorg_scal
             } else if ($is_s_util_Failure(x0$1)) {
               var x3$1 = $as_s_util_Failure(x0$1);
               var e = x3$1.exception$2;
-              e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
               var jsx$2 = response$1.status(500);
               var s = e.getMessage__T();
               jsx$2.send(s);
@@ -6564,7 +6537,6 @@ $c_Lcom_microsoft_awt_routes_SessionRoutes$.prototype.getSessionByID__Lorg_scala
         if ($is_s_util_Failure(x0$1)) {
           var x7 = $as_s_util_Failure(x0$1);
           var e = x7.exception$2;
-          e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
           var jsx$3 = response$1.status(500);
           var s = e.getMessage__T();
           jsx$3.send(s);
@@ -6667,7 +6639,6 @@ $c_Lcom_microsoft_awt_routes_SessionRoutes$.prototype.getSessions__Lorg_scalajs_
         } else if ($is_s_util_Failure(x0$2)) {
           var x3$1 = $as_s_util_Failure(x0$2);
           var e = x3$1.exception$2;
-          e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
           var jsx$2 = response$2.status(500);
           var s = e.getMessage__T();
           jsx$2.send(s);
@@ -7447,7 +7418,6 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getUserByEmail__Lorg_scalajs_
           if ($is_s_util_Failure(x0$4)) {
             var x7 = $as_s_util_Failure(x0$4);
             var e = x7.exception$2;
-            e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
             var jsx$2 = response$4.status(500);
             var s = e.getMessage__T();
             jsx$2.send(s);
@@ -7510,7 +7480,6 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.createUser__Lorg_scalajs_node
           if ($is_s_util_Failure(x0$1)) {
             var x4 = $as_s_util_Failure(x0$1);
             var e = x4.exception$2;
-            e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
             var jsx$2 = response$1.status(500);
             var s = e.getMessage__T();
             jsx$2.send(s);
@@ -7626,7 +7595,6 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getSubmitter__Lorg_scalajs_no
         if ($is_s_util_Failure(x0$8)) {
           var x7 = $as_s_util_Failure(x0$8);
           var e = x7.exception$2;
-          e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
           var jsx$5 = response$8.status(500);
           var s = e.getMessage__T();
           jsx$5.send(s);
@@ -7656,7 +7624,6 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getEndorsers__Lorg_scalajs_no
       } else if ($is_s_util_Failure(x0$9)) {
         var x3 = $as_s_util_Failure(x0$9);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$9.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -7710,7 +7677,6 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.unlikeUser__Lorg_scalajs_node
         if ($is_s_util_Failure(x0$11)) {
           var x4 = $as_s_util_Failure(x0$11);
           var e = x4.exception$2;
-          e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
           var jsx$1 = response$11.status(500);
           var s = e.getMessage__T();
           jsx$1.send(s);
@@ -7765,7 +7731,6 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.likeUser__Lorg_scalajs_nodejs
         if ($is_s_util_Failure(x0$10)) {
           var x4 = $as_s_util_Failure(x0$10);
           var e = x4.exception$2;
-          e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
           var jsx$1 = response$10.status(500);
           var s = e.getMessage__T();
           jsx$1.send(s);
@@ -7796,7 +7761,6 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.updateUser__Lorg_scalajs_node
       } else if ($is_s_util_Failure(x0$3)) {
         var x3 = $as_s_util_Failure(x0$3);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$3.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -7952,7 +7916,6 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.followUser__Lorg_scalajs_node
         if ($is_s_util_Failure(x0$13)) {
           var x4 = $as_s_util_Failure(x0$13);
           var e = x4.exception$2;
-          e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
           var jsx$1 = response$13.status(500);
           var s = e.getMessage__T();
           jsx$1.send(s);
@@ -8003,7 +7966,6 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getFollowers__Lorg_scalajs_no
       } else if ($is_s_util_Failure(x0$12)) {
         var x3 = $as_s_util_Failure(x0$12);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$2 = response$12.status(500);
         var s = e.getMessage__T();
         jsx$2.send(s);
@@ -8057,7 +8019,6 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.unfollowUser__Lorg_scalajs_no
         if ($is_s_util_Failure(x0$14)) {
           var x4 = $as_s_util_Failure(x0$14);
           var e = x4.exception$2;
-          e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
           var jsx$1 = response$14.status(500);
           var s = e.getMessage__T();
           jsx$1.send(s);
@@ -8182,7 +8143,6 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getUsers__Lorg_scalajs_nodejs
         var x3$2 = $as_s_util_Failure(x0$6);
         var e = x3$2.exception$2;
         e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$4 = response$6.status(500);
         var s = e.getMessage__T();
         jsx$4.send(s);
@@ -8254,7 +8214,6 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getUserByUsername__Lorg_scala
           if ($is_s_util_Failure(x0$5)) {
             var x7 = $as_s_util_Failure(x0$5);
             var e = x7.exception$2;
-            e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
             var jsx$2 = response$5.status(500);
             var s = e.getMessage__T();
             jsx$2.send(s);
@@ -8412,7 +8371,6 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getUserByID__Lorg_scalajs_nod
         if ($is_s_util_Failure(x0$2)) {
           var x7 = $as_s_util_Failure(x0$2);
           var e = x7.exception$2;
-          e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
           var jsx$3 = response$2.status(500);
           var s = e.getMessage__T();
           jsx$3.send(s);
@@ -8569,7 +8527,6 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.downloadWorkloads__Lorg_s
       } else if ($is_s_util_Failure(x0$6)) {
         var x3 = $as_s_util_Failure(x0$6);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$6.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -8601,7 +8558,6 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.downloadWorkloadsByUser__
       } else if ($is_s_util_Failure(x0$8)) {
         var x3 = $as_s_util_Failure(x0$8);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$8.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -8630,7 +8586,6 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.activateWorkload__Lorg_sc
       } else if ($is_s_util_Failure(x0$5)) {
         var x3 = $as_s_util_Failure(x0$5);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$5.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -8720,7 +8675,6 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.getWorkloadByID__Lorg_sca
         if ($is_s_util_Failure(x0$1)) {
           var x7 = $as_s_util_Failure(x0$1);
           var e = x7.exception$2;
-          e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
           var jsx$3 = response$1.status(500);
           var s = e.getMessage__T();
           jsx$3.send(s);
@@ -8750,7 +8704,6 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.deactivateWorkload__Lorg_
       } else if ($is_s_util_Failure(x0$4)) {
         var x3 = $as_s_util_Failure(x0$4);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$4.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -8962,7 +8915,6 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.updateWorkload__Lorg_scal
         } else if ($is_s_util_Failure(x0$3)) {
           var x3 = $as_s_util_Failure(x0$3);
           var e = x3.exception$2;
-          e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
           var jsx$2 = response$3.status(500);
           var s = e.getMessage__T();
           jsx$2.send(s);
@@ -9000,7 +8952,6 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.getWorkloadsByGroup__Lorg
       } else if ($is_s_util_Failure(x0$12)) {
         var x3 = $as_s_util_Failure(x0$12);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$12.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -9048,7 +8999,6 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.getWorkloads__Lorg_scalaj
       } else if ($is_s_util_Failure(x0$11)) {
         var x3 = $as_s_util_Failure(x0$11);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$11.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -9096,7 +9046,6 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.createStatus__Lorg_scalaj
           if ($is_s_util_Failure(x0$10)) {
             var x4 = $as_s_util_Failure(x0$10);
             var e = x4.exception$2;
-            e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
             var jsx$2 = response$10.status(500);
             var s = e.getMessage__T();
             jsx$2.send(s);
@@ -9139,7 +9088,6 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.downloadWorkloadsByGroup_
       } else if ($is_s_util_Failure(x0$7)) {
         var x3 = $as_s_util_Failure(x0$7);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$7.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -9191,7 +9139,6 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.createWorkload__Lorg_scal
           if ($is_s_util_Failure(x0$2)) {
             var x4 = $as_s_util_Failure(x0$2);
             var e = x4.exception$2;
-            e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
             var jsx$3 = response$2.status(500);
             var s = e.getMessage__T();
             jsx$3.send(s);
@@ -9250,7 +9197,6 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.deleteStatus__Lorg_scalaj
         if ($is_s_util_Failure(x0$9)) {
           var x4 = $as_s_util_Failure(x0$9);
           var e = x4.exception$2;
-          e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
           var jsx$1 = response$9.status(500);
           var s = e.getMessage__T();
           jsx$1.send(s);
@@ -9279,7 +9225,6 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.getWorkloadsByUser__Lorg_
       } else if ($is_s_util_Failure(x0$13)) {
         var x3 = $as_s_util_Failure(x0$13);
         var e = x3.exception$2;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$1 = response$13.status(500);
         var s = e.getMessage__T();
         jsx$1.send(s);
@@ -20335,12 +20280,12 @@ $c_Lcom_microsoft_awt_AWTServerJsApp$$anonfun$startServer$3.prototype.apply__Lor
   var lo = t.lo$2;
   var hi = t.hi$2;
   next();
-  var callback = (function(f) {
+  var listener = new $c_Lcom_microsoft_awt_AWTServerJsApp$$anonfun$startServer$3$$anonfun$apply$1().init___Lcom_microsoft_awt_AWTServerJsApp$$anonfun$startServer$3__J__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response(this, new $c_sjsr_RuntimeLong().init___I__I(lo, hi), request, response);
+  return response.on("finish", (function(f) {
     return (function() {
       return f.apply__O()
     })
-  })(new $c_Lcom_microsoft_awt_AWTServerJsApp$$anonfun$startServer$3$$anonfun$apply$1().init___Lcom_microsoft_awt_AWTServerJsApp$$anonfun$startServer$3__J__Lorg_scalajs_nodejs_express_Request__Lorg_scalajs_nodejs_express_Response(this, new $c_sjsr_RuntimeLong().init___I__I(lo, hi), request, response));
-  return response.on("finish", callback)
+  })(listener))
 });
 var $d_Lcom_microsoft_awt_AWTServerJsApp$$anonfun$startServer$3 = new $TypeData().initClass({
   Lcom_microsoft_awt_AWTServerJsApp$$anonfun$startServer$3: 0
@@ -20417,7 +20362,8 @@ function $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15() {
   this.userDAO$2$2 = null;
   this.sessionID$2$f = null;
   this.username$2$f = null;
-  this.password$1$f = null
+  this.password$1$f = null;
+  this.x1$1$f = null
 }
 $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15.prototype = new $h_sr_AbstractFunction1();
 $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15.prototype.constructor = $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15;
@@ -20429,7 +20375,7 @@ $h_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15.prototype = $c_Lco
 $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15.prototype.apply__O__O = (function(v1) {
   return this.apply__s_Option__s_concurrent_Future($as_s_Option(v1))
 });
-$c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15.prototype.init___s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_pvorb_md5_MD5__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__s_concurrent_Future__T__T__T = (function(ec$4, md5$2, mongo$3, sessionDAO$4, userDAO$2, sessionID$2, username$2, password$1) {
+$c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15.prototype.init___s_concurrent_ExecutionContext__Lorg_scalajs_nodejs_pvorb_md5_MD5__Lorg_scalajs_nodejs_mongodb_MongoDB__s_concurrent_Future__s_concurrent_Future__T__T__T__Lcom_microsoft_awt_routes_AuthenticationRoutes$LoginForm = (function(ec$4, md5$2, mongo$3, sessionDAO$4, userDAO$2, sessionID$2, username$2, password$1, x1$1) {
   this.ec$4$f = ec$4;
   this.md5$2$f = md5$2;
   this.mongo$3$f = mongo$3;
@@ -20438,6 +20384,7 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15.prototype.init___s
   this.sessionID$2$f = sessionID$2;
   this.username$2$f = username$2;
   this.password$1$f = password$1;
+  this.x1$1$f = x1$1;
   return this
 });
 $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15.prototype.apply__s_Option__s_concurrent_Future = (function(credentialOpt) {
@@ -20518,9 +20465,9 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15$$anonfun$apply$14.
   };
   return this
 });
-$c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15$$anonfun$apply$14.prototype.apply__T2__s_concurrent_Future = (function(x$19) {
-  if ((x$19 !== null)) {
-    var verified = $uZ(x$19.$$und2__O());
+$c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15$$anonfun$apply$14.prototype.apply__T2__s_concurrent_Future = (function(x$20) {
+  if ((x$20 !== null)) {
+    var verified = $uZ(x$20.$$und2__O());
     if (verified) {
       $g.console.log("Updating session # %s ...", this.$$outer$2.sessionID$2$f);
       var this$2 = this.$$outer$2.sessionDAO$4$f;
@@ -20539,7 +20486,7 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15$$anonfun$apply$14.
     var executor$1 = this.$$outer$2.ec$4$f;
     return $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$3, f$1, executor$1)
   } else {
-    throw new $c_s_MatchError().init___O(x$19)
+    throw new $c_s_MatchError().init___O(x$20)
   }
 });
 var $d_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15$$anonfun$apply$14 = new $TypeData().initClass({
@@ -20577,14 +20524,24 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15$$anonfun$apply$14$
   return this
 });
 $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15$$anonfun$apply$14$$anonfun$apply$15.prototype.apply__Lcom_microsoft_awt_data_SessionDAO__s_concurrent_Future = (function(x$18) {
-  var this$8 = $m_Lorg_scalajs_nodejs_util_ScalaJsHelper$().promise2Future__sjs_js_Promise__s_concurrent_Future($m_Lcom_microsoft_awt_data_SessionDAO$SessionDAOEnrichment$().findAndUpdateByID$extension__Lcom_microsoft_awt_data_SessionDAO__T__Lorg_scalajs_nodejs_mongodb_MongoDB__sjs_js_Promise(x$18, this.$$outer$2.$$outer$2.sessionID$2$f, this.$$outer$2.$$outer$2.mongo$3$f));
+  var jsx$4 = $m_Lorg_scalajs_nodejs_util_ScalaJsHelper$();
+  var jsx$3 = $m_Lcom_microsoft_awt_data_SessionDAO$SessionDAOEnrichment$();
+  var jsx$2 = this.$$outer$2.$$outer$2.sessionID$2$f;
+  var value = this.$$outer$2.$$outer$2.x1$1$f.username;
+  if ((value !== (void 0))) {
+    var x$19 = $as_T(value);
+    var jsx$1 = ($as_T(x$19.toLowerCase()) === "guest")
+  } else {
+    var jsx$1 = false
+  };
+  var this$12 = jsx$4.promise2Future__sjs_js_Promise__s_concurrent_Future(jsx$3.findAndUpdateByID$extension__Lcom_microsoft_awt_data_SessionDAO__T__Z__Lorg_scalajs_nodejs_mongodb_MongoDB__sjs_js_Promise(x$18, jsx$2, jsx$1, this.$$outer$2.$$outer$2.mongo$3$f));
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(x0$5$2) {
     if (($uI(x0$5$2.ok) === 1)) {
-      var this$6 = $m_s_Option$().apply__O__s_Option(x0$5$2.value);
-      if (this$6.isEmpty__Z()) {
+      var this$10 = $m_s_Option$().apply__O__s_Option(x0$5$2.value);
+      if (this$10.isEmpty__Z()) {
         return $m_s_None$()
       } else {
-        var arg1 = this$6.get__O();
+        var arg1 = this$10.get__O();
         return new $c_s_Some().init___O(arg1)
       }
     } else {
@@ -20593,7 +20550,7 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15$$anonfun$apply$14$
     }
   }));
   var executor = this.$$outer$2.$$outer$2.ec$4$f;
-  return $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$8, f, executor)
+  return $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$12, f, executor)
 });
 var $d_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15$$anonfun$apply$14$$anonfun$apply$15 = new $TypeData().initClass({
   Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15$$anonfun$apply$14$$anonfun$apply$15: 0
@@ -20674,10 +20631,10 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$7.prototype.apply__T2
     var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer, user$1) {
       return (function(x$5$2) {
         var jsx$2 = $m_Lorg_scalajs_nodejs_util_ScalaJsHelper$();
-        var x$21 = user$1.username;
-        var x$22 = arg$outer.form$1$f.password0;
+        var x$22 = user$1.username;
+        var x$23 = arg$outer.form$1$f.password0;
         var value = new $g.Date();
-        var jsx$1 = x$5$2.insert(new $c_Lcom_microsoft_awt_data_CredentialData((void 0), x$21, x$22, value));
+        var jsx$1 = x$5$2.insert(new $c_Lcom_microsoft_awt_data_CredentialData((void 0), x$22, x$23, value));
         return jsx$2.promise2Future__sjs_js_Promise__s_concurrent_Future(jsx$1)
       })
     })(this, user));
@@ -20970,7 +20927,6 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$authToken$1.prototype
     var x3 = $as_s_util_Failure(x0$4);
     var e = x3.exception$2;
     var response$1 = this.response$3$2;
-    e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
     var jsx$3 = response$1.status(500);
     var s = e.getMessage__T();
     jsx$3.send(s);
@@ -21006,7 +20962,7 @@ $h_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$logout$1.prototype = 
 $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$logout$1.prototype.apply__O__O = (function(v1) {
   return this.apply__Lcom_microsoft_awt_data_SessionDAO__s_concurrent_Future(v1)
 });
-$c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$logout$1.prototype.apply__Lcom_microsoft_awt_data_SessionDAO__s_concurrent_Future = (function(x$20) {
+$c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$logout$1.prototype.apply__Lcom_microsoft_awt_data_SessionDAO__s_concurrent_Future = (function(x$21) {
   var jsx$4 = $m_Lorg_scalajs_nodejs_util_ScalaJsHelper$();
   var jsx$3 = $m_Lorg_scalajs_nodejs_mongodb_package$();
   var attribute = this.sessionID$1$f;
@@ -21031,7 +20987,7 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$logout$1.prototype.ap
     var jsx$2 = result
   };
   var y = $newJSObjectWithVarargs($class, jsx$2);
-  var jsx$1 = x$20.deleteOne(jsx$3.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y)));
+  var jsx$1 = x$21.deleteOne(jsx$3.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y)));
   return jsx$4.promise2Future__sjs_js_Promise__s_concurrent_Future(jsx$1)
 });
 $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$logout$1.prototype.init___Lorg_scalajs_nodejs_mongodb_MongoDB__T = (function(mongo$2, sessionID$1) {
@@ -21766,7 +21722,7 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$downloadAttachment$2.prototype.
   if ($is_s_util_Success(x0$8)) {
     var x2 = $as_s_util_Success(x0$8);
     var downloadStream = x2.value$2;
-    var callback = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(arg$outer) {
+    var listener = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(arg$outer) {
       return (function() {
         (0, arg$outer.next$8$f)()
       })
@@ -21775,12 +21731,11 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$downloadAttachment$2.prototype.
       return (function() {
         return f.apply__O()
       })
-    })(callback))
+    })(listener))
   } else if ($is_s_util_Failure(x0$8)) {
     var x3 = $as_s_util_Failure(x0$8);
     var e = x3.exception$2;
     var response = this.response$8$2;
-    e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
     var jsx$1 = response.status(500);
     var s = e.getMessage__T();
     jsx$1.send(s);
@@ -22088,7 +22043,6 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$uploadAttachment$1.prototype.ap
         var x3$2 = $as_s_util_Failure(x0$10);
         var e = x3$2.exception$2;
         var response = arg$outer$1.response$10$f;
-        e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
         var jsx$6 = response.status(500);
         var s = e.getMessage__T();
         jsx$6.send(s);
@@ -23003,7 +22957,7 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$$anonfun$getAvatarByID$2.prototype.apply
         var x2$2 = $as_s_Some(avatarURL);
         var url = $as_T(x2$2.x$2);
         var readable = this.client$2$2.get(url).pipe(this.response$7$2);
-        var callback = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(arg$outer) {
+        var listener = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(arg$outer) {
           return (function() {
             (0, arg$outer.next$7$f)()
           })
@@ -23012,12 +22966,12 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$$anonfun$getAvatarByID$2.prototype.apply
           return (function() {
             return f.apply__O()
           })
-        })(callback))
+        })(listener))
       } else {
         var x = $m_s_None$();
         if ((x === avatarURL)) {
           var readable$1 = this.client$2$2.get(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["http://", "/images/avatars/anonymous.png"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([this.host$1$2]))).pipe(this.response$7$2);
-          var callback$1 = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(arg$outer$1) {
+          var listener$1 = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(arg$outer$1) {
             return (function() {
               (0, arg$outer$1.next$7$f)()
             })
@@ -23026,7 +22980,7 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$$anonfun$getAvatarByID$2.prototype.apply
             return (function() {
               return f$1.apply__O()
             })
-          })(callback$1))
+          })(listener$1))
         } else {
           throw new $c_s_MatchError().init___O(avatarURL)
         }
@@ -23038,7 +22992,7 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$$anonfun$getAvatarByID$2.prototype.apply
     var x$3 = $m_s_None$();
     if ((x$3 === p6)) {
       var readable$2 = this.client$2$2.get(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["http://", "/images/avatars/anonymous.png"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([this.host$1$2]))).pipe(this.response$7$2);
-      var callback$2 = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(arg$outer$2) {
+      var listener$2 = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(arg$outer$2) {
         return (function() {
           (0, arg$outer$2.next$7$f)()
         })
@@ -23047,14 +23001,13 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$$anonfun$getAvatarByID$2.prototype.apply
         return (function() {
           return f$2.apply__O()
         })
-      })(callback$2))
+      })(listener$2))
     }
   };
   if ($is_s_util_Failure(x0$7)) {
     var x7 = $as_s_util_Failure(x0$7);
     var e = x7.exception$2;
     var response = this.response$7$2;
-    e.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1);
     var jsx$1 = response.status(500);
     var s = e.getMessage__T();
     jsx$1.send(s);

@@ -38,6 +38,15 @@ canvas {
     cursor: pointer;
 }
 
+.sk_censored {
+    border-radius: 4px;
+    background: #ff8800;
+    color: white;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+}
+
 .sk_completed {
     color: #ff8800;
 }
@@ -111,6 +120,10 @@ canvas {
     color: #aaaaaa;
 }
 
+.sk_restricted {
+    color: #ff8000;
+}
+
 .sk_tbd {
     color: #aaaaaa;
 }
@@ -143,15 +156,28 @@ a:hover.sk_relaxed {
     padding-left: 16px;
 }
 
+.sk_spectator_bar {
+    background: #ffaa00;
+    color: white;
+    font-weight: bold
+}
+
 .sk_sub_title {
     font-weight: bold;
     font-size: 16px;
 }
 
 .sk_title_bar {
-    border-bottom: 2px solid #4bb0de;
     background: #5bc0ee;
     margin-bottom: 5px;
+}
+
+.sk_title_bar_shadow_default {
+    border-bottom: 2px solid #4bb0de;
+}
+
+.sk_title_bar_shadow_spectator {
+    border-bottom: 2px solid #ee9900;
 }
 
 .sk_title_text {

@@ -27,6 +27,7 @@ trait GlobalAuthorization extends GlobalLoading {
       case Success(result) =>
         if (result.isOk) sessionFactory.logout() else toaster.error("Logout Failure", "")
         $scope.$apply { () => $scope.loadingStop() }
+        $scope.navigateToLogin()
       case Failure(e) =>
         toaster.error("Logout Failure", e.displayMessage)
         $scope.$apply { () => $scope.loadingStop() }
@@ -40,7 +41,7 @@ trait GlobalAuthorization extends GlobalLoading {
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait GlobalAuthorizationScope extends Scope with GlobalLoadingScope {
+trait GlobalAuthorizationScope extends Scope with GlobalLoadingScope with GlobalNavigationScope {
   var logout: js.Function0[Unit] = js.native
 
 }

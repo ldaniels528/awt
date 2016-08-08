@@ -19,12 +19,7 @@ object LoginForm {
 
   def apply() = new LoginForm()
 
-  def apply(username: String, password: String): LoginForm = {
-    val form = new LoginForm()
-    form.username = username
-    form.password = password
-    form
-  }
+  def apply(username: String, password: String) = new LoginForm(username, password)
 
   /**
     * Login Form Enrichment

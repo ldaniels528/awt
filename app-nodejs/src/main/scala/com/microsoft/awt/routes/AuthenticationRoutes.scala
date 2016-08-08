@@ -6,11 +6,11 @@ import com.microsoft.awt.data.UserDAO._
 import com.microsoft.awt.data._
 import com.microsoft.awt.forms.AccountActivationForm
 import com.microsoft.awt.models.{AuthToken, Session, User}
-import org.scalajs.nodejs.{NodeRequire, console}
 import org.scalajs.nodejs.express.{Application, Request, Response}
 import org.scalajs.nodejs.mongodb._
 import org.scalajs.nodejs.pvorb.md5.MD5
 import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.nodejs.{NodeRequire, console}
 
 import scala.concurrent.{ExecutionContext, Future}
 import scala.language.postfixOps
@@ -108,7 +108,7 @@ object AuthenticationRoutes {
           verified = verifyCredentials(sessionID, username, password, credentialOpt)
           sessionOpt <- if (verified) {
             console.log("Updating session # %s ...", sessionID)
-            sessionDAO.flatMap(_.findAndUpdateByID(sessionID) map {
+            sessionDAO.flatMap(_.findAndUpdateByID(sessionID, form.username.exists(_.toLowerCase == "guest")) map {
               case result if result.isOk => result.valueAs[Session]
               case result => console.error("The session could not be found"); None
             })

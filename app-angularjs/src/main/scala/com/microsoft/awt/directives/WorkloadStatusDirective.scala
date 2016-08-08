@@ -1,5 +1,6 @@
 package com.microsoft.awt.directives
 
+import org.scalajs.angularjs.Directive._
 import org.scalajs.angularjs.{Attributes, Directive, JQLite, Scope}
 import org.scalajs.nodejs.util.ScalaJsHelper._
 
@@ -11,8 +12,9 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   * @example <workload-status code="GREEN"></workload-status>
   */
-class WorkloadStatusDirective() extends Directive[WorkloadStatusDirectiveScope] {
-  override val restrict = "E"
+class WorkloadStatusDirective() extends Directive
+  with ElementSupport with LinkSupport[WorkloadStatusDirectiveScope] with TemplateSupport {
+
   override val scope = new WorkloadStatusScopeTemplate(code = "@code", labeled = "@labeled")
   override val transclude = true
   override val replace = false

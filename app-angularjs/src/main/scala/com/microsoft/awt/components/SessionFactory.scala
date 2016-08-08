@@ -5,6 +5,7 @@ import com.microsoft.awt.models.{AuthToken, Session, User, UserLike}
 import org.scalajs.angularjs.AngularJsHelper._
 import org.scalajs.angularjs._
 import org.scalajs.angularjs.cookies.Cookies
+import org.scalajs.angularjs.md5.MD5
 import org.scalajs.angularjs.toaster._
 import org.scalajs.dom.browser.console
 import org.scalajs.nodejs.util.ScalaJsHelper._
@@ -19,7 +20,7 @@ import scala.util.{Failure, Success}
   * Session Factory
   * @author lawrence.daniels@gmail.com
   */
-class SessionFactory($rootScope: Scope, $cookies: Cookies, $location: Location, $timeout: Timeout, toaster: Toaster,
+class SessionFactory($rootScope: Scope, $cookies: Cookies, $location: Location, md5: MD5, $timeout: Timeout, toaster: Toaster,
                      @injected("AuthenticationService") authenticationService: AuthenticationService,
                      @injected("SessionService") sessionSvc: SessionService,
                      @injected("UserService") userSvc: UserService,
@@ -29,7 +30,7 @@ class SessionFactory($rootScope: Scope, $cookies: Cookies, $location: Location, 
   private val INITIAL_GRACE_PERIOD = 30000L
 
   var onlineStatuses = js.Dictionary[Session]()
-  var sessionFactory: js.UndefOr[Session] = js.undefined
+  var mySession: js.UndefOr[Session] = js.undefined
   var myUser: js.UndefOr[User] = js.undefined
   val initTime = System.currentTimeMillis()
 
@@ -81,9 +82,9 @@ class SessionFactory($rootScope: Scope, $cookies: Cookies, $location: Location, 
     * @return the current session
     */
   def session: js.UndefOr[Session] = {
-    if (sessionFactory.isDefined) sessionFactory
+    if (mySession.isDefined) mySession
     else {
-      if (elapsedTime > INITIAL_GRACE_PERIOD) returnToLoginPage()
+      if (elapsedTime > INITIAL_GRACE_PERIOD) automaticSignInAsGuest()
       js.undefined
     }
   }
@@ -93,9 +94,9 @@ class SessionFactory($rootScope: Scope, $cookies: Cookies, $location: Location, 
     * @return the currently authentication user
     */
   def user: js.UndefOr[User] = {
-    if (sessionFactory.isDefined) myUser
+    if (mySession.isDefined) myUser
     else {
-      if (elapsedTime > INITIAL_GRACE_PERIOD) returnToLoginPage()
+      if (elapsedTime > INITIAL_GRACE_PERIOD) automaticSignInAsGuest()
       js.undefined
     }
   }
@@ -117,7 +118,7 @@ class SessionFactory($rootScope: Scope, $cookies: Cookies, $location: Location, 
             console.error(s"Failed to retrieve user: ${e.displayMessage}")
         }
       case None =>
-        returnToLoginPage()
+        automaticSignInAsGuest()
     }
   }
 
@@ -126,9 +127,9 @@ class SessionFactory($rootScope: Scope, $cookies: Cookies, $location: Location, 
     */
   def logout() {
     $cookies.remove(SESSION_COOKIE_NAME)
-    sessionFactory = js.undefined
+    mySession = js.undefined
     myUser = js.undefined
-    returnToLoginPage()
+    automaticSignInAsGuest()
   }
 
   ///////////////////////////////////////////////////////////////////////////
@@ -137,7 +138,7 @@ class SessionFactory($rootScope: Scope, $cookies: Cookies, $location: Location, 
 
   private def announceSession(loadedSession: Session) = {
     console.log(s"Session ${loadedSession._id} (${loadedSession.primaryEmail}) loaded in $elapsedTime msec")
-    sessionFactory = loadedSession
+    mySession = loadedSession
     setSessionCookie(loadedSession)
     $rootScope.emitSessionLoaded(loadedSession)
   }
@@ -150,6 +151,21 @@ class SessionFactory($rootScope: Scope, $cookies: Cookies, $location: Location, 
     val userID = loadedUser._id getOrElse (throw new IllegalStateException("User ID not found"))
     updateOnlineStatusesForFollowers(userID)
     $rootScope.emitUserLoaded(loadedUser)
+  }
+
+  private def automaticSignInAsGuest() {
+    val username = "guest"
+    val outcome = for {
+      token <- getAuthToken(username)
+      hashPassword = md5.createHash(token.code + md5.createHash("123456"))
+      session <- login(token.code, LoginForm(username, hashPassword))
+    } yield session
+
+    outcome onComplete {
+      case Success(session) => loadUserForSession(session)
+      case Failure(e) =>
+        console.error(s"Failed to retrieve session for user '$username': ${e.displayMessage}")
+    }
   }
 
   /**
@@ -167,7 +183,7 @@ class SessionFactory($rootScope: Scope, $cookies: Cookies, $location: Location, 
         console.log(s"Attempting to load user session $sessionId...")
         val outcome = for {
           session <- sessionSvc.getSession(sessionId)
-          userID = session.userID getOrElse (throw new IllegalStateException("No user ID specified"))
+          userID = session.userID orDie "No user ID specified"
           user <- userSvc.getUserByID(userID)
         } yield (session, user)
 
@@ -176,18 +192,17 @@ class SessionFactory($rootScope: Scope, $cookies: Cookies, $location: Location, 
             announceSession(loadedSession)
             announceUser(loadedUser)
           case Failure(e) =>
-            console.error(s"Failed to retrieve session: ${e.displayMessage}")
-            toaster.warning("Session Not Found", "Session could not be retrieved")
-            returnToLoginPage()
+            console.warn(s"Failed to retrieve session: ${e.displayMessage}")
+            automaticSignInAsGuest()
         }
       case None =>
-        returnToLoginPage()
+        automaticSignInAsGuest()
     }
   }
 
   private def updateOnlineStatusesForFollowers(userID: String): Unit = {
     for {
-      thisSession <- sessionFactory
+      thisSession <- mySession
       userID <- thisSession.userID
     } {
       console.log("Updating the online status for all followers...")
@@ -203,16 +218,6 @@ class SessionFactory($rootScope: Scope, $cookies: Cookies, $location: Location, 
         case Failure(e) =>
           console.error(s"Failed to retrieve online statuses: ${e.displayMessage}")
       }
-    }
-  }
-
-  private def returnToLoginPage() {
-    sessionFactory = js.undefined
-    myUser = js.undefined
-    $cookies.remove(SESSION_COOKIE_NAME)
-
-    if ($location.url() != "/verification") {
-      $location.url("/login")
     }
   }
 

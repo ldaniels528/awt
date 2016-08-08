@@ -4,7 +4,6 @@ import com.microsoft.awt.models.Session
 import org.scalajs.angularjs.Service
 import org.scalajs.angularjs.http.Http
 
-import scala.concurrent.ExecutionContext
 import scala.scalajs.js
 
 /**
@@ -18,16 +17,14 @@ class SessionService($http: Http) extends Service {
     * @param id the given user session ID
     * @return a promise of a [[com.microsoft.awt.models.Session user session]]
     */
-  def getSession(id: String)(implicit ec: ExecutionContext) = {
-    $http.get[Session](s"/api/session/$id")
-  }
+  def getSession(id: String) = $http.get[Session](s"/api/session/$id")
 
   /**
     * Attempts to retrieve all of the sessions for the given collection of user IDs
     * @param userIDs the given collection of user IDs
     * @return a promise of an array of user sessions
     */
-  def getSessions(userIDs: js.Array[String])(implicit ec: ExecutionContext) = {
+  def getSessions(userIDs: js.Array[String]) = {
     $http.get[js.Array[Session]](s"/api/sessions?${userIDs.map(id => s"userIDs=$id").mkString("&")}")
   }
 

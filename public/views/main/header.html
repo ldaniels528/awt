@@ -1,6 +1,6 @@
-<div class="sk_title_bar col-md-12" style="padding-top: 4px">
+<div class="sk_title_bar col-md-12" ng-class="session().isAnonymous ? 'sk_title_bar_shadow_spectator' : 'sk_title_bar_shadow_default'" style="padding-top: 4px">
     <div class="col-md-3">
-        <img class="sk_title_logo" src="/assets/images/logo.png"> <span class="sk_title_text">Microsoft AWT</span>
+        <img class="sk_title_logo" src="/assets/images/logo.png"> <span class="sk_title_text">AWT</span>
         <span class="sk_tab" ng-repeat="tab in tabs" ng-click="setActiveTab(tab)">
             <i class="fa sk_font24" ng-class="tab.icon + ' ' + (isSelectedTab(tab) ? 'sk_tab_icon_selected' : (tab.hover ? 'sk_tab_hover' : 'sk_tab_icon'))"></i>
             <span class="sk_tab_margin_right_30 sk_font16"
@@ -44,4 +44,9 @@
         <!-- messages -->
         <i class="fa fa-comments media-bottom sk_icon_inactive"></i>
     </div>
+
+    <div ng-show="session().isAnonymous" class="col-md-12 sk_spectator_bar">
+        <div><i class="fa fa-warning"></i> The application is currently in restricted mode. Sign-in to access all content and features.</div>
+    </div>
 </div>
+

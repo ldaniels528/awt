@@ -31,24 +31,7 @@ case class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $lo
   extends Controller with GlobalAuthorization with PostingCapabilities {
 
   // setup the navigation menu
-  $scope.menus = js.Array(
-    new Menu("MY PROFILE", items = js.Array(
-      MenuItem(text = "Home", iconClass = "fa fa-home sk_home", action = { () => $scope.navigateToHome() }),
-      MenuItem(text = "Edit Profile", iconClass = "fa fa-edit sk_profile_edit", action = { () => $scope.profileEditorPopup(sessionFactory.user.flatMap(_._id)) }),
-      MenuItem(text = "Sign Out", iconClass = "fa fa-sign-out sk_profile_edit", action = { () => $scope.logout() })
-    )),
-    new Menu("MY ACTIVITY", items = js.Array(
-      MenuItem(text = "Newsfeed", iconClass = "fa fa-newspaper-o sk_news_feed", action = { () => $scope.navigateToNewsFeed() }),
-      MenuItem(text = "Messages", iconClass = "fa fa-envelope-o sk_message", action = { () => $scope.navigateToMessages() }),
-      MenuItem(text = "Photos", iconClass = "fa fa-file-image-o sk_photo", action = { () => $scope.navigateToPhotos() })
-    )),
-    new Menu("MY EVENTS", link = "#/home/events", items = js.Array(
-      MenuItem.include(src = "/assets/views/home/navigation/my_events.html")
-    )),
-    new Menu("MY TEAMS", link = "#/home/groups/mine", items = js.Array(
-      MenuItem.include(src = "/assets/views/home/navigation/my_groups.html")
-    ))
-  )
+  setupNavigationMenus()
 
   ///////////////////////////////////////////////////////////////////////////
   //      Initialization Functions
@@ -226,6 +209,34 @@ case class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $lo
     }
   }
 
+  /**
+    * Setups the navigation menu for either a registered user or a guest user
+    * @param aUser the given optional [[User user]]
+    */
+  private def setupNavigationMenus(aUser: js.UndefOr[User] = js.undefined) {
+    $scope.menus = js.Array(
+      new Menu("MY PROFILE", items = js.Array(
+        MenuItem(text = "Home", iconClass = "fa fa-home sk_home", action = { () => $scope.navigateToHome() }),
+        MenuItem(text = "Edit Profile", iconClass = "fa fa-edit sk_profile_edit", action = { () => $scope.profileEditorPopup(sessionFactory.user.flatMap(_._id)) }),
+        if (aUser.isEmpty || aUser.exists(_.username == "guest"))
+          MenuItem(text = "Sign In", iconClass = "fa fa-sign-in sk_profile_edit", action = { () => $scope.navigateToLogin() })
+        else
+          MenuItem(text = "Sign Out", iconClass = "fa fa-sign-out sk_profile_edit", action = { () => $scope.logout() })
+      )),
+      new Menu("MY ACTIVITY", items = js.Array(
+        MenuItem(text = "Newsfeed", iconClass = "fa fa-newspaper-o sk_news_feed", action = { () => $scope.navigateToNewsFeed() }),
+        MenuItem(text = "Messages", iconClass = "fa fa-envelope-o sk_message", action = { () => $scope.navigateToMessages() }),
+        MenuItem(text = "Photos", iconClass = "fa fa-file-image-o sk_photo", action = { () => $scope.navigateToPhotos() })
+      )),
+      new Menu("MY EVENTS", link = "#/home/events", items = js.Array(
+        MenuItem.include(src = "/assets/views/home/navigation/my_events.html")
+      )),
+      new Menu("MY TEAMS", link = "#/home/groups/mine", items = js.Array(
+        MenuItem.include(src = "/assets/views/home/navigation/my_groups.html")
+      ))
+    )
+  }
+
   ///////////////////////////////////////////////////////////////////////////
   //      Event Listener Functions
   ///////////////////////////////////////////////////////////////////////////
@@ -233,6 +244,7 @@ case class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $lo
   $scope.onUserLoaded((_, user) => {
     console.log(s"${getClass.getSimpleName}: user loaded - ${user.primaryEmail}")
     $scope.init()
+    setupNavigationMenus(user)
   })
 
   $scope.onWsPostMessage((_, post) => {

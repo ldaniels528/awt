@@ -1,6 +1,7 @@
 package com.microsoft.awt.directives
 
 import com.microsoft.awt.components.UserFactory
+import org.scalajs.angularjs.Directive._
 import org.scalajs.angularjs._
 import org.scalajs.nodejs.util.ScalaJsHelper._
 
@@ -14,12 +15,13 @@ import scala.util.{Failure, Success}
   * @author lawrence.daniels@gmail.com
   * @example <avatar id="{{submitter._id }}" class="avatar-24"></avatar>
   */
-class AvatarDirective(@injected("UserFactory") userFactory: UserFactory) extends Directive[AvatarDirectiveScope] {
+class AvatarDirective(@injected("UserFactory") userFactory: UserFactory) extends Directive
+  with ElementSupport with LinkSupport[AvatarDirectiveScope] with TemplateSupport {
+
   private val LOADING_SPINNER = "/assets/images/status/loading16.gif"
   private val UNKNOWN_PERSON = "/assets/images/avatars/anonymous.png"
 
   override val replace = false
-  override val restrict = "E"
   override val scope = new AvatarScopeTemplate(id = "@id", named = "@named", `class` = "@class", style = "@style")
   override val template = s"""<img ng-src="{{ url }}" class="{{ class }}" style="{{ style }}"> {{ name }}"""
   override val transclude = true

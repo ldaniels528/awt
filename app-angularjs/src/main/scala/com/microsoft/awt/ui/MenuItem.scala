@@ -8,10 +8,17 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class MenuItem(val text: String = null,
-               val iconClass: String = null,
-               val action: js.Function = null,
-               val include: String = null) extends js.Object
+trait MenuItem extends js.Object {
+
+  def text: String
+
+  def iconClass: String
+
+  def action: js.Function
+
+  def include: String
+
+}
 
 /**
   * Menu Item Companion
@@ -20,9 +27,15 @@ class MenuItem(val text: String = null,
 object MenuItem {
 
   def apply(text: String, iconClass: String, action: js.Function = null) = {
-    new MenuItem(text = text, iconClass = iconClass, action = action)
+    new StaticMenuItem(text = text, iconClass = iconClass, action = action)
   }
 
-  def include(src: String) = new MenuItem(include = src)
+  def include(src: String) = new StaticMenuItem(include = src)
+
+  @ScalaJSDefined
+  class StaticMenuItem(val text: String = null,
+                       val iconClass: String = null,
+                       val action: js.Function = null,
+                       val include: String = null) extends MenuItem
 
 }

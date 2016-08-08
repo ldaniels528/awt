@@ -30,20 +30,22 @@
                         <span class="sk_clickable" ng-click="selectWorkload(workload)">{{ workload.name }}</span>
                     </span>
                 </td>
-                <td class="col-md-3">
+                <td class="col-md-4">
                     <span class="left">
                         <a class="sk_black" ng-href="#/home/profile/{{ workload.msftLeadId }}">
                             <avatar class="avatar16" id="{{ workload.msftLeadId }}" named="true"></avatar>
                         </a>
                     </span>
-                        <span class="right">
+                    <restricted class="pull-right">
                         <span ng-show="workload.consumption" class="sk_currency pull-right">
                            ${{ workload.consumption | number:0 }}
                         </span>
                         <span ng-hide="workload.consumption" class="sk_tbd pull-right">TBD</span>
-                    </span>
+                    </restricted>
                 </td>
-                <td class="col-md-5">{{ getLatestStatusText(workload) }}</td>
+                <td class="col-md-4">
+                    <censor text="{{ getLatestStatusText(workload) }}"></censor>
+                </td>
                 <td class="col-md-1 workload_small_duration">{{ getLatestStatusTime(workload) | duration }}</td>
             </tr>
             </tbody>
@@ -90,7 +92,9 @@
                 <a class="sk_black" ng-href="#/home/profile/{{ selectedWorkload.msftLeadId }}">{{ selectedWorkload.msftLead }}</a>
             </td>
             <th class="col-md-2">Business Sponsor</th>
-            <td class="col-md-4">{{ selectedWorkload.businessSponsor }}</td>
+            <td class="col-md-4">
+                <restricted>{{ selectedWorkload.businessSponsor }}</restricted>
+            </td>
         </tr>
         <tr>
             <th class="col-md-2">Service(s)</th>
@@ -99,7 +103,9 @@
                 <span ng-hide="selectedWorkload.azureServices.length" class="sk_null">Not Specified</span>
             </td>
             <th class="col-md-2">Technical Contact</th>
-            <td class="col-md-4">{{ selectedWorkload.technicalContact }}</td>
+            <td class="col-md-4">
+                <restricted>{{ selectedWorkload.technicalContact }}</restricted>
+            </td>
         </tr>
         <tr>
             <th class="col-md-2">Opportunity Status</th>
@@ -155,7 +161,10 @@
 
             <tbody class="group_status_history_container">
             <tr ng-repeat="status in selectedWorkload.statuses | orderBy:'-creationTime'">
-                <td class="col-md-8"><span class="sk_null sk_ident">{{ $index + 1 }}.</span> {{ status.statusText }}</td>
+                <td class="col-md-8">
+                    <span class="sk_null sk_ident">{{ $index + 1 }}.</span>
+                    <censor text="{{ status.statusText }}"></censor>
+                </td>
                 <td class="col-md-3">
                     <avatar class="avatar16" id="{{ status.submitterId }}"></avatar>
                     <a class="sk_black" ng-href="#/home/profile/{{ status.submitterId }}">

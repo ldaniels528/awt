@@ -1,6 +1,7 @@
 package com.microsoft.awt.directives
 
 import com.microsoft.awt.components.UserFactory
+import org.scalajs.angularjs.Directive._
 import org.scalajs.angularjs.{Attributes, Directive, JQLite, Scope, injected}
 import org.scalajs.nodejs.util.ScalaJsHelper._
 
@@ -13,20 +14,21 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   * @example <full-name id="{{ submitter._id }}"></fullName>
   */
-class NameDirective(@injected("UserFactory") userFactory: UserFactory) extends Directive[NameDirectiveScope] {
-  override val restrict = "E"
+class NameDirective(@injected("UserFactory") userFactory: UserFactory) extends Directive
+  with ElementSupport with LinkSupport[NameDirectiveScope] with TemplateSupport {
+
   override val scope = new NameScopeTemplate(id = "@id", `class` = "@class", style = "@style")
   override val transclude = true
   override val replace = false
   override val template = "{{ name }}"
 
-  override def link(scope: NameDirectiveScope, element: JQLite, attrs: Attributes) = {
+  def link(scope: NameDirectiveScope, element: JQLite, attrs: Attributes) = {
     scope.$watch("id", (newValue: Any, oldValue: Any) => populateScope(scope, newValue, oldValue))
   }
 
   private def populateScope(scope: NameDirectiveScope, newValue: Any, oldValue: Any) {
     scope.id.flat foreach { id =>
-      if(id.nonEmpty) {
+      if (id.nonEmpty) {
         userFactory.getUserByID(id) foreach { user =>
           scope.$apply { () =>
             scope.name = user.fullName

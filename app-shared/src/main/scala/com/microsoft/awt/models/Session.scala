@@ -1,7 +1,5 @@
 package com.microsoft.awt.models
 
-import org.scalajs.nodejs.util.ScalaJsHelper._
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.ScalaJSDefined
 

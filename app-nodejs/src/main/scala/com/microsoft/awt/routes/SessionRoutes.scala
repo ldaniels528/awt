@@ -1,11 +1,11 @@
 package com.microsoft.awt.routes
 
-import org.scalajs.nodejs.express.{Application, Request, Response}
-import org.scalajs.nodejs.mongodb._
 import com.microsoft.awt.data.SessionDAO
 import com.microsoft.awt.data.SessionDAO._
 import com.microsoft.awt.forms.MaxResultsForm
 import com.microsoft.awt.models.Session
+import org.scalajs.nodejs.express.{Application, Request, Response}
+import org.scalajs.nodejs.mongodb._
 
 import scala.concurrent.{ExecutionContext, Future}
 import scala.scalajs.js
@@ -20,7 +20,10 @@ object SessionRoutes {
   def init(app: Application, dbFuture: Future[Db])(implicit ec: ExecutionContext, mongo: MongoDB) = {
     implicit val sessionDAO = dbFuture.flatMap(_.getSessionDAO)
 
+    // individual sessions
     app.get("/api/session/:sessionID", (request: Request, response: Response, next: NextFunction) => getSessionByID(request, response, next))
+
+    // collections
     app.get("/api/sessions", (request: Request, response: Response, next: NextFunction) => getSessions(request, response, next))
   }
 

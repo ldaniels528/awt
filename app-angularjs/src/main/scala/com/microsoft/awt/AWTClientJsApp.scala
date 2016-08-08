@@ -78,10 +78,12 @@ object AWTClientJsApp extends js.JSApp {
 
   private def configureDirectives(module: Module): Unit = {
     module.directiveOf[AvatarDirective]("avatar")
-    module.directiveOf[AwtPostDirective]("awtPost")
+    module.directiveOf[NewsPostDirective]("awtPost")
+    module.directiveOf[CensorDirective]("censor")
     module.directiveOf[CompileDirective]("compileA")
     module.directiveOf[NameDirective]("name")
     //module.directiveOf[NgThumbDirective]("ngThumb")
+    module.directiveOf[RestrictedDirective]("restricted")
     module.directiveOf[WorkloadStatusDirective]("workloadStatus")
   }
 
@@ -135,7 +137,7 @@ object AWTClientJsApp extends js.JSApp {
         .when("/home/profile/:id", RouteTo(templateUrl = "/assets/views/home/index.html"))
         .when("/login", RouteTo(templateUrl = "/assets/views/login/index.html"))
         .when("/verification", RouteTo(templateUrl = "/assets/views/login/verification.html"))
-        .otherwise(RouteTo(redirectTo = "/home"))
+        .otherwise(RouteTo(redirectTo = "/home/groups/mine"))
       ()
     }
   }
