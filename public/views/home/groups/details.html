@@ -103,7 +103,7 @@
                         <tr ng-repeat="status in selectedWorkload.statuses | orderBy:'-creationTime'">
                             <td class="col-md-9">
                                 <span class="sk_null sk_ident">{{ $index + 1 }}.</span>
-                                <censor text="{{ status.statusText }}"></censor>
+                                <censorable text="{{ status.statusText }}"></censorable>
                             </td>
                             <td class="col-md-2">
                                 <avatar class="avatar16" id="{{ status.submitterId }}"></avatar>

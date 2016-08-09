@@ -1092,6 +1092,18 @@ function $s_Lcom_microsoft_awt_components_GlobalNavigation$class__$$init$__Lcom_
     })
   })(new $c_Lcom_microsoft_awt_components_GlobalNavigation$$anonfun$7().init___Lcom_microsoft_awt_components_GlobalNavigation($$this))
 }
+function $s_Lcom_microsoft_awt_components_GlobalSession$class__$$init$__Lcom_microsoft_awt_components_GlobalSession__V($$this) {
+  $$this.$$scope__Lcom_microsoft_awt_components_GlobalSessionScope().session = (function(arg$outer) {
+    return (function() {
+      return arg$outer.sessionFactory__Lcom_microsoft_awt_components_SessionFactory().session__sjs_js_UndefOr()
+    })
+  })($$this);
+  $$this.$$scope__Lcom_microsoft_awt_components_GlobalSessionScope().user = (function(arg$outer$1) {
+    return (function() {
+      return arg$outer$1.sessionFactory__Lcom_microsoft_awt_components_SessionFactory().user__sjs_js_UndefOr()
+    })
+  })($$this)
+}
 function $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microsoft$awt$components$PostingCapabilities$$savePost__Lcom_microsoft_awt_components_PostingCapabilities__Lcom_microsoft_awt_models_User__Lcom_microsoft_awt_models_Post__s_concurrent_Future($$this, user, post) {
   var valueA = post._id;
   if ((valueA === (void 0))) {
@@ -1496,7 +1508,7 @@ function $s_Lcom_microsoft_awt_components_PostingCapabilities$class__com$microso
   return found
 }
 function $s_Lcom_microsoft_awt_directives_EmoticonSupport$class__enrichWithEmoticons__Lcom_microsoft_awt_directives_EmoticonSupport__T__T($$this, text) {
-  var array = $$this.com$microsoft$awt$directives$EmoticonSupport$$Emoticons$1;
+  var array = $$this.com$microsoft$awt$directives$EmoticonSupport$$Emoticons__sjs_js_Array();
   var start = 0;
   var end = $uI(array.length);
   var z = text;
@@ -1522,7 +1534,7 @@ function $s_Lcom_microsoft_awt_directives_EmoticonSupport$class__enrichWithEmoti
   return $as_T(jsx$1)
 }
 function $s_Lcom_microsoft_awt_directives_EmoticonSupport$class__$$init$__Lcom_microsoft_awt_directives_EmoticonSupport__V($$this) {
-  $$this.com$microsoft$awt$directives$EmoticonSupport$$Emoticons$1 = [new $c_Lcom_microsoft_awt_models_Emoticon(":-@", "icon_mrgreen.gif", "Big Grin"), new $c_Lcom_microsoft_awt_models_Emoticon(":-)", "icon_smile.gif", "Smile"), new $c_Lcom_microsoft_awt_models_Emoticon(";-)", "icon_wink.gif", "Wink"), new $c_Lcom_microsoft_awt_models_Emoticon(":-D", "icon_biggrin.gif", "Big Smile"), new $c_Lcom_microsoft_awt_models_Emoticon(":->", "icon_razz.gif", "Razzed"), new $c_Lcom_microsoft_awt_models_Emoticon("B-)", "icon_cool.gif", "Cool"), new $c_Lcom_microsoft_awt_models_Emoticon("$-|", "icon_rolleyes.gif", "Roll Eyes"), new $c_Lcom_microsoft_awt_models_Emoticon("8-|", "icon_eek.gif", "Eek"), new $c_Lcom_microsoft_awt_models_Emoticon(":-/", "icon_confused.gif", "Confused"), new $c_Lcom_microsoft_awt_models_Emoticon("|-|", "icon_redface.gif", "Blush"), new $c_Lcom_microsoft_awt_models_Emoticon(":-(", "icon_sad.gif", "Sad"), new $c_Lcom_microsoft_awt_models_Emoticon(":'-(", "icon_cry.gif", "Cry"), new $c_Lcom_microsoft_awt_models_Emoticon(">:-(", "icon_evil.gif", "Enraged"), new $c_Lcom_microsoft_awt_models_Emoticon(":-|", "icon_neutral.gif", "Neutral"), new $c_Lcom_microsoft_awt_models_Emoticon(":-O", "icon_surprised.gif", "Surprised"), new $c_Lcom_microsoft_awt_models_Emoticon("(i)", "icon_idea.gif", "Idea"), new $c_Lcom_microsoft_awt_models_Emoticon("(!)", "icon_exclaim.gif", "Exclamation"), new $c_Lcom_microsoft_awt_models_Emoticon("(?)", "icon_question.gif", "Question"), new $c_Lcom_microsoft_awt_models_Emoticon("=>", "icon_arrow.gif", "Arrow")]
+  $$this.com$microsoft$awt$directives$EmoticonSupport$$undsetter$und$com$microsoft$awt$directives$EmoticonSupport$$Emoticons$und$eq__sjs_js_Array__V([new $c_Lcom_microsoft_awt_models_Emoticon(":-@", "icon_mrgreen.gif", "Big Grin"), new $c_Lcom_microsoft_awt_models_Emoticon(":-)", "icon_smile.gif", "Smile"), new $c_Lcom_microsoft_awt_models_Emoticon(";-)", "icon_wink.gif", "Wink"), new $c_Lcom_microsoft_awt_models_Emoticon(":-D", "icon_biggrin.gif", "Big Smile"), new $c_Lcom_microsoft_awt_models_Emoticon(":->", "icon_razz.gif", "Razzed"), new $c_Lcom_microsoft_awt_models_Emoticon("B-)", "icon_cool.gif", "Cool"), new $c_Lcom_microsoft_awt_models_Emoticon("$-|", "icon_rolleyes.gif", "Roll Eyes"), new $c_Lcom_microsoft_awt_models_Emoticon("8-|", "icon_eek.gif", "Eek"), new $c_Lcom_microsoft_awt_models_Emoticon(":-/", "icon_confused.gif", "Confused"), new $c_Lcom_microsoft_awt_models_Emoticon("|-|", "icon_redface.gif", "Blush"), new $c_Lcom_microsoft_awt_models_Emoticon(":-(", "icon_sad.gif", "Sad"), new $c_Lcom_microsoft_awt_models_Emoticon(":'-(", "icon_cry.gif", "Cry"), new $c_Lcom_microsoft_awt_models_Emoticon(">:-(", "icon_evil.gif", "Enraged"), new $c_Lcom_microsoft_awt_models_Emoticon(":-|", "icon_neutral.gif", "Neutral"), new $c_Lcom_microsoft_awt_models_Emoticon(":-O", "icon_surprised.gif", "Surprised"), new $c_Lcom_microsoft_awt_models_Emoticon("(i)", "icon_idea.gif", "Idea"), new $c_Lcom_microsoft_awt_models_Emoticon("(!)", "icon_exclaim.gif", "Exclamation"), new $c_Lcom_microsoft_awt_models_Emoticon("(?)", "icon_question.gif", "Question"), new $c_Lcom_microsoft_awt_models_Emoticon("=>", "icon_arrow.gif", "Arrow")])
 }
 /** @constructor */
 function $c_O() {
@@ -8328,42 +8340,42 @@ $c_Lcom_microsoft_awt_AWTClientJsApp$.prototype.runApplication__p1__Lorg_scalajs
   module.run(initializationFn)
 });
 $c_Lcom_microsoft_awt_AWTClientJsApp$.prototype.configureServices__p1__Lorg_scalajs_angularjs_Module__V = (function(module) {
-  module.service("AuthenticationService", ["$http", (function(x$macro$137$2) {
-    return new $c_Lcom_microsoft_awt_components_AuthenticationService().init___Lorg_scalajs_angularjs_http_Http(x$macro$137$2)
+  module.service("AuthenticationService", ["$http", (function(x$macro$136$2) {
+    return new $c_Lcom_microsoft_awt_components_AuthenticationService().init___Lorg_scalajs_angularjs_http_Http(x$macro$136$2)
   })]);
-  module.service("EventService", ["$http", (function(x$macro$138$2) {
-    return new $c_Lcom_microsoft_awt_components_EventService().init___Lorg_scalajs_angularjs_http_Http(x$macro$138$2)
+  module.service("EventService", ["$http", (function(x$macro$137$2) {
+    return new $c_Lcom_microsoft_awt_components_EventService().init___Lorg_scalajs_angularjs_http_Http(x$macro$137$2)
   })]);
-  module.service("GroupService", ["$http", (function(x$macro$139$2) {
-    return new $c_Lcom_microsoft_awt_components_GroupService().init___Lorg_scalajs_angularjs_http_Http(x$macro$139$2)
+  module.service("GroupService", ["$http", (function(x$macro$138$2) {
+    return new $c_Lcom_microsoft_awt_components_GroupService().init___Lorg_scalajs_angularjs_http_Http(x$macro$138$2)
   })]);
-  module.service("InboxMessageService", ["$http", (function(x$macro$140$2) {
-    return new $c_Lcom_microsoft_awt_components_InboxMessageService().init___Lorg_scalajs_angularjs_http_Http(x$macro$140$2)
+  module.service("InboxMessageService", ["$http", (function(x$macro$139$2) {
+    return new $c_Lcom_microsoft_awt_components_InboxMessageService().init___Lorg_scalajs_angularjs_http_Http(x$macro$139$2)
   })]);
-  module.service("NotificationService", ["$http", "WebSocketService", (function(x$macro$141$2, x$macro$142$2) {
-    var x$macro$142 = $as_Lcom_microsoft_awt_components_WebSocketService(x$macro$142$2);
-    return new $c_Lcom_microsoft_awt_components_NotificationService().init___Lorg_scalajs_angularjs_http_Http__Lcom_microsoft_awt_components_WebSocketService(x$macro$141$2, x$macro$142)
+  module.service("NotificationService", ["$http", "WebSocketService", (function(x$macro$140$2, x$macro$141$2) {
+    var x$macro$141 = $as_Lcom_microsoft_awt_components_WebSocketService(x$macro$141$2);
+    return new $c_Lcom_microsoft_awt_components_NotificationService().init___Lorg_scalajs_angularjs_http_Http__Lcom_microsoft_awt_components_WebSocketService(x$macro$140$2, x$macro$141)
   })]);
-  module.service("PostService", ["$http", (function(x$macro$143$2) {
-    return new $c_Lcom_microsoft_awt_components_PostService().init___Lorg_scalajs_angularjs_http_Http(x$macro$143$2)
+  module.service("PostService", ["$http", (function(x$macro$142$2) {
+    return new $c_Lcom_microsoft_awt_components_PostService().init___Lorg_scalajs_angularjs_http_Http(x$macro$142$2)
   })]);
-  module.service("ReactiveSearchService", ["$http", (function(x$macro$144$2) {
-    return new $c_Lcom_microsoft_awt_components_ReactiveSearchService().init___Lorg_scalajs_angularjs_http_Http(x$macro$144$2)
+  module.service("ReactiveSearchService", ["$http", (function(x$macro$143$2) {
+    return new $c_Lcom_microsoft_awt_components_ReactiveSearchService().init___Lorg_scalajs_angularjs_http_Http(x$macro$143$2)
   })]);
-  module.service("SessionService", ["$http", (function(x$macro$145$2) {
-    return new $c_Lcom_microsoft_awt_components_SessionService().init___Lorg_scalajs_angularjs_http_Http(x$macro$145$2)
+  module.service("SessionService", ["$http", (function(x$macro$144$2) {
+    return new $c_Lcom_microsoft_awt_components_SessionService().init___Lorg_scalajs_angularjs_http_Http(x$macro$144$2)
   })]);
-  module.service("SignUpService", ["$http", (function(x$macro$146$2) {
-    return new $c_Lcom_microsoft_awt_components_SignUpService().init___Lorg_scalajs_angularjs_http_Http(x$macro$146$2)
+  module.service("SignUpService", ["$http", (function(x$macro$145$2) {
+    return new $c_Lcom_microsoft_awt_components_SignUpService().init___Lorg_scalajs_angularjs_http_Http(x$macro$145$2)
   })]);
-  module.service("WorkloadService", ["$http", (function(x$macro$147$2) {
-    return new $c_Lcom_microsoft_awt_components_WorkloadService().init___Lorg_scalajs_angularjs_http_Http(x$macro$147$2)
+  module.service("WorkloadService", ["$http", (function(x$macro$146$2) {
+    return new $c_Lcom_microsoft_awt_components_WorkloadService().init___Lorg_scalajs_angularjs_http_Http(x$macro$146$2)
   })]);
-  module.service("UserService", ["$http", (function(x$macro$148$2) {
-    return new $c_Lcom_microsoft_awt_components_UserService().init___Lorg_scalajs_angularjs_http_Http(x$macro$148$2)
+  module.service("UserService", ["$http", (function(x$macro$147$2) {
+    return new $c_Lcom_microsoft_awt_components_UserService().init___Lorg_scalajs_angularjs_http_Http(x$macro$147$2)
   })]);
-  module.service("WebSocketService", ["$rootScope", "$location", "$timeout", "toaster", (function(x$macro$149$2, x$macro$150$2, x$macro$151$2, x$macro$152$2) {
-    return new $c_Lcom_microsoft_awt_components_WebSocketService().init___Lorg_scalajs_angularjs_Scope__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster(x$macro$149$2, x$macro$150$2, x$macro$151$2, x$macro$152$2)
+  module.service("WebSocketService", ["$rootScope", "$location", "$timeout", "toaster", (function(x$macro$148$2, x$macro$149$2, x$macro$150$2, x$macro$151$2) {
+    return new $c_Lcom_microsoft_awt_components_WebSocketService().init___Lorg_scalajs_angularjs_Scope__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster(x$macro$148$2, x$macro$149$2, x$macro$150$2, x$macro$151$2)
   })])
 });
 $c_Lcom_microsoft_awt_AWTClientJsApp$.prototype.main__V = (function() {
@@ -8380,55 +8392,55 @@ $c_Lcom_microsoft_awt_AWTClientJsApp$.prototype.main__V = (function() {
   this.runApplication__p1__Lorg_scalajs_angularjs_Module__V(self$1)
 });
 $c_Lcom_microsoft_awt_AWTClientJsApp$.prototype.configureDialogs__p1__Lorg_scalajs_angularjs_Module__V = (function(module) {
-  module.service("GroupDialog", ["$modal", (function(x$macro$82$2) {
-    return new $c_Lcom_microsoft_awt_components_GroupDialog().init___Lorg_scalajs_angularjs_uibootstrap_Modal(x$macro$82$2)
+  module.service("GroupDialog", ["$modal", (function(x$macro$81$2) {
+    return new $c_Lcom_microsoft_awt_components_GroupDialog().init___Lorg_scalajs_angularjs_uibootstrap_Modal(x$macro$81$2)
   })]);
-  module.controller("GroupDialogController", ["$scope", "$modalInstance", "$timeout", "toaster", "updateGroup", "SessionFactory", "UserService", "GroupService", (function(x$macro$83$2, x$macro$84$2, x$macro$85$2, x$macro$86$2, x$macro$87$2, x$macro$88$2, x$macro$89$2, x$macro$90$2) {
-    var x$macro$88 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$88$2);
-    var x$macro$89 = $as_Lcom_microsoft_awt_components_UserService(x$macro$89$2);
-    var x$macro$90 = $as_Lcom_microsoft_awt_components_GroupService(x$macro$90$2);
-    return new $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController().init___Lcom_microsoft_awt_components_GroupDialog$GroupDialogScope__Lorg_scalajs_angularjs_uibootstrap_ModalInstance__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__sjs_js_UndefOr__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_UserService__Lcom_microsoft_awt_components_GroupService(x$macro$83$2, x$macro$84$2, x$macro$85$2, x$macro$86$2, x$macro$87$2, x$macro$88, x$macro$89, x$macro$90)
+  module.controller("GroupDialogController", ["$scope", "$modalInstance", "$timeout", "toaster", "updateGroup", "SessionFactory", "UserService", "GroupService", (function(x$macro$82$2, x$macro$83$2, x$macro$84$2, x$macro$85$2, x$macro$86$2, x$macro$87$2, x$macro$88$2, x$macro$89$2) {
+    var x$macro$87 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$87$2);
+    var x$macro$88 = $as_Lcom_microsoft_awt_components_UserService(x$macro$88$2);
+    var x$macro$89 = $as_Lcom_microsoft_awt_components_GroupService(x$macro$89$2);
+    return new $c_Lcom_microsoft_awt_components_GroupDialog$GroupDialogController().init___Lcom_microsoft_awt_components_GroupDialog$GroupDialogScope__Lorg_scalajs_angularjs_uibootstrap_ModalInstance__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__sjs_js_UndefOr__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_UserService__Lcom_microsoft_awt_components_GroupService(x$macro$82$2, x$macro$83$2, x$macro$84$2, x$macro$85$2, x$macro$86$2, x$macro$87, x$macro$88, x$macro$89)
   })]);
-  module.service("UserDialog", ["$modal", (function(x$macro$91$2) {
-    return new $c_Lcom_microsoft_awt_components_UserDialog().init___Lorg_scalajs_angularjs_uibootstrap_Modal(x$macro$91$2)
+  module.service("UserDialog", ["$modal", (function(x$macro$90$2) {
+    return new $c_Lcom_microsoft_awt_components_UserDialog().init___Lorg_scalajs_angularjs_uibootstrap_Modal(x$macro$90$2)
   })]);
-  module.controller("UserDialogController", ["$scope", "$modalInstance", "$timeout", "toaster", "userID", "SessionFactory", "UserFactory", (function(x$macro$92$2, x$macro$93$2, x$macro$94$2, x$macro$95$2, x$macro$96$2, x$macro$97$2, x$macro$98$2) {
-    var x$macro$96 = $as_T(x$macro$96$2);
-    var x$macro$97 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$97$2);
-    var x$macro$98 = $as_Lcom_microsoft_awt_components_UserFactory(x$macro$98$2);
-    return new $c_Lcom_microsoft_awt_components_UserDialog$UserDialogController().init___Lcom_microsoft_awt_components_UserDialog$UserDialogScope__Lorg_scalajs_angularjs_uibootstrap_ModalInstance__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__T__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_UserFactory(x$macro$92$2, x$macro$93$2, x$macro$94$2, x$macro$95$2, x$macro$96, x$macro$97, x$macro$98)
+  module.controller("UserDialogController", ["$scope", "$modalInstance", "$timeout", "toaster", "userID", "SessionFactory", "UserFactory", (function(x$macro$91$2, x$macro$92$2, x$macro$93$2, x$macro$94$2, x$macro$95$2, x$macro$96$2, x$macro$97$2) {
+    var x$macro$95 = $as_T(x$macro$95$2);
+    var x$macro$96 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$96$2);
+    var x$macro$97 = $as_Lcom_microsoft_awt_components_UserFactory(x$macro$97$2);
+    return new $c_Lcom_microsoft_awt_components_UserDialog$UserDialogController().init___Lcom_microsoft_awt_components_UserDialog$UserDialogScope__Lorg_scalajs_angularjs_uibootstrap_ModalInstance__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__T__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_UserFactory(x$macro$91$2, x$macro$92$2, x$macro$93$2, x$macro$94$2, x$macro$95, x$macro$96, x$macro$97)
   })]);
-  module.service("WorkloadDialog", ["$modal", (function(x$macro$99$2) {
-    return new $c_Lcom_microsoft_awt_components_WorkloadDialog().init___Lorg_scalajs_angularjs_uibootstrap_Modal(x$macro$99$2)
+  module.service("WorkloadDialog", ["$modal", (function(x$macro$98$2) {
+    return new $c_Lcom_microsoft_awt_components_WorkloadDialog().init___Lorg_scalajs_angularjs_uibootstrap_Modal(x$macro$98$2)
   })]);
-  module.controller("WorkloadDialogController", ["$scope", "$modalInstance", "$timeout", "toaster", "updateWorkload", "SessionFactory", "UserService", "WorkloadService", (function(x$macro$100$2, x$macro$101$2, x$macro$102$2, x$macro$103$2, x$macro$104$2, x$macro$105$2, x$macro$106$2, x$macro$107$2) {
-    var x$macro$105 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$105$2);
-    var x$macro$106 = $as_Lcom_microsoft_awt_components_UserService(x$macro$106$2);
-    var x$macro$107 = $as_Lcom_microsoft_awt_components_WorkloadService(x$macro$107$2);
-    return new $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController().init___Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogScope__Lorg_scalajs_angularjs_uibootstrap_ModalInstance__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__sjs_js_UndefOr__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_UserService__Lcom_microsoft_awt_components_WorkloadService(x$macro$100$2, x$macro$101$2, x$macro$102$2, x$macro$103$2, x$macro$104$2, x$macro$105, x$macro$106, x$macro$107)
+  module.controller("WorkloadDialogController", ["$scope", "$modalInstance", "$timeout", "toaster", "updateWorkload", "SessionFactory", "UserService", "WorkloadService", (function(x$macro$99$2, x$macro$100$2, x$macro$101$2, x$macro$102$2, x$macro$103$2, x$macro$104$2, x$macro$105$2, x$macro$106$2) {
+    var x$macro$104 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$104$2);
+    var x$macro$105 = $as_Lcom_microsoft_awt_components_UserService(x$macro$105$2);
+    var x$macro$106 = $as_Lcom_microsoft_awt_components_WorkloadService(x$macro$106$2);
+    return new $c_Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogController().init___Lcom_microsoft_awt_components_WorkloadDialog$WorkloadDialogScope__Lorg_scalajs_angularjs_uibootstrap_ModalInstance__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__sjs_js_UndefOr__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_UserService__Lcom_microsoft_awt_components_WorkloadService(x$macro$99$2, x$macro$100$2, x$macro$101$2, x$macro$102$2, x$macro$103$2, x$macro$104, x$macro$105, x$macro$106)
   })]);
-  module.service("WorkloadCommentDialog", ["$modal", (function(x$macro$108$2) {
-    return new $c_Lcom_microsoft_awt_components_WorkloadCommentDialog().init___Lorg_scalajs_angularjs_uibootstrap_Modal(x$macro$108$2)
+  module.service("WorkloadCommentDialog", ["$modal", (function(x$macro$107$2) {
+    return new $c_Lcom_microsoft_awt_components_WorkloadCommentDialog().init___Lorg_scalajs_angularjs_uibootstrap_Modal(x$macro$107$2)
   })]);
-  module.controller("WorkloadCommentDialogController", ["$scope", "$modalInstance", "$timeout", "toaster", "workloadID", "SessionFactory", "UserFactory", "WorkloadService", (function(x$macro$109$2, x$macro$110$2, x$macro$111$2, x$macro$112$2, x$macro$113$2, x$macro$114$2, x$macro$115$2, x$macro$116$2) {
-    var x$macro$113 = $as_T(x$macro$113$2);
-    var x$macro$114 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$114$2);
-    var x$macro$115 = $as_Lcom_microsoft_awt_components_UserFactory(x$macro$115$2);
-    var x$macro$116 = $as_Lcom_microsoft_awt_components_WorkloadService(x$macro$116$2);
-    return new $c_Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentDialogController().init___Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentDialogScope__Lorg_scalajs_angularjs_uibootstrap_ModalInstance__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__T__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_WorkloadService(x$macro$109$2, x$macro$110$2, x$macro$111$2, x$macro$112$2, x$macro$113, x$macro$114, x$macro$115, x$macro$116)
+  module.controller("WorkloadCommentDialogController", ["$scope", "$modalInstance", "$timeout", "toaster", "workloadID", "SessionFactory", "UserFactory", "WorkloadService", (function(x$macro$108$2, x$macro$109$2, x$macro$110$2, x$macro$111$2, x$macro$112$2, x$macro$113$2, x$macro$114$2, x$macro$115$2) {
+    var x$macro$112 = $as_T(x$macro$112$2);
+    var x$macro$113 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$113$2);
+    var x$macro$114 = $as_Lcom_microsoft_awt_components_UserFactory(x$macro$114$2);
+    var x$macro$115 = $as_Lcom_microsoft_awt_components_WorkloadService(x$macro$115$2);
+    return new $c_Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentDialogController().init___Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentDialogScope__Lorg_scalajs_angularjs_uibootstrap_ModalInstance__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__T__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_WorkloadService(x$macro$108$2, x$macro$109$2, x$macro$110$2, x$macro$111$2, x$macro$112, x$macro$113, x$macro$114, x$macro$115)
   })])
 });
 $c_Lcom_microsoft_awt_AWTClientJsApp$.prototype.configureFactories__p1__Lorg_scalajs_angularjs_Module__V = (function(module) {
-  module.factory("SessionFactory", ["$rootScope", "$cookies", "$location", "md5", "$timeout", "toaster", "AuthenticationService", "SessionService", "UserService", "WebSocketService", (function(x$macro$126$2, x$macro$127$2, x$macro$128$2, x$macro$129$2, x$macro$130$2, x$macro$131$2, x$macro$132$2, x$macro$133$2, x$macro$134$2, x$macro$135$2) {
-    var x$macro$132 = $as_Lcom_microsoft_awt_components_AuthenticationService(x$macro$132$2);
-    var x$macro$133 = $as_Lcom_microsoft_awt_components_SessionService(x$macro$133$2);
-    var x$macro$134 = $as_Lcom_microsoft_awt_components_UserService(x$macro$134$2);
-    var x$macro$135 = $as_Lcom_microsoft_awt_components_WebSocketService(x$macro$135$2);
-    return new $c_Lcom_microsoft_awt_components_SessionFactory().init___Lorg_scalajs_angularjs_Scope__Lorg_scalajs_angularjs_cookies_Cookies__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_md5_MD5__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_AuthenticationService__Lcom_microsoft_awt_components_SessionService__Lcom_microsoft_awt_components_UserService__Lcom_microsoft_awt_components_WebSocketService(x$macro$126$2, x$macro$127$2, x$macro$128$2, x$macro$129$2, x$macro$130$2, x$macro$131$2, x$macro$132, x$macro$133, x$macro$134, x$macro$135)
+  module.factory("SessionFactory", ["$rootScope", "$cookies", "$location", "md5", "$timeout", "toaster", "AuthenticationService", "SessionService", "UserService", "WebSocketService", (function(x$macro$125$2, x$macro$126$2, x$macro$127$2, x$macro$128$2, x$macro$129$2, x$macro$130$2, x$macro$131$2, x$macro$132$2, x$macro$133$2, x$macro$134$2) {
+    var x$macro$131 = $as_Lcom_microsoft_awt_components_AuthenticationService(x$macro$131$2);
+    var x$macro$132 = $as_Lcom_microsoft_awt_components_SessionService(x$macro$132$2);
+    var x$macro$133 = $as_Lcom_microsoft_awt_components_UserService(x$macro$133$2);
+    var x$macro$134 = $as_Lcom_microsoft_awt_components_WebSocketService(x$macro$134$2);
+    return new $c_Lcom_microsoft_awt_components_SessionFactory().init___Lorg_scalajs_angularjs_Scope__Lorg_scalajs_angularjs_cookies_Cookies__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_md5_MD5__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_AuthenticationService__Lcom_microsoft_awt_components_SessionService__Lcom_microsoft_awt_components_UserService__Lcom_microsoft_awt_components_WebSocketService(x$macro$125$2, x$macro$126$2, x$macro$127$2, x$macro$128$2, x$macro$129$2, x$macro$130$2, x$macro$131, x$macro$132, x$macro$133, x$macro$134)
   })]);
-  module.factory("UserFactory", ["UserService", (function(x$macro$136$2) {
-    var x$macro$136 = $as_Lcom_microsoft_awt_components_UserService(x$macro$136$2);
-    return new $c_Lcom_microsoft_awt_components_UserFactory().init___Lcom_microsoft_awt_components_UserService(x$macro$136)
+  module.factory("UserFactory", ["UserService", (function(x$macro$135$2) {
+    var x$macro$135 = $as_Lcom_microsoft_awt_components_UserService(x$macro$135$2);
+    return new $c_Lcom_microsoft_awt_components_UserFactory().init___Lcom_microsoft_awt_components_UserService(x$macro$135)
   })])
 });
 $c_Lcom_microsoft_awt_AWTClientJsApp$.prototype.$$js$exported$meth$main__O = (function() {
@@ -8445,7 +8457,7 @@ $c_Lcom_microsoft_awt_AWTClientJsApp$.prototype.configureDirectives__p1__Lorg_sc
       return f$1.apply__O__O__O(arg1$1, arg2)
     })
   })(new $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$2().init___())]);
-  module.directive("censor", ["$compile", "$sce", "SessionFactory", (function(f$2) {
+  module.directive("censorable", ["$compile", "$sce", "SessionFactory", (function(f$2) {
     return (function(arg1$2, arg2$1, arg3) {
       return f$2.apply__O__O__O__O(arg1$2, arg2$1, arg3)
     })
@@ -8481,68 +8493,67 @@ $c_Lcom_microsoft_awt_AWTClientJsApp$.prototype.configureControllers__p1__Lorg_s
     var x$macro$10 = $as_Lcom_microsoft_awt_components_UserService(x$macro$10$2);
     return new $c_Lcom_microsoft_awt_components_EventController().init___Lcom_microsoft_awt_components_EventControllerScope__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_EventService__Lcom_microsoft_awt_components_UserService(x$macro$6$2, x$macro$7$2, x$macro$8$2, x$macro$9, x$macro$10)
   })]);
-  module.controller("GroupListController", ["$scope", "$location", "$timeout", "toaster", "SessionFactory", "UserFactory", "UserService", "WorkloadService", (function(x$macro$11$2, x$macro$12$2, x$macro$13$2, x$macro$14$2, x$macro$15$2, x$macro$16$2, x$macro$17$2, x$macro$18$2) {
-    var x$macro$15 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$15$2);
-    var x$macro$16 = $as_Lcom_microsoft_awt_components_UserFactory(x$macro$16$2);
-    var x$macro$17 = $as_Lcom_microsoft_awt_components_UserService(x$macro$17$2);
-    var x$macro$18 = $as_Lcom_microsoft_awt_components_WorkloadService(x$macro$18$2);
-    return new $c_Lcom_microsoft_awt_components_GroupListController().init___Lcom_microsoft_awt_components_GroupListScope__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_UserService__Lcom_microsoft_awt_components_WorkloadService(x$macro$11$2, x$macro$12$2, x$macro$13$2, x$macro$14$2, x$macro$15, x$macro$16, x$macro$17, x$macro$18)
+  module.controller("GroupListController", ["$scope", "$location", "$timeout", "toaster", "UserFactory", "WorkloadService", (function(x$macro$11$2, x$macro$12$2, x$macro$13$2, x$macro$14$2, x$macro$15$2, x$macro$16$2) {
+    var x$macro$15 = $as_Lcom_microsoft_awt_components_UserFactory(x$macro$15$2);
+    var x$macro$16 = $as_Lcom_microsoft_awt_components_WorkloadService(x$macro$16$2);
+    return new $c_Lcom_microsoft_awt_components_GroupListController().init___Lcom_microsoft_awt_components_GroupListScope__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_WorkloadService(x$macro$11$2, x$macro$12$2, x$macro$13$2, x$macro$14$2, x$macro$15, x$macro$16)
   })]);
-  module.controller("GroupDetailsController", ["$scope", "$routeParams", "$timeout", "toaster", "GroupService", "SessionFactory", "UserFactory", "WorkloadDialog", "WorkloadCommentDialog", "WorkloadService", (function(x$macro$19$2, x$macro$20$2, x$macro$21$2, x$macro$22$2, x$macro$23$2, x$macro$24$2, x$macro$25$2, x$macro$26$2, x$macro$27$2, x$macro$28$2) {
-    var x$macro$23 = $as_Lcom_microsoft_awt_components_GroupService(x$macro$23$2);
-    var x$macro$24 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$24$2);
-    var x$macro$25 = $as_Lcom_microsoft_awt_components_UserFactory(x$macro$25$2);
-    var x$macro$26 = $as_Lcom_microsoft_awt_components_WorkloadDialog(x$macro$26$2);
-    var x$macro$27 = $as_Lcom_microsoft_awt_components_WorkloadCommentDialog(x$macro$27$2);
-    var x$macro$28 = $as_Lcom_microsoft_awt_components_WorkloadService(x$macro$28$2);
-    return new $c_Lcom_microsoft_awt_components_GroupDetailsController().init___Lcom_microsoft_awt_components_GroupDetailsScope__Lcom_microsoft_awt_components_GroupDetailsRouteParams__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_GroupService__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_WorkloadDialog__Lcom_microsoft_awt_components_WorkloadCommentDialog__Lcom_microsoft_awt_components_WorkloadService(x$macro$19$2, x$macro$20$2, x$macro$21$2, x$macro$22$2, x$macro$23, x$macro$24, x$macro$25, x$macro$26, x$macro$27, x$macro$28)
+  module.controller("GroupDetailsController", ["$scope", "$routeParams", "$timeout", "toaster", "GroupService", "SessionFactory", "UserFactory", "WorkloadDialog", "WorkloadCommentDialog", "WorkloadService", (function(x$macro$17$2, x$macro$18$2, x$macro$19$2, x$macro$20$2, x$macro$21$2, x$macro$22$2, x$macro$23$2, x$macro$24$2, x$macro$25$2, x$macro$26$2) {
+    var x$macro$21 = $as_Lcom_microsoft_awt_components_GroupService(x$macro$21$2);
+    var x$macro$22 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$22$2);
+    var x$macro$23 = $as_Lcom_microsoft_awt_components_UserFactory(x$macro$23$2);
+    var x$macro$24 = $as_Lcom_microsoft_awt_components_WorkloadDialog(x$macro$24$2);
+    var x$macro$25 = $as_Lcom_microsoft_awt_components_WorkloadCommentDialog(x$macro$25$2);
+    var x$macro$26 = $as_Lcom_microsoft_awt_components_WorkloadService(x$macro$26$2);
+    return new $c_Lcom_microsoft_awt_components_GroupDetailsController().init___Lcom_microsoft_awt_components_GroupDetailsScope__Lcom_microsoft_awt_components_GroupDetailsRouteParams__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_GroupService__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_WorkloadDialog__Lcom_microsoft_awt_components_WorkloadCommentDialog__Lcom_microsoft_awt_components_WorkloadService(x$macro$17$2, x$macro$18$2, x$macro$19$2, x$macro$20$2, x$macro$21, x$macro$22, x$macro$23, x$macro$24, x$macro$25, x$macro$26)
   })]);
-  module.controller("HomeController", ["$scope", "$compile", "$location", "$timeout", "toaster", "EventService", "FileUploader", "SessionFactory", "PostService", "UserFactory", "UserDialog", "UserService", (function(x$macro$29$2, x$macro$30$2, x$macro$31$2, x$macro$32$2, x$macro$33$2, x$macro$34$2, x$macro$35$2, x$macro$36$2, x$macro$37$2, x$macro$38$2, x$macro$39$2, x$macro$40$2) {
-    var x$macro$34 = $as_Lcom_microsoft_awt_components_EventService(x$macro$34$2);
-    var x$macro$36 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$36$2);
-    var x$macro$37 = $as_Lcom_microsoft_awt_components_PostService(x$macro$37$2);
-    var x$macro$38 = $as_Lcom_microsoft_awt_components_UserFactory(x$macro$38$2);
-    var x$macro$39 = $as_Lcom_microsoft_awt_components_UserDialog(x$macro$39$2);
-    var x$macro$40 = $as_Lcom_microsoft_awt_components_UserService(x$macro$40$2);
-    return new $c_Lcom_microsoft_awt_components_HomeController().init___Lcom_microsoft_awt_components_HomeControllerScope__sjs_js_Dynamic__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_EventService__Lorg_scalajs_angularjs_fileupload_nervgh_FileUploader__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_PostService__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_UserDialog__Lcom_microsoft_awt_components_UserService(x$macro$29$2, x$macro$30$2, x$macro$31$2, x$macro$32$2, x$macro$33$2, x$macro$34, x$macro$35$2, x$macro$36, x$macro$37, x$macro$38, x$macro$39, x$macro$40)
+  module.controller("HomeController", ["$scope", "$compile", "$location", "$timeout", "toaster", "EventService", "FileUploader", "PostService", "SessionFactory", "UserFactory", "UserDialog", "UserService", (function(x$macro$27$2, x$macro$28$2, x$macro$29$2, x$macro$30$2, x$macro$31$2, x$macro$32$2, x$macro$33$2, x$macro$34$2, x$macro$35$2, x$macro$36$2, x$macro$37$2, x$macro$38$2) {
+    var x$macro$32 = $as_Lcom_microsoft_awt_components_EventService(x$macro$32$2);
+    var x$macro$34 = $as_Lcom_microsoft_awt_components_PostService(x$macro$34$2);
+    var x$macro$35 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$35$2);
+    var x$macro$36 = $as_Lcom_microsoft_awt_components_UserFactory(x$macro$36$2);
+    var x$macro$37 = $as_Lcom_microsoft_awt_components_UserDialog(x$macro$37$2);
+    var x$macro$38 = $as_Lcom_microsoft_awt_components_UserService(x$macro$38$2);
+    return new $c_Lcom_microsoft_awt_components_HomeController().init___Lcom_microsoft_awt_components_HomeControllerScope__sjs_js_Dynamic__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_EventService__Lorg_scalajs_angularjs_fileupload_nervgh_FileUploader__Lcom_microsoft_awt_components_PostService__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_UserDialog__Lcom_microsoft_awt_components_UserService(x$macro$27$2, x$macro$28$2, x$macro$29$2, x$macro$30$2, x$macro$31$2, x$macro$32, x$macro$33$2, x$macro$34, x$macro$35, x$macro$36, x$macro$37, x$macro$38)
   })]);
-  module.controller("MainController", ["$scope", "$location", "$q", "$timeout", "toaster", "EventService", "GroupService", "SessionFactory", "NotificationService", "ReactiveSearchService", "WebSocketService", (function(x$macro$41$2, x$macro$42$2, x$macro$43$2, x$macro$44$2, x$macro$45$2, x$macro$46$2, x$macro$47$2, x$macro$48$2, x$macro$49$2, x$macro$50$2, x$macro$51$2) {
-    var x$macro$46 = $as_Lcom_microsoft_awt_components_EventService(x$macro$46$2);
-    var x$macro$47 = $as_Lcom_microsoft_awt_components_GroupService(x$macro$47$2);
-    var x$macro$48 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$48$2);
-    var x$macro$49 = $as_Lcom_microsoft_awt_components_NotificationService(x$macro$49$2);
-    var x$macro$50 = $as_Lcom_microsoft_awt_components_ReactiveSearchService(x$macro$50$2);
-    var x$macro$51 = $as_Lcom_microsoft_awt_components_WebSocketService(x$macro$51$2);
-    return new $c_Lcom_microsoft_awt_components_MainController().init___Lcom_microsoft_awt_components_MainScope__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_Q__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_EventService__Lcom_microsoft_awt_components_GroupService__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_NotificationService__Lcom_microsoft_awt_components_ReactiveSearchService__Lcom_microsoft_awt_components_WebSocketService(x$macro$41$2, x$macro$42$2, x$macro$43$2, x$macro$44$2, x$macro$45$2, x$macro$46, x$macro$47, x$macro$48, x$macro$49, x$macro$50, x$macro$51)
+  module.controller("MainController", ["$scope", "$location", "$q", "$timeout", "toaster", "EventService", "GroupService", "SessionFactory", "NotificationService", "ReactiveSearchService", "WebSocketService", (function(x$macro$39$2, x$macro$40$2, x$macro$41$2, x$macro$42$2, x$macro$43$2, x$macro$44$2, x$macro$45$2, x$macro$46$2, x$macro$47$2, x$macro$48$2, x$macro$49$2) {
+    var x$macro$44 = $as_Lcom_microsoft_awt_components_EventService(x$macro$44$2);
+    var x$macro$45 = $as_Lcom_microsoft_awt_components_GroupService(x$macro$45$2);
+    var x$macro$46 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$46$2);
+    var x$macro$47 = $as_Lcom_microsoft_awt_components_NotificationService(x$macro$47$2);
+    var x$macro$48 = $as_Lcom_microsoft_awt_components_ReactiveSearchService(x$macro$48$2);
+    var x$macro$49 = $as_Lcom_microsoft_awt_components_WebSocketService(x$macro$49$2);
+    return new $c_Lcom_microsoft_awt_components_MainController().init___Lcom_microsoft_awt_components_MainScope__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_Q__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_EventService__Lcom_microsoft_awt_components_GroupService__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_NotificationService__Lcom_microsoft_awt_components_ReactiveSearchService__Lcom_microsoft_awt_components_WebSocketService(x$macro$39$2, x$macro$40$2, x$macro$41$2, x$macro$42$2, x$macro$43$2, x$macro$44, x$macro$45, x$macro$46, x$macro$47, x$macro$48, x$macro$49)
   })]);
-  module.controller("PhotosController", ["$scope", "$timeout", "toaster", "SessionFactory", "PostService", (function(x$macro$52$2, x$macro$53$2, x$macro$54$2, x$macro$55$2, x$macro$56$2) {
-    var x$macro$55 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$55$2);
-    var x$macro$56 = $as_Lcom_microsoft_awt_components_PostService(x$macro$56$2);
-    return new $c_Lcom_microsoft_awt_components_PhotosController().init___Lcom_microsoft_awt_components_PhotosScope__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_PostService(x$macro$52$2, x$macro$53$2, x$macro$54$2, x$macro$55, x$macro$56)
+  module.controller("PhotosController", ["$scope", "$timeout", "toaster", "SessionFactory", "PostService", (function(x$macro$50$2, x$macro$51$2, x$macro$52$2, x$macro$53$2, x$macro$54$2) {
+    var x$macro$53 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$53$2);
+    var x$macro$54 = $as_Lcom_microsoft_awt_components_PostService(x$macro$54$2);
+    return new $c_Lcom_microsoft_awt_components_PhotosController().init___Lcom_microsoft_awt_components_PhotosScope__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_PostService(x$macro$50$2, x$macro$51$2, x$macro$52$2, x$macro$53, x$macro$54)
   })]);
-  module.controller("ProfileController", ["$scope", "$routeParams", "$timeout", "toaster", "GroupService", "SessionFactory", "PostService", "UserFactory", "UserService", "WorkloadService", (function(x$macro$57$2, x$macro$58$2, x$macro$59$2, x$macro$60$2, x$macro$61$2, x$macro$62$2, x$macro$63$2, x$macro$64$2, x$macro$65$2, x$macro$66$2) {
-    var x$macro$61 = $as_Lcom_microsoft_awt_components_GroupService(x$macro$61$2);
-    var x$macro$62 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$62$2);
-    var x$macro$63 = $as_Lcom_microsoft_awt_components_PostService(x$macro$63$2);
-    var x$macro$64 = $as_Lcom_microsoft_awt_components_UserFactory(x$macro$64$2);
-    var x$macro$65 = $as_Lcom_microsoft_awt_components_UserService(x$macro$65$2);
-    var x$macro$66 = $as_Lcom_microsoft_awt_components_WorkloadService(x$macro$66$2);
-    return new $c_Lcom_microsoft_awt_components_ProfileController().init___Lcom_microsoft_awt_components_ProfileControllerScope__Lcom_microsoft_awt_components_ProfileRouteParams__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_GroupService__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_PostService__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_UserService__Lcom_microsoft_awt_components_WorkloadService(x$macro$57$2, x$macro$58$2, x$macro$59$2, x$macro$60$2, x$macro$61, x$macro$62, x$macro$63, x$macro$64, x$macro$65, x$macro$66)
+  module.controller("ProfileController", ["$scope", "$routeParams", "$timeout", "toaster", "GroupService", "SessionFactory", "PostService", "UserFactory", "UserService", "WorkloadService", (function(x$macro$55$2, x$macro$56$2, x$macro$57$2, x$macro$58$2, x$macro$59$2, x$macro$60$2, x$macro$61$2, x$macro$62$2, x$macro$63$2, x$macro$64$2) {
+    var x$macro$59 = $as_Lcom_microsoft_awt_components_GroupService(x$macro$59$2);
+    var x$macro$60 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$60$2);
+    var x$macro$61 = $as_Lcom_microsoft_awt_components_PostService(x$macro$61$2);
+    var x$macro$62 = $as_Lcom_microsoft_awt_components_UserFactory(x$macro$62$2);
+    var x$macro$63 = $as_Lcom_microsoft_awt_components_UserService(x$macro$63$2);
+    var x$macro$64 = $as_Lcom_microsoft_awt_components_WorkloadService(x$macro$64$2);
+    return new $c_Lcom_microsoft_awt_components_ProfileController().init___Lcom_microsoft_awt_components_ProfileControllerScope__Lcom_microsoft_awt_components_ProfileRouteParams__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_GroupService__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_PostService__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_UserService__Lcom_microsoft_awt_components_WorkloadService(x$macro$55$2, x$macro$56$2, x$macro$57$2, x$macro$58$2, x$macro$59, x$macro$60, x$macro$61, x$macro$62, x$macro$63, x$macro$64)
   })]);
-  module.controller("SignUpController", ["$scope", "$location", "md5", "$timeout", "toaster", "SessionFactory", "SignUpService", (function(x$macro$67$2, x$macro$68$2, x$macro$69$2, x$macro$70$2, x$macro$71$2, x$macro$72$2, x$macro$73$2) {
-    var x$macro$72 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$72$2);
-    var x$macro$73 = $as_Lcom_microsoft_awt_components_SignUpService(x$macro$73$2);
-    return new $c_Lcom_microsoft_awt_components_SignUpController().init___Lcom_microsoft_awt_components_SignUpControllerScope__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_md5_MD5__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_SignUpService(x$macro$67$2, x$macro$68$2, x$macro$69$2, x$macro$70$2, x$macro$71$2, x$macro$72, x$macro$73)
+  module.controller("SignUpController", ["$scope", "$location", "md5", "$timeout", "toaster", "SessionFactory", "SignUpService", (function(x$macro$65$2, x$macro$66$2, x$macro$67$2, x$macro$68$2, x$macro$69$2, x$macro$70$2, x$macro$71$2) {
+    var x$macro$70 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$70$2);
+    var x$macro$71 = $as_Lcom_microsoft_awt_components_SignUpService(x$macro$71$2);
+    return new $c_Lcom_microsoft_awt_components_SignUpController().init___Lcom_microsoft_awt_components_SignUpControllerScope__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_md5_MD5__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_SignUpService(x$macro$65$2, x$macro$66$2, x$macro$67$2, x$macro$68$2, x$macro$69$2, x$macro$70, x$macro$71)
   })]);
-  module.controller("VerificationController", ["$scope", "$routeParams", (function(x$macro$74$2, x$macro$75$2) {
-    return new $c_Lcom_microsoft_awt_components_VerificationController().init___Lcom_microsoft_awt_components_VerificationScope__Lcom_microsoft_awt_components_VerificationRouteParams(x$macro$74$2, x$macro$75$2)
+  module.controller("VerificationController", ["$scope", "$routeParams", (function(x$macro$72$2, x$macro$73$2) {
+    return new $c_Lcom_microsoft_awt_components_VerificationController().init___Lcom_microsoft_awt_components_VerificationScope__Lcom_microsoft_awt_components_VerificationRouteParams(x$macro$72$2, x$macro$73$2)
   })]);
-  module.controller("WorkloadController", ["$scope", "UserFactory", "WorkloadDialog", "toaster", "WorkloadCommentDialog", "WorkloadService", (function(x$macro$76$2, x$macro$77$2, x$macro$78$2, x$macro$79$2, x$macro$80$2, x$macro$81$2) {
-    var x$macro$77 = $as_Lcom_microsoft_awt_components_UserFactory(x$macro$77$2);
-    var x$macro$78 = $as_Lcom_microsoft_awt_components_WorkloadDialog(x$macro$78$2);
-    var x$macro$80 = $as_Lcom_microsoft_awt_components_WorkloadCommentDialog(x$macro$80$2);
-    var x$macro$81 = $as_Lcom_microsoft_awt_components_WorkloadService(x$macro$81$2);
-    return new $c_Lcom_microsoft_awt_components_WorkloadController().init___Lcom_microsoft_awt_components_WorkloadScope__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_WorkloadDialog__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_WorkloadCommentDialog__Lcom_microsoft_awt_components_WorkloadService(x$macro$76$2, x$macro$77, x$macro$78, x$macro$79$2, x$macro$80, x$macro$81)
+  module.controller("WorkloadController", ["$scope", "SessionFactory", "UserFactory", "WorkloadDialog", "toaster", "WorkloadCommentDialog", "WorkloadService", (function(x$macro$74$2, x$macro$75$2, x$macro$76$2, x$macro$77$2, x$macro$78$2, x$macro$79$2, x$macro$80$2) {
+    var x$macro$75 = $as_Lcom_microsoft_awt_components_SessionFactory(x$macro$75$2);
+    var x$macro$76 = $as_Lcom_microsoft_awt_components_UserFactory(x$macro$76$2);
+    var x$macro$77 = $as_Lcom_microsoft_awt_components_WorkloadDialog(x$macro$77$2);
+    var x$macro$79 = $as_Lcom_microsoft_awt_components_WorkloadCommentDialog(x$macro$79$2);
+    var x$macro$80 = $as_Lcom_microsoft_awt_components_WorkloadService(x$macro$80$2);
+    return new $c_Lcom_microsoft_awt_components_WorkloadController().init___Lcom_microsoft_awt_components_WorkloadScope__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_WorkloadDialog__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_WorkloadCommentDialog__Lcom_microsoft_awt_components_WorkloadService(x$macro$74$2, x$macro$75, x$macro$76, x$macro$77, x$macro$78$2, x$macro$79, x$macro$80)
   })])
 });
 $c_Lcom_microsoft_awt_AWTClientJsApp$.prototype.main = (function() {
@@ -10482,6 +10493,7 @@ $c_Lcom_microsoft_awt_components_WorkloadCommentDialog.prototype.$classData = $d
 function $c_Lcom_microsoft_awt_components_WorkloadController() {
   $c_O.call(this);
   this.com$microsoft$awt$components$WorkloadController$$$scope$f = null;
+  this.sessionFactory$1 = null;
   this.userFactory$1 = null;
   this.com$microsoft$awt$components$WorkloadController$$workloadDialog$f = null;
   this.com$microsoft$awt$components$WorkloadController$$toaster$f = null;
@@ -10523,8 +10535,20 @@ $c_Lcom_microsoft_awt_components_WorkloadController.prototype.com$microsoft$awt$
   jsx$2.selectedWorkload = jsx$1;
   (0, this.com$microsoft$awt$components$WorkloadController$$$scope$f.selectWorkload)(this.com$microsoft$awt$components$WorkloadController$$$scope$f.selectedWorkload)
 });
-$c_Lcom_microsoft_awt_components_WorkloadController.prototype.init___Lcom_microsoft_awt_components_WorkloadScope__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_WorkloadDialog__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_WorkloadCommentDialog__Lcom_microsoft_awt_components_WorkloadService = (function($$scope, userFactory, workloadDialog, toaster, workloadCommentDialog, workloadService) {
+$c_Lcom_microsoft_awt_components_WorkloadController.prototype.com$microsoft$awt$components$WorkloadController$$isAuthorizedUser__Z = (function() {
+  var value = this.sessionFactory$1.session__sjs_js_UndefOr();
+  var valueA = ((value === (void 0)) ? (void 0) : value.isAnonymous);
+  var isAuthorized = ((valueA !== (void 0)) && $m_sr_BoxesRunTime$().equals__O__O__Z(valueA, false));
+  if ((!isAuthorized)) {
+    var toaster = this.com$microsoft$awt$components$WorkloadController$$toaster$f;
+    var s = $m_Lorg_scalajs_angularjs_toaster_Toaster$().WARNING$1;
+    toaster.pop(s, "Unauthorized action", "You must sign-in to perform this action")
+  };
+  return isAuthorized
+});
+$c_Lcom_microsoft_awt_components_WorkloadController.prototype.init___Lcom_microsoft_awt_components_WorkloadScope__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_WorkloadDialog__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_WorkloadCommentDialog__Lcom_microsoft_awt_components_WorkloadService = (function($$scope, sessionFactory, userFactory, workloadDialog, toaster, workloadCommentDialog, workloadService) {
   this.com$microsoft$awt$components$WorkloadController$$$scope$f = $$scope;
+  this.sessionFactory$1 = sessionFactory;
   this.userFactory$1 = userFactory;
   this.com$microsoft$awt$components$WorkloadController$$workloadDialog$f = workloadDialog;
   this.com$microsoft$awt$components$WorkloadController$$toaster$f = toaster;
@@ -12437,7 +12461,7 @@ $h_Lcom_microsoft_awt_directives_AvatarScopeTemplate.prototype = $g.Object.proto
 $c_Lcom_microsoft_awt_directives_AvatarScopeTemplate.prototype = new $h_Lcom_microsoft_awt_directives_AvatarScopeTemplate();
 $c_Lcom_microsoft_awt_directives_AvatarScopeTemplate.prototype.constructor = $c_Lcom_microsoft_awt_directives_AvatarScopeTemplate;
 /** @constructor */
-function $c_Lcom_microsoft_awt_directives_CensorDirectiveScopeTemplate(arg$1) {
+function $c_Lcom_microsoft_awt_directives_CensorableDirectiveScopeTemplate(arg$1) {
   var text = $as_T(arg$1);
   $g.Object.call(this);
   $g.Object.defineProperties(this, {
@@ -12451,12 +12475,12 @@ function $c_Lcom_microsoft_awt_directives_CensorDirectiveScopeTemplate(arg$1) {
   this.text = text
 }
 /** @constructor */
-function $h_Lcom_microsoft_awt_directives_CensorDirectiveScopeTemplate() {
+function $h_Lcom_microsoft_awt_directives_CensorableDirectiveScopeTemplate() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_directives_CensorDirectiveScopeTemplate.prototype = $g.Object.prototype;
-$c_Lcom_microsoft_awt_directives_CensorDirectiveScopeTemplate.prototype = new $h_Lcom_microsoft_awt_directives_CensorDirectiveScopeTemplate();
-$c_Lcom_microsoft_awt_directives_CensorDirectiveScopeTemplate.prototype.constructor = $c_Lcom_microsoft_awt_directives_CensorDirectiveScopeTemplate;
+$h_Lcom_microsoft_awt_directives_CensorableDirectiveScopeTemplate.prototype = $g.Object.prototype;
+$c_Lcom_microsoft_awt_directives_CensorableDirectiveScopeTemplate.prototype = new $h_Lcom_microsoft_awt_directives_CensorableDirectiveScopeTemplate();
+$c_Lcom_microsoft_awt_directives_CensorableDirectiveScopeTemplate.prototype.constructor = $c_Lcom_microsoft_awt_directives_CensorableDirectiveScopeTemplate;
 /** @constructor */
 function $c_Lcom_microsoft_awt_directives_NameScopeTemplate(arg$1, arg$2, arg$3) {
   var id = $as_T(arg$1);
@@ -18219,8 +18243,8 @@ $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$1.prototype.in
 $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$1.prototype.apply__O__O = (function(v1) {
   return this.apply__Lcom_microsoft_awt_components_UserFactory__sjs_js_Object($as_Lcom_microsoft_awt_components_UserFactory(v1))
 });
-$c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$1.prototype.apply__Lcom_microsoft_awt_components_UserFactory__sjs_js_Object = (function(x$macro$117) {
-  var d1r3ctive = new $c_Lcom_microsoft_awt_directives_AvatarDirective().init___Lcom_microsoft_awt_components_UserFactory(x$macro$117);
+$c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$1.prototype.apply__Lcom_microsoft_awt_components_UserFactory__sjs_js_Object = (function(x$macro$116) {
+  var d1r3ctive = new $c_Lcom_microsoft_awt_directives_AvatarDirective().init___Lcom_microsoft_awt_components_UserFactory(x$macro$116);
   var value = d1r3ctive.replace$1;
   var jsx$1 = d1r3ctive.scope$1;
   var s = d1r3ctive.template$1;
@@ -18265,8 +18289,8 @@ $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$2.prototype.in
 $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$2.prototype.apply__O__O__O = (function(v1, v2) {
   return this.apply__Lorg_scalajs_angularjs_Compile__Lorg_scalajs_angularjs_sanitize_Sce__sjs_js_Object(v1, v2)
 });
-$c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$2.prototype.apply__Lorg_scalajs_angularjs_Compile__Lorg_scalajs_angularjs_sanitize_Sce__sjs_js_Object = (function(x$macro$118, x$macro$119) {
-  var d1r3ctive = new $c_Lcom_microsoft_awt_directives_NewsPostDirective().init___Lorg_scalajs_angularjs_Compile__Lorg_scalajs_angularjs_sanitize_Sce(x$macro$118, x$macro$119);
+$c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$2.prototype.apply__Lorg_scalajs_angularjs_Compile__Lorg_scalajs_angularjs_sanitize_Sce__sjs_js_Object = (function(x$macro$117, x$macro$118) {
+  var d1r3ctive = new $c_Lcom_microsoft_awt_directives_NewsPostDirective().init___Lorg_scalajs_angularjs_Compile__Lorg_scalajs_angularjs_sanitize_Sce(x$macro$117, x$macro$118);
   var jsx$1 = d1r3ctive.scope$1;
   var value = d1r3ctive.transclude$1;
   var value$1 = d1r3ctive.replace$1;
@@ -18308,8 +18332,8 @@ $h_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$3.prototype = 
 $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$3.prototype.init___ = (function() {
   return this
 });
-$c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$3.prototype.apply__Lorg_scalajs_angularjs_Compile__Lorg_scalajs_angularjs_sanitize_Sce__Lcom_microsoft_awt_components_SessionFactory__sjs_js_Object = (function(x$macro$120, x$macro$121, x$macro$122) {
-  var d1r3ctive = new $c_Lcom_microsoft_awt_directives_CensorDirective().init___Lorg_scalajs_angularjs_Compile__Lorg_scalajs_angularjs_sanitize_Sce__Lcom_microsoft_awt_components_SessionFactory(x$macro$120, x$macro$121, x$macro$122);
+$c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$3.prototype.apply__Lorg_scalajs_angularjs_Compile__Lorg_scalajs_angularjs_sanitize_Sce__Lcom_microsoft_awt_components_SessionFactory__sjs_js_Object = (function(x$macro$119, x$macro$120, x$macro$121) {
+  var d1r3ctive = new $c_Lcom_microsoft_awt_directives_CensorableDirective().init___Lorg_scalajs_angularjs_Compile__Lorg_scalajs_angularjs_sanitize_Sce__Lcom_microsoft_awt_components_SessionFactory(x$macro$119, x$macro$120, x$macro$121);
   var jsx$1 = d1r3ctive.scope$1;
   var value = d1r3ctive.replace$1;
   var value$1 = d1r3ctive.transclude$1;
@@ -18321,7 +18345,7 @@ $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$3.prototype.ap
     "template": s,
     "link": (function(d1r3ctive$3) {
       return (function(scope$2, element$2, attrs$2) {
-        d1r3ctive$3.link__Lcom_microsoft_awt_directives_CensorDirectiveScope__Lorg_scalajs_angularjs_JQLite__Lorg_scalajs_angularjs_Attributes__V(scope$2, element$2, attrs$2)
+        d1r3ctive$3.link__Lcom_microsoft_awt_directives_CensorableDirectiveScope__Lorg_scalajs_angularjs_JQLite__Lorg_scalajs_angularjs_Attributes__V(scope$2, element$2, attrs$2)
       })
     })(d1r3ctive)
   }
@@ -18357,8 +18381,8 @@ $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$4.prototype.in
 $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$4.prototype.apply__O__O = (function(v1) {
   return this.apply__Lorg_scalajs_angularjs_Compile__sjs_js_Object(v1)
 });
-$c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$4.prototype.apply__Lorg_scalajs_angularjs_Compile__sjs_js_Object = (function(x$macro$123) {
-  var d1r3ctive = new $c_Lcom_microsoft_awt_directives_CompileDirective().init___Lorg_scalajs_angularjs_Compile(x$macro$123);
+$c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$4.prototype.apply__Lorg_scalajs_angularjs_Compile__sjs_js_Object = (function(x$macro$122) {
+  var d1r3ctive = new $c_Lcom_microsoft_awt_directives_CompileDirective().init___Lorg_scalajs_angularjs_Compile(x$macro$122);
   return {
     "link": (function(d1r3ctive$4) {
       return (function(scope$2, element$2, attrs$2) {
@@ -18395,8 +18419,8 @@ $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$5.prototype.in
 $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$5.prototype.apply__O__O = (function(v1) {
   return this.apply__Lcom_microsoft_awt_components_UserFactory__sjs_js_Object($as_Lcom_microsoft_awt_components_UserFactory(v1))
 });
-$c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$5.prototype.apply__Lcom_microsoft_awt_components_UserFactory__sjs_js_Object = (function(x$macro$124) {
-  var d1r3ctive = new $c_Lcom_microsoft_awt_directives_NameDirective().init___Lcom_microsoft_awt_components_UserFactory(x$macro$124);
+$c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$5.prototype.apply__Lcom_microsoft_awt_components_UserFactory__sjs_js_Object = (function(x$macro$123) {
+  var d1r3ctive = new $c_Lcom_microsoft_awt_directives_NameDirective().init___Lcom_microsoft_awt_components_UserFactory(x$macro$123);
   var jsx$1 = d1r3ctive.scope$1;
   var value = d1r3ctive.transclude$1;
   var value$1 = d1r3ctive.replace$1;
@@ -18441,8 +18465,8 @@ $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$6.prototype.in
 $c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$6.prototype.apply__O__O = (function(v1) {
   return this.apply__Lcom_microsoft_awt_components_SessionFactory__sjs_js_Object($as_Lcom_microsoft_awt_components_SessionFactory(v1))
 });
-$c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$6.prototype.apply__Lcom_microsoft_awt_components_SessionFactory__sjs_js_Object = (function(x$macro$125) {
-  var d1r3ctive = new $c_Lcom_microsoft_awt_directives_RestrictedDirective().init___Lcom_microsoft_awt_components_SessionFactory(x$macro$125);
+$c_Lcom_microsoft_awt_AWTClientJsApp$$anonfun$configureDirectives$6.prototype.apply__Lcom_microsoft_awt_components_SessionFactory__sjs_js_Object = (function(x$macro$124) {
+  var d1r3ctive = new $c_Lcom_microsoft_awt_directives_RestrictedDirective().init___Lcom_microsoft_awt_components_SessionFactory(x$macro$124);
   var jsx$1 = d1r3ctive.scope$1;
   var value = d1r3ctive.transclude$1;
   return {
@@ -21189,8 +21213,45 @@ var $d_Lcom_microsoft_awt_components_HomeController$$anonfun$com$microsoft$awt$c
 });
 $c_Lcom_microsoft_awt_components_HomeController$$anonfun$com$microsoft$awt$components$HomeController$$loadFollowersAndPostings$2$$anonfun$apply$24.prototype.$classData = $d_Lcom_microsoft_awt_components_HomeController$$anonfun$com$microsoft$awt$components$HomeController$$loadFollowersAndPostings$2$$anonfun$apply$24;
 /** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$12() {
+function $c_Lcom_microsoft_awt_components_MainController$$anonfun$11() {
   $c_sr_AbstractFunction1.call(this)
+}
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$11.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$11.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$11;
+/** @constructor */
+function $h_Lcom_microsoft_awt_components_MainController$$anonfun$11() {
+  /*<skip>*/
+}
+$h_Lcom_microsoft_awt_components_MainController$$anonfun$11.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$11.prototype;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$11.prototype.apply__O__O = (function(v1) {
+  this.apply__sjs_js_UndefOr__V(v1)
+});
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$11.prototype.apply__sjs_js_UndefOr__V = (function(open) {
+  if ((open !== (void 0))) {
+    var isOpen = $uZ(open);
+    var jsx$1 = $g.console;
+    var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["toggled open ? ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([isOpen]));
+    jsx$1.log(s)
+  }
+});
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$11.prototype.init___Lcom_microsoft_awt_components_MainController = (function($$outer) {
+  return this
+});
+var $d_Lcom_microsoft_awt_components_MainController$$anonfun$11 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController$$anonfun$11: 0
+}, false, "com.microsoft.awt.components.MainController$$anonfun$11", {
+  Lcom_microsoft_awt_components_MainController$$anonfun$11: 1,
+  sr_AbstractFunction1: 1,
+  O: 1,
+  F1: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$11.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$11;
+/** @constructor */
+function $c_Lcom_microsoft_awt_components_MainController$$anonfun$12() {
+  $c_sr_AbstractFunction1.call(this);
+  this.$$outer$2 = null
 }
 $c_Lcom_microsoft_awt_components_MainController$$anonfun$12.prototype = new $h_sr_AbstractFunction1();
 $c_Lcom_microsoft_awt_components_MainController$$anonfun$12.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$12;
@@ -21202,15 +21263,18 @@ $h_Lcom_microsoft_awt_components_MainController$$anonfun$12.prototype = $c_Lcom_
 $c_Lcom_microsoft_awt_components_MainController$$anonfun$12.prototype.apply__O__O = (function(v1) {
   this.apply__sjs_js_UndefOr__V(v1)
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$12.prototype.apply__sjs_js_UndefOr__V = (function(open) {
-  if ((open !== (void 0))) {
-    var isOpen = $uZ(open);
-    var jsx$1 = $g.console;
-    var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["toggled open ? ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([isOpen]));
-    jsx$1.log(s)
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12.prototype.apply__sjs_js_UndefOr__V = (function(aNotification) {
+  var f = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14().init___Lcom_microsoft_awt_components_MainController$$anonfun$12(this);
+  if ((aNotification !== (void 0))) {
+    f.apply__Lcom_microsoft_awt_models_Notification__V(aNotification)
   }
 });
 $c_Lcom_microsoft_awt_components_MainController$$anonfun$12.prototype.init___Lcom_microsoft_awt_components_MainController = (function($$outer) {
+  if (($$outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    this.$$outer$2 = $$outer
+  };
   return this
 });
 var $d_Lcom_microsoft_awt_components_MainController$$anonfun$12 = new $TypeData().initClass({
@@ -21225,27 +21289,21 @@ var $d_Lcom_microsoft_awt_components_MainController$$anonfun$12 = new $TypeData(
 });
 $c_Lcom_microsoft_awt_components_MainController$$anonfun$12.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$12;
 /** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$14() {
+function $c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14() {
   $c_sr_AbstractFunction1.call(this);
   this.$$outer$2 = null
 }
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14;
 /** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController$$anonfun$14() {
+function $h_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype;
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype.apply__O__O = (function(v1) {
-  this.apply__sjs_js_UndefOr__V(v1)
+$h_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14.prototype;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14.prototype.apply__O__O = (function(v1) {
+  this.apply__Lcom_microsoft_awt_models_Notification__V(v1)
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype.apply__sjs_js_UndefOr__V = (function(aNotification) {
-  var f = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14().init___Lcom_microsoft_awt_components_MainController$$anonfun$14(this);
-  if ((aNotification !== (void 0))) {
-    f.apply__Lcom_microsoft_awt_models_Notification__V(aNotification)
-  }
-});
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype.init___Lcom_microsoft_awt_components_MainController = (function($$outer) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$12 = (function($$outer) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -21253,75 +21311,47 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype.init___Lco
   };
   return this
 });
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$14 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$14: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$14", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$14: 1,
-  sr_AbstractFunction1: 1,
-  O: 1,
-  F1: 1,
-  s_Serializable: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$14;
-/** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14() {
-  $c_sr_AbstractFunction1.call(this);
-  this.$$outer$2 = null
-}
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14;
-/** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14() {
-  /*<skip>*/
-}
-$h_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14.prototype;
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14.prototype.apply__O__O = (function(v1) {
-  this.apply__Lcom_microsoft_awt_models_Notification__V(v1)
-});
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14.prototype.apply__Lcom_microsoft_awt_models_Notification__V = (function(notification) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14.prototype.apply__Lcom_microsoft_awt_models_Notification__V = (function(notification) {
   var value = notification._id;
-  var f = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15().init___Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14__Lcom_microsoft_awt_models_Notification(this, notification);
+  var f = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15().init___Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14__Lcom_microsoft_awt_models_Notification(this, notification);
   if ((value !== (void 0))) {
     f.apply__T__V($as_T(value))
   }
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$14 = (function($$outer) {
-  if (($$outer === null)) {
-    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
-  } else {
-    this.$$outer$2 = $$outer
-  };
-  return this
-});
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$14$$anonfun$apply$14", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14: 1,
+var $d_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14: 0
+}, false, "com.microsoft.awt.components.MainController$$anonfun$12$$anonfun$apply$14", {
+  Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14: 1,
   sr_AbstractFunction1: 1,
   O: 1,
   F1: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14;
 /** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15() {
+function $c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15() {
   $c_sr_AbstractFunction1.call(this);
   this.$$outer$2 = null;
   this.notification$1$f = null
 }
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15;
 /** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15() {
+function $h_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15.prototype;
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15.prototype.apply__O__O = (function(v1) {
+$h_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15.prototype;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15.prototype.apply__O__O = (function(v1) {
   this.apply__T__V($as_T(v1))
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14__Lcom_microsoft_awt_models_Notification = (function($$outer, notification$1) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15.prototype.apply__T__V = (function(id) {
+  var jsx$1 = $g.console;
+  var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Deleting notification ", "..."])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([id]));
+  jsx$1.log(s);
+  $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.$$outer$2.notificationSvc$2.deleteNotification__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(id, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16().init___Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+});
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14__Lcom_microsoft_awt_models_Notification = (function($$outer, notification$1) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -21330,39 +21360,33 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$a
   this.notification$1$f = notification$1;
   return this
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15.prototype.apply__T__V = (function(id) {
-  var jsx$1 = $g.console;
-  var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Deleting notification ", "..."])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([id]));
-  jsx$1.log(s);
-  $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.$$outer$2.notificationSvc$2.deleteNotification__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(id, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16().init___Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
-});
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15: 1,
+var $d_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15: 0
+}, false, "com.microsoft.awt.components.MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15", {
+  Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15: 1,
   sr_AbstractFunction1: 1,
   O: 1,
   F1: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15;
 /** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16() {
+function $c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16() {
   $c_sr_AbstractFunction1.call(this);
   this.$$outer$2 = null
 }
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16;
 /** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16() {
+function $h_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype;
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype.apply__O__O = (function(v1) {
+$h_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype.apply__O__O = (function(v1) {
   return this.apply__s_util_Try__O($as_s_util_Try(v1))
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15 = (function($$outer) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15 = (function($$outer) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -21370,7 +21394,7 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$a
   };
   return this
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype.apply__s_util_Try__O = (function(x0$1) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype.apply__s_util_Try__O = (function(x0$1) {
   if ($is_s_util_Success(x0$1)) {
     var x2 = $as_s_util_Success(x0$1);
     var result = x2.value$2;
@@ -21378,7 +21402,7 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$a
       return (function() {
         return f.apply__O()
       })
-    })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17().init___Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16__Lcom_microsoft_awt_models_OperationResult(this, result)))
+    })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17().init___Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16__Lcom_microsoft_awt_models_OperationResult(this, result)))
   } else if ($is_s_util_Failure(x0$1)) {
     var x3 = $as_s_util_Failure(x0$1);
     var e = x3.exception$2;
@@ -21427,31 +21451,31 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$a
     throw new $c_s_MatchError().init___O(x0$1)
   }
 });
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16: 1,
+var $d_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16: 0
+}, false, "com.microsoft.awt.components.MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16", {
+  Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16: 1,
   sr_AbstractFunction1: 1,
   O: 1,
   F1: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16;
 /** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17() {
+function $c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17() {
   $c_sr_AbstractFunction0.call(this);
   this.$$outer$2 = null;
   this.result$1$2 = null
 }
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype = new $h_sr_AbstractFunction0();
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype = new $h_sr_AbstractFunction0();
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17;
 /** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17() {
+function $h_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype;
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16__Lcom_microsoft_awt_models_OperationResult = (function($$outer, result$1) {
+$h_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16__Lcom_microsoft_awt_models_OperationResult = (function($$outer, result$1) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -21460,7 +21484,7 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$a
   this.result$1$2 = result$1;
   return this
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype.apply__O = (function() {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype.apply__O = (function() {
   var jsx$1 = $g.console;
   var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["result => ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$as_T($g.angular.toJson(this.result$1$2))]));
   jsx$1.log(s);
@@ -21503,17 +21527,65 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$a
     return (void 0)
   }
 });
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17: 1,
+var $d_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17: 0
+}, false, "com.microsoft.awt.components.MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17", {
+  Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17: 1,
   sr_AbstractFunction0: 1,
   O: 1,
   F0: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$14$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$12$$anonfun$apply$14$$anonfun$apply$15$$anonfun$apply$16$$anonfun$apply$17;
+/** @constructor */
+function $c_Lcom_microsoft_awt_components_MainController$$anonfun$14() {
+  $c_sr_AbstractFunction1.call(this);
+  this.$$outer$2 = null
+}
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14;
+/** @constructor */
+function $h_Lcom_microsoft_awt_components_MainController$$anonfun$14() {
+  /*<skip>*/
+}
+$h_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype.apply__O__O = (function(v1) {
+  return this.apply__sjs_js_UndefOr__sjs_js_UndefOr(v1)
+});
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype.init___Lcom_microsoft_awt_components_MainController = (function($$outer) {
+  if (($$outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    this.$$outer$2 = $$outer
+  };
+  return this
+});
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype.apply__sjs_js_UndefOr__sjs_js_UndefOr = (function(aNotification) {
+  if ((aNotification === (void 0))) {
+    return (void 0)
+  } else {
+    var value = aNotification.type;
+    if ((value === (void 0))) {
+      return (void 0)
+    } else {
+      var kind = $as_T(value);
+      var value$1 = this.$$outer$2.com$microsoft$awt$components$MainController$$getNotificationTypeIcon__T__T(kind);
+      return value$1
+    }
+  }
+});
+var $d_Lcom_microsoft_awt_components_MainController$$anonfun$14 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController$$anonfun$14: 0
+}, false, "com.microsoft.awt.components.MainController$$anonfun$14", {
+  Lcom_microsoft_awt_components_MainController$$anonfun$14: 1,
+  sr_AbstractFunction1: 1,
+  O: 1,
+  F1: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$14.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$14;
 /** @constructor */
 function $c_Lcom_microsoft_awt_components_MainController$$anonfun$16() {
   $c_sr_AbstractFunction1.call(this);
@@ -21537,55 +21609,7 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$16.prototype.init___Lco
   };
   return this
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$16.prototype.apply__sjs_js_UndefOr__sjs_js_UndefOr = (function(aNotification) {
-  if ((aNotification === (void 0))) {
-    return (void 0)
-  } else {
-    var value = aNotification.type;
-    if ((value === (void 0))) {
-      return (void 0)
-    } else {
-      var kind = $as_T(value);
-      var value$1 = this.$$outer$2.com$microsoft$awt$components$MainController$$getNotificationTypeIcon__T__T(kind);
-      return value$1
-    }
-  }
-});
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$16 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$16: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$16", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$16: 1,
-  sr_AbstractFunction1: 1,
-  O: 1,
-  F1: 1,
-  s_Serializable: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$16.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$16;
-/** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$18() {
-  $c_sr_AbstractFunction1.call(this);
-  this.$$outer$2 = null
-}
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$18.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$18.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$18;
-/** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController$$anonfun$18() {
-  /*<skip>*/
-}
-$h_Lcom_microsoft_awt_components_MainController$$anonfun$18.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$18.prototype;
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$18.prototype.apply__O__O = (function(v1) {
-  return this.apply__sjs_js_UndefOr__sjs_js_UndefOr(v1)
-});
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$18.prototype.init___Lcom_microsoft_awt_components_MainController = (function($$outer) {
-  if (($$outer === null)) {
-    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
-  } else {
-    this.$$outer$2 = $$outer
-  };
-  return this
-});
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$18.prototype.apply__sjs_js_UndefOr__sjs_js_UndefOr = (function(aNotificationType) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$16.prototype.apply__sjs_js_UndefOr__sjs_js_UndefOr = (function(aNotificationType) {
   if ((aNotificationType === (void 0))) {
     return (void 0)
   } else {
@@ -21612,30 +21636,30 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$18.prototype.apply__sjs
     return array$1
   }
 });
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$18 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$18: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$18", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$18: 1,
+var $d_Lcom_microsoft_awt_components_MainController$$anonfun$16 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController$$anonfun$16: 0
+}, false, "com.microsoft.awt.components.MainController$$anonfun$16", {
+  Lcom_microsoft_awt_components_MainController$$anonfun$16: 1,
   sr_AbstractFunction1: 1,
   O: 1,
   F1: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$18.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$18;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$16.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$16;
 /** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$22() {
+function $c_Lcom_microsoft_awt_components_MainController$$anonfun$20() {
   $c_sr_AbstractFunction2.call(this);
   this.$$outer$2 = null
 }
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$22.prototype = new $h_sr_AbstractFunction2();
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$22.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$22;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$20.prototype = new $h_sr_AbstractFunction2();
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$20.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$20;
 /** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController$$anonfun$22() {
+function $h_Lcom_microsoft_awt_components_MainController$$anonfun$20() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_components_MainController$$anonfun$22.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$22.prototype;
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$22.prototype.init___Lcom_microsoft_awt_components_MainController = (function($$outer) {
+$h_Lcom_microsoft_awt_components_MainController$$anonfun$20.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$20.prototype;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$20.prototype.init___Lcom_microsoft_awt_components_MainController = (function($$outer) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -21643,7 +21667,7 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$22.prototype.init___Lco
   };
   return this
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$22.prototype.apply__Lorg_scalajs_dom_raw_Event__Z__sjs_js_Any = (function(x$7, connected) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$20.prototype.apply__Lorg_scalajs_dom_raw_Event__Z__sjs_js_Any = (function(x$7, connected) {
   var jsx$1 = $g.console;
   var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Web socket state change: connected = ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([connected]));
   jsx$1.log(s);
@@ -21653,20 +21677,20 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$22.prototype.apply__Lor
     })
   })(this, connected))
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$22.prototype.apply__O__O__O = (function(v1, v2) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$20.prototype.apply__O__O__O = (function(v1, v2) {
   return this.apply__Lorg_scalajs_dom_raw_Event__Z__sjs_js_Any(v1, $uZ(v2))
 });
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$22 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$22: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$22", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$22: 1,
+var $d_Lcom_microsoft_awt_components_MainController$$anonfun$20 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController$$anonfun$20: 0
+}, false, "com.microsoft.awt.components.MainController$$anonfun$20", {
+  Lcom_microsoft_awt_components_MainController$$anonfun$20: 1,
   sr_AbstractFunction2: 1,
   O: 1,
   F2: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$22.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$22;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$20.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$20;
 /** @constructor */
 function $c_Lcom_microsoft_awt_components_MainController$$anonfun$4() {
   $c_sr_AbstractFunction1.call(this)
@@ -21930,7 +21954,7 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$compo
 $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1.prototype.apply__T__V = (function(userID) {
   $g.console.log("Loading events, groups and notifications...");
   var this$2 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.eventService$2.getEvents__T__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(userID, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1));
-  var f = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19().init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1__T(this, userID);
+  var f = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17().init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1__T(this, userID);
   var executor = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
   var outcome = $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$2, f, executor);
   outcome.onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$25().init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
@@ -21955,22 +21979,22 @@ var $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$c
 });
 $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1;
 /** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19() {
+function $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17() {
   $c_sr_AbstractFunction1.call(this);
   this.$$outer$2 = null;
   this.userID$1$f = null
 }
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17;
 /** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19() {
+function $h_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19.prototype;
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19.prototype.apply__O__O = (function(v1) {
+$h_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17.prototype;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17.prototype.apply__O__O = (function(v1) {
   return this.apply__sjs_js_Array__s_concurrent_Future(v1)
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1__T = (function($$outer, userID$1) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1__T = (function($$outer, userID$1) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -21979,40 +22003,49 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$compo
   this.userID$1$f = userID$1;
   return this
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19.prototype.apply__sjs_js_Array__s_concurrent_Future = (function(events) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17.prototype.apply__sjs_js_Array__s_concurrent_Future = (function(events) {
   var this$1 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.groupService$2.getGroupsIncludingOrOwnedByUser__T__I__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(this.userID$1$f, 10, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1));
-  var f = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23().init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19__sjs_js_Array(this, events);
+  var f = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17$$anonfun$apply$23().init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17__sjs_js_Array(this, events);
   var executor = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
   return $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$1, f, executor)
 });
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19: 1,
+var $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17: 0
+}, false, "com.microsoft.awt.components.MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17", {
+  Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17: 1,
   sr_AbstractFunction1: 1,
   O: 1,
   F1: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17;
 /** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23() {
+function $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17$$anonfun$apply$23() {
   $c_sr_AbstractFunction1.call(this);
   this.$$outer$2 = null;
   this.events$2$f = null
 }
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17$$anonfun$apply$23.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17$$anonfun$apply$23.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17$$anonfun$apply$23;
 /** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23() {
+function $h_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17$$anonfun$apply$23() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23.prototype;
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23.prototype.apply__O__O = (function(v1) {
+$h_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17$$anonfun$apply$23.prototype = $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17$$anonfun$apply$23.prototype;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17$$anonfun$apply$23.prototype.apply__O__O = (function(v1) {
   return this.apply__sjs_js_Array__s_concurrent_Future(v1)
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23.prototype.apply__sjs_js_Array__s_concurrent_Future = (function(groups) {
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17$$anonfun$apply$23.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17__sjs_js_Array = (function($$outer, events$2) {
+  if (($$outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    this.$$outer$2 = $$outer
+  };
+  this.events$2$f = events$2;
+  return this
+});
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17$$anonfun$apply$23.prototype.apply__sjs_js_Array__s_concurrent_Future = (function(groups) {
   var this$1 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.$$outer$2.notificationSvc$2.getNotificationsByUserID__T__Z__s_concurrent_ExecutionContext__Lorg_scalajs_angularjs_http_HttpResponse(this.$$outer$2.userID$1$f, true, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1));
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer, groups$2) {
     return (function(notifications$2) {
@@ -22022,26 +22055,17 @@ $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$compo
   var executor = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
   return $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$1, f, executor)
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23.prototype.init___Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19__sjs_js_Array = (function($$outer, events$2) {
-  if (($$outer === null)) {
-    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
-  } else {
-    this.$$outer$2 = $$outer
-  };
-  this.events$2$f = events$2;
-  return this
-});
-var $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23 = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23: 0
-}, false, "com.microsoft.awt.components.MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23", {
-  Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23: 1,
+var $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17$$anonfun$apply$23 = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17$$anonfun$apply$23: 0
+}, false, "com.microsoft.awt.components.MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17$$anonfun$apply$23", {
+  Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17$$anonfun$apply$23: 1,
   sr_AbstractFunction1: 1,
   O: 1,
   F1: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$19$$anonfun$apply$23;
+$c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17$$anonfun$apply$23.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$17$$anonfun$apply$23;
 /** @constructor */
 function $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1$$anonfun$apply$25() {
   $c_sr_AbstractFunction1.call(this);
@@ -29373,7 +29397,9 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$4$$anonfun$apply$12
   this.apply__T__V($as_T(v1))
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$4$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14.prototype.apply__T__V = (function(workloadID) {
-  $m_Lorg_scalajs_nodejs_util_ScalaJsHelper$().promise2Future__sjs_js_Promise__s_concurrent_Future(this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$WorkloadController$$workloadCommentDialog$f.popup__T__sjs_js_Promise(workloadID)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$4$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14$$anonfun$apply$15().init___Lcom_microsoft_awt_components_WorkloadController$$anonfun$4$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+  if (this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$WorkloadController$$isAuthorizedUser__Z()) {
+    $m_Lorg_scalajs_nodejs_util_ScalaJsHelper$().promise2Future__sjs_js_Promise__s_concurrent_Future(this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$WorkloadController$$workloadCommentDialog$f.popup__T__sjs_js_Promise(workloadID)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$4$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14$$anonfun$apply$15().init___Lcom_microsoft_awt_components_WorkloadController$$anonfun$4$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+  }
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$4$$anonfun$apply$12$$anonfun$apply$13$$anonfun$apply$14.prototype.init___Lcom_microsoft_awt_components_WorkloadController$$anonfun$4$$anonfun$apply$12$$anonfun$apply$13 = (function($$outer) {
   if (($$outer === null)) {
@@ -29709,8 +29735,10 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18
   this.apply__T__V($as_T(v1))
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18$$anonfun$apply$19$$anonfun$apply$20.prototype.apply__T__V = (function(workloadID) {
-  if ($uZ($g.window.confirm("Are you sure you want to close this workload?"))) {
-    $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$WorkloadController$$workloadService$f.deactivateWorkload__T__Lorg_scalajs_angularjs_http_HttpResponse(workloadID)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18$$anonfun$apply$19$$anonfun$apply$20$$anonfun$apply$21().init___Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18$$anonfun$apply$19$$anonfun$apply$20__T(this, workloadID), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+  if (this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$WorkloadController$$isAuthorizedUser__Z()) {
+    if ($uZ($g.window.confirm("Are you sure you want to close this workload?"))) {
+      $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.$$outer$2.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$WorkloadController$$workloadService$f.deactivateWorkload__T__Lorg_scalajs_angularjs_http_HttpResponse(workloadID)).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18$$anonfun$apply$19$$anonfun$apply$20$$anonfun$apply$21().init___Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18$$anonfun$apply$19$$anonfun$apply$20__T(this, workloadID), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+    }
   }
 });
 var $d_Lcom_microsoft_awt_components_WorkloadController$$anonfun$5$$anonfun$apply$18$$anonfun$apply$19$$anonfun$apply$20 = new $TypeData().initClass({
@@ -30020,9 +30048,11 @@ $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24
   this.apply__Lcom_microsoft_awt_models_Workload__V(v1)
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24$$anonfun$apply$25.prototype.apply__Lcom_microsoft_awt_models_Workload__V = (function(workload) {
-  var jsx$1 = $m_sjs_js_Thenable$ThenableOps$();
-  var p = this.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$WorkloadController$$workloadDialog$f.popup__sjs_js_UndefOr__sjs_js_Promise(workload);
-  jsx$1.toFuture$extension__sjs_js_Thenable__s_concurrent_Future(p).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24$$anonfun$apply$25$$anonfun$apply$26().init___Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24$$anonfun$apply$25(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+  if (this.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$WorkloadController$$isAuthorizedUser__Z()) {
+    var jsx$1 = $m_sjs_js_Thenable$ThenableOps$();
+    var p = this.$$outer$2.$$outer$2.$$outer$2.com$microsoft$awt$components$WorkloadController$$workloadDialog$f.popup__sjs_js_UndefOr__sjs_js_Promise(workload);
+    jsx$1.toFuture$extension__sjs_js_Thenable__s_concurrent_Future(p).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24$$anonfun$apply$25$$anonfun$apply$26().init___Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24$$anonfun$apply$25(this), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
+  }
 });
 $c_Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24$$anonfun$apply$25.prototype.init___Lcom_microsoft_awt_components_WorkloadController$$anonfun$6$$anonfun$apply$24__sjs_js_Array = (function($$outer, workloads$4) {
   if (($$outer === null)) {
@@ -30778,11 +30808,43 @@ $c_Lcom_microsoft_awt_directives_AvatarDirective.prototype.com$microsoft$awt$dir
   this.userFactory$1.getUserByID__T__s_concurrent_ExecutionContext__s_concurrent_Future(userID, $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1().init___Lcom_microsoft_awt_directives_AvatarDirective__Lcom_microsoft_awt_directives_AvatarDirectiveScope(this, scope), $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1)
 });
 $c_Lcom_microsoft_awt_directives_AvatarDirective.prototype.link__Lcom_microsoft_awt_directives_AvatarDirectiveScope__Lorg_scalajs_angularjs_JQLite__Lorg_scalajs_angularjs_Attributes__V = (function(scope, element, attrs) {
-  scope.$watch("id", (function(f) {
-    return (function(arg1, arg2) {
-      return f.apply__O__O__O(arg1, arg2)
-    })
-  })(new $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1().init___Lcom_microsoft_awt_directives_AvatarDirective__Lcom_microsoft_awt_directives_AvatarDirectiveScope(this, scope)))
+  var valueA = scope.id;
+  if ((valueA === (void 0))) {
+    var value = (void 0)
+  } else {
+    var opt = $m_s_Option$().apply__O__s_Option(valueA);
+    if (opt.isEmpty__Z()) {
+      var value = (void 0)
+    } else {
+      var arg1 = opt.get__O();
+      var value = arg1
+    }
+  };
+  if ((value !== (void 0))) {
+    var x0$1 = $as_T(value);
+    var this$13 = new $c_sci_StringOps().init___T(x0$1);
+    if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$13)) {
+      scope.url = this.com$microsoft$awt$directives$AvatarDirective$$LOADING$undSPINNER$1;
+      var valueA$1 = scope.named;
+      if ((valueA$1 === (void 0))) {
+        var value$1 = (void 0)
+      } else {
+        var opt$1 = $m_s_Option$().apply__O__s_Option(valueA$1);
+        if (opt$1.isEmpty__Z()) {
+          var value$1 = (void 0)
+        } else {
+          var arg1$1 = opt$1.get__O();
+          var value$1 = arg1$1
+        }
+      };
+      if ((value$1 !== (void 0))) {
+        scope.name = "Loading..."
+      };
+      this.com$microsoft$awt$directives$AvatarDirective$$loadUserByID__T__Lcom_microsoft_awt_directives_AvatarDirectiveScope__V(x0$1, scope)
+    } else {
+      scope.url = this.com$microsoft$awt$directives$AvatarDirective$$UNKNOWN$undPERSON$1
+    }
+  }
 });
 var $d_Lcom_microsoft_awt_directives_AvatarDirective = new $TypeData().initClass({
   Lcom_microsoft_awt_directives_AvatarDirective: 0
@@ -30851,80 +30913,6 @@ var $d_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$
   Ljava_io_Serializable: 1
 });
 $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1.prototype.$classData = $d_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$com$microsoft$awt$directives$AvatarDirective$$loadUserByID$1;
-/** @constructor */
-function $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1() {
-  $c_sr_AbstractFunction2.call(this);
-  this.$$outer$2 = null;
-  this.scope$1$f = null
-}
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1.prototype = new $h_sr_AbstractFunction2();
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1.prototype.constructor = $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1;
-/** @constructor */
-function $h_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1() {
-  /*<skip>*/
-}
-$h_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1.prototype = $c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1.prototype;
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1.prototype.apply__sjs_js_UndefOr__sjs_js_UndefOr__V = (function(newValue, oldValue) {
-  if ((newValue === (void 0))) {
-    var value = (void 0)
-  } else {
-    var opt = $m_s_Option$().apply__O__s_Option(newValue);
-    if (opt.isEmpty__Z()) {
-      var value = (void 0)
-    } else {
-      var arg1 = opt.get__O();
-      var value = arg1
-    }
-  };
-  if ((value !== (void 0))) {
-    var x0$1 = $as_T(value);
-    var this$13 = new $c_sci_StringOps().init___T(x0$1);
-    if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$13)) {
-      this.scope$1$f.url = this.$$outer$2.com$microsoft$awt$directives$AvatarDirective$$LOADING$undSPINNER$1;
-      var valueA = this.scope$1$f.named;
-      if ((valueA === (void 0))) {
-        var value$1 = (void 0)
-      } else {
-        var opt$1 = $m_s_Option$().apply__O__s_Option(valueA);
-        if (opt$1.isEmpty__Z()) {
-          var value$1 = (void 0)
-        } else {
-          var arg1$1 = opt$1.get__O();
-          var value$1 = arg1$1
-        }
-      };
-      if ((value$1 !== (void 0))) {
-        this.scope$1$f.name = "Loading..."
-      };
-      this.$$outer$2.com$microsoft$awt$directives$AvatarDirective$$loadUserByID__T__Lcom_microsoft_awt_directives_AvatarDirectiveScope__V(x0$1, this.scope$1$f)
-    } else {
-      this.scope$1$f.url = this.$$outer$2.com$microsoft$awt$directives$AvatarDirective$$UNKNOWN$undPERSON$1
-    }
-  }
-});
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1.prototype.apply__O__O__O = (function(v1, v2) {
-  this.apply__sjs_js_UndefOr__sjs_js_UndefOr__V(v1, v2)
-});
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1.prototype.init___Lcom_microsoft_awt_directives_AvatarDirective__Lcom_microsoft_awt_directives_AvatarDirectiveScope = (function($$outer, scope$1) {
-  if (($$outer === null)) {
-    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
-  } else {
-    this.$$outer$2 = $$outer
-  };
-  this.scope$1$f = scope$1;
-  return this
-});
-var $d_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1 = new $TypeData().initClass({
-  Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1: 0
-}, false, "com.microsoft.awt.directives.AvatarDirective$$anonfun$link$1", {
-  Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1: 1,
-  sr_AbstractFunction2: 1,
-  O: 1,
-  F2: 1,
-  s_Serializable: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1.prototype.$classData = $d_Lcom_microsoft_awt_directives_AvatarDirective$$anonfun$link$1;
 /** @constructor */
 function $c_Lcom_microsoft_awt_directives_NameDirective() {
   $c_O.call(this);
@@ -33493,9 +33481,7 @@ function $c_Lcom_microsoft_awt_components_GroupListController() {
   this.$$location$1 = null;
   this.$$timeout$1 = null;
   this.toaster$1 = null;
-  this.sessionFactory$1 = null;
   this.userFactory$1 = null;
-  this.userService$1 = null;
   this.workloadService$1 = null
 }
 $c_Lcom_microsoft_awt_components_GroupListController.prototype = new $h_O();
@@ -33509,7 +33495,33 @@ $c_Lcom_microsoft_awt_components_GroupListController.prototype.productPrefix__T 
   return "GroupListController"
 });
 $c_Lcom_microsoft_awt_components_GroupListController.prototype.productArity__I = (function() {
-  return 8
+  return 6
+});
+$c_Lcom_microsoft_awt_components_GroupListController.prototype.init___Lcom_microsoft_awt_components_GroupListScope__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_WorkloadService = (function($$scope, $$location, $$timeout, toaster, userFactory, workloadService) {
+  this.$$scope$1 = $$scope;
+  this.$$location$1 = $$location;
+  this.$$timeout$1 = $$timeout;
+  this.toaster$1 = toaster;
+  this.userFactory$1 = userFactory;
+  this.workloadService$1 = workloadService;
+  $$scope.init = (function(arg$outer) {
+    return (function(label$2) {
+      var jsx$1 = $g.console;
+      var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Initializing ", "... [", "]"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$objectGetClass(arg$outer).getSimpleName__T(), label$2]));
+      jsx$1.log(s)
+    })
+  })(this);
+  $$scope.getGroups = (function(f) {
+    return (function(arg1) {
+      return f.apply__O__O(arg1)
+    })
+  })(new $c_Lcom_microsoft_awt_components_GroupListController$$anonfun$2().init___Lcom_microsoft_awt_components_GroupListController(this));
+  $$scope.toggleGroup = (function(f$1) {
+    return (function(arg1$1) {
+      return f$1.apply__O__O(arg1$1)
+    })
+  })(new $c_Lcom_microsoft_awt_components_GroupListController$$anonfun$3().init___Lcom_microsoft_awt_components_GroupListController(this));
+  return this
 });
 $c_Lcom_microsoft_awt_components_GroupListController.prototype.com$microsoft$awt$components$GroupListController$$enrichGroupWithMembersAndWorkloads__Lcom_microsoft_awt_models_Group__V = (function(group) {
   var value = group._id;
@@ -33524,30 +33536,16 @@ $c_Lcom_microsoft_awt_components_GroupListController.prototype.equals__O__Z = (f
   } else if ($is_Lcom_microsoft_awt_components_GroupListController(x$1)) {
     var GroupListController$1 = $as_Lcom_microsoft_awt_components_GroupListController(x$1);
     if (((($m_sr_BoxesRunTime$().equals__O__O__Z(this.$$scope$1, GroupListController$1.$$scope$1) && $m_sr_BoxesRunTime$().equals__O__O__Z(this.$$location$1, GroupListController$1.$$location$1)) && $m_sr_BoxesRunTime$().equals__O__O__Z(this.$$timeout$1, GroupListController$1.$$timeout$1)) && $m_sr_BoxesRunTime$().equals__O__O__Z(this.toaster$1, GroupListController$1.toaster$1))) {
-      var x = this.sessionFactory$1;
-      var x$2 = GroupListController$1.sessionFactory$1;
-      var jsx$3 = (x === x$2)
-    } else {
-      var jsx$3 = false
-    };
-    if (jsx$3) {
-      var x$3 = this.userFactory$1;
-      var x$4 = GroupListController$1.userFactory$1;
-      var jsx$2 = (x$3 === x$4)
-    } else {
-      var jsx$2 = false
-    };
-    if (jsx$2) {
-      var x$5 = this.userService$1;
-      var x$6 = GroupListController$1.userService$1;
-      var jsx$1 = (x$5 === x$6)
+      var x = this.userFactory$1;
+      var x$2 = GroupListController$1.userFactory$1;
+      var jsx$1 = (x === x$2)
     } else {
       var jsx$1 = false
     };
     if (jsx$1) {
-      var x$7 = this.workloadService$1;
-      var x$8 = GroupListController$1.workloadService$1;
-      return (x$7 === x$8)
+      var x$3 = this.workloadService$1;
+      var x$4 = GroupListController$1.workloadService$1;
+      return (x$3 === x$4)
     } else {
       return false
     }
@@ -33574,18 +33572,10 @@ $c_Lcom_microsoft_awt_components_GroupListController.prototype.productElement__I
       break
     }
     case 4: {
-      return this.sessionFactory$1;
-      break
-    }
-    case 5: {
       return this.userFactory$1;
       break
     }
-    case 6: {
-      return this.userService$1;
-      break
-    }
-    case 7: {
+    case 5: {
       return this.workloadService$1;
       break
     }
@@ -33596,34 +33586,6 @@ $c_Lcom_microsoft_awt_components_GroupListController.prototype.productElement__I
 });
 $c_Lcom_microsoft_awt_components_GroupListController.prototype.toString__T = (function() {
   return $m_sr_ScalaRunTime$().$$undtoString__s_Product__T(this)
-});
-$c_Lcom_microsoft_awt_components_GroupListController.prototype.init___Lcom_microsoft_awt_components_GroupListScope__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_UserService__Lcom_microsoft_awt_components_WorkloadService = (function($$scope, $$location, $$timeout, toaster, sessionFactory, userFactory, userService, workloadService) {
-  this.$$scope$1 = $$scope;
-  this.$$location$1 = $$location;
-  this.$$timeout$1 = $$timeout;
-  this.toaster$1 = toaster;
-  this.sessionFactory$1 = sessionFactory;
-  this.userFactory$1 = userFactory;
-  this.userService$1 = userService;
-  this.workloadService$1 = workloadService;
-  $$scope.init = (function(arg$outer) {
-    return (function(label$2) {
-      var jsx$1 = $g.console;
-      var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Initializing ", "... [", "]"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$objectGetClass(arg$outer).getSimpleName__T(), label$2]));
-      jsx$1.log(s)
-    })
-  })(this);
-  $$scope.getGroups = (function(f) {
-    return (function(arg1) {
-      return f.apply__O__O(arg1)
-    })
-  })(new $c_Lcom_microsoft_awt_components_GroupListController$$anonfun$2().init___Lcom_microsoft_awt_components_GroupListController(this));
-  $$scope.toggleGroup = (function(f$1) {
-    return (function(arg1$1) {
-      return f$1.apply__O__O(arg1$1)
-    })
-  })(new $c_Lcom_microsoft_awt_components_GroupListController$$anonfun$3().init___Lcom_microsoft_awt_components_GroupListController(this));
-  return this
 });
 $c_Lcom_microsoft_awt_components_GroupListController.prototype.com$microsoft$awt$components$GroupListController$$enrichAllGroupsWithMembersAndWorkloads__sjs_js_Array__V = (function(groups) {
   var i = 0;
@@ -34331,7 +34293,7 @@ var $d_Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentDialog
 });
 $c_Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentDialogController.prototype.$classData = $d_Lcom_microsoft_awt_components_WorkloadCommentDialog$WorkloadCommentDialogController;
 /** @constructor */
-function $c_Lcom_microsoft_awt_directives_CensorDirective() {
+function $c_Lcom_microsoft_awt_directives_CensorableDirective() {
   $c_O.call(this);
   this.sessionFactory$1 = null;
   this.censor$undblock$1 = null;
@@ -34342,43 +34304,14 @@ function $c_Lcom_microsoft_awt_directives_CensorDirective() {
   this.com$microsoft$awt$directives$EmoticonSupport$$Emoticons$1 = null;
   this.restrict$1 = null
 }
-$c_Lcom_microsoft_awt_directives_CensorDirective.prototype = new $h_O();
-$c_Lcom_microsoft_awt_directives_CensorDirective.prototype.constructor = $c_Lcom_microsoft_awt_directives_CensorDirective;
+$c_Lcom_microsoft_awt_directives_CensorableDirective.prototype = new $h_O();
+$c_Lcom_microsoft_awt_directives_CensorableDirective.prototype.constructor = $c_Lcom_microsoft_awt_directives_CensorableDirective;
 /** @constructor */
-function $h_Lcom_microsoft_awt_directives_CensorDirective() {
+function $h_Lcom_microsoft_awt_directives_CensorableDirective() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_directives_CensorDirective.prototype = $c_Lcom_microsoft_awt_directives_CensorDirective.prototype;
-$c_Lcom_microsoft_awt_directives_CensorDirective.prototype.link__Lcom_microsoft_awt_directives_CensorDirectiveScope__Lorg_scalajs_angularjs_JQLite__Lorg_scalajs_angularjs_Attributes__V = (function(scope, element, attrs) {
-  var value = scope.text;
-  if ((value === (void 0))) {
-    var value$2 = (void 0)
-  } else {
-    var text = $as_T(value);
-    var value$1 = this.com$microsoft$awt$directives$CensorDirective$$replaceTags__T__T(text);
-    var value$2 = value$1
-  };
-  if ((value$2 === (void 0))) {
-    var jsx$1 = (void 0)
-  } else {
-    var text$1 = $as_T(value$2);
-    var value$3 = $s_Lcom_microsoft_awt_directives_EmoticonSupport$class__enrichWithEmoticons__Lcom_microsoft_awt_directives_EmoticonSupport__T__T(this, text$1);
-    var jsx$1 = value$3
-  };
-  scope.html = jsx$1
-});
-$c_Lcom_microsoft_awt_directives_CensorDirective.prototype.init___Lorg_scalajs_angularjs_Compile__Lorg_scalajs_angularjs_sanitize_Sce__Lcom_microsoft_awt_components_SessionFactory = (function($$compile, $$sce, sessionFactory) {
-  this.sessionFactory$1 = sessionFactory;
-  this.restrict$1 = "E";
-  $s_Lcom_microsoft_awt_directives_EmoticonSupport$class__$$init$__Lcom_microsoft_awt_directives_EmoticonSupport__V(this);
-  this.censor$undblock$1 = "<span class=\"sk_censored\">censored</span>";
-  this.scope$1 = new $c_Lcom_microsoft_awt_directives_CensorDirectiveScopeTemplate("@text");
-  this.replace$1 = true;
-  this.transclude$1 = true;
-  this.template$1 = "<span compile=\"html\"></span>";
-  return this
-});
-$c_Lcom_microsoft_awt_directives_CensorDirective.prototype.com$microsoft$awt$directives$CensorDirective$$replaceTags__T__T = (function(text) {
+$h_Lcom_microsoft_awt_directives_CensorableDirective.prototype = $c_Lcom_microsoft_awt_directives_CensorableDirective.prototype;
+$c_Lcom_microsoft_awt_directives_CensorableDirective.prototype.com$microsoft$awt$directives$CensorableDirective$$replaceTags__T__T = (function(text) {
   var value = this.sessionFactory$1.session__sjs_js_UndefOr();
   var value$1 = ((value === (void 0)) ? (void 0) : value.isAnonymous);
   var isAnonymous = $uZ(((value$1 === (void 0)) || value$1));
@@ -34415,10 +34348,45 @@ $c_Lcom_microsoft_awt_directives_CensorDirective.prototype.com$microsoft$awt$dir
   var this$22 = sb.underlying$5;
   return this$22.content$1
 });
-var $d_Lcom_microsoft_awt_directives_CensorDirective = new $TypeData().initClass({
-  Lcom_microsoft_awt_directives_CensorDirective: 0
-}, false, "com.microsoft.awt.directives.CensorDirective", {
-  Lcom_microsoft_awt_directives_CensorDirective: 1,
+$c_Lcom_microsoft_awt_directives_CensorableDirective.prototype.com$microsoft$awt$directives$EmoticonSupport$$Emoticons__sjs_js_Array = (function() {
+  return this.com$microsoft$awt$directives$EmoticonSupport$$Emoticons$1
+});
+$c_Lcom_microsoft_awt_directives_CensorableDirective.prototype.init___Lorg_scalajs_angularjs_Compile__Lorg_scalajs_angularjs_sanitize_Sce__Lcom_microsoft_awt_components_SessionFactory = (function($$compile, $$sce, sessionFactory) {
+  this.sessionFactory$1 = sessionFactory;
+  this.restrict$1 = "E";
+  $s_Lcom_microsoft_awt_directives_EmoticonSupport$class__$$init$__Lcom_microsoft_awt_directives_EmoticonSupport__V(this);
+  this.censor$undblock$1 = "<span class=\"sk_censored\">censored</span>";
+  this.scope$1 = new $c_Lcom_microsoft_awt_directives_CensorableDirectiveScopeTemplate("@text");
+  this.replace$1 = true;
+  this.transclude$1 = true;
+  this.template$1 = "<span compile=\"html\"></span>";
+  return this
+});
+$c_Lcom_microsoft_awt_directives_CensorableDirective.prototype.com$microsoft$awt$directives$EmoticonSupport$$undsetter$und$com$microsoft$awt$directives$EmoticonSupport$$Emoticons$und$eq__sjs_js_Array__V = (function(x$1) {
+  this.com$microsoft$awt$directives$EmoticonSupport$$Emoticons$1 = x$1
+});
+$c_Lcom_microsoft_awt_directives_CensorableDirective.prototype.link__Lcom_microsoft_awt_directives_CensorableDirectiveScope__Lorg_scalajs_angularjs_JQLite__Lorg_scalajs_angularjs_Attributes__V = (function(scope, element, attrs) {
+  var value = scope.text;
+  if ((value === (void 0))) {
+    var value$2 = (void 0)
+  } else {
+    var text = $as_T(value);
+    var value$1 = this.com$microsoft$awt$directives$CensorableDirective$$replaceTags__T__T(text);
+    var value$2 = value$1
+  };
+  if ((value$2 === (void 0))) {
+    var jsx$1 = (void 0)
+  } else {
+    var text$1 = $as_T(value$2);
+    var value$3 = $s_Lcom_microsoft_awt_directives_EmoticonSupport$class__enrichWithEmoticons__Lcom_microsoft_awt_directives_EmoticonSupport__T__T(this, text$1);
+    var jsx$1 = value$3
+  };
+  scope.html = jsx$1
+});
+var $d_Lcom_microsoft_awt_directives_CensorableDirective = new $TypeData().initClass({
+  Lcom_microsoft_awt_directives_CensorableDirective: 0
+}, false, "com.microsoft.awt.directives.CensorableDirective", {
+  Lcom_microsoft_awt_directives_CensorableDirective: 1,
   O: 1,
   Lorg_scalajs_angularjs_Directive: 1,
   Lorg_scalajs_angularjs_Directive$ElementSupport: 1,
@@ -34426,7 +34394,7 @@ var $d_Lcom_microsoft_awt_directives_CensorDirective = new $TypeData().initClass
   Lorg_scalajs_angularjs_Directive$LinkSupport: 1,
   Lorg_scalajs_angularjs_Directive$TemplateSupport: 1
 });
-$c_Lcom_microsoft_awt_directives_CensorDirective.prototype.$classData = $d_Lcom_microsoft_awt_directives_CensorDirective;
+$c_Lcom_microsoft_awt_directives_CensorableDirective.prototype.$classData = $d_Lcom_microsoft_awt_directives_CensorableDirective;
 /** @constructor */
 function $c_Lcom_microsoft_awt_directives_NewsPostDirective() {
   $c_O.call(this);
@@ -34495,6 +34463,9 @@ $c_Lcom_microsoft_awt_directives_NewsPostDirective.prototype.com$microsoft$awt$d
     return text
   }
 });
+$c_Lcom_microsoft_awt_directives_NewsPostDirective.prototype.com$microsoft$awt$directives$EmoticonSupport$$Emoticons__sjs_js_Array = (function() {
+  return this.com$microsoft$awt$directives$EmoticonSupport$$Emoticons$1
+});
 $c_Lcom_microsoft_awt_directives_NewsPostDirective.prototype.link__Lcom_microsoft_awt_directives_NewsPostDirectiveScope__Lorg_scalajs_angularjs_JQLite__Lorg_scalajs_angularjs_Attributes__V = (function(scope, element, attrs) {
   var value = scope.text;
   if ((value === (void 0))) {
@@ -34512,6 +34483,9 @@ $c_Lcom_microsoft_awt_directives_NewsPostDirective.prototype.link__Lcom_microsof
     var jsx$1 = value$3
   };
   scope.html = jsx$1
+});
+$c_Lcom_microsoft_awt_directives_NewsPostDirective.prototype.com$microsoft$awt$directives$EmoticonSupport$$undsetter$und$com$microsoft$awt$directives$EmoticonSupport$$Emoticons$und$eq__sjs_js_Array__V = (function(x$1) {
+  this.com$microsoft$awt$directives$EmoticonSupport$$Emoticons$1 = x$1
 });
 $c_Lcom_microsoft_awt_directives_NewsPostDirective.prototype.init___Lorg_scalajs_angularjs_Compile__Lorg_scalajs_angularjs_sanitize_Sce = (function($$compile, $$sce) {
   this.restrict$1 = "E";
@@ -37861,8 +37835,8 @@ function $c_Lcom_microsoft_awt_components_HomeController() {
   this.toaster$1 = null;
   this.eventService$1 = null;
   this.fileUploader$1 = null;
-  this.sessionFactory$1 = null;
   this.postService$1 = null;
+  this.sessionFactory$1 = null;
   this.userFactory$1 = null;
   this.userDialog$1 = null;
   this.userService$1 = null;
@@ -37918,7 +37892,7 @@ $c_Lcom_microsoft_awt_components_HomeController.prototype.productPrefix__T = (fu
 $c_Lcom_microsoft_awt_components_HomeController.prototype.productArity__I = (function() {
   return 12
 });
-$c_Lcom_microsoft_awt_components_HomeController.prototype.init___Lcom_microsoft_awt_components_HomeControllerScope__sjs_js_Dynamic__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_EventService__Lorg_scalajs_angularjs_fileupload_nervgh_FileUploader__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_PostService__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_UserDialog__Lcom_microsoft_awt_components_UserService = (function($$scope, $$compile, $$location, $$timeout, toaster, eventService, fileUploader, sessionFactory, postService, userFactory, userDialog, userService) {
+$c_Lcom_microsoft_awt_components_HomeController.prototype.init___Lcom_microsoft_awt_components_HomeControllerScope__sjs_js_Dynamic__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_EventService__Lorg_scalajs_angularjs_fileupload_nervgh_FileUploader__Lcom_microsoft_awt_components_PostService__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_UserFactory__Lcom_microsoft_awt_components_UserDialog__Lcom_microsoft_awt_components_UserService = (function($$scope, $$compile, $$location, $$timeout, toaster, eventService, fileUploader, postService, sessionFactory, userFactory, userDialog, userService) {
   this.$$scope$1 = $$scope;
   this.$$compile$1 = $$compile;
   this.$$location$1 = $$location;
@@ -37926,8 +37900,8 @@ $c_Lcom_microsoft_awt_components_HomeController.prototype.init___Lcom_microsoft_
   this.toaster$1 = toaster;
   this.eventService$1 = eventService;
   this.fileUploader$1 = fileUploader;
-  this.sessionFactory$1 = sessionFactory;
   this.postService$1 = postService;
+  this.sessionFactory$1 = sessionFactory;
   this.userFactory$1 = userFactory;
   this.userDialog$1 = userDialog;
   this.userService$1 = userService;
@@ -38009,13 +37983,17 @@ $c_Lcom_microsoft_awt_components_HomeController.prototype.init___Lcom_microsoft_
       arg$outer$4.$$scope$1.showUpload = (!$uZ(arg$outer$4.$$scope$1.showUpload))
     })
   })(this);
-  var listener = new $c_sjsr_AnonFunction2().init___sjs_js_Function2((function(arg$outer$5) {
+  $$scope.$watch($$scope.user, (function(arg$outer$5) {
+    return (function(newUser$2, oldUser$2) {
+      arg$outer$5.com$microsoft$awt$components$HomeController$$setupNavigationMenus__sjs_js_UndefOr__V(newUser$2)
+    })
+  })(this));
+  var listener = new $c_sjsr_AnonFunction2().init___sjs_js_Function2((function(arg$outer$6) {
     return (function(x$6$2, user$2) {
       var jsx$3 = $g.console;
-      var s$2 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["", ": user loaded - ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$objectGetClass(arg$outer$5).getSimpleName__T(), user$2.primaryEmail]));
+      var s$2 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["", ": user loaded - ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$objectGetClass(arg$outer$6).getSimpleName__T(), user$2.primaryEmail]));
       jsx$3.log(s$2);
-      (0, arg$outer$5.$$scope$1.init)();
-      arg$outer$5.com$microsoft$awt$components$HomeController$$setupNavigationMenus__sjs_js_UndefOr__V(user$2)
+      (0, arg$outer$6.$$scope$1.init)()
     })
   })(this));
   $g.console.log("received user loaded event.");
@@ -38024,12 +38002,12 @@ $c_Lcom_microsoft_awt_components_HomeController.prototype.init___Lcom_microsoft_
       return f$4.apply__O__O__O(arg1$4, arg2)
     })
   })(listener));
-  var listener$1 = new $c_sjsr_AnonFunction2().init___sjs_js_Function2((function(arg$outer$6) {
+  var listener$1 = new $c_sjsr_AnonFunction2().init___sjs_js_Function2((function(arg$outer$7) {
     return (function(x$7$2, post$2) {
       var jsx$4 = $g.console;
       var s$3 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Post received - ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$as_T($g.angular.toJson(post$2))]));
       jsx$4.log(s$3);
-      (0, arg$outer$6.$$scope$1.updatePost)(post$2)
+      (0, arg$outer$7.$$scope$1.updatePost)(post$2)
     })
   })(this));
   $$scope.$on($m_Lcom_microsoft_awt_models_WsEventMessage$().POST$1, (function(f$5) {
@@ -38052,15 +38030,15 @@ $c_Lcom_microsoft_awt_components_HomeController.prototype.equals__O__Z = (functi
       var jsx$5 = false
     };
     if ((jsx$5 && $m_sr_BoxesRunTime$().equals__O__O__Z(this.fileUploader$1, HomeController$1.fileUploader$1))) {
-      var x$3 = this.sessionFactory$1;
-      var x$4 = HomeController$1.sessionFactory$1;
+      var x$3 = this.postService$1;
+      var x$4 = HomeController$1.postService$1;
       var jsx$4 = (x$3 === x$4)
     } else {
       var jsx$4 = false
     };
     if (jsx$4) {
-      var x$5 = this.postService$1;
-      var x$6 = HomeController$1.postService$1;
+      var x$5 = this.sessionFactory$1;
+      var x$6 = HomeController$1.sessionFactory$1;
       var jsx$3 = (x$5 === x$6)
     } else {
       var jsx$3 = false
@@ -38121,11 +38099,11 @@ $c_Lcom_microsoft_awt_components_HomeController.prototype.productElement__I__O =
       break
     }
     case 7: {
-      return this.sessionFactory$1;
+      return this.postService$1;
       break
     }
     case 8: {
-      return this.postService$1;
+      return this.sessionFactory$1;
       break
     }
     case 9: {
@@ -38372,343 +38350,6 @@ var $d_Lcom_microsoft_awt_components_HomeController = new $TypeData().initClass(
   Ljava_io_Serializable: 1
 });
 $c_Lcom_microsoft_awt_components_HomeController.prototype.$classData = $d_Lcom_microsoft_awt_components_HomeController;
-/** @constructor */
-function $c_Lcom_microsoft_awt_components_MainController() {
-  $c_Lcom_microsoft_awt_components_AutoCompletionController.call(this);
-  this.$$scope$2 = null;
-  this.$$location$2 = null;
-  this.$$q$2 = null;
-  this.$$timeout$2 = null;
-  this.toaster$2 = null;
-  this.eventService$2 = null;
-  this.groupService$2 = null;
-  this.sessionFactory$2 = null;
-  this.notificationSvc$2 = null;
-  this.reactiveSearchSvc$2 = null;
-  this.webSocketSvc$2 = null;
-  this.connected$2 = false
-}
-$c_Lcom_microsoft_awt_components_MainController.prototype = new $h_Lcom_microsoft_awt_components_AutoCompletionController();
-$c_Lcom_microsoft_awt_components_MainController.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController;
-/** @constructor */
-function $h_Lcom_microsoft_awt_components_MainController() {
-  /*<skip>*/
-}
-$h_Lcom_microsoft_awt_components_MainController.prototype = $c_Lcom_microsoft_awt_components_MainController.prototype;
-$c_Lcom_microsoft_awt_components_MainController.prototype.productPrefix__T = (function() {
-  return "MainController"
-});
-$c_Lcom_microsoft_awt_components_MainController.prototype.productArity__I = (function() {
-  return 11
-});
-$c_Lcom_microsoft_awt_components_MainController.prototype.equals__O__Z = (function(x$1) {
-  if ((this === x$1)) {
-    return true
-  } else if ($is_Lcom_microsoft_awt_components_MainController(x$1)) {
-    var MainController$1 = $as_Lcom_microsoft_awt_components_MainController(x$1);
-    if ((((($m_sr_BoxesRunTime$().equals__O__O__Z(this.$$scope$2, MainController$1.$$scope$2) && $m_sr_BoxesRunTime$().equals__O__O__Z(this.$$location$2, MainController$1.$$location$2)) && $m_sr_BoxesRunTime$().equals__O__O__Z(this.$$q$2, MainController$1.$$q$2)) && $m_sr_BoxesRunTime$().equals__O__O__Z(this.$$timeout$2, MainController$1.$$timeout$2)) && $m_sr_BoxesRunTime$().equals__O__O__Z(this.toaster$2, MainController$1.toaster$2))) {
-      var x = this.eventService$2;
-      var x$2 = MainController$1.eventService$2;
-      var jsx$5 = (x === x$2)
-    } else {
-      var jsx$5 = false
-    };
-    if (jsx$5) {
-      var x$3 = this.groupService$2;
-      var x$4 = MainController$1.groupService$2;
-      var jsx$4 = (x$3 === x$4)
-    } else {
-      var jsx$4 = false
-    };
-    if (jsx$4) {
-      var x$5 = this.sessionFactory$2;
-      var x$6 = MainController$1.sessionFactory$2;
-      var jsx$3 = (x$5 === x$6)
-    } else {
-      var jsx$3 = false
-    };
-    if (jsx$3) {
-      var x$7 = this.notificationSvc$2;
-      var x$8 = MainController$1.notificationSvc$2;
-      var jsx$2 = (x$7 === x$8)
-    } else {
-      var jsx$2 = false
-    };
-    if (jsx$2) {
-      var x$9 = this.reactiveSearchSvc$2;
-      var x$10 = MainController$1.reactiveSearchSvc$2;
-      var jsx$1 = (x$9 === x$10)
-    } else {
-      var jsx$1 = false
-    };
-    if (jsx$1) {
-      var x$11 = this.webSocketSvc$2;
-      var x$12 = MainController$1.webSocketSvc$2;
-      return (x$11 === x$12)
-    } else {
-      return false
-    }
-  } else {
-    return false
-  }
-});
-$c_Lcom_microsoft_awt_components_MainController.prototype.productElement__I__O = (function(x$1) {
-  switch (x$1) {
-    case 0: {
-      return this.$$scope$2;
-      break
-    }
-    case 1: {
-      return this.$$location$2;
-      break
-    }
-    case 2: {
-      return this.$$q$2;
-      break
-    }
-    case 3: {
-      return this.$$timeout$2;
-      break
-    }
-    case 4: {
-      return this.toaster$2;
-      break
-    }
-    case 5: {
-      return this.eventService$2;
-      break
-    }
-    case 6: {
-      return this.groupService$2;
-      break
-    }
-    case 7: {
-      return this.sessionFactory$2;
-      break
-    }
-    case 8: {
-      return this.notificationSvc$2;
-      break
-    }
-    case 9: {
-      return this.reactiveSearchSvc$2;
-      break
-    }
-    case 10: {
-      return this.webSocketSvc$2;
-      break
-    }
-    default: {
-      throw new $c_jl_IndexOutOfBoundsException().init___T(("" + x$1))
-    }
-  }
-});
-$c_Lcom_microsoft_awt_components_MainController.prototype.init___Lcom_microsoft_awt_components_MainScope__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_Q__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_EventService__Lcom_microsoft_awt_components_GroupService__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_NotificationService__Lcom_microsoft_awt_components_ReactiveSearchService__Lcom_microsoft_awt_components_WebSocketService = (function($$scope, $$location, $$q, $$timeout, toaster, eventService, groupService, sessionFactory, notificationSvc, reactiveSearchSvc, webSocketSvc) {
-  this.$$scope$2 = $$scope;
-  this.$$location$2 = $$location;
-  this.$$q$2 = $$q;
-  this.$$timeout$2 = $$timeout;
-  this.toaster$2 = toaster;
-  this.eventService$2 = eventService;
-  this.groupService$2 = groupService;
-  this.sessionFactory$2 = sessionFactory;
-  this.notificationSvc$2 = notificationSvc;
-  this.reactiveSearchSvc$2 = reactiveSearchSvc;
-  this.webSocketSvc$2 = webSocketSvc;
-  $c_Lcom_microsoft_awt_components_AutoCompletionController.prototype.init___Lcom_microsoft_awt_components_AutoCompletionScope__Lorg_scalajs_angularjs_Q__Lcom_microsoft_awt_components_ReactiveSearchService.call(this, $$scope, $$q, reactiveSearchSvc);
-  $s_Lcom_microsoft_awt_components_GlobalLoading$class__$$init$__Lcom_microsoft_awt_components_GlobalLoading__V(this);
-  $s_Lcom_microsoft_awt_components_GlobalNavigation$class__$$init$__Lcom_microsoft_awt_components_GlobalNavigation__V(this);
-  $$scope.tabs = [];
-  this.connected$2 = false;
-  $$scope.notifications = [];
-  $$scope.init = (function(arg$outer) {
-    return (function() {
-      var jsx$1 = $g.console;
-      var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Initializing '", "'..."])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$objectGetClass(arg$outer).getSimpleName__T()]));
-      jsx$1.log(s)
-    })
-  })(this);
-  $$scope.formatSearchResult = (function(f) {
-    return (function(arg1) {
-      return f.apply__O__O(arg1)
-    })
-  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$4().init___Lcom_microsoft_awt_components_MainController(this));
-  $$scope.getAvatarURL = (function(f$1) {
-    return (function(arg1$1) {
-      return f$1.apply__O__O(arg1$1)
-    })
-  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$5().init___Lcom_microsoft_awt_components_MainController(this));
-  $$scope.getOnlineStatus = (function(f$2) {
-    return (function(arg1$2) {
-      return f$2.apply__O__O(arg1$2)
-    })
-  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$6().init___Lcom_microsoft_awt_components_MainController(this));
-  $$scope.getUpcomingEvents = (function(arg$outer$1) {
-    return (function() {
-      return arg$outer$1.$$scope$2.events
-    })
-  })(this);
-  $$scope.isConnected = (function(arg$outer$2) {
-    return (function() {
-      return arg$outer$2.connected$2
-    })
-  })(this);
-  $$scope.isLoginPage = (function(arg$outer$3) {
-    return (function() {
-      return ($as_T(arg$outer$3.$$location$2.path()) === "/login")
-    })
-  })(this);
-  $$scope.isSelectedTab = (function(f$3) {
-    return (function(arg1$3) {
-      return f$3.apply__O__O(arg1$3)
-    })
-  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$8().init___Lcom_microsoft_awt_components_MainController(this));
-  $$scope.onSelectedItem = (function(f$4) {
-    return (function(arg1$4, arg2, arg3) {
-      return f$4.apply__O__O__O__O(arg1$4, arg2, arg3)
-    })
-  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$9().init___Lcom_microsoft_awt_components_MainController(this));
-  $$scope.setActiveTab = (function(arg$outer$4) {
-    return (function(tab$2) {
-      return arg$outer$4.$$location$2.path($as_T(tab$2.url))
-    })
-  })(this);
-  $$scope.session = (function(arg$outer$5) {
-    return (function() {
-      return arg$outer$5.sessionFactory$2.session__sjs_js_UndefOr()
-    })
-  })(this);
-  $$scope.toggled = (function(f$5) {
-    return (function(arg1$5) {
-      return f$5.apply__O__O(arg1$5)
-    })
-  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$12().init___Lcom_microsoft_awt_components_MainController(this));
-  $$scope.user = (function(arg$outer$6) {
-    return (function() {
-      return arg$outer$6.sessionFactory$2.user__sjs_js_UndefOr()
-    })
-  })(this);
-  $$scope.deleteNotification = (function(f$6) {
-    return (function(arg1$6) {
-      return f$6.apply__O__O(arg1$6)
-    })
-  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$14().init___Lcom_microsoft_awt_components_MainController(this));
-  $$scope.getNotificationGlyphClass = (function(f$7) {
-    return (function(arg1$7) {
-      return f$7.apply__O__O(arg1$7)
-    })
-  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$16().init___Lcom_microsoft_awt_components_MainController(this));
-  $$scope.getNotifications = (function(arg$outer$7) {
-    return (function() {
-      return arg$outer$7.$$scope$2.notifications
-    })
-  })(this);
-  $$scope.getNotificationsByType = (function(f$8) {
-    return (function(arg1$8) {
-      return f$8.apply__O__O(arg1$8)
-    })
-  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$18().init___Lcom_microsoft_awt_components_MainController(this));
-  var listener = new $c_sjsr_AnonFunction2().init___sjs_js_Function2((function(arg$outer$8) {
-    return (function(x$5$2, session$2) {
-      arg$outer$8.com$microsoft$awt$components$MainController$$loadEventsAndNotifications__Lcom_microsoft_awt_models_Session__V(session$2)
-    })
-  })(this));
-  $$scope.$on("session_loaded", (function(f$9) {
-    return (function(arg1$9, arg2$1) {
-      return f$9.apply__O__O__O(arg1$9, arg2$1)
-    })
-  })(listener));
-  var listener$1 = new $c_sjsr_AnonFunction2().init___sjs_js_Function2((function(arg$outer$9) {
-    return (function(x$6$2, notification$2) {
-      var jsx$2 = $g.console;
-      var s$1 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Received notification: ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$as_T($g.angular.toJson(notification$2, true))]));
-      jsx$2.log(s$1);
-      return $uI(arg$outer$9.$$scope$2.notifications.push(notification$2))
-    })
-  })(this));
-  $$scope.$on($m_Lcom_microsoft_awt_models_WsEventMessage$().NOTIFICATION$1, (function(f$10) {
-    return (function(arg1$10, arg2$2) {
-      return f$10.apply__O__O__O(arg1$10, arg2$2)
-    })
-  })(listener$1));
-  var listener$2 = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$22().init___Lcom_microsoft_awt_components_MainController(this);
-  $$scope.$on("WS_STATE_CHANGE", (function(f$11) {
-    return (function(arg1$11, arg2$3) {
-      return f$11.apply__O__O__O(arg1$11, arg2$3)
-    })
-  })(listener$2));
-  return this
-});
-$c_Lcom_microsoft_awt_components_MainController.prototype.$$timeout__Lorg_scalajs_angularjs_Timeout = (function() {
-  return this.$$timeout$2
-});
-$c_Lcom_microsoft_awt_components_MainController.prototype.toString__T = (function() {
-  return $m_sr_ScalaRunTime$().$$undtoString__s_Product__T(this)
-});
-$c_Lcom_microsoft_awt_components_MainController.prototype.$$scope__Lcom_microsoft_awt_components_GlobalLoadingScope = (function() {
-  return this.$$scope$2
-});
-$c_Lcom_microsoft_awt_components_MainController.prototype.com$microsoft$awt$components$MainController$$getNotificationTypeIcon__T__T = (function(eventType) {
-  _getNotificationTypeIcon: while (true) {
-    var x1 = eventType;
-    if ((x1 === "ACHIEVEMENT")) {
-      return "fa-diamond sk_diamond"
-    } else if ((x1 === "COMMENT")) {
-      return "fa-comment-o sk_comment"
-    } else if ((x1 === "EVENT")) {
-      return "fa-calendar sk_calender"
-    } else if ((x1 === "NOTIFICATION")) {
-      return "fa-info-circle sk_notifications"
-    } else {
-      var jsx$1 = $g.console;
-      var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Unrecognized event type '", "'"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([eventType]));
-      jsx$1.warn(s);
-      eventType = "NOTIFICATION";
-      continue _getNotificationTypeIcon
-    }
-  }
-});
-$c_Lcom_microsoft_awt_components_MainController.prototype.hashCode__I = (function() {
-  var this$2 = $m_s_util_hashing_MurmurHash3$();
-  return this$2.productHash__s_Product__I__I(this, (-889275714))
-});
-$c_Lcom_microsoft_awt_components_MainController.prototype.com$microsoft$awt$components$MainController$$loadEventsAndNotifications__Lcom_microsoft_awt_models_Session__V = (function(session) {
-  var value = session.userID;
-  var f = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1().init___Lcom_microsoft_awt_components_MainController(this);
-  if ((value !== (void 0))) {
-    f.apply__T__V($as_T(value))
-  }
-});
-$c_Lcom_microsoft_awt_components_MainController.prototype.productIterator__sc_Iterator = (function() {
-  return new $c_sr_ScalaRunTime$$anon$1().init___s_Product(this)
-});
-function $is_Lcom_microsoft_awt_components_MainController(obj) {
-  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lcom_microsoft_awt_components_MainController)))
-}
-function $as_Lcom_microsoft_awt_components_MainController(obj) {
-  return (($is_Lcom_microsoft_awt_components_MainController(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "com.microsoft.awt.components.MainController"))
-}
-function $isArrayOf_Lcom_microsoft_awt_components_MainController(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcom_microsoft_awt_components_MainController)))
-}
-function $asArrayOf_Lcom_microsoft_awt_components_MainController(obj, depth) {
-  return (($isArrayOf_Lcom_microsoft_awt_components_MainController(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.microsoft.awt.components.MainController;", depth))
-}
-var $d_Lcom_microsoft_awt_components_MainController = new $TypeData().initClass({
-  Lcom_microsoft_awt_components_MainController: 0
-}, false, "com.microsoft.awt.components.MainController", {
-  Lcom_microsoft_awt_components_MainController: 1,
-  Lcom_microsoft_awt_components_AutoCompletionController: 1,
-  O: 1,
-  Lorg_scalajs_angularjs_Controller: 1,
-  Lcom_microsoft_awt_components_GlobalLoading: 1,
-  Lcom_microsoft_awt_components_GlobalNavigation: 1,
-  s_Product: 1,
-  s_Equals: 1,
-  s_Serializable: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lcom_microsoft_awt_components_MainController.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController;
 /** @constructor */
 function $c_s_concurrent_impl_Promise$DefaultPromise() {
   $c_s_concurrent_impl_AbstractPromise.call(this)
@@ -39470,6 +39111,341 @@ function $m_scm_ListBuffer$() {
   };
   return $n_scm_ListBuffer$
 }
+/** @constructor */
+function $c_Lcom_microsoft_awt_components_MainController() {
+  $c_Lcom_microsoft_awt_components_AutoCompletionController.call(this);
+  this.$$scope$2 = null;
+  this.$$location$2 = null;
+  this.$$q$2 = null;
+  this.$$timeout$2 = null;
+  this.toaster$2 = null;
+  this.eventService$2 = null;
+  this.groupService$2 = null;
+  this.sessionFactory$2 = null;
+  this.notificationSvc$2 = null;
+  this.reactiveSearchSvc$2 = null;
+  this.webSocketSvc$2 = null;
+  this.connected$2 = false
+}
+$c_Lcom_microsoft_awt_components_MainController.prototype = new $h_Lcom_microsoft_awt_components_AutoCompletionController();
+$c_Lcom_microsoft_awt_components_MainController.prototype.constructor = $c_Lcom_microsoft_awt_components_MainController;
+/** @constructor */
+function $h_Lcom_microsoft_awt_components_MainController() {
+  /*<skip>*/
+}
+$h_Lcom_microsoft_awt_components_MainController.prototype = $c_Lcom_microsoft_awt_components_MainController.prototype;
+$c_Lcom_microsoft_awt_components_MainController.prototype.productPrefix__T = (function() {
+  return "MainController"
+});
+$c_Lcom_microsoft_awt_components_MainController.prototype.sessionFactory__Lcom_microsoft_awt_components_SessionFactory = (function() {
+  return this.sessionFactory$2
+});
+$c_Lcom_microsoft_awt_components_MainController.prototype.productArity__I = (function() {
+  return 11
+});
+$c_Lcom_microsoft_awt_components_MainController.prototype.equals__O__Z = (function(x$1) {
+  if ((this === x$1)) {
+    return true
+  } else if ($is_Lcom_microsoft_awt_components_MainController(x$1)) {
+    var MainController$1 = $as_Lcom_microsoft_awt_components_MainController(x$1);
+    if ((((($m_sr_BoxesRunTime$().equals__O__O__Z(this.$$scope$2, MainController$1.$$scope$2) && $m_sr_BoxesRunTime$().equals__O__O__Z(this.$$location$2, MainController$1.$$location$2)) && $m_sr_BoxesRunTime$().equals__O__O__Z(this.$$q$2, MainController$1.$$q$2)) && $m_sr_BoxesRunTime$().equals__O__O__Z(this.$$timeout$2, MainController$1.$$timeout$2)) && $m_sr_BoxesRunTime$().equals__O__O__Z(this.toaster$2, MainController$1.toaster$2))) {
+      var x = this.eventService$2;
+      var x$2 = MainController$1.eventService$2;
+      var jsx$5 = (x === x$2)
+    } else {
+      var jsx$5 = false
+    };
+    if (jsx$5) {
+      var x$3 = this.groupService$2;
+      var x$4 = MainController$1.groupService$2;
+      var jsx$4 = (x$3 === x$4)
+    } else {
+      var jsx$4 = false
+    };
+    if (jsx$4) {
+      var x$5 = this.sessionFactory$2;
+      var x$6 = MainController$1.sessionFactory$2;
+      var jsx$3 = (x$5 === x$6)
+    } else {
+      var jsx$3 = false
+    };
+    if (jsx$3) {
+      var x$7 = this.notificationSvc$2;
+      var x$8 = MainController$1.notificationSvc$2;
+      var jsx$2 = (x$7 === x$8)
+    } else {
+      var jsx$2 = false
+    };
+    if (jsx$2) {
+      var x$9 = this.reactiveSearchSvc$2;
+      var x$10 = MainController$1.reactiveSearchSvc$2;
+      var jsx$1 = (x$9 === x$10)
+    } else {
+      var jsx$1 = false
+    };
+    if (jsx$1) {
+      var x$11 = this.webSocketSvc$2;
+      var x$12 = MainController$1.webSocketSvc$2;
+      return (x$11 === x$12)
+    } else {
+      return false
+    }
+  } else {
+    return false
+  }
+});
+$c_Lcom_microsoft_awt_components_MainController.prototype.productElement__I__O = (function(x$1) {
+  switch (x$1) {
+    case 0: {
+      return this.$$scope$2;
+      break
+    }
+    case 1: {
+      return this.$$location$2;
+      break
+    }
+    case 2: {
+      return this.$$q$2;
+      break
+    }
+    case 3: {
+      return this.$$timeout$2;
+      break
+    }
+    case 4: {
+      return this.toaster$2;
+      break
+    }
+    case 5: {
+      return this.eventService$2;
+      break
+    }
+    case 6: {
+      return this.groupService$2;
+      break
+    }
+    case 7: {
+      return this.sessionFactory$2;
+      break
+    }
+    case 8: {
+      return this.notificationSvc$2;
+      break
+    }
+    case 9: {
+      return this.reactiveSearchSvc$2;
+      break
+    }
+    case 10: {
+      return this.webSocketSvc$2;
+      break
+    }
+    default: {
+      throw new $c_jl_IndexOutOfBoundsException().init___T(("" + x$1))
+    }
+  }
+});
+$c_Lcom_microsoft_awt_components_MainController.prototype.init___Lcom_microsoft_awt_components_MainScope__Lorg_scalajs_angularjs_Location__Lorg_scalajs_angularjs_Q__Lorg_scalajs_angularjs_Timeout__Lorg_scalajs_angularjs_toaster_Toaster__Lcom_microsoft_awt_components_EventService__Lcom_microsoft_awt_components_GroupService__Lcom_microsoft_awt_components_SessionFactory__Lcom_microsoft_awt_components_NotificationService__Lcom_microsoft_awt_components_ReactiveSearchService__Lcom_microsoft_awt_components_WebSocketService = (function($$scope, $$location, $$q, $$timeout, toaster, eventService, groupService, sessionFactory, notificationSvc, reactiveSearchSvc, webSocketSvc) {
+  this.$$scope$2 = $$scope;
+  this.$$location$2 = $$location;
+  this.$$q$2 = $$q;
+  this.$$timeout$2 = $$timeout;
+  this.toaster$2 = toaster;
+  this.eventService$2 = eventService;
+  this.groupService$2 = groupService;
+  this.sessionFactory$2 = sessionFactory;
+  this.notificationSvc$2 = notificationSvc;
+  this.reactiveSearchSvc$2 = reactiveSearchSvc;
+  this.webSocketSvc$2 = webSocketSvc;
+  $c_Lcom_microsoft_awt_components_AutoCompletionController.prototype.init___Lcom_microsoft_awt_components_AutoCompletionScope__Lorg_scalajs_angularjs_Q__Lcom_microsoft_awt_components_ReactiveSearchService.call(this, $$scope, $$q, reactiveSearchSvc);
+  $s_Lcom_microsoft_awt_components_GlobalLoading$class__$$init$__Lcom_microsoft_awt_components_GlobalLoading__V(this);
+  $s_Lcom_microsoft_awt_components_GlobalNavigation$class__$$init$__Lcom_microsoft_awt_components_GlobalNavigation__V(this);
+  $s_Lcom_microsoft_awt_components_GlobalSession$class__$$init$__Lcom_microsoft_awt_components_GlobalSession__V(this);
+  $$scope.tabs = [];
+  this.connected$2 = false;
+  $$scope.notifications = [];
+  $$scope.init = (function(arg$outer) {
+    return (function() {
+      var jsx$1 = $g.console;
+      var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Initializing '", "'..."])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$objectGetClass(arg$outer).getSimpleName__T()]));
+      jsx$1.log(s)
+    })
+  })(this);
+  $$scope.formatSearchResult = (function(f) {
+    return (function(arg1) {
+      return f.apply__O__O(arg1)
+    })
+  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$4().init___Lcom_microsoft_awt_components_MainController(this));
+  $$scope.getAvatarURL = (function(f$1) {
+    return (function(arg1$1) {
+      return f$1.apply__O__O(arg1$1)
+    })
+  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$5().init___Lcom_microsoft_awt_components_MainController(this));
+  $$scope.getOnlineStatus = (function(f$2) {
+    return (function(arg1$2) {
+      return f$2.apply__O__O(arg1$2)
+    })
+  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$6().init___Lcom_microsoft_awt_components_MainController(this));
+  $$scope.getUpcomingEvents = (function(arg$outer$1) {
+    return (function() {
+      return arg$outer$1.$$scope$2.events
+    })
+  })(this);
+  $$scope.isConnected = (function(arg$outer$2) {
+    return (function() {
+      return arg$outer$2.connected$2
+    })
+  })(this);
+  $$scope.isLoginPage = (function(arg$outer$3) {
+    return (function() {
+      return ($as_T(arg$outer$3.$$location$2.path()) === "/login")
+    })
+  })(this);
+  $$scope.isSelectedTab = (function(f$3) {
+    return (function(arg1$3) {
+      return f$3.apply__O__O(arg1$3)
+    })
+  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$8().init___Lcom_microsoft_awt_components_MainController(this));
+  $$scope.onSelectedItem = (function(f$4) {
+    return (function(arg1$4, arg2, arg3) {
+      return f$4.apply__O__O__O__O(arg1$4, arg2, arg3)
+    })
+  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$9().init___Lcom_microsoft_awt_components_MainController(this));
+  $$scope.setActiveTab = (function(arg$outer$4) {
+    return (function(tab$2) {
+      return arg$outer$4.$$location$2.path($as_T(tab$2.url))
+    })
+  })(this);
+  $$scope.toggled = (function(f$5) {
+    return (function(arg1$5) {
+      return f$5.apply__O__O(arg1$5)
+    })
+  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$11().init___Lcom_microsoft_awt_components_MainController(this));
+  $$scope.deleteNotification = (function(f$6) {
+    return (function(arg1$6) {
+      return f$6.apply__O__O(arg1$6)
+    })
+  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$12().init___Lcom_microsoft_awt_components_MainController(this));
+  $$scope.getNotificationGlyphClass = (function(f$7) {
+    return (function(arg1$7) {
+      return f$7.apply__O__O(arg1$7)
+    })
+  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$14().init___Lcom_microsoft_awt_components_MainController(this));
+  $$scope.getNotifications = (function(arg$outer$5) {
+    return (function() {
+      return arg$outer$5.$$scope$2.notifications
+    })
+  })(this);
+  $$scope.getNotificationsByType = (function(f$8) {
+    return (function(arg1$8) {
+      return f$8.apply__O__O(arg1$8)
+    })
+  })(new $c_Lcom_microsoft_awt_components_MainController$$anonfun$16().init___Lcom_microsoft_awt_components_MainController(this));
+  var listener = new $c_sjsr_AnonFunction2().init___sjs_js_Function2((function(arg$outer$6) {
+    return (function(x$5$2, session$2) {
+      arg$outer$6.com$microsoft$awt$components$MainController$$loadEventsAndNotifications__Lcom_microsoft_awt_models_Session__V(session$2)
+    })
+  })(this));
+  $$scope.$on("session_loaded", (function(f$9) {
+    return (function(arg1$9, arg2$1) {
+      return f$9.apply__O__O__O(arg1$9, arg2$1)
+    })
+  })(listener));
+  var listener$1 = new $c_sjsr_AnonFunction2().init___sjs_js_Function2((function(arg$outer$7) {
+    return (function(x$6$2, notification$2) {
+      var jsx$2 = $g.console;
+      var s$1 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Received notification: ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$as_T($g.angular.toJson(notification$2, true))]));
+      jsx$2.log(s$1);
+      return $uI(arg$outer$7.$$scope$2.notifications.push(notification$2))
+    })
+  })(this));
+  $$scope.$on($m_Lcom_microsoft_awt_models_WsEventMessage$().NOTIFICATION$1, (function(f$10) {
+    return (function(arg1$10, arg2$2) {
+      return f$10.apply__O__O__O(arg1$10, arg2$2)
+    })
+  })(listener$1));
+  var listener$2 = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$20().init___Lcom_microsoft_awt_components_MainController(this);
+  $$scope.$on("WS_STATE_CHANGE", (function(f$11) {
+    return (function(arg1$11, arg2$3) {
+      return f$11.apply__O__O__O(arg1$11, arg2$3)
+    })
+  })(listener$2));
+  return this
+});
+$c_Lcom_microsoft_awt_components_MainController.prototype.$$timeout__Lorg_scalajs_angularjs_Timeout = (function() {
+  return this.$$timeout$2
+});
+$c_Lcom_microsoft_awt_components_MainController.prototype.toString__T = (function() {
+  return $m_sr_ScalaRunTime$().$$undtoString__s_Product__T(this)
+});
+$c_Lcom_microsoft_awt_components_MainController.prototype.$$scope__Lcom_microsoft_awt_components_GlobalLoadingScope = (function() {
+  return this.$$scope$2
+});
+$c_Lcom_microsoft_awt_components_MainController.prototype.$$scope__Lcom_microsoft_awt_components_GlobalSessionScope = (function() {
+  return this.$$scope$2
+});
+$c_Lcom_microsoft_awt_components_MainController.prototype.com$microsoft$awt$components$MainController$$getNotificationTypeIcon__T__T = (function(eventType) {
+  _getNotificationTypeIcon: while (true) {
+    var x1 = eventType;
+    if ((x1 === "ACHIEVEMENT")) {
+      return "fa-diamond sk_diamond"
+    } else if ((x1 === "COMMENT")) {
+      return "fa-comment-o sk_comment"
+    } else if ((x1 === "EVENT")) {
+      return "fa-calendar sk_calender"
+    } else if ((x1 === "NOTIFICATION")) {
+      return "fa-info-circle sk_notifications"
+    } else {
+      var jsx$1 = $g.console;
+      var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Unrecognized event type '", "'"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([eventType]));
+      jsx$1.warn(s);
+      eventType = "NOTIFICATION";
+      continue _getNotificationTypeIcon
+    }
+  }
+});
+$c_Lcom_microsoft_awt_components_MainController.prototype.hashCode__I = (function() {
+  var this$2 = $m_s_util_hashing_MurmurHash3$();
+  return this$2.productHash__s_Product__I__I(this, (-889275714))
+});
+$c_Lcom_microsoft_awt_components_MainController.prototype.com$microsoft$awt$components$MainController$$loadEventsAndNotifications__Lcom_microsoft_awt_models_Session__V = (function(session) {
+  var value = session.userID;
+  var f = new $c_Lcom_microsoft_awt_components_MainController$$anonfun$com$microsoft$awt$components$MainController$$loadEventsAndNotifications$1().init___Lcom_microsoft_awt_components_MainController(this);
+  if ((value !== (void 0))) {
+    f.apply__T__V($as_T(value))
+  }
+});
+$c_Lcom_microsoft_awt_components_MainController.prototype.productIterator__sc_Iterator = (function() {
+  return new $c_sr_ScalaRunTime$$anon$1().init___s_Product(this)
+});
+function $is_Lcom_microsoft_awt_components_MainController(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lcom_microsoft_awt_components_MainController)))
+}
+function $as_Lcom_microsoft_awt_components_MainController(obj) {
+  return (($is_Lcom_microsoft_awt_components_MainController(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "com.microsoft.awt.components.MainController"))
+}
+function $isArrayOf_Lcom_microsoft_awt_components_MainController(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcom_microsoft_awt_components_MainController)))
+}
+function $asArrayOf_Lcom_microsoft_awt_components_MainController(obj, depth) {
+  return (($isArrayOf_Lcom_microsoft_awt_components_MainController(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.microsoft.awt.components.MainController;", depth))
+}
+var $d_Lcom_microsoft_awt_components_MainController = new $TypeData().initClass({
+  Lcom_microsoft_awt_components_MainController: 0
+}, false, "com.microsoft.awt.components.MainController", {
+  Lcom_microsoft_awt_components_MainController: 1,
+  Lcom_microsoft_awt_components_AutoCompletionController: 1,
+  O: 1,
+  Lorg_scalajs_angularjs_Controller: 1,
+  Lcom_microsoft_awt_components_GlobalLoading: 1,
+  Lcom_microsoft_awt_components_GlobalNavigation: 1,
+  Lcom_microsoft_awt_components_GlobalSession: 1,
+  s_Product: 1,
+  s_Equals: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_microsoft_awt_components_MainController.prototype.$classData = $d_Lcom_microsoft_awt_components_MainController;
 /** @constructor */
 function $c_s_reflect_ManifestFactory$AnyManifest$() {
   $c_s_reflect_ManifestFactory$PhantomManifest.call(this)

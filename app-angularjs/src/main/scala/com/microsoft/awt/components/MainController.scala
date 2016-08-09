@@ -24,7 +24,7 @@ case class MainController($scope: MainScope, $location: Location, $q: Q, $timeou
                           @injected("NotificationService") notificationSvc: NotificationService,
                           @injected("ReactiveSearchService") reactiveSearchSvc: ReactiveSearchService,
                           @injected("WebSocketService") webSocketSvc: WebSocketService)
-  extends AutoCompletionController($scope, $q, reactiveSearchSvc) with GlobalLoading with GlobalNavigation {
+  extends AutoCompletionController($scope, $q, reactiveSearchSvc) with GlobalLoading with GlobalNavigation with GlobalSession {
 
   $scope.tabs = js.Array(
     //MainTab(name = "Home", url = "/home", icon = "fa fa-home")
@@ -94,13 +94,11 @@ case class MainController($scope: MainScope, $location: Location, $q: Q, $timeou
 
   $scope.setActiveTab = (tab: MainTab) => $location.path(tab.url)
 
-  $scope.session = () => sessionFactory.session
-
   $scope.toggled = (open: js.UndefOr[Boolean]) => open foreach { isOpen =>
     console.log(s"toggled open ? $isOpen")
   }
 
-  $scope.user = () => sessionFactory.user
+
 
   ///////////////////////////////////////////////////////////////////////////
   //      Notification Functions
@@ -212,7 +210,7 @@ case class MainController($scope: MainScope, $location: Location, $q: Q, $timeou
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait MainScope extends Scope with AutoCompletionScope with GlobalLoadingScope with GlobalNavigationScope {
+trait MainScope extends Scope with AutoCompletionScope with GlobalLoadingScope with GlobalNavigationScope with GlobalSessionScope {
   var events: js.UndefOr[js.Array[Event]] = js.native
   var groups: js.UndefOr[js.Array[Group]] = js.native
   var notifications: js.Array[Notification] = js.native
@@ -236,10 +234,8 @@ trait MainScope extends Scope with AutoCompletionScope with GlobalLoadingScope w
   var getOnlineStatus: js.Function1[js.UndefOr[UserLike], js.UndefOr[String]] = js.native
   var isSelectedTab: js.Function1[js.UndefOr[MainTab], js.UndefOr[Boolean]] = js.native
   var onSelectedItem: js.Function3[js.UndefOr[js.Any], js.UndefOr[EntitySearchResult], js.UndefOr[String], Unit] = js.native
-  var session: js.Function0[js.UndefOr[Session]] = js.native
   var setActiveTab: js.Function1[MainTab, Any] = js.native
   var toggled: js.Function1[js.UndefOr[Boolean], Unit] = js.native
-  var user: js.Function0[js.UndefOr[User]] = js.native
 
 }
 

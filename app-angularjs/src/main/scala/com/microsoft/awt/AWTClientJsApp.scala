@@ -79,7 +79,7 @@ object AWTClientJsApp extends js.JSApp {
   private def configureDirectives(module: Module): Unit = {
     module.directiveOf[AvatarDirective]("avatar")
     module.directiveOf[NewsPostDirective]("awtPost")
-    module.directiveOf[CensorDirective]("censor")
+    module.directiveOf[CensorableDirective]("censorable")
     module.directiveOf[CompileDirective]("compileA")
     module.directiveOf[NameDirective]("name")
     //module.directiveOf[NgThumbDirective]("ngThumb")

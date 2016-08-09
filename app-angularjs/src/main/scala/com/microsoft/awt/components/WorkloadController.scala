@@ -17,6 +17,7 @@ import scala.util.{Failure, Success}
   * @author lawrence.daniels@gmail.com
   */
 class WorkloadController($scope: WorkloadScope,
+                         @injected("SessionFactory") sessionFactory: SessionFactory,
                          @injected("UserFactory") userFactory: UserFactory,
                          @injected("WorkloadDialog") workloadDialog: WorkloadDialog, toaster: Toaster,
                          @injected("WorkloadCommentDialog") workloadCommentDialog: WorkloadCommentDialog,
@@ -62,17 +63,19 @@ class WorkloadController($scope: WorkloadScope,
       workload <- aWorkload
       workloadID <- workload._id
     } {
-      workloadCommentDialog.popup(workloadID) onComplete {
-        case Success(updatedWorkload) =>
-          workloads.indexWhereOpt(_._id ?== updatedWorkload._id) foreach { index =>
-            $scope.$apply { () =>
-              workloads(index) = updatedWorkload
-              $scope.selectWorkload(updatedWorkload)
+      if (isAuthorizedUser) {
+        workloadCommentDialog.popup(workloadID) onComplete {
+          case Success(updatedWorkload) =>
+            workloads.indexWhereOpt(_._id ?== updatedWorkload._id) foreach { index =>
+              $scope.$apply { () =>
+                workloads(index) = updatedWorkload
+                $scope.selectWorkload(updatedWorkload)
+              }
             }
-          }
-        case Failure(e) =>
-          console.log(s"error: ${e.displayMessage}")
-        // no toaster error here because workloadEditorDialog.cancel() generates an exception
+          case Failure(e) =>
+            console.log(s"error: ${e.displayMessage}")
+          // no toaster error here because workloadEditorDialog.cancel() generates an exception
+        }
       }
     }
   }
@@ -83,18 +86,20 @@ class WorkloadController($scope: WorkloadScope,
       workload <- aWorkload
       workloadID <- workload._id
     } {
-      if (window.confirm("Are you sure you want to close this workload?")) {
-        workloadService.deactivateWorkload(workloadID) onComplete {
-          case Success(outcome) =>
-            workloads.indexWhereOpt(_._id ?== workloadID) foreach { index =>
-              $scope.$apply { () =>
-                workloads.remove(index)
-                selectDefaultWorkload(theWorkloads)
+      if (isAuthorizedUser) {
+        if (window.confirm("Are you sure you want to close this workload?")) {
+          workloadService.deactivateWorkload(workloadID) onComplete {
+            case Success(outcome) =>
+              workloads.indexWhereOpt(_._id ?== workloadID) foreach { index =>
+                $scope.$apply { () =>
+                  workloads.remove(index)
+                  selectDefaultWorkload(theWorkloads)
+                }
               }
-            }
-          case Failure(e) =>
-            console.log(s"error: ${e.displayMessage}")
-            toaster.error("Update Error", e.displayMessage)
+            case Failure(e) =>
+              console.log(s"error: ${e.displayMessage}")
+              toaster.error("Update Error", e.displayMessage)
+          }
         }
       }
     }
@@ -105,18 +110,20 @@ class WorkloadController($scope: WorkloadScope,
       workloads <- theWorkloads
       workload <- aWorkload
     } {
-      workloadDialog.popup(workload).toFuture onComplete {
-        case Success(updatedWorkload) =>
-          workloads.indexWhereOpt(_._id ?== updatedWorkload._id) match {
-            case Some(index) => $scope.$apply(() => workloads(index) = updatedWorkload)
-            case None =>
-              toaster.warning("Workload Update", "Workload updated but not found locally")
-              workloads.push(updatedWorkload)
-          }
-          $scope.$apply(() => $scope.selectedWorkload = updatedWorkload)
-        case Failure(e) =>
-          console.log(s"error: ${e.displayMessage}")
-        // no toaster error here because workloadEditorDialog.cancel() generates an exception
+      if (isAuthorizedUser) {
+        workloadDialog.popup(workload).toFuture onComplete {
+          case Success(updatedWorkload) =>
+            workloads.indexWhereOpt(_._id ?== updatedWorkload._id) match {
+              case Some(index) => $scope.$apply(() => workloads(index) = updatedWorkload)
+              case None =>
+                toaster.warning("Workload Update", "Workload updated but not found locally")
+                workloads.push(updatedWorkload)
+            }
+            $scope.$apply(() => $scope.selectedWorkload = updatedWorkload)
+          case Failure(e) =>
+            console.log(s"error: ${e.displayMessage}")
+          // no toaster error here because workloadEditorDialog.cancel() generates an exception
+        }
       }
     }
   }
@@ -202,6 +209,14 @@ class WorkloadController($scope: WorkloadScope,
   ///////////////////////////////////////////////////////////////////////////
   //      Private Functions
   ///////////////////////////////////////////////////////////////////////////
+
+  private def isAuthorizedUser = {
+    val isAuthorized = sessionFactory.session.flatMap(_.isAnonymous).contains(false)
+    if (!isAuthorized) {
+      toaster.warning("Unauthorized action", "You must sign-in to perform this action")
+    }
+    isAuthorized
+  }
 
   private def selectDefaultWorkload(theWorkloads: js.UndefOr[js.Array[Workload]]) = {
     $scope.selectedWorkload = theWorkloads.flat.flatMap(_.headOption.orUndefined)
