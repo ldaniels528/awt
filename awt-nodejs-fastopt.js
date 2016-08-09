@@ -3180,9 +3180,6 @@ function $h_Lcom_microsoft_awt_data_SessionDAO$SessionDAOEnrichment$() {
   /*<skip>*/
 }
 $h_Lcom_microsoft_awt_data_SessionDAO$SessionDAOEnrichment$.prototype = $c_Lcom_microsoft_awt_data_SessionDAO$SessionDAOEnrichment$.prototype;
-$c_Lcom_microsoft_awt_data_SessionDAO$SessionDAOEnrichment$.prototype.init___ = (function() {
-  return this
-});
 $c_Lcom_microsoft_awt_data_SessionDAO$SessionDAOEnrichment$.prototype.findAndUpdateByID$extension__Lcom_microsoft_awt_data_SessionDAO__T__Z__Lorg_scalajs_nodejs_mongodb_MongoDB__sjs_js_Promise = (function($$this, sessionID, isAnonymous, mongodb) {
   var jsx$5 = $m_Lorg_scalajs_nodejs_mongodb_package$();
   var $class = mongodb.ObjectID;
@@ -3212,6 +3209,9 @@ $c_Lcom_microsoft_awt_data_SessionDAO$SessionDAOEnrichment$.prototype.findAndUpd
   var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$1, new $c_T2().init___O__O("lastUpdated", value)]);
   var y$1 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
   return $$this.findOneAndUpdate(jsx$3, jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("$set", y$1)))
+});
+$c_Lcom_microsoft_awt_data_SessionDAO$SessionDAOEnrichment$.prototype.init___ = (function() {
+  return this
 });
 var $d_Lcom_microsoft_awt_data_SessionDAO$SessionDAOEnrichment$ = new $TypeData().initClass({
   Lcom_microsoft_awt_data_SessionDAO$SessionDAOEnrichment$: 0
