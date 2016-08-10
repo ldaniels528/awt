@@ -17,9 +17,7 @@ import scala.util.{Failure, Success}
   * @author lawrence.daniels@gmail.com
   */
 case class GroupListController($scope: GroupListScope, $location: Location, $timeout: Timeout, toaster: Toaster,
-                               @injected("SessionFactory") sessionFactory: SessionFactory,
                                @injected("UserFactory") userFactory: UserFactory,
-                               @injected("UserService") userService: UserService,
                                @injected("WorkloadService") workloadService: WorkloadService) extends Controller {
 
 

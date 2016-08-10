@@ -23,8 +23,8 @@ import scala.util.{Failure, Success}
 case class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $location: Location, $timeout: Timeout, toaster: Toaster,
                           @injected("EventService") eventService: EventService,
                           @injected("FileUploader") fileUploader: FileUploader,
-                          @injected("SessionFactory") sessionFactory: SessionFactory,
                           @injected("PostService") postService: PostService,
+                          @injected("SessionFactory") sessionFactory: SessionFactory,
                           @injected("UserFactory") userFactory: UserFactory,
                           @injected("UserDialog") userDialog: UserDialog,
                           @injected("UserService") userService: UserService)
@@ -241,10 +241,11 @@ case class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $lo
   //      Event Listener Functions
   ///////////////////////////////////////////////////////////////////////////
 
+  $scope.$watch($scope.user, (newUser: js.UndefOr[User], oldUser: js.UndefOr[User]) => setupNavigationMenus(newUser))
+
   $scope.onUserLoaded((_, user) => {
     console.log(s"${getClass.getSimpleName}: user loaded - ${user.primaryEmail}")
     $scope.init()
-    setupNavigationMenus(user)
   })
 
   $scope.onWsPostMessage((_, post) => {
@@ -259,7 +260,9 @@ case class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $lo
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait HomeControllerScope extends Scope with GlobalAuthorizationScope with GlobalLoadingScope with GlobalNavigationScope with PostingCapabilitiesScope {
+trait HomeControllerScope extends Scope with GlobalAuthorizationScope with GlobalLoadingScope
+  with GlobalNavigationScope with GlobalSessionScope with PostingCapabilitiesScope {
+
   var menus: js.Array[Menu] = js.native
   var showUpload: Boolean = js.native
   var viewURL: String = js.native

@@ -9,21 +9,21 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
-  * Censor Directive
+  * Censorable Directive
   * @author lawrence.daniels@gmail.com
-  * @example {{{ <censor text="{{ myText }}"></censor> }}}
+  * @example {{{ <censorable text="{{ myText }}"></censorable> }}}
   */
-class CensorDirective($compile: Compile, $sce: Sce, @injected("SessionFactory") sessionFactory: SessionFactory) extends Directive
-  with ElementSupport with EmoticonSupport with LinkSupport[CensorDirectiveScope] with TemplateSupport {
+class CensorableDirective($compile: Compile, $sce: Sce, @injected("SessionFactory") sessionFactory: SessionFactory) extends Directive
+  with ElementSupport with EmoticonSupport with LinkSupport[CensorableDirectiveScope] with TemplateSupport {
 
   private val censor_block = """<span class="sk_censored">censored</span>"""
 
-  override val scope = new CensorDirectiveScopeTemplate(text = "@text")
+  override val scope = new CensorableDirectiveScopeTemplate(text = "@text")
   override val replace = true
   override val transclude = true
   override val template = """<span compile="html"></span>"""
 
-  override def link(scope: CensorDirectiveScope, element: JQLite, attrs: Attributes): Unit = {
+  override def link(scope: CensorableDirectiveScope, element: JQLite, attrs: Attributes): Unit = {
     scope.html = scope.text map replaceTags map enrichWithEmoticons
   }
 
@@ -49,11 +49,11 @@ class CensorDirective($compile: Compile, $sce: Sce, @injected("SessionFactory") 
 }
 
 /**
-  * Censor Directive Scope
+  * Censorable Directive Scope
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait CensorDirectiveScope extends Scope {
+trait CensorableDirectiveScope extends Scope {
   // input fields
   var text: js.UndefOr[String] = js.native
 
@@ -62,8 +62,8 @@ trait CensorDirectiveScope extends Scope {
 }
 
 /**
-  * Censor Directive Scope Template
+  * Censorable Directive Scope Template
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class CensorDirectiveScopeTemplate(val text: String) extends js.Object
+class CensorableDirectiveScopeTemplate(val text: String) extends js.Object

@@ -42,6 +42,7 @@ canvas {
     border-radius: 4px;
     background: #ff8800;
     color: white;
+    opacity: 0.65;
     padding-left: 2px;
     padding-right: 2px;
     padding-bottom: 2px;

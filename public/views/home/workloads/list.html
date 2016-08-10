@@ -44,7 +44,7 @@
                     </restricted>
                 </td>
                 <td class="col-md-4">
-                    <censor text="{{ getLatestStatusText(workload) }}"></censor>
+                    <censorable text="{{ getLatestStatusText(workload) }}"></censorable>
                 </td>
                 <td class="col-md-1 workload_small_duration">{{ getLatestStatusTime(workload) | duration }}</td>
             </tr>
@@ -163,7 +163,7 @@
             <tr ng-repeat="status in selectedWorkload.statuses | orderBy:'-creationTime'">
                 <td class="col-md-8">
                     <span class="sk_null sk_ident">{{ $index + 1 }}.</span>
-                    <censor text="{{ status.statusText }}"></censor>
+                    <censorable text="{{ status.statusText }}"></censorable>
                 </td>
                 <td class="col-md-3">
                     <avatar class="avatar16" id="{{ status.submitterId }}"></avatar>

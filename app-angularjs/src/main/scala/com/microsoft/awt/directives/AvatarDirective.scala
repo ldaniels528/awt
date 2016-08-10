@@ -27,16 +27,14 @@ class AvatarDirective(@injected("UserFactory") userFactory: UserFactory) extends
   override val transclude = true
 
   override def link(scope: AvatarDirectiveScope, element: JQLite, attrs: Attributes) = {
-    scope.$watch("id", (newValue: js.UndefOr[String], oldValue: js.UndefOr[String]) => {
-      newValue.flat foreach {
-        case userID if userID.nonEmpty =>
-          scope.url = LOADING_SPINNER
-          if (scope.named.isAssigned) scope.name = "Loading..."
-          loadUserByID(userID)(scope)
-        case _ =>
-          scope.url = UNKNOWN_PERSON
-      }
-    })
+    scope.id.flat foreach {
+      case userID if userID.nonEmpty =>
+        scope.url = LOADING_SPINNER
+        if (scope.named.isAssigned) scope.name = "Loading..."
+        loadUserByID(userID)(scope)
+      case _ =>
+        scope.url = UNKNOWN_PERSON
+    }
   }
 
   private def loadUserByID(userID: String)(implicit scope: AvatarDirectiveScope) = {
