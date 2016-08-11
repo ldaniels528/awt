@@ -12,7 +12,7 @@ import scala.scalajs.js
   * @example <workload-status code="GREEN"></workload-status>
   */
 class WorkloadStatusDirective() extends Directive
-  with ElementSupport with LinkSupport[WorkloadStatusDirectiveScope] with TemplateSupport {
+  with ElementRestriction with LinkSupport[WorkloadStatusDirectiveScope] with TemplateSupport {
 
   override val scope = WorkloadStatusScope(code = "@code", labeled = "@labeled")
   override val template =
@@ -24,9 +24,9 @@ class WorkloadStatusDirective() extends Directive
   override def link(scope: WorkloadStatusDirectiveScope, element: JQLite, attrs: Attributes) = {
     scope.$watch("code", (newCode: js.UndefOr[String], oldCode: js.UndefOr[String]) => {
       val value = newCode.flat
-      scope.iconClass = getStatusIcon(value).orNull
-      scope.iconTextClass = getStatusClass(value).orNull
-      scope.iconText = value.map(_.toUpperCase()).orNull
+      scope.iconClass = getStatusIcon(value)
+      scope.iconTextClass = getStatusClass(value)
+      scope.iconText = value.map(_.toUpperCase())
     })
   }
 
@@ -57,9 +57,9 @@ trait WorkloadStatusDirectiveScope extends Scope {
   var labeled: js.UndefOr[String] = js.native
 
   // output fields
-  var iconClass: String = js.native
-  var iconTextClass: String = js.native
-  var iconText: String = js.native
+  var iconClass: js.UndefOr[String] = js.native
+  var iconTextClass: js.UndefOr[String] = js.native
+  var iconText: js.UndefOr[String] = js.native
 
 }
 

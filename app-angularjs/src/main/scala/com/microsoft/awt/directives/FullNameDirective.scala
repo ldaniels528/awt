@@ -14,7 +14,7 @@ import scala.scalajs.js
   * @example <full-name id="{{ submitter._id }}"></fullName>
   */
 class FullNameDirective(@injected("UserFactory") userFactory: UserFactory) extends Directive
-  with ElementSupport with LinkSupport[FullNameDirectiveScope] with TemplateSupport {
+  with ElementRestriction with LinkSupport[FullNameDirectiveScope] with TemplateSupport {
 
   override val scope = FullNameDirectiveScope(id = "@id", `class` = "@class", style = "@style")
   override val template = "{{ name }}"

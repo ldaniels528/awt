@@ -3,7 +3,7 @@ package com.microsoft.awt.directives
 import com.microsoft.awt.components.EmoticonSupport
 import org.scalajs.angularjs.Directive._
 import org.scalajs.angularjs.sanitize.Sce
-import org.scalajs.angularjs.{Attributes, Compile, Directive, JQLite, Scope}
+import org.scalajs.angularjs.{Attributes, Directive, JQLite, Scope}
 import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.scalajs.js
@@ -13,11 +13,11 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   * @example <news-post text="{{ post.text }}"></news-post>
   */
-class NewsPostDirective($compile: Compile, $sce: Sce) extends Directive
-  with ElementSupport with EmoticonSupport with LinkSupport[NewsPostDirectiveScope] with TemplateSupport {
+class NewsPostDirective($sce: Sce) extends Directive
+  with ElementRestriction with EmoticonSupport with LinkSupport[NewsPostDirectiveScope] with TemplateSupport {
 
   override val scope = NewsPostDirectiveScope(text = "=", callback = "&")
-  override val template = """<span compile="html"></span>"""
+  override val template = """<span ng-bind-html="html"></span>"""
 
   override def link(scope: NewsPostDirectiveScope, element: JQLite, attrs: Attributes) = {
     scope.$watch("text", (newText: js.UndefOr[String], oldText: js.UndefOr[String]) => {

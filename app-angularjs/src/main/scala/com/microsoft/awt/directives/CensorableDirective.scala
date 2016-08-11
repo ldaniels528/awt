@@ -3,7 +3,7 @@ package com.microsoft.awt.directives
 import com.microsoft.awt.components.{EmoticonSupport, SessionFactory}
 import org.scalajs.angularjs.Directive._
 import org.scalajs.angularjs.sanitize.Sce
-import org.scalajs.angularjs.{Attributes, Compile, Directive, JQLite, Scope, injected}
+import org.scalajs.angularjs.{Attributes, Directive, JQLite, Scope, injected}
 import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.scalajs.js
@@ -13,15 +13,15 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   * @example {{{ <censorable text="{{ myText }}"></censorable> }}}
   */
-class CensorableDirective($compile: Compile, $sce: Sce, @injected("SessionFactory") sessionFactory: SessionFactory) extends Directive
-  with ElementSupport with EmoticonSupport with LinkSupport[CensorableDirectiveScope] with TemplateSupport {
+class CensorableDirective($sce: Sce, @injected("SessionFactory") sessionFactory: SessionFactory) extends Directive
+  with ElementRestriction with EmoticonSupport with LinkSupport[CensorableDirectiveScope] with TemplateSupport {
 
   private val CensorBlock = """<span class="sk_censored">censored</span>"""
   private val SeqStart = "[["
   private val SeqEnd = "]]"
 
   override val scope = CensorableDirectiveScope(text = "@text")
-  override val template = """<span compile="html"></span>"""
+  override val template = """<span ng-bind-html="html"></span>"""
 
   override def link(scope: CensorableDirectiveScope, element: JQLite, attrs: Attributes): Unit = {
     scope.$watch("text", (newText: js.UndefOr[String], oldText: js.UndefOr[String]) => {
@@ -36,7 +36,7 @@ class CensorableDirective($compile: Compile, $sce: Sce, @injected("SessionFactor
     var lastPos = -1
     do {
       val start = sb.indexOf(SeqStart, lastPos)
-      val end = sb.indexOf(SeqEnd, start)
+      val end = sb.indexOf(SeqEnd, start + SeqStart.length)
       if (start != -1 && end != -1) {
         val limit = end + SeqEnd.length
         val replacement = if (isAnonymous) CensorBlock else sb.substring(start, limit).drop(SeqStart.length).dropRight(SeqEnd.length)

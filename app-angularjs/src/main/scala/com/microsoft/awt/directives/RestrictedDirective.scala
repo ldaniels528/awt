@@ -12,7 +12,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class RestrictedDirective(@injected("SessionFactory") sessionFactory: SessionFactory) extends Directive
-  with ElementSupport with LinkSupport[RestrictedDirectiveScope] with TemplateSupport {
+  with ElementRestriction with LinkSupport[RestrictedDirectiveScope] with TemplateSupport {
 
   override val scope = RestrictedDirectiveScope(`class` = "@class", style = "@style")
   override val transclude = true

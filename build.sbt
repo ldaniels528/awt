@@ -9,7 +9,6 @@ val _scalaVersion = "2.11.8"
 val paradisePluginVersion = "3.0.0-M1"
 val scalaJsDomVersion = "0.9.0"
 val scalaJsJQueryVersion = "0.9.0"
-
 val scalaJsNodeVersion = "0.2.2.1"
 
 scalacOptions ++= Seq("-deprecation", "-encoding", "UTF-8", "-feature", "-target:jvm-1.8", "-unchecked",
@@ -69,6 +68,7 @@ lazy val angularjs = (project in file("app-angularjs"))
     pipelineStages := Seq(gzip),
     relativeSourceMaps := true,
     libraryDependencies ++= Seq(
+      "com.github.ldaniels528" %%% "scalajs-browser-core" % scalaJsNodeVersion,
       "com.github.ldaniels528" %%% "scalajs-angularjs-core" % scalaJsNodeVersion,
       "com.github.ldaniels528" %%% "scalajs-angularjs-animate" % scalaJsNodeVersion,
       "com.github.ldaniels528" %%% "scalajs-angularjs-cookies" % scalaJsNodeVersion,

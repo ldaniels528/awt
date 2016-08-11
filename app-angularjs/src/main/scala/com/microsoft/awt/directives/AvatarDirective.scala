@@ -15,7 +15,7 @@ import scala.util.{Failure, Success}
   * @example <avatar id="{{submitter._id }}" class="avatar-24"></avatar>
   */
 class AvatarDirective(@injected("UserFactory") userFactory: UserFactory) extends Directive
-  with ElementSupport with LinkSupport[AvatarDirectiveScope] with TemplateSupport {
+  with ElementRestriction with LinkSupport[AvatarDirectiveScope] with TemplateSupport {
 
   private val LOADING_SPINNER = "/assets/images/status/loading16.gif"
   private val UNKNOWN_PERSON = "/assets/images/avatars/anonymous.png"
