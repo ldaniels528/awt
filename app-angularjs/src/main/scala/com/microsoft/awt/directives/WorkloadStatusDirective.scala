@@ -5,7 +5,6 @@ import org.scalajs.angularjs.{Attributes, Directive, JQLite, Scope}
 import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * Workload Status Directive
@@ -15,9 +14,7 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 class WorkloadStatusDirective() extends Directive
   with ElementSupport with LinkSupport[WorkloadStatusDirectiveScope] with TemplateSupport {
 
-  override val scope = new WorkloadStatusScopeTemplate(code = "@code", labeled = "@labeled")
-  override val transclude = true
-  override val replace = false
+  override val scope = WorkloadStatusScope(code = "@code", labeled = "@labeled")
   override val template =
     """
       <i ng-class="iconClass"></i>
@@ -25,8 +22,8 @@ class WorkloadStatusDirective() extends Directive
     """
 
   override def link(scope: WorkloadStatusDirectiveScope, element: JQLite, attrs: Attributes) = {
-    scope.$watch("code", (newValue: js.UndefOr[String], oldValue: js.UndefOr[String]) => {
-      val value = scope.code.flat
+    scope.$watch("code", (newCode: js.UndefOr[String], oldCode: js.UndefOr[String]) => {
+      val value = newCode.flat
       scope.iconClass = getStatusIcon(value).orNull
       scope.iconTextClass = getStatusClass(value).orNull
       scope.iconText = value.map(_.toUpperCase()).orNull
@@ -70,6 +67,14 @@ trait WorkloadStatusDirectiveScope extends Scope {
   * Workload Status Directive Scope Template
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
-class WorkloadStatusScopeTemplate(val code: String, val labeled: String) extends js.Object
+object WorkloadStatusScope {
+
+  def apply(code: String, labeled: String) = {
+    val scope = New[WorkloadStatusDirectiveScope]
+    scope.code = code
+    scope.labeled = labeled
+    scope
+  }
+
+}
 

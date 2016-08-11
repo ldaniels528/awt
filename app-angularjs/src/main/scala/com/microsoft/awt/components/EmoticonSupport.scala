@@ -1,4 +1,4 @@
-package com.microsoft.awt.directives
+package com.microsoft.awt.components
 
 import com.microsoft.awt.models.Emoticon
 

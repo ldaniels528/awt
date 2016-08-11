@@ -1,11 +1,12 @@
 package com.microsoft.awt.directives
 
+import com.microsoft.awt.components.EmoticonSupport
 import org.scalajs.angularjs.Directive._
 import org.scalajs.angularjs.sanitize.Sce
 import org.scalajs.angularjs.{Attributes, Compile, Directive, JQLite, Scope}
+import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * News Post Directive
@@ -15,13 +16,13 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 class NewsPostDirective($compile: Compile, $sce: Sce) extends Directive
   with ElementSupport with EmoticonSupport with LinkSupport[NewsPostDirectiveScope] with TemplateSupport {
 
-  override val scope = new NewsPostDirectiveScopeTemplate(text = "=", callback = "&")
-  override val transclude = true
-  override val replace = true
+  override val scope = NewsPostDirectiveScope(text = "=", callback = "&")
   override val template = """<span compile="html"></span>"""
 
   override def link(scope: NewsPostDirectiveScope, element: JQLite, attrs: Attributes) = {
-    scope.html = scope.text map enrichHashTags map enrichWithEmoticons
+    scope.$watch("text", (newText: js.UndefOr[String], oldText: js.UndefOr[String]) => {
+      scope.html = newText.flat map enrichHashTags map enrichWithEmoticons
+    })
   }
 
   private def enrichHashTags(text: String) = {
@@ -58,15 +59,23 @@ class NewsPostDirective($compile: Compile, $sce: Sce) extends Directive
 trait NewsPostDirectiveScope extends Scope {
   // input fields
   var text: js.UndefOr[String] = js.native
-  var callback: js.UndefOr[js.Function] = js.native
+  var callback: js.UndefOr[String] = js.native
 
   /// output fields
   var html: js.UndefOr[String] = js.native
 }
 
 /**
-  * News Post Directive Scope Template
+  * News Post Directive Scope Companion
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
-class NewsPostDirectiveScopeTemplate(val text: String, val callback: String) extends js.Object
+object NewsPostDirectiveScope {
+
+  def apply(text: String, callback: String) = {
+    val scope = New[NewsPostDirectiveScope]
+    scope.text = text
+    scope.callback = callback
+    scope
+  }
+
+}

@@ -81,7 +81,7 @@ object AWTClientJsApp extends js.JSApp {
     module.directiveOf[NewsPostDirective]("awtPost")
     module.directiveOf[CensorableDirective]("censorable")
     module.directiveOf[CompileDirective]("compileA")
-    module.directiveOf[NameDirective]("name")
+    module.directiveOf[FullNameDirective]("name")
     //module.directiveOf[NgThumbDirective]("ngThumb")
     module.directiveOf[RestrictedDirective]("restricted")
     module.directiveOf[WorkloadStatusDirective]("workloadStatus")

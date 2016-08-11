@@ -7,7 +7,6 @@ import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
 import scala.util.{Failure, Success}
 
 /**
@@ -21,28 +20,31 @@ class AvatarDirective(@injected("UserFactory") userFactory: UserFactory) extends
   private val LOADING_SPINNER = "/assets/images/status/loading16.gif"
   private val UNKNOWN_PERSON = "/assets/images/avatars/anonymous.png"
 
-  override val replace = false
-  override val scope = new AvatarScopeTemplate(id = "@id", named = "@named", `class` = "@class", style = "@style")
+  override val scope = AvatarDirectiveScope(id = "@id", named = "@named", `class` = "@class", style = "@style")
   override val template = s"""<img ng-src="{{ url }}" class="{{ class }}" style="{{ style }}"> {{ name }}"""
-  override val transclude = true
 
   override def link(scope: AvatarDirectiveScope, element: JQLite, attrs: Attributes) = {
-    scope.id.flat foreach {
-      case userID if userID.nonEmpty =>
-        scope.url = LOADING_SPINNER
-        if (scope.named.isAssigned) scope.name = "Loading..."
-        loadUserByID(userID)(scope)
-      case _ =>
-        scope.url = UNKNOWN_PERSON
-    }
+    scope.$watch("id", (newId: js.UndefOr[String], oldId: js.UndefOr[String]) => {
+      newId.flat.toOption.map(_.trim) match {
+        case Some(userID) if userID.nonEmpty => loadUserByID(scope, userID)
+        case _ => scope.url = UNKNOWN_PERSON
+      }
+    })
   }
 
-  private def loadUserByID(userID: String)(implicit scope: AvatarDirectiveScope) = {
+  /**
+    * Retrieves a user by ID
+    * @param userID the given user ID
+    */
+  private def loadUserByID(scope: AvatarDirectiveScope, userID: String) = {
+    scope.url = LOADING_SPINNER
+    if (scope.named.isAssigned) scope.name = "Loading..."
+
     userFactory.getUserByID(userID) onComplete {
       case Success(user) =>
         scope.$apply { () =>
           if (scope.named.isAssigned) scope.name = user.fullName
-          scope.url = user.avatarURL getOrElse UNKNOWN_PERSON
+          scope.url = user.avatarURL.flat getOrElse UNKNOWN_PERSON
         }
       case Failure(e) =>
         scope.$apply { () =>
@@ -73,11 +75,18 @@ trait AvatarDirectiveScope extends Scope {
 }
 
 /**
-  * Avatar Directive Scope Template
+  * Avatar Directive Scope Companion
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
-class AvatarScopeTemplate(val id: js.UndefOr[String],
-                          val named: js.UndefOr[String],
-                          val `class`: js.UndefOr[String],
-                          val style: js.UndefOr[String]) extends js.Object
+object AvatarDirectiveScope {
+
+  def apply(id: String, named: String, `class`: String, style: String) = {
+    val scope = New[AvatarDirectiveScope]
+    scope.id = id
+    scope.named = named
+    scope.`class` = `class`
+    scope.style = style
+    scope
+  }
+
+}

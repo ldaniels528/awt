@@ -3,9 +3,9 @@ package com.microsoft.awt.directives
 import com.microsoft.awt.components.SessionFactory
 import org.scalajs.angularjs.Directive._
 import org.scalajs.angularjs.{Attributes, Directive, JQLite, Scope, injected}
+import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * Restricted Directive
@@ -14,7 +14,7 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 class RestrictedDirective(@injected("SessionFactory") sessionFactory: SessionFactory) extends Directive
   with ElementSupport with LinkSupport[RestrictedDirectiveScope] with TemplateSupport {
 
-  override val scope = new RestrictedDirectiveScopeTemplate(`class` = "@class", style = "@style")
+  override val scope = RestrictedDirectiveScope(`class` = "@class", style = "@style")
   override val transclude = true
 
   override def template =
@@ -49,5 +49,13 @@ trait RestrictedDirectiveScope extends Scope {
   * Restricted Directive Scope Template
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
-class RestrictedDirectiveScopeTemplate(var `class`: js.UndefOr[String], var style: js.UndefOr[String]) extends js.Object
+object RestrictedDirectiveScope {
+
+  def apply(`class`: String, style: String) = {
+    val scope = New[RestrictedDirectiveScope]
+    scope.`class` = `class`
+    scope.style = style
+    scope
+  }
+
+}

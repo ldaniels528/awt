@@ -1,12 +1,12 @@
 package com.microsoft.awt.directives
 
-import com.microsoft.awt.components.SessionFactory
+import com.microsoft.awt.components.{EmoticonSupport, SessionFactory}
 import org.scalajs.angularjs.Directive._
 import org.scalajs.angularjs.sanitize.Sce
 import org.scalajs.angularjs.{Attributes, Compile, Directive, JQLite, Scope, injected}
+import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * Censorable Directive
@@ -16,15 +16,17 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 class CensorableDirective($compile: Compile, $sce: Sce, @injected("SessionFactory") sessionFactory: SessionFactory) extends Directive
   with ElementSupport with EmoticonSupport with LinkSupport[CensorableDirectiveScope] with TemplateSupport {
 
-  private val censor_block = """<span class="sk_censored">censored</span>"""
+  private val CensorBlock = """<span class="sk_censored">censored</span>"""
+  private val SeqStart = "[["
+  private val SeqEnd = "]]"
 
-  override val scope = new CensorableDirectiveScopeTemplate(text = "@text")
-  override val replace = true
-  override val transclude = true
+  override val scope = CensorableDirectiveScope(text = "@text")
   override val template = """<span compile="html"></span>"""
 
   override def link(scope: CensorableDirectiveScope, element: JQLite, attrs: Attributes): Unit = {
-    scope.html = scope.text map replaceTags map enrichWithEmoticons
+    scope.$watch("text", (newText: js.UndefOr[String], oldText: js.UndefOr[String]) => {
+      scope.html = newText.flat map replaceTags map enrichWithEmoticons
+    })
   }
 
   private def replaceTags(text: String) = {
@@ -33,12 +35,12 @@ class CensorableDirective($compile: Compile, $sce: Sce, @injected("SessionFactor
 
     var lastPos = -1
     do {
-      val start = sb.indexOf("[[", lastPos)
-      val end = sb.indexOf("]]", start)
+      val start = sb.indexOf(SeqStart, lastPos)
+      val end = sb.indexOf(SeqEnd, start)
       if (start != -1 && end != -1) {
-        val limit = end + 2
-        if (isAnonymous) sb.replace(start, limit, censor_block)
-        else sb.replace(start, limit, sb.substring(start, limit).drop(2).dropRight(2))
+        val limit = end + SeqEnd.length
+        val replacement = if (isAnonymous) CensorBlock else sb.substring(start, limit).drop(SeqStart.length).dropRight(SeqEnd.length)
+        sb.replace(start, limit, replacement)
         lastPos = end
       }
       else lastPos = -1
@@ -62,8 +64,15 @@ trait CensorableDirectiveScope extends Scope {
 }
 
 /**
-  * Censorable Directive Scope Template
+  * Censorable Directive Scope Companion
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
-class CensorableDirectiveScopeTemplate(val text: String) extends js.Object
+object CensorableDirectiveScope {
+
+  def apply(text: String) = {
+    val scope = New[CensorableDirectiveScope]
+    scope.text = text
+    scope
+  }
+
+}
