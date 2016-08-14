@@ -9548,7 +9548,7 @@ $c_Lcom_microsoft_awt_components_SessionFactory.prototype.loadSessionAndUser__p1
     var jsx$1 = $g.console;
     var s = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Attempting to load user session ", "..."])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([sessionId]));
     jsx$1.log(s);
-    var this$11 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.com$microsoft$awt$components$SessionFactory$$sessionSvc$f.getSession__T__Lorg_scalajs_angularjs_http_HttpResponse(sessionId));
+    var this$10 = $m_Lorg_scalajs_angularjs_http_HttpResponse$().promise2future__Lorg_scalajs_angularjs_http_HttpResponse__s_concurrent_Future(this.com$microsoft$awt$components$SessionFactory$$sessionSvc$f.getSession__T__Lorg_scalajs_angularjs_http_HttpResponse(sessionId));
     var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(session$2) {
       var valueA = session$2.userID;
       if ((valueA === (void 0))) {
@@ -9558,10 +9558,10 @@ $c_Lcom_microsoft_awt_components_SessionFactory.prototype.loadSessionAndUser__p1
       return new $c_T2().init___O__O(session$2, userID)
     }));
     var executor = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
-    var this$12 = $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$11, f, executor);
+    var this$11 = $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$10, f, executor);
     var f$1 = new $c_Lcom_microsoft_awt_components_SessionFactory$$anonfun$6().init___Lcom_microsoft_awt_components_SessionFactory(this);
     var executor$1 = $m_sjs_concurrent_JSExecutionContext$Implicits$().queue$1;
-    var outcome = $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$12, f$1, executor$1);
+    var outcome = $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$11, f$1, executor$1);
     outcome.onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer) {
       return (function(x0$3$2) {
         var x0$3 = $as_s_util_Try(x0$3$2);
@@ -9580,7 +9580,7 @@ $c_Lcom_microsoft_awt_components_SessionFactory.prototype.loadSessionAndUser__p1
           var e = x4.exception$2;
           var jsx$4 = $g.console;
           var jsx$3 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Failed to retrieve session: ", ""]));
-          var this$14 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
+          var this$13 = $m_Lorg_scalajs_angularjs_AngularJsHelper$ExceptionExtensions$();
           var rc6 = false;
           var x2$2 = null;
           var x1$1 = $m_s_Option$().apply__O__s_Option(e.getMessage__T());
@@ -9592,12 +9592,12 @@ $c_Lcom_microsoft_awt_components_SessionFactory.prototype.loadSessionAndUser__p1
               var s$1 = $as_T(x2$2.x$2);
               var prefix = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
               if ((($uI(s$1.length) >= 0) && ($as_T(s$1.substring(0, $uI(prefix.length))) === prefix))) {
-                var this$22 = new $c_sci_StringOps().init___T(s$1);
+                var this$21 = new $c_sci_StringOps().init___T(s$1);
                 var thiz = $m_Lorg_scalajs_angularjs_AngularJsHelper$().org$scalajs$angularjs$AngularJsHelper$$HttpError$1;
                 var n = $uI(thiz.length);
-                var $$this = this$22.repr$1;
+                var $$this = this$21.repr$1;
                 var until = $uI($$this.length);
-                var jsx$2 = this$14.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$22.repr$1, n, until));
+                var jsx$2 = this$13.org$scalajs$angularjs$AngularJsHelper$ExceptionExtensions$$cleanUp$extension__jl_Throwable__T__T(e, $m_sci_StringOps$().slice$extension__T__I__I__T(this$21.repr$1, n, until));
                 break matchEnd7
               }
             };
@@ -34567,7 +34567,18 @@ $h_Lcom_microsoft_awt_directives_ThumbnailDirective.prototype = $c_Lcom_microsof
 $c_Lcom_microsoft_awt_directives_ThumbnailDirective.prototype.link__Lorg_scalajs_angularjs_Scope__Lorg_scalajs_angularjs_JQLite__Lorg_scalajs_angularjs_Attributes__V = (function(scope, element, attributes) {
   if (this.isSupported__p1__Z()) {
     var params = scope.$eval(attributes.ngThumb);
-    var value = params.file;
+    var valueA = params.file;
+    if ((valueA === (void 0))) {
+      var value = (void 0)
+    } else {
+      var opt = $m_s_Option$().apply__O__s_Option(valueA);
+      if (opt.isEmpty__Z()) {
+        var value = (void 0)
+      } else {
+        var arg1 = opt.get__O();
+        var value = arg1
+      }
+    };
     var f = new $c_Lcom_microsoft_awt_directives_ThumbnailDirective$$anonfun$link$1().init___Lcom_microsoft_awt_directives_ThumbnailDirective__Lorg_scalajs_angularjs_JQLite__Lcom_microsoft_awt_directives_ThumbnailDirective$Params(this, element, params);
     if ((value !== (void 0))) {
       f.apply__Lorg_scalajs_dom_browser_File__V(value)

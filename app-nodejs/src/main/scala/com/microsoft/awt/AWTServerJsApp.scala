@@ -9,7 +9,7 @@ import org.scalajs.nodejs.express.{Express, Request, Response}
 import org.scalajs.nodejs.expressws.{ExpressWS, WsRouterExtensions}
 import org.scalajs.nodejs.globals._
 import org.scalajs.nodejs.mongodb.MongoDB
-import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.sjs.OptionHelper._
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js

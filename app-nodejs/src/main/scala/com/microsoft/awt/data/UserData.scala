@@ -4,7 +4,7 @@ import java.lang.{Boolean => JBoolean}
 
 import com.microsoft.awt.models.{Submitter, User}
 import org.scalajs.nodejs.mongodb.{MongoDB, ObjectID}
-import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.sjs.JsUnderOrHelper._
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.ScalaJSDefined

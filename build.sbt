@@ -9,7 +9,7 @@ val _scalaVersion = "2.11.8"
 val paradisePluginVersion = "3.0.0-M1"
 val scalaJsDomVersion = "0.9.0"
 val scalaJsJQueryVersion = "0.9.0"
-val scalaJsNodeVersion = "0.2.2.1"
+val transcendentVersion = "0.2.3.2"
 
 scalacOptions ++= Seq("-deprecation", "-encoding", "UTF-8", "-feature", "-target:jvm-1.8", "-unchecked",
   "-Ywarn-adapted-args", "-Ywarn-value-discard", "-Xlint")
@@ -33,7 +33,7 @@ lazy val jsCommonSettings = Seq(
   persistLauncher in Test := false,
   homepage := Some(url("https://github.com/ldaniels528/awt")),
   addCompilerPlugin("org.scalamacros" % "paradise" % paradisePluginVersion cross CrossVersion.full),
-  resolvers += "releases" at "https://oss.sonatype.org/service/local/staging/deploy/maven2",
+  resolvers += Resolver.sonatypeRepo("releases"),
   libraryDependencies ++= Seq(
     "be.doeraene" %%% "scalajs-jquery" % scalaJsJQueryVersion,
     "org.scala-js" %%% "scalajs-dom" % scalaJsDomVersion,
@@ -66,18 +66,19 @@ lazy val angularjs = (project in file("app-angularjs"))
     organization := "com.microsoft",
     version := appVersion,
     pipelineStages := Seq(gzip),
-    relativeSourceMaps := true,
+    resolvers += Resolver.sonatypeRepo("releases"),
     libraryDependencies ++= Seq(
-      "com.github.ldaniels528" %%% "scalajs-browser-core" % scalaJsNodeVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-core" % scalaJsNodeVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-animate" % scalaJsNodeVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-cookies" % scalaJsNodeVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-md5" % scalaJsNodeVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-nervgh-fileupload" % scalaJsNodeVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-sanitize" % scalaJsNodeVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-toaster" % scalaJsNodeVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-ui-bootstrap" % scalaJsNodeVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-ui-router" % scalaJsNodeVersion
+      "com.github.ldaniels528" %%% "scalajs-common" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-browser-core" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-core" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-animate" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-cookies" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-md5" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-nervgh-fileupload" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-sanitize" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-toaster" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-ui-bootstrap" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-ui-router" % transcendentVersion
     ))
 
 lazy val nodejs = (project in file("app-nodejs"))
@@ -90,13 +91,13 @@ lazy val nodejs = (project in file("app-nodejs"))
     organization := "com.microsoft",
     version := appVersion,
     pipelineStages := Seq(gzip),
-    relativeSourceMaps := true,
+    resolvers += Resolver.sonatypeRepo("releases"),
     libraryDependencies ++= Seq(
-      "com.github.ldaniels528" %%% "scalajs-nodejs-mean-bundle-minimal" % scalaJsNodeVersion,
-      "com.github.ldaniels528" %%% "scalajs-nodejs-elgs-splitargs" % scalaJsNodeVersion,
-      "com.github.ldaniels528" %%% "scalajs-nodejs-express-csv" % scalaJsNodeVersion,
-      "com.github.ldaniels528" %%% "scalajs-nodejs-pvorb-md5" % scalaJsNodeVersion,
-      "com.github.ldaniels528" %%% "scalajs-nodejs-request" % scalaJsNodeVersion
+      "com.github.ldaniels528" %%% "scalajs-npm-mean-bundle-minimal" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-npm-splitargs" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-npm-express-csv" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-npm-md5" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-npm-request" % transcendentVersion
     ))
 
 lazy val shared = (project in file("app-shared"))
@@ -106,8 +107,10 @@ lazy val shared = (project in file("app-shared"))
     name := "awt-shared",
     organization := "com.microsoft",
     version := appVersion,
+    pipelineStages := Seq(gzip),
+    resolvers += Resolver.sonatypeRepo("releases"),
     libraryDependencies ++= Seq(
-      "com.github.ldaniels528" %%% "scalajs-common" % scalaJsNodeVersion
+      "com.github.ldaniels528" %%% "scalajs-common" % transcendentVersion
     ))
 
 // add the alias

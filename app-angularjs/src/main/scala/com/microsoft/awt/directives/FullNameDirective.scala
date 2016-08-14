@@ -4,6 +4,7 @@ import com.microsoft.awt.components.UserFactory
 import org.scalajs.angularjs.Directive._
 import org.scalajs.angularjs.{Attributes, Directive, JQLite, Scope, injected}
 import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.sjs.JsUnderOrHelper._
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js

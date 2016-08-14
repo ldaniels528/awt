@@ -7,6 +7,7 @@ import org.scalajs.dom
 import org.scalajs.dom.browser._
 import org.scalajs.dom.canvas._
 import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.sjs.JsUnderOrHelper._
 
 import scala.scalajs.js
 
@@ -20,7 +21,7 @@ class ThumbnailDirective($window: Window) extends Directive with AttributeRestri
 
   override def link(scope: Scope, element: JQLite, attributes: Attributes) = if (isSupported) {
     val params = scope.$eval[Params](attributes.ngThumb)
-    params.file foreach { file =>
+    params.file.flat foreach { file =>
       if (isSupportedType(file)) {
         // get the canvas instance
         val canvas = element.find[HTMLCanvasElement]("canvas")

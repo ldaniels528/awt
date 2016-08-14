@@ -1030,7 +1030,8 @@ function $asArrayOf_Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent(obj, dept
   return (($isArrayOf_Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.microsoft.awt.routes.SearchRoutes$SearchAgent;", depth))
 }
 function $s_Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent$class__search__Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent__T__I__s_concurrent_ExecutionContext__s_concurrent_Future($$this, searchTerm, maxResults, ec) {
-  var cursor = $$this.coll__Lorg_scalajs_nodejs_mongodb_Collection().find($s_Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent$class__getSelection__p0__Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent__T__sjs_js_Dictionary($$this, searchTerm)).limit(maxResults);
+  var qual$1 = $$this.coll__Lorg_scalajs_nodejs_mongodb_Collection().find($s_Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent$class__getSelection__p0__Lcom_microsoft_awt_routes_SearchRoutes$SearchAgent__T__sjs_js_Dictionary($$this, searchTerm));
+  var cursor = qual$1.limit(maxResults);
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1 = (function(promise$1) {
     return (function(err$2, result$2) {
@@ -4557,7 +4558,8 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.login__Lorg_scalajs
       var f$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(ec$4, username$2) {
         return (function(x$16$2) {
           var selector = $m_Lorg_scalajs_nodejs_mongodb_package$().tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("username", username$2));
-          var eta$0$1 = x$16$2.find(selector).limit(1);
+          var qual$1 = x$16$2.find(selector);
+          var eta$0$1 = qual$1.limit(1);
           var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
           var arg1$2 = (function(promise$1) {
             return (function(err$2, result$2) {
@@ -4665,7 +4667,8 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$.prototype.authToken__Lorg_sca
       var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$regex", username$1), new $c_T2().init___O__O("$options", "i")]);
       var y = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
       var selector = jsx$1.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("username", y));
-      var eta$0$1 = x$11$2.find(selector).limit(1);
+      var qual$1 = x$11$2.find(selector);
+      var eta$0$1 = qual$1.limit(1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -5180,7 +5183,8 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$.prototype.getGroups__Lorg_scalajs_node
   var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(form, 20);
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(maxResults$1) {
     return (function(x$4$2) {
-      var cursor = x$4$2.find().limit(maxResults$1);
+      var qual$2 = x$4$2.find();
+      var cursor = qual$2.limit(maxResults$1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -5291,7 +5295,8 @@ $c_Lcom_microsoft_awt_routes_NotificationRoutes$.prototype.getNotifications__Lor
   var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(form, 20);
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(maxResults$1) {
     return (function(x$2$2) {
-      var cursor = x$2$2.find().limit(maxResults$1);
+      var qual$2 = x$2$2.find();
+      var cursor = qual$2.limit(maxResults$1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -5420,7 +5425,8 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getPost__Lorg_scalajs_nodejs_
       };
       var y = $newJSObjectWithVarargs($class, jsx$1);
       var selector = jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
-      var eta$0$1 = x$11$2.find(selector).limit(1);
+      var qual$1 = x$11$2.find(selector);
+      var eta$0$1 = qual$1.limit(1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1$1 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -5598,7 +5604,7 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getNewsFeed__Lorg_scalajs_nod
       };
       var y = $newJSObjectWithVarargs($class, jsx$1);
       var selector = jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
-      var jsx$4 = $m_sjs_js_Dictionary$();
+      var jsx$3 = $m_sjs_js_Dictionary$();
       var array = [];
       $uI(fields.length);
       var i$1 = 0;
@@ -5611,8 +5617,8 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getNewsFeed__Lorg_scalajs_nod
         array.push(elem);
         i$1 = ((1 + i$1) | 0)
       };
-      var jsx$3 = x$14$2.find(selector, jsx$4.apply__sc_Seq__sjs_js_Dictionary(new $c_sjs_js_WrappedArray().init___sjs_js_Array(array)));
-      var eta$0$2 = jsx$3.limit(1);
+      var qual$2 = x$14$2.find(selector, jsx$3.apply__sc_Seq__sjs_js_Dictionary(new $c_sjs_js_WrappedArray().init___sjs_js_Array(array)));
+      var eta$0$2 = qual$2.limit(1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1$2 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -5632,7 +5638,7 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getNewsFeed__Lorg_scalajs_nod
     })
   })(ec, mongo, ownerID));
   var this$30 = $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(userDAO, f$1, ec);
-  var f$2 = new $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$8().init___();
+  var f$2 = new $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$9().init___();
   var this$31 = $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$30, f$2, ec);
   var f$3 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(ownerID$2$1) {
     return (function(submitters$2) {
@@ -5641,7 +5647,7 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getNewsFeed__Lorg_scalajs_nod
     })
   })(ownerID));
   var this$32 = $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$31, f$3, ec);
-  var f$4 = new $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10().init___s_concurrent_ExecutionContext__s_concurrent_Future__I(ec, postDAO, maxResults);
+  var f$4 = new $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11().init___s_concurrent_ExecutionContext__s_concurrent_Future__I(ec, postDAO, maxResults);
   var outcome = $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$32, f$4, ec);
   outcome.onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(response$7, next$7) {
     return (function(x0$7$2) {
@@ -5654,9 +5660,9 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getNewsFeed__Lorg_scalajs_nod
       } else if ($is_s_util_Failure(x0$7)) {
         var x3$1 = $as_s_util_Failure(x0$7);
         var e = x3$1.exception$2;
-        var jsx$5 = response$7.status(500);
+        var jsx$4 = response$7.status(500);
         var s = e.getMessage__T();
-        jsx$5.send(s);
+        jsx$4.send(s);
         $asUnit(next$7())
       } else {
         throw new $c_s_MatchError().init___O(x0$7)
@@ -6145,7 +6151,8 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$.prototype.getPosts__Lorg_scalajs_nodejs
   var maxResults = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(form, 20);
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(maxResults$1) {
     return (function(x$12$2) {
-      var cursor = x$12$2.find().limit(maxResults$1);
+      var qual$2 = x$12$2.find();
+      var cursor = qual$2.limit(maxResults$1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -6488,7 +6495,8 @@ $c_Lcom_microsoft_awt_routes_SessionRoutes$.prototype.getSessionByID__Lorg_scala
       };
       var y = $newJSObjectWithVarargs($class, jsx$1);
       var selector = jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
-      var eta$0$1 = x$2$2.find(selector).limit(1);
+      var qual$1 = x$2$2.find(selector);
+      var eta$0$1 = qual$1.limit(1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1$1 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -6794,18 +6802,29 @@ $c_Lcom_microsoft_awt_routes_SharedContentParser.prototype.init___Lorg_scalajs_n
   return this
 });
 $c_Lcom_microsoft_awt_routes_SharedContentParser.prototype.parse__T__s_concurrent_ExecutionContext__s_concurrent_Future = (function(url, ec) {
-  var jsx$1 = $m_Lorg_scalajs_nodejs_request_Request$RequestExtensions$();
-  var request = this.request$1;
-  var this$2 = jsx$1.getFuture$extension__Lorg_scalajs_nodejs_request_Request__T__s_concurrent_Future(request, url);
+  var client = this.request$1;
+  var task = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
+  var arg1 = (function(task$8) {
+    return (function(err$2, a$2, b$2) {
+      if ((!((err$2 !== null) && (err$2 !== (void 0))))) {
+        var value = new $c_T2().init___O__O(a$2, b$2);
+        return $s_s_concurrent_Promise$class__success__s_concurrent_Promise__O__s_concurrent_Promise(task$8, value)
+      } else {
+        var cause = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(err$2);
+        return $s_s_concurrent_Promise$class__failure__s_concurrent_Promise__jl_Throwable__s_concurrent_Promise(task$8, cause)
+      }
+    })
+  })(task);
+  client.get(url, arg1);
   var p = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(check$ifrefutable$1$2) {
     var check$ifrefutable$1 = $as_T2(check$ifrefutable$1$2);
     return (check$ifrefutable$1 !== null)
   }));
-  var this$3 = $s_s_concurrent_Future$class__filter__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$2, p, ec);
+  var this$10 = $s_s_concurrent_Future$class__filter__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(task, p, ec);
   var f = new $c_Lcom_microsoft_awt_routes_SharedContentParser$$anonfun$parse$2().init___Lcom_microsoft_awt_routes_SharedContentParser(this);
-  var this$4 = $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$3, f, ec);
+  var this$11 = $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$10, f, ec);
   var f$1 = new $c_Lcom_microsoft_awt_routes_SharedContentParser$$anonfun$parse$3().init___Lcom_microsoft_awt_routes_SharedContentParser(this);
-  return $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$4, f$1, ec)
+  return $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$11, f$1, ec)
 });
 var $d_Lcom_microsoft_awt_routes_SharedContentParser = new $TypeData().initClass({
   Lcom_microsoft_awt_routes_SharedContentParser: 0
@@ -7369,7 +7388,8 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getUserByEmail__Lorg_scalajs_
         var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$regex", primaryEmail$1), new $c_T2().init___O__O("$options", "i")]);
         var y = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
         var selector = jsx$1.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("primaryEmail", y));
-        var eta$0$1 = x$4$2.find(selector).limit(1);
+        var qual$1 = x$4$2.find(selector);
+        var eta$0$1 = qual$1.limit(1);
         var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
         var arg1 = (function(promise$1) {
           return (function(err$2, result$2) {
@@ -7532,7 +7552,7 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getSubmitter__Lorg_scalajs_no
       };
       var y = $newJSObjectWithVarargs($class, jsx$1);
       var selector = jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
-      var jsx$4 = $m_sjs_js_Dictionary$();
+      var jsx$3 = $m_sjs_js_Dictionary$();
       var array = [];
       $uI(fields.length);
       var i$1 = 0;
@@ -7545,8 +7565,8 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getSubmitter__Lorg_scalajs_no
         array.push(elem);
         i$1 = ((1 + i$1) | 0)
       };
-      var jsx$3 = x$12$2.find(selector, jsx$4.apply__sc_Seq__sjs_js_Dictionary(new $c_sjs_js_WrappedArray().init___sjs_js_Array(array)));
-      var eta$0$2 = jsx$3.limit(1);
+      var qual$2 = x$12$2.find(selector, jsx$3.apply__sc_Seq__sjs_js_Dictionary(new $c_sjs_js_WrappedArray().init___sjs_js_Array(array)));
+      var eta$0$2 = qual$2.limit(1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1$2 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -7595,9 +7615,9 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getSubmitter__Lorg_scalajs_no
         if ($is_s_util_Failure(x0$8)) {
           var x7 = $as_s_util_Failure(x0$8);
           var e = x7.exception$2;
-          var jsx$5 = response$8.status(500);
+          var jsx$4 = response$8.status(500);
           var s = e.getMessage__T();
-          jsx$5.send(s);
+          jsx$4.send(s);
           $asUnit(next$8());
           break matchEnd11
         };
@@ -8165,7 +8185,8 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getUserByUsername__Lorg_scala
         var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$regex", username$1), new $c_T2().init___O__O("$options", "i")]);
         var y = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
         var selector = jsx$1.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("username", y));
-        var eta$0$1 = x$5$2.find(selector).limit(1);
+        var qual$1 = x$5$2.find(selector);
+        var eta$0$1 = qual$1.limit(1);
         var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
         var arg1 = (function(promise$1) {
           return (function(err$2, result$2) {
@@ -8271,7 +8292,8 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getAvatarByID__Lorg_scalajs_n
       };
       var y = $newJSObjectWithVarargs($class, jsx$1);
       var selector = jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
-      var eta$0$1 = x$11$2.find(selector).limit(1);
+      var qual$1 = x$11$2.find(selector);
+      var eta$0$1 = qual$1.limit(1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1$1 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -8322,7 +8344,8 @@ $c_Lcom_microsoft_awt_routes_UserRoutes$.prototype.getUserByID__Lorg_scalajs_nod
       };
       var y = $newJSObjectWithVarargs($class, jsx$1);
       var selector = jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
-      var eta$0$1 = x$3$2.find(selector).limit(1);
+      var qual$1 = x$3$2.find(selector);
+      var eta$0$1 = qual$1.limit(1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1$1 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -8626,7 +8649,8 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.getWorkloadByID__Lorg_sca
       };
       var y = $newJSObjectWithVarargs($class, jsx$1);
       var selector = jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
-      var eta$0$1 = x$9$2.find(selector).limit(1);
+      var qual$1 = x$9$2.find(selector);
+      var eta$0$1 = qual$1.limit(1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1$1 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -8739,7 +8763,8 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$.prototype.findWorkloadsByGroup__p1_
       };
       var y = $newJSObjectWithVarargs($class, jsx$1);
       var selector = jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
-      var eta$0$1 = x$13$2.find(selector).limit(1);
+      var qual$1 = x$13$2.find(selector);
+      var eta$0$1 = qual$1.limit(1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1$1 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -10065,50 +10090,6 @@ function $m_Lorg_scalajs_nodejs_request_Request$() {
     $n_Lorg_scalajs_nodejs_request_Request$ = new $c_Lorg_scalajs_nodejs_request_Request$().init___()
   };
   return $n_Lorg_scalajs_nodejs_request_Request$
-}
-/** @constructor */
-function $c_Lorg_scalajs_nodejs_request_Request$RequestExtensions$() {
-  $c_O.call(this)
-}
-$c_Lorg_scalajs_nodejs_request_Request$RequestExtensions$.prototype = new $h_O();
-$c_Lorg_scalajs_nodejs_request_Request$RequestExtensions$.prototype.constructor = $c_Lorg_scalajs_nodejs_request_Request$RequestExtensions$;
-/** @constructor */
-function $h_Lorg_scalajs_nodejs_request_Request$RequestExtensions$() {
-  /*<skip>*/
-}
-$h_Lorg_scalajs_nodejs_request_Request$RequestExtensions$.prototype = $c_Lorg_scalajs_nodejs_request_Request$RequestExtensions$.prototype;
-$c_Lorg_scalajs_nodejs_request_Request$RequestExtensions$.prototype.init___ = (function() {
-  return this
-});
-$c_Lorg_scalajs_nodejs_request_Request$RequestExtensions$.prototype.getFuture$extension__Lorg_scalajs_nodejs_request_Request__T__s_concurrent_Future = (function($$this, url) {
-  var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
-  $$this.get(url, (function(promise$1) {
-    return (function(error$2, response$2, body$2) {
-      var body = $as_T(body$2);
-      if ((!((error$2 !== null) && (error$2 !== (void 0))))) {
-        var value = new $c_T2().init___O__O(response$2, body);
-        return $s_s_concurrent_Promise$class__success__s_concurrent_Promise__O__s_concurrent_Promise(promise$1, value)
-      } else {
-        var cause = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(error$2);
-        return $s_s_concurrent_Promise$class__failure__s_concurrent_Promise__jl_Throwable__s_concurrent_Promise(promise$1, cause)
-      }
-    })
-  })(promise));
-  return promise
-});
-var $d_Lorg_scalajs_nodejs_request_Request$RequestExtensions$ = new $TypeData().initClass({
-  Lorg_scalajs_nodejs_request_Request$RequestExtensions$: 0
-}, false, "org.scalajs.nodejs.request.Request$RequestExtensions$", {
-  Lorg_scalajs_nodejs_request_Request$RequestExtensions$: 1,
-  O: 1
-});
-$c_Lorg_scalajs_nodejs_request_Request$RequestExtensions$.prototype.$classData = $d_Lorg_scalajs_nodejs_request_Request$RequestExtensions$;
-var $n_Lorg_scalajs_nodejs_request_Request$RequestExtensions$ = (void 0);
-function $m_Lorg_scalajs_nodejs_request_Request$RequestExtensions$() {
-  if ((!$n_Lorg_scalajs_nodejs_request_Request$RequestExtensions$)) {
-    $n_Lorg_scalajs_nodejs_request_Request$RequestExtensions$ = new $c_Lorg_scalajs_nodejs_request_Request$RequestExtensions$().init___()
-  };
-  return $n_Lorg_scalajs_nodejs_request_Request$RequestExtensions$
 }
 /** @constructor */
 function $c_Lorg_scalajs_nodejs_splitargs_SplitArgs$() {
@@ -20397,7 +20378,8 @@ $c_Lcom_microsoft_awt_routes_AuthenticationRoutes$$anonfun$15.prototype.apply__s
       var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$regex", username), new $c_T2().init___O__O("$options", "i")]);
       var y = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
       var selector = jsx$1.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("username", y));
-      var eta$0$1 = x$17$2.find(selector).limit(1);
+      var qual$1 = x$17$2.find(selector);
+      var eta$0$1 = qual$1.limit(1);
       var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
       var arg1 = (function(promise$1) {
         return (function(err$2, result$2) {
@@ -21145,7 +21127,8 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupByID$1.prototype.apply
   var y = $newJSObjectWithVarargs($class, jsx$1);
   var selector = jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
   var ec = this.ec$2$2;
-  var eta$0$1 = x$3.find(selector).limit(1);
+  var qual$1 = x$3.find(selector);
+  var eta$0$1 = qual$1.limit(1);
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1$1 = (function(promise$1) {
     return (function(err$2, result$2) {
@@ -21197,13 +21180,13 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1.proto
   return this.apply__Lcom_microsoft_awt_data_GroupDAO__s_concurrent_Future(v1)
 });
 $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsExcludingUser$1.prototype.apply__Lcom_microsoft_awt_data_GroupDAO__s_concurrent_Future = (function(x$5) {
-  var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var s = this.userID$3$f;
-  var y = [s];
+  var jsx$1 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+  var y = [this.userID$3$f];
   var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$nin", y)]);
   var y$1 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
-  var jsx$1 = x$5.find(jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("members", y$1)));
-  var cursor = jsx$1.limit(this.maxResults$4$2);
+  var qual$8 = x$5.find(jsx$1.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("members", y$1)));
+  var x$19 = this.maxResults$4$2;
+  var cursor = qual$8.limit(x$19);
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1 = (function(promise$1) {
     return (function(err$2, result$2) {
@@ -21251,13 +21234,13 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUse
   return this.apply__Lcom_microsoft_awt_data_GroupDAO__s_concurrent_Future(v1)
 });
 $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUser$1.prototype.apply__Lcom_microsoft_awt_data_GroupDAO__s_concurrent_Future = (function(x$7) {
-  var jsx$3 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+  var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
   var s = this.userID$1$f;
-  var jsx$2 = new $c_T2().init___O__O("owner", s);
+  var jsx$1 = new $c_T2().init___O__O("owner", s);
   var y = [this.userID$1$f];
   var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$in", y)]);
   var y$1 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
-  var array = [jsx$2, new $c_T2().init___O__O("members", y$1)];
+  var array = [jsx$1, new $c_T2().init___O__O("members", y$1)];
   $m_sc_Seq$();
   $m_sjs_js_WrappedArray$();
   var array$1 = [];
@@ -21274,8 +21257,9 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingOrOwnedByUse
     i = ((1 + i) | 0)
   };
   var y$2 = array$1;
-  var jsx$1 = x$7.find(jsx$3.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("$or", y$2)));
-  var cursor = jsx$1.limit(this.maxResults$2$2);
+  var qual$4 = x$7.find(jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("$or", y$2)));
+  var x$13 = this.maxResults$2$2;
+  var cursor = qual$4.limit(x$13);
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1$1 = (function(promise$1) {
     return (function(err$2, result$2) {
@@ -21323,12 +21307,13 @@ $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1.proto
   return this.apply__Lcom_microsoft_awt_data_GroupDAO__s_concurrent_Future(v1)
 });
 $c_Lcom_microsoft_awt_routes_GroupRoutes$$anonfun$getGroupsIncludingUser$1.prototype.apply__Lcom_microsoft_awt_data_GroupDAO__s_concurrent_Future = (function(x$6) {
-  var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+  var jsx$1 = $m_Lorg_scalajs_nodejs_mongodb_package$();
   var y = [this.userID$2$f];
   var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$in", y)]);
   var y$1 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
-  var jsx$1 = x$6.find(jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("members", y$1)));
-  var cursor = jsx$1.limit(this.maxResults$3$2);
+  var qual$6 = x$6.find(jsx$1.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("members", y$1)));
+  var x$16 = this.maxResults$3$2;
+  var cursor = qual$6.limit(x$16);
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1 = (function(promise$1) {
     return (function(err$2, result$2) {
@@ -21493,27 +21478,27 @@ var $d_Lcom_microsoft_awt_routes_NotificationRoutes$$anonfun$getNotificationsByO
 });
 $c_Lcom_microsoft_awt_routes_NotificationRoutes$$anonfun$getNotificationsByOwner$1.prototype.$classData = $d_Lcom_microsoft_awt_routes_NotificationRoutes$$anonfun$getNotificationsByOwner$1;
 /** @constructor */
-function $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10() {
+function $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11() {
   $c_sr_AbstractFunction1.call(this);
   this.ec$3$2 = null;
   this.postDAO$2$2 = null;
   this.maxResults$3$f = 0
 }
-$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10.prototype.constructor = $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10;
+$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11.prototype.constructor = $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11;
 /** @constructor */
-function $h_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10() {
+function $h_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10.prototype = $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10.prototype;
-$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10.prototype.apply__O__O = (function(v1) {
+$h_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11.prototype = $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11.prototype;
+$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11.prototype.apply__O__O = (function(v1) {
   return this.apply__T2__s_concurrent_Future($as_T2(v1))
 });
-$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10.prototype.apply__T2__s_concurrent_Future = (function(x$19) {
+$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11.prototype.apply__T2__s_concurrent_Future = (function(x$19) {
   if ((x$19 !== null)) {
     var submitters = x$19.$$und1__O();
     var this$1 = this.postDAO$2$2;
-    var f = new $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10$$anonfun$apply$12().init___Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10__sjs_js_Array(this, submitters);
+    var f = new $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11$$anonfun$apply$11().init___Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11__sjs_js_Array(this, submitters);
     var executor = this.ec$3$2;
     var this$2 = $s_s_concurrent_Future$class__flatMap__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$1, f, executor);
     var f$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(posts$2) {
@@ -21525,40 +21510,37 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10.prototype.apply__T2__s_concu
     throw new $c_s_MatchError().init___O(x$19)
   }
 });
-$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10.prototype.init___s_concurrent_ExecutionContext__s_concurrent_Future__I = (function(ec$3, postDAO$2, maxResults$3) {
+$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11.prototype.init___s_concurrent_ExecutionContext__s_concurrent_Future__I = (function(ec$3, postDAO$2, maxResults$3) {
   this.ec$3$2 = ec$3;
   this.postDAO$2$2 = postDAO$2;
   this.maxResults$3$f = maxResults$3;
   return this
 });
-var $d_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10 = new $TypeData().initClass({
-  Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10: 0
-}, false, "com.microsoft.awt.routes.PostRoutes$$anonfun$10", {
-  Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10: 1,
+var $d_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11 = new $TypeData().initClass({
+  Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11: 0
+}, false, "com.microsoft.awt.routes.PostRoutes$$anonfun$11", {
+  Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11: 1,
   sr_AbstractFunction1: 1,
   O: 1,
   F1: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10.prototype.$classData = $d_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10;
+$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11.prototype.$classData = $d_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11;
 /** @constructor */
-function $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10$$anonfun$apply$12() {
+function $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11$$anonfun$apply$11() {
   $c_sr_AbstractFunction1.call(this);
   this.$$outer$2 = null;
   this.submitters$1$f = null
 }
-$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10$$anonfun$apply$12.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10$$anonfun$apply$12.prototype.constructor = $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10$$anonfun$apply$12;
+$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11$$anonfun$apply$11.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11$$anonfun$apply$11.prototype.constructor = $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11$$anonfun$apply$11;
 /** @constructor */
-function $h_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10$$anonfun$apply$12() {
+function $h_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11$$anonfun$apply$11() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10$$anonfun$apply$12.prototype = $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10$$anonfun$apply$12.prototype;
-$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10$$anonfun$apply$12.prototype.apply__O__O = (function(v1) {
-  return this.apply__Lcom_microsoft_awt_data_PostDAO__s_concurrent_Future(v1)
-});
-$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10$$anonfun$apply$12.prototype.init___Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10__sjs_js_Array = (function($$outer, submitters$1) {
+$h_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11$$anonfun$apply$11.prototype = $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11$$anonfun$apply$11.prototype;
+$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11$$anonfun$apply$11.prototype.init___Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11__sjs_js_Array = (function($$outer, submitters$1) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -21567,13 +21549,17 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10$$anonfun$apply$12.prototype.
   this.submitters$1$f = submitters$1;
   return this
 });
-$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10$$anonfun$apply$12.prototype.apply__Lcom_microsoft_awt_data_PostDAO__s_concurrent_Future = (function(x$17) {
-  var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11$$anonfun$apply$11.prototype.apply__O__O = (function(v1) {
+  return this.apply__Lcom_microsoft_awt_data_PostDAO__s_concurrent_Future(v1)
+});
+$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11$$anonfun$apply$11.prototype.apply__Lcom_microsoft_awt_data_PostDAO__s_concurrent_Future = (function(x$17) {
+  var jsx$1 = $m_Lorg_scalajs_nodejs_mongodb_package$();
   var y = this.submitters$1$f;
   var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$in", y)]);
   var y$1 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
-  var jsx$1 = x$17.find(jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("submitterId", y$1)));
-  var cursor = jsx$1.limit(this.$$outer$2.maxResults$3$f);
+  var qual$6 = x$17.find(jsx$1.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("submitterId", y$1)));
+  var x$36 = this.$$outer$2.maxResults$3$f;
+  var cursor = qual$6.limit(x$36);
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1 = (function(promise$1) {
     return (function(err$2, result$2) {
@@ -21588,35 +21574,35 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10$$anonfun$apply$12.prototype.
   cursor.toArray(arg1);
   return promise
 });
-var $d_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10$$anonfun$apply$12 = new $TypeData().initClass({
-  Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10$$anonfun$apply$12: 0
-}, false, "com.microsoft.awt.routes.PostRoutes$$anonfun$10$$anonfun$apply$12", {
-  Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10$$anonfun$apply$12: 1,
+var $d_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11$$anonfun$apply$11 = new $TypeData().initClass({
+  Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11$$anonfun$apply$11: 0
+}, false, "com.microsoft.awt.routes.PostRoutes$$anonfun$11$$anonfun$apply$11", {
+  Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11$$anonfun$apply$11: 1,
   sr_AbstractFunction1: 1,
   O: 1,
   F1: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10$$anonfun$apply$12.prototype.$classData = $d_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$10$$anonfun$apply$12;
+$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11$$anonfun$apply$11.prototype.$classData = $d_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$11$$anonfun$apply$11;
 /** @constructor */
-function $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$8() {
+function $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$9() {
   $c_sr_AbstractFunction1.call(this)
 }
-$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$8.prototype = new $h_sr_AbstractFunction1();
-$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$8.prototype.constructor = $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$8;
+$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$9.prototype = new $h_sr_AbstractFunction1();
+$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$9.prototype.constructor = $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$9;
 /** @constructor */
-function $h_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$8() {
+function $h_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$9() {
   /*<skip>*/
 }
-$h_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$8.prototype = $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$8.prototype;
-$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$8.prototype.init___ = (function() {
+$h_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$9.prototype = $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$9.prototype;
+$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$9.prototype.init___ = (function() {
   return this
 });
-$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$8.prototype.apply__O__O = (function(v1) {
+$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$9.prototype.apply__O__O = (function(v1) {
   return this.apply__s_Option__sjs_js_Array($as_s_Option(v1))
 });
-$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$8.prototype.apply__s_Option__sjs_js_Array = (function(x$15) {
+$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$9.prototype.apply__s_Option__sjs_js_Array = (function(x$15) {
   if (x$15.isEmpty__Z()) {
     var this$4 = $m_s_None$()
   } else {
@@ -21626,17 +21612,17 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$8.prototype.apply__s_Option__sj
   };
   return (this$4.isEmpty__Z() ? [] : this$4.get__O())
 });
-var $d_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$8 = new $TypeData().initClass({
-  Lcom_microsoft_awt_routes_PostRoutes$$anonfun$8: 0
-}, false, "com.microsoft.awt.routes.PostRoutes$$anonfun$8", {
-  Lcom_microsoft_awt_routes_PostRoutes$$anonfun$8: 1,
+var $d_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$9 = new $TypeData().initClass({
+  Lcom_microsoft_awt_routes_PostRoutes$$anonfun$9: 0
+}, false, "com.microsoft.awt.routes.PostRoutes$$anonfun$9", {
+  Lcom_microsoft_awt_routes_PostRoutes$$anonfun$9: 1,
   sr_AbstractFunction1: 1,
   O: 1,
   F1: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$8.prototype.$classData = $d_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$8;
+$c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$9.prototype.$classData = $d_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$9;
 /** @constructor */
 function $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$deletePost$1() {
   $c_sr_AbstractFunction1.call(this);
@@ -21848,10 +21834,11 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$getPostsByOwner$1.prototype.ini
   return this
 });
 $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$getPostsByOwner$1.prototype.apply__Lcom_microsoft_awt_data_PostDAO__s_concurrent_Future = (function(x$13) {
-  var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+  var jsx$1 = $m_Lorg_scalajs_nodejs_mongodb_package$();
   var s = this.ownerID$1$f;
-  var jsx$1 = x$13.find(jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("submitterId", s)));
-  var cursor = jsx$1.limit(this.maxResults$2$2);
+  var qual$4 = x$13.find(jsx$1.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("submitterId", s)));
+  var x$33 = this.maxResults$2$2;
+  var cursor = qual$4.limit(x$33);
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1 = (function(promise$1) {
     return (function(err$2, result$2) {
@@ -22012,8 +21999,8 @@ $c_Lcom_microsoft_awt_routes_PostRoutes$$anonfun$uploadAttachment$1.prototype.ap
       };
       var y$1 = $newJSObjectWithVarargs($class$1, jsx$1);
       var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$3, new $c_T2().init___O__O("postID", y$1)]);
-      var x$32 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
-      var ustream = fs$2.openUploadStream(jsx$4, new $c_Lorg_scalajs_nodejs_mongodb_gridfs_UploadStreamOptions((void 0), x$32));
+      var x$38 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
+      var ustream = fs$2.openUploadStream(jsx$4, new $c_Lorg_scalajs_nodejs_mongodb_gridfs_UploadStreamOptions((void 0), x$38));
       var jsx$5 = ustream.id;
       var a = file$1.data;
       ustream.end(a);
@@ -22345,13 +22332,14 @@ $c_Lcom_microsoft_awt_routes_SessionRoutes$$anonfun$getSessions$1.prototype.init
   return this
 });
 $c_Lcom_microsoft_awt_routes_SessionRoutes$$anonfun$getSessions$1.prototype.apply__Lcom_microsoft_awt_data_SessionDAO__s_concurrent_Future = (function(x$4) {
-  var jsx$2 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+  var jsx$1 = $m_Lorg_scalajs_nodejs_mongodb_package$();
   var y = [this.ids$1$f];
   var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("$in", y)]);
   var y$1 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
-  var jsx$1 = x$4.find(jsx$2.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y$1)));
+  var qual$1 = x$4.find(jsx$1.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y$1)));
   var form = this.form$1$2;
-  var cursor = jsx$1.limit($m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(form, 20));
+  var x$6 = $m_Lcom_microsoft_awt_forms_MaxResultsForm$MaxResultsFormExtensions$().getMaxResults$extension__Lcom_microsoft_awt_forms_MaxResultsForm__I__I(form, 20);
+  var cursor = qual$1.limit(x$6);
   var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var arg1 = (function(promise$1) {
     return (function(err$2, result$2) {
@@ -23466,7 +23454,7 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$deleteStatus$1.prototype.ap
   var y = $newJSObjectWithVarargs($class, jsx$6);
   var jsx$5 = jsx$7.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y));
   var jsx$4 = $m_Lorg_scalajs_nodejs_mongodb_package$();
-  var jsx$3 = $m_Lorg_scalajs_nodejs_mongodb_package$();
+  var jsx$3 = $m_s_Predef$();
   var attribute$1 = this.statusID$1$f;
   var mongo$1 = this.mongo$7$f;
   var $class$1 = mongo$1.ObjectID;
@@ -23489,7 +23477,8 @@ $c_Lcom_microsoft_awt_routes_WorkloadRoutes$$anonfun$deleteStatus$1.prototype.ap
     var jsx$2 = result$1
   };
   var y$1 = $newJSObjectWithVarargs($class$1, jsx$2);
-  var y$2 = jsx$3.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("_id", y$1));
+  var value = jsx$3.wrapRefArray__AO__scm_WrappedArray($makeNativeArrayWrapper($d_T2.getArrayOf(), [new $c_T2().init___O__O("_id", y$1)]));
+  var y$2 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(value);
   var kvps = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O("statuses", y$2)]);
   var y$3 = $m_sjs_js_Dictionary$().apply__sc_Seq__sjs_js_Dictionary(kvps);
   var jsx$1 = x$4.findOneAndUpdate(jsx$5, jsx$4.tupleToJS__T2__sjs_js_Any(new $c_T2().init___O__O("$pull", y$3)));

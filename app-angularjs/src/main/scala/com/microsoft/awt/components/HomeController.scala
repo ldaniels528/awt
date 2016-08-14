@@ -8,6 +8,8 @@ import org.scalajs.angularjs.fileupload.nervgh.FileUploader
 import org.scalajs.angularjs.toaster.Toaster
 import org.scalajs.dom.browser.console
 import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.sjs.JsUnderOrHelper._
+import org.scalajs.sjs.OptionHelper._
 
 import scala.concurrent.Future
 import scala.concurrent.duration._

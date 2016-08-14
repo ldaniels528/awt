@@ -1,10 +1,10 @@
 package com.microsoft.awt.data
 
 import com.microsoft.awt.data.WorkloadData.StatusData
-import com.microsoft.awt.models.{Workload, WorkloadLike}
 import com.microsoft.awt.models.Workload.Status
+import com.microsoft.awt.models.{Workload, WorkloadLike}
 import org.scalajs.nodejs.mongodb.{MongoDB, ObjectID}
-import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.sjs.JsUnderOrHelper._
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.ScalaJSDefined

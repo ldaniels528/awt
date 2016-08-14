@@ -6,7 +6,7 @@ import org.scalajs.angularjs.AngularJsHelper._
 import org.scalajs.angularjs._
 import org.scalajs.angularjs.toaster.Toaster
 import org.scalajs.dom.browser.{console, window}
-import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.sjs.JsUnderOrHelper._
 
 import scala.concurrent.duration._
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
@@ -167,7 +167,7 @@ case class ProfileController($scope: ProfileControllerScope, $routeParams: Profi
   ///////////////////////////////////////////////////////////////////////////
 
   private def ensureProfileIsLoaded() = {
-    if($scope.profileID.isEmpty) {
+    if ($scope.profileID.isEmpty) {
       $scope.profileID = $routeParams.id ?? sessionFactory.user.flatMap(_._id)
       $scope.profileID.foreach(loadGroupsPostingsAndWorkloads)
     }

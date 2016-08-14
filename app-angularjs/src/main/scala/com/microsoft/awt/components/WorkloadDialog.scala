@@ -8,6 +8,7 @@ import org.scalajs.angularjs.toaster.Toaster
 import org.scalajs.angularjs.uibootstrap._
 import org.scalajs.dom.browser.console
 import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.sjs.JsUnderOrHelper._
 
 import scala.concurrent.Future
 import scala.concurrent.duration._

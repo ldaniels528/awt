@@ -1,7 +1,7 @@
 package com.microsoft.awt.routes
 
 import org.scalajs.nodejs.console
-import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.sjs.OptionHelper._
 
 import scala.language.implicitConversions
 import scala.scalajs.js

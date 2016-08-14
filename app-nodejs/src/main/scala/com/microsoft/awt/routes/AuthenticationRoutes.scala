@@ -11,6 +11,7 @@ import org.scalajs.nodejs.mongodb._
 import org.scalajs.nodejs.pvorb.md5.MD5
 import org.scalajs.nodejs.util.ScalaJsHelper._
 import org.scalajs.nodejs.{NodeRequire, console}
+import org.scalajs.sjs.JsUnderOrHelper._
 
 import scala.concurrent.{ExecutionContext, Future}
 import scala.language.postfixOps

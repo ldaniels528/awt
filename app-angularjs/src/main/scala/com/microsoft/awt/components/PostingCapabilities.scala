@@ -7,6 +7,7 @@ import org.scalajs.angularjs.fileupload.nervgh.{FileItem, FileUploader, FileUplo
 import org.scalajs.angularjs.toaster.Toaster
 import org.scalajs.dom.browser.console
 import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.sjs.JsUnderOrHelper._
 
 import scala.concurrent.duration._
 import scala.language.postfixOps

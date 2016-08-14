@@ -5,6 +5,7 @@ import org.scalajs.angularjs.Directive._
 import org.scalajs.angularjs.sanitize.Sce
 import org.scalajs.angularjs.{Attributes, Directive, JQLite, Scope, injected}
 import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.sjs.JsUnderOrHelper._
 
 import scala.scalajs.js
 
